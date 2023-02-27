@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -126,17 +127,17 @@ public class MainController {
 	}
 	
 	@RequestMapping("/myLogin.do")
-	public String login1(Principal principal, Model model) {
+	public String login1(Principal principal, Model model, HttpSession session) {
 		try {
 			String email = principal.getName();
 			model.addAttribute("user_id", email);
+			session.setAttribute("siteUserInfo", email);
 		}
 		catch (Exception e) {
 			System.out.println("로그인 전입니다.");
 		}
 		return "auth/login";
 	}
-	
 	
 	@RequestMapping("/myError.do")
 	public String login2() {		

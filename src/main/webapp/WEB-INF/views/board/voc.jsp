@@ -60,7 +60,7 @@ function writeValidate(f)
 				영역에 저장한 DTO객체에서 이름을 가져와 삽입한다. -->
 				<input type="text" class="form-control" 
 					style="width:130px;" name="name"
-						value="${name }" />
+						value="${email }" />
 			</td>
 		</tr>
 		<tr>
