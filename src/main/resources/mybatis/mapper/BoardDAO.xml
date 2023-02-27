@@ -7,26 +7,25 @@
  
  <mapper namespace="com.edu.springboot.jdbc.IBoardService">
  
-	<select id="getTotalCountSearch" resultType="int"
-		parameterType="com.edu.springboot.jdbc.BoardDTO">
-		SELECT COUNT(*) from couboard 
-		<if test="!categoryCode.equals('ALL')">
-			where categoryCode=#{categoryCode}
+	<select id="getTotalCountSearch" resultType="int">
+		SELECT COUNT(*) from couboard where contact=#{param1}
+		<if test="!param2.equals('ALL')">
+			and categoryCode=#{param2}
 		</if>
+		
 	</select>
 
-	<select id="listPageSearch" resultType="com.edu.springboot.jdbc.BoardDTO"
-		parameterType="com.edu.springboot.jdbc.BoardDTO">
-		SELECT * FROM couboard
-		<if test="!categoryCode.equals('ALL')">
-			where categoryCode=#{categoryCode}
+	<select id="listPageSearch" resultType="com.edu.springboot.jdbc.BoardDTO">
+		SELECT * FROM couboard where contact=#{param1}
+		<if test="!param2.equals('ALL')">
+			and categoryCode=#{param2}
 		</if>
 	</select>
 	
 	<insert id="write">
-		INSERT INTO couboard (idx, title, contents, email, regidate, CATEGORYCODE, contact)
+		INSERT INTO inquiry (idx, title, email, contents, regidate, name, product)
 		VALUES
-		(couboard_seq.nextval, #{_title},  #{_contents}, #{_email}, sysdate, 'DELIVERY', 'faq')
+		(inquiry_seq.nextval, #{_title},#{_email}, #{_contents}, sysdate, '주문내역')
 	</insert>
 
 	<select id="view" resultType="com.edu.springboot.jdbc.BoardDTO"

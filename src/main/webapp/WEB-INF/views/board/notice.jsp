@@ -39,24 +39,25 @@ function deleteRow(idx){
 		<div class="container d-flex justified-content-center">
 			<ul class="nav nav-justified" style="width: 1500px;">
 				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=ALL"> <span class="text">전체</span>
+					href="./notice.do?categoryCode=ALL"> <span class="text">전체</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=DELIVERY"> <span class="text">공지</span>
+					href="./notice.do?categoryCode=NOTICE"> <span class="text">공지</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=CANCEL"> <span class="text">이벤트</span>
+					href="./notice.do?categoryCode=EVENT"> <span class="text">이벤트</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=REFUND"> <span class="text">해외항공권</span>
+					href="./notice.do?categoryCode=AIRTICKET"> <span class="text">항공권</span>
 				</a></li>
 			</ul>
 		</div>
 		<!-- 방명록 반복 부분 s -->
-	<c:forEach items="${lists }" var="row" varStatus="roop">		
+	<c:forEach items="${lists }" var="row" varStatus="loop">		
 		<div class="d-grid gap-2">
 			<button type="button" class="btn"  data-bs-toggle="collapse" data-bs-target="#a${row.idx}">
-		      ${row.title }<br /> </button>
+		      ${row.title }<br />
+		      ${row.regidate } </button>
 		    <div id="a${row.idx}" class="collapse" style="background-color: rgb(250,250,250);">
 		    	${row.contents }
 		    </div>

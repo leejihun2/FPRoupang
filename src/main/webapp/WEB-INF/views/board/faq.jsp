@@ -62,7 +62,7 @@ function deleteRow(idx){
 			</ul>
 		</div>
 		<!-- 방명록 반복 부분 s -->
-	<c:forEach items="${lists }" var="row" varStatus="roop">		
+	<c:forEach items="${lists }" var="row" varStatus="loop">		
 		<div class="d-grid gap-2">
 			<button type="button" class="btn"  data-bs-toggle="collapse" data-bs-target="#a${row.idx}">
 		      ${row.title }<br /> </button>

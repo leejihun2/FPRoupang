@@ -14,9 +14,9 @@ public interface IBoardService {
 
 	//기존 리스트에 검색기능을 추가했으므로 매개변수를 DTO로 변경한다.
 	//해당 DTO객체에는 검색어와 페이지구간 대한 값이 저장된다.
-	public int getTotalCountSearch(BoardDTO boardDTO);
+	public int getTotalCountSearch(String contact, String categoryCode);
 	public ArrayList<BoardDTO>
-	listPageSearch(BoardDTO boardDTO);
+	listPageSearch(String contact, String categoryCode);
 
 	/*
 	@Param어노테이션에서 지정한 별칭을 사용해서 인파라미터를 처리한다.
@@ -31,6 +31,7 @@ public interface IBoardService {
 	//기존 게시물의 내용을 인출한다.
 	public BoardDTO view(BoardDTO BoardDTO);
 	
+	public int delete(String idx, String email);
 	//Mapper에서 Map 사용하기 
 	public ArrayList<BoardDTO> hashMapUse(Map<String, String> hMap);
 

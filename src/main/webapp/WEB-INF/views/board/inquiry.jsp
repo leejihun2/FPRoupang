@@ -36,39 +36,14 @@ function deleteRow(idx){
 	
 	<div class="text-right">
 	</div>
-		<div class="container d-flex justified-content-center">
-			<ul class="nav nav-justified" style="width: 1500px;">
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=ALL"> <span class="text">젠부</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=DELIVERY"> <span class="text">배송문의</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=CANCEL"> <span class="text">취소/교환/반품</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=REFUND"> <span class="text">환불</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=MEMBER"> <span class="text">회원서비스</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=CASH"> <span class="text">쿠팡캐시</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=MOBILE"> <span class="text">로켓모바일</span>
-				</a></li>
-			</ul>
-		</div>
 		<!-- 방명록 반복 부분 s -->
-	<c:forEach items="${lists }" var="row" varStatus="roop">		
-		<div class="d-grid gap-2">
-			<button type="button" class="btn"  data-bs-toggle="collapse" data-bs-target="#a${row.idx}">
-		      ${row.title }<br /> </button>
-		    <div id="a${row.idx}" class="collapse" style="background-color: rgb(250,250,250);">
-		    	${row.contents }
-		    </div>
+		<c:forEach items="${lists }" var="row">		
+			<div class="border mt-2 mb-2">
+		<button type="button" class="btn" data-bs-toggle="collapse" data-bs-target="#dd">
+	      작성자:${row.name }(${row.email })</button>
+	    <div id="dd" class="collapse">
+	    	${row.contents }
+	    </div>
 			<!--  수정,삭제버튼 -->
 			<div class="media-right">
 				<!-- 수정/삭제 버튼은작성자 본인에게만 보여야 하므로 세션영역에 저장된

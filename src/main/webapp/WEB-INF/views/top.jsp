@@ -2412,7 +2412,7 @@
 
 						<li id="login" class="log">
 						<s:authentication property="name" />님
-						<a href="./myLogout.do"
+						<a href="../myLogout.do"
 							data-replaced="true" class="login"
 							data-log-props='{ "id":"logout" }'> 로그아웃</a></li>
 
