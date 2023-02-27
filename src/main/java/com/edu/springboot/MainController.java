@@ -28,8 +28,10 @@ public class MainController {
 		return "/board/returnPolicy";
 	}
 
-
-	
+	@RequestMapping("/admin/index.do")
+	public String welcome3() {
+		return "admin";
+	}
 	
 	@Autowired
 	IBoardService daoo;
@@ -126,6 +128,8 @@ public class MainController {
 		return "redirect:login.do";
 	}
 	
+	
+	
 	@RequestMapping("/myLogin.do")
 	public String login1(Principal principal, Model model, HttpSession session) {
 		try {
@@ -138,6 +142,7 @@ public class MainController {
 		}
 		return "auth/login";
 	}
+	
 	
 	@RequestMapping("/myError.do")
 	public String login2() {		
