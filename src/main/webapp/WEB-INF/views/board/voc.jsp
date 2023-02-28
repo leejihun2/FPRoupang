@@ -12,6 +12,10 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/category.css"> 
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/common.css" type="text/css">
+<link rel="stylesheet" href="../css/list.css" type="text/css">
   <!-- Latest compiled JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -90,12 +94,13 @@ function writeValidate(f)
 	</table>
 	
 	<div class="row text-center" style="">
-		<!-- 각종 버튼 부분 -->
 		
 		<button type="submit" class="btn btn-secondary">작성하기</button>
-		<button type="reset" class="btn btn-secondary">Reset</button>
 	</div>
 	</form> 
 </div>
+    <div id="copyright">
+         <%@include file="../copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
+    </div>
 </body>
 </html>

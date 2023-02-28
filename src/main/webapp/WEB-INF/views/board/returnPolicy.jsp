@@ -224,5 +224,8 @@
         </div>
 
     </div>
+        <div id="copyright">
+         <%@include file="../copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
+    </div>
 </body>
 </html>

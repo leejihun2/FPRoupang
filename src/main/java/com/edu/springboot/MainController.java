@@ -28,11 +28,6 @@ public class MainController {
 		return "/board/returnPolicy";
 	}
 
-	@RequestMapping("/admin/index.do")
-	public String welcome3() {
-		return "admin";
-	}
-	
 	@Autowired
 	IBoardService daoo;
 	
@@ -113,6 +108,7 @@ public class MainController {
 
 		return "redirect:voc.do";
 	}
+	
 	@RequestMapping("/board/delete.do")
 	public String delete(HttpServletRequest req, HttpSession session, Principal principal) {
 		//삭제는 본인만 가능하므로 로그인 확인을 진행한다.
@@ -128,8 +124,6 @@ public class MainController {
 		return "redirect:login.do";
 	}
 	
-	
-	
 	@RequestMapping("/myLogin.do")
 	public String login1(Principal principal, Model model, HttpSession session) {
 		try {
@@ -142,7 +136,6 @@ public class MainController {
 		}
 		return "auth/login";
 	}
-	
 	
 	@RequestMapping("/myError.do")
 	public String login2() {		
