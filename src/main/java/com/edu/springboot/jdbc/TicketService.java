@@ -1,0 +1,34 @@
+package com.edu.springboot.jdbc;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface TicketService {
+	//상품 목록 가져오기
+	public ArrayList<TicketInfoDTO> ticket_info_list(int title_idx);
+	
+	//상세 삼품 목록 가져오기
+	public TicketDTO ticket_list(int bot_idx);
+	public TicketInfoDTO select_ticket_info(int ti_idx);
+	
+	//상품 입력
+	public int insert_bot_title(String title, int mid_idx, String company_name);
+	public int insert_ticket(TicketDTO ticketDTO);
+	public int insert_ticket_info(TicketInfoDTO ticketInfoDTO);
+	public int select_new_idx();
+	
+	//선택한 상품 업데이트
+	public int update_ticket(TicketDTO ticketDTO);
+	public int update_ticket_info(TicketInfoDTO ticketInfoDTO); 
+	
+	//선택한 상품 관련 전체 삭제
+	public int delete_ticket(List<String> ti_idx);
+	public int alldelete_ticket_info(List<String> ti_idx);
+	public int delete_bot_category(List<String> idx, String company_name);
+	
+	//상세 상품 삭제
+	public int delete_ticket_info(List<String> ti_idx, String company_name);
+}
