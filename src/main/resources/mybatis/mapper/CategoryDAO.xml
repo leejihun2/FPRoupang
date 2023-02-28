@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.edu.springboot.jdbc.CategoryService">
+
+	<select id="select_cate"
+	resultType="com.edu.springboot.jdbc.ParameterTicketDTO">
+		select * from
+		<choose>
+			<when test="sub_idx!=0">
+				mid_category where sub_idx=#{sub_idx}
+			</when>
+			<otherwise>
+		 		top_category
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="select_cate_bot"
+	parameterType="com.edu.springboot.jdbc.CategoryDTO"
+	resultType="com.edu.springboot.jdbc.ParameterTicketDTO">
+		select * from bot_category bc JOIN ticket t ON bc.idx=t.bot_idx 
+		where sub_idx=#{param1} and company_name=#{param2}
+	</select>
+ 	
+ </mapper>

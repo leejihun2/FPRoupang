@@ -147,5 +147,4 @@ public class MainController {
 		return "auth/denied";
 	}
 	
-	
 }

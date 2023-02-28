@@ -17,6 +17,8 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven{url 'https://repo.sping.io/milestone'}
+	maven{url 'https://repo.sping.io/snapshot'}
 }
 
 dependencies {
@@ -41,6 +43,7 @@ dependencies {
     implementation 'org.springframework.security:spring-security-taglibs'
     //JSP 새로고침
     implementation 'org.springframework.boot:spring-boot-devtools'
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 tasks.named('test') {
