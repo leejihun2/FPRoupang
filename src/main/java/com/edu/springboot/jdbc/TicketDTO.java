@@ -14,7 +14,7 @@ public class TicketDTO {
 	private String t_booking;
 	private String t_cancelfee;
 	private String t_cancelnoti;
-	private String t_main_image;
+	private String t_title_image;
 	private String t_image1;
 	private String t_image2;
 	private String t_image3;

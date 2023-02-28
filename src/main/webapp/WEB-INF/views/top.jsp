@@ -2441,6 +2441,10 @@
 							href="https://www.coupang.com/returnPolicy.pang"
 							data-log-props='{ "id":"customer_center_4" }'>취소 / 반품 안내</a>
 					</p></li>
+					
+				<li class="cs-center more"><a
+					href="/ticket_insert">상품등록(티켓)</a>
+				</li>
 			</menu>
 			<menu id="subscribeHeader">
 				<li><a class="bookmark"

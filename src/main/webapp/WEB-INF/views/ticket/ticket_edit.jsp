@@ -17,8 +17,16 @@
 <title>Insert title here</title>
 <script>
 	$(function(){
+		$(".service").click(function(){
+			var total = [];
+			$("input[name=t_conservice]:checked").each(function(){
+				var chk =$(this).val();
+				total.push(chk);
+			});
+			alert(total);
+		});
 		$("#submit").click(function(){
-			if(confirm("해당 정보로 수정하시겠습니까?")){
+			if(!confirm("해당 정보로 수정하시겠습니까?")){
 				if($("#t_intro").val()==""){
 					alert("소개를 입력하세요");
 					$("#t_intro").focus();
@@ -39,55 +47,102 @@
 					$("#t_cancelnoti").focus();
 					return false;
 				}
+				return false;
+			}
+		});
+	});
+	function setThumbnail(event) {
+		var reader = new FileReader();
+		reader.onload = function(event) {
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			document.getElementById("main_thumbnail").innerHTML='';
+			document.querySelector("div#main_thumbnail").appendChild(img);          
+		};
+		
+		reader.readAsDataURL(event.target.files[0]);
+	}
+
+	function setSubThumbnail(event) {
+		var reader = new FileReader();
+		reader.onload = function(event) {
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			document.getElementById("sub_thumbnail").innerHTML='';
+			document.querySelector("div#sub_thumbnail").appendChild(img);          
+		};
+		
+		reader.readAsDataURL(event.target.files[0]);
+	}
+	$(document).ready(function(){
+		$("#noservice").click(function(){
+			if(this.checked){
+				$(".service").prop('disabled',true).prop('checked',false);
+			}else{
+				$(".service").prop('disabled',false);
+			}
+		});
+		$("#nofac").click(function(){
+			if(this.checked){
+				$(".fac").prop('disabled',true).prop('checked',false);
+			}else{
+				$(".fac").prop('disabled',false);
 			}
 		});
 	});
 </script>
 </head>
 <body>
-	<form action="/editTicketAction?value=${dto.bot_idx }" method="POST">
+	<form action="/editTicketAction?value=${dto.bot_idx }" method="POST" enctype="multipart/form-data">
 		<div class="col-12" id="ticket">
 			<table>
 				<tr>
+					<th>* 메인이미지</th>
+					<td>
+						<div id="main_thumbnail">
+							<img src="${dto.t_title_image }"  />
+						</div>
+						<input type="file" name="t_title_image" onchange="setThumbnail(event);" />
+					</td>
+				</tr>
+				<tr>
+					<th>* 서브이미지</th>
+					<td>
+						<div id="sub_thumbnail">
+							<c:if test="${not empty dto.t_image1 }">
+								<img src="${dto.t_image1 }"/>
+								<c:if test="${not empty dto.t_image2 }">
+									<img src="${dto.t_image2 }"/>
+									<c:if test="${not empty dto.t_image3 }">
+										<img src="${dto.t_image3 }"/>
+										<c:if test="${not empty dto.t_image4 }">
+											<img src="${dto.t_image4 }"/>
+										</c:if>
+									</c:if>
+								</c:if>
+							</c:if>
+						</div>
+						<input type="file" id="t_image1" name="t_image1" onchange="setSubThumbnail(event);"/>
+						<input type="file" id="t_image2" name="t_image2" onchange="setSubThumbnail(event);"/>
+						<input type="file" id="t_image3" name="t_image3" onchange="setSubThumbnail(event);"/>
+						<input type="file" id="t_image4" name="t_image4" onchange="setSubThumbnail(event);"/>
+					</td>
+				</tr>
+				<tr>
 					<th>* 편의시설</th>
 					<td>
-						<input type="checkbox" name="t_conservice" value=""
-						<c:if test="${dto.t_conservice eq null }"> checked</c:if>
-						 id="noservice" />없음
-						<input type="checkbox" name="t_conservice"
-						<c:if test="${fn:contains(dto.t_conservice,'무료셔틀버스') }"> checked</c:if>
-						 value="무료셔틀버스" class="service"/>무료셔틀버스
-						<input type="checkbox" name="t_conservice"
-						<c:if test="${fn:contains(dto.t_conservice,'안전장치') }"> checked</c:if>
-						 value="안전장치(장비,요원 등)" class="service"/>안전장치(장비,요원 등)
-						<input type="checkbox" name="t_conservice"
-						<c:if test="${fn:contains(dto.t_conservice,'수유실') }"> checked</c:if>
-						 value="수유실" class="service"/>수유실
-						<input type="checkbox" name="t_conservice"
-						<c:if test="${fn:contains(dto.t_conservice,'흡연실') }"> checked</c:if>
-						 value="흡연실" class="service"/>흡연실
-						<input type="checkbox" name="t_conservice"
-						<c:if test="${fn:contains(dto.t_conservice,'의무실') }"> checked</c:if>
-						 value="의무실" class="service"/>의무실
-						<input type="checkbox" name="t_conservice"
-						<c:if test="${fn:contains(dto.t_conservice,'물품보관소') }"> checked</c:if>
-						 value="물품보관소" class="service"/>물품보관소
-						<input type="checkbox" name="t_conservice"
-						<c:if test="${fn:contains(dto.t_conservice,'유실물센터') }"> checked</c:if>
-						 value="유실물센터" class="service"/>유실물센터
-						<input type="checkbox" name="t_conservice"
-						<c:if test="${fn:contains(dto.t_conservice,'장애인') }"> checked</c:if>
-						 value="장애인 편의 시설" class="service"/>장애인 편의 시설
-						<input type="checkbox" name="t_conservice"
-						<c:if test="${fn:contains(dto.t_conservice,'미아보호소') }"> checked</c:if>
-						 value="미아보호소" class="service"/>미아보호소
-						<input type="checkbox" name="t_conservice"
-						<c:if test="${fn:contains(dto.t_conservice,'유아전용시설') }"> checked</c:if>
-						 value="유아전용시설" class="service"/>유아전용시설
-						<input type="checkbox" name="t_conservice"
-						 value="주차장"
-						<c:if test="${fn:contains(dto.t_conservice,'주차장') }"> checked</c:if>
-						 class="service"/>주차장
+						<input type="checkbox" name="t_conservice" value="" <c:if test="${dto.t_conservice eq null }"> checked</c:if> id="noservice" />없음
+						<input type="checkbox" name="t_conservice" <c:if test="${fn:contains(dto.t_conservice,'무료셔틀버스') }"> checked</c:if> value="무료셔틀버스" class="service"/>무료셔틀버스
+						<input type="checkbox" name="t_conservice" <c:if test="${fn:contains(dto.t_conservice,'안전장치') }"> checked</c:if> value="안전장치(장비,요원 등)" class="service"/>안전장치(장비,요원 등)
+						<input type="checkbox" name="t_conservice" <c:if test="${fn:contains(dto.t_conservice,'수유실') }"> checked</c:if> value="수유실" class="service"/>수유실
+						<input type="checkbox" name="t_conservice" <c:if test="${fn:contains(dto.t_conservice,'흡연실') }"> checked</c:if> value="흡연실" class="service"/>흡연실
+						<input type="checkbox" name="t_conservice" <c:if test="${fn:contains(dto.t_conservice,'의무실') }"> checked</c:if> value="의무실" class="service"/>의무실
+						<input type="checkbox" name="t_conservice" <c:if test="${fn:contains(dto.t_conservice,'물품보관소') }"> checked</c:if> value="물품보관소" class="service"/>물품보관소
+						<input type="checkbox" name="t_conservice" <c:if test="${fn:contains(dto.t_conservice,'유실물센터') }"> checked</c:if> value="유실물센터" class="service"/>유실물센터
+						<input type="checkbox" name="t_conservice" <c:if test="${fn:contains(dto.t_conservice,'장애인') }"> checked</c:if> value="장애인 편의 시설" class="service"/>장애인 편의 시설
+						<input type="checkbox" name="t_conservice" <c:if test="${fn:contains(dto.t_conservice,'미아보호소') }"> checked</c:if> value="미아보호소" class="service"/>미아보호소
+						<input type="checkbox" name="t_conservice" <c:if test="${fn:contains(dto.t_conservice,'유아전용시설') }"> checked</c:if> value="유아전용시설" class="service"/>유아전용시설
+						<input type="checkbox" name="t_conservice" <c:if test="${fn:contains(dto.t_conservice,'주차장') }"> checked</c:if>  value="주차장" class="service"/>주차장
 					</td>
 				</tr>
 				<tr>
@@ -151,7 +206,7 @@
 					<td><textarea id="t_cancelnoti" name="t_cancelnoti" >${dto.t_cancelnoti}</textarea></td>
 				</tr>
 			</table>
-			<button class="btn btn-primary" type="submit">수정완료</button>
+			<button class="btn btn-primary" type="submit" id="submit">수정완료</button>
 			<button class="btn btn-primary" type="reset">다시작성</button>
 			<button class="btn btn-primary" type="button">목록가기</button>
 		</div>

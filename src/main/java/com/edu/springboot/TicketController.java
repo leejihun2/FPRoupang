@@ -4,6 +4,7 @@ package com.edu.springboot;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,15 +15,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.springboot.jdbc.CategoryDTO;
 import com.edu.springboot.jdbc.CategoryService;
+import com.edu.springboot.jdbc.ParameterTicketDTO;
 import com.edu.springboot.jdbc.TicketDTO;
 import com.edu.springboot.jdbc.TicketInfoDTO;
 import com.edu.springboot.jdbc.TicketService;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 
 @Controller
 public class TicketController {
@@ -33,22 +42,17 @@ public class TicketController {
 	@Autowired
 	TicketService ticket_dao;
 	
-	@RequestMapping("/")
-	public String home() {
-		return "home";
-	}
-	
-	@RequestMapping("/insert")
+	@RequestMapping("/ticket_insert")
 	public String ticket_insert1(Model model, HttpServletRequest req) {
 		int sub_idx=0;
 		if(!(req.getParameter("sub_idx")==null)) {
 			sub_idx = Integer.parseInt(req.getParameter("sub_idx"));
 		}
 		model.addAttribute("cate",cate_dao.select_cate(sub_idx));
-		return "ticket_insert";
+		return "/ticket/ticket_insert";
 	}
 	
-	@RequestMapping("/edit")
+	@RequestMapping("/ticket_edit")
 	public String ticket_edit(Model model, HttpServletRequest req) {
 		int ti_idx = Integer.parseInt(req.getParameter("product_idx"));
 		TicketInfoDTO ticketDetail = ticket_dao.select_ticket_info(ti_idx);
@@ -64,10 +68,10 @@ public class TicketController {
 			e.printStackTrace();
 		}
 		model.addAttribute("ticketDetail",ticketDetail);
-		return "ticket_info_edit";
+		return "/ticket/ticket_info_edit";
 	}
 	
-	@RequestMapping("/editAction")
+	@RequestMapping("/ticketinfo_editAction")
 	public String ticket_editAction(HttpServletRequest req) {
 		int product_idx = Integer.parseInt(req.getParameter("product_idx"));
 		TicketInfoDTO dto = new TicketInfoDTO();
@@ -81,7 +85,7 @@ public class TicketController {
 		
 		ticket_dao.update_ticket_info(dto);
 		
-		return home();
+		return "/home";
 	}
 	
 	@ResponseBody
@@ -93,61 +97,91 @@ public class TicketController {
 		TicketDTO dto = ticket_dao.ticket_list(value);
 		
 		mv.addObject("dto",dto);
-		System.out.println(dto.getBot_idx());
-		mv.setViewName("/ticket_edit");
+		mv.setViewName("/ticket/ticket_edit");
 		return mv;
 	}
 	
 	@RequestMapping("/editTicketAction")
 	public String edit_ticket_action(HttpServletRequest req) {
-		int value = Integer.parseInt(req.getParameter("value"));
+		//최대 사이즈 5M
+		int size = 1024 * 1024 * 5;
 		
-		TicketDTO dto = new TicketDTO();
-		dto.setBot_idx(value);
-		dto.setNotice(req.getParameter("notice"));
-		dto.setT_booking(req.getParameter("t_booking"));
-		dto.setT_cancelfee(req.getParameter("t_cancelfee"));
-		dto.setT_cancelnoti(req.getParameter("t_cancelnoti"));
-		String[] chkService = req.getParameterValues("t_conservice");
-		String ServiceVal = "";
-		for(int i = 0 ; i < chkService.length ; i++) {
-			ServiceVal += chkService[i];
-			if(i!=chkService.length-1) {
-				ServiceVal += ",";
+		try {
+			String path = ResourceUtils.getFile("classpath:static/uploads/")
+					.toPath().toString();
+			System.out.println(path);
+			
+			MultipartRequest multi = new MultipartRequest(req, path, size, 
+					"UTF-8", new DefaultFileRenamePolicy()); 
+
+			TicketDTO dto = new TicketDTO();
+			Enumeration files = multi.getFileNames();
+			int idx = 1;
+			while(files.hasMoreElements()) {
+				String str = (String)files.nextElement();
+				if(multi.getOriginalFileName(str)!=null) {
+					if(str.equals("t_title_image")) {
+						dto.setT_title_image(multi.getFilesystemName(str));
+					}else {
+						switch(idx) {
+						case 1:dto.setT_image1(multi.getFilesystemName(str)); break;
+						case 2:dto.setT_image2(multi.getFilesystemName(str)); break;
+						case 3:dto.setT_image3(multi.getFilesystemName(str)); break;
+						case 4:dto.setT_image4(multi.getFilesystemName(str)); break;
+						}
+						idx++;
+					}
+				}
 			}
-		}
-		dto.setT_conservice(ServiceVal);
-		String[] chkfac= req.getParameterValues("t_fac");
-		String facVal = "";
-		for(int i = 0 ; i < chkfac.length ; i++) {
-			facVal += chkfac[i];
-			if(i!=chkfac.length-1) {
-				facVal += ",";
+			int value = Integer.parseInt(multi.getParameter("value"));
+			dto.setBot_idx(value);
+			dto.setNotice(multi.getParameter("notice"));
+			dto.setT_booking(multi.getParameter("t_booking"));
+			dto.setT_cancelfee(multi.getParameter("t_cancelfee"));
+			dto.setT_cancelnoti(multi.getParameter("t_cancelnoti"));
+			String[] chkService = multi.getParameterValues("t_conservice");
+			String ServiceVal = "";
+			for(int i = 0; i < chkService.length ; i++) {
+			 	ServiceVal += chkService[i];
+				if(i!=chkService.length-1) {
+						 ServiceVal += ",";
+				}
 			}
+			dto.setT_conservice(ServiceVal);
+			String[] chkfac=multi.getParameterValues("t_fac");
+			String facVal = "";
+			for(int i = 0 ; i < chkfac.length ; i++) {
+					facVal += chkfac[i];
+					if(i!=chkfac.length-1) {
+						facVal += ",";
+					}
+			}
+			dto.setT_incmatters(multi.getParameter("t_incmatters"));
+			dto.setT_intro(multi.getParameter("t_intro"));
+			dto.setT_notice(multi.getParameter("t_notice"));
+			dto.setT_fac(facVal);
+			ticket_dao.update_ticket(dto);
+			 
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
-		dto.setT_incmatters(req.getParameter("t_incmatters"));
-		dto.setT_intro(req.getParameter("t_intro"));
-		dto.setT_notice(req.getParameter("t_notice"));
-		dto.setT_fac(facVal);
-		ticket_dao.update_ticket(dto);
-		
-		return home();
+		return "/home";
 	}
 	
 	@ResponseBody
 	@RequestMapping("/category_list.do")
-	public ArrayList<CategoryDTO> cate_list(HttpServletRequest req){
+	public ArrayList<ParameterTicketDTO> cate_list(HttpServletRequest req){
 		int sub_idx=0;
 		if(!(req.getParameter("sub_idx")==null)) {
 			sub_idx=Integer.parseInt(req.getParameter("sub_idx"));
 		}
 		String level = req.getParameter("level");
 		if(level.equals("1")) {
-			ArrayList<CategoryDTO> sub_cate = cate_dao.select_cate(sub_idx);
+			ArrayList<ParameterTicketDTO> sub_cate = cate_dao.select_cate(sub_idx);
 			return sub_cate;
 		}else{
 			String company_name=req.getParameter("company_name");
-			ArrayList<CategoryDTO> sub_cate = cate_dao.select_cate_bot(sub_idx,company_name);
+			ArrayList<ParameterTicketDTO> sub_cate = cate_dao.select_cate_bot(sub_idx,company_name);
 			return sub_cate;
 		}
 	}
@@ -227,7 +261,7 @@ public class TicketController {
 		return mv;
 	}
 	
-	@RequestMapping("/all_delete")
+	@RequestMapping("/all_delete_ticket")
 	public String all_delete(HttpServletRequest req) {
 		String company_name = req.getParameter("company_name");
 		String value = req.getParameter("value");
@@ -236,19 +270,16 @@ public class TicketController {
 		
 		for(int i = 0 ; i < list.length ; i++) {
 			val.add(list[i]);
-			System.out.println(list[i]);
 		}
-		System.out.println("company >>>>>> " + company_name);
-		System.out.println("value >>>>>> " + val);
 		
 		ticket_dao.delete_ticket(val);
 		ticket_dao.alldelete_ticket_info(val);
 		ticket_dao.delete_bot_category(val, company_name);
 		
-		return home();
+		return "/home";
 	}
 	
-	@RequestMapping("/detail_delete")
+	@RequestMapping("/detail_delete_ticket")
 	public String delete(HttpServletRequest req) {
 		String company_name = req.getParameter("company_name");
 		String value = req.getParameter("value");
@@ -258,10 +289,9 @@ public class TicketController {
 		
 		for(int i = 0 ; i < list.length ; i++) {
 			val.add(list[i]);
-			System.out.println(list[i]);
 		}
 		
 		ticket_dao.delete_ticket_info(val, company_name);
-		return home();
+		return "/home";
 	}
 }

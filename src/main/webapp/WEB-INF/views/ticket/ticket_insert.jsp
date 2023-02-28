@@ -61,7 +61,7 @@
 						$.each(data, function(i){
 							var tabletd='<tr>';
 							tabletd+='<td><input type="checkbox" name="ticket_select" id="ticket_select'+data[i].idx+'" value="'+data[i].idx+'"/>'
-							tabletd+='<td><img src="123" />'
+							tabletd+='<td><img src="/uploads/'+data[i].t_title_image+'" />'
 							tabletd+='<td><a href="javascript:;" onclick="simple_click('+data[i].idx+')">'+data[i].title+'</a></td>'
 							tabletd+='</tr>'
 							
@@ -98,7 +98,7 @@
 				$.each(data, function(i){
 					var tabletd='<tr>';
 					tabletd+='<td><input type="checkbox" name="ticket_info_select" value="'+data[i].ti_idx+'"/>'
-					tabletd+='<td><a href="/edit?product_idx='+data[i].ti_idx+'">'+data[i].ti_title+'</a><br/>'
+					tabletd+='<td><a href="/ticket_edit?product_idx='+data[i].ti_idx+'">'+data[i].ti_title+'</a><br/>'
 						+'유효기간'+data[i].ti_duetime1+'~'+data[i].ti_duetime2+'<br/>'
 						
 					if(data[i].ti_intro==null){
@@ -121,6 +121,19 @@
 			,function(data){
 				var list = data.t_conservice
 				var table = '<table>';
+				if((data.t_image1)!=null){
+					table += '<tr><th>서브이미지</th><td><img src="/uploads/'+data.t_image1+'" />'
+					if((data.t_image2)!=null){
+						table += '<img src="/uploads/'+data.t_image2+'" />'
+						if((data.t_image3)!=null){
+							table += '<img src="/uploads/'+data.t_image3+'" />'
+							if((data.t_image4)!=null){
+								table += '<img src="/uploads/'+data.t_image4+'" />'
+							}
+						}
+					}
+					table += '</td></tr>'
+				}
 				table += '<tr><th>소개글</th><td>'+data.t_intro+'</td></tr>'
 				if(data.notice!=null){
 					table += '<tr><th>알려드리는말</th><td>'+data.notice+'</td></tr>'
@@ -253,7 +266,7 @@
 				return false;
 			}
 			if(confirm("선택한 "+delete_val1.length+"개의 상품을 삭제하시겠습니까?")){
-				form.action="/detail_delete?value="+delete_val1+"&company_name="+$("#company_name").val();
+				form.action="/detail_delete_ticket?value="+delete_val1+"&company_name="+$("#company_name").val();
 			}
 		});
 		$("#delete_all").click(function(){
@@ -269,7 +282,7 @@
 				return false;
 			}
 			if(confirm("선택한 "+delete_val2.length+"개의 상품을 삭제하시겠습니까?")){
-				form_ticket.action="/all_delete?value="+delete_val2+"&company_name="+$("#company_name").val();
+				form_ticket.action="/all_delete_ticket?value="+delete_val2+"&company_name="+$("#company_name").val();
 			}
 		});
 	});
@@ -343,7 +356,7 @@
 						</div>
 				</div>
 			</form>
-			<form method="POST" id="form">
+			<form method="POST" id="form" enctype="multipart/form-data">
 				<div class="col-12" id="detail_list" style="width:90%; display:none;">
 					<table style="border:1px;">
 						<colgroup>
@@ -373,6 +386,18 @@
 							<th>* 상품명</th>
 							<td>
 								<input type="text" id="bot_title" name="bot_title" />
+							</td>
+						</tr>
+						<tr>
+							<th>* 메인이미지</th>
+							<td>
+								<input type="file" name="t_title_image" />
+							</td>
+						</tr>
+						<tr>
+							<th>서브이미지</th>
+							<td>
+								<input type="file" name="t_image[]" multiple/>
 							</td>
 						</tr>
 						<tr>

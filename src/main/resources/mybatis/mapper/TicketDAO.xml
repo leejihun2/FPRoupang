@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.edu.springboot.jdbc.TicketService">
+
+	<!-- ticket테이블에서 정보 가져오기 -->
+	<select id="ticket_list" resultType="com.edu.springboot.jdbc.TicketDTO">
+		select * from ticket where bot_idx=#{param1} order by 1 asc
+	</select>
+ 	
+ 	<!-- ticket_info에서 리스트 가져오기 -->
+ 	<select id="ticket_info_list" resultType="com.edu.springboot.jdbc.TicketInfoDTO">
+ 		select * from ticket_info where bot_idx=#{param1} order by 1 asc 
+ 	</select>
+ 	
+ 	<select id="select_ticket_info" resultType="com.edu.springboot.jdbc.TicketInfoDTO">
+ 		select * from ticket_info where ti_idx=#{param1}
+ 	</select>
+ 	
+ 	<insert id="insert_ticket"
+ 	parameterType="com.edu.springboot.jdbc.TicketDTO">
+ 		insert into ticket
+ 		values(bot_category_seq.currval, #{t_intro}, #{notice},#{t_conservice},#{t_fac},#{t_incmatters}
+ 		,#{t_notice},#{t_booking},#{t_cancelfee},#{t_cancelnoti},'asd',null,null,null,null)
+ 	</insert>
+ 	
+ 	<insert id="insert_ticket_info"
+ 	parameterType="com.edu.springboot.jdbc.TicketInfoDTO">
+ 		insert into ticket_info 
+ 		values (ticket_info_seq.nextval, #{bot_idx}, #{ti_title}, #{ti_intro}, #{ti_duetime1}, #{ti_duetime2}, #{ti_price}, 0)
+ 	</insert>
+ 	
+ 	<insert id="insert_bot_title">
+ 		insert into bot_category
+ 		values(bot_category_seq.nextval, #{param1}, #{param2}, #{param3})
+ 	</insert>
+ 	
+ 	<select id="select_new_idx" resultType="int">
+ 		select bot_category_seq.currval from dual
+ 	</select>
+ 	
+ 	<update id="update_ticket"
+ 	parameterType="com.edu.springboot.jdbc.TicketDTO">
+ 		update ticket
+ 		set t_intro = #{t_intro}, notice = #{notice}, t_conservice = #{t_conservice},
+ 			t_fac = #{t_fac}, t_incmatters = #{t_incmatters},
+ 			t_notice = #{t_notice}, t_booking = #{t_booking}, t_cancelfee = #{t_cancelfee},
+ 			t_cancelnoti = #{t_cancelnoti}, t_title_image=#{t_title_image}
+ 			<if test="t_image1!=null">
+ 				,t_image1=#{t_image1}
+ 			</if>
+ 			<if test="t_image2!=null">
+ 				,t_image2=#{t_image2}
+ 			</if>
+ 			<if test="t_image3!=null">
+	 			,t_image3=#{t_image3}
+ 			</if>
+ 			<if test="t_image4!=null">
+	 			,t_image4=#{t_image4}
+ 			</if>
+ 		where bot_idx = #{bot_idx}
+ 	</update>
+ 	
+ 	<update id="update_ticket_info"
+ 	parameterType="com.edu.springboot.jdbc.TicketInfoDTO">
+ 		update ticket_info
+ 		set ti_title = #{ti_title}, ti_duetime1 = #{ti_duetime1}, ti_duetime2 = #{ti_duetime2},
+ 			ti_price = #{ti_price}, ti_discount = #{ti_discount}, ti_intro = #{ti_intro}
+ 		where ti_idx = #{ti_idx}
+ 	</update>
+ 	
+ 	<delete id="delete_ticket_info">
+ 		delete from ticket_info
+			where bot_idx in (select idx from bot_category where company_name = #{param2})
+			    AND ti_idx IN 
+			    <foreach collection="param1" open="(" close=")" item="ti_idx" separator=",">
+			    	#{ti_idx}
+			    </foreach>
+ 	</delete>
+ 	
+ 	<delete id="delete_bot_category">
+ 		delete from bot_category where company_name= #{param2} and idx in
+		<foreach collection="param1" open="(" close=")" item="idx" separator=",">
+	    	#{idx}
+	    </foreach>
+ 	</delete>
+ 	
+ 	<delete id="delete_ticket">
+ 		delete from ticket where bot_idx in
+		<foreach collection="list" open="(" close=")" item="bot_idx" separator=",">
+	    	#{bot_idx}
+	    </foreach>
+ 	</delete>
+ 	
+ 	<delete id="alldelete_ticket_info">
+ 		delete from ticket_info where bot_idx in
+		<foreach collection="list" open="(" close=")" item="bot_idx" separator=",">
+		 	#{bot_idx}
+		 </foreach>
+ 	</delete>
+ </mapper>

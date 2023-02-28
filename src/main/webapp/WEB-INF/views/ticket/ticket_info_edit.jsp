@@ -16,7 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/editAction?product_idx=${ticketDetail.ti_idx }" method="post">
+	<form action="/ticketinfo_editAction?product_idx=${ticketDetail.ti_idx }" method="post">
 		<table>
 			<tr>
 				<th>* 상품상세명</th>
