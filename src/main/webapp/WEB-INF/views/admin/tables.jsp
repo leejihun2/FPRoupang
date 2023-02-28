@@ -20,10 +20,14 @@
 	<link rel="stylesheet" href="../css/sb-admin-2.min.css">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../css/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
-
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 <body id="page-top">
 
     <!-- Page Wrapper -->
