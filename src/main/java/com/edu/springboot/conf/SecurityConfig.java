@@ -36,7 +36,7 @@ public class SecurityConfig {
 		.antMatchers("/css/**","/js/**","/images/**").permitAll()
 		.antMatchers("/guest/**").permitAll()
 		.antMatchers("/member/**").hasAnyRole("1", "2", "3")
-        .antMatchers("/admin/**").hasRole("1")
+		.antMatchers("/admin/**").hasRole("1")
         .antMatchers("/agreement/**").hasAnyRole("1", "3")
         .antMatchers("/**").permitAll()
 		.anyRequest().authenticated();
