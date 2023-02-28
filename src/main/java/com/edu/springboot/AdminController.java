@@ -18,9 +18,9 @@ public class AdminController {
 	public String utilities2() {
 		return "admin/utilities-animation";
 	}
-	@RequestMapping("/admin/utilities-boarder.do")
+	@RequestMapping("/admin/utilities-border.do")
 	public String utilities3() {
-		return "admin/utilities-boarder";
+		return "admin/utilities-border";
 	}
 	@RequestMapping("/admin/utilities-other.do")
 	public String utilities4() {
@@ -42,7 +42,25 @@ public class AdminController {
 	public String cards() {
 		return "admin/cards";
 	}
-	
-	
+	@RequestMapping("/admin/blank.do")
+	public String blank() {
+		return "admin/blank";
+	}
+	@RequestMapping("/admin/404.do")
+	public String error() {
+		return "admin/404";
+	}
+	@RequestMapping("/admin/login.do")
+	public String login() {
+		return "admin/login";
+	}
+	@RequestMapping("/admin/register.do")
+	public String register() {
+		return "admin/register";
+	}
+	@RequestMapping("/admin/forgot-password.do")
+	public String password() {
+		return "admin/forgot-password";
+	}
 	
 }
