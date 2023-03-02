@@ -2,7 +2,6 @@ package com.edu.springboot.jdbc;
 
 import lombok.Data;
 
-//회원관리를 위한 member테이블
 @Data
 public class BoardDTO {
 

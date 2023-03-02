@@ -108,5 +108,9 @@ public class AdminController {
 	public String password() {
 		return "admin/forgot-password";
 	}
+	@RequestMapping("/jsp/store-li.do")
+	public String store() {
+		return "jsp/store-li";
+	}
 	
 }

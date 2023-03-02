@@ -19,10 +19,10 @@ import com.edu.springboot.jdbc.IBoardService;
 @Controller
 public class MainController {
 	
-//	@RequestMapping("/")
-//	public String home() {
-//		return "home";
-//	}
+	@RequestMapping("/")
+	public String home() {
+		return "home";
+	}
 	@RequestMapping("/board/returnPolicy.do")
 	public String returnPolicy() {
 		return "/board/returnPolicy";
@@ -58,10 +58,6 @@ public class MainController {
 	@RequestMapping("/board/notice.do")
 	public String lists2(Model model, HttpServletRequest req) {
 		
-		//BoardDTO boardDTO = new BoardDTO();
-		//boardDTO.setSearchField(req.getParameter("searchField"));
-		//boardDTO.setSearchTxt(req.getParameter("searchTxt"));
-		//boardDTO.setCategoryCode(req.getParameter("categoryCode"));
 		String category = req.getParameter("categoryCode");
 		int totalRecordCount = 
 				daoo.getTotalCountSearch("notice",category);
