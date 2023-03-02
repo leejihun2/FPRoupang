@@ -31,4 +31,7 @@ public interface TicketService {
 	
 	//상세 상품 삭제
 	public int delete_ticket_info(List<String> ti_idx, String company_name);
+
+	//상품 제거시 이미지 삭제를 위한 이미지 이름 가져오기
+	public ArrayList<TicketDTO> ticket_Total_image(List<String> bot_idx);
 }

@@ -24,7 +24,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	parameterType="com.edu.springboot.jdbc.TicketDTO">
  		insert into ticket
  		values(bot_category_seq.currval, #{t_intro}, #{notice},#{t_conservice},#{t_fac},#{t_incmatters}
- 		,#{t_notice},#{t_booking},#{t_cancelfee},#{t_cancelnoti},'asd',null,null,null,null)
+ 		,#{t_notice},#{t_booking},#{t_cancelfee},#{t_cancelnoti},#{t_title_image},
+ 			<choose>
+ 				<when test="t_image1!=null">
+	 				#{t_image1}
+ 				</when>
+ 				<otherwise>null</otherwise>
+ 			</choose>
+ 			,
+ 			<choose>
+ 				<when test="t_image2!=null">
+	 				#{t_image2}
+ 				</when>
+ 				<otherwise>null</otherwise>
+ 			</choose>
+ 			,
+ 			<choose>
+ 				<when test="t_image3!=null">
+	 				#{t_image3}
+ 				</when>
+ 				<otherwise>null</otherwise>
+ 			</choose>
+ 			,
+ 			<choose>
+ 				<when test="t_image4!=null">
+	 				#{t_image4}
+ 				</when>
+ 				<otherwise>null</otherwise>
+ 			</choose>
+ 		)
  	</insert>
  	
  	<insert id="insert_ticket_info"
@@ -48,19 +76,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		set t_intro = #{t_intro}, notice = #{notice}, t_conservice = #{t_conservice},
  			t_fac = #{t_fac}, t_incmatters = #{t_incmatters},
  			t_notice = #{t_notice}, t_booking = #{t_booking}, t_cancelfee = #{t_cancelfee},
- 			t_cancelnoti = #{t_cancelnoti}, t_title_image=#{t_title_image}
- 			<if test="t_image1!=null">
- 				,t_image1=#{t_image1}
+ 			t_cancelnoti = #{t_cancelnoti}
+ 			<if test="t_title_image!=null">
+ 				, t_title_image=#{t_title_image}
  			</if>
- 			<if test="t_image2!=null">
- 				,t_image2=#{t_image2}
- 			</if>
- 			<if test="t_image3!=null">
-	 			,t_image3=#{t_image3}
- 			</if>
- 			<if test="t_image4!=null">
-	 			,t_image4=#{t_image4}
- 			</if>
+ 			<choose>
+ 				<when test="t_image1!=null">
+	 				,t_image1=#{t_image1}
+ 				</when>
+ 				<otherwise>,t_image1=null</otherwise>
+ 			</choose>
+ 			<choose>
+ 				<when test="t_image2!=null">
+	 				,t_image2=#{t_image2}
+ 				</when>
+ 				<otherwise>,t_image2=null</otherwise>
+ 			</choose>
+ 			<choose>
+ 				<when test="t_image3!=null">
+	 				,t_image3=#{t_image3}
+ 				</when>
+ 				<otherwise>,t_image3=null</otherwise>
+ 			</choose>
+ 			<choose>
+ 				<when test="t_image4!=null">
+	 				,t_image4=#{t_image4}
+ 				</when>
+ 				<otherwise>,t_image4=null</otherwise>
+ 			</choose>
  		where bot_idx = #{bot_idx}
  	</update>
  	
@@ -101,4 +144,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 	#{bot_idx}
 		 </foreach>
  	</delete>
+ 	
+ 	<select id="ticket_Total_image" resultType="com.edu.springboot.jdbc.TicketDTO">
+ 		SELECT * FROM ticket
+ 		WHERE bot_idx IN
+ 		<foreach collection="list" open="(" close=")" item="bot_idx" separator=",">
+ 			#{bot_idx}
+ 		</foreach>
+ 	</select>
  </mapper>

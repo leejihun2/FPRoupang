@@ -242,7 +242,7 @@
 					$("#t_cancelnoti").focus();
 					return false;
 				}
-				form.action="/ticketInsertAction?company_name="+$("#company_name").val()+"&mid_category="+$("#category2").val()+"&value=0";
+				form.action="/ticketInsertAction?mid_category="+$("#category2").val()+"&value=0";
 			}else{
 				var value;
 				$("[name=ticket_select]").each(function(idx){
@@ -309,15 +309,34 @@
 			});
 		});
 	});
+	function setThumbnail(event) {
+		var reader = new FileReader();
+		reader.onload = function(event) {
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			document.getElementById("title_image").innerHTML='';
+			document.querySelector("div#title_image").appendChild(img);          
+		};
+		
+		reader.readAsDataURL(event.target.files[0]);
+	}
+
+	function setSubThumbnail(event) {
+		var reader = new FileReader();
+		reader.onload = function(event) {
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			document.getElementById("sub_image").innerHTML='';
+			document.querySelector("div#sub_image").appendChild(img);          
+		};
+		
+		reader.readAsDataURL(event.target.files[0]);
+	}
 </script>
 </head>
 <body>
 	<div class="container">
 		<div class="row" id="row">
-				<div class="col-12">
-					회사명
-					<input type="text" id="company_name" name="company_name" value="아쿠아리움" />
-				</div>
 				<div class="col-12">
 					분류1
 					<select name="top_category" id="category1" onchange="setSelectBox(this)">
@@ -357,6 +376,8 @@
 				</div>
 			</form>
 			<form method="POST" id="form" enctype="multipart/form-data">
+				회사명
+				<input type="text" id="company_name" name="company_name" value="아쿠아리움" />
 				<div class="col-12" id="detail_list" style="width:90%; display:none;">
 					<table style="border:1px;">
 						<colgroup>
@@ -391,13 +412,22 @@
 						<tr>
 							<th>* 메인이미지</th>
 							<td>
-								<input type="file" name="t_title_image" />
+								<div id="title_image">
+								</div>
+								<input type="file" name="t_title_image" onchange="setThumbnail(event)" />
 							</td>
 						</tr>
 						<tr>
 							<th>서브이미지</th>
 							<td>
-								<input type="file" name="t_image[]" multiple/>
+								<div id="sub_image">
+								</div>
+								<div id="sub_image_select">
+									<input type="file" name="t_image1" id="t_image_insert1" onchange="setSubThumbnail(event)" />
+									<input type="file" name="t_image2" id="t_image_insert2" onchange="setSubThumbnail(event)" />
+									<input type="file" name="t_image3" id="t_image_insert3" onchange="setSubThumbnail(event)" />
+									<input type="file" name="t_image4" id="t_image_insert4" onchange="setSubThumbnail(event)" />
+								</div>
 							</td>
 						</tr>
 						<tr>
