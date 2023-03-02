@@ -51,9 +51,9 @@
                     <div class="discovery-list">
                         <ul>
                             <li class="li-list">
-                                <img class="li-img" src="../images/C2-1-한국피앤지판매유한회사.jpg" alt=""></li>
+                                <img class="li-img" src="../images/C2-1-한국피앤지판매유한회사.jpg" alt=""></li>
                             <li class="li-list">
-                                <img src="../images/C2-2-프리즘.jpg" alt=""></li>
+                                <img src="../images/C2-2-프리즘.jpg" alt=""></li>
                             <li class="li-list">
                                 <img class="li-img-min" src="../images/C2_3.jpg" alt="">
                             </li>
