@@ -2405,7 +2405,6 @@
 			<menu id="headerMenu">
 				<s:authorize access="isAuthenticated()">
 					<s:authentication property="name" var="name" />
-
 				</s:authorize>
 				<c:choose>
 					<c:when test="${not empty name }">

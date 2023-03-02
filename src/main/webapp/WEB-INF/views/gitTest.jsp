@@ -9,6 +9,7 @@
 <body>
 	<h2>깃 테스트 완료 - 승재 - </h2>
 	<h2>왜 안되고 GiRal임?</h2>
-	<h2>완료 - 오정</h2>
+	<h2>완료 - 오정</h2> 
+	<h2>choyongmin commit!</h2>
 </body>
 </html>

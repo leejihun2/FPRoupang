@@ -1,14 +1,64 @@
 package com.edu.springboot;
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.edu.springboot.jdbc.BoardDTO;
+import com.edu.springboot.jdbc.IBoardService;
 
 @Controller
 public class AdminController {
 	
+	@Autowired
+	IBoardService daoo;
+	
 	@RequestMapping("/admin/index.do")
 	public String admin() {
 		return "admin/index";
+	}
+	@RequestMapping("/admin/adminFaq.do")
+	public String adminFaq(Model model, HttpServletRequest req) {
+		String category = req.getParameter("categoryCode");
+		int totalRecordCount = 
+				daoo.getTotalCountSearch("faq",category);
+		
+		ArrayList<BoardDTO> lists = 
+				daoo.listPageSearch("faq",category);
+		
+		for (BoardDTO dto : lists) {
+			String temp = dto.getContents()
+					.replace("\r\n", "<br/>");
+			dto.setContents(temp);
+		}
+		
+		model.addAttribute("lists", lists);
+		return "admin/adminFaq";
+	}
+	@RequestMapping("/admin/adminNotice.do")
+	public String blank1(Model model, HttpServletRequest req) {
+		String category = req.getParameter("categoryCode");
+		int totalRecordCount = 
+				daoo.getTotalCountSearch("notice",category);
+		
+		ArrayList<BoardDTO> lists = 
+				daoo.listPageSearch("notice",category);
+
+		for (BoardDTO dto : lists) {
+			System.out.println("나 동작");
+			String temp = dto.getContents()
+					.replace("\r\n", "<br/>");
+			dto.setContents(temp);
+			System.out.println("콘텐츠 >>>>> "+dto.getContents());
+		}
+		
+		model.addAttribute("lists", lists);
+		return "admin/adminNotice";
 	}
 	@RequestMapping("/admin/utilities-color.do")
 	public String utilities1() {
@@ -42,10 +92,6 @@ public class AdminController {
 	public String cards() {
 		return "admin/cards";
 	}
-	@RequestMapping("/admin/blank.do")
-	public String blank() {
-		return "admin/blank";
-	}
 	@RequestMapping("/admin/404.do")
 	public String error() {
 		return "admin/404";
@@ -61,6 +107,10 @@ public class AdminController {
 	@RequestMapping("/admin/forgot-password.do")
 	public String password() {
 		return "admin/forgot-password";
+	}
+	@RequestMapping("/jsp/store-li.do")
+	public String store() {
+		return "jsp/store-li";
 	}
 	
 }
