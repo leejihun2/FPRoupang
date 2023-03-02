@@ -44,6 +44,11 @@ dependencies {
     //JSP 새로고침
     implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
+	
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+	implementation 'commons-io:commons-io:2.11.0'    
+    // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
+	implementation 'commons-fileupload:commons-fileupload:1.5'
 }
 
 tasks.named('test') {

@@ -9,6 +9,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -103,100 +104,108 @@ public class TicketController {
 	}
 	
 	@RequestMapping("/editTicketAction")
-	public String edit_ticket_action(HttpServletRequest req) {
-		//최대 사이즈 5M
-		int size = 1024 * 1024 * 5;
+	public String edit_ticket_action(MultipartFile[] sub_image, MultipartFile title_image, Model model, MultipartHttpServletRequest req) throws Exception { 
+
+		int value = Integer.parseInt(req.getParameter("value"));
+
+		TicketDTO dto = new TicketDTO();
+		TicketDTO delete_dto = ticket_dao.ticket_image(value);
+		System.out.println(title_image.getOriginalFilename());
+		if(!(title_image.getOriginalFilename().equals(""))) {
+			dto.setT_title_image(saveFile(title_image));
+			deleteFile(delete_dto.getT_title_image());
+		}
+		deleteFile(delete_dto.getT_image1());
+		deleteFile(delete_dto.getT_image2());
+		deleteFile(delete_dto.getT_image3());
+		deleteFile(delete_dto.getT_image4());
+		int index=1;
+		for(MultipartFile f: sub_image) {
+			if(!(f.getOriginalFilename().equals(""))) {
+				String imgName = saveFile(f);
+				switch(index) {
+					case 1:dto.setT_image1(imgName); break;
+					case 2:dto.setT_image2(imgName); break;
+					case 3:dto.setT_image3(imgName); break;
+					case 4:dto.setT_image4(imgName); break;
+				}
+				index++;
+			}else {
+				break;
+			}
+		}
+		
+		dto.setBot_idx(value);
+		dto.setNotice(req.getParameter("notice"));
+		dto.setT_booking(req.getParameter("t_booking"));
+		dto.setT_cancelfee(req.getParameter("t_cancelfee"));
+		dto.setT_cancelnoti(req.getParameter("t_cancelnoti"));
+		String[] chkService = req.getParameterValues("t_conservice");
+		String ServiceVal = "";
+		for(int i = 0; i < chkService.length ; i++) {
+		 	ServiceVal += chkService[i];
+			if(i!=chkService.length-1) {
+					 ServiceVal += ",";
+			}
+		}
+		dto.setT_conservice(ServiceVal);
+		String[] chkfac=req.getParameterValues("t_fac");
+		String facVal = "";
+		for(int i = 0 ; i < chkfac.length ; i++) {
+				facVal += chkfac[i];
+				if(i!=chkfac.length-1) {
+					facVal += ",";
+				}
+		}
+		dto.setT_incmatters(req.getParameter("t_incmatters"));
+		dto.setT_intro(req.getParameter("t_intro"));
+		dto.setT_notice(req.getParameter("t_notice"));
+		dto.setT_fac(facVal);
+		
+		ticket_dao.update_ticket(dto);
+			 
+		return "/home";
+	}
+	
+	public String deleteFile(String FileName) {
 		
 		try {
 			String path = ResourceUtils.getFile("classpath:static/uploads/")
 					.toPath().toString();
 			
-			MultipartRequest multi = new MultipartRequest(req, path, size, 
-					"UTF-8", new DefaultFileRenamePolicy()); 
+			File delete_file = new File(path + File.separator + FileName);
 			
-			int value = Integer.parseInt(multi.getParameter("value"));
+			if(delete_file.exists()) {
+				delete_file.delete();
+			}
 			
-			List<String> val = new ArrayList<String>();
-			val.add(multi.getParameter("value"));
-			
-			ArrayList<TicketDTO> total_image = ticket_dao.ticket_Total_image(val);
-			ArrayList<String> image = new ArrayList<String>();
-			
-			for(int i = 0 ; i < total_image.size(); i++) {
-				TicketDTO dto = total_image.get(i);
-				image.add(dto.getT_title_image());
-				if(dto.getT_image1()!=null) {
-					image.add(dto.getT_image1());
-					if(dto.getT_image2()!=null) {
-						image.add(dto.getT_image2());
-						if(dto.getT_image3()!=null) {
-							image.add(dto.getT_image3());
-							if(dto.getT_image4()!=null) {
-								image.add(dto.getT_image4());
-							}
-						}
-					}
-				}
-			}
-			File file;
-			for(int i = 0 ; i < image.size(); i++) {
-				file = new File(path + File.separator + image.get(i));
-				if(file.exists()) {
-					file.delete();
-				}
-			}
-
-			TicketDTO dto = new TicketDTO();
-			Enumeration files = multi.getFileNames();
-			int idx = 1;
-			while(files.hasMoreElements()) {
-				String str = (String)files.nextElement();
-				if(multi.getOriginalFileName(str)!=null) {
-					if(str.equals("t_title_image")) {
-						dto.setT_title_image(multi.getFilesystemName(str));
-					}else {
-						switch(idx) {
-						case 1:dto.setT_image1(multi.getFilesystemName(str)); break;
-						case 2:dto.setT_image2(multi.getFilesystemName(str)); break;
-						case 3:dto.setT_image3(multi.getFilesystemName(str)); break;
-						case 4:dto.setT_image4(multi.getFilesystemName(str)); break;
-						}
-						idx++;
-					}
-				}
-			}
-			dto.setBot_idx(value);
-			dto.setNotice(multi.getParameter("notice"));
-			dto.setT_booking(multi.getParameter("t_booking"));
-			dto.setT_cancelfee(multi.getParameter("t_cancelfee"));
-			dto.setT_cancelnoti(multi.getParameter("t_cancelnoti"));
-			String[] chkService = multi.getParameterValues("t_conservice");
-			String ServiceVal = "";
-			for(int i = 0; i < chkService.length ; i++) {
-			 	ServiceVal += chkService[i];
-				if(i!=chkService.length-1) {
-						 ServiceVal += ",";
-				}
-			}
-			dto.setT_conservice(ServiceVal);
-			String[] chkfac=multi.getParameterValues("t_fac");
-			String facVal = "";
-			for(int i = 0 ; i < chkfac.length ; i++) {
-					facVal += chkfac[i];
-					if(i!=chkfac.length-1) {
-						facVal += ",";
-					}
-			}
-			dto.setT_incmatters(multi.getParameter("t_incmatters"));
-			dto.setT_intro(multi.getParameter("t_intro"));
-			dto.setT_notice(multi.getParameter("t_notice"));
-			dto.setT_fac(facVal);
-			ticket_dao.update_ticket(dto);
-			 
 		}catch (Exception e) {
 			e.printStackTrace();
+			return "false";
 		}
-		return "/home";
+		return "success";
+	}
+	
+	public String saveFile(MultipartFile file) {
+		UUID uid = UUID.randomUUID();
+		String saveName = uid + "_" + file.getOriginalFilename();
+		
+		String path ="";
+		try {
+			path = ResourceUtils.getFile("classpath:static/uploads/")
+					.toPath().toString(); 
+		}catch (Exception e) {}
+		
+		File fileinfo = new File(path,saveName);
+		
+		try {
+			file.transferTo(fileinfo);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		return saveName;
 	}
 	
 	@ResponseBody
@@ -234,87 +243,71 @@ public class TicketController {
 	}
 	
 	@RequestMapping("/ticketInsertAction")
-	public ModelAndView ticket_insert2(Model model, HttpServletRequest req) {
-		int size = 1024 * 1024 * 5;
+	public ModelAndView ticket_insert2(MultipartFile[] sub_image, MultipartFile title_image, Model model, MultipartHttpServletRequest req) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		try {
-			String path = ResourceUtils.getFile("classpath:static/uploads/")
-					.toPath().toString();
+		int value= Integer.parseInt(req.getParameter("value"));		
+		TicketDTO t_dto = new TicketDTO();
+		if(value==0) {
+			ticket_dao.insert_bot_title(req.getParameter("bot_title"),
+					Integer.parseInt(req.getParameter("mid_category")),
+					req.getParameter("company_name"));
 			
-			MultipartRequest multi = new MultipartRequest(req, path, size, 
-					"UTF-8", new DefaultFileRenamePolicy()); 
+			t_dto.setT_title_image(saveFile(title_image));
+			int index=1;
+			for(MultipartFile f: sub_image) {
+				String imgName = saveFile(f);
+				switch(index) {
+					case 1:t_dto.setT_image1(imgName); break;
+					case 2:t_dto.setT_image2(imgName); break;
+					case 3:t_dto.setT_image3(imgName); break;
+					case 4:t_dto.setT_image4(imgName); break;
+				}
+				index++;
+			}
 			
-			int value= Integer.parseInt(req.getParameter("value"));		
-			TicketDTO t_dto = new TicketDTO();
-			if(value==0) {
-				ticket_dao.insert_bot_title(multi.getParameter("bot_title"),
-						Integer.parseInt(multi.getParameter("mid_category")),
-						multi.getParameter("company_name"));
-				
-				Enumeration files = multi.getFileNames();
-				int idx = 1;
-				while(files.hasMoreElements()) {
-					String str = (String)files.nextElement();
-					if(multi.getOriginalFileName(str)!=null) {
-						if(str.equals("t_title_image")) {
-							t_dto.setT_title_image(multi.getFilesystemName(str));
-						}else {
-							switch(idx) {
-							case 1:t_dto.setT_image1(multi.getFilesystemName(str)); break;
-							case 2:t_dto.setT_image2(multi.getFilesystemName(str)); break;
-							case 3:t_dto.setT_image3(multi.getFilesystemName(str)); break;
-							case 4:t_dto.setT_image4(multi.getFilesystemName(str)); break;
-							}
-							idx++;
-						}
-					}
+			String[] chkService = req.getParameterValues("t_conservice");
+			String ServiceVal = "";
+			for(int i = 0 ; i < chkService.length ; i++) {
+				ServiceVal += chkService[i];
+				if(i!=chkService.length-1) {
+					ServiceVal += ",";
 				}
-				String[] chkService = multi.getParameterValues("t_conservice");
-				String ServiceVal = "";
-				for(int i = 0 ; i < chkService.length ; i++) {
-					ServiceVal += chkService[i];
-					if(i!=chkService.length-1) {
-						ServiceVal += ",";
-					}
+			}
+			t_dto.setT_conservice(ServiceVal);
+			String[] chkfac= req.getParameterValues("t_fac");
+			String facVal = "";
+			for(int i = 0 ; i < chkfac.length ; i++) {
+				facVal += chkfac[i];
+				if(i!=chkfac.length-1) {
+					facVal += ",";
 				}
-				t_dto.setT_conservice(ServiceVal);
-				String[] chkfac= multi.getParameterValues("t_fac");
-				String facVal = "";
-				for(int i = 0 ; i < chkfac.length ; i++) {
-					facVal += chkfac[i];
-					if(i!=chkfac.length-1) {
-						facVal += ",";
-					}
-				}
-				t_dto.setT_fac(facVal);
-				t_dto.setT_intro(multi.getParameter("t_intro"));
-				t_dto.setNotice(multi.getParameter("notice"));
-				t_dto.setT_notice(multi.getParameter("t_notice"));
-				t_dto.setT_incmatters(multi.getParameter("t_incmatters"));
-				t_dto.setT_booking(multi.getParameter("t_booking"));
-				t_dto.setT_cancelfee(multi.getParameter("t_cancelfee"));
-				t_dto.setT_cancelnoti(multi.getParameter("t_cancelnoti"));
+			}
+			t_dto.setT_fac(facVal);
+			t_dto.setT_intro(req.getParameter("t_intro"));
+			t_dto.setNotice(req.getParameter("notice"));
+			t_dto.setT_notice(req.getParameter("t_notice"));
+			t_dto.setT_incmatters(req.getParameter("t_incmatters"));
+			t_dto.setT_booking(req.getParameter("t_booking"));
+			t_dto.setT_cancelfee(req.getParameter("t_cancelfee"));
+			t_dto.setT_cancelnoti(req.getParameter("t_cancelnoti"));
 
-				value=ticket_dao.select_new_idx();
-			
-			}
-			try {
-			TicketInfoDTO ti_dto = new TicketInfoDTO();
-			ti_dto.setBot_idx(value);
-			ti_dto.setTi_duetime1(multi.getParameter("ti_duetime1"));
-			ti_dto.setTi_duetime2(multi.getParameter("ti_duetime2"));
-			ti_dto.setTi_price(Integer.parseInt(multi.getParameter("ti_price")));
-			ti_dto.setTi_title(multi.getParameter("ti_title"));
-			ti_dto.setTi_intro(multi.getParameter("ti_intro"));
-			ticket_dao.insert_ticket_info(ti_dto);
-			}catch (Exception e) {}
-			if(!(multi.getParameter("t_intro").equals(""))) {
-				ticket_dao.insert_ticket(t_dto);
-			}
-			mv.setViewName("/home");
-		}catch (Exception e) {
-			e.printStackTrace();
+			value=ticket_dao.select_new_idx();
+		
 		}
+		try {
+		TicketInfoDTO ti_dto = new TicketInfoDTO();
+		ti_dto.setBot_idx(value);
+		ti_dto.setTi_duetime1(req.getParameter("ti_duetime1"));
+		ti_dto.setTi_duetime2(req.getParameter("ti_duetime2"));
+		ti_dto.setTi_price(Integer.parseInt(req.getParameter("ti_price")));
+		ti_dto.setTi_title(req.getParameter("ti_title"));
+		ti_dto.setTi_intro(req.getParameter("ti_intro"));
+		ticket_dao.insert_ticket_info(ti_dto);
+		}catch (Exception e) {}
+		if(!(req.getParameter("t_intro").equals(""))) {
+			ticket_dao.insert_ticket(t_dto);
+		}
+		mv.setViewName("/home");
 		return mv;
 	}
 	
@@ -329,37 +322,27 @@ public class TicketController {
 			val.add(list[i]);
 		}
 		
-		try {
-			String path = ResourceUtils.getFile("classpath:static/uploads/")
-					.toPath().toString();
-			ArrayList<TicketDTO> total_image = ticket_dao.ticket_Total_image(val);
-			ArrayList<String> image = new ArrayList<String>();
-			
-			for(int i = 0 ; i < total_image.size(); i++) {
-				TicketDTO dto = total_image.get(i);
-				image.add(dto.getT_title_image());
-				if(dto.getT_image1()!=null) {
-					image.add(dto.getT_image1());
-					if(dto.getT_image2()!=null) {
-						image.add(dto.getT_image2());
-						if(dto.getT_image3()!=null) {
-							image.add(dto.getT_image3());
-							if(dto.getT_image4()!=null) {
-								image.add(dto.getT_image4());
-							}
+		ArrayList<TicketDTO> total_image = ticket_dao.ticket_Total_image(val);
+		ArrayList<String> image = new ArrayList<String>();
+		
+		for(int i = 0 ; i < total_image.size(); i++) {
+			TicketDTO dto = total_image.get(i);
+			image.add(dto.getT_title_image());
+			if(dto.getT_image1()!=null) {
+				image.add(dto.getT_image1());
+				if(dto.getT_image2()!=null) {
+					image.add(dto.getT_image2());
+					if(dto.getT_image3()!=null) {
+						image.add(dto.getT_image3());
+						if(dto.getT_image4()!=null) {
+							image.add(dto.getT_image4());
 						}
 					}
 				}
 			}
-			File file;
-			for(int i = 0 ; i < image.size(); i++) {
-				file = new File(path + File.separator + image.get(i));
-				if(file.exists()) {
-					file.delete();
-				}
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
+		}
+		for(int i = 0 ; i < image.size(); i++) {
+			deleteFile(image.get(i));
 		}
 		
 		ticket_dao.delete_ticket(val);

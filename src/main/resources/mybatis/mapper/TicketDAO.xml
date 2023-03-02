@@ -152,4 +152,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			#{bot_idx}
  		</foreach>
  	</select>
+ 	
+ 	<select id="ticket_image" resultType="com.edu.springboot.jdbc.TicketDTO">
+ 		SELECT t_title_image, t_image1, t_image2, t_image3, t_image4 FROM ticket
+ 		WHERE bot_idx = #{bot_idx}
+ 	</select>
  </mapper>

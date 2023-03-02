@@ -201,6 +201,17 @@
 	
 	$(function(){
 		$("#submit").click(function(){
+			
+			if($("#main_image").val()==""){
+				alert("메인 이미지는 필수로 등록해야합니다.");
+				return false;
+			}
+			
+			var sub_image=$("#t_image")
+			if(sub_image[0].files.length>=5){
+				alert("서브 이미지는 최대 4개까지 등록가능합니다.");
+				return false;
+			}
 			if($("#ti_title").val()==""){
 				alert("상품상세명을 입력하세요");
 				$("#ti_title").focus();
@@ -215,7 +226,7 @@
 				$("#ti_price").focus();
 				return false;
 			}
-			
+			return false;
 			if($("#t_intro").val()!=""){
 				if($("#bot_title").val()==""){
 					alert("상품명를 입력하세요");
@@ -270,7 +281,6 @@
 			}
 		});
 		$("#delete_all").click(function(){
-			alert("동작!");
 			var delete_val2=[];
 			$("[name=ticket_select]").each(function(idx){
 				if($(this).is(":checked")==true){
@@ -308,6 +318,29 @@
 				total.push(chk);
 			});
 		});
+		
+		var sel_files=[];
+		$("#t_image").on("change",function(e){
+			document.getElementById("sub_thumbnail").innerHTML='';
+			var files = e.target.files;
+			var filesArr = Array.prototype.slice.call(files);
+
+			if(!(files.length>=5)){
+				
+				filesArr.forEach(function(f){
+					sel_files.push(f);
+					var reader = new FileReader();
+					reader.onload = function(e){
+						var img = "<img src=\"" + e.target.result + "\" />";
+						$("#sub_thumbnail").append(img);
+					}
+					
+					reader.readAsDataURL(f);
+				});
+			}else{
+				alert("최대 4개의 이미지까지 등록 가능합니다.");
+			}
+		});
 	});
 	function setThumbnail(event) {
 		var reader = new FileReader();
@@ -320,23 +353,12 @@
 		
 		reader.readAsDataURL(event.target.files[0]);
 	}
-
-	function setSubThumbnail(event) {
-		var reader = new FileReader();
-		reader.onload = function(event) {
-			var img = document.createElement("img");
-			img.setAttribute("src", event.target.result);
-			document.getElementById("sub_image").innerHTML='';
-			document.querySelector("div#sub_image").appendChild(img);          
-		};
-		
-		reader.readAsDataURL(event.target.files[0]);
-	}
 </script>
 </head>
 <body>
 	<div class="container">
 		<div class="row" id="row">
+			<a href="./ticketView">상품(티켓)보기</a>
 				<div class="col-12">
 					분류1
 					<select name="top_category" id="category1" onchange="setSelectBox(this)">
@@ -414,20 +436,15 @@
 							<td>
 								<div id="title_image">
 								</div>
-								<input type="file" name="t_title_image" onchange="setThumbnail(event)" />
+								<input type="file" name="title_image" id="main_image" onchange="setThumbnail(event)" />
 							</td>
 						</tr>
 						<tr>
 							<th>서브이미지</th>
 							<td>
-								<div id="sub_image">
+								<div id="sub_thumbnail">
 								</div>
-								<div id="sub_image_select">
-									<input type="file" name="t_image1" id="t_image_insert1" onchange="setSubThumbnail(event)" />
-									<input type="file" name="t_image2" id="t_image_insert2" onchange="setSubThumbnail(event)" />
-									<input type="file" name="t_image3" id="t_image_insert3" onchange="setSubThumbnail(event)" />
-									<input type="file" name="t_image4" id="t_image_insert4" onchange="setSubThumbnail(event)" />
-								</div>
+								<input type="file" id="t_image" name="sub_image" multiple/>
 							</td>
 						</tr>
 						<tr>

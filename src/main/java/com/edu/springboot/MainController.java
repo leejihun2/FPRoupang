@@ -143,4 +143,8 @@ public class MainController {
 		return "auth/denied";
 	}
 	
+	@RequestMapping("/ticketView")
+	public String move1() {
+		return "/ticket/ticketView";
+	}
 }

@@ -63,6 +63,17 @@
 		reader.readAsDataURL(event.target.files[0]);
 	}
 
+	function setSubThumbnail(event) {
+		var reader = new FileReader();
+		reader.onload = function(event) {
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			document.getElementById("sub_thumbnail").innerHTML='';
+			document.querySelector("div#sub_thumbnail").appendChild(img);          
+		};
+		
+		reader.readAsDataURL(event.target.files[0]);
+	}
 	$(document).ready(function(){
 		$("#noservice").click(function(){
 			if(this.checked){
@@ -78,25 +89,6 @@
 				$(".fac").prop('disabled',false);
 			}
 		});
-		
-		
-		var sel_files=[];
-		$("#t_image").on("change",function(e){
-			document.getElementById("sub_thumbnail").innerHTML='';
-			var files = e.target.files;
-			var filesArr = Array.prototype.slice.call(files);
-			
-			filesArr.forEach(function(f){
-				sel_files.push(f);
-				var reader = new FileReader();
-				reader.onload = function(e){
-					var img = "<img src=\"" + e.target.result + "\" />";
-					$("#sub_thumbnail").append(img);
-				}
-				
-				reader.readAsDataURL(f);
-			});
-		});
 	});
 </script>
 </head>
@@ -108,29 +100,32 @@
 					<th>* 메인이미지</th>
 					<td>
 						<div id="main_thumbnail">
-							<img src="/uploads/${dto.t_title_image }"  />
+							<img src="${dto.t_title_image }"  />
 						</div>
-						<input type="file" name="title_image" onchange="setThumbnail(event);" />
+						<input type="file" name="t_title_image" onchange="setThumbnail(event);" />
 					</td>
 				</tr>
 				<tr>
-					<th>서브이미지</th>
+					<th>* 서브이미지</th>
 					<td>
 						<div id="sub_thumbnail">
 							<c:if test="${not empty dto.t_image1 }">
-								<img src="/uploads/${dto.t_image1 }"/>
+								<img src="${dto.t_image1 }"/>
 								<c:if test="${not empty dto.t_image2 }">
-									<img src="/uploads/${dto.t_image2 }"/>
+									<img src="${dto.t_image2 }"/>
 									<c:if test="${not empty dto.t_image3 }">
-										<img src="/uploads/${dto.t_image3 }"/>
+										<img src="${dto.t_image3 }"/>
 										<c:if test="${not empty dto.t_image4 }">
-											<img src="/uploads/${dto.t_image4 }"/>
+											<img src="${dto.t_image4 }"/>
 										</c:if>
 									</c:if>
 								</c:if>
 							</c:if>
 						</div>
-						<input type="file" id="t_image" name="sub_image" multiple/>
+						<input type="file" id="t_image1" name="t_image1" onchange="setSubThumbnail(event);"/>
+						<input type="file" id="t_image2" name="t_image2" onchange="setSubThumbnail(event);"/>
+						<input type="file" id="t_image3" name="t_image3" onchange="setSubThumbnail(event);"/>
+						<input type="file" id="t_image4" name="t_image4" onchange="setSubThumbnail(event);"/>
 					</td>
 				</tr>
 				<tr>
