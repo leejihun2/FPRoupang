@@ -3,7 +3,7 @@ package com.edu.springboot.jdbc;
 import lombok.Data;
 
 @Data
-public class BoardDTO {
+public class SupportsDTO {
 
 	private int idx;
 	private String email;

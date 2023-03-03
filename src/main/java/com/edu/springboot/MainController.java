@@ -6,15 +6,14 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.edu.springboot.jdbc.BoardDTO;
-import com.edu.springboot.jdbc.IBoardService;
+import com.edu.springboot.jdbc.SupportsDTO;
+import com.edu.springboot.jdbc.ISupportsService;
 
 @Controller
 public class MainController {
@@ -23,49 +22,49 @@ public class MainController {
 	public String home() {
 		return "home";
 	}
-	@RequestMapping("/board/returnPolicy.do")
+	@RequestMapping("/supports/returnPolicy.do")
 	public String returnPolicy() {
-		return "/board/returnPolicy";
+		return "/supports/returnPolicy";
 	}
 
 	@Autowired
-	IBoardService daoo;
+	ISupportsService daoo;
 	
-	@RequestMapping("/board/faq.do")
+	@RequestMapping("/supports/faq.do")
 	public String faq(Model model, HttpServletRequest req) {
 		
-//		BoardDTO boardDTO = new BoardDTO();
-//		boardDTO.setSearchField(req.getParameter("searchField"));
-//		boardDTO.setSearchTxt(req.getParameter("searchTxt"));
-//		boardDTO.setCategoryCode(req.getParameter("categoryCode"));
+//		SupportsDTO supportsDTO = new supportsDTO();
+//		SupportsDTO.setSearchField(req.getParameter("searchField"));
+//		SupportsDTO.setSearchTxt(req.getParameter("searchTxt"));
+//		SupportsDTO.setCategoryCode(req.getParameter("categoryCode"));
 		
 		String category = req.getParameter("categoryCode");
 		int totalRecordCount = 
 				daoo.getTotalCountSearch("faq",category);
 		
-		ArrayList<BoardDTO> lists = 
+		ArrayList<SupportsDTO> lists = 
 				daoo.listPageSearch("faq",category);
 		
-		for (BoardDTO dto : lists) {
+		for (SupportsDTO dto : lists) {
 			String temp = dto.getContents()
 					.replace("\r\n", "<br/>");
 			dto.setContents(temp);
 		}
 		
 		model.addAttribute("lists", lists);
-		return "board/faq";
+		return "supports/faq";
 	}
-	@RequestMapping("/board/notice.do")
+	@RequestMapping("/supports/notice.do")
 	public String lists2(Model model, HttpServletRequest req) {
 		
 		String category = req.getParameter("categoryCode");
 		int totalRecordCount = 
 				daoo.getTotalCountSearch("notice",category);
 		
-		ArrayList<BoardDTO> lists = 
+		ArrayList<SupportsDTO> lists = 
 				daoo.listPageSearch("notice",category);
 
-		for (BoardDTO dto : lists) {
+		for (SupportsDTO dto : lists) {
 			System.out.println("나 동작");
 			String temp = dto.getContents()
 					.replace("\r\n", "<br/>");
@@ -74,23 +73,23 @@ public class MainController {
 		}
 		
 		model.addAttribute("lists", lists);
-		return "/board/notice";
+		return "/supports/notice";
 	}
 	
-	@RequestMapping("/board/voc.do")
+	@RequestMapping("/supports/voc.do")
 	public String write(Model model, HttpSession session,
 			HttpServletRequest req) {
 		if(session.getAttribute("siteUserInfo")==null)
 		{
-			model.addAttribute("backUrl", "board/voc");
+			model.addAttribute("backUrl", "supports/voc");
 			return "redirect:login.do";
 		}
 		
-		return "board/voc";
+		return "supports/voc";
 	}
 	
 	// 글쓰기 처리
-	@RequestMapping(value = "/board/vocAction.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/supports/vocAction.do", method = RequestMethod.POST)
 	public String writeAction(Model model, HttpServletRequest req, HttpSession session, Principal principal) {
 
 		if (session.getAttribute("siteUserInfo") == null) {
@@ -105,7 +104,7 @@ public class MainController {
 		return "redirect:voc.do";
 	}
 	
-	@RequestMapping("/board/delete.do")
+	@RequestMapping("/supports/delete.do")
 	public String delete(HttpServletRequest req, HttpSession session, Principal principal) {
 		//삭제는 본인만 가능하므로 로그인 확인을 진행한다.
 		if (session.getAttribute("siteUserInfo") == null) {

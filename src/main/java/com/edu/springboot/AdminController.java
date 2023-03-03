@@ -9,18 +9,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.edu.springboot.jdbc.BoardDTO;
-import com.edu.springboot.jdbc.IBoardService;
+import com.edu.springboot.jdbc.SupportsDTO;
+import com.edu.springboot.jdbc.ISupportsService;
 
 @Controller
 public class AdminController {
 	
 	@Autowired
-	IBoardService daoo;
+	ISupportsService daoo;
 	
 	@RequestMapping("/admin/index.do")
 	public String admin() {
-		return "admin/index";
+		return "/admin/index";
 	}
 	@RequestMapping("/admin/adminFaq.do")
 	public String adminFaq(Model model, HttpServletRequest req) {
@@ -28,10 +28,10 @@ public class AdminController {
 		int totalRecordCount = 
 				daoo.getTotalCountSearch("faq",category);
 		
-		ArrayList<BoardDTO> lists = 
+		ArrayList<SupportsDTO> lists = 
 				daoo.listPageSearch("faq",category);
 		
-		for (BoardDTO dto : lists) {
+		for (SupportsDTO dto : lists) {
 			String temp = dto.getContents()
 					.replace("\r\n", "<br/>");
 			dto.setContents(temp);
@@ -46,10 +46,10 @@ public class AdminController {
 		int totalRecordCount = 
 				daoo.getTotalCountSearch("notice",category);
 		
-		ArrayList<BoardDTO> lists = 
+		ArrayList<SupportsDTO> lists = 
 				daoo.listPageSearch("notice",category);
 
-		for (BoardDTO dto : lists) {
+		for (SupportsDTO dto : lists) {
 			System.out.println("나 동작");
 			String temp = dto.getContents()
 					.replace("\r\n", "<br/>");
@@ -107,10 +107,6 @@ public class AdminController {
 	@RequestMapping("/admin/forgot-password.do")
 	public String password() {
 		return "admin/forgot-password";
-	}
-	@RequestMapping("/jsp/store-li.do")
-	public String store() {
-		return "jsp/store-li";
 	}
 	
 }

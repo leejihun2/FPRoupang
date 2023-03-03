@@ -41,7 +41,7 @@ function writeValidate(f)
 	
 	<form name="writeFrm" method="post" 
 		onsubmit="return writeValidate(this);"
-		action="<c:url value="/mybatis/modifyAction.do" />" >	
+		action="<c:url value="/supports/modifyAction.do" />" >	
 	<input type="hid den" name="idx" value="${dto.idx }"/>
 	<input type="hid den" name="id" 
 			value="${sessionScope.siteUserInfo.id }"/>
@@ -77,7 +77,7 @@ function writeValidate(f)
 		<button type="submit" class="btn btn-secondary">수정하기</button>
 		<button type="reset" class="btn btn-secondary">Reset</button>
 		<button type="button" class="btn btn-secondary" 
-			onclick="location.href='listSearch.do';">리스트보기</button>
+			onclick="location.href='home.do';">리스트보기</button>
 	</div>
 	</form> 
 </div>

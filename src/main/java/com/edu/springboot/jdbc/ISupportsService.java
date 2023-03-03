@@ -8,14 +8,14 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface IBoardService {
+public interface ISupportsService {
 	
 	
 
 	//기존 리스트에 검색기능을 추가했으므로 매개변수를 DTO로 변경한다.
 	//해당 DTO객체에는 검색어와 페이지구간 대한 값이 저장된다.
 	public int getTotalCountSearch(String contact, String categoryCode);
-	public ArrayList<BoardDTO>
+	public ArrayList<SupportsDTO>
 	listPageSearch(String contact, String categoryCode);
 
 	/*
@@ -31,12 +31,12 @@ public interface IBoardService {
 	
 	
 	//기존 게시물의 내용을 인출한다.
-	public BoardDTO view(BoardDTO BoardDTO);
+	public SupportsDTO view(SupportsDTO supportsDTO);
 	
 	public int delete(String idx, String email);
 	//Mapper에서 Map 사용하기 
-	public ArrayList<BoardDTO> hashMapUse(Map<String, String> hMap);
+	public ArrayList<SupportsDTO> hashMapUse(Map<String, String> hMap);
 
-	public ArrayList<BoardDTO> arrayListUse(List<String> aList);
+	public ArrayList<SupportsDTO> arrayListUse(List<String> aList);
 	
 }

@@ -2428,7 +2428,7 @@
 
 
 				<li class="cs-center more"><a
-					href="./board/faq.do?categoryCode=ALL"
+					href="./supports/faq.do?categoryCode=ALL"
 					data-log-props='{ "id":"customer_center" }'>고객센터</a>
 					<p>
 						<a href="https://csmessenger.coupang.com/cs-center/faq/main"

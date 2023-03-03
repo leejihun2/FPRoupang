@@ -1,5 +1,5 @@
 package com.edu.springboot.jdbc;
 
-public class ReviewDTO {
+public interface IReviewService {
 
 }
