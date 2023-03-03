@@ -6,5 +6,14 @@
  
  <mapper namespace="com.edu.springboot.jdbc.IReviewService">
  
+	<insert id="reviewWrite">
+		insert into review (idx, product_idx, bot_cate_idx, member_idx, goods_title, ccomment, star_rate, servey1, servey2, servey3, summary)
+		values (REVIEW_seq.nextva l, 1, 1, 1, goods_title=#{goods_title},ccomment=#{ccomment},star_rate=#{star_rate},servey1=#{servey1},servey2=#{servey2},servey3=#{servey3},summary=#{summary})
+	</insert>
+
+	<select id="reviewView" resultType="com.edu.springboot.jdbc.ReviewDTO"
+		parameterType="com.edu.springboot.jdbc.ReviewDTO">
+		SELECT * FROM review WHERE idx=#{idx}
+	</select>
  
  </mapper>

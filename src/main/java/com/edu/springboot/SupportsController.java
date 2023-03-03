@@ -16,19 +16,15 @@ import com.edu.springboot.jdbc.SupportsDTO;
 import com.edu.springboot.jdbc.ISupportsService;
 
 @Controller
-public class MainController {
+public class SupportsController {
 	
-	@RequestMapping("/")
-	public String home() {
-		return "home";
-	}
+	@Autowired
+	ISupportsService daoo;
+
 	@RequestMapping("/supports/returnPolicy.do")
 	public String returnPolicy() {
 		return "/supports/returnPolicy";
 	}
-
-	@Autowired
-	ISupportsService daoo;
 	
 	@RequestMapping("/supports/faq.do")
 	public String faq(Model model, HttpServletRequest req) {
@@ -119,31 +115,7 @@ public class MainController {
 		return "redirect:login.do";
 	}
 	
-	@RequestMapping("/myLogin.do")
-	public String login1(Principal principal, Model model, HttpSession session) {
-		try {
-			String email = principal.getName();
-			model.addAttribute("user_id", email);
-			session.setAttribute("siteUserInfo", email);
-		}
-		catch (Exception e) {
-			System.out.println("로그인 전입니다.");
-		}
-		return "auth/login";
-	}
-	
-	@RequestMapping("/myError.do")
-	public String login2() {		
-		return "auth/error";
-	}
 
-	@RequestMapping("/denied.do")
-	public String login3() {		
-		return "auth/denied";
-	}
 	
-	@RequestMapping("/ticketView")
-	public String move1() {
-		return "/ticket/ticketView";
-	}
+
 }

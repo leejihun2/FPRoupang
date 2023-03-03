@@ -48,7 +48,7 @@ function writeValidate(f)
 	<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->
 	<form name="writeFrm" method="post" 
 		onsubmit="return writeValidate(this);"
-		action="<c:url value="/supports/vocAction.do" />" >
+		action="<c:url value="/review/vocAction.do" />" >
 		
 	<table class="table table-bordered">
 	<colgroup>
@@ -69,7 +69,7 @@ function writeValidate(f)
 		</tr>
 		<tr>
 			<td>
-				<select name="title" value="배송관련문의">
+				<select name="title" value="상품문의">
 					<option value="유형을 선택해주세요">유형을 선택해주세요</option>
 					<option value="주문 상품 문의">주문 상품 문의</option>
 					<option value="주문 상품 문의">주문 상품 문의</option>
