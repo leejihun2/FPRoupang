@@ -14,6 +14,7 @@
 	<select id="reviewView" resultType="com.edu.springboot.jdbc.ReviewDTO"
 		parameterType="com.edu.springboot.jdbc.ReviewDTO">
 		SELECT * FROM review WHERE idx=#{idx}
+		AND goods_title=#{goods_title}
 	</select>
  
  </mapper>

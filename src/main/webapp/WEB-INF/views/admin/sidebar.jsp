@@ -54,10 +54,10 @@
 			aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">고객센터:</h6>
-				<a class="collapse-item" href="utilities-other.do">문의내역</a>
-				<a class="collapse-item" href="utilities-color.do">자주 묻는 짋문</a>
-				<a class="collapse-item" href="utilities-border.do">고객의 소리</a>
-				<a class="collapse-item" href="utilities-animation.do">쿠팡소식</a>
+				<a class="collapse-item" href="adminFaq.do?categoryCode=ALL">자주 묻는 질문</a>
+				<a class="collapse-item" href="adminNotice.do?categoryCode=ALL">쿠팡소식</a>
+				<a class="collapse-item" href="adminNotice.do?categoryCode=ALL"></a>
+
 			</div>
 		</div></li>
 
@@ -84,15 +84,30 @@
 				<div class="collapse-divider"></div>
 				<h6 class="collapse-header">Other Pages:</h6>
 				<a class="collapse-item" href="404.do">404 Page</a> 
-				<a class="collapse-item" href="adminFaq.do?categoryCode=ALL">자주 묻는 질문</a>
-				<a class="collapse-item" href="adminNotice.do?categoryCode=ALL">쿠팡소식</a>
+				<a class="collapse-item" href="utilities-other.do">문의내역</a>
+				<a class="collapse-item" href="utilities-color.do">자주 묻는 짋문</a>
+				<a class="collapse-item" href="utilities-border.do">고객의 소리</a>
+				<a class="collapse-item" href="utilities-animation.do">쿠팡소식</a>
+
 			</div>
 		</div></li>
 
-	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="charts.do"> <i
-			class="fas fa-fw fa-chart-area"></i> <span>Charts</span></a></li>
+	
+	<li class="nav-item"><a class="nav-link collapsed" href="charts.do"
+		data-toggle="collapse" data-target="#collapse"
+		aria-expanded="true" aria-controls="collapse"> <i
+			class="fas fa-fw fa-chart-area"></i> <span>고객센터</span>
+	</a>
+		<div id="collapse" class="collapse"
+			aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<a class="collapse-item" href="adminFaq.do?categoryCode=ALL">검색로그</a>
+				<a class="collapse-item" href="adminNotice.do?categoryCode=ALL">판매로그</a>
+				<a class="collapse-item" href="adminNotice.do?categoryCode=ALL"></a>
 
+			</div>
+	</div></li>
+	
 	<!-- Nav Item - Tables -->
 	<li class="nav-item"><a class="nav-link" href="tables.do"> <i
 			class="fas fa-fw fa-table"></i> <span>Tables</span></a></li>
