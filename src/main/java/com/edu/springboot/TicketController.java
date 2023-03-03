@@ -30,7 +30,7 @@ import com.edu.springboot.jdbc.ParameterTicketDTO;
 import com.edu.springboot.jdbc.TicketDTO;
 import com.edu.springboot.jdbc.TicketInfoDTO;
 import com.edu.springboot.jdbc.TicketService;
-
+import com.edu.springboot.jdbc.TotalTicketDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -366,5 +366,22 @@ public class TicketController {
 		
 		ticket_dao.delete_ticket_info(val, company_name);
 		return "/home";
+	}
+	
+	@RequestMapping("/ticket_List")
+	public ModelAndView Show_Ticket_List(HttpServletRequest req) {
+		int sub_idx = Integer.parseInt(req.getParameter("category"));
+		
+		String location = ""; 
+		if(req.getParameter("location")!=null) {
+			location = req.getParameter("location");
+		}
+		ModelAndView mv = new ModelAndView();
+		ArrayList<TotalTicketDTO> ticket_list = ticket_dao.show_ticket_list(sub_idx, location);
+		
+		mv.addObject("ticket_list", ticket_list);
+		
+		mv.setViewName("/ticket/ticketList");
+		return mv;
 	}
 }
