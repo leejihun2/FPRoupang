@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@ taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
@@ -58,8 +58,8 @@
 </style>
 <script>
 function ratingToPercent() {
-    const score = +this.restaurant.averageScore * 20;
-    return score + 1.5;
+    const totalstar = +this.restaurant.averageScore * 20;
+    return totalstar + 1.5;
 }
 
 function deleteRow(idx){
@@ -74,11 +74,56 @@ function deleteRow(idx){
 	<%@include file="../top.jsp"%>
 	<div id="top"></div>
 	<div class="container">
-
+		<c:forEach items="${totalstar }" var="star">
+			<div class="star-ratings">
+			<c:forEach begin="1" end="5" var="i">
+				<c:choose>
+					<c:when test="${Math.round(star.star_rate) >= i }">
+						    <div class="star-ratings">
+						        <div 
+						        class="star-ratings-fill space-x-2 text-lg"
+						        :style="{ width: ratingToPercent + '%' }">
+						            <span>★</span>
+						        </div>
+						        <div class="star-ratings-base space-x-2 text-lg">
+						            <span>★</span>
+						        </div>
+						    </div>
+					</c:when>
+					<c:otherwise>
+						<div class="star-ratings text-lg">
+						            <span>★</span>
+				        </div>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			</div>
+			<div class="star-ratings">
+			1점 :${star.star_rate1 }
+			</div>
+			<div class="star-ratings">
+			2점 :${star.star_rate2 }
+			</div>
+			<div class="star-ratings">
+			3점 :${star.star_rate3 }
+			</div>
+			<div class="star-ratings">
+			4점 :${star.star_rate4 }
+			</div>
+			<div class="star-ratings">
+			5점 :${star.star_rate5 }
+			</div>
+			<div class="star-ratings">
+			지리나요? :${star.servey1_1 }
+			</div>
+			
+		</c:forEach>
+		
 		<div class="text-right"></div>
 		<!-- 방명록 반복 부분 s -->
 		<c:forEach items="${lists }" var="row">
 			<div class="border mt-2 mb-2">
+					<!--  -->
 					<ul class="comment">
 						<li>
 							<div class="score_info">
@@ -87,12 +132,9 @@ function deleteRow(idx){
 								</div>
 							</div>
 						</li>
-
 					</ul>
 					<!--  -->
-					<!--  -->
 				<div class="media">
-				
 							<c:forEach begin="1" end="5" var="i">
 								<c:choose>
 									<c:when test="${Math.round(row.star_rate) >= i }">
@@ -114,7 +156,7 @@ function deleteRow(idx){
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
-					<div class="media-left mr-3"></div>
+				</div>
 					<div class="media-body">
 						<!--  -->
 						<h4 class="media-heading">제목:${row.goods_title }</h4>
@@ -125,6 +167,7 @@ function deleteRow(idx){
 						<p>${row.summary }</p>
 					</div>
 					<div class="media-right">
+					</div>
 						<%-- 							<c:if test="${sessionScope.siteUserInfo.id eq row.id }">
 								<button class="btn btn-secondary"
 									onclick="location.href='modify.do?idx=${row.idx}';">
@@ -133,8 +176,6 @@ function deleteRow(idx){
 									onclick="javascript:deleteRow(${row.idx});">삭제</button>
 							</c:if>
  --%>
-					</div>
-				</div>
 			</div>
 		</c:forEach>
 	</div>

@@ -23,10 +23,13 @@ public class ReviewController {
 	IReviewService daoo;
 	
 	@RequestMapping("/review/reviewList.do")
-	public String faq(Model model, HttpServletRequest req) {
+	public String review(Model model, HttpServletRequest req, ReviewDTO reviewDTO) {
 		
 		int totalRecordCount = 
 				daoo.reviewcount();
+		
+		ArrayList<ReviewDTO> totalstar = 
+				daoo.starcount();
 		
 		ArrayList<ReviewDTO> lists = 
 				daoo.reviewList();
@@ -37,6 +40,7 @@ public class ReviewController {
 			dto.setCcomment(temp);
 		}
 		
+		model.addAttribute("totalstar", totalstar);
 		model.addAttribute("lists", lists);
 		return "review/reviewList";
 	}
