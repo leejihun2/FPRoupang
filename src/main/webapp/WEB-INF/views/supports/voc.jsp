@@ -43,8 +43,12 @@ function writeValidate(f)
 	} 
 }
 </script>
-<div class="container">
+<div id="top">
+    <%@include file="../top.jsp" %>
+    </div>
+<div class="container" style="background: white;">
 	
+	<%@include file="../category.jsp" %>
 	<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->
 	<form name="writeFrm" method="post" 
 		onsubmit="return writeValidate(this);"
@@ -56,6 +60,9 @@ function writeValidate(f)
 		<col width="*"/>
 	</colgroup>
 	<tbody>
+	<s:authorize access="isAuthenticated()">
+					<s:authentication property="name" var="name" />
+	</s:authorize>
 		<tr>
 			<th class="text-center" 
 				style="vertical-align:middle;">작성자</th>
@@ -64,7 +71,7 @@ function writeValidate(f)
 				영역에 저장한 DTO객체에서 이름을 가져와 삽입한다. -->
 				<input type="text" class="form-control" 
 					style="width:130px;" name="name"
-						value="${email }" />
+						value="${name }" />
 			</td>
 		</tr>
 		<tr>

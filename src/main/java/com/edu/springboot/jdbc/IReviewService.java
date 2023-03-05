@@ -1,13 +1,17 @@
 package com.edu.springboot.jdbc;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface IReviewService {
 
-	public int reviewWrite(String goods_title	,String ccomment ,String star_rate ,String servey1
-			,String servey2	,String servey3	,String summary);
+	public int reviewcount();
+	public ArrayList<ReviewDTO>
+	reviewList();	
 	
+	public int reviewWrite(ReviewDTO reviewDTO);
 	
 	
 	//기존 게시물의 내용을 인출한다.

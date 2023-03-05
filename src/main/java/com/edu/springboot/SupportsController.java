@@ -72,9 +72,32 @@ public class SupportsController {
 		return "/supports/notice";
 	}
 	
+	@RequestMapping("/supports/inquiry.do")
+	public String lists3(SupportsDTO supportsDTO, Model model, HttpServletRequest req) {
+		
+		int totalRecordCount = 
+				daoo.inquiryCount(supportsDTO);
+		
+		ArrayList<SupportsDTO> lists = 
+				daoo.inquirylist(supportsDTO);
+
+		for (SupportsDTO dto : lists) {
+			System.out.println("나 동작");
+			String temp = dto.getContents()
+					.replace("\r\n", "<br/>");
+			dto.setContents(temp);
+			System.out.println("콘텐츠 >>>>> "+dto.getContents());
+		}
+		
+		model.addAttribute("lists", lists);
+		return "/supports/inquiry";
+	}
+	
 	@RequestMapping("/supports/voc.do")
 	public String write(Model model, HttpSession session,
-			HttpServletRequest req) {
+			HttpServletRequest req, Principal principal) {
+		String email = principal.getName();
+		session.setAttribute("siteUserInfo", email);
 		if(session.getAttribute("siteUserInfo")==null)
 		{
 			model.addAttribute("backUrl", "supports/voc");
@@ -87,26 +110,27 @@ public class SupportsController {
 	// 글쓰기 처리
 	@RequestMapping(value = "/supports/vocAction.do", method = RequestMethod.POST)
 	public String writeAction(Model model, HttpServletRequest req, HttpSession session, Principal principal) {
-
+		String email = principal.getName();
+		session.setAttribute("siteUserInfo", email);
 		if (session.getAttribute("siteUserInfo") == null) {
 			return "redirect:login.do";
 		}
-		String email = principal.getName();
 		int applyRow = daoo.write(req.getParameter("contents"), 
 								email, 
 								req.getParameter("title"));
 		System.out.println("입력된행의갯수:" + applyRow);
 
-		return "redirect:voc.do";
+		return "redirect:in.do";
 	}
 	
 	@RequestMapping("/supports/delete.do")
 	public String delete(HttpServletRequest req, HttpSession session, Principal principal) {
 		//삭제는 본인만 가능하므로 로그인 확인을 진행한다.
+		String email = principal.getName();
+		session.setAttribute("siteUserInfo", email);
 		if (session.getAttribute("siteUserInfo") == null) {
 			return "redirect:login.do";
 		}
-		String email = principal.getName();
 		int applyRow = daoo
 				.delete(req.getParameter("idx"),
 						email);

@@ -6,9 +6,11 @@
  
  <mapper namespace="com.edu.springboot.jdbc.IReviewService">
  
-	<insert id="reviewWrite">
-		insert into review (idx, product_idx, bot_cate_idx, member_idx, goods_title, ccomment, star_rate, servey1, servey2, servey3, summary)
-		values (REVIEW_seq.nextva l, 1, 1, 1, goods_title=#{goods_title},ccomment=#{ccomment},star_rate=#{star_rate},servey1=#{servey1},servey2=#{servey2},servey3=#{servey3},summary=#{summary})
+	<insert id="reviewWrite" >
+		INSERT INTO REVIEW 
+		(idx, product_idx, bot_cate_idx, member_idx, goods_title, ccomment, star_rate, servey1, servey2, servey3, summary)
+		VALUES  
+		(REVIEW_seq.nextval, 2, 2, 2, #{goods_title}, #{ccomment}, #{star_rate}, #{servey1}, #{servey2}, #{servey3}, #{summary})
 	</insert>
 
 	<select id="reviewView" resultType="com.edu.springboot.jdbc.ReviewDTO"
@@ -17,4 +19,11 @@
 		AND goods_title=#{goods_title}
 	</select>
  
+	<select id="reviewcount" resultType="int">
+		SELECT COUNT(*) from review
+	</select>
+
+	<select id="reviewList" resultType="com.edu.springboot.jdbc.ReviewDTO">
+		SELECT * FROM review order by idx desc
+	</select>
  </mapper>

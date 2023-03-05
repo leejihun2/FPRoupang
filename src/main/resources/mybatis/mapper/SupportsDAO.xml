@@ -22,17 +22,19 @@
 		</if>
 	</select>
 	
+	<select id="inquiryCount" resultType="int">
+		SELECT COUNT(*) from inquiry
+	</select>
+
+	<select id="inquirylist" resultType="com.edu.springboot.jdbc.SupportsDTO">
+		SELECT * FROM inquiry ORDER BY idx DESC
+	</select>
+	
 	<insert id="write">
 		INSERT INTO inquiry (idx, title, email, contents, regidate, name, product)
 		VALUES
-		(inquiry_seq.nextval, #{_title},#{_email}, #{_contents}, sysdate, '주문내역')
+		(inquiry_seq.nextval, #{_title},#{_email}, #{_contents}, sysdate, '우뇽자', '주문내역')
 	</insert>
-
-	<select id="view" resultType="com.edu.springboot.jdbc.SupportsDTO"
-		parameterType="com.edu.springboot.jdbc.SupportsDTO">
-		SELECT * FROM couboard WHERE idx=#{idx}
-		AND email=#{email}
-	</select>
 	
 	<update id="modify" parameterType="com.edu.springboot.jdbc.SupportsDTO">
 		UPDATE couboard

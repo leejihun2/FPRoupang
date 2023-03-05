@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/common.css" type="text/css">
 <link rel="stylesheet" href="../css/list.css" type="text/css">
+<link rel="stylesheet" href="../css/star_rate.css" type="text/css">
   <!-- Latest compiled JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -28,43 +29,7 @@ function deleteRow(idx){
 </script>
 </head>
 <body style="background-color: white;">
-<style>
-#star_rate fieldset{
-    display: inline-block;
-    direction: rtl;
-    border:0;
-}
-#star_rate fieldset legend{
-    text-align: right;
-}
-#star_rate input[type=radio]{
-    display: none;
-}
-#star_rate label{
-    font-size: 3em;
-    color: transparent;
-    text-shadow: 0 0 0 #f0f0f0;
-}
-#star_rate label:hover{
-    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
-#star_rate label:hover ~ label{
-    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
-#star_rate input[type=radio]:checked ~ label{
-    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
-#reviewContents {
-    width: 100%;
-    height: 150px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: solid 1.5px #D3D3D3;
-    border-radius: 5px;
-    font-size: 16px;
-    resize: none;
-}
-</style>
+
 <div class="container">
 	
 	<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->
@@ -78,6 +43,7 @@ function deleteRow(idx){
 		<col width="*"/>
 	</colgroup>
 	<tbody>
+	
 		<tr>
 			<td>
 				<select name="goods_title" value="상품문의">
@@ -93,56 +59,56 @@ function deleteRow(idx){
 				</select>
 			</td>
 		</tr>	
-		<div class="mb-3" name="star_rate" id="star_rate">
+		<div class="mb-3" name="star_rate" id="star_rates">
 			<fieldset>
 				<span class="text-bold">별점을 선택해주세요</span> 
-				<input type="radio" name="reviewStar" value="5" id="star_rate1">
+				<input type="radio" name="star_rate" value="5" id="star_rate1" name="star_rate1">
 					<label for="star_rate1">★</label> 
-				<input type="radio" name="reviewStar" value="4" id="star_rate2">
+				<input type="radio" name="star_rate" value="4" id="star_rate2" name="star_rate2">
 					<label for="star_rate2">★</label>
-				<input type="radio" name="reviewStar" value="3" id="star_rate3">
+				<input type="radio" name="star_rate" value="3" id="star_rate3" name="star_rate3">
 					<label for="star_rate3">★</label> 
-				<input type="radio" name="reviewStar" value="2" id="star_rate4">
+				<input type="radio" name="star_rate" value="2" id="star_rate4" name="star_rate4">
 					<label for="star_rate4">★</label> 
-				<input type="radio" name="reviewStar" value="1" id="star_rate5">
+				<input type="radio" name="star_rate" value="1" id="star_rate5" name="star_rate5">
 					<label for="star_rate5">★</label>
 			</fieldset>
 		</div>
-		<dl name="myform" id="myform">
+		<dl id="servey1" name="servey1">
 			<dt>상품의 품질은 어떤가요</dt>
 			
 				
-					<dd><label><input type="radio" name="group_22" class="_survey-answer" data-question="세척력은 어느 정도인가요?" data-question-id="22" data-answer-id="59" data-answer="예상보다 좋아요">예상보다 좋아요</label></dd>
+					<dd><label><input type="radio" name="servey1"  value="3">예상보다 좋아요</label></dd>
 				
-					<dd><label><input type="radio" name="group_22" class="_survey-answer" data-question="세척력은 어느 정도인가요?" data-question-id="22" data-answer-id="60" data-answer="설명과 비슷해요">설명과 비슷해요</label></dd>
+					<dd><label><input type="radio" name="servey1"  value="2">설명과 비슷해요</label></dd>
 				
-					<dd><label><input type="radio" name="group_22" class="_survey-answer" data-question="세척력은 어느 정도인가요?" data-question-id="22" data-answer-id="61" data-answer="예상보다 떨어져요">예상보다 떨어져요</label></dd>
+					<dd><label><input type="radio" name="servey1"  value="1">예상보다 떨어져요</label></dd>
 				
 			
 		</dl>
 	
-		<dl class="radio-survey">
+		<dl id="servey2" name="servey2">
 			<dt>배송은 어떠셨나요?</dt>
 			
 				
-					<dd><label><input type="radio" name="group_18" class="_survey-answer" data-question="사용 시 피부로 전해지는 자극은 어느 정도였나요?" data-question-id="18" data-answer-id="38" data-answer="자극이 없어요">자극이 없어요</label></dd>
+					<dd><label><input type="radio" name="servey2" value="3">자극이 없어요</label></dd>
 				
-					<dd><label><input type="radio" name="group_18" class="_survey-answer" data-question="사용 시 피부로 전해지는 자극은 어느 정도였나요?" data-question-id="18" data-answer-id="39" data-answer="조금 따끔거려요">조금 따끔거려요</label></dd>
+					<dd><label><input type="radio" name="servey2" value="2">조금 따끔거려요</label></dd>
 				
-					<dd><label><input type="radio" name="group_18" class="_survey-answer" data-question="사용 시 피부로 전해지는 자극은 어느 정도였나요?" data-question-id="18" data-answer-id="40" data-answer="자극이 있어요">자극이 있어요</label></dd>
+					<dd><label><input type="radio" name="servey2" value="1">자극이 있어요</label></dd>
 				
 			
 		</dl>
 	
-		<dl class="radio-survey">
+		<dl id="servey3" name="servey3">
 			<dt>기사님은 친절했나요?</dt>
 			
 				
-					<dd><label><input type="radio" name="group_24" class="_survey-answer" data-question="사용해보시니 느껴지는 촉촉함은 어땠나요? " data-question-id="24" data-answer-id="62" data-answer="기대보다 촉촉해요">기대보다 촉촉해요</label></dd>
+					<dd><label><input type="radio" name="servey3" value="3">자극이 없어요</label></dd>
 				
-					<dd><label><input type="radio" name="group_24" class="_survey-answer" data-question="사용해보시니 느껴지는 촉촉함은 어땠나요? " data-question-id="24" data-answer-id="63" data-answer="설명과 비슷해요">설명과 비슷해요</label></dd>
+					<dd><label><input type="radio" name="servey3" value="2">조금 따끔거려요</label></dd>
 				
-					<dd><label><input type="radio" name="group_24" class="_survey-answer" data-question="사용해보시니 느껴지는 촉촉함은 어땠나요? " data-question-id="24" data-answer-id="64" data-answer="기대보다 건조해요">기대보다 건조해요</label></dd>
+					<dd><label><input type="radio" name="servey3" value="1">자극이 있어요</label></dd>
 				
 			
 		</dl>
@@ -152,6 +118,14 @@ function deleteRow(idx){
 			<td>
 				<textarea rows="10" class="form-control" 
 				name="ccomment" placeholder="의견을 남겨주세요"></textarea>
+			</td>
+		</tr>	
+		<tr>
+			<th class="text-center" 
+				style="vertical-align:middle;">내용</th>
+			<td>
+				<textarea rows="10" class="form-control" 
+				name="summary" placeholder="한줄평"></textarea>
 			</td>
 		</tr>	
 	</tbody>

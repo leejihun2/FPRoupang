@@ -1,6 +1,7 @@
 package com.edu.springboot;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,12 +13,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.edu.springboot.jdbc.IReviewService;
+import com.edu.springboot.jdbc.ReviewDTO;
+import com.edu.springboot.jdbc.SupportsDTO;
 
 @Controller
 public class ReviewController {
 
 	@Autowired
 	IReviewService daoo;
+	
+	@RequestMapping("/review/reviewList.do")
+	public String faq(Model model, HttpServletRequest req) {
+		
+		int totalRecordCount = 
+				daoo.reviewcount();
+		
+		ArrayList<ReviewDTO> lists = 
+				daoo.reviewList();
+		
+		for (ReviewDTO dto : lists) {
+			String temp = dto.getCcomment()
+					.replace("\r\n", "<br/>");
+			dto.setCcomment(temp);
+		}
+		
+		model.addAttribute("lists", lists);
+		return "review/reviewList";
+	}
 	
 	@RequestMapping("/review/review.do")
 	public String reviewWrite(Model model, HttpSession session,
@@ -28,15 +50,9 @@ public class ReviewController {
 	
 	// 글쓰기 처리
 	@RequestMapping(value = "/review/reviewAction.do", method = RequestMethod.POST)
-	public String writeAction(Model model, HttpServletRequest req, HttpSession session, Principal principal) {
+	public String writeAction(ReviewDTO reviewDTO, Model model, HttpServletRequest req, HttpSession session, Principal principal) {
 
-		int applyRow = daoo.reviewWrite(req.getParameter("goods_title"), 
-								req.getParameter("ccomment"),
-								req.getParameter("star_rate"),
-								req.getParameter("servey1"),
-								req.getParameter("servey2"),
-								req.getParameter("servey3"),
-								req.getParameter("summary"));
+		int applyRow = daoo.reviewWrite(reviewDTO);
 		System.out.println("입력된행의갯수:" + applyRow);
 
 		return "redirect:review.do";
