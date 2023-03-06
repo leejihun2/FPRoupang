@@ -6,6 +6,7 @@
  
  <mapper namespace="com.edu.springboot.jdbc.IReviewService">
  
+ 
 	<insert id="reviewWrite" >
 		INSERT INTO REVIEW 
 		(idx, product_idx, bot_cate_idx, member_idx, goods_title, ccomment, star_rate, servey1, servey2, servey3, summary)

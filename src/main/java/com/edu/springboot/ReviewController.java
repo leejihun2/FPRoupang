@@ -23,7 +23,7 @@ public class ReviewController {
 	IReviewService daoo;
 	
 	@RequestMapping("/review/reviewList.do")
-	public String review(Model model, HttpServletRequest req, ReviewDTO reviewDTO) {
+	public String review(Model model, HttpServletRequest req) {
 		
 		
 		int totalRecordCount = 
