@@ -38,28 +38,19 @@ function deleteRow(idx){
 	</div>
 		<!-- 방명록 반복 부분 s -->
 		<c:forEach items="${lists }" var="row">		
-			<div class="border mt-2 mb-2">
-		<button type="button" class="btn" data-bs-toggle="collapse" data-bs-target="#dd">
-	      작성자:${row.name }(${row.email })</button>
-	    <div id="dd" class="collapse">
-	    	${row.contents }
-	    </div>
+		<div class="border mt-2 mb-2">
+			<div class="media">
+				<div class="media-body">
+					<p>${row.title }</p>
+					<h4 class="media-heading">(${row.email })</h4>
+					<p>${row.contents }</p>
+				</div>	  
 			<!--  수정,삭제버튼 -->
 			<div class="media-right">
 				<!-- 수정/삭제 버튼은작성자 본인에게만 보여야 하므로 세션영역에 저장된
 				아이디와 게시물을 작성한 아이디가 같을때만 버튼을 출력한다. 
 				EL에서는 영역을 지정하는 내장객체를 생략할 수 있다. 따라서 sessionScope
 				는 삭제해도 무방하다.-->
-				<c:if test="${name eq row.email }">
-					<button class="btn btn-secondary"
-						onclick="location.href='modify.do?idx=${row.idx}';">
-						수정
-					</button>
-					<button class="btn btn-secondary"
-						onclick="javascript:deleteRow(${row.idx});">
-						삭제
-					</button>
-				</c:if>
 			</div>
 		</div>
 	</c:forEach>

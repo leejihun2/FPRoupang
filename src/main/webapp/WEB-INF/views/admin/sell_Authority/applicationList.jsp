@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<link href="../../css/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>      
 <!DOCTYPE html>
@@ -18,25 +19,17 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Blank</title>
+<title>판매자입점신청목록</title>
 
 <!-- Custom fonts for this template-->
-<link rel="stylesheet" href="../css/all.min.css">
+<link rel="stylesheet" href="../../css/all.min.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link rel="stylesheet" href="../css/sb-admin-2.min.css">
+<link rel="stylesheet" href="../../css/sb-admin-2.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-function deleteRow(idx){
-   if(confirm("정말로 삭제하시겠습니까?")){
-	   //삭제 요청명으로 이동한다.
-      location.href = "delete.do?idx="+idx;
-   }
-}
-</script>
 </head>
 
 <body id="page-top">
@@ -45,44 +38,50 @@ function deleteRow(idx){
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<%@include file="./sidebar.jsp"%>
+		<%@include file="../sidebar.jsp"%>
 		<!-- End of Sidebar -->
 
 		<!-- Content Wrapper -->
+
 		<div id="content-wrapper" class="d-flex flex-column">
 
 			<!-- Main Content -->
 			<div id="content">
 
 				<!-- Topbar -->
-				<%@include file="./topbar.jsp"%>
+				<%@include file="../topbar.jsp"%>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
+				
 				<div class="container-fluid">
-
-
-					<c:forEach items="${lists }" var="row" varStatus="loop">
-						<div class="d-grid gap-2">
-							<button type="button" class="btn" data-bs-toggle="collapse"
-								data-bs-target="#a${row.idx}">
-								${row.title }<br />
-							</button>
-							<div id="a${row.idx}" class="collapse"
-								style="background-color: rgb(250, 250, 250);">
-								${row.contents }</div>
-							<div class="media-right">
-		                  	<s:authorize access="hasRole('admin')">
-			                     <button class="btn btn-secondary"
-										onclick="location.href='modify.do?idx=${row.idx}';">
-										수정</button>
-									<button class="btn btn-secondary"
-										onclick="javascript:deleteRow(${row.idx});">삭제</button>
-			                  </s:authorize>
-							</div>
-						</div>
-					</c:forEach>
-
+					<h2>판매자입점신청목록</h2>
+	<table border="0">
+		<tr>
+			<th>아이디</th>
+			<th>상호</th>
+			<th>이름</th>
+			<th>신청일</th>
+			
+			<th></th>
+		</tr>
+		<c:forEach items="${lists }" var="row" varStatus="loop">
+		<tr>
+			<td>${row.email }</td>
+		
+			<td>${row.name }</td>
+			<td>${row.company_name }</td>
+			<td>${row.regidate }</td>
+		
+			<td>
+				<a href="appOk.do?member_idx=${row.member_idx}">승인</a>
+				<a href="appView.do?member_idx=${row.member_idx }">상세보기</a>
+				<a href="appRegect.do?member_idx=${row.member_idx }">거절</a>
+			</td>
+		</tr>
+		</c:forEach>
+	</table>
+	<a href="regist.do">회원등록</a>
 
 				</div>
 				<!-- /.container-fluid -->
@@ -135,14 +134,14 @@ function deleteRow(idx){
 	</div>
 
 	<!-- Bootstrap core JavaScript-->
-	<script src="../css/vendor/jquery/jquery.min.js"></script>
-	<script src="../css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../../css/vendor/jquery/jquery.min.js"></script>
+	<script src="../../css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script src="../css/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="../../css/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
-	<script src="../js/sb-admin-2.min.js"></script>
+	<script src="../../js/sb-admin-2.min.js"></script>
 
 </body>
 

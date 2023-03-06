@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<link href="../../css/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>      
 <!DOCTYPE html>
@@ -18,25 +19,17 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Blank</title>
+<title>판매자입점신청목록</title>
 
 <!-- Custom fonts for this template-->
-<link rel="stylesheet" href="../css/all.min.css">
+<link rel="stylesheet" href="../../css/all.min.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link rel="stylesheet" href="../css/sb-admin-2.min.css">
+<link rel="stylesheet" href="../../css/sb-admin-2.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-function deleteRow(idx){
-   if(confirm("정말로 삭제하시겠습니까?")){
-	   //삭제 요청명으로 이동한다.
-      location.href = "delete.do?idx="+idx;
-   }
-}
-</script>
 </head>
 
 <body id="page-top">
@@ -45,43 +38,85 @@ function deleteRow(idx){
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<%@include file="./sidebar.jsp"%>
+		<%@include file="../sidebar.jsp"%>
 		<!-- End of Sidebar -->
 
 		<!-- Content Wrapper -->
+
 		<div id="content-wrapper" class="d-flex flex-column">
 
 			<!-- Main Content -->
 			<div id="content">
 
 				<!-- Topbar -->
-				<%@include file="./topbar.jsp"%>
+				<%@include file="../topbar.jsp"%>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
+				
 				<div class="container-fluid">
+					
+	
+	<h3 class="text-center">판매자 신청 상세보기</h3>
+	<c:forEach items="${view }" var="row">		
+		
+	<table border="0">
+		<tr>
+			<td>idx: ${row.member_idx }</td>
+		</tr>
+		<tr>
+			<td>아이디</td><td>${row.email }</td>
+		</tr>
+		<tr>
+			<td>이름</td><td>${row.name }</td>
+		</tr>
+		<tr>
+			<td>사업자등록번호</td><td>${row.business_num }</td>
+		</tr>
+		<tr>
+			<td>대표구성</td><td>${row.one_rep_co_rep }</td>
+		</tr>
+		<tr>
+			<td>대표자명</td><td>${row.rep_name }</td>
+		</tr>
+		<tr>
+			<td>상호</td><td>${row.company_name }</td>
+		</tr>
+		<tr>
+			<td>사업장주소</td><td>${row.office_zipcode }${row.office_address }</td>
+		</tr>
+		<tr>
+			<td>통신판매업신고번호</td><td>${row.ebuis_report_num }</td>
+		</tr>
+		<tr>
+			<td>입점담당자명</td><td>${row.shop_manager_name }</td>
+		</tr>
+		<tr>
+			<td>정산계좌 </td>
+		</tr>
+		<tr>
+			<td>은행</td><td>${row.whichBank }</td>
+		</tr>
+		<tr>
+			<td>예금주</td><td>${row.accountHolder }</td>
+		</tr>
+		<tr>
+			<td>계좌번호</td><td>${row.bank_account }</td>
+		</tr>
+		<tr>
+			<td>신청일</td><td>${row.regidate }</td>
+		</tr>
+			
+		
+			
+	</table>	
+		
+		<a href="appRegect.do?member_idx=${row.member_idx }">차단</a>
+		<a href="sellerList.do">목록보기</a>
+	</c:forEach>
 
 
-					<c:forEach items="${lists }" var="row" varStatus="loop">
-						<div class="d-grid gap-2">
-							<button type="button" class="btn" data-bs-toggle="collapse"
-								data-bs-target="#a${row.idx}">
-								${row.title }<br />
-							</button>
-							<div id="a${row.idx}" class="collapse"
-								style="background-color: rgb(250, 250, 250);">
-								${row.contents }</div>
-							<div class="media-right">
-		                  	<s:authorize access="hasRole('admin')">
-			                     <button class="btn btn-secondary"
-										onclick="location.href='modify.do?idx=${row.idx}';">
-										수정</button>
-									<button class="btn btn-secondary"
-										onclick="javascript:deleteRow(${row.idx});">삭제</button>
-			                  </s:authorize>
-							</div>
-						</div>
-					</c:forEach>
+
 
 
 				</div>
@@ -135,14 +170,14 @@ function deleteRow(idx){
 	</div>
 
 	<!-- Bootstrap core JavaScript-->
-	<script src="../css/vendor/jquery/jquery.min.js"></script>
-	<script src="../css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../../css/vendor/jquery/jquery.min.js"></script>
+	<script src="../../css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script src="../css/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="../../css/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
-	<script src="../js/sb-admin-2.min.js"></script>
+	<script src="../../js/sb-admin-2.min.js"></script>
 
 </body>
 

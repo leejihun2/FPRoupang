@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/common.css" type="text/css">
 <link rel="stylesheet" href="../css/list.css" type="text/css">
+<link rel="stylesheet" href="../css/star_rate.css" type="text/css">
   <!-- Latest compiled JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -27,32 +28,14 @@ function deleteRow(idx){
 }
 </script>
 </head>
-<body>
-<script type="text/javascript">
-function writeValidate(f)
-{
-	if(f.name.value==""){
-		alert("작성자 이름을 입력하세요");
-		f.name.focus();
-		return false;
-	}
-	if(f.contents.value==""){
-		alert("내용을 입력하세요");
-		f.contents.focus(); 
-		return false;
-	} 
-}
-</script>
-<div id="top">
-    <%@include file="../top.jsp" %>
-    </div>
-<div class="container" style="background: white;">
+<body style="background-color: white;">
+
+<div class="container">
 	
-	<%@include file="../category.jsp" %>
 	<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->
 	<form name="writeFrm" method="post" 
 		onsubmit="return writeValidate(this);"
-		action="<c:url value="/supports/vocAction.do" />" >
+		action="<c:url value="/review/reviewAction.do" />" >
 		
 	<table class="table table-bordered">
 	<colgroup>
@@ -60,23 +43,10 @@ function writeValidate(f)
 		<col width="*"/>
 	</colgroup>
 	<tbody>
-	<s:authorize access="isAuthenticated()">
-					<s:authentication property="name" var="name" />
-	</s:authorize>
-		<tr>
-			<th class="text-center" 
-				style="vertical-align:middle;">작성자</th>
-			<td>
-				<!-- 쓰기 페이지는 로그인 후 접근할 수 있으므로 세션
-				영역에 저장한 DTO객체에서 이름을 가져와 삽입한다. -->
-				<input type="text" class="form-control" 
-					style="width:130px;" name="name"
-						value="${name }" />
-			</td>
-		</tr>
+	
 		<tr>
 			<td>
-				<select name="title" value="배송관련문의">
+				<select name="goods_title" value="상품문의">
 					<option value="유형을 선택해주세요">유형을 선택해주세요</option>
 					<option value="주문 상품 문의">주문 상품 문의</option>
 					<option value="주문 상품 문의">주문 상품 문의</option>
@@ -89,12 +59,73 @@ function writeValidate(f)
 				</select>
 			</td>
 		</tr>	
+		<div class="mb-3" name="star_rate" id="star_rates">
+			<fieldset>
+				<span class="text-bold">별점을 선택해주세요</span> 
+				<input type="radio" name="star_rate" value="5" id="star_rate1" name="star_rate1">
+					<label for="star_rate1">★</label> 
+				<input type="radio" name="star_rate" value="4" id="star_rate2" name="star_rate2">
+					<label for="star_rate2">★</label>
+				<input type="radio" name="star_rate" value="3" id="star_rate3" name="star_rate3">
+					<label for="star_rate3">★</label> 
+				<input type="radio" name="star_rate" value="2" id="star_rate4" name="star_rate4">
+					<label for="star_rate4">★</label> 
+				<input type="radio" name="star_rate" value="1" id="star_rate5" name="star_rate5">
+					<label for="star_rate5">★</label>
+			</fieldset>
+		</div>
+		<dl id="servey1" name="servey1">
+			<dt>상품의 품질은 어떤가요</dt>
+			
+				
+					<dd><label><input type="radio" name="servey1"  value="3">예상보다 좋아요</label></dd>
+				
+					<dd><label><input type="radio" name="servey1"  value="2">설명과 비슷해요</label></dd>
+				
+					<dd><label><input type="radio" name="servey1"  value="1">예상보다 떨어져요</label></dd>
+				
+			
+		</dl>
+	
+		<dl id="servey2" name="servey2">
+			<dt>배송은 어떠셨나요?</dt>
+			
+				
+					<dd><label><input type="radio" name="servey2" value="3">자극이 없어요</label></dd>
+				
+					<dd><label><input type="radio" name="servey2" value="2">조금 따끔거려요</label></dd>
+				
+					<dd><label><input type="radio" name="servey2" value="1">자극이 있어요</label></dd>
+				
+			
+		</dl>
+	
+		<dl id="servey3" name="servey3">
+			<dt>기사님은 친절했나요?</dt>
+			
+				
+					<dd><label><input type="radio" name="servey3" value="3">자극이 없어요</label></dd>
+				
+					<dd><label><input type="radio" name="servey3" value="2">조금 따끔거려요</label></dd>
+				
+					<dd><label><input type="radio" name="servey3" value="1">자극이 있어요</label></dd>
+				
+			
+		</dl>
 		<tr>
 			<th class="text-center" 
 				style="vertical-align:middle;">내용</th>
 			<td>
 				<textarea rows="10" class="form-control" 
-				name="contents" placeholder="의견을 남겨주세요"></textarea>
+				name="ccomment" placeholder="의견을 남겨주세요"></textarea>
+			</td>
+		</tr>	
+		<tr>
+			<th class="text-center" 
+				style="vertical-align:middle;">내용</th>
+			<td>
+				<textarea rows="10" class="form-control" 
+				name="summary" placeholder="한줄평"></textarea>
 			</td>
 		</tr>	
 	</tbody>

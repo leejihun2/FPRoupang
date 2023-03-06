@@ -24,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from bot_category bc JOIN ticket t ON bc.idx=t.bot_idx 
 		where sub_idx=#{param1} and company_name=#{param2}
 	</select>
+<<<<<<< HEAD
 	<select id="select_cate_bot_j"
 	parameterType="com.edu.springboot.jdbc.CategoryDTO"
 	resultType="com.edu.springboot.jdbc.ParameterTicketDTO">
@@ -31,4 +32,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where sub_idx=#{param1} and company_name=#{param2}
 	</select>
  
+=======
+ 	
+ 	<select id="select_one_cate"
+ 	resultType="String">
+ 		SELECT title FROM mid_category WHERE idx=#{param1}
+ 	</select>
+ 	
+ 	<select id="select_bot_cate"
+ 	resultType="String">
+ 		SELECT title FROM bot_category WHERE idx=#{param1}
+ 	</select>
+>>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
  </mapper>

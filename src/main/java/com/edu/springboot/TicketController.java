@@ -30,7 +30,7 @@ import com.edu.springboot.jdbc.ParameterTicketDTO;
 import com.edu.springboot.jdbc.TicketDTO;
 import com.edu.springboot.jdbc.TicketInfoDTO;
 import com.edu.springboot.jdbc.TicketService;
-
+import com.edu.springboot.jdbc.TotalTicketDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -366,5 +366,41 @@ public class TicketController {
 		
 		ticket_dao.delete_ticket_info(val, company_name);
 		return "/home";
+	}
+	
+	@RequestMapping("/ticket_List")
+	public ModelAndView Show_Ticket_List(HttpServletRequest req) {
+		int sub_idx = Integer.parseInt(req.getParameter("category"));
+		
+		String location = ""; 
+		if(req.getParameter("location")!=null) {
+			location = req.getParameter("location");
+		}
+		ModelAndView mv = new ModelAndView();
+		ArrayList<TotalTicketDTO> ticket_list = ticket_dao.show_ticket_list(sub_idx, location);
+		
+		String category_title = cate_dao.select_one_cate(sub_idx);
+		
+		mv.addObject("category_title",category_title);
+		mv.addObject("ticket_list", ticket_list);
+		
+		mv.setViewName("/ticket/ticketList");
+		return mv;
+	}
+	
+	@RequestMapping("/ticketDetail")
+	public String movepage(HttpServletRequest req, Model model) {
+		int value = Integer.parseInt(req.getParameter("value"));
+		
+		TicketDTO Total_Ticket = ticket_dao.ticket_list(value);
+		model.addAttribute("Total_Ticket",Total_Ticket);
+		
+		String category_title = cate_dao.select_bot_cate(value);
+		model.addAttribute("t_title",category_title);
+		
+		TicketInfoDTO Total_Ticket_info = ticket_dao.select_ticket_info(value);
+		model.addAttribute("Total_Ticket_info",Total_Ticket_info);
+		
+		return "/ticket/ticket_detail_view";
 	}
 }

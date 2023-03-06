@@ -79,7 +79,7 @@ function deleteRow(idx){
 								style="background-color: rgb(250, 250, 250);">
 								${row.contents }</div>
 							<div class="media-right">
-								<s:authorize access="hasRole('1')">
+								<s:authorize access="hasRole('admin')">
 									<button class="btn btn-secondary"
 										onclick="location.href='modify.do?idx=${row.idx}';">
 										수정</button>

@@ -157,4 +157,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		SELECT t_title_image, t_image1, t_image2, t_image3, t_image4 FROM ticket
  		WHERE bot_idx = #{bot_idx}
  	</select>
+ 	
+ 	<select id="show_ticket_list" resultType="com.edu.springboot.jdbc.TotalTicketDTO">
+ 		SELECT idx, ti_price, t_title_image, ti_title, ti_discount, title
+ 		FROM (SELECT bot_idx, ti_price, ti_title, ti_discount,
+ 					RANK() OVER (PARTITION BY bot_idx ORDER BY ti_price ASC) rk
+ 				FROM ticket_info) ti JOIN ticket t ON ti.bot_idx=t.bot_idx
+ 			JOIN (SELECT * FROM bot_category WHERE sub_idx=#{param1}) bc
+ 			ON bc.idx = ti.bot_idx
+ 		WHERE rk=1 ORDER BY idx
+ 	</select>
  </mapper>

@@ -15,6 +15,7 @@
 <meta charset="UTF-8">
 <title>Roupang</title>
 <script>
+	/* 동적 셀렉트박스 생성 */
 	function setSelectBox(obj){
 		var sub_idx = obj.value;
 		var level = parseInt((obj.id).substr(-1,1));
@@ -72,6 +73,7 @@
 				
 			}
 		}else{
+		/* --분류--를 선택할 경우 초기화 */
 			$('#ticket_list').empty();
 			document.getElementById("form").reset();
 			for(var now = level ; now<=max_level ; now++){
@@ -80,6 +82,8 @@
 			}
 		}
 	}
+	
+	/* 티켓을 클릭할 경우 해당 티켓 정보 가져오는 메소드 */
 	function simple_click(obj){
 		const checkboxes = document.getElementsByName('ticket_select');
 		checkboxes.forEach((checkbox) => {checkbox.checked = false;})
@@ -91,6 +95,7 @@
 		$('.ticket_intro').empty();
 		$("#ticket_info_detail").css("display","none");
 		$("#ticket_info").css("display","none");
+		//티켓 상세 정보 출력
 		$.post(
 			"/ticketDetailInfo"
 			,{bot_idx : obj}
@@ -115,6 +120,7 @@
 				});
 			}
 		);
+		//티켓 정보 출력
 		$.post(
 			"/ticketInfo"
 			,{bot_idx : obj}
@@ -166,6 +172,8 @@
 			}
 		);
 	}
+	
+	//버튼 클릭시 발생 이벤트 정리
 	function btnclick(obj){
 		var mode = $(obj).val();
 		if(mode=="all"){
@@ -200,18 +208,9 @@
 	}
 	
 	$(function(){
+		/* 상품 등록 클릭시 이벤트 처리 */
 		$("#submit").click(function(){
 			
-			if($("#main_image").val()==""){
-				alert("메인 이미지는 필수로 등록해야합니다.");
-				return false;
-			}
-			
-			var sub_image=$("#t_image")
-			if(sub_image[0].files.length>=5){
-				alert("서브 이미지는 최대 4개까지 등록가능합니다.");
-				return false;
-			}
 			if($("#ti_title").val()==""){
 				alert("상품상세명을 입력하세요");
 				$("#ti_title").focus();
@@ -226,8 +225,16 @@
 				$("#ti_price").focus();
 				return false;
 			}
-			return false;
 			if($("#t_intro").val()!=""){
+				if($("#main_image").val()==""){
+					alert("메인 이미지는 필수로 등록해야합니다.");
+					return false;
+				}
+				var sub_image=$("#t_image")
+				if(sub_image[0].files.length>=5){
+					alert("서브 이미지는 최대 4개까지 등록가능합니다.");
+					return false;
+				}
 				if($("#bot_title").val()==""){
 					alert("상품명를 입력하세요");
 					$("#bot_title").focus();
@@ -265,6 +272,7 @@
 			}
 			
 		});
+		/* 상세상품 삭제 실행시 발생 */
 		$("#info_delete").click(function(){
 			var delete_val1=[];
 			$("[name=ticket_info_select]").each(function(idx){
@@ -280,6 +288,7 @@
 				form.action="/detail_delete_ticket?value="+delete_val1+"&company_name="+$("#company_name").val();
 			}
 		});
+		/* 전체 상품 삭제 발생시 이벤트 처리 */
 		$("#delete_all").click(function(){
 			var delete_val2=[];
 			$("[name=ticket_select]").each(function(idx){
@@ -297,6 +306,7 @@
 		});
 	});
 	$(document).ready(function(){
+		/* chkbox 없음 클릭시 이벤트 처리 */
 		$("#noservice").click(function(){
 			if(this.checked){
 				$(".service").prop('disabled',true).prop('checked',false);
@@ -304,6 +314,7 @@
 				$(".service").prop('disabled',false);
 			}
 		});
+		/* 위와 동일 */
 		$("#nofac").click(function(){
 			if(this.checked){
 				$(".fac").prop('disabled',true).prop('checked',false);
@@ -311,14 +322,8 @@
 				$(".fac").prop('disabled',false);
 			}
 		});
-		$(".service").click(function(){
-			var total = [];
-			$("input[name=t_conservice]:checked").each(function(){
-				var chk =$(this).val();
-				total.push(chk);
-			});
-		});
 		
+		/* 이미지 선택시 미리보기 출력 (서브 이미지) */
 		var sel_files=[];
 		$("#t_image").on("change",function(e){
 			document.getElementById("sub_thumbnail").innerHTML='';
@@ -342,6 +347,7 @@
 			}
 		});
 	});
+	/* 이미지 선택시 미리보기 출력 (메인 이미지) */
 	function setThumbnail(event) {
 		var reader = new FileReader();
 		reader.onload = function(event) {
