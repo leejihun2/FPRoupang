@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="./css/productReview.css" type="text/css">
     <link rel="stylesheet" href="./css/side.css" type="text/css">
     <link rel="stylesheet" href="./css/main.css" type="text/css">
+    <link rel="stylesheet" href="../css/star_rating.css" type="text/css">
+	<link rel="stylesheet" href="../css/star_total.css" type="text/css">
+	<script src="../js/star.js"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <style>
@@ -488,9 +491,15 @@
 			                	<div class="basis-product-address">
 			                		대충 주소
 			                	</div>
-			                	<div class="basis-product-best-review">
-			                		대충 제일 좋은 리뷰
-			                	</div>
+			                	<c:forEach items="${totalstar }" var="star">
+										<input type="hidden" name="ratevalue" value="${star.star_rate}"
+											step="0.1" min="0" max="5" />
+										<div class="rating-wrap">
+											<div class="rating">
+												<div class="overlay"></div>
+											</div>
+										</div>
+								</c:forEach>
 			                	<button class="btn btn-primaryinfo" style="height: 42px; line-height: 40px; font-size: 18px;">상품 구매</button>
 		                	</div>
 		                </div>
@@ -570,7 +579,51 @@
 	                	
 	                	<div class="basis-aside-section">
 	                		<div class="basis-review-section">
-	                			대충 리뷰
+	                			<c:forEach items="${lists }" var="row">
+									<div class="border mt-2 mb-2">
+										<!--  -->
+										<ul class="comment">
+											<li>
+												<div class="score_info">
+													<div>
+														<div class="star-ratings">${row.star_rate }</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+										<!--  -->
+										<div class="media">
+											<c:forEach begin="1" end="5" var="i">
+												<c:choose>
+													<c:when test="${Math.round(row.star_rate) >= i }">
+														<div class="star-ratings">
+															<div class="star-ratings-fill space-x-2 text-lg"
+																:style="{ width: ratingToPercent + '%' }">
+																<span>★</span>
+															</div>
+															<div class="star-ratings-base space-x-2 text-lg">
+																<span>★</span>
+															</div>
+														</div>
+													</c:when>
+													<c:otherwise>
+														<div class="star-ratings text-lg">
+															<span>★</span>
+														</div>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</div>
+										<div class="media-body">
+											<!--  -->
+											<h4 class="media-heading">제목:${row.goods_title }</h4>
+											<p>${row.ccomment }</p>
+											<p>${row.servey1 }</p>
+											<p>${row.servey2 }</p>
+											<p>${row.servey3 }</p>
+											<p>${row.summary }</p>
+										</div>
+								</c:forEach>
 	                		</div>
 	                	</div>
 	                </aside>

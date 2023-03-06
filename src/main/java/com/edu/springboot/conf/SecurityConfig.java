@@ -33,12 +33,14 @@ public class SecurityConfig {
 			throws Exception {
 		httpSecurity.authorizeRequests()
 		.antMatchers("/").permitAll()
-		.antMatchers("/**").permitAll()
 		.antMatchers("/css/**","/js/**","/images/**").permitAll()
 		.antMatchers("/guest/**").permitAll()
 		.antMatchers("/member/**").hasAnyRole("admin", "user", "seller")
+		.antMatchers("/supports/voc.do").hasAnyRole("admin", "user", "seller")
+		.antMatchers("/supports/inquiry.do").hasAnyRole("admin", "user", "seller")
 		.antMatchers("/admin/**").hasRole("admin")
         .antMatchers("/agreement/**").hasAnyRole("admin", "seller")
+        .antMatchers("/**").permitAll()
 		.anyRequest().authenticated();
 		
 		httpSecurity.formLogin()

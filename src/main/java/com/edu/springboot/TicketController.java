@@ -26,7 +26,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.springboot.jdbc.CategoryDTO;
 import com.edu.springboot.jdbc.CategoryService;
+import com.edu.springboot.jdbc.IReviewService;
 import com.edu.springboot.jdbc.ParameterTicketDTO;
+import com.edu.springboot.jdbc.ReviewDTO;
 import com.edu.springboot.jdbc.TicketDTO;
 import com.edu.springboot.jdbc.TicketInfoDTO;
 import com.edu.springboot.jdbc.TicketService;
@@ -37,6 +39,9 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @Controller
 public class TicketController {
+	
+	@Autowired
+	IReviewService dao;
 	
 	@Autowired
 	CategoryService cate_dao;
@@ -391,6 +396,20 @@ public class TicketController {
 	@RequestMapping("/ticketDetail")
 	public String movepage(HttpServletRequest req, Model model) {
 		int value = Integer.parseInt(req.getParameter("value"));
+		
+		ArrayList<ReviewDTO> totalstar = 
+				dao.starcount();
+		model.addAttribute("totalstar", totalstar);
+		
+		ArrayList<ReviewDTO> lists = 
+				dao.reviewList();
+		
+		for (ReviewDTO dto : lists) {
+			String temp = dto.getCcomment()
+					.replace("\r\n", "<br/>");
+			dto.setCcomment(temp);
+		}
+		model.addAttribute("lists", lists);
 		
 		TicketDTO Total_Ticket = ticket_dao.ticket_list(value);
 		model.addAttribute("Total_Ticket",Total_Ticket);
