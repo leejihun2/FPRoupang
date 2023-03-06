@@ -13,6 +13,8 @@
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e6076fe794faf6e2a97f29c6ebfadce5&libraries=services"></script>
+
 <meta charset="UTF-8">
 <title>Roupang</title>
     <!-- 쿠팡 타이틀 이미지 -->
@@ -88,6 +90,31 @@
 	}
 	
 </style>
+<script type="text/javascript">
+onload = function(){
+	var mapContainer = document.getElementById('map'),
+	mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 3};  
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	var geocoder = new kakao.maps.services.Geocoder();
+	// 주소로 좌표를 검색합니다 (membership테이블에 사업장 주소명을 파라미터로 받는다.])
+	geocoder.addressSearch('서울시 중구 신당동 432-2008', function(result, status) {
+	// 정상적으로 검색이 완료됐으면 
+	 if (status === kakao.maps.services.Status.OK) {
+	    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	    // 결과값으로 받은 위치를 마커로 표시
+	    var marker = new kakao.maps.Marker({
+	        map: map,
+	        position: coords
+	    });
+    	// 인포윈도우로 장소에 대한 설명을 표시
+	    var infowindow = new kakao.maps.InfoWindow({});
+	    infowindow.open(map);
+	    map.setCenter(coords);
+		} 
+	});  
+}
+</script>
 <body style="background-color: white;">
     <div id="top" style="margin-bottom:0px;">
         <%@include file="../top.jsp" %>
@@ -208,7 +235,8 @@
 	                			<span class="item-subtitle">대충 주소</span>
 	                		</div>
 	                		<div class="travel-simple-map">
-	                			대충 지도
+		                			대충 지도
+								<div id="map" style="width:100%;height:350px;"></div>
 	                		</div>
 	                	</div>
 	                	<div class="basis-aside-section">
