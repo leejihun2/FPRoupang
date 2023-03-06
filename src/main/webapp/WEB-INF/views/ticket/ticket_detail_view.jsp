@@ -270,7 +270,7 @@
 	    color: #111;
 	}
 	.basis-key-infos{
-		padding-inline-start: 0px;
+		padding-inline-start: 0px; 
 		font-size: 14px;
 	}
 </style>
