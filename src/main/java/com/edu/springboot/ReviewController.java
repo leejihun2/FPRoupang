@@ -25,6 +25,7 @@ public class ReviewController {
 	@RequestMapping("/review/reviewList.do")
 	public String review(Model model, HttpServletRequest req, ReviewDTO reviewDTO) {
 		
+		
 		int totalRecordCount = 
 				daoo.reviewcount();
 		
