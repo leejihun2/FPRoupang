@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.edu.springboot.jdbc.JourneyService">
+ 	<!-- ticket테이블에서 정보 가져오기 -->
+	<select id="journey_list" resultType="com.edu.springboot.jdbc.JourneyDTO">
+		select * from journey where bot_idx=#{param1} order by 1 asc
+	</select>
+ 	
+ 	<!-- ticket_info에서 리스트 가져오기 -->
+ 	<select id="journey_info_list" resultType="com.edu.springboot.jdbc.JourneyInfoDTO">
+ 		select * from journey_info where bot_idx=#{param1} order by 1 asc 
+ 	</select>
+ 	
+ 	<select id="select_journey_info" resultType="com.edu.springboot.jdbc.JourneyInfoDTO">
+ 		select * from journey_info where ji_idx=#{param1}
+ 	</select>
+ 	
+ 	<insert id="insert_journey" parameterType="com.edu.springboot.jdbc.JourneyDTO">
+ 		insert into journey values(bot_category_seq.currval,
+ 		#{location},#{j_intro},#{notice},#{common_items},
+ 		#{j_conservice},#{j_confacility},#{traffic_info},
+ 		#{loging_policy},#{check_io},#{j_booking},
+ 		#{add_fare},#{add_bed},#{breakfast_noti},
+ 		#{j_notice},#{j_cancelfee},#{j_cancelnoti},#{j_title_image},
+ 			<choose>
+ 				<when test="j_image1!=null">
+	 				#{j_image1}
+ 				</when>
+ 				<otherwise>null</otherwise>
+ 			</choose>
+ 			,
+ 			<choose>
+ 				<when test="j_image2!=null">
+	 				#{j_image2}
+ 				</when>
+ 				<otherwise>null</otherwise>
+ 			</choose>
+ 			,
+ 			<choose>
+ 				<when test="j_image3!=null">
+	 				#{j_image3}
+ 				</when>
+ 				<otherwise>null</otherwise>
+ 			</choose>
+ 			,
+ 			<choose>
+ 				<when test="j_image4!=null">
+	 				#{j_image4}
+ 				</when>
+ 				<otherwise>null</otherwise>
+ 			</choose>
+ 		)
+ 	</insert>
+ 	
+ 	<insert id="insert_journey_info" parameterType="com.edu.springboot.jdbc.JourneyInfoDTO">
+ 		insert into journey_info 
+ 		values 
+ 		(journey_info_seq.nextval, 
+ 		#{bot_idx}, 
+ 		#{ji_title}, 
+ 		#{ji_adult}, 
+ 		#{ji_kid},
+ 		#{ji_roomnum},
+ 		#{ji_price},
+ 		0, 
+ 		#{ji_intro}, 
+ 		#{ji_duetime1}, 
+ 		#{ji_duetime2}, 
+			<choose>
+				<when test="ji_image1!=null">
+ 					#{ji_image1}
+				</when>
+				<otherwise>null</otherwise>
+			</choose>
+			,
+			<choose>
+				<when test="ji_image2!=null">
+ 					#{ji_image2}
+				</when>
+				<otherwise>null</otherwise>
+			</choose>
+			,
+			<choose>
+				<when test="ji_image3!=null">
+ 					#{ji_image3}
+				</when>
+				<otherwise>null</otherwise>
+			</choose>
+			,
+			<choose>
+				<when test="ji_image4!=null">
+ 					#{ji_image4}
+				</when>
+				<otherwise>null</otherwise>
+			</choose>
+ 		)
+ 	</insert>
+ 	
+ 	<insert id="insert_bot_title">
+ 		insert into bot_category
+ 		values(bot_category_seq.nextval, #{param1}, #{param2}, #{param3})
+ 	</insert>
+ 	
+ 	<select id="select_new_idx" resultType="int">
+ 		select bot_category_seq.currval from dual
+ 	</select>
+ 	<!-- 업데이트 전까지 가져옴 -->
+ 	<update id="update_journey"
+ 	parameterType="com.edu.springboot.jdbc.JourneyDTO">
+ 		update journey
+ 		set j_intro = #{j_intro}, 
+ 			notice = #{notice}, 
+ 			common_items = #{common_items},
+ 			j_conservice = #{j_conservice},
+ 			j_confacility = #{j_confacility}, 
+ 			traffic_info = #{traffic_info},
+			loging_policy = #{loging_policy},
+			check_io = #{check_io},
+ 			j_booking = #{j_booking}, 
+ 			add_fare = #{add_fare},
+			add_bed = #{add_bed},
+			breakfast_noti = #{breakfast_noti},
+ 			j_notice = #{j_notice}, 
+ 			j_cancelfee = #{j_cancelfee},
+ 			j_cancelnoti = #{j_cancelnoti}
+ 			<if test="j_title_image!=null">
+ 				,j_title_image=#{j_title_image}
+ 			</if>
+ 			<choose>
+ 				<when test="j_image1!=null">
+	 				,j_image1=#{j_image1}
+ 				</when>
+ 				<otherwise>,j_image1=null</otherwise>
+ 			</choose>
+ 			<choose>
+ 				<when test="j_image2!=null">
+	 				,j_image2=#{j_image2}
+ 				</when>
+ 				<otherwise>,j_image2=null</otherwise>
+ 			</choose>
+ 			<choose>
+ 				<when test="j_image3!=null">
+	 				,j_image3=#{j_image3}
+ 				</when>
+ 				<otherwise>,j_image3=null</otherwise>
+ 			</choose>
+ 			<choose>
+ 				<when test="j_image4!=null">
+	 				,j_image4=#{j_image4}
+ 				</when>
+ 				<otherwise>,j_image4=null</otherwise>
+ 			</choose>
+ 		where bot_idx = #{bot_idx}
+ 	</update>
+ 	
+ 	<update id="update_journey_info"
+ 	parameterType="com.edu.springboot.jdbc.JourneyInfoDTO">
+ 		update journey_info
+ 		set 
+ 		ji_title = #{ji_title}
+ 		,ji_adult = #{ji_adult}
+ 		,ji_kid = #{ji_kid}
+ 		,ji_roomnum = #{ji_roomnum}
+ 		,ji_price = #{ji_price}
+ 		,ji_discount = #{ji_discount} 
+ 		,ji_intro = #{ji_intro}
+ 		,ji_duetime1 = #{ji_duetime1}
+ 		,ji_duetime2 = #{ji_duetime2}
+		<choose>
+			<when test="ji_image1!=null">
+				,ji_image1=#{ji_image1}
+			</when>
+			<otherwise>,ji_image1=null</otherwise>
+		</choose>
+		<choose>
+			<when test="ji_image2!=null">
+				,ji_image2=#{ji_image2}
+			</when>
+			<otherwise>,ji_image2=null</otherwise>
+		</choose>
+		<choose>
+			<when test="ji_image3!=null">
+				,ji_image3=#{ji_image3}
+			</when>
+			<otherwise>,ji_image3=null</otherwise>
+		</choose>
+		<choose>
+			<when test="ji_image4!=null">
+				,ji_image4=#{ji_image4}
+			</when>
+			<otherwise>,ji_image4=null</otherwise>
+		</choose>
+ 		where ji_idx = #{ji_idx}
+ 	</update>
+ 	
+ 	<delete id="delete_journey_info">
+ 		delete from journey_info
+			where bot_idx in (select idx from bot_category where company_name = #{param2})
+			    AND ji_idx IN 
+			    <foreach collection="param1" open="(" close=")" item="ji_idx" separator=",">
+			    	#{ji_idx}
+			    </foreach>
+ 	</delete>
+ 	
+ 	<delete id="delete_bot_category_j">
+ 		delete from bot_category where company_name= #{param2} and idx in
+		<foreach collection="param1" open="(" close=")" item="idx" separator=",">
+	    	#{idx}
+	    </foreach>
+ 	</delete>
+ 	
+ 	<delete id="delete_journey">
+ 		delete from journey where bot_idx in
+		<foreach collection="list" open="(" close=")" item="bot_idx" separator=",">
+	    	#{bot_idx}
+	    </foreach>
+ 	</delete>
+ 	
+ 	<delete id="alldelete_journey_info">
+ 		delete from journey_info where bot_idx in
+		<foreach collection="list" open="(" close=")" item="bot_idx" separator=",">
+		 	#{bot_idx}
+		 </foreach>
+ 	</delete>
+ 	
+ 	<select id="journey_Total_image" resultType="com.edu.springboot.jdbc.JourneyDTO">
+ 		SELECT * FROM journey
+ 		WHERE bot_idx IN
+ 		<foreach collection="list" open="(" close=")" item="bot_idx" separator=",">
+ 			#{bot_idx}
+ 		</foreach>
+ 	</select>
+ 	<select id="journey_image" resultType="com.edu.springboot.jdbc.JourneyDTO">
+ 		SELECT j_title_image, j_image1, j_image2, j_image3, j_image4 FROM journey
+ 		WHERE bot_idx = #{bot_idx}
+ 	</select>
+ 	<select id="journeyinfo_image" resultType="com.edu.springboot.jdbc.JourneyInfoDTO">
+ 		SELECT ji_image1, ji_image2, ji_image3, ji_image4 FROM journey_info
+ 		WHERE bot_idx = #{bot_idx}
+ 	</select>
+ 	<select id="journeyinfo_Total_image" resultType="com.edu.springboot.jdbc.JourneyInfoDTO">
+ 		SELECT * FROM journey_info
+ 		WHERE bot_idx IN
+ 		<foreach collection="list" open="(" close=")" item="bot_idx" separator=",">
+ 			#{bot_idx}
+ 		</foreach>
+ 	</select>
+ </mapper>
