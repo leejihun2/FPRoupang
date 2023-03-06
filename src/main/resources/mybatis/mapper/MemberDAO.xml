@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.edu.springboot.jdbc.IMemberService">
+
+	
+	<insert id="insert"
+	parameterType="com.edu.springboot.jdbc.MemberDTO">
+	insert into member 
+		(member_idx, email, name, password, phone_number, jumin_num, marketing_agreement) 
+	values
+		(member_idx.nextval, #{email}, #{name}, #{password}, #{phone_number}, #{jumin_num}, #{marketing_agreement})	
+	</insert>
+	<select id="select"
+	parameterType="com.edu.springboot.jdbc.MemberDTO"
+	resultType="com.edu.springboot.jdbc.MemberDTO">
+	select email from member where name= #{name} and phone_number=#{phone_number}
+	</select>
+	<select id="checkEmail" parameterType="com.edu.springboot.jdbc.MemberDTO" 
+	resultType="int">
+		SELECT COUNT(*) FROM MEMBER WHERE email= #{email}
+	</select>
+	<select id="membership" parameterType="com.edu.springboot.jdbc.MemberDTO" 
+	resultType="int">
+		select membership from member WHERE email= #{email}
+			
+	</select>
+	<update id="cancelMembership" parameterType="com.edu.springboot.jdbc.MemberDTO">
+		update member set membership = '0' where email=#{email}
+	</update>
+	
+	<update id="joinMembership" parameterType="com.edu.springboot.jdbc.MemberDTO">
+		update member set membership = '1' where email=#{email}
+	</update>
+	
+	<select id="email" parameterType="com.edu.springboot.jdbc.MemberDTO" 
+	resultType="String">
+		select email from member where email=#{email}
+	</select>
+	
+	<select id="name" parameterType="com.edu.springboot.jdbc.MemberDTO" 
+	resultType="String">
+		select name from member where email=#{email}
+	</select>
+	
+	<select id="member_idx" parameterType="com.edu.springboot.jdbc.MemberDTO" 
+	resultType="String">
+		select member_idx from member where email=#{email}
+	</select>
+	
+	<insert id="Sell_AuthorizedAction" parameterType="com.edu.springboot.jdbc.MemberDTO">
+		insert into sell_authorized(member_idx, business_num, one_rep_co_rep, rep_name, company_name, office_zipcode, office_address, ebuis_report_num, shop_manager_name, whichBank, accountHolder, bank_account, regidate)
+  VALUES(#{member_idx}, #{business_num}, #{one_rep_co_rep}, #{rep_name}, #{company_name}, #{office_zipcode}, #{office_address}, #{ebuis_report_num}, #{shop_manager_name}, #{whichBank}, #{accountHolder}, #{bank_account}, sysdate)
+	</insert>
+	
+	<select id="situation_zero" parameterType="com.edu.springboot.jdbc.SellRightDTO"
+	resultType="com.edu.springboot.jdbc.SellRightDTO">
+		select 
+			member.member_idx, member.email, member.name, member.Authority, sell_authorized.company_name, sell_authorized.regidate
+			
+		from member
+            inner join sell_authorized on member.member_idx = sell_authorized.member_idx
+            
+        where situation='0'    
+	</select>
+	
+	
+	<!-- 판매자 권한 승인 -->
+	<update id="situation_one" parameterType="com.edu.springboot.jdbc.SellRightDTO">
+		update sell_authorized set situation = '1' where member_idx=#{member_idx}
+	</update>
+	<update id="seller" parameterType="com.edu.springboot.jdbc.SellRightDTO">
+		update member set Authority = 'seller' where member_idx=#{member_idx}
+	</update>
+	
+	
+	<!-- 판매자 권한 거절 및 박탈 -->
+	<update id="situation_two" parameterType="com.edu.springboot.jdbc.SellRightDTO">
+		update sell_authorized set situation = '2' where member_idx=#{member_idx}
+	</update>
+	<update id="member" parameterType="com.edu.springboot.jdbc.SellRightDTO">
+		update member set Authority = 'member' where member_idx=#{member_idx}
+	</update>
+	
+	
+	<select id="sellerList" parameterType="com.edu.springboot.jdbc.SellRightDTO"
+	resultType="com.edu.springboot.jdbc.SellRightDTO">
+		select 
+			member.member_idx, member.email, member.name, member.Authority, sell_authorized.company_name, sell_authorized.regidate
+			
+		from member
+            inner join sell_authorized on member.member_idx = sell_authorized.member_idx
+            
+        where situation='1'    
+	</select>
+	<select id="sellerView" parameterType="int"
+	resultType="com.edu.springboot.jdbc.SellRightDTO">
+		 select 
+			member.email, member.name, member.Authority,
+			sell_authorized.company_name, sell_authorized.regidate, 
+			sell_authorized.member_idx, sell_authorized.business_num, 
+			sell_authorized.one_rep_co_rep, sell_authorized.rep_name, 
+			sell_authorized.company_name, sell_authorized.office_zipcode, 
+			sell_authorized.office_address, sell_authorized.ebuis_report_num, 
+			sell_authorized.shop_manager_name, sell_authorized.whichBank, 
+			sell_authorized.accountHolder, sell_authorized.bank_account
+		
+		from member
+            inner join sell_authorized on member.member_idx = sell_authorized.member_idx
+          where member.member_idx=#{member_idx}
+	</select>
+	
+	
+	<select id="blockList" parameterType="com.edu.springboot.jdbc.SellRightDTO"
+	resultType="com.edu.springboot.jdbc.SellRightDTO">
+		select 
+			member.member_idx, member.email, member.name, member.Authority, sell_authorized.company_name, sell_authorized.regidate
+			
+		from member
+            inner join sell_authorized on member.member_idx = sell_authorized.member_idx
+            
+        where situation='2'    
+	</select>
+	
+	<select id="blockView" parameterType="int"
+	resultType="com.edu.springboot.jdbc.SellRightDTO">
+		 select 
+			member.email, member.name, member.Authority,
+			sell_authorized.company_name, sell_authorized.regidate, 
+			sell_authorized.member_idx, sell_authorized.business_num, 
+			sell_authorized.one_rep_co_rep, sell_authorized.rep_name, 
+			sell_authorized.company_name, sell_authorized.office_zipcode, 
+			sell_authorized.office_address, sell_authorized.ebuis_report_num, 
+			sell_authorized.shop_manager_name, sell_authorized.whichBank, 
+			sell_authorized.accountHolder, sell_authorized.bank_account
+		
+		from member
+            inner join sell_authorized on member.member_idx = sell_authorized.member_idx
+          where member.member_idx=#{member_idx}
+	</select>
+	<select id="appView" parameterType="int"
+	resultType="com.edu.springboot.jdbc.SellRightDTO">
+		 select 
+			member.email, member.name, member.Authority,
+			sell_authorized.company_name, sell_authorized.regidate, 
+			sell_authorized.member_idx, sell_authorized.business_num, 
+			sell_authorized.one_rep_co_rep, sell_authorized.rep_name, 
+			sell_authorized.company_name, sell_authorized.office_zipcode, 
+			sell_authorized.office_address, sell_authorized.ebuis_report_num, 
+			sell_authorized.shop_manager_name, sell_authorized.whichBank, 
+			sell_authorized.accountHolder, sell_authorized.bank_account
+		
+		from member
+            inner join sell_authorized on member.member_idx = sell_authorized.member_idx
+          where member.member_idx=#{member_idx}
+	</select>
+</mapper>

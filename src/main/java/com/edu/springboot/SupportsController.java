@@ -16,19 +16,15 @@ import com.edu.springboot.jdbc.SupportsDTO;
 import com.edu.springboot.jdbc.ISupportsService;
 
 @Controller
-public class MainController {
+public class SupportsController {
 	
-	@RequestMapping("/")
-	public String home() {
-		return "home";
-	}
+	@Autowired
+	ISupportsService daoo;
+
 	@RequestMapping("/supports/returnPolicy.do")
 	public String returnPolicy() {
 		return "/supports/returnPolicy";
 	}
-
-	@Autowired
-	ISupportsService daoo;
 	
 	@RequestMapping("/supports/faq.do")
 	public String faq(Model model, HttpServletRequest req) {
@@ -76,9 +72,32 @@ public class MainController {
 		return "/supports/notice";
 	}
 	
+	@RequestMapping("/supports/inquiry.do")
+	public String lists3(SupportsDTO supportsDTO, Model model, HttpServletRequest req) {
+		
+		int totalRecordCount = 
+				daoo.inquiryCount(supportsDTO);
+		
+		ArrayList<SupportsDTO> lists = 
+				daoo.inquirylist(supportsDTO);
+
+		for (SupportsDTO dto : lists) {
+			System.out.println("나 동작");
+			String temp = dto.getContents()
+					.replace("\r\n", "<br/>");
+			dto.setContents(temp);
+			System.out.println("콘텐츠 >>>>> "+dto.getContents());
+		}
+		
+		model.addAttribute("lists", lists);
+		return "/supports/inquiry";
+	}
+	
 	@RequestMapping("/supports/voc.do")
 	public String write(Model model, HttpSession session,
-			HttpServletRequest req) {
+			HttpServletRequest req, Principal principal) {
+		String email = principal.getName();
+		session.setAttribute("siteUserInfo", email);
 		if(session.getAttribute("siteUserInfo")==null)
 		{
 			model.addAttribute("backUrl", "supports/voc");
@@ -91,26 +110,27 @@ public class MainController {
 	// 글쓰기 처리
 	@RequestMapping(value = "/supports/vocAction.do", method = RequestMethod.POST)
 	public String writeAction(Model model, HttpServletRequest req, HttpSession session, Principal principal) {
-
+		String email = principal.getName();
+		session.setAttribute("siteUserInfo", email);
 		if (session.getAttribute("siteUserInfo") == null) {
 			return "redirect:login.do";
 		}
-		String email = principal.getName();
 		int applyRow = daoo.write(req.getParameter("contents"), 
 								email, 
 								req.getParameter("title"));
 		System.out.println("입력된행의갯수:" + applyRow);
 
-		return "redirect:voc.do";
+		return "redirect:in.do";
 	}
 	
 	@RequestMapping("/supports/delete.do")
 	public String delete(HttpServletRequest req, HttpSession session, Principal principal) {
 		//삭제는 본인만 가능하므로 로그인 확인을 진행한다.
+		String email = principal.getName();
+		session.setAttribute("siteUserInfo", email);
 		if (session.getAttribute("siteUserInfo") == null) {
 			return "redirect:login.do";
 		}
-		String email = principal.getName();
 		int applyRow = daoo
 				.delete(req.getParameter("idx"),
 						email);
@@ -119,31 +139,7 @@ public class MainController {
 		return "redirect:login.do";
 	}
 	
-	@RequestMapping("/myLogin.do")
-	public String login1(Principal principal, Model model, HttpSession session) {
-		try {
-			String email = principal.getName();
-			model.addAttribute("user_id", email);
-			session.setAttribute("siteUserInfo", email);
-		}
-		catch (Exception e) {
-			System.out.println("로그인 전입니다.");
-		}
-		return "auth/login";
-	}
-	
-	@RequestMapping("/myError.do")
-	public String login2() {		
-		return "auth/error";
-	}
 
-	@RequestMapping("/denied.do")
-	public String login3() {		
-		return "auth/denied";
-	}
 	
-	@RequestMapping("/ticketView")
-	public String move1() {
-		return "/ticket/ticketView";
-	}
+
 }
