@@ -30,8 +30,5 @@ public interface ISupportsService {
 	
 	public int delete(String idx, String email);
 	
-	public ArrayList<SupportsDTO> hashMapUse(Map<String, String> hMap);
-
-	public ArrayList<SupportsDTO> arrayListUse(List<String> aList);
 	
 }

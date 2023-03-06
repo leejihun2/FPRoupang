@@ -54,26 +54,4 @@
 		ORDER BY idx DESC
 	</select>
 
-	<select id="arrayListUse" resultType="com.edu.springboot.jdbc.SupportsDTO"
-		parameterType="java.util.ArrayList">
-		SELECT * FROM couboard
-		WHERE
-		<foreach collection="list" item="item" index="index" open="("
-			close=")" separator="or">
-			name=#{item}
-		</foreach>
-		ORDER BY idx DESC
-	</select>
-	
-	<select id="tempMethodXXX" resultType="com.edu.springboot.jdbc.SupportsDTO"
-		parameterType="list">
-		SELECT * FROM couboard
-		WHERE
-		<foreach collection="list" item="item" index="index" open="("
-			close=")" separator=",">
-			#{item}
-		</foreach>
-		ORDER BY idx DESC
-	</select>
- 	
  </mapper>
