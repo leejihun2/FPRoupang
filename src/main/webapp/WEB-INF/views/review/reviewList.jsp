@@ -44,7 +44,7 @@ function deleteRow(idx){
 	<div class="container">
 		<c:forEach items="${totalstar }" var="star">
 			<div class="star-ratings">
-          <input type="number" name="ratevalue" value="${star.star_rate}" step="0.1" min="0" max="5" />
+          <input type="hidden" name="ratevalue" value="${star.star_rate}" step="0.1" min="0" max="5" />
           <div class="rating-wrap">
             <div class="rating">
                 <div class="overlay"></div>
@@ -57,7 +57,15 @@ function deleteRow(idx){
 			<div class="star-ratings">4점 :${star.star_rate4 }</div>
 			<div class="star-ratings">5점 :${star.star_rate5 }</div>
 			<div class="star-ratings">짱인가요? :${star.servey1_1 }</div>
-
+			<div class="star-ratings">짱인가요? :${star.servey1_2 }</div>
+			<div class="star-ratings">짱인가요? :${star.servey1_3 }</div>
+			<div class="star-ratings">짱인가요? :${star.servey2_1 }</div>
+			<div class="star-ratings">짱인가요? :${star.servey2_2 }</div>
+			<div class="star-ratings">짱인가요? :${star.servey2_3 }</div>
+			<div class="star-ratings">짱인가요? :${star.servey3_1 }</div>
+			<div class="star-ratings">짱인가요? :${star.servey3_2 }</div>
+			<div class="star-ratings">짱인가요? :${star.servey3_3 }</div>
+				
 		</c:forEach>
 
 		<div class="text-right"></div>

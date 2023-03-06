@@ -78,9 +78,9 @@ function deleteRow(idx){
 			<dt>상품의 품질은 어떤가요</dt>
 			
 				
-					<dd><label><input type="radio" name="servey1"  value="3">예상보다 좋아요</label></dd>
+					<dd><label><input type="radio" name="servey1"  value="1">예상보다 좋아요</label></dd>
 				
-					<dd><label><input type="radio" name="servey1"  value="2">설명과 비슷해요</label></dd>
+					<dd><label><input type="radio" name="servey1"  value="1">설명과 비슷해요</label></dd>
 				
 					<dd><label><input type="radio" name="servey1"  value="1">예상보다 떨어져요</label></dd>
 				
@@ -91,9 +91,9 @@ function deleteRow(idx){
 			<dt>배송은 어떠셨나요?</dt>
 			
 				
-					<dd><label><input type="radio" name="servey2" value="3">자극이 없어요</label></dd>
+					<dd><label><input type="radio" name="servey2" value="1">자극이 없어요</label></dd>
 				
-					<dd><label><input type="radio" name="servey2" value="2">조금 따끔거려요</label></dd>
+					<dd><label><input type="radio" name="servey2" value="1">조금 따끔거려요</label></dd>
 				
 					<dd><label><input type="radio" name="servey2" value="1">자극이 있어요</label></dd>
 				
@@ -104,9 +104,9 @@ function deleteRow(idx){
 			<dt>기사님은 친절했나요?</dt>
 			
 				
-					<dd><label><input type="radio" name="servey3" value="3">자극이 없어요</label></dd>
+					<dd><label><input type="radio" name="servey3" value="1">자극이 없어요</label></dd>
 				
-					<dd><label><input type="radio" name="servey3" value="2">조금 따끔거려요</label></dd>
+					<dd><label><input type="radio" name="servey3" value="1">조금 따끔거려요</label></dd>
 				
 					<dd><label><input type="radio" name="servey3" value="1">자극이 있어요</label></dd>
 				

@@ -213,6 +213,8 @@
 	                	</div>
 	                	<div class="basis-aside-section">
 	                		<div class="basis-review-section">
+	                		
+	                		
 	                			대충 리뷰
 	                		</div>
 	                	</div>
