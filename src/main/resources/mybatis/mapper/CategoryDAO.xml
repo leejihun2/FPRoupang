@@ -26,4 +26,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where sub_idx=#{param1} and company_name=#{param2}
 	</select>
  	
+ 	<select id="select_one_cate"
+ 	resultType="String">
+ 		SELECT title FROM mid_category WHERE idx=#{param1}
+ 	</select>
+ 	
+ 	<select id="select_bot_cate"
+ 	resultType="String">
+ 		SELECT title FROM bot_category WHERE idx=#{param1}
+ 	</select>
  </mapper>
