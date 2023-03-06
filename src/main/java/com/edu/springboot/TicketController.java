@@ -417,7 +417,7 @@ public class TicketController {
 		String category_title = cate_dao.select_bot_cate(value);
 		model.addAttribute("t_title",category_title);
 		
-		TicketInfoDTO Total_Ticket_info = ticket_dao.select_ticket_info(value);
+		ArrayList<TicketInfoDTO> Total_Ticket_info = ticket_dao.ticket_info_list(value);
 		model.addAttribute("Total_Ticket_info",Total_Ticket_info);
 		
 		return "/ticket/ticket_detail_view";
