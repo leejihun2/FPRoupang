@@ -293,7 +293,6 @@
 	}
 </style>
 <script type="text/javascript">
-<<<<<<< HEAD
 onload = function(){
 	var mapContainer = document.getElementById('map'),
 	mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 5};  
@@ -317,7 +316,6 @@ onload = function(){
 		} 
 	});  
 }
-=======
 	$(function(){
 		$(".thumbnail-img").click(function(e){
 			document.getElementById("thumbnail").style.backgroundImage="url("+e.target.src+")";
