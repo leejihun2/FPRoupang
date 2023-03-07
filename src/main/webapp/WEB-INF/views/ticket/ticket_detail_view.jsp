@@ -78,6 +78,7 @@
 	}
 	.travel-detail-content {
 	    float: left;
+	    margin-left:50px;
 	    width: 685px;
 	}
 	.travel-thumbnail .thumbnails-wrap {
@@ -88,11 +89,12 @@
 	    margin-right: 3px;
 	}
 	.travel-detail-basis {
-	    float: right;
+	    float: left;
 	    width: 270px;
 	    border: 1px solid #ddd;
 	    color: #333;
 	    border-top: 1px solid #ddd;
+	    margin-left:20px;
 	}
 	.thumbnail-img {
 	    width: 50px;
@@ -271,7 +273,18 @@
 		padding-inline-start: 0px;
 		font-size: 14px;
 	}
+	.thumbnail-item{
+	    margin-right: 3px;
+	    margin-bottom: 3px;
+	}
 </style>
+<script type="text/javascript">
+	$(function(){
+		$(".thumbnails img").click(function(e){
+			document.getElementById("thumbnail").style.backgroundImage="url("+e.target.src+")";
+		});
+	});
+</script>
 <body style="background-color: white;">
     <div id="top" style="margin-bottom:0px;">
         <%@include file="../top.jsp" %>
@@ -279,14 +292,11 @@
     <div class="container">
 	    <div id="travel-container">
 	        <div class="travel-detail">
-	            <div class="travel-breadcrumb">
-	            	
-	            </div>
-	            <div class="travel-detail-container">
+	            <div class="travel-detail-container" style="width:1100px;">
 	                <section class="travel-detail-content">
 	                    <div class="travel-carousel-container">
 	                        <div class="travel-carousel use-background clickable" style="width: 100%; height: 512px;">
-	                        	<div class="carousel-image" style="height: 512px; background-image: url(/uploads/${Total_Ticket.t_title_image });"></div>
+	                        	<div class="carousel-image" id="thumbnail" style="height: 512px; background-image: url(/uploads/${Total_Ticket.t_title_image });"></div>
 	                        </div>
 	                        <div class="travel-thumbnail">
 	                            <div class="thumbnails-wrap" style="width:527px;">
@@ -526,7 +536,7 @@
 	                		</div>
 	                	</div>
 	                	
-	                	<div class="basis-aside-section">
+	                	<div class="basis-aside-section" style="margin-bottom:140px;" >
 	                		<ul class="basis-key-infos">
 	                			<li class="basis-key-info">
 	                				<label class="key-info-title">바로사용</label>
@@ -549,7 +559,6 @@
 	                				<span class="key-info-description">미사용 100% 환불가능</span>
 	                			</li>
 	                		</ul>
-	                		<div>환불하기</div>
 	                	</div>
 	                	
 	                	<div class="basis-aside-section">
