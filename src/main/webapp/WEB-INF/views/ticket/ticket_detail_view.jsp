@@ -80,6 +80,7 @@
 	}
 	.travel-detail-content {
 	    float: left;
+	    margin-left:50px;
 	    width: 685px;
 	}
 	.travel-thumbnail .thumbnails-wrap {
@@ -90,11 +91,12 @@
 	    margin-right: 3px;
 	}
 	.travel-detail-basis {
-	    float: right;
+	    float: left;
 	    width: 270px;
 	    border: 1px solid #ddd;
 	    color: #333;
 	    border-top: 1px solid #ddd;
+	    margin-left:20px;
 	}
 	.thumbnail-img {
 	    width: 50px;
@@ -273,8 +275,13 @@
 		padding-inline-start: 0px; 
 		font-size: 14px;
 	}
+	.thumbnail-item{
+	    margin-right: 3px;
+	    margin-bottom: 3px;
+	}
 </style>
 <script type="text/javascript">
+<<<<<<< HEAD
 onload = function(){
 	var mapContainer = document.getElementById('map'),
 	mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 5};  
@@ -298,6 +305,36 @@ onload = function(){
 		} 
 	});  
 }
+=======
+	$(function(){
+		$(".thumbnails img").click(function(e){
+			document.getElementById("thumbnail").style.backgroundImage="url("+e.target.src+")";
+		});
+	});
+	onload = function(){
+		var mapContainer = document.getElementById('map'),
+		mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 3};  
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		var geocoder = new kakao.maps.services.Geocoder();
+		// 주소로 좌표를 검색합니다 (membership테이블에 사업장 주소명을 파라미터로 받는다.])
+		geocoder.addressSearch('서울시 중구 신당동 432-2008', function(result, status) {
+		// 정상적으로 검색이 완료됐으면 
+		 if (status === kakao.maps.services.Status.OK) {
+		    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		    // 결과값으로 받은 위치를 마커로 표시
+		    var marker = new kakao.maps.Marker({
+		        map: map,
+		        position: coords
+		    });
+	    	// 인포윈도우로 장소에 대한 설명을 표시
+		    var infowindow = new kakao.maps.InfoWindow({});
+		    infowindow.open(map);
+		    map.setCenter(coords);
+			} 
+		});  
+	}
+>>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
 </script>
 <body style="background-color: white;">
     <div id="top" style="margin-bottom:0px;">
@@ -306,14 +343,11 @@ onload = function(){
     <div class="container">
 	    <div id="travel-container">
 	        <div class="travel-detail">
-	            <div class="travel-breadcrumb">
-	            	
-	            </div>
-	            <div class="travel-detail-container">
+	            <div class="travel-detail-container" style="width:1100px;">
 	                <section class="travel-detail-content">
 	                    <div class="travel-carousel-container">
 	                        <div class="travel-carousel use-background clickable" style="width: 100%; height: 512px;">
-	                        	<div class="carousel-image" style="height: 512px; background-image: url(/uploads/${Total_Ticket.t_title_image });"></div>
+	                        	<div class="carousel-image" id="thumbnail" style="height: 512px; background-image: url(/uploads/${Total_Ticket.t_title_image });"></div>
 	                        </div>
 	                        <div class="travel-thumbnail">
 	                            <div class="thumbnails-wrap" style="width:527px;">
@@ -553,7 +587,7 @@ onload = function(){
 	                		</div>
 	                	</div>
 	                	
-	                	<div class="basis-aside-section">
+	                	<div class="basis-aside-section" style="margin-bottom:140px;" >
 	                		<ul class="basis-key-infos">
 	                			<li class="basis-key-info">
 	                				<label class="key-info-title">바로사용</label>
@@ -576,7 +610,6 @@ onload = function(){
 	                				<span class="key-info-description">미사용 100% 환불가능</span>
 	                			</li>
 	                		</ul>
-	                		<div>환불하기</div>
 	                	</div>
 	                	
 	                	<div class="basis-aside-section">
