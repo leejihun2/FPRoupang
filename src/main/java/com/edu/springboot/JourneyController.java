@@ -35,6 +35,12 @@ public class JourneyController {
 	@Autowired
 	JourneyService journey_dao;
 	
+	@RequestMapping("/journey_Main")
+	public String joureny_Main() {
+		
+		return "/journey/journeyMain";
+	}
+ 	
 	@RequestMapping("/journey_insert")
 	public String journey_insert1(Model model, HttpServletRequest req) {
 		int sub_idx=0;
