@@ -43,9 +43,15 @@
  
 	<select id="reviewcount" resultType="int">
 		SELECT COUNT(*) from review
+		<if test="search_word!=null and !search_word.equals('')">
+			WHERE ${searchField} like '%'||#{search_word}||'%'
+		</if>
 	</select>
 
 	<select id="reviewList" resultType="com.edu.springboot.jdbc.ReviewDTO">
 		SELECT * FROM review order by idx desc
+		<if test="search_word!=null and !search_word.equals('')">
+			WHERE ${searchField} like '%'||#{search_word}||'%'
+		</if>
 	</select>
  </mapper>

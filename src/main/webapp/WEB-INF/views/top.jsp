@@ -111,7 +111,7 @@
 						style="margin-left: 65px; margin-top: 10px;">
 						<li class="rocket-delivery" style="margin-right: 9px;"><a
 							href="https://www.coupang.com/np/campaigns/82"
-							class="rocket-delivery">로켓배송</a><i class="ic-new"></i></li>&nbsp;
+							class="rocket-delivery">로켓배송</a><i class="ic-new"></i>&nbsp;</li>
 						<li class="rocket-fresh"><a
 							href="https://www.coupang.com/np/categories/393760"
 							class="rocket-fresh"> 로켓프레시</a><i class="ic-new"></i></li>
@@ -119,7 +119,7 @@
 							href="https://pages.coupang.com/p/63240"
 							class="sustainable-market">착한상점</a><i class="ic-new"></i></li>
 						<li class="travel"><a
-							href="https://trip.coupang.com?channel=gnb">여행/티켓</a><i class=""></i><i
+							href="/journey_Main">여행/티켓</a><i class=""></i><i
 							class="ic-new"></i></li>
 						<li class="subscription"><a
 							href="https://www.coupang.com/np/campaigns/83"

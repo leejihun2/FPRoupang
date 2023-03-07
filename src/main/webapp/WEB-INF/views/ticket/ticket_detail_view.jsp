@@ -293,6 +293,31 @@
 	}
 </style>
 <script type="text/javascript">
+<<<<<<< HEAD
+onload = function(){
+	var mapContainer = document.getElementById('map'),
+	mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 5};  
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	var geocoder = new kakao.maps.services.Geocoder();
+	// 주소로 좌표를 검색합니다 (membership테이블에 사업장 주소명을 파라미터로 받는다.])
+	geocoder.addressSearch('대구광역시 동구 동부로 149 9층', function(result, status) {
+	// 정상적으로 검색이 완료됐으면 
+	 if (status === kakao.maps.services.Status.OK) {
+	    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	    // 결과값으로 받은 위치를 마커로 표시
+	    var marker = new kakao.maps.Marker({
+	        map: map,
+	        position: coords
+	    });
+    	// 인포윈도우로 장소에 대한 설명을 표시
+	    var infowindow = new kakao.maps.InfoWindow({});
+	    infowindow.open(map);
+	    map.setCenter(coords);
+		} 
+	});  
+}
+=======
 	$(function(){
 		$(".thumbnail-img").click(function(e){
 			document.getElementById("thumbnail").style.backgroundImage="url("+e.target.src+")";
@@ -362,6 +387,7 @@
 			} 
 		});  
 	}
+>>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
 </script>
 <body style="background-color: white;">
     <div id="top" style="margin-bottom:0px;">
@@ -687,8 +713,7 @@
 												<c:choose>
 													<c:when test="${Math.round(row.star_rate) >= i }">
 														<div class="star-ratings">
-															<div class="star-ratings-fill space-x-2 text-lg"
-																:style="{ width: ratingToPercent + '%' }">
+															<div class="star-ratings-fill space-x-2 text-lg":style="{ width: ratingToPercent + '%' }">
 																<span>★</span>
 															</div>
 															<div class="star-ratings-base space-x-2 text-lg">
