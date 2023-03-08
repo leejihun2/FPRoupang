@@ -2446,7 +2446,7 @@
 					</p></li>
 					
 				<li class="cs-center more"><a
-					href="/ticket_insert">상품등록(티켓)</a>
+					href="/product_insert">상품등록</a>
 				</li>
 				<li class="cs-center more"><a
 					href="/journey_insert">상품등록(여행)</a>

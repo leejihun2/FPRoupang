@@ -48,7 +48,7 @@ public class JourneyController {
 			sub_idx = Integer.parseInt(req.getParameter("sub_idx"));
 		}
 		model.addAttribute("cate",cate_dao.select_cate(sub_idx));
-		return "/journey/journey_insert";
+		return "/journey/journey_insert_bakup";
 	}
 	@RequestMapping("/journey_edit")
 	public String journey_edit(Model model, HttpServletRequest req) {

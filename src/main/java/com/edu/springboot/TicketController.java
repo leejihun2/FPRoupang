@@ -49,16 +49,6 @@ public class TicketController {
 	@Autowired
 	TicketService ticket_dao;
 	
-	@RequestMapping("/ticket_insert")
-	public String ticket_insert1(Model model, HttpServletRequest req) {
-		int sub_idx=0;
-		if(!(req.getParameter("sub_idx")==null)) {
-			sub_idx = Integer.parseInt(req.getParameter("sub_idx"));
-		}
-		model.addAttribute("cate",cate_dao.select_cate(sub_idx));
-		return "/ticket/ticket_insert2";
-	}
-	
 	@RequestMapping("/ticket_edit")
 	public String ticket_edit(Model model, HttpServletRequest req) {
 		int ti_idx = Integer.parseInt(req.getParameter("product_idx"));
@@ -115,7 +105,6 @@ public class TicketController {
 
 		TicketDTO dto = new TicketDTO();
 		TicketDTO delete_dto = ticket_dao.ticket_image(value);
-		System.out.println(title_image.getOriginalFilename());
 		if(!(title_image.getOriginalFilename().equals(""))) {
 			dto.setT_title_image(saveFile(title_image));
 			deleteFile(delete_dto.getT_title_image());
@@ -224,12 +213,10 @@ public class TicketController {
 		if(level.equals("1")) {
 			ArrayList<ParameterTicketDTO> sub_cate = cate_dao.select_cate(sub_idx);
 			model.addAttribute("mid_cate_idx",sub_idx);
-			System.out.println(sub_idx);
 			return sub_cate;
 		}else{
 			String company_name=req.getParameter("company_name");
 			ArrayList<ParameterTicketDTO> sub_cate = cate_dao.select_cate_bot(sub_idx,company_name);
-			System.out.println(sub_cate);
 			return sub_cate;
 		}
 	}
@@ -247,7 +234,6 @@ public class TicketController {
 	public ArrayList<TicketInfoDTO> select_ticket_list(HttpServletRequest req){
 		int bot_idx = Integer.parseInt(req.getParameter("bot_idx"));
 		ArrayList<TicketInfoDTO> ticketDetail = ticket_dao.ticket_info_list(bot_idx);
-		System.out.println(ticketDetail);
 		return ticketDetail;
 	}
 	
@@ -292,13 +278,13 @@ public class TicketController {
 				}
 			}
 			t_dto.setT_fac(facVal);
-			t_dto.setT_intro(req.getParameter("t_intro"));
+			t_dto.setT_intro(req.getParameter("product_intro"));
 			t_dto.setNotice(req.getParameter("notice"));
-			t_dto.setT_notice(req.getParameter("t_notice"));
+			t_dto.setT_notice(req.getParameter("product_notice"));
 			t_dto.setT_incmatters(req.getParameter("t_incmatters"));
-			t_dto.setT_booking(req.getParameter("t_booking"));
-			t_dto.setT_cancelfee(req.getParameter("t_cancelfee"));
-			t_dto.setT_cancelnoti(req.getParameter("t_cancelnoti"));
+			t_dto.setT_booking(req.getParameter("product_booking"));
+			t_dto.setT_cancelfee(req.getParameter("product_cancelfee"));
+			t_dto.setT_cancelnoti(req.getParameter("product_cancelnoti"));
 
 			value=ticket_dao.select_new_idx();
 		
@@ -313,7 +299,7 @@ public class TicketController {
 		ti_dto.setTi_intro(req.getParameter("ti_intro"));
 		ticket_dao.insert_ticket_info(ti_dto);
 		}catch (Exception e) {}
-		if(!(req.getParameter("t_intro").equals(""))) {
+		if(!(req.getParameter("product_intro").equals(""))) {
 			ticket_dao.insert_ticket(t_dto);
 		}
 		mv.setViewName("/home");
@@ -403,7 +389,6 @@ public class TicketController {
 		
 		ReviewDTO totalstar = dao.starcount();
 		model.addAttribute("totalstar", totalstar);
-		System.out.println(totalstar);
 		ArrayList<ReviewDTO> lists = 
 				dao.reviewList();
 		
