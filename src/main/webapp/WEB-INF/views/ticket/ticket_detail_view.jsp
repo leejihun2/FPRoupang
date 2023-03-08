@@ -478,8 +478,8 @@ onload = function(){
 		                        		</table>
 		                        	</div>
 		                        </div>
-		                        <c:if test="${Total_Ticket.t_conservice ne null && Total_Ticket.t_fac ne null}">
 		                        <div class="service-infomation" style="margin-bottom: 10px;" id="introProduct">
+		                        <c:if test="${Total_Ticket.t_conservice ne null && Total_Ticket.t_fac ne null}">
 	                        		<table class="ticket-service-infomation" style="width:100%;">
 	                        			<colgroup>
 	                        				<col width="30%"/>
@@ -517,8 +517,8 @@ onload = function(){
 		                       				</tr>
 	                       				</c:if>
 	                        		</table>
-		                        </div>
 		                        </c:if>
+		                        </div>
 		                        <div class="instruction-manual" style="margin-bottom: 10px;">
 	                        		<table class="ticket-instruction-manual" style="width:100%;">
 	                        			<colgroup>
@@ -595,6 +595,9 @@ onload = function(){
 	                       				</tr>
 	                        		</table>
 		                        </div>
+		                        <div class="reviewProduct">
+		                        
+		                        </div>
 	                        </section>
 	                    </article>
 	                </section>
@@ -606,15 +609,13 @@ onload = function(){
 			                	<div class="basis-product-address">
 			                		대충 주소
 			                	</div>
-			                	<c:forEach items="${totalstar }" var="star">
-										<input type="hidden" name="ratevalue" value="${star.star_rate}"
-											step="0.1" min="0" max="5" />
-										<div class="rating-wrap">
-											<div class="rating">
-												<div class="overlay"></div>
-											</div>
-										</div>
-								</c:forEach>
+								<input type="hidden" name="ratevalue5" value="${totalstar.star_rate}"
+									step="0.1" min="0" max="5" />
+								<div class="rating-wrap5">
+									<div class="rating5">
+										<div class="overlay5"></div>
+									</div>
+								</div>
 		                	</div>
 		                </div>
 		                
@@ -692,48 +693,50 @@ onload = function(){
 	                	
 	                	<div class="basis-aside-section">
 	                		<div class="basis-review-section">
+             						<div class="star-ratings">
+					          <input type="hidden" name="ratevalue1" value="${totalstar.star_rate}" step="0.1" min="0" max="5" />
+					          <div class="rating-wrap1">
+					            <div class="rating1">상품평 
+					                <div class="overlay1"></div> 
+					            </div>${totalstar.star_rate0}
+					          </div>
+								</div>
+								<div class="star-ratings">
+					          <input type="hidden" name="ratevalue2" value="${totalstar.star_servey1}" step="0.1" min="0" max="5" />
+					          <div class="rating-wrap2">
+					            <div class="rating2">가격
+					                <div class="overlay2"></div>
+					            </div>
+					          </div>
+								</div>
+								<div class="star-ratings">
+					          <input type="hidden" name="ratevalue3" value="${totalstar.star_servey2}" step="0.1" min="0" max="5" />
+					          <div class="rating-wrap3">
+					            <div class="rating3">서비스
+					                <div class="overlay3"></div>
+					            </div>
+					          </div>
+								</div>
+								<div class="star-ratings">
+					          <input type="hidden" name="ratevalue4" value="${totalstar.star_servey3}" step="0.1" min="0" max="5" />
+					          <div class="rating-wrap4">
+					            <div class="rating4">시설
+					                <div class="overlay4"></div>
+					            </div>
+					          </div>
+								</div>
 	                			<c:forEach items="${lists }" var="row">
 									<div class="border mt-2 mb-2">
-										<!--  -->
-										<ul class="comment">
-											<li>
-												<div class="score_info">
-													<div>
-														<div class="star-ratings">${row.star_rate }</div>
-													</div>
-												</div>
-											</li>
-										</ul>
-										<!--  -->
-										<div class="media">
-											<c:forEach begin="1" end="5" var="i">
-												<c:choose>
-													<c:when test="${Math.round(row.star_rate) >= i }">
-														<div class="star-ratings">
-															<div class="star-ratings-fill space-x-2 text-lg":style="{ width: ratingToPercent + '%' }">
-																<span>★</span>
-															</div>
-															<div class="star-ratings-base space-x-2 text-lg">
-																<span>★</span>
-															</div>
-														</div>
-													</c:when>
-													<c:otherwise>
-														<div class="star-ratings text-lg">
-															<span>★</span>
-														</div>
-													</c:otherwise>
-												</c:choose>
-											</c:forEach>
-										</div>
 										<div class="media-body">
 											<!--  -->
-											<h4 class="media-heading">제목:${row.goods_title }</h4>
-											<p>${row.ccomment }</p>
-											<p>${row.servey1 }</p>
-											<p>${row.servey2 }</p>
-											<p>${row.servey3 }</p>
-											<p>${row.summary }</p>
+											<p>대충 사진</p>
+											<p class="star-ratings">
+											${row.summary }
+											</p>
+											<p>
+											${row.review }
+											</p>
+											<p>대충 이름</p>
 										</div>
 								</c:forEach>
 	                		</div>
