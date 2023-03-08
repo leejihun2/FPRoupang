@@ -56,6 +56,25 @@
         ,COUNT(CASE WHEN star_servey2=3 THEN 1 END) servey3_5
 		FROM REVIEW ORDER BY idx
  	</select>
+ 	<select id="starDTO" resultType="com.edu.springboot.jdbc.ReviewDTO">
+        SELECT ROUND(AVG(star_rate),1) star_rate
+        ,COUNT(goods_title) goods_title
+        ,COUNT(CASE WHEN star_rate=1 THEN 1 END) star_rate1
+        ,COUNT(CASE WHEN star_rate=2 THEN 1 END) star_rate2
+        ,COUNT(CASE WHEN star_rate=3 THEN 1 END) star_rate3
+        ,COUNT(CASE WHEN star_rate=4 THEN 1 END) star_rate4
+        ,COUNT(CASE WHEN star_rate=5 THEN 1 END) star_rate5
+        ,COUNT(CASE WHEN servey1=1 THEN 1 END) servey1_1
+        ,COUNT(CASE WHEN servey1=2 THEN 1 END) servey1_2
+        ,COUNT(CASE WHEN servey1=3 THEN 1 END) servey1_3
+        ,COUNT(CASE WHEN servey2=1 THEN 1 END) servey2_1
+        ,COUNT(CASE WHEN servey2=2 THEN 1 END) servey2_2
+        ,COUNT(CASE WHEN servey2=3 THEN 1 END) servey2_3
+        ,COUNT(CASE WHEN servey3=1 THEN 1 END) servey3_1
+        ,COUNT(CASE WHEN servey3=2 THEN 1 END) servey3_2
+        ,COUNT(CASE WHEN servey3=3 THEN 1 END) servey3_3
+		FROM REVIEW ORDER BY idx desc
+ 	</select>
  
 	<select id="reviewcount" resultType="int">
 		SELECT COUNT(*) from review

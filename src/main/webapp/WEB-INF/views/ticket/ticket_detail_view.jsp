@@ -595,7 +595,11 @@ onload = function(){
 	                       				</tr>
 	                        		</table>
 		                        </div>
-		                        <div class="reviewProduct">
+		                        <div id="reviewProduct">
+		                        
+		                        </div>
+		                        
+		                        <div id="inquiryProduct">
 		                        
 		                        </div>
 	                        </section>
