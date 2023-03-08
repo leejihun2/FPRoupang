@@ -595,11 +595,126 @@ onload = function(){
 	                       				</tr>
 	                        		</table>
 		                        </div>
-		                        <div id="reviewProduct">
-		                        
-		                        </div>
-		                        
-		                        <div id="inquiryProduct">
+								<div class="reviewProduct" style="margin-bottom: 10px;"
+									id="reviewProduct">
+									<table class="ticket-cancellation-refund-policy"
+										style="width: 100%;">
+										<colgroup>
+											<col width="30%" />
+											<col width="*" />
+										</colgroup>
+										<tr>
+											<th colspan="2">리뷰</th>
+										</tr>
+										<tr>
+											<td><c:forEach items="${lists }" var="row">
+													<div class="border mt-2 mb-2">
+														<!--  -->
+														<ul class="comment">
+															<li>
+															</li>
+														</ul>
+														<!--  -->
+														<p>대충 이름</p>
+														<div class="media">
+															<c:forEach begin="1" end="5" var="i">
+																<c:choose>
+																	<c:when test="${Math.round(row.star_rate) >= i }">
+																		<div class="star-ratings">
+																			<div class="star-ratings-fill space-x-2 text-lg"
+																				:style="{ width: ratingToPercent + '%' }">
+																				<span>★</span>
+																			</div>
+																			<div class="star-ratings-base space-x-2 text-lg">
+																				<span>★</span>
+																			</div>
+																		</div>
+																	</c:when>
+																	<c:otherwise>
+																		<div class="star-ratings text-lg">
+																			<span>★</span>
+																		</div>
+																	</c:otherwise>
+																</c:choose>
+															</c:forEach>
+														</div>
+														<div class="media-body">
+															<p class="star-ratings">${row.summary }</p>
+																<p>${row.review }</p>
+															<div class="media">가격&nbsp;&nbsp;&nbsp;
+																<c:forEach begin="1" end="5" var="i">
+																	<c:choose>
+																		<c:when test="${Math.round(row.star_servey1) >= i }">
+																			<div class="star-ratings">
+																				<div class="star-ratings-fill space-x-2 text-lg"
+																					:style="{ width: ratingToPercent + '%' }">
+																					<span>★</span>
+																				</div>
+																				<div class="star-ratings-base space-x-2 text-lg">
+																					<span>★</span>
+																				</div>
+																			</div>
+																		</c:when>
+																		<c:otherwise>
+																			<div class="star-ratings text-lg">
+																				<span>★</span>
+																			</div>
+																		</c:otherwise>
+																	</c:choose>
+																</c:forEach>
+															</div>
+															<div class="media">서비스&nbsp;
+																<c:forEach begin="1" end="5" var="i">
+																	<c:choose>
+																		<c:when test="${Math.round(row.star_servey2) >= i }">
+																			<div class="star-ratings">
+																				<div class="star-ratings-fill space-x-2 text-lg"
+																					:style="{ width: ratingToPercent + '%' }">
+																					<span>★</span>
+																				</div>
+																				<div class="star-ratings-base space-x-2 text-lg">
+																					<span>★</span>
+																				</div>
+																			</div>
+																		</c:when>
+																		<c:otherwise>
+																			<div class="star-ratings text-lg">
+																				<span>★</span>
+																			</div>
+																		</c:otherwise>
+																	</c:choose>
+																</c:forEach>
+															</div>
+															<div class="media">시설&nbsp;&nbsp;&nbsp;
+																<c:forEach begin="1" end="5" var="i">
+																	<c:choose>
+																		<c:when test="${Math.round(row.star_servey3) >= i }">
+																			<div class="star-ratings">
+																				<div class="star-ratings-fill space-x-2 text-lg"
+																					:style="{ width: ratingToPercent + '%' }">
+																					<span>★</span>
+																				</div>
+																				<div class="star-ratings-base space-x-2 text-lg">
+																					<span>★</span>
+																				</div>
+																			</div>
+																		</c:when>
+																		<c:otherwise>
+																			<div class="star-ratings text-lg">
+																				<span>★</span>
+																			</div>
+																		</c:otherwise>
+																	</c:choose>
+																</c:forEach>
+															</div>
+															<p>대충 사진</p>
+														</div>
+												</c:forEach>
+											</td>
+									</table>
+								</div>
+
+								<div id="inquiryProduct">
 		                        
 		                        </div>
 	                        </section>
