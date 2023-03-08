@@ -385,7 +385,6 @@ onload = function(){
 			} 
 		});  
 	}
->>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
 </script>
 <body style="background-color: white;">
     <div id="top" style="margin-bottom:0px;">

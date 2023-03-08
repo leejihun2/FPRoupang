@@ -397,7 +397,7 @@ public class TicketController {
 	public String movepage(HttpServletRequest req, Model model) {
 		int value = Integer.parseInt(req.getParameter("value"));
 		
-		ArrayList<ReviewDTO> totalstar = 
+		ReviewDTO totalstar = 
 				dao.starcount();
 		model.addAttribute("totalstar", totalstar);
 		
@@ -405,9 +405,9 @@ public class TicketController {
 				dao.reviewList();
 		
 		for (ReviewDTO dto : lists) {
-			String temp = dto.getCcomment()
+			String temp = dto.getReview()
 					.replace("\r\n", "<br/>");
-			dto.setCcomment(temp);
+			dto.setReview(temp);
 		}
 		model.addAttribute("lists", lists);
 		
