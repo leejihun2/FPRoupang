@@ -56,7 +56,7 @@ public class TicketController {
 			sub_idx = Integer.parseInt(req.getParameter("sub_idx"));
 		}
 		model.addAttribute("cate",cate_dao.select_cate(sub_idx));
-		return "/ticket/ticket_insert";
+		return "/ticket/ticket_insert2";
 	}
 	
 	@RequestMapping("/ticket_edit")
@@ -215,7 +215,7 @@ public class TicketController {
 	
 	@ResponseBody
 	@RequestMapping("/category_list.do")
-	public ArrayList<ParameterTicketDTO> cate_list(HttpServletRequest req){
+	public ArrayList<ParameterTicketDTO> cate_list(HttpServletRequest req, Model model){
 		int sub_idx=0;
 		if(!(req.getParameter("sub_idx")==null)) {
 			sub_idx=Integer.parseInt(req.getParameter("sub_idx"));
@@ -223,10 +223,13 @@ public class TicketController {
 		String level = req.getParameter("level");
 		if(level.equals("1")) {
 			ArrayList<ParameterTicketDTO> sub_cate = cate_dao.select_cate(sub_idx);
+			model.addAttribute("mid_cate_idx",sub_idx);
+			System.out.println(sub_idx);
 			return sub_cate;
 		}else{
 			String company_name=req.getParameter("company_name");
 			ArrayList<ParameterTicketDTO> sub_cate = cate_dao.select_cate_bot(sub_idx,company_name);
+			System.out.println(sub_cate);
 			return sub_cate;
 		}
 	}
@@ -244,6 +247,7 @@ public class TicketController {
 	public ArrayList<TicketInfoDTO> select_ticket_list(HttpServletRequest req){
 		int bot_idx = Integer.parseInt(req.getParameter("bot_idx"));
 		ArrayList<TicketInfoDTO> ticketDetail = ticket_dao.ticket_info_list(bot_idx);
+		System.out.println(ticketDetail);
 		return ticketDetail;
 	}
 	
@@ -397,10 +401,10 @@ public class TicketController {
 	public String movepage(HttpServletRequest req, Model model) {
 		int value = Integer.parseInt(req.getParameter("value"));
 		
-		ArrayList<ReviewDTO> totalstar = 
-				dao.starcount();
+		ReviewDTO totalstar = 
+				dao.starDTO();
 		model.addAttribute("totalstar", totalstar);
-		
+		System.out.println(totalstar);
 		ArrayList<ReviewDTO> lists = 
 				dao.reviewList();
 		

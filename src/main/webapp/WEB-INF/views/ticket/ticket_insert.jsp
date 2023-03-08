@@ -47,9 +47,6 @@
 						$.each(data, function(i){
 							$(next_level).append("<option value='"+data[i].idx+"'>"+data[i].title+"</option>");
 						});
-						if(level==2){
-							$(next_level).append("<option value='0'>신규등록</option>");
-						}
 					}
 				);
 			}

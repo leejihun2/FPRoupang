@@ -385,7 +385,6 @@ onload = function(){
 			} 
 		});  
 	}
->>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
 </script>
 <body style="background-color: white;">
     <div id="top" style="margin-bottom:0px;">
@@ -479,8 +478,8 @@ onload = function(){
 		                        		</table>
 		                        	</div>
 		                        </div>
-		                        <c:if test="${Total_Ticket.t_conservice ne null && Total_Ticket.t_fac ne null}">
 		                        <div class="service-infomation" style="margin-bottom: 10px;" id="introProduct">
+		                        <c:if test="${Total_Ticket.t_conservice ne null && Total_Ticket.t_fac ne null}">
 	                        		<table class="ticket-service-infomation" style="width:100%;">
 	                        			<colgroup>
 	                        				<col width="30%"/>
@@ -518,8 +517,8 @@ onload = function(){
 		                       				</tr>
 	                       				</c:if>
 	                        		</table>
-		                        </div>
 		                        </c:if>
+		                        </div>
 		                        <div class="instruction-manual" style="margin-bottom: 10px;">
 	                        		<table class="ticket-instruction-manual" style="width:100%;">
 	                        			<colgroup>
@@ -596,6 +595,13 @@ onload = function(){
 	                       				</tr>
 	                        		</table>
 		                        </div>
+		                        <div id="reviewProduct">
+		                        
+		                        </div>
+		                        
+		                        <div id="inquiryProduct">
+		                        
+		                        </div>
 	                        </section>
 	                    </article>
 	                </section>
@@ -607,15 +613,13 @@ onload = function(){
 			                	<div class="basis-product-address">
 			                		대충 주소
 			                	</div>
-			                	<c:forEach items="${totalstar }" var="star">
-										<input type="hidden" name="ratevalue" value="${star.star_rate}"
-											step="0.1" min="0" max="5" />
-										<div class="rating-wrap">
-											<div class="rating">
-												<div class="overlay"></div>
-											</div>
-										</div>
-								</c:forEach>
+								<input type="hidden" name="ratevalue" value="${totalstar.star_rate}"
+									step="0.1" min="0" max="5" />
+								<div class="rating-wrap">
+									<div class="rating">
+										<div class="overlay"></div>
+									</div>
+								</div>
 		                	</div>
 		                </div>
 		                

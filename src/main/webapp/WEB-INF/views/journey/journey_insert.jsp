@@ -67,7 +67,6 @@ function setSelectBox(obj){
          );
       }
       else if(level == 2){
-   	 	console.log(level);
           $('#journey_list').empty();
           $.post(
              "/category_list.j"
@@ -525,6 +524,7 @@ function setThumbnail(event) {
 								<input type="checkbox" name="common_items" value="짐운반" class="common"/>짐운반
 								<input type="checkbox" name="common_items" value="금연" class="common"/>금연
 							</td>
+						</tr>
 						<tr>
 							<th class="info_th">* 편의서비스</th>
 							<td>
