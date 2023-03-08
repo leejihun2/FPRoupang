@@ -6,11 +6,38 @@
             border: none;
             border-radius: 4px;
         }
-        .rating-wrap{
+        .rating-wrap1{
             padding: 10px;
             display: flex;
         }
-        .rating {
+        .rating-wrap2{
+            padding: 10px;
+            display: flex;
+        }
+        .rating-wrap3{
+            padding: 10px;
+            display: flex;
+        }
+        .rating-wrap4{
+            padding: 10px;
+            display: flex;
+        }
+        .rating1 {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .rating2 {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .rating3 {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .rating4 {
             display: flex;
             align-items: center;
             position: relative;
@@ -20,13 +47,52 @@
             height: 30px;
             margin-right: 2px;
         }
-        .starcolor{
+        .starcolor1{
+            fill: #ff8844;
+        }
+        .starcolor2{
+            fill: #ff8844;
+        }
+        .starcolor3{
+            fill: #ff8844;
+        }
+        .starcolor4{
             fill: #ff8844;
         }
         .star:last-of-type {
             margin-right: 0;
         }
-        .overlay {
+        .overlay1 {
+            background-color: #000;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            transition: all 0.3s ease-in-out;
+        }
+        .overlay2 {
+            background-color: #000;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            transition: all 0.3s ease-in-out;
+        }
+        .overlay3 {
+            background-color: #000;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            transition: all 0.3s ease-in-out;
+        }
+        .overlay4 {
             background-color: #000;
             opacity: 0.5;
             position: absolute;
@@ -37,7 +103,19 @@
             transition: all 0.3s ease-in-out;
         }
         @supports (mix-blend-mode: color) {
-            .overlay{
+            .overlay1{
+                mix-blend-mode: color;
+                opacity: unset;
+            }
+            .overlay2{
+                mix-blend-mode: color;
+                opacity: unset;
+            }
+            .overlay3{
+                mix-blend-mode: color;
+                opacity: unset;
+            }
+            .overlay4{
                 mix-blend-mode: color;
                 opacity: unset;
             }

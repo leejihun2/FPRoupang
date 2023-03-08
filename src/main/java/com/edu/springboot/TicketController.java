@@ -401,17 +401,16 @@ public class TicketController {
 	public String movepage(HttpServletRequest req, Model model) {
 		int value = Integer.parseInt(req.getParameter("value"));
 		
-		ReviewDTO totalstar = 
-				dao.starDTO();
+		ReviewDTO totalstar = dao.starcount();
 		model.addAttribute("totalstar", totalstar);
 		System.out.println(totalstar);
 		ArrayList<ReviewDTO> lists = 
 				dao.reviewList();
 		
 		for (ReviewDTO dto : lists) {
-			String temp = dto.getCcomment()
+			String temp = dto.getReview()
 					.replace("\r\n", "<br/>");
-			dto.setCcomment(temp);
+			dto.setReview(temp);
 		}
 		model.addAttribute("lists", lists);
 		
