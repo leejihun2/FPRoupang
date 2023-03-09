@@ -36,8 +36,8 @@ public class SecurityConfig {
 		.antMatchers("/css/**","/js/**","/images/**").permitAll()
 		.antMatchers("/guest/**").permitAll()
 		.antMatchers("/member/**").hasAnyRole("admin", "user", "seller")
-		.antMatchers("/supports/voc.do").hasAnyRole("admin", "user", "seller")
-		.antMatchers("/supports/inquiry.do").hasAnyRole("admin", "user", "seller")
+		.antMatchers("/supports/voc.jsp").hasAnyRole("admin", "user", "seller")
+		.antMatchers("/supports/inquiry.jsp").hasAnyRole("admin", "user", "seller")
 		.antMatchers("/admin/**").hasRole("admin")
         .antMatchers("/agreement/**").hasAnyRole("admin", "seller")
         .antMatchers("/**").permitAll()
@@ -70,7 +70,7 @@ public class SecurityConfig {
     protected void configure(AuthenticationManagerBuilder auth) 
     		throws Exception {
     	auth.jdbcAuthentication()
-    		.dataSource(dataSource)
+    		.dataSource(dataSource) 
     		.usersByUsernameQuery("select email, password, enabled"
     					+ " from member where email = ?")
     		.authoritiesByUsernameQuery("select email, authority "
