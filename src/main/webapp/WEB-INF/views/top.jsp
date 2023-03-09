@@ -56,9 +56,11 @@
 												data-category-id="184455">홈인테리어</option>
 											<option value="/np/categories/178255"
 												data-category-id="178155">가전디지털</option>
-										</select> <input type="hidden" name="component"
+										</select> 
+										<input type="hidden" name="component"
 											id="searchSelectedCategory" value=""> <label
-											for="headerSearchKeyword"> <input type="text"
+											for="headerSearchKeyword"> 
+											<input type="text" 
 											id="headerSearchKeyword" class="coupang-search" name="q"
 											title="쿠팡 상품 검색" value=""
 											data-searchad='{"channel":"", "copy":"찾고 싶은 상품을 검색해보세요!", "linkType":"", "linkContent":"", "newWindow":""}'
