@@ -3,9 +3,9 @@
 	<div class="sc-7d8uhw-0 iGgULZ">
 		<div class="sc-j94o1z-0 bfmcWH">
 		 <div class="sc-j94o1z-1 bfrCEA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고객센터</div>
-			&nbsp;&nbsp;&nbsp;<div class="sc-j94o1z-2 WKWEz">
-				<input type="text" placeholder="자주묻는 질문 검색" value=""
-					class="sc-j94o1z-3 docdqt" />
+			&nbsp;&nbsp;&nbsp;
+			<div class="sc-j94o1z-2 WKWEz">
+				<input type="text" placeholder="자주묻는 질문 검색" value=""	class="sc-j94o1z-3 docdqt" />
 				<div class="sc-j94o1z-4 fyaJtx">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 						viewBox="0 0 24 24" style="fill: #7d9def">

@@ -26,7 +26,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.springboot.jdbc.CategoryDTO;
 import com.edu.springboot.jdbc.CategoryService;
+import com.edu.springboot.jdbc.IReviewService;
 import com.edu.springboot.jdbc.ParameterTicketDTO;
+import com.edu.springboot.jdbc.ReviewDTO;
 import com.edu.springboot.jdbc.TicketDTO;
 import com.edu.springboot.jdbc.TicketInfoDTO;
 import com.edu.springboot.jdbc.TicketService;
@@ -39,20 +41,13 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class TicketController {
 	
 	@Autowired
+	IReviewService dao;
+	
+	@Autowired
 	CategoryService cate_dao;
 	
 	@Autowired
 	TicketService ticket_dao;
-	
-	@RequestMapping("/ticket_insert")
-	public String ticket_insert1(Model model, HttpServletRequest req) {
-		int sub_idx=0;
-		if(!(req.getParameter("sub_idx")==null)) {
-			sub_idx = Integer.parseInt(req.getParameter("sub_idx"));
-		}
-		model.addAttribute("cate",cate_dao.select_cate(sub_idx));
-		return "/ticket/ticket_insert";
-	}
 	
 	@RequestMapping("/ticket_edit")
 	public String ticket_edit(Model model, HttpServletRequest req) {
@@ -110,7 +105,6 @@ public class TicketController {
 
 		TicketDTO dto = new TicketDTO();
 		TicketDTO delete_dto = ticket_dao.ticket_image(value);
-		System.out.println(title_image.getOriginalFilename());
 		if(!(title_image.getOriginalFilename().equals(""))) {
 			dto.setT_title_image(saveFile(title_image));
 			deleteFile(delete_dto.getT_title_image());
@@ -210,7 +204,7 @@ public class TicketController {
 	
 	@ResponseBody
 	@RequestMapping("/category_list.do")
-	public ArrayList<ParameterTicketDTO> cate_list(HttpServletRequest req){
+	public ArrayList<ParameterTicketDTO> cate_list(HttpServletRequest req, Model model){
 		int sub_idx=0;
 		if(!(req.getParameter("sub_idx")==null)) {
 			sub_idx=Integer.parseInt(req.getParameter("sub_idx"));
@@ -218,6 +212,7 @@ public class TicketController {
 		String level = req.getParameter("level");
 		if(level.equals("1")) {
 			ArrayList<ParameterTicketDTO> sub_cate = cate_dao.select_cate(sub_idx);
+			model.addAttribute("mid_cate_idx",sub_idx);
 			return sub_cate;
 		}else{
 			String company_name=req.getParameter("company_name");
@@ -283,13 +278,13 @@ public class TicketController {
 				}
 			}
 			t_dto.setT_fac(facVal);
-			t_dto.setT_intro(req.getParameter("t_intro"));
+			t_dto.setT_intro(req.getParameter("product_intro"));
 			t_dto.setNotice(req.getParameter("notice"));
-			t_dto.setT_notice(req.getParameter("t_notice"));
+			t_dto.setT_notice(req.getParameter("product_notice"));
 			t_dto.setT_incmatters(req.getParameter("t_incmatters"));
-			t_dto.setT_booking(req.getParameter("t_booking"));
-			t_dto.setT_cancelfee(req.getParameter("t_cancelfee"));
-			t_dto.setT_cancelnoti(req.getParameter("t_cancelnoti"));
+			t_dto.setT_booking(req.getParameter("product_booking"));
+			t_dto.setT_cancelfee(req.getParameter("product_cancelfee"));
+			t_dto.setT_cancelnoti(req.getParameter("product_cancelnoti"));
 
 			value=ticket_dao.select_new_idx();
 		
@@ -304,7 +299,7 @@ public class TicketController {
 		ti_dto.setTi_intro(req.getParameter("ti_intro"));
 		ticket_dao.insert_ticket_info(ti_dto);
 		}catch (Exception e) {}
-		if(!(req.getParameter("t_intro").equals(""))) {
+		if(!(req.getParameter("product_intro").equals(""))) {
 			ticket_dao.insert_ticket(t_dto);
 		}
 		mv.setViewName("/home");
@@ -379,9 +374,40 @@ public class TicketController {
 		ModelAndView mv = new ModelAndView();
 		ArrayList<TotalTicketDTO> ticket_list = ticket_dao.show_ticket_list(sub_idx, location);
 		
+		String category_title = cate_dao.select_one_cate(sub_idx);
+		
+		mv.addObject("category_title",category_title);
 		mv.addObject("ticket_list", ticket_list);
 		
 		mv.setViewName("/ticket/ticketList");
 		return mv;
+	}
+	
+	@RequestMapping("/ticketDetail")
+	public String movepage(HttpServletRequest req, Model model) {
+		int value = Integer.parseInt(req.getParameter("value"));
+		
+		ReviewDTO totalstar = dao.starcount();
+		model.addAttribute("totalstar", totalstar);
+		ArrayList<ReviewDTO> lists = 
+				dao.reviewList();
+		
+		for (ReviewDTO dto : lists) {
+			String temp = dto.getReview()
+					.replace("\r\n", "<br/>");
+			dto.setReview(temp);
+		}
+		model.addAttribute("lists", lists);
+		
+		TicketDTO Total_Ticket = ticket_dao.ticket_list(value);
+		model.addAttribute("Total_Ticket",Total_Ticket);
+		
+		String category_title = cate_dao.select_bot_cate(value);
+		model.addAttribute("t_title",category_title);
+		
+		ArrayList<TicketInfoDTO> Total_Ticket_info = ticket_dao.ticket_info_list(value);
+		model.addAttribute("Total_Ticket_info",Total_Ticket_info);
+		
+		return "/ticket/ticket_detail_view";
 	}
 }

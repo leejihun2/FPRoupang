@@ -23,26 +23,27 @@ public class ReviewController {
 	IReviewService daoo;
 	
 	@RequestMapping("/review/reviewList.do")
-	public String review(Model model, HttpServletRequest req, ReviewDTO reviewDTO) {
+	public String review(Model model, HttpServletRequest req) {
 		
 		
 		int totalRecordCount = 
 				daoo.reviewcount();
 		
-		ArrayList<ReviewDTO> totalstar = 
+		ReviewDTO totalstar = 
 				daoo.starcount();
 		
 		ArrayList<ReviewDTO> lists = 
 				daoo.reviewList();
 		
 		for (ReviewDTO dto : lists) {
-			String temp = dto.getCcomment()
+			String temp = dto.getReview()
 					.replace("\r\n", "<br/>");
-			dto.setCcomment(temp);
+			dto.setReview(temp);
 		}
 		
 		model.addAttribute("totalstar", totalstar);
 		model.addAttribute("lists", lists);
+		System.out.println("출력얍"+totalstar);
 		return "review/reviewList";
 	}
 	

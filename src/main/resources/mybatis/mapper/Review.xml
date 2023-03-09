@@ -6,11 +6,12 @@
  
  <mapper namespace="com.edu.springboot.jdbc.IReviewService">
  
+ 
 	<insert id="reviewWrite" >
 		INSERT INTO REVIEW 
-		(idx, product_idx, bot_cate_idx, member_idx, goods_title, ccomment, star_rate, servey1, servey2, servey3, summary)
+		(idx, product_idx, bot_cate_idx, member_idx, goods_title, review, star_rate, star_servey1, star_servey2, star_servey3, summary)
 		VALUES  
-		(REVIEW_seq.nextval, 2, 2, 2, #{goods_title}, #{ccomment}, #{star_rate}, #{servey1}, #{servey2}, #{servey3}, #{summary})
+		(REVIEW_seq.nextval, 2, 2, 2, #{goods_title}, #{review}, #{star_rate}, #{star_servey1}, #{star_servey2}, #{star_servey3}, #{summary})
 	</insert>
 
 	<select id="reviewView" resultType="com.edu.springboot.jdbc.ReviewDTO"
@@ -21,6 +22,41 @@
  
  
  	<select id="starcount" resultType="com.edu.springboot.jdbc.ReviewDTO">
+        SELECT	ROUND(AVG(star_rate),1) star_rate,
+                ROUND(AVG(star_servey1),1) star_servey1,
+                ROUND(AVG(star_servey2),1) star_servey2,
+                ROUND(AVG(star_servey3),1) star_servey3
+        ,COUNT(goods_title) goods_title
+        ,COUNT(star_rate) star_rate0
+        ,COUNT(CASE WHEN star_rate=1 THEN 1 END) star_rate1
+        ,COUNT(CASE WHEN star_rate=2 THEN 1 END) star_rate2
+        ,COUNT(CASE WHEN star_rate=3 THEN 1 END) star_rate3
+        ,COUNT(CASE WHEN star_rate=4 THEN 1 END) star_rate4
+        ,COUNT(CASE WHEN star_rate=5 THEN 1 END) star_rate5
+        
+        ,COUNT(star_servey1) servey1_0
+        ,COUNT(CASE WHEN star_servey1=1 THEN 1 END) servey1_1
+        ,COUNT(CASE WHEN star_servey1=2 THEN 1 END) servey1_2
+        ,COUNT(CASE WHEN star_servey1=3 THEN 1 END) servey1_3
+        ,COUNT(CASE WHEN star_servey1=3 THEN 1 END) servey1_4
+        ,COUNT(CASE WHEN star_servey1=3 THEN 1 END) servey1_5
+        
+        ,COUNT(star_servey2) servey2_0
+        ,COUNT(CASE WHEN star_servey2=1 THEN 1 END) servey2_1
+        ,COUNT(CASE WHEN star_servey2=2 THEN 1 END) servey2_2
+        ,COUNT(CASE WHEN star_servey2=3 THEN 1 END) servey2_3
+        ,COUNT(CASE WHEN star_servey2=3 THEN 1 END) servey2_4
+        ,COUNT(CASE WHEN star_servey2=3 THEN 1 END) servey2_5
+        
+        ,COUNT(star_servey3) servey3_0
+        ,COUNT(CASE WHEN star_servey3=1 THEN 1 END) servey3_1
+        ,COUNT(CASE WHEN star_servey3=2 THEN 1 END) servey3_2
+        ,COUNT(CASE WHEN star_servey3=3 THEN 1 END) servey3_3
+        ,COUNT(CASE WHEN star_servey2=3 THEN 1 END) servey3_4
+        ,COUNT(CASE WHEN star_servey2=3 THEN 1 END) servey3_5
+		FROM REVIEW ORDER BY idx
+ 	</select>
+ 	<select id="starDTO" resultType="com.edu.springboot.jdbc.ReviewDTO">
         SELECT ROUND(AVG(star_rate),1) star_rate
         ,COUNT(goods_title) goods_title
         ,COUNT(CASE WHEN star_rate=1 THEN 1 END) star_rate1
@@ -42,9 +78,15 @@
  
 	<select id="reviewcount" resultType="int">
 		SELECT COUNT(*) from review
+		<if test="search_word!=null and !search_word.equals('')">
+			WHERE ${searchField} like '%'||#{search_word}||'%'
+		</if>
 	</select>
 
 	<select id="reviewList" resultType="com.edu.springboot.jdbc.ReviewDTO">
 		SELECT * FROM review order by idx desc
+		<if test="search_word!=null and !search_word.equals('')">
+			WHERE ${searchField} like '%'||#{search_word}||'%'
+		</if>
 	</select>
  </mapper>

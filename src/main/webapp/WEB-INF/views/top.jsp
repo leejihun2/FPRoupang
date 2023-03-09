@@ -148,7 +148,7 @@ $(function(){
 						style="margin-left: 65px; margin-top: 10px;">
 						<li class="rocket-delivery" style="margin-right: 9px;"><a
 							href="https://www.coupang.com/np/campaigns/82"
-							class="rocket-delivery">로켓배송</a><i class="ic-new"></i></li>&nbsp;
+							class="rocket-delivery">로켓배송</a><i class="ic-new"></i>&nbsp;</li>
 						<li class="rocket-fresh"><a
 							href="https://www.coupang.com/np/categories/393760"
 							class="rocket-fresh"> 로켓프레시</a><i class="ic-new"></i></li>
@@ -156,7 +156,7 @@ $(function(){
 							href="https://pages.coupang.com/p/63240"
 							class="sustainable-market">착한상점</a><i class="ic-new"></i></li>
 						<li class="travel"><a
-							href="https://trip.coupang.com?channel=gnb">여행/티켓</a><i class=""></i><i
+							href="/journey_Main">여행/티켓</a><i class=""></i><i
 							class="ic-new"></i></li>
 						<li class="subscription"><a
 							href="https://www.coupang.com/np/campaigns/83"
@@ -2287,154 +2287,155 @@ $(function(){
 					data-banner-src="//image6.coupangcdn.com/image/displayitem/displayitem_248e20ee-5bc9-4381-adb7-5d912b6e2487.png"
 					class="category-banner-image" />
 				</span>
+			</div>
 		</div>
-	</div>
-	</li>
-	<h3 class="none">티켓</h3>
-	<ul class="menu ticket-menu-list">
-		<li class="travel-leisure"><a
-			href="https://trip.coupang.com?channel=category"
-			style="cursor: pointer;">여행/티켓 <i class="select-icon"></i></a>
-			<div class="depth">
-				<div class="depth-list banner">
-					<div class="travel-category-nav">
-						<a href="https://trip.coupang.com?channel=category"
-							class="travel-home">여행 홈 바로가기</a>
-						<p class="travel-leisure">국내여행</p>
-						<ul class="travel-second-depth-list">
-							<li class="travel-second-depth-row"><a
-								href="/np/categories/396465"
-								data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>펜션/캠핑
-							</a>
-								<div class="travel-third-depth-list">
-									<ul></ul>
-								</div></li>
-							<li class="travel-second-depth-row"><a
-								href="/np/categories/396466"
-								data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>호텔/리조트
-							</a>
-								<div class="travel-third-depth-list">
-									<ul></ul>
-								</div></li>
-							<li class="travel-second-depth-row"><a
-								href="/np/categories/396467"
-								data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>티켓/패스
-									<i class="depth-select-icon"></i>
-							</a>
-								<div class="travel-third-depth-list">
-									<ul>
-										<li><a href="/np/categories/156698"
-											data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>스키/눈썰매장</a>
-										</li>
-										<li><a href="/np/categories/396472"
-											data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>스파/온천/워터파크</a>
-										</li>
-										<li><a href="/np/categories/396471"
-											data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>테마파크</a>
-										</li></li>
-						</ul>
-					</div></li>
-		<li class="travel-second-depth-row"><a
-			href="/np/categories/396468"
-			data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>렌터카
-				<i class="depth-select-icon"></i>
-		</a>
-			<div class="travel-third-depth-list">
-				<ul>
-					<li><a href="/np/categories/396479"
-						data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>제주렌터카</a>
-					</li>
-					<li><a href="/np/categories/396480"
-						data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>전국렌터카</a>
-					</li>
-				</ul>
-			</div></li>
-		<li class="travel-second-depth-row"><a
-			href="/np/categories/396470"
-			data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>패키지여행/항공
-				<i class="depth-select-icon"></i>
-		</a>
-			<div class="travel-third-depth-list">
-				<ul>
-					<li><a href="/np/categories/396482"
-						data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>제주항공권</a>
-					</li>
-					<li><a href="/np/categories/396483"
-						data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>제주여행</a>
-					</li>
-				</ul>
-			</div></li>
-	</ul>
-	<p class="travel-international">해외여행</p>
-	<ul class="travel-second-depth-list">
-		<li class="travel-second-depth-row"><a
-			href="/np/categories/396554"
-			data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>패키지여행
-				<i class="depth-select-icon"></i>
-		</a>
-			<div class="travel-third-depth-list">
-				<ul>
-					<li><a href="/np/categories/396559"
-						data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>동남아시아/방콕/싱가포르</a>
-					</li>
-					<li><a href="/np/categories/396560"
-						data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>일본</a>
-					</li>
-				</ul>
-			</div></li>
-		<li class="travel-second-depth-row"><a
-			href="/np/categories/396555"
-			data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>자유여행/항공
-				<i class="depth-select-icon"></i>
-		</a>
-			<div class="travel-third-depth-list">
-				<ul>
-					<li><a href="/np/categories/396566"
-						data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>동남아시아/방콕/싱가포르</a>
-					</li>
-					<li><a href="/np/categories/396570"
-						data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>괌/사이판/호주</a>
-					</li>
-				</ul>
-			</div></li>
-		<li class="travel-second-depth-row"><a
-			href="/np/categories/396556"
-			data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>티켓/패스/현지투어
-				<i class="depth-select-icon"></i>
-		</a>
-			<div class="travel-third-depth-list">
-				<ul>
-					<li><a href="/np/categories/396576"
-						data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>동남아시아/방콕/싱가포르</a>
-					</li>
-					<li><a href="/np/categories/396573"
-						data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>일본</a>
-					</li>
-				</ul>
-			</div></li>
-		<li class="travel-second-depth-row"><a
-			href="/np/categories/396558"
-			data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>호텔
-		</a></li>
-		<li class="travel-second-depth-row"><a
-			href="/np/categories/396580"
-			data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>실시간항공권
-		</a></li>
-	</ul>
-	</div>
-	<span class="gnb-banner" style="background: #FFF"> <a
-		class="category-banner-button"
-		href="https://pages.coupang.com/p/58690" title="국내여행"
-		data-log-props='{ "id":"category_menu_banner", "param":{"categoryLabel":"Travel-Domestic"} }'>국내여행</a>
-		<img alt="국내여행"
-		data-banner-src="//image10.coupangcdn.com/image/displayitem/displayitem_4f3cf2c3-210e-45fe-a481-d89a21e35296.jpg"
-		class="category-banner-image" />
-	</span>
-	</div>
-	</div>
-	</li>
-	</ul>
-	</div>
+		</li>
+		<h3 class="none">티켓</h3>
+		<ul class="menu ticket-menu-list">
+			<li class="travel-leisure"><a
+				href="https://trip.coupang.com?channel=category"
+				style="cursor: pointer;">여행/티켓 <i class="select-icon"></i></a>
+				<div class="depth">
+					<div class="depth-list banner">
+						<div class="travel-category-nav">
+							<a href="https://trip.coupang.com?channel=category"
+								class="travel-home">여행 홈 바로가기</a>
+							<p class="travel-leisure">국내여행</p>
+							<ul class="travel-second-depth-list">
+								<li class="travel-second-depth-row"><a
+									href="/np/categories/396465"
+									data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>펜션/캠핑
+								</a>
+									<div class="travel-third-depth-list">
+										<ul></ul>
+									</div></li>
+								<li class="travel-second-depth-row"><a
+									href="/np/categories/396466"
+									data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>호텔/리조트
+								</a>
+									<div class="travel-third-depth-list">
+										<ul></ul>
+									</div></li>
+								<li class="travel-second-depth-row"><a
+									href="/np/categories/396467"
+									data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>티켓/패스
+										<i class="depth-select-icon"></i>
+								</a>
+									<div class="travel-third-depth-list">
+										<ul>
+											<li><a href="/np/categories/156698"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>스키/눈썰매장</a>
+											</li>
+											<li><a href="/np/categories/396472"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>스파/온천/워터파크</a>
+											</li>
+											<li><a href="/np/categories/396471"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>테마파크</a>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li class="travel-second-depth-row"><a
+									href="/np/categories/396468"
+									data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>렌터카
+										<i class="depth-select-icon"></i>
+								</a>
+									<div class="travel-third-depth-list">
+										<ul>
+											<li><a href="/np/categories/396479"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>제주렌터카</a>
+											</li>
+											<li><a href="/np/categories/396480"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>전국렌터카</a>
+											</li>
+										</ul>
+									</div></li>
+								<li class="travel-second-depth-row"><a
+									href="/np/categories/396470"
+									data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>패키지여행/항공
+										<i class="depth-select-icon"></i>
+								</a>
+									<div class="travel-third-depth-list">
+										<ul>
+											<li><a href="/np/categories/396482"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>제주항공권</a>
+											</li>
+											<li><a href="/np/categories/396483"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Domestic"} }'>제주여행</a>
+											</li>
+										</ul>
+									</div></li>
+							</ul>
+							<p class="travel-international">해외여행</p>
+							<ul class="travel-second-depth-list">
+								<li class="travel-second-depth-row"><a
+									href="/np/categories/396554"
+									data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>패키지여행
+										<i class="depth-select-icon"></i>
+								</a>
+									<div class="travel-third-depth-list">
+										<ul>
+											<li><a href="/np/categories/396559"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>동남아시아/방콕/싱가포르</a>
+											</li>
+											<li><a href="/np/categories/396560"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>일본</a>
+											</li>
+										</ul>
+									</div></li>
+								<li class="travel-second-depth-row"><a
+									href="/np/categories/396555"
+									data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>자유여행/항공
+										<i class="depth-select-icon"></i>
+								</a>
+									<div class="travel-third-depth-list">
+										<ul>
+											<li><a href="/np/categories/396566"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>동남아시아/방콕/싱가포르</a>
+											</li>
+											<li><a href="/np/categories/396570"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>괌/사이판/호주</a>
+											</li>
+										</ul>
+									</div></li>
+								<li class="travel-second-depth-row"><a
+									href="/np/categories/396556"
+									data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>티켓/패스/현지투어
+										<i class="depth-select-icon"></i>
+								</a>
+									<div class="travel-third-depth-list">
+										<ul>
+											<li><a href="/np/categories/396576"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>동남아시아/방콕/싱가포르</a>
+											</li>
+											<li><a href="/np/categories/396573"
+												data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>일본</a>
+											</li>
+										</ul>
+									</div></li>
+								<li class="travel-second-depth-row"><a
+									href="/np/categories/396558"
+									data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>호텔
+								</a></li>
+								<li class="travel-second-depth-row"><a
+									href="/np/categories/396580"
+									data-log-props='{ "id":"category_menu", "param":{"categoryLabel":"Travel-Overseas"} }'>실시간항공권
+								</a></li>
+							</ul>
+							</div>
+							<span class="gnb-banner" style="background: #FFF"> <a
+								class="category-banner-button"
+								href="https://pages.coupang.com/p/58690" title="국내여행"
+								data-log-props='{ "id":"category_menu_banner", "param":{"categoryLabel":"Travel-Domestic"} }'>국내여행</a>
+								<img alt="국내여행"
+								data-banner-src="//image10.coupangcdn.com/image/displayitem/displayitem_4f3cf2c3-210e-45fe-a481-d89a21e35296.jpg"
+								class="category-banner-image" />
+							</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
 	</div>
 	</header>
 	<article class="top-bar">
@@ -2482,7 +2483,10 @@ $(function(){
 					</p></li>
 					
 				<li class="cs-center more"><a
-					href="/ticket_insert">상품등록(티켓)</a>
+					href="/product_insert">상품등록</a>
+				</li>
+				<li class="cs-center more"><a
+					href="/journey_insert">상품등록(여행)</a>
 				</li>
 			</menu>
 			<menu id="subscribeHeader">

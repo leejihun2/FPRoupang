@@ -18,12 +18,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</otherwise>
 		</choose>
 	</select>
-
 	<select id="select_cate_bot"
 	parameterType="com.edu.springboot.jdbc.CategoryDTO"
 	resultType="com.edu.springboot.jdbc.ParameterTicketDTO">
 		select * from bot_category bc JOIN ticket t ON bc.idx=t.bot_idx 
 		where sub_idx=#{param1} and company_name=#{param2}
 	</select>
+	<select id="select_cate_bot_j"
+	parameterType="com.edu.springboot.jdbc.CategoryDTO"
+	resultType="com.edu.springboot.jdbc.ParameterTicketDTO">
+		select * from bot_category bc JOIN journey j ON bc.idx=j.bot_idx 
+		where sub_idx=#{param1} and company_name=#{param2}
+	</select>
+ 
  	
+ 	<select id="select_one_cate"
+ 	resultType="String">
+ 		SELECT title FROM mid_category WHERE idx=#{param1}
+ 	</select>
+ 	
+ 	<select id="select_bot_cate"
+ 	resultType="String">
+ 		SELECT title FROM bot_category WHERE idx=#{param1}
+ 	</select>
  </mapper>
