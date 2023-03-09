@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>목록</title>
-<link rel="stylesheet"
+<link rel="stylesheet" 
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
@@ -42,31 +42,61 @@ function deleteRow(idx){
 	<%@include file="../top.jsp"%>
 	<div id="top"></div>
 	<div class="container">
-		<c:forEach items="${totalstar }" var="star">
+	
 			<div class="star-ratings">
-          <input type="hidden" name="ratevalue" value="${star.star_rate}" step="0.1" min="0" max="5" />
-          <div class="rating-wrap">
-            <div class="rating">
-                <div class="overlay"></div>
+          <input type="hi dden" name="ratevalue1" value="${totalstar.star_rate}" step="0.1" min="0" max="5" />
+          <div class="rating-wrap1">
+            <div class="rating1">
+                <div class="overlay1"></div>
             </div>
           </div>
 			</div>
-			<div class="star-ratings">1점 :${star.star_rate1 }</div>
-			<div class="star-ratings">2점 :${star.star_rate2 }</div>
-			<div class="star-ratings">3점 :${star.star_rate3 }</div>
-			<div class="star-ratings">4점 :${star.star_rate4 }</div>
-			<div class="star-ratings">5점 :${star.star_rate5 }</div>
-			<div class="star-ratings">짱인가요? :${star.servey1_1 }</div>
-			<div class="star-ratings">짱인가요? :${star.servey1_2 }</div>
-			<div class="star-ratings">짱인가요? :${star.servey1_3 }</div>
-			<div class="star-ratings">짱인가요? :${star.servey2_1 }</div>
-			<div class="star-ratings">짱인가요? :${star.servey2_2 }</div>
-			<div class="star-ratings">짱인가요? :${star.servey2_3 }</div>
-			<div class="star-ratings">짱인가요? :${star.servey3_1 }</div>
-			<div class="star-ratings">짱인가요? :${star.servey3_2 }</div>
-			<div class="star-ratings">짱인가요? :${star.servey3_3 }</div>
+			<div class="star-ratings">
+          <input type="hi dden" name="ratevalue2" value="${totalstar.star_servey1}" step="0.1" min="0" max="5" />
+          <div class="rating-wrap2">
+            <div class="rating2">
+                <div class="overlay2"></div>
+            </div>
+          </div>
+			</div>
+			<div class="star-ratings">
+          <input type="hi dden" name="ratevalue3" value="${totalstar.star_servey2}" step="0.1" min="0" max="5" />
+          <div class="rating-wrap3">
+            <div class="rating3">
+                <div class="overlay3"></div>
+            </div>
+          </div>
+			</div>
+			<div class="star-ratings">
+          <input type="hi dden" name="ratevalue4" value="${totalstar.star_servey3}" step="0.1" min="0" max="5" />
+          <div class="rating-wrap4">
+            <div class="rating4">
+                <div class="overlay4"></div>
+            </div>
+          </div>
+			</div>
+			
+			<div class="star-ratings">1점 :${totalstar.star_rate1 }</div>
+			<div class="star-ratings">2점 :${totalstar.star_rate2 }</div>
+			<div class="star-ratings">3점 :${totalstar.star_rate3 }</div>
+			<div class="star-ratings">4점 :${totalstar.star_rate4 }</div>
+			<div class="star-ratings">5점 :${totalstar.star_rate5 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey1_1 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey1_2 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey1_3 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey1_4 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey1_5 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey2_1 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey2_2 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey2_3 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey2_4 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey2_5 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey3_1 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey3_2 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey3_3 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey3_4 }</div>
+			<div class="star-ratings">짱인가요? :${totalstar.star_servey3_5 }</div>
 				
-		</c:forEach>
 
 		<div class="text-right"></div>
 		<!-- 방명록 반복 부분 s -->
@@ -108,10 +138,75 @@ function deleteRow(idx){
 				<div class="media-body">
 					<!--  -->
 					<h4 class="media-heading">제목:${row.goods_title }</h4>
-					<p>${row.ccomment }</p>
-					<p>${row.servey1 }</p>
-					<p>${row.servey2 }</p>
-					<p>${row.servey3 }</p>
+					<p>
+					${row.review }
+					</p>
+					<div class="media">
+					<c:forEach begin="1" end="5" var="i">
+						<c:choose>
+							<c:when test="${Math.round(row.star_servey1) >= i }">
+								<div class="star-ratings">
+									<div class="star-ratings-fill space-x-2 text-lg"
+										:style="{ width: ratingToPercent + '%' }">
+										<span>★</span>
+									</div>
+									<div class="star-ratings-base space-x-2 text-lg">
+										<span>★</span>
+									</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="star-ratings text-lg">
+									<span>★</span>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					</div>
+					<div class="media">
+					<c:forEach begin="1" end="5" var="i">
+						<c:choose>
+							<c:when test="${Math.round(row.star_servey2) >= i }">
+								<div class="star-ratings">
+									<div class="star-ratings-fill space-x-2 text-lg"
+										:style="{ width: ratingToPercent + '%' }">
+										<span>★</span>
+									</div>
+									<div class="star-ratings-base space-x-2 text-lg">
+										<span>★</span>
+									</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="star-ratings text-lg">
+									<span>★</span>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					</div>
+					<div class="media">
+					<c:forEach begin="1" end="5" var="i">
+						<c:choose>
+							<c:when test="${Math.round(row.star_servey3) >= i }">
+								<div class="star-ratings">
+									<div class="star-ratings-fill space-x-2 text-lg"
+										:style="{ width: ratingToPercent + '%' }">
+										<span>★</span>
+									</div>
+									<div class="star-ratings-base space-x-2 text-lg">
+										<span>★</span>
+									</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="star-ratings text-lg">
+									<span>★</span>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					</div>
 					<p>${row.summary }</p>
 				</div>
 				<div class="media-right"></div>

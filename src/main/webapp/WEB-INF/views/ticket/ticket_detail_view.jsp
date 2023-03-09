@@ -5,15 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e6076fe794faf6e2a97f29c6ebfadce5&libraries=services"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e6076fe794faf6e2a97f29c6ebfadce5&libraries=services"></script>
 
 <meta charset="UTF-8">
 <title>Roupang</title>
@@ -36,6 +32,10 @@
 	*{
 	    margin: 0;
 	    padding: 0;
+	}
+	
+	html {
+	  scroll-behavior: smooth;
 	}
 	h4 {
 	    display: block;
@@ -87,7 +87,7 @@
 	    position: relative;
 	    float: left;
 	    overflow: hidden;
-	    height: 60px;
+	    height: 70px;
 	    margin-right: 3px;
 	}
 	.travel-detail-basis {
@@ -107,33 +107,36 @@
 	    display: block;
 	    clear: both;
 	}
+	.travel-scroll-tab-header-wrapper{
+		display:flex;
+		background-color:white;
+		z-index:0;
+	}
 	.travel-scroll-tab-headers li {
 		cursor: pointer;
 	}
 	.thumbnails li {
 		cursor: pointer;
-	}
-	ul {
-	    display: block;
-	    list-style-type: disc;
-	    margin-block-start: 1em;
-	    margin-block-end: 1em;
-	    margin-inline-start: 0px;
-	    margin-inline-end: 0px;
+	}	
+	.thumbnail-img:hover {
+		outline: 2px solid green;
+	}	
+	.basis-cashback-list{
 	    padding-inline-start: 40px;
 	}
-	.travel-scroll-tab-headers.lg li a {
+	.travel-scroll-tab-headers li {
 	    font-size: 18px;
+	    height: 48px;
+	    line-height: 48px;
 	    padding: 0 40px;
-	}
-	.travel-scroll-tab-headers li a {
 	    display: block;
 	    color: #111;
 	    text-align: center;
 	}
-	.travel-scroll-tab-headers.lg li.selected a, .travel-scroll-tab-headers.lg li:hover a {
+	.travel-scroll-tab-headers.lg li.selected , .travel-scroll-tab-headers.lg li:hover {
 	    font-weight: 700;
 	    color: #00a289;
+		border-bottom: 3px solid #00a289;
 	}
 	.travel-scroll-tab-headers{
 		clear:both;
@@ -142,7 +145,6 @@
 		text-align:center;
 	    padding: 13px 0;
 	    border-bottom: 1px solid #ddd;
-    	
 	}
 	.ticket-cancellation-refund-policy th{
 	    padding: 13px 13px;
@@ -279,9 +281,18 @@
 	    margin-right: 3px;
 	    margin-bottom: 3px;
 	}
+	.sticky{
+		position: sticky;
+		top: 0;
+	}
+	.fixed{
+		position: fixed;
+		top:0;
+		z-index:1000;
+	    border-bottom: 1px solid #ddd;
+	}
 </style>
 <script type="text/javascript">
-<<<<<<< HEAD
 onload = function(){
 	var mapContainer = document.getElementById('map'),
 	mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 5};  
@@ -305,12 +316,52 @@ onload = function(){
 		} 
 	});  
 }
-=======
 	$(function(){
-		$(".thumbnails img").click(function(e){
+		$(".thumbnail-img").click(function(e){
 			document.getElementById("thumbnail").style.backgroundImage="url("+e.target.src+")";
+			$(".thumbnail-img").each(function(index, item){
+				item.style.outline="";
+			})
+			e.target.style.outline="2px solid green";
+		});
+
+		$.fn.Scrolling = function(obj, tar) {
+			var _this = this;
+			$(window).scroll(function(e) {
+				var end = obj + tar;
+				$(window).scrollTop() >= obj ? _this.addClass("fixed") : _this.removeClass("fixed");
+				if($(window).scrollTop() >= end) _this.removeClass("fixed");
+			});
+		};
+
+		$("#sticky_menu").Scrolling($("#sticky_menu").offset().top, ($(".travel-scroll-tab").height() - $("#sticky_menu").height()));
+		
+		$(".travel-scroll-tab-headers>li").click(function(e){
+			replaceClass();
+			e.target.classList.add("selected");
+			var value = e.target.value;
+			var url='';
+			if(value==1){
+				url='selectProduct';
+			}
+			if(value==2){
+				url='introProduct';
+			}
+			if(value==3){
+				url='reviewProduct';
+			}
+			if(value==4){
+				url='inquiryProduct';
+			}
+            location.href="#"+url;
 		});
 	});
+	
+	function replaceClass(){
+		var elem = $(".selected");
+		elem.removeClass("selected");
+	}
+	
 	onload = function(){
 		var mapContainer = document.getElementById('map'),
 		mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 3};  
@@ -334,7 +385,6 @@ onload = function(){
 			} 
 		});  
 	}
->>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
 </script>
 <body style="background-color: white;">
     <div id="top" style="margin-bottom:0px;">
@@ -347,15 +397,16 @@ onload = function(){
 	                <section class="travel-detail-content">
 	                    <div class="travel-carousel-container">
 	                        <div class="travel-carousel use-background clickable" style="width: 100%; height: 512px;">
-	                        	<div class="carousel-image" id="thumbnail" style="height: 512px; background-image: url(/uploads/${Total_Ticket.t_title_image });"></div>
+	                        	<div class="carousel-image" id="thumbnail" style="height: 512px; background-image: url(/uploads/${Total_Ticket.t_title_image }); background-color:rgb(85,85,85);"></div>
 	                        </div>
 	                        <div class="travel-thumbnail">
 	                            <div class="thumbnails-wrap" style="width:527px;">
-	                                <ul class="thumbnails">
+	                                <ul class="thumbnails" style="margin:10px;">
 	                                	<li><a class="thumbnail-item">
-	                                	<img src="/uploads/${Total_Ticket.t_title_image }" class="thumbnail-img" /></a></li>
+	                                	<img src="/uploads/${Total_Ticket.t_title_image }" class="thumbnail-img" style="outline:2px solid green;"/>
+	                                	</a></li>
 	                                	<c:if test="${not empty Total_Ticket.t_image1 }">
-	                                		<li><a class="thumbnail-item"><img src="/uploads/${Total_Ticket.t_image1 }" class="thumbnail-img" /></a></li>
+	                                		<li><a class="thumbnail-item"><img src="/uploads/${Total_Ticket.t_image1 }" class="thumbnail-img" />
 	                                		<c:if test="${not empty Total_Ticket.t_image2 }">
 			                                	<li><a class="thumbnail-item"><img src="/uploads/${Total_Ticket.t_image2 }" class="thumbnail-img" /></a></li>
 	                                			<c:if test="${not empty Total_Ticket.t_image3 }">
@@ -370,178 +421,303 @@ onload = function(){
 	                            </div>
 	                        </div>
 	                    </div>
-                	    <article class="travel-scroll-tab" style="margin-bottom:100px;">
-	                 	   
+                	    <article class="travel-scroll-tab" style="margin-bottom:100px; margin-top:10px;">
 	                        <section class="travel-scroll-tab-header">
-	                            <div class="travel-scroll-tab-header-wrapper">
-	                                <ul class="travel-scroll-tab-headers lg">
-	                                    <li class="lg selected"><a style="height: 48px; line-height: 48px;">상품 선택</a></li>
-	                                    <li class="lg"><a style="height: 48px; line-height: 48px;">상품 설명</a></li>
-	                                    <li class="lg"><a style="height: 48px; line-height: 48px;">상품평</a></li>
-	                                    <li class="lg"><a style="height: 48px; line-height: 48px;">상품문의</a></li>
+	                            <div class="travel-scroll-tab-header-wrapper" id="sticky_menu" style="width:100%">
+	                                <ul class="travel-scroll-tab-headers lg"> 
+	                                    <li class="lg selected" value="1">상품 선택</li>
+	                                    <li class="lg" value="2">상품 설명</li>
+	                                    <li class="lg" value="3">상품평</li>
+	                                    <li class="lg" value="4">상품문의</li>
 	                                </ul>
 	                            </div>
-	                        </section>
-	                        <div class="ilpPanel" style="margin-bottom:10px;">
-	                        	<div class="ticket-detail-vendor-items">
-	                        		<table class="ticket-detail-vendor-items-result" style="width:100%;">
+		                        <div class="ilpPanel" style="margin-bottom:10px;" id="selectProduct">
+		                        	<div class="ticket-detail-vendor-items">
+		                        		<table class="ticket-detail-vendor-items-result" style="width:100%;">
+		                        			<colgroup>
+		                        				<col width="55%" />
+		                        				<col width="30%"/>
+		                        				<col width="*"/>
+		                        			</colgroup>
+		                        			<tr>
+		                        				<th>상품명</th>
+		                        				<th>요금</th>
+		                        				<th>선택</th>
+		                        			</tr>
+		                        			<c:forEach items="${Total_Ticket_info}" var="row" varStatus="loop">
+	                        				<tr>
+	                        					<td>
+	                        						<p>
+		                       							<b>${row.ti_title }</b>
+	                        						</p>
+	                        						<p class="duetime">유효기간 : ${row.ti_duetime1 }~${row.ti_duetime2 }</p>
+	                        						${row.ti_intro }
+	                        					</td>
+	                        					<td style="text-align:right;">
+	                        						<span class="price_title">쿠팡판매가</span> <br />
+	                        						<em class="price"><b><fmt:formatNumber value="${row.ti_price}"/>원</b></em><br />
+	                        						<div class="ticket_price" style="color:rgb(174,0,0);">
+	                        						<c:if test="${row.ti_discount ne 0 }">
+		                        						<span class="price_title">와우판매가</span> <br />
+		                        						<em class="price"><b><fmt:formatNumber value="${(row.ti_price)*(100-row.ti_discount)/100 }"/>원</b></em><br />
+	                        						</c:if>
+	                        						</div>
+	                        						<div class="cashback-area">
+	                        							<div class="search-item-cash-back">
+			                        						<span class="cash-text">
+			                        							<em>최대 <fmt:formatNumber value="${(row.ti_price)*(100-row.ti_discount)/100*0.05 }" pattern="#,##0"/>원 적립</em>
+			                        						</span>
+		                        						</div>
+	                        						</div>
+												</td>
+	                        					<td>
+	                        					<button class="btn btn-primaryinfo" type="button" >선택</button>
+	                        					</td>
+	                        				</tr>
+		                        			</c:forEach>
+		                        		</table>
+		                        	</div>
+		                        </div>
+		                        <div class="service-infomation" style="margin-bottom: 10px;" id="introProduct">
+		                        <c:if test="${Total_Ticket.t_conservice ne null && Total_Ticket.t_fac ne null}">
+	                        		<table class="ticket-service-infomation" style="width:100%;">
 	                        			<colgroup>
-	                        				<col width="55%" />
 	                        				<col width="30%"/>
 	                        				<col width="*"/>
 	                        			</colgroup>
 	                        			<tr>
-	                        				<th>상품명</th>
-	                        				<th>요금</th>
-	                        				<th>선택</th>
+	                        				<th colspan="2">시설안내</th>
 	                        			</tr>
-	                        			<c:forEach items="${Total_Ticket_info}" var="row" varStatus="loop">
-                        				<tr>
-                        					<td>
-                        						${row.ti_title } <br />
-                        						<p class="duetime">유효기간 : ${row.ti_duetime1 }~${row.ti_duetime2 }</p>
-                        						${row.ti_intro }
-                        					</td>
-                        					<td style="text-align:right;">
-                        						<span class="price_title">쿠팡판매가</span> <br />
-                        						<em class="price"><b><fmt:formatNumber value="${row.ti_price}"/>원</b></em><br />
-                        						<div class="ticket_price" style="color:rgb(174,0,0);">
-                        						<c:if test="${row.ti_discount ne 0 }">
-	                        						<span class="price_title">와우판매가</span> <br />
-	                        						<em class="price"><b><fmt:formatNumber value="${(row.ti_price)*(100-row.ti_discount)/100 }"/>원</b></em><br />
-                        						</c:if>
-                        						</div>
-                        						<div class="cashback-area">
-                        							<div class="search-item-cash-back">
-		                        						<span class="cash-text">
-		                        							<em>최대 <fmt:formatNumber value="${(row.ti_price)*(100-row.ti_discount)/100*0.05 }" pattern="#,##0"/>원 적립</em>
-		                        						</span>
-	                        						</div>
-                        						</div>
-											</td>
-                        					<td><button class="btn btn-primaryinfo" type="button">선택</button></td>
-                        				</tr>
-	                        			</c:forEach>
+	                        			<c:if test="${Total_Ticket.t_conservice ne null}">
+		                       				<tr>
+		                       					<td>
+		                       						<h4 class="item-title">
+		                       							<label>편의시설</label>
+		                       						</h4>
+		                       					</td>
+		                       					<td>
+		                       						<div class="item-content">
+			                       						${Total_Ticket.t_conservice }
+		                       						</div>
+												</td>
+		                       				</tr>
+	                       				</c:if>
+	                       				<c:if test="${Total_Ticket.t_fac ne null}">
+		                       				<tr>
+		                       					<td>
+		                       						<h4 class="item-title">
+		                       							<label>이용시설</label>
+		                       						</h4>
+		                       					</td>
+		                       					<td>
+		                       						<div class="item-content">
+		                       							${Total_Ticket.t_fac }
+		                       						</div>
+												</td>
+		                       				</tr>
+	                       				</c:if>
 	                        		</table>
-	                        	</div>
-	                        </div>
-	                        <c:if test="${Total_Ticket.t_conservice ne null && Total_Ticket.t_fac ne null}">
-	                        <div class="service-infomation" style="margin-bottom: 10px;">
-                        		<table class="ticket-service-infomation" style="width:100%;">
-                        			<colgroup>
-                        				<col width="30%"/>
-                        				<col width="*"/>
-                        			</colgroup>
-                        			<tr>
-                        				<th colspan="2">시설안내</th>
-                        			</tr>
-                        			<c:if test="${Total_Ticket.t_conservice ne null}">
+		                        </c:if>
+		                        </div>
+		                        <div class="instruction-manual" style="margin-bottom: 10px;">
+	                        		<table class="ticket-instruction-manual" style="width:100%;">
+	                        			<colgroup>
+	                        				<col width="30%"/>
+	                        				<col width="*"/>
+	                        			</colgroup>
+	                        			<tr>
+	                        				<th colspan="2">사용방법</th>
+	                        			</tr>
+	                        			<c:if test="${Total_Ticket.t_notice ne null}">
+		                       				<tr>
+		                       					<td>
+		                       						<h4 class="item-title">
+		                       							<label>유의사항</label>
+		                       						</h4>
+		                       					</td>
+		                       					<td>
+		                       						<div class="item-content">
+		                       							<p class="policy-text">${Total_Ticket.t_notice }</p>
+		                       						</div>
+												</td>
+		                       				</tr>
+	                       				</c:if>
 	                       				<tr>
 	                       					<td>
 	                       						<h4 class="item-title">
-	                       							<label>편의시설</label>
+	                       							<label>예약안내</label>
 	                       						</h4>
 	                       					</td>
 	                       					<td>
 	                       						<div class="item-content">
-		                       						${Total_Ticket.t_conservice }
+	                       							<p class="policy-text">${Total_Ticket.t_booking }</p>
 	                       						</div>
 											</td>
 	                       				</tr>
-                       				</c:if>
-                       				<c:if test="${Total_Ticket.t_fac ne null}">
+	                        		</table>
+		                        </div>
+		                        <div class="cancellation-refund-policy" style="margin-bottom: 10px;">
+	                        		<table class="ticket-cancellation-refund-policy" style="width:100%;">
+	                        			<colgroup>
+	                        				<col width="30%"/>
+	                        				<col width="*"/>
+	                        			</colgroup>
+	                        			<tr>
+	                        				<th colspan="2">취소/환불규정</th>
+	                        			</tr>
 	                       				<tr>
 	                       					<td>
 	                       						<h4 class="item-title">
-	                       							<label>이용시설</label>
+	                       							<label>취소수수료 안내</label>
 	                       						</h4>
 	                       					</td>
 	                       					<td>
 	                       						<div class="item-content">
-	                       							${Total_Ticket.t_fac }
+	                       							<p class="policy-text">
+	                       								${Total_Ticket.t_cancelfee}
+	                       							</p>
 	                       						</div>
 											</td>
 	                       				</tr>
-                       				</c:if>
-                        		</table>
-	                        </div>
-	                        </c:if>
-	                        <div class="instruction-manual" style="margin-bottom: 10px;">
-                        		<table class="ticket-instruction-manual" style="width:100%;">
-                        			<colgroup>
-                        				<col width="30%"/>
-                        				<col width="*"/>
-                        			</colgroup>
-                        			<tr>
-                        				<th colspan="2">사용방법</th>
-                        			</tr>
-                        			<c:if test="${Total_Ticket.t_notice ne null}">
 	                       				<tr>
 	                       					<td>
 	                       						<h4 class="item-title">
-	                       							<label>유의사항</label>
+	                       							<label>취소 유의사항</label>
 	                       						</h4>
 	                       					</td>
 	                       					<td>
 	                       						<div class="item-content">
-	                       							<p class="policy-text">${Total_Ticket.t_notice }</p>
+	                       							<p class="policy-text">
+	                       								${Total_Ticket.t_cancelnoti }
+	                       							</p>
 	                       						</div>
 											</td>
 	                       				</tr>
-                       				</c:if>
-                       				<tr>
-                       					<td>
-                       						<h4 class="item-title">
-                       							<label>예약안내</label>
-                       						</h4>
-                       					</td>
-                       					<td>
-                       						<div class="item-content">
-                       							<p class="policy-text">${Total_Ticket.t_booking }</p>
-                       						</div>
-										</td>
-                       				</tr>
-                        		</table>
-	                        </div>
-	                        <div class="cancellation-refund-policy" style="margin-bottom: 10px;">
-                        		<table class="ticket-cancellation-refund-policy" style="width:100%;">
-                        			<colgroup>
-                        				<col width="30%"/>
-                        				<col width="*"/>
-                        			</colgroup>
-                        			<tr>
-                        				<th colspan="2">취소/환불규정</th>
-                        			</tr>
-                       				<tr>
-                       					<td>
-                       						<h4 class="item-title">
-                       							<label>취소수수료 안내</label>
-                       						</h4>
-                       					</td>
-                       					<td>
-                       						<div class="item-content">
-                       							<p class="policy-text">
-                       								${Total_Ticket.t_cancelfee}
-                       							</p>
-                       						</div>
-										</td>
-                       				</tr>
-                       				<tr>
-                       					<td>
-                       						<h4 class="item-title">
-                       							<label>취소 유의사항</label>
-                       						</h4>
-                       					</td>
-                       					<td>
-                       						<div class="item-content">
-                       							<p class="policy-text">
-                       								${Total_Ticket.t_cancelnoti }
-                       							</p>
-                       						</div>
-										</td>
-                       				</tr>
-                        		</table>
-	                        </div>
+	                        		</table>
+		                        </div>
+								<div class="reviewProduct" style="margin-bottom: 10px;"
+									id="reviewProduct">
+									<table class="ticket-cancellation-refund-policy"
+										style="width: 100%;">
+										<colgroup>
+											<col width="30%" />
+											<col width="*" />
+										</colgroup>
+										<tr>
+											<th colspan="2">리뷰</th>
+										</tr>
+										<tr>
+											<td><c:forEach items="${lists }" var="row">
+													<div class="border mt-2 mb-2">
+														<!--  -->
+														<ul class="comment">
+															<li>
+															</li>
+														</ul>
+														<!--  -->
+														<p>대충 이름</p>
+														<div class="media">
+															<c:forEach begin="1" end="5" var="i">
+																<c:choose>
+																	<c:when test="${Math.round(row.star_rate) >= i }">
+																		<div class="star-ratings">
+																			<div class="star-ratings-fill space-x-2 text-lg"
+																				:style="{ width: ratingToPercent + '%' }">
+																				<span>★</span>
+																			</div>
+																			<div class="star-ratings-base space-x-2 text-lg">
+																				<span>★</span>
+																			</div>
+																		</div>
+																	</c:when>
+																	<c:otherwise>
+																		<div class="star-ratings text-lg">
+																			<span>★</span>
+																		</div>
+																	</c:otherwise>
+																</c:choose>
+															</c:forEach>
+														</div>
+														<div class="media-body">
+															<p class="star-ratings">${row.summary }</p>
+																<p>${row.review }</p>
+															<div class="media">가격&nbsp;&nbsp;&nbsp;
+																<c:forEach begin="1" end="5" var="i">
+																	<c:choose>
+																		<c:when test="${Math.round(row.star_servey1) >= i }">
+																			<div class="star-ratings">
+																				<div class="star-ratings-fill space-x-2 text-lg"
+																					:style="{ width: ratingToPercent + '%' }">
+																					<span>★</span>
+																				</div>
+																				<div class="star-ratings-base space-x-2 text-lg">
+																					<span>★</span>
+																				</div>
+																			</div>
+																		</c:when>
+																		<c:otherwise>
+																			<div class="star-ratings text-lg">
+																				<span>★</span>
+																			</div>
+																		</c:otherwise>
+																	</c:choose>
+																</c:forEach>
+															</div>
+															<div class="media">서비스&nbsp;
+																<c:forEach begin="1" end="5" var="i">
+																	<c:choose>
+																		<c:when test="${Math.round(row.star_servey2) >= i }">
+																			<div class="star-ratings">
+																				<div class="star-ratings-fill space-x-2 text-lg"
+																					:style="{ width: ratingToPercent + '%' }">
+																					<span>★</span>
+																				</div>
+																				<div class="star-ratings-base space-x-2 text-lg">
+																					<span>★</span>
+																				</div>
+																			</div>
+																		</c:when>
+																		<c:otherwise>
+																			<div class="star-ratings text-lg">
+																				<span>★</span>
+																			</div>
+																		</c:otherwise>
+																	</c:choose>
+																</c:forEach>
+															</div>
+															<div class="media">시설&nbsp;&nbsp;&nbsp;
+																<c:forEach begin="1" end="5" var="i">
+																	<c:choose>
+																		<c:when test="${Math.round(row.star_servey3) >= i }">
+																			<div class="star-ratings">
+																				<div class="star-ratings-fill space-x-2 text-lg"
+																					:style="{ width: ratingToPercent + '%' }">
+																					<span>★</span>
+																				</div>
+																				<div class="star-ratings-base space-x-2 text-lg">
+																					<span>★</span>
+																				</div>
+																			</div>
+																		</c:when>
+																		<c:otherwise>
+																			<div class="star-ratings text-lg">
+																				<span>★</span>
+																			</div>
+																		</c:otherwise>
+																	</c:choose>
+																</c:forEach>
+															</div>
+															<p>대충 사진</p>
+														</div>
+												</c:forEach>
+											</td>
+									</table>
+								</div>
+
+								<div id="inquiryProduct">
+		                        
+		                        </div>
+	                        </section>
 	                    </article>
 	                </section>
 
@@ -552,16 +728,13 @@ onload = function(){
 			                	<div class="basis-product-address">
 			                		대충 주소
 			                	</div>
-			                	<c:forEach items="${totalstar }" var="star">
-										<input type="hidden" name="ratevalue" value="${star.star_rate}"
-											step="0.1" min="0" max="5" />
-										<div class="rating-wrap">
-											<div class="rating">
-												<div class="overlay"></div>
-											</div>
-										</div>
-								</c:forEach>
-			                	<button class="btn btn-primaryinfo" style="height: 42px; line-height: 40px; font-size: 18px;">상품 구매</button>
+								<input type="hidden" name="ratevalue5" value="${totalstar.star_rate}"
+									step="0.1" min="0" max="5" />
+								<div class="rating-wrap5">
+									<div class="rating5">
+										<div class="overlay5"></div>
+									</div>
+								</div>
 		                	</div>
 		                </div>
 		                
@@ -581,7 +754,7 @@ onload = function(){
 	                				</li>
 	                			</ul>
 	                			<div class="basis-cashback-button">
-	                				<p class="basis-cashback-button-text">아직 멤버쉽 회원이 아니신가요?</p>
+	                				<span class="basis-cashback-button-text">아직 멤버쉽 회원이 아니신가요?</span><br />
 	                				<button type="button" class="btn btn-primaryinfo">멤버쉽 가입하기</button>
 	                			</div>
 	                		</div>
@@ -639,48 +812,50 @@ onload = function(){
 	                	
 	                	<div class="basis-aside-section">
 	                		<div class="basis-review-section">
+             						<div class="star-ratings">
+					          <input type="hidden" name="ratevalue1" value="${totalstar.star_rate}" step="0.1" min="0" max="5" />
+					          <div class="rating-wrap1">
+					            <div class="rating1">상품평 
+					                <div class="overlay1"></div> 
+					            </div>${totalstar.star_rate0}
+					          </div>
+								</div>
+								<div class="star-ratings">
+					          <input type="hidden" name="ratevalue2" value="${totalstar.star_servey1}" step="0.1" min="0" max="5" />
+					          <div class="rating-wrap2">
+					            <div class="rating2">가격
+					                <div class="overlay2"></div>
+					            </div>
+					          </div>
+								</div>
+								<div class="star-ratings">
+					          <input type="hidden" name="ratevalue3" value="${totalstar.star_servey2}" step="0.1" min="0" max="5" />
+					          <div class="rating-wrap3">
+					            <div class="rating3">서비스
+					                <div class="overlay3"></div>
+					            </div>
+					          </div>
+								</div>
+								<div class="star-ratings">
+					          <input type="hidden" name="ratevalue4" value="${totalstar.star_servey3}" step="0.1" min="0" max="5" />
+					          <div class="rating-wrap4">
+					            <div class="rating4">시설
+					                <div class="overlay4"></div>
+					            </div>
+					          </div>
+								</div>
 	                			<c:forEach items="${lists }" var="row">
 									<div class="border mt-2 mb-2">
-										<!--  -->
-										<ul class="comment">
-											<li>
-												<div class="score_info">
-													<div>
-														<div class="star-ratings">${row.star_rate }</div>
-													</div>
-												</div>
-											</li>
-										</ul>
-										<!--  -->
-										<div class="media">
-											<c:forEach begin="1" end="5" var="i">
-												<c:choose>
-													<c:when test="${Math.round(row.star_rate) >= i }">
-														<div class="star-ratings">
-															<div class="star-ratings-fill space-x-2 text-lg":style="{ width: ratingToPercent + '%' }">
-																<span>★</span>
-															</div>
-															<div class="star-ratings-base space-x-2 text-lg">
-																<span>★</span>
-															</div>
-														</div>
-													</c:when>
-													<c:otherwise>
-														<div class="star-ratings text-lg">
-															<span>★</span>
-														</div>
-													</c:otherwise>
-												</c:choose>
-											</c:forEach>
-										</div>
 										<div class="media-body">
 											<!--  -->
-											<h4 class="media-heading">제목:${row.goods_title }</h4>
-											<p>${row.ccomment }</p>
-											<p>${row.servey1 }</p>
-											<p>${row.servey2 }</p>
-											<p>${row.servey3 }</p>
-											<p>${row.summary }</p>
+											<p>대충 사진</p>
+											<p class="star-ratings">
+											${row.summary }
+											</p>
+											<p>
+											${row.review }
+											</p>
+											<p>대충 이름</p>
 										</div>
 								</c:forEach>
 	                		</div>

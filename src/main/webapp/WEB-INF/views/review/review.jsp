@@ -59,9 +59,10 @@ function deleteRow(idx){
 				</select>
 			</td>
 		</tr>	
-		<div class="mb-3" name="star_rate" id="star_rates">
+		
+		<div class="mb-3" name="star_rate" id="star_rates"> 
 			<fieldset>
-				<span class="text-bold">별점을 선택해주세요</span> 
+				<span class="text-bold">별점을 선택해주세요</span> *필쥬
 				<input type="radio" name="star_rate" value="5" id="star_rate1" name="star_rate1">
 					<label for="star_rate1">★</label> 
 				<input type="radio" name="star_rate" value="4" id="star_rate2" name="star_rate2">
@@ -74,50 +75,60 @@ function deleteRow(idx){
 					<label for="star_rate5">★</label>
 			</fieldset>
 		</div>
-		<dl id="servey1" name="servey1">
-			<dt>상품의 품질은 어떤가요</dt>
-			
-				
-					<dd><label><input type="radio" name="servey1"  value="1">예상보다 좋아요</label></dd>
-				
-					<dd><label><input type="radio" name="servey1"  value="1">설명과 비슷해요</label></dd>
-				
-					<dd><label><input type="radio" name="servey1"  value="1">예상보다 떨어져요</label></dd>
-				
-			
-		</dl>
-	
-		<dl id="servey2" name="servey2">
-			<dt>배송은 어떠셨나요?</dt>
-			
-				
-					<dd><label><input type="radio" name="servey2" value="1">자극이 없어요</label></dd>
-				
-					<dd><label><input type="radio" name="servey2" value="1">조금 따끔거려요</label></dd>
-				
-					<dd><label><input type="radio" name="servey2" value="1">자극이 있어요</label></dd>
-				
-			
-		</dl>
-	
-		<dl id="servey3" name="servey3">
-			<dt>기사님은 친절했나요?</dt>
-			
-				
-					<dd><label><input type="radio" name="servey3" value="1">자극이 없어요</label></dd>
-				
-					<dd><label><input type="radio" name="servey3" value="1">조금 따끔거려요</label></dd>
-				
-					<dd><label><input type="radio" name="servey3" value="1">자극이 있어요</label></dd>
-				
-			
-		</dl>
+		
+		<div class="mb-3" name="star_servey1" id="star_rates">
+			<fieldset>
+				<span class="text-bold">별점을 선택해주세요</span> 
+				<input type="radio" name="star_servey1" value="5" id="star_servey1_1" name="star_servey1_1">
+					<label for="star_servey1_1">★</label> 
+				<input type="radio" name="star_servey1" value="4" id="star_servey1_2" name="star_servey1_2">
+					<label for="star_servey1_2">★</label>
+				<input type="radio" name="star_servey1" value="3" id="star_servey1_3" name="star_servey1_3">
+					<label for="star_servey1_3">★</label> 
+				<input type="radio" name="star_servey1" value="2" id="star_servey1_4" name="star_servey1_4">
+					<label for="star_servey1_4">★</label> 
+				<input type="radio" name="star_servey1" value="1" id="star_servey1_5" name="star_servey1_5">
+					<label for="star_servey1_5">★</label>
+			</fieldset>
+		</div>
+		
+		<div class="mb-3" name="star_servey2" id="star_rates">
+			<fieldset>
+				<span class="text-bold">별점을 선택해주세요</span> 
+				<input type="radio" name="star_servey2" value="5" id="star_servey2_1" name="star_servey2_1">
+					<label for="star_servey2_1">★</label> 
+				<input type="radio" name="star_servey2" value="4" id="star_servey2_2" name="star_servey2_2">
+					<label for="star_servey2_2">★</label>
+				<input type="radio" name="star_servey2" value="3" id="star_servey2_3" name="star_servey2_3">
+					<label for="star_servey2_3">★</label> 
+				<input type="radio" name="star_servey2" value="2" id="star_servey2_4" name="star_servey2_4">
+					<label for="star_servey2_4">★</label> 
+				<input type="radio" name="star_servey2" value="1" id="star_servey2_5" name="star_servey2_5">
+					<label for="star_servey2_5">★</label>
+			</fieldset>
+		</div>
+		
+		<div class="mb-3" name="star_servey3" id="star_rates">
+			<fieldset>
+				<span class="text-bold">별점을 선택해주세요</span> 
+				<input type="radio" name="star_servey3" value="5" id="star_servey3_1" name="star_servey3_1">
+					<label for="star_servey3_1">★</label> 
+				<input type="radio" name="star_servey3" value="4" id="star_servey3_2" name="star_servey3_2">
+					<label for="star_servey3_2">★</label>
+				<input type="radio" name="star_servey3" value="3" id="star_servey3_3" name="star_servey3_3">
+					<label for="star_servey3_3">★</label> 
+				<input type="radio" name="star_servey3" value="2" id="star_servey3_4" name="star_servey3_4">
+					<label for="star_servey3_4">★</label> 
+				<input type="radio" name="star_servey3" value="1" id="star_servey3_5" name="star_servey3_5">
+					<label for="star_servey3_5">★</label>
+			</fieldset>
+		</div>
 		<tr>
 			<th class="text-center" 
 				style="vertical-align:middle;">내용</th>
 			<td>
 				<textarea rows="10" class="form-control" 
-				name="ccomment" placeholder="의견을 남겨주세요"></textarea>
+				name="review" placeholder="의견을 남겨주세요"></textarea>
 			</td>
 		</tr>	
 		<tr>

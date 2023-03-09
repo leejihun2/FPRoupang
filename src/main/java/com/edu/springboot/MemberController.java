@@ -34,7 +34,7 @@ public class MemberController {
 //	}
 	@RequestMapping(value = "/regist.do", method = RequestMethod.GET)
 	public String member1() {
-		return "regist";
+		return "/member/regist";
 	}
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public String member6(MemberDTO memberDTO) {
@@ -46,7 +46,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/search_id.do", method=RequestMethod.GET)
 	public String member_2() {
-		return "search_id";
+		return "member/search_id";
 	}
 	
 	@RequestMapping(value="/search_id.do", method=RequestMethod.POST)
@@ -54,19 +54,33 @@ public class MemberController {
 		memberDTO = dao.select(memberDTO);
 		model.addAttribute("dto", memberDTO);
 		
-		return "show_id";
+		return "member/show_id";
 	}
 
 	@RequestMapping(value="/checkemail.do", method=RequestMethod.POST)
 	@ResponseBody
 	public int checkEmail(MemberDTO memberDTO) {
-		
 		int result = dao.checkEmail(memberDTO);
 		System.out.println(result);
         return result;
       
     }
 	
+	@RequestMapping(value="/checkSeller.do", method=RequestMethod.POST)
+	@ResponseBody
+	public int checkSeller(SellerDTO sellerDTO, Principal principal) {
+		
+		String loginId = principal.getName();
+		String member_idx = dao.member_idx(loginId);
+		
+        System.out.println(member_idx);
+        
+		sellerDTO.setMember_idx(Integer.parseInt(member_idx));
+		int result = dao.checkSeller(sellerDTO);
+		System.out.println(result);
+        return result;
+      
+    }
 	
 	@RequestMapping("/cancelMembership.do")
 	public String member_9(Principal principal, HttpSession session, MemberDTO memberDTO) {
@@ -103,16 +117,16 @@ public class MemberController {
 		
 		String email = dao.email(loginId);
         session.setAttribute("email", email);
-        System.out.println(session.getAttribute("email"));
+//        System.out.println(session.getAttribute("email"));
         
         String name = dao.name(loginId);
         session.setAttribute("name", name);
-        System.out.println(session.getAttribute("name"));
+//        System.out.println(session.getAttribute("name"));
         
         String member_idx = dao.member_idx(loginId);
         session.setAttribute("member_idx", member_idx);
-        System.out.println(session.getAttribute("member_idx"));
-		return "Sell_Authorized";
+//        System.out.println(session.getAttribute("member_idx"));
+		return "member/Sell_Authorized";
 	}
 	
 	@RequestMapping("/Sell_AuthorizedAction.do")
@@ -139,12 +153,12 @@ public class MemberController {
         String address= req.getParameter("office_address1")+req.getParameter("office_address2");
         
         System.out.println(address);
-        
+        sellerDTO.setMember_idx(Integer.parseInt((String) session.getAttribute("member_idx")));
         sellerDTO.setOffice_address(address);
         
         int result = dao.Sell_AuthorizedAction(sellerDTO);
 		if(result==1) System.out.println("입력되었습니다.");
-		return "/home";
+		return "redirect:/";
         
 		
 	}
@@ -250,20 +264,20 @@ public class MemberController {
 		return "/admin/sell_Authority/blockView";
 	};
 	
-	//로그인
-	@RequestMapping("/login")
-	public String login(Principal principal, HttpSession session, MemberDTO memberDTO) {
-		try {
-			String user_id = principal.getName();
-			session.setAttribute("user_id", user_id);
-			
-			
-		}
-		catch(Exception e) {
-			//System.out.println("로그인 전입니다.");
-		}
-		return "login";
-	}
+//	//로그인
+//	@RequestMapping("/login")
+//	public String login(Principal principal, HttpSession session, MemberDTO memberDTO) {
+//		try {
+//			String user_id = principal.getName();
+//			session.setAttribute("user_id", user_id);
+//			
+//			
+//		}
+//		catch(Exception e) {
+//			//System.out.println("로그인 전입니다.");
+//		}
+//		return "login";
+//	}
 
 	
 }
