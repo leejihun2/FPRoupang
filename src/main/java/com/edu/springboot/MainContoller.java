@@ -10,11 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-<<<<<<< HEAD
 import com.edu.springboot.jdbc.IMemberService;
-=======
 import com.edu.springboot.jdbc.CategoryService;
->>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
 
 @Controller
 public class MainContoller {
