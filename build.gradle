@@ -49,6 +49,13 @@ dependencies {
 	implementation 'commons-io:commons-io:2.11.0'    
     // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
 	implementation 'commons-fileupload:commons-fileupload:1.5'
+	
+	//이메일 전송을 위한 의존설정 SMPT
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.apache.commons:commons-email:1.5'
+	//웹소켓
+	compileOnly 'javax.websocket:javax.websocket-api:1.1'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
 }
 
 tasks.named('test') {

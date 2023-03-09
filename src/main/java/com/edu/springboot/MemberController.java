@@ -3,13 +3,19 @@ package com.edu.springboot;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +23,9 @@ import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.MemberDTO;
 import com.edu.springboot.jdbc.SellRightDTO;
 import com.edu.springboot.jdbc.SellerDTO;
+
+import util.FindUtil;
+import util.MailUtil;
 
 
 @Controller
@@ -32,23 +41,31 @@ public class MemberController {
 //	public String home() {
 //		return "home";
 //	}
+	//패스워드 암화를 위한 메서드 
+	public PasswordEncoder passwordEncoder() {
+		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+	}
+	
 	@RequestMapping(value = "/regist.do", method = RequestMethod.GET)
 	public String member1() {
 		return "/member/regist";
 	}
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
-	public String member6(MemberDTO memberDTO) {
+	public String member6(MemberDTO memberDTO, HttpServletRequest req) {
 		
-		int result = dao.insert(memberDTO);
-		if(result==1) System.out.println("입력되었습니다.");
-		return "redirect:regist.do";
+		 memberDTO.setPassword(passwordEncoder().encode(req.getParameter("password")));
+		
+		 int result = dao.insert(memberDTO);
+		
+		 if(result==1) System.out.println("입력되었습니다.");
+		
+		 return "redirect:regist.do";
 	}
 	
 	@RequestMapping(value="/search_id.do", method=RequestMethod.GET)
 	public String member_2() {
 		return "member/search_id";
 	}
-	
 	@RequestMapping(value="/search_id.do", method=RequestMethod.POST)
 	public String member_7(MemberDTO memberDTO, Model model) {
 		memberDTO = dao.select(memberDTO);
@@ -56,7 +73,51 @@ public class MemberController {
 		
 		return "member/show_id";
 	}
+	@RequestMapping(value="/search_pw.do", method=RequestMethod.GET)
+	public String member3() {
+		return "member/search_pw";
+	}
+	//비밀번호 찾기 처리 post
+	
+	@RequestMapping(value = "/search_pw.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String member4(MemberDTO memberDTO, HttpServletRequest req, HttpSession session, String email,String name) throws Exception {
+		
+		memberDTO.setEmail(email);
+		memberDTO.setName(name);
+		int checkInfo = dao.checkInfo(memberDTO);
+		
+		
+		if(checkInfo == 0) {
+			System.out.println("없음");
+		    return "no_member_info";
+		}
+		else {
+		String keyCode = FindUtil.createKey();
+		
+		session.setAttribute("keyCode", keyCode);
+		String subject = "비밀번호 찾기 인증코드 안내";
+		String msg = "";
+		msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
+		msg += "<h3 style='color:blue;'>임시비밀번호 안내입니다.</h3>";
+		msg += "<div style='font-size:130%'>";
+		msg += "로그인페이지로 돌아가 <strong>";
+		msg += keyCode + "</strong>를 입력해주세요.</div><br/>";
+		msg += "<div>로그인 후 <strong>바로</strong> 회원정보 수정을 통해 비밀번호를 변경해주세요.</div>";
 
+		// 파라미터로 받은 이메일과 메세지를 이메일로 보냄
+		MailUtil.sendMail(email, subject, msg);
+
+		// 세션영역에 저장되있던 임시 비밀번호를 암호화해서 setPassword
+		memberDTO.setPassword(passwordEncoder().encode(keyCode));
+
+		int result = dao.tempPass(memberDTO);
+
+		System.out.println("수정된 행의 갯수: " + result);
+		}
+		return "member_info";
+	}
+	
 	@RequestMapping(value="/checkemail.do", method=RequestMethod.POST)
 	@ResponseBody
 	public int checkEmail(MemberDTO memberDTO) {

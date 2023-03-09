@@ -20,6 +20,11 @@ public interface IMemberService {
 		
 		public int checkEmail(MemberDTO memberDTO);
 		
+		//비밀번호찾기 이메일검증
+		public int checkInfo(MemberDTO memberDTO);
+		//임시비밀번호
+		public int tempPass(MemberDTO memberDTO);
+		
 		public int checkSeller(SellerDTO sellerDTO);
 		
 		public int membership(String loginId);
