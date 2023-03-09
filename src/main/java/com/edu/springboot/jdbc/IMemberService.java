@@ -20,6 +20,8 @@ public interface IMemberService {
 		
 		public int checkEmail(MemberDTO memberDTO);
 		
+		public int checkSeller(SellerDTO sellerDTO);
+		
 		public int membership(String loginId);
 
 		public int cancelMembership(String loginId);
@@ -59,6 +61,7 @@ public interface IMemberService {
 		public ArrayList<SellRightDTO> blockList(List<String> bList);
 
 		public ArrayList<SellRightDTO> blockView(int member_idx);
+
 
 	
 }

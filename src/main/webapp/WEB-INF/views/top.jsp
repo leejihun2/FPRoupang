@@ -7,6 +7,43 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+$(function(){
+	$('#sellerApp').click(function(){
+		
+		$.ajax({
+			url : "/checkSeller.do",
+			type : "post",
+			data : {
+				member_idx : $('#member_idx').val()
+			},
+			dataType : 'json',
+			success : function(result){ 
+				
+				if (result==0) {
+					alert("판매자 신청가능");
+					console.log("판매자 신청가능");
+				} else {
+					alert("이미 판매자신청이 완료된 계정입다.");
+					history.go(-2);
+					
+					console.log("아이디 중복에러");
+					
+					return false;
+				}
+			},
+			error : function(errData){ 
+				
+				console.log(""); 
+			},
+			
+		});  
+		
+	});
+});
+</script>
+		
+
 </head>
 <body>
 	<div id="container" class="renewal home srp-sync srp-sync-brand">
@@ -2421,7 +2458,7 @@
 							data-replaced="true" class="login"
 							data-log-props='{ "id":"login" }'>로그인</a></li>
 						<li id="join" class="join"><a
-							href="https://login.coupang.com/login/memberJoinFrm.pang"
+							href="regist.do"
 							data-log-props='{ "id":"member_register" }'>회원가입</a></li>
 					</c:otherwise>
 				</c:choose>
@@ -2451,7 +2488,7 @@
 			<menu id="subscribeHeader">
 				<li><a class="bookmark"
 					data-log-props='{ "id": "add_to_favorites" }'>즐겨찾기</a></li>
-				<li class="vendor-join more"><a>입점신청<i class="ic"></i></a>
+				<li class="vendor-join more"><a href="./Sell_Authorized.do" id="sellerApp">입점신청<i class="ic"></i></a>
 					<p>
 						<a
 							href="https://wing.coupang.com/vendor/joining/welcome?inflow=WEB_HEADER_B"
