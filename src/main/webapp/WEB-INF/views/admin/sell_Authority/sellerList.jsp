@@ -1,15 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link href="../../css/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>      
+<link href="../../css/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s"%>
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <head>
 
 <meta charset="utf-8">
@@ -29,7 +36,49 @@
 
 <!-- Custom styles for this template-->
 <link rel="stylesheet" href="../../css/sb-admin-2.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+td, th {
+	text-align: center;
+	/* center checkbox horizontally */
+	vertical-align: middle;
+	/* center checkbox vertically */
+}
+</style>
+<script>
+	$(document).on('click', '#checkAll', function() {
+		if ($('#checkAll').is(':checked')) {
+			$('.checkbox_group').prop('checked', true);
+		} else {
+			$('.checkbox_group').prop('checked', false);
+		}
+	});
+
+	$(function(){
+		$("#blockSell").click(function(){
+			var block_val=[];
+			$("[name=public1]").each(function(idx){
+				if($(this).is(":checked")==true){
+					block_val.push($(this).val());
+					console.log(block_val);
+				}
+			});
+			if(block_val.length==0){
+				alert("차단할 판매자 계정을 하나 이상 선택해주세요.");
+				return false;
+			}
+			if(confirm("선택한 "+block_val.length+"개의 계정을 차단하시겠습니까?")){
+					location.href="/appRegect.do?value="+block_val;
+					alert(block_val);
+			}
+         
+	
+		});
+	});
+		
+		
+</script>
 </head>
 
 <body id="page-top">
@@ -53,35 +102,49 @@
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
-				
+
 				<div class="container-fluid">
 					<h2>판매자목록</h2>
-		<table border="0">
-		<tr>
-			<th>아이디</th>
-			<th>상호</th>
-			<th>이름</th>
-			<th>신청일</th>
-			
-			<th></th>
-		</tr>
-		<c:forEach items="${lists }" var="row" varStatus="loop">
-		<tr>
-			<td>${row.email }</td>
-		
-			<td>${row.name }</td>
-			<td>${row.company_name }</td>
-			<td>${row.regidate }</td>
-		
-			<td>
-				<a href="sellerView.do?member_idx=${row.member_idx }">상세보기</a>
-
-				<a href="appRegect.do?member_idx=${row.member_idx }">차단하기</a>
-			</td>
-		</tr>
-		</c:forEach>
-	</table>
-	<a href="/admin/index.do">홈으로가기</a>
+					<form id="block" method="post">
+						<table class="table table-hover">
+							<tr>
+							<th>아이디</th>
+							<th>상호</th>
+							<th>이름</th>
+							<th>신청일</th>
+							<th></th>
+							<th>전체선택 <input class="checkbox_group" type="checkbox"
+								name="checkAll" id="checkAll" />
+							</th>
+							</tr>
+							<c:forEach items="${lists }" var="row" varStatus="loop">
+								<tr>
+									<td>${row.email }</td>
+	
+									<td>${row.name }</td>
+									<td>${row.company_name }</td>
+									<td>${row.regidate }</td>
+	
+									<td><a href="sellerView.do?member_idx=${row.member_idx }">상세보기</a>
+									</td>
+									<td><input style='zoom: 1.5;' class="checkbox_group" name="public1"
+										type="checkbox" value="${row.member_idx }"
+										id="flexCheckDefault"></td>
+								</tr>
+							</c:forEach>
+							<tr style="border-bottom: hidden;">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>
+									<button class="btn btn-outline-secondary" id="blockSell" type="button">차단하기</button>
+								</td>
+							</tr>
+						</table>
+					</form>
+					<a href="/admin/index.do">관리자 홈으로가기</a>
 				</div>
 				<!-- /.container-fluid -->
 

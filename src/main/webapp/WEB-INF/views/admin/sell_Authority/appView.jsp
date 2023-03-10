@@ -30,6 +30,37 @@
 <!-- Custom styles for this template-->
 <link rel="stylesheet" href="../../css/sb-admin-2.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+$(function(){
+	$("#approveSell").click(function(){
+		console.log(this.value);
+		var approve_val=this.value;
+		
+		
+		if(confirm("해당 계정을 승인하시겠습니까?")){
+				location.href="/appOk.do?value="+approve_val;
+				alert(approve_val);
+		}
+     
+
+	});
+	$("#blockSell").click(function(){
+		console.log(this.value);
+		var block_val=this.value;
+		
+		
+		if(confirm("해당 계정을 차단하시겠습니까?")){
+				location.href="/appRegect.do?value="+block_val;
+				alert(block_val);
+		}
+     
+
+	});
+});  
+
+</script>
+  
+  
 </head>
 
 <body id="page-top">
@@ -110,9 +141,9 @@
 		
 			
 	</table>	
-		<a href="appOk.do?member_idx=${row.member_idx}">승인</a>
-		<a href="appRegect.do?member_idx=${row.member_idx }">거절</a>
-		<a href="applicationList.do">목록보기</a>
+		<button class="btn btn-outline-secondary" id="approveSell" type="button" value="${row.member_idx }">승인하기</button>
+		<button class="btn btn-outline-secondary" id="blockSell" type="button" value="${row.member_idx }">차단하기</button>
+		<button class="btn btn-outline-secondary" id="blockList" type="button"  onclick="location.href='applicationList.do' ">목록으로 돌아가기</button>
 	</c:forEach>
 
 

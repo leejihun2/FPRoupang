@@ -30,6 +30,76 @@
 <!-- Custom styles for this template-->
 <link rel="stylesheet" href="../../css/sb-admin-2.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+td, th {
+	text-align: center;
+	/* center checkbox horizontally */
+	vertical-align: middle;
+	/* center checkbox vertically */
+}
+</style>
+<script>
+	$(document).on('click', '#checkAll1', function() {
+		if ($('#checkAll1').is(':checked')) {
+			$('.checkbox_group1').prop('checked', true);
+		} else {
+			$('.checkbox_group1').prop('checked', false);
+		}
+	});
+	$(document).on('click', '#checkAll2', function() {
+		if ($('#checkAll2').is(':checked')) {
+			$('.checkbox_group2').prop('checked', true);
+		} else {
+			$('.checkbox_group2').prop('checked', false);
+		}
+	});
+
+	$(function(){
+		$("#blockSell").click(function(){
+			var block_val=[];
+			$("[name=public1]").each(function(idx){
+				if($(this).is(":checked")==true){
+					block_val.push($(this).val());
+					console.log(block_val);
+				}
+			});
+			if(block_val.length==0){
+				alert("차단할 판매자 계정을 하나 이상 선택해주세요.");
+				return false;
+			}
+			if(confirm("선택한 "+block_val.length+"개의 계정을 차단하시겠습니까?")){
+					location.href="/appRegect.do?value="+block_val;
+					alert(block_val);
+			}
+         
+	
+		});
+	});
+		
+	$(function(){
+		$("#approveSell").click(function(){
+			var approve_val=[];
+			$("[name=public2]").each(function(idx){
+				if($(this).is(":checked")==true){
+					approve_val.push($(this).val());
+					console.log(approve_val);
+				}
+			});
+			if(approve_val.length==0){
+				alert("승인할 판매자 계정을 하나 이상 선택해주세요.");
+				return false;
+			}
+			if(confirm("선택한 "+approve_val.length+"개의 계정을 승인하시겠습니까?")){
+					location.href="/appOk.do?value="+approve_val;
+					alert(approve_val);
+			}
+         
+	
+		});
+	});
+		
+</script>
+  
 </head>
 
 <body id="page-top">
@@ -56,32 +126,56 @@
 				
 				<div class="container-fluid">
 					<h2>판매자입점신청목록</h2>
-	<table border="0">
-		<tr>
-			<th>아이디</th>
-			<th>상호</th>
-			<th>이름</th>
-			<th>신청일</th>
-			
-			<th></th>
-		</tr>
-		<c:forEach items="${lists }" var="row" varStatus="loop">
-		<tr>
-			<td>${row.email }</td>
-		
-			<td>${row.name }</td>
-			<td>${row.company_name }</td>
-			<td>${row.regidate }</td>
-		
-			<td>
-				<a href="appOk.do?member_idx=${row.member_idx}">승인</a>
-				<a href="appView.do?member_idx=${row.member_idx }">상세보기</a>
-				<a href="appRegect.do?member_idx=${row.member_idx }">거절</a>
-			</td>
-		</tr>
-		</c:forEach>
-	</table>
-	<a href="regist.do">회원등록</a>
+					<form id="block" method="post">
+						<table class="table table-hover">
+							<tr>
+							<th>아이디</th>
+							<th>상호</th>
+							<th>이름</th>
+							<th>신청일</th>
+							<th></th>
+							<th>전체선택 <input class="checkbox_group1" type="checkbox"
+								name="checkAll1" id="checkAll1" />
+							</th>
+							<th>전체선택 <input class="checkbox_group2" type="checkbox"
+								name="checkAll2" id="checkAll2" />
+							</th>
+							</tr>
+							<c:forEach items="${lists }" var="row" varStatus="loop">
+								<tr>
+									<td>${row.email }</td>
+	
+									<td>${row.name }</td>
+									<td>${row.company_name }</td>
+									<td>${row.regidate }</td>
+	
+									<td><a href="appView.do?member_idx=${row.member_idx }">상세보기</a>
+									</td>
+									<td><input style='zoom: 1.5;' class="checkbox_group1" name="public1"
+										type="checkbox" value="${row.member_idx }"
+										id="flexCheckDefault"></td>
+									<td><input style='zoom: 1.5;' class="checkbox_group2" name="public2"
+										type="checkbox" value="${row.member_idx }"
+										id="flexCheckDefault"></td>	
+								</tr>
+							</c:forEach>
+							<tr style="border-bottom: hidden;">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>
+									<button class="btn btn-outline-secondary" id="blockSell" type="button">차단하기</button>
+								</td>
+								<td>
+									<button class="btn btn-outline-secondary" id="approveSell" type="button">승인하기</button>
+								</td>
+							</tr>
+						</table>
+					</form>
+
+	<a href="/admin/index.do">관리자 홈으로가기</a>
 
 				</div>
 				<!-- /.container-fluid -->

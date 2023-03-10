@@ -167,14 +167,20 @@ public class MemberController {
 	@RequestMapping("/appOk.do")
 	public String appOk(SellRightDTO sellRightDTO, HttpServletRequest req) {
 		
-		int situation_one = dao.situation_one(sellRightDTO);
-		req.setAttribute("situation_one", situation_one);
-		if(situation_one==1) System.out.println("상태1.");
+		System.out.println(req.getParameter("value"));
+		String value= req.getParameter("value");
 		
-		int seller = dao.seller(sellRightDTO);
-		req.setAttribute("seller", seller);
-		if(seller==1) System.out.println("셀러로변경.");
+		String[] list = value.split(",");
+		List<String> val = new ArrayList<String>();
+		
+		for(int i = 0 ; i < list.length ; i++) {
+			val.add(list[i]);
+			System.out.println(val);
+		}
         
+		dao.situation_approve(val);
+		dao.seller(val);
+	
         return "redirect:/sellerList.do";
 	}
 	
@@ -183,15 +189,27 @@ public class MemberController {
 	@RequestMapping("/appRegect.do")
 	public String appRegect(SellRightDTO sellRightDTO, HttpServletRequest req) {
 		
+		System.out.println(req.getParameter("value"));
+		String value= req.getParameter("value");
 		
-		int situation_two = dao.situation_two(sellRightDTO);
-		req.setAttribute("appRegect", situation_two);
-		if(situation_two==1) System.out.println("상태2.");
+		String[] list = value.split(",");
+		List<String> val = new ArrayList<String>();
+		
+		for(int i = 0 ; i < list.length ; i++) {
+			val.add(list[i]);
+			System.out.println(val);
+		}
+//		sellRightDTO.setMember_idx(val);
+		dao.situation_block(val);
+		dao.member(val);
+//		req.setAttribute("appRegect", situation_two);
+//		if(situation_two==1) System.out.println("상태2.");
         
-		int member = dao.member(sellRightDTO);
-		req.setAttribute("member", member);
-		if(member==1) System.out.println("멤버.");
-		
+//		int member = dao.member(sellRightDTO);
+//		req.setAttribute("member", member);
+//		if(member==1) System.out.println("멤버.");
+//		
+//		System.out.println("hello");
 		
         return "redirect:/blockList.do";
 	}
@@ -226,7 +244,6 @@ public class MemberController {
 		List<String>sList = new ArrayList<String>();
 		ArrayList<SellRightDTO>lists = dao.sellerList(sList);
 		model.addAttribute("lists", lists);
-		System.out.println("hi");
 		return "/admin/sell_Authority/sellerList";
 	}
 	

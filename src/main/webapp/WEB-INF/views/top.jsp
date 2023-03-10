@@ -25,17 +25,15 @@ $(function(){
 					console.log("판매자 신청가능");
 				} else {
 					alert("이미 판매자신청이 완료된 계정입다.");
-					history.go(-2);
+					location.href = "/";
+
 					
 					console.log("아이디 중복에러");
 					
 					return false;
 				}
 			},
-			error : function(errData){ 
-				
-				console.log(""); 
-			},
+			
 			
 		});  
 		

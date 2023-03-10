@@ -97,20 +97,42 @@
 	
 	
 	<!-- 판매자 권한 승인 -->
-	<update id="situation_one" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update sell_authorized set situation = '1' where member_idx=#{member_idx}
+	<update id="situation_approve" parameterType="com.edu.springboot.jdbc.SellRightDTO">
+		update sell_authorized set situation = '1' 
+			where member_idx in
+			<foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
+	          #{member_idx}
+	       </foreach>
 	</update>
+
 	<update id="seller" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update member set Authority = 'seller' where member_idx=#{member_idx}
+		update member set Authority = 'seller' 
+			where member_idx in
+				<foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
+	          #{member_idx}
+	       </foreach>
 	</update>
 	
 	
 	<!-- 판매자 권한 거절 및 박탈 -->
-	<update id="situation_two" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update sell_authorized set situation = '2' where member_idx=#{member_idx}
+
+	
+	<update id="situation_block" parameterType="com.edu.springboot.jdbc.SellRightDTO">
+		update sell_authorized set situation = '2' 
+			where member_idx in
+			<foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
+	          #{member_idx}
+	       </foreach>
 	</update>
+	
+	
+	
 	<update id="member" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update member set Authority = 'member' where member_idx=#{member_idx}
+		update member set Authority = 'member' 
+			where member_idx in <foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
+	          #{member_idx}
+	       </foreach>
+				
 	</update>
 	
 	
