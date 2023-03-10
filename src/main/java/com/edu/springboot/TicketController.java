@@ -379,6 +379,7 @@ public class TicketController {
 		ArrayList<TotalTicketDTO> ticket_list = ticket_dao.show_ticket_list(sub_idx, location);
 		String category_title = cate_dao.select_one_cate(sub_idx);
 		
+		mv.addObject("sub_idx",sub_idx);
 		mv.addObject("category_title",category_title);
 		mv.addObject("ticket_list", ticket_list);
 		
