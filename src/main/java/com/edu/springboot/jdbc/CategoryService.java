@@ -16,4 +16,7 @@ public interface CategoryService {
 	
 	public String select_one_cate(int sub_idx);
 	public String select_bot_cate(int sub_idx);
+	
+	public String like_bot_title(int sub_idx, String title);
+	
 }

@@ -40,4 +40,11 @@ public interface JourneyService {
 	//상품 제거시 이미지 삭제를 위한 이미지 이름 가져오기
 	public ArrayList<JourneyDTO> journey_Total_image(List<String> bot_idx);
 	public ArrayList<JourneyInfoDTO> journeyinfo_Total_image(List<String> bot_idx);
+	
+	public String like_journey_List(String location);
+	
+	public ArrayList<TotalJourneyDTO> show_journey_list(int sub_idx);
+	public ArrayList<TotalJourneyDTO> show_journey_list_addP(int sub_idx, int ji_adult, int ji_kid);
+	public ArrayList<TotalJourneyDTO> show_journey_list_addC(int sub_idx, String ji_duetime1, String ji_duetime2);
+	public ArrayList<TotalJourneyDTO> show_journey_list_addAll(int sub_idx, int ji_adult, int ji_kid, String ji_duetime1, String ji_duetime2);
 }

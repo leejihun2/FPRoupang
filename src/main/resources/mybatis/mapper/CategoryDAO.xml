@@ -41,4 +41,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	resultType="String">
  		SELECT title FROM bot_category WHERE idx=#{param1}
  	</select>
+ 	
+ 	<select id="like_bot_title" resultType="String" parameterType="com.edu.springboot.jdbc.CategoryDTO">
+ 		select title from bot_category where sub_idx=#{param1} and title like '%'||#{param2}||'%'
+ 	</select>
  </mapper>

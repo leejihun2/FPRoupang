@@ -34,42 +34,149 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>계정정보 찾기</title>
 <style>
-	th,td{
-	
+	body {
+	    -webkit-text-size-adjust: none;
+	    font-family: dotum,sans-serif;
+	    font-size: 12px;
+	    line-height: 1.6;
+	    color: #969696;
 	}
-	
-	table{
-	border-spacing:10px;
-	border-left: hidden;
-	border-right: hidden;
-	border-top: groove;
-	width: 50px;
+	.member-container {
+	    min-height: 900px;
+	    padding: 50px;
+	    background-color: #fff;
+	    border-left: 1px solid #eeeeee;
+	    border-right: 1px solid #eeeeee;
+	    bottom: 900px;
 	}
-	section{
+	.find-account-title {
+	    margin: 0 0 10px;
+	    font-size: 30px;
+	    font-family: "맑은 고딕",malgun gothic,sans-serif;
+	    font-weight: bold;
+	    color: #333;
+	    letter-spacing: -1px;
+	}
+	.find-account-tab-link { 
+	    display: block;
+	    width: 170px;
+	    padding-top: 10px;
+	    padding-bottom: 11px;
+	    border-width: 1px 1px 1px;
+	    border-style: solid;
+	    border-color: #d6d6d6;
+	    background-color: #f8f8f8;
+	    color: #777;
+	    font-size: 14px;
+	    text-align: center;
+	    text-decoration: none;
+	    font-family: "맑은 고딕",malgun gothic,sans-serif;
+	    font-weight: bold;
+	    color: #333;
+	    letter-spacing: -1px;
+	}
+	.find-account-tab{
+	    margin: 0;
+	    padding: 0;
+	    list-style: none;
+	}
+	.find-email-table {
+	    width: 100%;
+	    border-top: 2px solid #969696;
+	    border-collapse: collapse;
+	}
+	tbody {
+	    display: table-row-group;
+	    vertical-align: middle;
+	    border-color: inherit;
+	}
+	.find-email-table th{
+	    background-color: #eef1f8;
+	    text-align: left;
+	    white-space: nowrap;
+	    padding: 14px 30px;
+	    border-bottom: 1px solid #ddd;
+	    border-left: 1px solid #ddd;
+	    width: 111px;
+	}
+	.find-email-table td{
+		padding: 14px 30px;
+		border-bottom: 1px solid #ddd;
+		border-right: 1px solid #ddd;
 		
-		height:auto;
 	}
-	
+	.find-email-name-tf {
+		width: 200px;
+		height: 22px;
+    	padding: 2px 5px;
+    	line-height: 22px;
+    	border: 1px solid #ccc;
+    	vertical-align: middle;
+	}
+	.find-email-email-tf{
+		width: 200px;
+		height: 22px;
+    	padding: 2px 5px;
+    	line-height: 22px;
+    	border: 1px solid #ccc;
+    	vertical-align: middle;
+	}
+	.find-email-type-box {
+	    padding: 20px 30px;
+	    border: 1px solid #dcdce4;
+	    background-color: #fafbfd;
+	}
+	.find-email-foot {
+	    margin-top: 30px;
+	    text-align: center;
+	}
+	.find-email-selecttype-submit-btn{
+		border-color: #0085da;
+	    color: #fff;
+	    background-color: #0c97e7;
+	    background-image: linear-gradient(#41bef9,#0c97e7,#007ed0);
+	    box-shadow: inset 0 0 2px #fff;
+        padding: 15px 40px 17px;
+	    border-radius: 4px;
+	    font-size: 22px;
+	    line-height: 24px;
+	    text-shadow: -1px -1px 0 rgb(0 0 0 / 40%);
+	    box-sizing: border-box;
+	    border: 1px solid #0085da;
+	    text-decoration: none;
+	    vertical-align: middle;
+	    text-align: center;
+	}
+	.find-email{
+    	padding-top: 60px;
+	}
+	.find-email-notice{
+		display: flex;
+		align-content: flex-start;
+		flex-direction: column;
+		flex-wrap: wrap;
+		overflow: auto;
+	}
 </style>
 <script type="text/javascript">
-	function check(ff){
-		console.log("gg");
-	   if(ff.name.value==" "){
+$(function(){
+	$('#submitBtn').click(function(){
+		
+	   if(username.value==""){
 	      alert("이름을 입력하세요.");
 	      console.log("이름 미입력");
-	      ff.name.focus();
+	      username.focus();
 	      return false;
 	   }
-	   if(ff.phone_number.value==" "){
-	      alert("휴대폰번호를 입력하세요.");
+	   if(phone_number.value==""){
+	      alert("휴대번호를 입력하세요.");
 	      console.log("휴대폰번호 미입력");
-	      ff.phone_number.focus(); 
+	      phone_number.focus(); 
 	      return false;
 	   } 
-	  
-	}
-
-	
+	   
+	});
+});
 </script>
 </head>
 <body style="background-color: white;">
@@ -77,7 +184,62 @@
         <%@include file="../top.jsp" %>
     </div>
     <section id="contents" class="contents home">
-	<div class="w3-content w3-container w3-margin-top" style="height: 900px;">
+      <div class="member-container">     
+      
+    	<section id="contents" class="contents " data-reference="" data-product-id="" data-vendor-item-id="" data-item-id="" data-category-id="" data-is-subscribable="" data-vendor-item-package-id="">
+            
+            
+	    <section class="find-account-content">
+				        <h1 class="find-account-title">계정정보 찾기</h1>
+				        <nav class="find-account-tab">
+				            <ul>
+				                <li>
+				                    <a class="find-account-tab-link " href="/search_id.do">아이디(이메일)찾기</a>
+				                </li>
+				                <li>
+				                    <a class="find-account-tab-link " href="/search_pw.do">비밀번호 찾기</a>
+				                </li>
+				            </ul>
+				        </nav>
+					    <section class="find-email">
+					        <section class="find-email-selecttype">
+					                <ul class="find-email-notice">
+										<li>※ <strong>본인 확인</strong>을 통해 이메일을 확인할 수 있습니다.</li>					                	
+					                </ul>
+					            <form action="/search_id.do" method="post" style="width: 870px;">
+					                <table class="find-email-table">
+					                        <tr>
+					                            <th scope="row">이름</th>
+					                            <td>
+					                                <input class="find-email-name-tf" type="text" id="username" name="name" required maxLength=20>
+					                            </td>
+					                        </tr>
+					                        <tr>
+					                            <th scope="row">휴대번호</th>
+					                            <td>
+					                                <input class="find-email-email-tf ui-autocomplete-input"
+					                                	 id="phone_number" name="phone_number" required maxLength=50 type="text">	
+					                            	<p style="font-size: 11px;">루팡에 가입된 전화번호 정확히 기입해주시길 바랍니다.</p>	
+					                            </td>
+					                        </tr>
+					                </table>
+					                <div class="find-email-foot">
+					                    <button class="find-email-selecttype-submit-btn" type="submit" id="submitBtn">이메일 찾기</button>
+					                </div>
+					            </form>
+					        </section>
+					    </section>
+	    		</section>
+	   		</section>
+		</div>	 
+            
+                
+
+
+
+            
+       
+	<!-- <div class="w3-content w3-container w3-margin-top" style="height: 900px;">
 		<form action="search_id.do" method="post" onsubmit="return check(this);">
 			<div class="w3-center w3-large w3-margin-top">
 				<h3 style="float:left">계정정보 찾기</h3>
@@ -102,7 +264,7 @@
 				</table>
 			</div>
 		</form>
-	</div>
+	</div> -->
 	<div id="cartnav">
          <%@include file="../cartnav.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
         </div>

@@ -5,9 +5,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.edu.springboot.jdbc.IMemberService">
-
-	
-	<insert id="insert"
+ 	<insert id="insert"
 	parameterType="com.edu.springboot.jdbc.MemberDTO">
 	insert into member 
 		(member_idx, email, name, password, phone_number, jumin_num, marketing_agreement) 
@@ -23,7 +21,13 @@
 	resultType="int">
 		SELECT COUNT(*) FROM MEMBER WHERE email= #{email}
 	</select>
-	
+	<select id="checkInfo" parameterType="com.edu.springboot.jdbc.MemberDTO" 
+	resultType="int">
+		select count(*) from member where email=#{email} and name=#{name}
+	</select>
+	<update id="tempPass" parameterType="com.edu.springboot.jdbc.MemberDTO">
+		update member set password=#{password} where email=#{email} and name=#{name}
+	</update>
 	<select id="checkSeller" parameterType="com.edu.springboot.jdbc.SellerDTO" 
 	resultType="int">
 		SELECT COUNT(*) FROM sell_authorized WHERE member_idx= #{member_idx}
