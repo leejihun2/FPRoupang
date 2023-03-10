@@ -752,14 +752,6 @@ font-size: 12px;
 								<input class="form-check-input" type="checkbox" name="agreement" id="email" value="email" required /> 
 								<label for="email" class="required"> [선택]이메일 수신 동의</label> 
 							</div>	
-							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="agreement" id="socialmedia" value="socialmedia" required /> 
-								<label for="socialmedia" class="required"> [선택] SMS, SNS 수신 동의</label> 
-							</div>	
-							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="agreement" id="apppush" value="apppush" required /> 
-								<label for="apppush" class="required"> [선택]앱 푸시 수신 동의</label>
-							</div>
 						</div>
 					</div>	
 					</div>	

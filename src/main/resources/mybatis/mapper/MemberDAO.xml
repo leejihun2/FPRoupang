@@ -10,7 +10,7 @@
 	insert into member 
 		(member_idx, email, name, password, phone_number, jumin_num, marketing_agreement) 
 	values
-		(member_idx.nextval, #{email}, #{name}, #{password}, #{phone_number}, #{jumin_num}, #{marketing_agreement})	
+		(member_idx.nextval, #{email}, #{name}, #{password}, #{phone_number}, #{jumin_num}, 0)	
 	</insert>
 	<select id="select"
 	parameterType="com.edu.springboot.jdbc.MemberDTO"
@@ -77,7 +77,7 @@
 		bank_account, 
 		regidate)
   		VALUES(
-  		30, 
+  		#{member_idx}, 
   		#{business_num}, 
   		#{one_rep_co_rep}, 
   		#{rep_name}, #{company_name}, 

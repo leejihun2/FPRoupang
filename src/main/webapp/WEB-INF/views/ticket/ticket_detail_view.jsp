@@ -378,7 +378,6 @@
 	}
 	
 	function addModal(bot_num, idx){
-		alert(bot_num+","+idx);
 		$('.modal-content').load('/showModal?bot_idx='+bot_num+'&ti_idx='+idx);
 	}
 	

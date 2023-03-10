@@ -186,7 +186,6 @@
    		</section>
    		<section class="search-result">
 			<ul class="search-items">
-			<c:if test="${like_title ne null}">
 				<c:forEach items="${ticket_list }" var="ticket" varStatus="loop">
 		  			<li class="search-item">
 		  				<a href="ticketDetail?value=${ticket.idx }" target="_blank">
@@ -223,7 +222,6 @@
 		  				</a>
 	 				</li>
 				</c:forEach>
-			</c:if>
 			</ul>
 		</section>
 	</div>
