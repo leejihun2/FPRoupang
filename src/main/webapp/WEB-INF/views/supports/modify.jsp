@@ -80,6 +80,7 @@ function writeValidate(f)
 			onclick="location.href='home.do';">리스트보기</button>
 	</div>
 	</form> 
+	</section>
 </div>
 
 </body>

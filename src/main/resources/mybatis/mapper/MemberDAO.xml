@@ -17,6 +17,9 @@
 	resultType="com.edu.springboot.jdbc.MemberDTO">
 	select email, name from member where name= #{name} and phone_number=#{phone_number}
 	</select>
+	<select id="idx" resultType="String" parameterType="com.edu.springboot.jdbc.MemberDTO">
+		select member_idx from member where email=#{email}
+	</select>
 	<select id="checkEmail" parameterType="com.edu.springboot.jdbc.MemberDTO" 
 	resultType="int">
 		SELECT COUNT(*) FROM MEMBER WHERE email= #{email}

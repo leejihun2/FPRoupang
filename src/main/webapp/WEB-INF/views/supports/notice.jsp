@@ -26,6 +26,28 @@ function deleteRow(idx){
    }
 }
 </script>
+<style type="text/css">
+.kQQPrS {
+    width: 100%;
+    height: 60px;
+    margin: 35px 0px;
+}
+.dSWQUC {
+    float: left;
+    padding: 19px 0px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid rgb(238, 238, 238);
+    background-color: rgb(250, 250, 250);
+    color: rgb(85, 85, 85);
+    cursor: pointer;
+    width: 280px;
+}
+.kQQPrS > li {
+    width: calc(25%);
+}
+</style>
 </head>
 <body style="background-color: #ffffff">
  <div id="top">
@@ -34,20 +56,18 @@ function deleteRow(idx){
 <div class="container">
 	
 	<%@include file="../category.jsp" %>
-	<div class="text-right">
-	</div>
-		<div class="container d-flex justified-content-center">
-			<ul class="nav nav-justified" style="width: 1500px;">
-				<li class="nav-item"><a class="nav-link"
+		<div class="sc-oaw5ke-1 kCoHZO">
+			<ul class=" sc-nly1np-0 kQQPrS">
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
 					href="./notice.do?categoryCode=ALL"> <span class="text">전체</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
+				<li class=" sc-8mvsno-0 dSWQUC"><a class="nav-link"
 					href="./notice.do?categoryCode=NOTICE"> <span class="text">공지</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
+				<li class=" sc-8mvsno-0 dSWQUC"><a class="nav-link"
 					href="./notice.do?categoryCode=EVENT"> <span class="text">이벤트</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
 					href="./notice.do?categoryCode=AIRTICKET"> <span class="text">항공권</span>
 				</a></li>
 			</ul>
@@ -80,6 +100,7 @@ function deleteRow(idx){
 			</div>
 		</div>
 	</c:forEach>
+	</section>
 </div>
     <div id="copyright">
          <%@include file="../copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->

@@ -2468,19 +2468,19 @@ $(function(){
 
 
 				<li class="cs-center more"><a
-					href="./supports/faq.do?categoryCode=ALL"
+					href="/supports/faq.do?categoryCode=ALL"
 					data-log-props='{ "id":"customer_center" }'>고객센터</a>
 					<p>
-						<a href="./supports/faq.do?categoryCode=ALL"
+						<a href="/supports/faq.do?categoryCode=ALL"
 							data-log-props='{ "id":"customer_center_1" }'>자주묻는질문</a> 
 							
-							<a href="./supports/inquiry.do"
+							<a href="/supports/inquiry.do"
 							data-log-props='{ "id":"customer_center_3" }'>1:1 채팅문의</a> 
 							
-							<a href="./supports/voc.do"
+							<a href="/supports/voc.do"
 							data-log-props='{ "id":"customer_center_2" }'>고객의 소리</a> 
 							
-							<a href="./supports/returnPolicy.do"
+							<a href="/supports/returnPolicy.do"
 							data-log-props='{ "id":"customer_center_4" }'>취소 / 반품 안내</a>
 					</p></li>
 					

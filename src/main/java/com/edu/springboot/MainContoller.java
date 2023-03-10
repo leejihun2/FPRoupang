@@ -16,7 +16,8 @@ import com.edu.springboot.jdbc.CategoryService;
 @Controller
 public class MainContoller {
 
-	
+	@Autowired 
+	IMemberService dao;
 	@RequestMapping("/")
 	public String home() {
 		return "home";
@@ -28,6 +29,10 @@ public class MainContoller {
 			String email = principal.getName();
 			model.addAttribute("user_id", email);
 			session.setAttribute("siteUserInfo", email);
+			
+			String idx = dao.idx(email);
+			session.setAttribute("idx", idx);
+			System.out.println(session.getAttribute("idx"));
 		}
 		catch (Exception e) {
 			System.out.println("로그인 전입니다.");

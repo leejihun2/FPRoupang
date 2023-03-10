@@ -96,6 +96,7 @@ function writeValidate(f)
 			onclick="location.href='lists.do?categoryCode';">리스트보기</button>
 	</div>
 	</form> 
+	</section>
 </div>
     <div id="copyright">
          <%@include file="../copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
