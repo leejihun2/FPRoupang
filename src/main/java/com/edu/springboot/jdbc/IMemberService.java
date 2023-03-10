@@ -20,6 +20,14 @@ public interface IMemberService {
 		
 		public int checkEmail(MemberDTO memberDTO);
 		
+		public String idx(String user_id);
+		//비밀번호찾기 이메일검증
+		public int checkInfo(MemberDTO memberDTO);
+		//임시비밀번호
+		public int tempPass(MemberDTO memberDTO);
+		
+		public int checkSeller(SellerDTO sellerDTO);
+		
 		public int membership(String loginId);
 
 		public int cancelMembership(String loginId);
@@ -36,14 +44,15 @@ public interface IMemberService {
 
 		public ArrayList<SellRightDTO> situation_zero(List<String> appList);
 		
-		public int situation_one(SellRightDTO sellRightDTO);
-		public int seller(SellRightDTO sellRightDTO);
-	
-		
-		
 
-		public int situation_two(SellRightDTO sellRightDTO);
-		public int member(SellRightDTO sellRightDTO);
+		public int seller(List<String>member_idx);
+		
+		public int situation_approve(List<String>member_idx);
+
+		
+		public int situation_block(List<String>member_idx);
+		
+		public int member(List<String>member_idx);
 		
 		
 
@@ -59,6 +68,7 @@ public interface IMemberService {
 		public ArrayList<SellRightDTO> blockList(List<String> bList);
 
 		public ArrayList<SellRightDTO> blockView(int member_idx);
+
 
 	
 }

@@ -30,6 +30,23 @@
 <!-- Custom styles for this template-->
 <link rel="stylesheet" href="../../css/sb-admin-2.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+$(function(){
+	$("#blockSell").click(function(){
+		console.log(this.value);
+		var block_val=this.value;
+		
+		
+		if(confirm("해당 계정을 차단하시겠습니까?")){
+				location.href="/appRegect.do?value="+block_val;
+				alert(block_val);
+		}
+     
+
+	});
+});
+</script> 
+  
 </head>
 
 <body id="page-top">
@@ -57,7 +74,7 @@
 				<div class="container-fluid">
 					
 	
-	<h3 class="text-center">판매자 신청 상세보기</h3>
+	<h3 class="text-center">판매자 상세보기</h3>
 	<c:forEach items="${view }" var="row">		
 		
 	<table border="0">
@@ -110,9 +127,9 @@
 		
 			
 	</table>	
-		
-		<a href="appRegect.do?member_idx=${row.member_idx }">차단</a>
-		<a href="sellerList.do">목록보기</a>
+		<button class="btn btn-outline-secondary" id="blockSell" type="button" value="${row.member_idx }">차단하기</button>
+		<button class="btn btn-outline-secondary" id="sellList" type="button"  onclick="location.href='sellerList.do' ">목록으로 돌아가기</button>
+	
 	</c:forEach>
 
 

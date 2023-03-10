@@ -168,9 +168,10 @@
 	            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
 	            <span class="navbar-toggler-icon"></span>
 	            </button>
-	            <form class="d-flex">
-	                <input class="form-control me-2" type="text" placeholder="Search">
-	                <button class="btn btn-primary" type="button">Search</button>
+	            <form action="/ticket_List" class="d-flex">
+	                <input class="form-control me-2" type="hidden" name="category" value="${sub_idx}">
+	                <input class="form-control me-2" type="text" name="title" value="${title }">
+	                <button class="btn btn-primary" type="submit">Search</button>
 	            </form>
             </div>
         </div>
@@ -185,6 +186,7 @@
    		</section>
    		<section class="search-result">
 			<ul class="search-items">
+			<c:if test="${like_title ne null}">
 				<c:forEach items="${ticket_list }" var="ticket" varStatus="loop">
 		  			<li class="search-item">
 		  				<a href="ticketDetail?value=${ticket.idx }" target="_blank">
@@ -221,6 +223,7 @@
 		  				</a>
 	 				</li>
 				</c:forEach>
+			</c:if>
 			</ul>
 		</section>
 	</div>

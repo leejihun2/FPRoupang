@@ -7,6 +7,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+$(function(){
+	$('#sellerApp').click(function(){
+		
+		$.ajax({
+			url : "/checkSeller.do",
+			type : "post",
+			data : {
+				member_idx : $('#member_idx').val()
+			},
+			dataType : 'json',
+			success : function(result){ 
+				
+				if (result==0) {
+					alert("판매자 신청가능");
+					console.log("판매자 신청가능");
+				} else {
+					alert("이미 판매자신청이 완료된 계정입다.");
+					location.href = "/";
+
+					
+					console.log("아이디 중복에러");
+					
+					return false;
+				}
+			},
+			
+			
+		});  
+		
+	});
+});
+</script>
+		
+
 </head>
 <body>
 	<div id="container" class="renewal home srp-sync srp-sync-brand">
@@ -56,9 +91,11 @@
 												data-category-id="184455">홈인테리어</option>
 											<option value="/np/categories/178255"
 												data-category-id="178155">가전디지털</option>
-										</select> <input type="hidden" name="component"
+										</select> 
+										<input type="hidden" name="component"
 											id="searchSelectedCategory" value=""> <label
-											for="headerSearchKeyword"> <input type="text"
+											for="headerSearchKeyword"> 
+											<input type="text" 
 											id="headerSearchKeyword" class="coupang-search" name="q"
 											title="쿠팡 상품 검색" value=""
 											data-searchad='{"channel":"", "copy":"찾고 싶은 상품을 검색해보세요!", "linkType":"", "linkContent":"", "newWindow":""}'
@@ -2422,26 +2459,26 @@
 							data-replaced="true" class="login"
 							data-log-props='{ "id":"login" }'>로그인</a></li>
 						<li id="join" class="join"><a
-							href="https://login.coupang.com/login/memberJoinFrm.pang"
+							href="regist.do"
 							data-log-props='{ "id":"member_register" }'>회원가입</a></li>
 					</c:otherwise>
 				</c:choose>
 
 
 				<li class="cs-center more"><a
-					href="./supports/faq.do?categoryCode=ALL"
+					href="/supports/faq.do?categoryCode=ALL"
 					data-log-props='{ "id":"customer_center" }'>고객센터</a>
 					<p>
-						<a href="./supports/faq.do?categoryCode=ALL"
+						<a href="/supports/faq.do?categoryCode=ALL"
 							data-log-props='{ "id":"customer_center_1" }'>자주묻는질문</a> 
 							
-							<a href="./supports/inquiry.do"
+							<a href="/supports/inquiry.do"
 							data-log-props='{ "id":"customer_center_3" }'>1:1 채팅문의</a> 
 							
-							<a href="./supports/voc.do"
+							<a href="/supports/voc.do"
 							data-log-props='{ "id":"customer_center_2" }'>고객의 소리</a> 
 							
-							<a href="./supports/returnPolicy.do"
+							<a href="/supports/returnPolicy.do"
 							data-log-props='{ "id":"customer_center_4" }'>취소 / 반품 안내</a>
 					</p></li>
 					
@@ -2455,7 +2492,7 @@
 			<menu id="subscribeHeader">
 				<li><a class="bookmark"
 					data-log-props='{ "id": "add_to_favorites" }'>즐겨찾기</a></li>
-				<li class="vendor-join more"><a>입점신청<i class="ic"></i></a>
+				<li class="vendor-join more"><a href="./Sell_Authorized.do" id="sellerApp">입점신청<i class="ic"></i></a>
 					<p>
 						<a
 							href="https://wing.coupang.com/vendor/joining/welcome?inflow=WEB_HEADER_B"

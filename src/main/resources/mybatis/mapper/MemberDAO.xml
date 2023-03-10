@@ -5,9 +5,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.edu.springboot.jdbc.IMemberService">
-
-	
-	<insert id="insert"
+ 	<insert id="insert"
 	parameterType="com.edu.springboot.jdbc.MemberDTO">
 	insert into member 
 		(member_idx, email, name, password, phone_number, jumin_num, marketing_agreement) 
@@ -17,12 +15,27 @@
 	<select id="select"
 	parameterType="com.edu.springboot.jdbc.MemberDTO"
 	resultType="com.edu.springboot.jdbc.MemberDTO">
-	select email from member where name= #{name} and phone_number=#{phone_number}
+	select email, name from member where name= #{name} and phone_number=#{phone_number}
+	</select>
+	<select id="idx" resultType="String" parameterType="com.edu.springboot.jdbc.MemberDTO">
+		select member_idx from member where email=#{email}
 	</select>
 	<select id="checkEmail" parameterType="com.edu.springboot.jdbc.MemberDTO" 
 	resultType="int">
 		SELECT COUNT(*) FROM MEMBER WHERE email= #{email}
 	</select>
+	<select id="checkInfo" parameterType="com.edu.springboot.jdbc.MemberDTO" 
+	resultType="int">
+		select count(*) from member where email=#{email} and name=#{name}
+	</select>
+	<update id="tempPass" parameterType="com.edu.springboot.jdbc.MemberDTO">
+		update member set password=#{password} where email=#{email} and name=#{name}
+	</update>
+	<select id="checkSeller" parameterType="com.edu.springboot.jdbc.SellerDTO" 
+	resultType="int">
+		SELECT COUNT(*) FROM sell_authorized WHERE member_idx= #{member_idx}
+	</select>
+	
 	<select id="membership" parameterType="com.edu.springboot.jdbc.MemberDTO" 
 	resultType="int">
 		select membership from member WHERE email= #{email}
@@ -51,9 +64,31 @@
 		select member_idx from member where email=#{email}
 	</select>
 	
-	<insert id="Sell_AuthorizedAction" parameterType="com.edu.springboot.jdbc.MemberDTO">
-		insert into sell_authorized(member_idx, business_num, one_rep_co_rep, rep_name, company_name, office_zipcode, office_address, ebuis_report_num, shop_manager_name, whichBank, accountHolder, bank_account, regidate)
-  VALUES(#{member_idx}, #{business_num}, #{one_rep_co_rep}, #{rep_name}, #{company_name}, #{office_zipcode}, #{office_address}, #{ebuis_report_num}, #{shop_manager_name}, #{whichBank}, #{accountHolder}, #{bank_account}, sysdate)
+	<insert id="Sell_AuthorizedAction" parameterType="com.edu.springboot.jdbc.SellerDTO">
+		insert into sell_authorized(
+		member_idx, 
+		business_num, 
+		one_rep_co_rep, 
+		rep_name, company_name, 
+		office_zipcode, office_address, 
+		ebuis_report_num, shop_manager_name, 
+		whichBank, 
+		accountHolder, 
+		bank_account, 
+		regidate)
+  		VALUES(
+  		30, 
+  		#{business_num}, 
+  		#{one_rep_co_rep}, 
+  		#{rep_name}, #{company_name}, 
+  		#{office_zipcode}, 
+  		#{office_address}, 
+  		#{ebuis_report_num}, 
+  		#{shop_manager_name}, 
+  		#{whichBank}, 
+  		#{accountHolder}, 
+  		#{bank_account}, 
+  		sysdate)
 	</insert>
 	
 	<select id="situation_zero" parameterType="com.edu.springboot.jdbc.SellRightDTO"
@@ -69,20 +104,42 @@
 	
 	
 	<!-- 판매자 권한 승인 -->
-	<update id="situation_one" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update sell_authorized set situation = '1' where member_idx=#{member_idx}
+	<update id="situation_approve" parameterType="com.edu.springboot.jdbc.SellRightDTO">
+		update sell_authorized set situation = '1' 
+			where member_idx in
+			<foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
+	          #{member_idx}
+	       </foreach>
 	</update>
+
 	<update id="seller" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update member set Authority = 'seller' where member_idx=#{member_idx}
+		update member set Authority = 'seller' 
+			where member_idx in
+				<foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
+	          #{member_idx}
+	       </foreach>
 	</update>
 	
 	
 	<!-- 판매자 권한 거절 및 박탈 -->
-	<update id="situation_two" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update sell_authorized set situation = '2' where member_idx=#{member_idx}
+
+	
+	<update id="situation_block" parameterType="com.edu.springboot.jdbc.SellRightDTO">
+		update sell_authorized set situation = '2' 
+			where member_idx in
+			<foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
+	          #{member_idx}
+	       </foreach>
 	</update>
+	
+	
+	
 	<update id="member" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update member set Authority = 'member' where member_idx=#{member_idx}
+		update member set Authority = 'member' 
+			where member_idx in <foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
+	          #{member_idx}
+	       </foreach>
+				
 	</update>
 	
 	

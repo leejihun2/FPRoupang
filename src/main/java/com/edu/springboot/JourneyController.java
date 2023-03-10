@@ -3,28 +3,36 @@ package com.edu.springboot;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.springboot.jdbc.CategoryService;
+import com.edu.springboot.jdbc.IReviewService;
 import com.edu.springboot.jdbc.JourneyDTO;
 import com.edu.springboot.jdbc.JourneyInfoDTO;
 import com.edu.springboot.jdbc.JourneyService;
 import com.edu.springboot.jdbc.ParameterTicketDTO;
 import com.edu.springboot.jdbc.TicketDTO;
 import com.edu.springboot.jdbc.TicketInfoDTO;
+import com.edu.springboot.jdbc.TotalJourneyDTO;
+import com.edu.springboot.jdbc.TotalTicketDTO;
 
 @Controller
 public class JourneyController {
@@ -452,5 +460,98 @@ public class JourneyController {
 		
 		journey_dao.delete_journey_info(val, company_name);
 		return "/home";
+	}
+	@RequestMapping("/journey_List")
+	public ModelAndView show_Journey_List(HttpServletRequest req, HttpSession session) {
+		
+		int sub_idx = Integer.parseInt(req.getParameter("category"));
+		String location = req.getParameter("location"); 
+		
+		String ji_duetime1 = (String) session.getAttribute("ji_duetime1");
+		String ji_duetime2 = (String) session.getAttribute("ji_duetime2");
+		
+		
+		ModelAndView mv = new ModelAndView();
+		
+		String like_loc = journey_dao.like_journey_List(location);
+		String category_title = cate_dao.select_one_cate(sub_idx);
+		
+		//예약일 인원 모두 적용했을때 
+		if(session.getAttribute("ji_duetime1")!=null && session.getAttribute("ji_duetime2")!=null &&
+				session.getAttribute("ji_adult")!= null && session.getAttribute("ji_kid")!= null) {
+			System.out.println("show_journey_list_addAll : 실행");
+			int ji_kid = Integer.parseInt((String) session.getAttribute("ji_kid")); 
+			int ji_adult = Integer.parseInt((String)session.getAttribute("ji_adult")); 
+			ArrayList<TotalJourneyDTO> journey_list = 
+					journey_dao.show_journey_list_addAll(sub_idx,ji_adult,ji_kid,ji_duetime1,ji_duetime2);
+			
+			mv.addObject("journey_list", journey_list);
+		}
+		//인원만 적용되었을때
+		else if(session.getAttribute("ji_adult")!= null && session.getAttribute("ji_kid")!= null) {
+			
+			System.out.println("show_journey_list_addP : 실행");
+			int ji_kid = Integer.parseInt((String) session.getAttribute("ji_kid")); 
+			int ji_adult = Integer.parseInt((String)session.getAttribute("ji_adult")); 
+			ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list_addP(sub_idx,ji_adult,ji_kid);
+			
+			mv.addObject("journey_list", journey_list);
+		}
+		//예약일만 적용했을때 
+		else if(session.getAttribute("ji_duetime1")!=null && session.getAttribute("ji_duetime2")!=null){
+			
+			System.out.println("show_journey_list_addC : 실행");
+			ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list_addC(sub_idx,ji_duetime1,ji_duetime2);
+			
+			mv.addObject("journey_list", journey_list);
+			
+		}
+		//지역(직접)검색했을때 
+		else {
+			ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list(sub_idx);
+			
+			//ticketList Search부분에 들어갈 검색어 
+			mv.addObject("journey_list", journey_list);
+		}
+		session.removeAttribute("ji_adult");
+		session.removeAttribute("ji_kid");
+		session.removeAttribute("ji_duetime1");
+		session.removeAttribute("ji_duetime2");
+		
+		mv.addObject("sub_idx",sub_idx);
+		//like연산자를 통해 타이틀이 like '%?%' 것을 select
+		mv.addObject("like_loc",like_loc);
+		mv.addObject("category_title",category_title);
+		mv.setViewName("/journey/journeyList");
+		
+		return mv;
+	}
+	//인원 설정
+	@RequestMapping("/personnel")
+	@ResponseBody
+	public String personnel(HttpSession session, String ji_adult, String ji_kid, HttpServletRequest req) {
+		
+		session.setAttribute("ji_adult", ji_adult);
+		session.setAttribute("ji_kid", ji_kid);
+		System.out.println(session.getAttribute("ji_adult"));
+		System.out.println(session.getAttribute("ji_kid"));
+		
+		return "/journey/journeyList";
+	}
+	//예약일 설정
+	@RequestMapping(value = "/dateSave", method = RequestMethod.POST)
+	@ResponseBody
+	public String dateSave(HttpSession session,@RequestBody Map<String, String> map, HttpServletRequest req) {
+		
+	    String ji_duetime1 = map.get("ji_duetime1");
+	    String ji_duetime2 = map.get("ji_duetime2"); 
+		
+		session.setAttribute("ji_duetime1", ji_duetime1);
+		session.setAttribute("ji_duetime2", ji_duetime2);
+		
+		System.out.println("시작날짜"+session.getAttribute("ji_duetime1"));
+		System.out.println("종료날짜"+session.getAttribute("ji_duetime2"));
+		
+		return "/journey/journeyList";
 	}
 }

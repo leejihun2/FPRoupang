@@ -6,7 +6,7 @@ import lombok.Data;
 public class SellerDTO {
 
 	private int member_idx;
-	private String buisness_num;
+	private String business_num;
 	private String one_rep_co_rep;
 	private String rep_name;
 	private String company_name;
