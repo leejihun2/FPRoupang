@@ -44,14 +44,15 @@ public interface IMemberService {
 
 		public ArrayList<SellRightDTO> situation_zero(List<String> appList);
 		
-		public int situation_one(SellRightDTO sellRightDTO);
-		public int seller(SellRightDTO sellRightDTO);
-	
-		
-		
 
-		public int situation_two(SellRightDTO sellRightDTO);
-		public int member(SellRightDTO sellRightDTO);
+		public int seller(List<String>member_idx);
+		
+		public int situation_approve(List<String>member_idx);
+
+		
+		public int situation_block(List<String>member_idx);
+		
+		public int member(List<String>member_idx);
 		
 		
 
