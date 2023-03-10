@@ -1,8 +1,10 @@
 package com.edu.springboot;
 
+import java.security.Principal;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,6 +62,24 @@ public class AdminController {
 		model.addAttribute("lists", lists);
 		return "admin/adminNotice";
 	}
+	
+	@RequestMapping("/admin/delete.do")
+	public String delete(HttpServletRequest req, HttpSession session, Principal principal) {
+		//삭제는 본인만 가능하므로 로그인 확인을 진행한다.
+		String email = principal.getName();
+		session.setAttribute("siteUserInfo", email);
+		if (session.getAttribute("siteUserInfo") == null) {
+			return "redirect:/myLogin.do";
+		}
+		int applyRow = daoo
+				.delete(req.getParameter("idx"),
+						email);
+						
+		System.out.println("삭제된 행의 갯수 : " + applyRow);
+		
+		return "redirect:/admin/index.do";
+	}
+	
 	@RequestMapping("/admin/utilities-color.do")
 	public String utilities1() {
 		return "admin/utilities-color";

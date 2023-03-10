@@ -46,7 +46,7 @@ public class SecurityConfig {
 		httpSecurity.formLogin()
 			.loginPage("/myLogin.do")
 	        .loginProcessingUrl("/myLoginAction.do")
-	        .defaultSuccessUrl("/myLogin.do")
+	        .defaultSuccessUrl("/")
 	        .failureHandler(authenticationFailureHandler) 
 	        .usernameParameter("my_id")	
 	        .passwordParameter("my_pass")

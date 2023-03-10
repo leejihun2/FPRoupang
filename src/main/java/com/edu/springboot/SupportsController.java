@@ -119,21 +119,7 @@ public class SupportsController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping("/supports/delete.do")
-	public String delete(HttpServletRequest req, HttpSession session, Principal principal) {
-		//삭제는 본인만 가능하므로 로그인 확인을 진행한다.
-		String email = principal.getName();
-		session.setAttribute("siteUserInfo", email);
-		if (session.getAttribute("siteUserInfo") == null) {
-			return "redirect:/myLogin.do";
-		}
-		int applyRow = daoo
-				.delete(req.getParameter("idx"),
-						email);
-						
-		System.out.println("삭제된 행의 갯수 : " + applyRow);
-		return "redirect:/myLogin.do";
-	}
+
 	
 
 	
