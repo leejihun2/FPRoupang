@@ -27,9 +27,8 @@ public class MainContoller {
 			model.addAttribute("user_id", email);
 			session.setAttribute("siteUserInfo", email);
 		}
-		catch (Exception e) {
-			System.out.println("로그인 전입니다.");
-		}
+		catch (Exception e) {}
+		
 		return "auth/login";
 	}
 	

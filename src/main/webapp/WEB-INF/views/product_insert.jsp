@@ -94,7 +94,7 @@ function setSelectBox(obj){
 					,function(data){
 						$.each(data, function(i){
 							var tabletd='<tr>';
-							tabletd+='<td class="td_none"><input type="checkbox" name="journey_select" id="journey_select'+data[i].idx+'" value="'+data[i].idx+'"/>'
+							tabletd+='<td class="td_none"><input type="checkbox" name="product_select" id="product_select'+data[i].idx+'" value="'+data[i].idx+'"/>'
 							tabletd+='<td class="td_none"><img style="width:300px;" src="/uploads/'+data[i].j_title_image+'" />'
 							tabletd+='<td class="td_none"><a href="javascript:;" onclick="simple_click('+data[i].idx+')">'+data[i].title+'</a></td>'
 							tabletd+='</tr>'
@@ -236,11 +236,11 @@ function simple_click(obj){
 	          var table = '<table class="table">';
 	          if((data.j_image1)!=null){
 	             table += '<tr><th class="info_th">서브이미지</th><td><img style="width:300px;"src="/uploads/'+data.j_image1+'" />'
-	             if((data.t_image2)!=null){
+	             if((data.j_image2)!=null){
 	                table += '<img style="width:300px;"src="/uploads/'+data.j_image2+'" />'
-	                if((data.t_image3)!=null){
+	                if((data.j_image3)!=null){
 	                   table += '<img style="width:300px;"src="/uploads/'+data.j_image3+'" />'
-	                   if((data.t_image4)!=null){
+	                   if((data.j_image4)!=null){
 	                      table += '<img style="width:300px;"src="/uploads/'+data.j_image4+'" />'
 	                   }
 	                }
@@ -415,13 +415,14 @@ $(function(){
 			}
       }else{
          var value;
-         $("[name=journey_select]").each(function(idx){
+         $("[name=product_select]").each(function(idx){
             if($(this).is(":checked")==true){
                value = $(this).val()
             }
          });
          
          
+         alert(value);
          if($("#category1").val()==1){
         	 form.action="/ticketInsertAction?value="+value;
 		 }
@@ -430,6 +431,7 @@ $(function(){
 		 }
       }
 	});
+   
    /* 상세상품 삭제 실행시 발생 */
 	$("#info_delete").click(function(){
 		var delete_val1=[];
@@ -475,76 +477,7 @@ $(function(){
 		}
 	});
 });
-$(document).ready(function(){
-   /* chkbox 없음 클릭시 이벤트 처리 */
-   $("#noservice").click(function(){
-      if(this.checked){
-         $(".service").prop('disabled',true).prop('checked',false);
-      }else{
-         $(".service").prop('disabled',false);
-      }
-   });
-   /* 위와 동일 */
-   $("#nofac").click(function(){
-      if(this.checked){
-         $(".fac").prop('disabled',true).prop('checked',false);
-      }else{
-         $(".fac").prop('disabled',false);
-      }
-   });
-   $("#nocommon").click(function(){
-      if(this.checked){
-         $(".common").prop('disabled',true).prop('checked',false);
-      }else{
-         $(".common").prop('disabled',false);
-      }
-   });
-   
-   /* 이미지 선택시 미리보기 출력 (서브 이미지) */
-   var sel_files=[];
-	$("#sub_image").on("change",function(e){
-		document.getElementById("sub_thumbnail").innerHTML='';
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
 
-		if(!(files.length>=5)){
-			
-			filesArr.forEach(function(f){
-				sel_files.push(f);
-				var reader = new FileReader();
-				reader.onload = function(e){
-					var img = "<img src=\"" + e.target.result + "\" />";
-					$("#sub_thumbnail").append(img);
-				}
-				
-				reader.readAsDataURL(f);
-			});
-		}else{
-			alert("최대 4개의 이미지까지 등록 가능합니다.");
-		}
-	});
-	$("#ji_image").on("change",function(e){
-		document.getElementById("sub_thumbnail2").innerHTML='';
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
-	
-		if(!(files.length>=5)){
-	      
-			filesArr.forEach(function(f){
-				sel_files.push(f);
-				var reader = new FileReader();
-				reader.onload = function(e){
-		            var img = "<img src=\"" + e.target.result + "\" />";
-					$("#sub_thumbnail2").append(img);
-			}
-	         
-				reader.readAsDataURL(f);
-			});
-		}else{
-			alert("최대 4개의 이미지까지 등록 가능합니다.");
-		}
-	});
-});
 /* 이미지 선택시 미리보기 출력 (메인 이미지) */
 function setThumbnail(event) {
 	var reader = new FileReader();
@@ -558,6 +491,62 @@ function setThumbnail(event) {
 	reader.readAsDataURL(event.target.files[0]);
 }
 
+function setSubThumnail(tag, event){
+	var sel_files=[];
+	var files = event.target.files;
+	var filesArr = Array.prototype.slice.call(files);
+	
+	var tag_id = tag.id;
+	var div_id = tag_id.substr(0,tag_id.indexOf("image"));
+	
+	if(!(files.length>=5)){
+		document.getElementById(div_id+"thumbnail").innerHTML='';
+		filesArr.forEach(function(e){
+			sel_files.push(e);
+			var reader = new FileReader();
+			reader.onload = function(f){
+				var img = "<img src=\"" + f.target.result + "\" />";
+				$("#"+div_id+"thumbnail").append(img);
+			}
+			reader.readAsDataURL(e);
+		});
+	}else{
+		alert("최대 4개의 이미지까지 등록 가능합니다.");
+	}
+}
+
+function noChk(tag){
+	var tag_class=tag.id.substr(2);
+	if(tag.checked){
+       $("."+tag_class).prop('disabled',true).prop('checked',false);
+    }else{
+       $("."+tag_class).prop('disabled',false);
+    }
+}
+
+function stay(){
+		$("#ji_image").on("change",function(e){
+			document.getElementById("sub_thumbnail2").innerHTML='';
+			var files = e.target.files;
+			var filesArr = Array.prototype.slice.call(files);
+		
+			if(!(files.length>=5)){
+		      
+				filesArr.forEach(function(f){
+					sel_files.push(f);
+					var reader = new FileReader();
+					reader.onload = function(e){
+			            var img = "<img src=\"" + e.target.result + "\" />";
+						$("#ji_thumbnail").append(img);
+				}
+		         
+					reader.readAsDataURL(f);
+				});
+			}else{
+				alert("최대 4개의 이미지까지 등록 가능합니다.");
+			}
+		});
+}
 function service_list(e){
 	const ticket_service = ['무료셔틀버스', '안전장치(장비,요원 등)', '수유실', '흡연실', '의무실', '물품보관소', '유실물센터', '장애인 편의 시설', '미아보호소', '유아전용시설', '주차장'];
 	const ticket_fac = ['안내데스크', '매표소', '식음시설', '페스티벌', '놀이기구', '공연', '기프트샵', '체험존'];
@@ -569,7 +558,7 @@ function service_list(e){
 	document.getElementById("briefinfo").innerHTML='';
 	document.getElementById("detailinfo").innerHTML='';
 	
-	var briefinfo='<tr><th class="info_th">* 상품명</th><td><input class="form-control insert_input" type="text" id="bot_title" name="bot_title"/><tr><th class="info_th">* 메인이미지</th><td><div id="title_image"></div><input class="form-control insert_input" type="file" name="title_image" id="main_image" onchange="setThumbnail(event)" /><tr><th class="info_th">서브이미지</th><td><div id="sub_thumbnail insert_input"></div><input class="form-control insert_input" type="file" id="sub_image" name="sub_image" multiple/></td></tr>';
+	var briefinfo='<tr><th class="info_th">* 상품명</th><td><input class="form-control insert_input" type="text" id="bot_title" name="bot_title"/><tr><th class="info_th">* 메인이미지</th><td><div id="title_image"></div><input class="form-control insert_input" type="file" name="title_image" id="main_image" onchange="setThumbnail(event)" /><tr><th class="info_th">서브이미지</th><td><div id="sub_thumbnail"></div><input class="form-control insert_input" type="file" id="sub_image" name="sub_image" onchange="setSubThumnail(this,event)" multiple/></td></tr>';
 	
 	var detailinfo ='<tr><th class="info_th">* 상품상세명</th><td><input class="form-control" type="text" id="product_title" name="product_title" /></td></tr>';
 	
@@ -583,7 +572,7 @@ function service_list(e){
 				briefinfo+="<br>";
 			}
 		}
-		var chkbox = "<input type='checkbox' class='noservice' name='t_conservice' value=''/>없음";
+		var chkbox = "<input type='checkbox' id='noservice' name='t_conservice' value='' onclick='noChk(this)' />없음";
 		briefinfo+=chkbox+'</td></tr>';
 		
 		briefinfo+='<tr><th class="info_th">* 이용시설</th><td>';
@@ -595,7 +584,7 @@ function service_list(e){
 				briefinfo+="<br>";
 		}
 	}
-	var chkbox = "<input type='checkbox' class='nofac' name='t_fac' value=''/>없음";
+	var chkbox = "<input type='checkbox' id='nofac' name='t_fac' value='' onclick='noChk(this)' />없음";
 	briefinfo+=chkbox+'</td></tr>';
 	
 	briefinfo+='<tr><th>포함사항</th><td><textarea id="t_incmatters" name="t_incmatters"></textarea></td></tr>'
@@ -613,7 +602,7 @@ function service_list(e){
 				briefinfo+="<br>";
 			}
 		}
-	    var chkbox = "<input type='checkbox' class='nocommon' name='common_items' value=''/>없음";
+	    var chkbox = "<input type='checkbox' id='nocommon' name='common_items' value='' onclick='noChk(this)' />없음";
 	    briefinfo+=chkbox+'</td></tr>';
 		
 	    briefinfo+='<tr><th class="info_th">* 편의서비스</th><td>';
@@ -625,7 +614,7 @@ function service_list(e){
 				briefinfo+="<br>";
 			}
     	}
-	    var chkbox = "<input type='checkbox' class='noservice' name='j_conservice' value=''/>없음";
+	    var chkbox = "<input type='checkbox' id='noservice' name='j_conservice' value='' onclick='noChk(this)' />없음";
 	    briefinfo+=chkbox+'</td></tr>';
 	
 	    briefinfo+='<tr><th class="info_th">* 편의서비스</th><td>';
@@ -637,12 +626,12 @@ function service_list(e){
 				briefinfo+="<br>";
 			}
 		}
-		var chkbox = "<input type='checkbox' class='nofac' name='j_confacility' value=''/>없음";
+		var chkbox = "<input type='checkbox' id='nofac' name='j_confacility' value='' onclick='noChk(this)' />없음";
 		briefinfo+=chkbox+'</td></tr>';
 		
 		briefinfo+='<tr><th class="info_th">*지역</th><td><input class="form-control insert_input" type="text" id="location" name="location"/></td></tr><tr><th class="info_th">*교통 정보</th><td><textarea class="form-control insert_input" id="traffic_info" name="traffic_info"  /></textarea></td></tr><tr><th class="info_th">*숙소 정책</th><td><textarea class="form-control insert_input" id="loging_policy" name="loging_policy"  /></textarea></td></tr><tr><th class="info_th">*체크인/체크아웃</th><td><textarea class="form-control insert_input" id="check_io" name="check_io"  /></textarea></td></tr><tr><th class="info_th">인원 및 추가요금 </th><td><textarea class="form-control insert_input" id="add_fare" name="add_fare"  /></textarea></td></tr><tr><th class="info_th">침구류 추가요금</th><td><textarea class="form-control insert_input" id="add_bed" name="add_bed"  /></textarea></td></tr><tr><th class="info_th">조식 유의 사항</th><td><textarea class="form-control insert_input" id="breakfast_noti" name="breakfast_noti"  /></textarea></td></tr>'
 		
-		detailinfo += '<tr><th class="info_th">* 성인</th><td><select class="form-select" id="ji_adult" name="ji_adult"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">* 소인</th><td><select class="form-select" id="ji_kid" name="ji_kid"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">*객실이미지</th><td><div id="sub_thumbnail2"></div><input class="form-control" type="file" id="ji_image" name="sub_ji_image" multiple/></td></tr><tr><th class="info_th">*잔여객실수</th><td><select class="form-select" id="ji_roomnum" name="ji_roomnum"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">* 개장기간</th>'
+		detailinfo += '<tr><th class="info_th">* 성인</th><td><select class="form-select" id="ji_adult" name="ji_adult"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">* 소인</th><td><select class="form-select" id="ji_kid" name="ji_kid"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">*객실이미지</th><td><div id="ji_thumbnail"></div><input class="form-control" type="file" id="ji_image" name="sub_ji_image" onchange="setSubThumnail(this,event)" multiple/></td></tr><tr><th class="info_th">*잔여객실수</th><td><select class="form-select" id="ji_roomnum" name="ji_roomnum"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">* 개장기간</th>'
 		
 	}
 	

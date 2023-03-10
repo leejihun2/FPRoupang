@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -240,7 +241,9 @@ public class TicketController {
 	@RequestMapping("/ticketInsertAction")
 	public ModelAndView ticket_insert2(MultipartFile[] sub_image, MultipartFile title_image, Model model, MultipartHttpServletRequest req) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		System.out.println("시작");
 		int value= Integer.parseInt(req.getParameter("value"));		
+		
 		TicketDTO t_dto = new TicketDTO();
 		if(value==0) {
 			ticket_dao.insert_bot_title(req.getParameter("bot_title"),
@@ -292,11 +295,13 @@ public class TicketController {
 		try {
 		TicketInfoDTO ti_dto = new TicketInfoDTO();
 		ti_dto.setBot_idx(value);
-		ti_dto.setTi_duetime1(req.getParameter("ti_duetime1"));
-		ti_dto.setTi_duetime2(req.getParameter("ti_duetime2"));
-		ti_dto.setTi_price(Integer.parseInt(req.getParameter("ti_price")));
-		ti_dto.setTi_title(req.getParameter("ti_title"));
-		ti_dto.setTi_intro(req.getParameter("ti_intro"));
+		System.out.println(value);
+		ti_dto.setTi_duetime1(req.getParameter("product_duetime1"));
+		ti_dto.setTi_duetime2(req.getParameter("product_duetime2"));
+		System.out.println(value);
+		ti_dto.setTi_price(Integer.parseInt(req.getParameter("product_price")));
+		ti_dto.setTi_title(req.getParameter("product_title"));
+		ti_dto.setTi_intro(req.getParameter("product_intro"));
 		ticket_dao.insert_ticket_info(ti_dto);
 		}catch (Exception e) {}
 		if(!(req.getParameter("product_intro").equals(""))) {
@@ -410,4 +415,18 @@ public class TicketController {
 		
 		return "/ticket/ticket_detail_view";
 	}
+	
+	@RequestMapping("/showModal")
+	public String modalPopUp(HttpServletRequest req, Model model) {
+		int bot_idx = Integer.parseInt(req.getParameter("bot_idx")); 
+		System.out.println(bot_idx);
+		String title = cate_dao.select_bot_cate(bot_idx);
+		model.addAttribute("title", title);
+		
+		int ti_idx = Integer.parseInt(req.getParameter("ti_idx"));
+		ArrayList<TicketInfoDTO> Total_Ticket_info = ticket_dao.ticket_info_list(ti_idx);
+		model.addAttribute("Total_Ticket_info",Total_Ticket_info);
+		return "/ticket/ticket_modal";
+	}
+
 }
