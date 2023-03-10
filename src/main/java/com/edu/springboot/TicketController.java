@@ -241,7 +241,6 @@ public class TicketController {
 	@RequestMapping("/ticketInsertAction")
 	public ModelAndView ticket_insert2(MultipartFile[] sub_image, MultipartFile title_image, Model model, MultipartHttpServletRequest req) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("시작");
 		int value= Integer.parseInt(req.getParameter("value"));		
 		
 		TicketDTO t_dto = new TicketDTO();
@@ -295,10 +294,10 @@ public class TicketController {
 		try {
 		TicketInfoDTO ti_dto = new TicketInfoDTO();
 		ti_dto.setBot_idx(value);
-		System.out.println(value);
+		
 		ti_dto.setTi_duetime1(req.getParameter("product_duetime1"));
 		ti_dto.setTi_duetime2(req.getParameter("product_duetime2"));
-		System.out.println(value);
+		
 		ti_dto.setTi_price(Integer.parseInt(req.getParameter("product_price")));
 		ti_dto.setTi_title(req.getParameter("product_title"));
 		ti_dto.setTi_intro(req.getParameter("product_intro"));
@@ -371,27 +370,15 @@ public class TicketController {
 	@RequestMapping("/ticket_List")
 	public ModelAndView Show_Ticket_List(HttpServletRequest req) {
 		int sub_idx = Integer.parseInt(req.getParameter("category"));
-		String title = req.getParameter("title");
 		
 		String location = ""; 
 		if(req.getParameter("location")!=null) {
 			location = req.getParameter("location");
 		}
 		ModelAndView mv = new ModelAndView();
-		
-		//list페이지에 title을 통해 검색
-		String like_title = cate_dao.like_bot_title(sub_idx,title);
-		
-		System.out.println(like_title);
-		
 		ArrayList<TotalTicketDTO> ticket_list = ticket_dao.show_ticket_list(sub_idx, location);
 		String category_title = cate_dao.select_one_cate(sub_idx);
 		
-		//ticketList Search부분에 들어갈 검색어 
-		mv.addObject("title",title);
-		mv.addObject("sub_idx",sub_idx);
-		//like연산자를 통해 타이틀이 like '%?%' 것을 select
-		mv.addObject("like_title",like_title);
 		mv.addObject("category_title",category_title);
 		mv.addObject("ticket_list", ticket_list);
 		
@@ -430,14 +417,23 @@ public class TicketController {
 	@RequestMapping("/showModal")
 	public String modalPopUp(HttpServletRequest req, Model model) {
 		int bot_idx = Integer.parseInt(req.getParameter("bot_idx")); 
-		System.out.println(bot_idx);
 		String title = cate_dao.select_bot_cate(bot_idx);
 		model.addAttribute("title", title);
 		
-		int ti_idx = Integer.parseInt(req.getParameter("ti_idx"));
-		ArrayList<TicketInfoDTO> Total_Ticket_info = ticket_dao.ticket_info_list(ti_idx);
+		ArrayList<TicketInfoDTO> Total_Ticket_info = ticket_dao.ticket_info_list(bot_idx);
 		model.addAttribute("Total_Ticket_info",Total_Ticket_info);
+		
 		return "/ticket/ticket_modal";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/cellProduct")
+	public String test(HttpServletRequest req) {
+		System.out.println(req.getParameter("bot_idx"));
+		System.out.println(req.getParameter("ti_idx"));
+		System.out.println(req.getParameter("price"));
+		System.out.println(req.getParameter("amount"));
+		return "/";
 	}
 
 }

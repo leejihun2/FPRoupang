@@ -18,6 +18,4 @@ public class SellerDTO {
 	private String accountHolder;
 	private String bank_account;
 	private int situation;
-	
-	
 }

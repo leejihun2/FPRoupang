@@ -659,7 +659,7 @@ font-size: 12px;
 							  </div>
 							</div>
 							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="marketing_agreement" id="marketing_agreement" value="" onchange="checkYn(this);" />
+								<input class="form-check-input" type="checkbox" name="marketing_agreement" id="marketing_agreement" value="1" onchange="checkYn(this);" />
 								<label for="marketing_agreement"> [선택] 마케팅 목적의 개인정보 수집 및 이용 동의</label> 
 									<span style="float:right" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">
 											 <i class="bi bi-chevron-right" id="marketing"></i>
@@ -752,14 +752,6 @@ font-size: 12px;
 								<input class="form-check-input" type="checkbox" name="agreement" id="email" value="email" required /> 
 								<label for="email" class="required"> [선택]이메일 수신 동의</label> 
 							</div>	
-							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="agreement" id="socialmedia" value="socialmedia" required /> 
-								<label for="socialmedia" class="required"> [선택] SMS, SNS 수신 동의</label> 
-							</div>	
-							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="agreement" id="apppush" value="apppush" required /> 
-								<label for="apppush" class="required"> [선택]앱 푸시 수신 동의</label>
-							</div>
 						</div>
 					</div>	
 					</div>	
