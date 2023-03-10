@@ -380,9 +380,9 @@ public class TicketController {
 		ModelAndView mv = new ModelAndView();
 		
 		//list페이지에 title을 통해 검색
-		String like_title = cate_dao.like_bot_title(sub_idx,title);
+		//String like_title = cate_dao.like_bot_title(sub_idx,title);
 		
-		System.out.println(like_title);
+		//System.out.println(like_title);
 		
 		ArrayList<TotalTicketDTO> ticket_list = ticket_dao.show_ticket_list(sub_idx, location);
 		String category_title = cate_dao.select_one_cate(sub_idx);
@@ -391,7 +391,7 @@ public class TicketController {
 		mv.addObject("title",title);
 		mv.addObject("sub_idx",sub_idx);
 		//like연산자를 통해 타이틀이 like '%?%' 것을 select
-		mv.addObject("like_title",like_title);
+		//mv.addObject("like_title",like_title);
 		mv.addObject("category_title",category_title);
 		mv.addObject("ticket_list", ticket_list);
 		

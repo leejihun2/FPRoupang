@@ -50,13 +50,15 @@ public class MemberController {
 	public String member1() {
 		return "/member/regist";
 	}
+	
+	
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public String member6(MemberDTO memberDTO, HttpServletRequest req) {
 		
 		 memberDTO.setPassword(passwordEncoder().encode(req.getParameter("password")));
 		
 		 int result = dao.insert(memberDTO);
-		
+		 
 		 if(result==1) System.out.println("입력되었습니다.");
 		
 		 return "redirect:regist.do";
