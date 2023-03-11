@@ -27,45 +27,29 @@
 	<hr class="sidebar-divider">
 
 	<!-- Heading -->
-	<div class="sidebar-heading">Interface</div>
+	<div class="sidebar-heading">Seller Menu</div>
 
 	<!-- Nav Item - Pages Collapse Menu -->
 	<li class="nav-item"><a class="nav-link collapsed" href="#"
 		data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-		aria-controls="collapseTwo"> <i class="fa fa-shopping-cart"></i> <span>상품/여행/티켓</span>
+		aria-controls="collapseTwo"> <i class="fa fa-shopping-cart"></i> <span>상품등록/관리</span>
 	</a>
 		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 			data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Custom Components:</h6>
 				<a class="collapse-item" href="buttons.do">상품</a> 
-				<a class="collapse-item" href="cards.do">여행</a>
-				<a class="collapse-item" href="cards.do">티켓</a>
+				<a class="collapse-item" href="/productInsert">여행/티켓</a>
 			</div>
 		</div></li>
 
 	<!-- Nav Item - Utilities Collapse Menu -->
-	<li class="nav-item"><a class="nav-link collapsed" href="#"
-		data-toggle="collapse" data-target="#collapseUtilities"
-		aria-expanded="true" aria-controls="collapseUtilities"> <i
-			class="fas fa-fw fa-wrench"></i> <span>고객센터</span>
-	</a>
-		<div id="collapseUtilities" class="collapse"
-			aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">고객센터:</h6>
-				<a class="collapse-item" href="adminFaq.do?categoryCode=ALL">자주 묻는 질문</a>
-				<a class="collapse-item" href="adminNotice.do?categoryCode=ALL">쿠팡소식</a>
-				<a class="collapse-item" href="adminNotice.do?categoryCode=ALL"></a>
-
-			</div>
-		</div></li>
 
 	<!-- Divider -->
 	<hr class="sidebar-divider">
 
 	<!-- Heading -->
-	<div class="sidebar-heading">Addons</div>
+	<div class="sidebar-heading">Administrator Menu</div>
 
 	<!-- Nav Item - Pages Collapse Menu -->
 	<li class="nav-item"><a class="nav-link collapsed" href="#"
@@ -90,12 +74,27 @@
 
 			</div>
 		</div></li>
+	
+	<li class="nav-item"><a class="nav-link collapsed" href="#"
+		data-toggle="collapse" data-target="#collapseUtilities"
+		aria-expanded="true" aria-controls="collapseUtilities"> <i
+			class="fas fa-fw fa-wrench"></i> <span>고객센터</span>
+	</a>
+		<div id="collapseUtilities" class="collapse"
+			aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<h6 class="collapse-header">고객센터:</h6>
+				<a class="collapse-item" href="adminFaq.do?categoryCode=ALL">자주 묻는 질문</a>
+				<a class="collapse-item" href="adminNotice.do?categoryCode=ALL">쿠팡소식</a>
+				<a class="collapse-item" href="adminNotice.do?categoryCode=ALL"></a>
 
+			</div>
+		</div></li>
 	
 	<li class="nav-item"><a class="nav-link collapsed" href="charts.do"
 		data-toggle="collapse" data-target="#collapse"
 		aria-expanded="true" aria-controls="collapse"> <i
-			class="fas fa-fw fa-chart-area"></i> <span>고객센터</span>
+			class="fas fa-fw fa-chart-area"></i> <span>Log기록</span>
 	</a>
 		<div id="collapse" class="collapse"
 			aria-labelledby="headingUtilities" data-parent="#accordionSidebar">

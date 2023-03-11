@@ -46,12 +46,4 @@
 		DELETE FROM couboard WHERE idx=#{param1} AND email=#{param2}
 	</delete>
 
-	<select id="hashMapUse" resultType="com.edu.springboot.jdbc.SupportsDTO"
-		parameterType="java.util.Map">
-		SELECT * FROM couboard
-		WHERE id=#{key_id} or name=#{key_name}
-		or contents=#{key_contents}
-		ORDER BY idx DESC
-	</select>
-
  </mapper>

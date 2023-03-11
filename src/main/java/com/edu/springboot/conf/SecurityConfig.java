@@ -36,9 +36,9 @@ public class SecurityConfig {
 		.antMatchers("/**").permitAll()
 		.antMatchers("/css/**","/js/**","/images/**").permitAll()
 		.antMatchers("/guest/**").permitAll()
-		.antMatchers("/member/**").hasAnyRole("admin", "user", "seller")
-		.antMatchers("/supports/voc.jsp").hasAnyRole("admin", "user", "seller")
-		.antMatchers("/supports/inquiry.jsp").hasAnyRole("admin", "user", "seller")
+		.antMatchers("/member/**").hasAnyRole("admin", "member", "seller")
+		.antMatchers("/supports/voc.jsp").hasAnyRole("admin", "member", "seller")
+		.antMatchers("/supports/inquiry.jsp").hasAnyRole("admin", "member", "seller")
 		.antMatchers("/admin/**").hasRole("admin")
         .antMatchers("/agreement/**").hasAnyRole("admin", "seller")
 		.anyRequest().authenticated();

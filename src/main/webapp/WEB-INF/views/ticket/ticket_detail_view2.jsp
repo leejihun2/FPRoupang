@@ -291,13 +291,6 @@
 		z-index:1000;
 	    border-bottom: 1px solid #ddd;
 	}
-	/* 바디에 스크롤 막는 방법 */
-	.not_scroll{
-	    position: fixed;
-	    overflow: hidden;
-	    width: 100%;
-	    height: 100%
-	}
 </style>
 <script type="text/javascript">
 	onload = function(){
@@ -362,19 +355,11 @@
 			}
             location.href="#"+url;
 		});
-
-	    $(".bnt_open").on("click", function(e){
-	        $("html, body").addClass("not_scroll");
-	    });
 	});
 	
 	function replaceClass(){
 		var elem = $(".selected");
 		elem.removeClass("selected");
-	}
-	
-	function addModal(bot_num, idx){
-		$('.modal-content').load('/showModal?bot_idx='+bot_num+'&ti_idx='+idx);
 	}
 	
 	onload = function(){
@@ -403,7 +388,7 @@
 </script>
 <body style="background-color: white;">
     <div id="top" style="margin-bottom:0px;">
-        <%@include file="../top2.jsp" %>
+        <%@include file="../top.jsp" %>
     </div>
     <div class="container">
 	    <div id="travel-container">
@@ -486,7 +471,7 @@
 	                        						</div>
 												</td>
 	                        					<td>
-	                        						<button class="btn btn-primaryinfo bnt_open" type="button" onclick="addModal(${row.bot_idx},${row.ti_idx})" data-toggle="modal" data-target="#myModal" >선택</button>
+	                        						<button class="btn btn-primaryinfo" type="button" onclick="" >선택</button>
 	                        					</td>
 	                        				</tr>
 		                        			</c:forEach>
@@ -880,11 +865,5 @@
 	        </div>
 	    </div>
 	</div>
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  		<div class="modal-dialog" role="document">
-    		<div class="modal-content" id="modal_content">
-	    	</div>
-	    </div>
-    </div>
 </body>
 </html>

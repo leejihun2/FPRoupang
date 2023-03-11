@@ -10,7 +10,7 @@
 	insert into member 
 		(member_idx, email, name, password, phone_number, jumin_num, marketing_agreement) 
 	values
-		(member_idx.nextval, #{email}, #{name}, #{password}, #{phone_number}, #{jumin_num}, #{marketing_agreement})	
+		(member_idx.nextval, #{email}, #{name}, #{password}, #{phone_number}, #{jumin_num}, 0)	
 	</insert>
 	<select id="select"
 	parameterType="com.edu.springboot.jdbc.MemberDTO"
@@ -77,7 +77,7 @@
 		bank_account, 
 		regidate)
   		VALUES(
-  		30, 
+  		#{member_idx}, 
   		#{business_num}, 
   		#{one_rep_co_rep}, 
   		#{rep_name}, #{company_name}, 
@@ -213,5 +213,9 @@
 		from member
             inner join sell_authorized on member.member_idx = sell_authorized.member_idx
           where member.member_idx=#{member_idx}
+	</select>
+	
+	<select id="LoginUser" resultType="com.edu.springboot.jdbc.SellRightDTO">
+		select * from member where email = #{param1}
 	</select>
 </mapper>

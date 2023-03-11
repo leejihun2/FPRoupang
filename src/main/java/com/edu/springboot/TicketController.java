@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -29,13 +30,14 @@ import com.edu.springboot.jdbc.CategoryService;
 import com.edu.springboot.jdbc.IReviewService;
 import com.edu.springboot.jdbc.ParameterTicketDTO;
 import com.edu.springboot.jdbc.ReviewDTO;
+import com.edu.springboot.jdbc.TempgoodsOrderDTO;
+import com.edu.springboot.jdbc.TempgoodsService;
 import com.edu.springboot.jdbc.TicketDTO;
 import com.edu.springboot.jdbc.TicketInfoDTO;
 import com.edu.springboot.jdbc.TicketService;
 import com.edu.springboot.jdbc.TotalTicketDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 
 @Controller
 public class TicketController {
@@ -48,6 +50,9 @@ public class TicketController {
 	
 	@Autowired
 	TicketService ticket_dao;
+	
+	@Autowired
+	TempgoodsService goods_dao;
 	
 	@RequestMapping("/ticket_edit")
 	public String ticket_edit(Model model, HttpServletRequest req) {
@@ -65,7 +70,7 @@ public class TicketController {
 			e.printStackTrace();
 		}
 		model.addAttribute("ticketDetail",ticketDetail);
-		return "/ticket/ticket_info_edit";
+		return "/admin/ticketInfoEdit";
 	}
 	
 	@RequestMapping("/ticketinfo_editAction")
@@ -82,7 +87,7 @@ public class TicketController {
 		
 		ticket_dao.update_ticket_info(dto);
 		
-		return "/home";
+		return "/admin/index";
 	}
 	
 	@ResponseBody
@@ -241,6 +246,7 @@ public class TicketController {
 	public ModelAndView ticket_insert2(MultipartFile[] sub_image, MultipartFile title_image, Model model, MultipartHttpServletRequest req) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int value= Integer.parseInt(req.getParameter("value"));		
+		
 		TicketDTO t_dto = new TicketDTO();
 		if(value==0) {
 			ticket_dao.insert_bot_title(req.getParameter("bot_title"),
@@ -292,11 +298,13 @@ public class TicketController {
 		try {
 		TicketInfoDTO ti_dto = new TicketInfoDTO();
 		ti_dto.setBot_idx(value);
-		ti_dto.setTi_duetime1(req.getParameter("ti_duetime1"));
-		ti_dto.setTi_duetime2(req.getParameter("ti_duetime2"));
-		ti_dto.setTi_price(Integer.parseInt(req.getParameter("ti_price")));
-		ti_dto.setTi_title(req.getParameter("ti_title"));
-		ti_dto.setTi_intro(req.getParameter("ti_intro"));
+		
+		ti_dto.setTi_duetime1(req.getParameter("product_duetime1"));
+		ti_dto.setTi_duetime2(req.getParameter("product_duetime2"));
+		
+		ti_dto.setTi_price(Integer.parseInt(req.getParameter("product_price")));
+		ti_dto.setTi_title(req.getParameter("product_title"));
+		ti_dto.setTi_intro(req.getParameter("product_intro"));
 		ticket_dao.insert_ticket_info(ti_dto);
 		}catch (Exception e) {}
 		if(!(req.getParameter("product_intro").equals(""))) {
@@ -366,27 +374,16 @@ public class TicketController {
 	@RequestMapping("/ticket_List")
 	public ModelAndView Show_Ticket_List(HttpServletRequest req) {
 		int sub_idx = Integer.parseInt(req.getParameter("category"));
-		String title = req.getParameter("title");
 		
 		String location = ""; 
 		if(req.getParameter("location")!=null) {
 			location = req.getParameter("location");
 		}
 		ModelAndView mv = new ModelAndView();
-		
-		//list페이지에 title을 통해 검색
-		String like_title = cate_dao.like_bot_title(sub_idx,title);
-		
-		System.out.println(like_title);
-		
 		ArrayList<TotalTicketDTO> ticket_list = ticket_dao.show_ticket_list(sub_idx, location);
 		String category_title = cate_dao.select_one_cate(sub_idx);
 		
-		//ticketList Search부분에 들어갈 검색어 
-		mv.addObject("title",title);
 		mv.addObject("sub_idx",sub_idx);
-		//like연산자를 통해 타이틀이 like '%?%' 것을 select
-		mv.addObject("like_title",like_title);
 		mv.addObject("category_title",category_title);
 		mv.addObject("ticket_list", ticket_list);
 		
@@ -421,4 +418,38 @@ public class TicketController {
 		
 		return "/ticket/ticket_detail_view";
 	}
+	
+	@RequestMapping("/showModal")
+	public String modalPopUp(HttpServletRequest req, Model model) {
+		int bot_idx = Integer.parseInt(req.getParameter("bot_idx")); 
+		String title = cate_dao.select_bot_cate(bot_idx);
+		model.addAttribute("title", title);
+		
+		ArrayList<TicketInfoDTO> Total_Ticket_info = ticket_dao.ticket_info_list(bot_idx);
+		model.addAttribute("Total_Ticket_info",Total_Ticket_info);
+		
+		return "/ticket/ticket_modal";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/cellProduct")
+	public String test(HttpServletRequest req) {
+		TempgoodsOrderDTO gdto = new TempgoodsOrderDTO();
+		gdto.setBot_idx(req.getParameter("ti_idx"));
+		gdto.setPrice(Integer.parseInt(req.getParameter("price")));
+		gdto.setAmount(Integer.parseInt(req.getParameter("amount")));
+		
+		
+		int result = goods_dao.InsertOrder(gdto);
+		int result2 = goods_dao.InsertOrderItem(gdto);
+		
+		if (result == 0 ) {
+			System.out.println("insert 에러");
+		}else {
+			System.out.println("정상 동작");
+		}
+		
+		return "/";
+	}
+
 }

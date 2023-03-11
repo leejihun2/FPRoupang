@@ -224,6 +224,11 @@ function writeValidate(f)
 	
 	<%@include file="../category.jsp" %>
 	<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->
+	<form name="writeFrm" method="post" 
+		onsubmit="return writeValidate(this);"
+		action="<c:url value="/supports/vocAction.do" />" >
+		
+	<table class="table">
 	<s:authorize access="isAuthenticated()">
 	<s:authentication property="name" var="name" />
 	</s:authorize>
@@ -306,7 +311,7 @@ function writeValidate(f)
 				영역에 저장한 DTO객체에서 이름을 가져와 삽입한다. -->
 				<input type="text" class="form-control" 
 					style="width:130px;" name="name"
-						value="${name }" />
+						value="${name }" readonly />
 			</td>
 		</tr>
 		<tr>
@@ -323,6 +328,9 @@ function writeValidate(f)
 					<option value="회수 지연 문의">회수 지연 문의</option>
 				</select>
 			</td>
+			<td>
+				구매로그
+			</td>
 		</tr>	
 		<tr>
 			<th class="text-center" 
@@ -333,6 +341,11 @@ function writeValidate(f)
 			</td>
 		</tr>	
 	</tbody>
+	</table>
+	
+	<div class="row text-center" style="">
+		<button type="submit" class="btn btn-secondary">작성하기</button>
+	</div>
 	</table> --%>
 	</form> 
 	</section>
