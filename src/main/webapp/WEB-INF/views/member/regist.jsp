@@ -375,23 +375,19 @@ font-size: 12px;
 
 		$(function() {
 
-			$(".checkbox_group").on(
-					"click",
-					"#checkAll",
-					function() {
-						var checked = $(this).is(":checked");
+			$(".checkbox_group").on("click","#checkAll",function(){
+				var checked = $(this).is(":checked");
 
-						if (checked) {
-							$(this).parents(".checkbox_group").find('input')
-									.prop("checked", true);
-						} else {
-							$(this).parents(".checkbox_group").find('input')
-									.prop("checked", false);
-						}
-					});
-
+				if (checked) {
+					$(this).parents(".checkbox_group").find('input')
+							.prop("checked", true);
+				} 
+				else {
+					$(this).parents(".checkbox_group").find('input')
+							.prop("checked", false);
+				}
+			});
 		});
-		
 		$(function(){ 
 			
 			$('#loadUseBtn').click(function(){
@@ -409,8 +405,7 @@ font-size: 12px;
 		
 	</script>
 	<div class="container d-flex justify-content-center">
-		<form action="regist.do" name="registForm" method="post"
-			onsubmit="return chkcheck();">
+		<form action="/regist.do" name="registForm" method="post" onsubmit="return chkcheck();">
 	
 			<div class="container d-flex justify-content-center">
 				<!-- 로고이미지 -->
@@ -630,7 +625,7 @@ font-size: 12px;
 							      </div>
 							      <div id="infoUse" class="modal-body">
 							       <div class="join__terms-box join__terms-box--text-area _joinTermsTarget" id="agree-to-collect-third-part-information">
-	    [								필수] 개인정보 제 3자 제공 동의에 대한 약관
+	    								[필수] 개인정보 제 3자 제공 동의에 대한 약관
 									</div>
 									<table class="table table-bordered">
 									    <thead>

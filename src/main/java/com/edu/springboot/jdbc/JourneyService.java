@@ -43,7 +43,7 @@ public interface JourneyService {
 	
 	public String like_journey_List(String location);
 	
-	public ArrayList<TotalJourneyDTO> show_journey_list(int sub_idx);
+	public ArrayList<TotalJourneyDTO> show_journey_list(TotalJourneyDTO totaljourneyDTO);
 	public ArrayList<TotalJourneyDTO> show_journey_list_addP(int sub_idx, int ji_adult, int ji_kid);
 	public ArrayList<TotalJourneyDTO> show_journey_list_addC(int sub_idx, String ji_duetime1, String ji_duetime2);
 	public ArrayList<TotalJourneyDTO> show_journey_list_addAll(int sub_idx, int ji_adult, int ji_kid, String ji_duetime1, String ji_duetime2);
