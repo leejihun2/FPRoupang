@@ -298,10 +298,6 @@
 	    width: 100%;
 	    height: 100%
 	}
-	.not_scroll .cont {
-	    position: relative;
-	    top: 0;
-	}
 </style>
 <script type="text/javascript">
 	onload = function(){

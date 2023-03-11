@@ -159,13 +159,13 @@ function simple_click(obj){
             var list = data.t_conservice
             var table = '<table>';
             if((data.t_image1)!=null){
-               table += '<tr><th>서브이미지</th><td><img src="/uploads/'+data.t_image1+'" />'
+               table += '<tr><th>서브이미지</th><td><img style="width:300px;" src="/uploads/'+data.t_image1+'" />'
                if((data.t_image2)!=null){
-                  table += '<img src="/uploads/'+data.t_image2+'" />'
+                  table += '<img style="width:300px;" src="/uploads/'+data.t_image2+'" />'
                   if((data.t_image3)!=null){
-                     table += '<img src="/uploads/'+data.t_image3+'" />'
+                     table += '<img style="width:300px;" src="/uploads/'+data.t_image3+'" />'
                      if((data.t_image4)!=null){
-                        table += '<img src="/uploads/'+data.t_image4+'" />'
+                        table += '<img style="width:300px;" src="/uploads/'+data.t_image4+'" />'
                      }
                   }
                }
