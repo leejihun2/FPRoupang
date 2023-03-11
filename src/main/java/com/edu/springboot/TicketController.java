@@ -30,13 +30,14 @@ import com.edu.springboot.jdbc.CategoryService;
 import com.edu.springboot.jdbc.IReviewService;
 import com.edu.springboot.jdbc.ParameterTicketDTO;
 import com.edu.springboot.jdbc.ReviewDTO;
+import com.edu.springboot.jdbc.TempgoodsOrderDTO;
+import com.edu.springboot.jdbc.TempgoodsService;
 import com.edu.springboot.jdbc.TicketDTO;
 import com.edu.springboot.jdbc.TicketInfoDTO;
 import com.edu.springboot.jdbc.TicketService;
 import com.edu.springboot.jdbc.TotalTicketDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 
 @Controller
 public class TicketController {
@@ -49,6 +50,9 @@ public class TicketController {
 	
 	@Autowired
 	TicketService ticket_dao;
+	
+	@Autowired
+	TempgoodsService goods_dao;
 	
 	@RequestMapping("/ticket_edit")
 	public String ticket_edit(Model model, HttpServletRequest req) {
@@ -66,7 +70,7 @@ public class TicketController {
 			e.printStackTrace();
 		}
 		model.addAttribute("ticketDetail",ticketDetail);
-		return "/ticket/ticket_info_edit";
+		return "/admin/ticketInfoEdit";
 	}
 	
 	@RequestMapping("/ticketinfo_editAction")
@@ -83,7 +87,7 @@ public class TicketController {
 		
 		ticket_dao.update_ticket_info(dto);
 		
-		return "/home";
+		return "/admin/index";
 	}
 	
 	@ResponseBody
@@ -430,10 +434,21 @@ public class TicketController {
 	@ResponseBody
 	@RequestMapping("/cellProduct")
 	public String test(HttpServletRequest req) {
-		System.out.println(req.getParameter("bot_idx"));
-		System.out.println(req.getParameter("ti_idx"));
-		System.out.println(req.getParameter("price"));
-		System.out.println(req.getParameter("amount"));
+		TempgoodsOrderDTO gdto = new TempgoodsOrderDTO();
+		gdto.setBot_idx(req.getParameter("ti_idx"));
+		gdto.setPrice(Integer.parseInt(req.getParameter("price")));
+		gdto.setAmount(Integer.parseInt(req.getParameter("amount")));
+		
+		
+		int result = goods_dao.InsertOrder(gdto);
+		int result2 = goods_dao.InsertOrderItem(gdto);
+		
+		if (result == 0 ) {
+			System.out.println("insert 에러");
+		}else {
+			System.out.println("정상 동작");
+		}
+		
 		return "/";
 	}
 

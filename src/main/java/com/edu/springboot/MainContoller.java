@@ -61,7 +61,15 @@ public class MainContoller {
 	
 	@Autowired
 	CategoryService cate_dao;
-	
+	@RequestMapping("/productInsert")
+	public String ticket_insert2(Model model, HttpServletRequest req) {
+		int sub_idx=0;
+		if(!(req.getParameter("sub_idx")==null)) {
+			sub_idx = Integer.parseInt(req.getParameter("sub_idx"));
+		}
+		model.addAttribute("cate",cate_dao.select_cate(sub_idx));
+		return "/admin/productInsert";
+	}
 	@RequestMapping("/product_insert")
 	public String ticket_insert1(Model model, HttpServletRequest req) {
 		int sub_idx=0;

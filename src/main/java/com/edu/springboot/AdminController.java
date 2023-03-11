@@ -1,8 +1,10 @@
 package com.edu.springboot;
 
+import java.security.Principal;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,16 +12,32 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.edu.springboot.jdbc.SupportsDTO;
+import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.ISupportsService;
+import com.edu.springboot.jdbc.SellRightDTO;
 
 @Controller
 public class AdminController {
 	
 	@Autowired
 	ISupportsService daoo;
+
+	@Autowired
+	IMemberService member_dao;
 	
 	@RequestMapping("/admin/index.do")
-	public String admin() {
+	public String admin(Principal principal,HttpSession session) {
+		String loginId = principal.getName();
+		String member_idx = member_dao.member_idx(loginId);
+
+		SellRightDTO dto  = member_dao.LoginUser(member_idx);
+		String Authority = dto.getAuthority();
+
+		if(Authority.equals("Seller"))
+		{
+			return "redirect:/productInsert";
+		}
+		
 		return "/admin/index";
 	}
 	@RequestMapping("/admin/adminFaq.do")
@@ -60,6 +78,7 @@ public class AdminController {
 		model.addAttribute("lists", lists);
 		return "admin/adminNotice";
 	}
+	
 	@RequestMapping("/admin/utilities-color.do")
 	public String utilities1() {
 		return "admin/utilities-color";
