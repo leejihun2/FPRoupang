@@ -163,15 +163,11 @@ $(function(){
     
     //구매로 이동하는 함수 호출
     $(".cell-button").click(function(){
-    	/*제목 $("#myModalLabel").text() */
     	$("[name=selectCnt]").each(function(){
     		if($(this).val()!=0){
+
     			var id = $(this).attr("id");
-    			/*ti_idx 인덱스 값*/
     			var ti_idx = id.substr(id.indexOf("_")+1);
-    			/*$(this).val() 총 개수*/
-    			/*$("[name=total"+ti_idx+"]").val() 총 금액*/
-    			/*$("[name=sub_title"+ti_idx+"]").val() 소제목*/
     			
     			$.post(
     				"/cellProduct",
@@ -188,10 +184,12 @@ $(function(){
     		}
     	})
     })
-})
+});
+
 function close(){
 	$(".bnt_close").trigger("click");
 }
+
 function cnt(target, mode, ori_price, discount){
 	var count = Number($("#select_"+target).val());
 	var discount = (100-Number(discount))/100;

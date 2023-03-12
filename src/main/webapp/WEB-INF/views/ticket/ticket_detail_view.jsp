@@ -298,10 +298,6 @@
 	    width: 100%;
 	    height: 100%
 	}
-	.not_scroll .cont {
-	    position: relative;
-	    top: 0;
-	}
 </style>
 <script type="text/javascript">
 	onload = function(){
@@ -407,7 +403,7 @@
 </script>
 <body style="background-color: white;">
     <div id="top" style="margin-bottom:0px;">
-        <%@include file="../top.jsp" %>
+        <%@include file="../top2.jsp" %>
     </div>
     <div class="container">
 	    <div id="travel-container">

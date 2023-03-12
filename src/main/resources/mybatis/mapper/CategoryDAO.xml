@@ -48,4 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		 and title like '%'||#{param2}||'%'
  		 </if>
  	</select>
+	<select id="search_journey_List" resultType="String">
+ 		select title from bot_category where sub_idx=#{param1} and title like '%'||#{param2}||'%'
+ 	</select>
  </mapper>

@@ -1160,7 +1160,7 @@ body.renewal {
     position: absolute ;
     width: auto;
     height: auto;
-    min-height: 278px;
+    min-height: 288px;
     top: 114px;
     bottom: 100px;
     left: 0;
@@ -1179,7 +1179,7 @@ body.renewal {
 
 .category-layer a {
     display: inline-block;
-    height: 20px;
+    height: 29px;
     color: #333;
     font-size: 12px
 }
@@ -1190,8 +1190,7 @@ body.renewal {
 }
 
 .category-layer .depth {
-    height: 100%;
-    min-height: 450px;
+    height: 239%;
     background-image: none;
     background-color: #fff;
     margin: -1px 0 0 0;

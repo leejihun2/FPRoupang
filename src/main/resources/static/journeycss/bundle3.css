@@ -737,11 +737,13 @@
     background: #fff;
     border-radius: 2px;
     margin-left: 20px;
-    cursor: pointer
+    cursor: pointer;
+    position: absolute;
+    right: 1px;
 }
 
 .lodging-search-wizard .wizard-components {
-    float: left
+    float: left;
 }
 
 .lodging-search-wizard .wizard-components>li {

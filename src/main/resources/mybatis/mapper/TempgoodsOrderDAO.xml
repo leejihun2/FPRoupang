@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.edu.springboot.jdbc.TempgoodsService">
+
+	<insert id="InsertOrder" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
+		INSERT INTO goods_order
+		VALUES (order_seq.nextval, 1, 111111, sysdate, sysdate, sysdate, 0)
+	</insert>
+	
+	<insert id="InsertOrderItem" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
+		INSERT INTO goods_order_item
+		VALUES (order_item_seq.nextval, order_seq.currval, #{bot_idx}, #{price}, #{amount}, #{discount})
+	</insert>
+
+ </mapper>

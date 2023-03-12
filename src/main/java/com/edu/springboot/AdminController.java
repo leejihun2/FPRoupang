@@ -13,16 +13,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.edu.springboot.jdbc.SupportsDTO;
+import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.ISupportsService;
+import com.edu.springboot.jdbc.SellRightDTO;
 
 @Controller
 public class AdminController {
 	
 	@Autowired
 	ISupportsService daoo;
+
+	@Autowired
+	IMemberService member_dao;
 	
 	@RequestMapping("/admin/index.do")
-	public String admin() {
+	public String admin(Principal principal,HttpSession session) {
+		String loginId = principal.getName();
+		String member_idx = member_dao.member_idx(loginId);
+
+		SellRightDTO dto  = member_dao.LoginUser(member_idx);
+		String Authority = dto.getAuthority();
+
+		if(Authority.equals("Seller"))
+		{
+			return "redirect:/productInsert";
+		}
+		
 		return "/admin/index";
 	}
 	@RequestMapping("/admin/adminFaq.do")

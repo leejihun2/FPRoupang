@@ -70,5 +70,5 @@ public interface IMemberService {
 		public ArrayList<SellRightDTO> blockView(int member_idx);
 
 
-	
+		public SellRightDTO LoginUser(String email);
 }
