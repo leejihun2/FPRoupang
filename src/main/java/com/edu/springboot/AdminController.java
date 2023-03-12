@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.edu.springboot.jdbc.SupportsDTO;
 import com.edu.springboot.jdbc.ISupportsService;
@@ -79,6 +80,30 @@ public class AdminController {
 		
 		return "redirect:/admin/index.do";
 	}
+	@RequestMapping("/admin/write.do")
+	public String writeSupports(Model model, HttpSession session,
+			HttpServletRequest req, Principal principal) {
+		
+		return "/admin/write";
+	}
+	// 글쓰기 처리
+	@RequestMapping(value = "/admin/writeSupportsAction.do", method = RequestMethod.POST)
+	public String writeSupportsAction(Model model, HttpServletRequest req, HttpSession session, Principal principal) {
+		
+		if (session.getAttribute("siteUserInfo") == null) {
+			return "redirect:/myLogin.do";
+		}
+		String email = principal.getName();
+		int applyRow = daoo.writeSupports(req.getParameter("title"), 
+								email, 
+								req.getParameter("contents"),
+								req.getParameter("categorycode"),
+								req.getParameter("contact"));
+		System.out.println("입력된행의갯수:" + applyRow);
+		return "redirect:/admin/index.do";
+	}
+	
+	
 	
 	@RequestMapping("/admin/utilities-color.do")
 	public String utilities1() {

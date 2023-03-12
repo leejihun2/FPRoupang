@@ -15,6 +15,8 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+<link rel="stylesheet" href="../css/CustomerService.css" type="text/css">
+<script src="../js/CustomerService.js"></script>
 <head>
 
 <meta charset="utf-8">
@@ -65,27 +67,24 @@ function deleteRow(idx){
 				<%@include file="./topbar.jsp"%>
 				<!-- End of Topbar -->
 
-				<!-- Begin Page Content -->
 				<div class="container-fluid">
-
-
 					<c:forEach items="${lists }" var="row" varStatus="loop">
-						<div class="d-grid gap-2">
-							<button type="button" class="btn" data-bs-toggle="collapse"
-								data-bs-target="#a${row.idx}">
-								${row.title }<br /> ${row.regidate }
-							</button>
-							<div id="a${row.idx}" class="collapse"
-								style="background-color: rgb(250, 250, 250);">
-								${row.contents }</div>
-							<div class="media-right">
-								<s:authorize access="hasRole('admin')">
-									<button class="btn btn-secondary"
-										onclick="location.href='modify.do?idx=${row.idx}';">
-										수정</button>
-									<button class="btn btn-secondary"
-										onclick="javascript:deleteRow(${row.idx});">삭제</button>
-								</s:authorize>
+						<div class="question">
+							<button class="accordion">
+								<span style="color: #6f6aff;">Q</span>${row.title } <br />${row.regidate }</button>
+
+							<div class="panel">
+								<span class="col-3" style="color: #6f6aff;">A</span>${row.contents }
+								<div class="media-right">
+									<s:authorize access="hasRole('admin')">
+										<button class="btn btn-secondary"
+											onclick="location.href='modify.do?idx=${row.idx}';">
+											수정</button>
+										<button class="btn btn-secondary"
+											onclick="javascript:deleteRow(${row.idx});">삭제</button>
+
+									</s:authorize>
+								</div>
 							</div>
 						</div>
 					</c:forEach>
@@ -106,7 +105,6 @@ function deleteRow(idx){
 				</div>
 			</footer>
 			<!-- End of Footer -->
-
 		</div>
 		<!-- End of Content Wrapper -->
 
@@ -150,7 +148,6 @@ function deleteRow(idx){
 
 	<!-- Custom scripts for all pages-->
 	<script src="../js/sb-admin-2.min.js"></script>
-
 </body>
 
 </html>

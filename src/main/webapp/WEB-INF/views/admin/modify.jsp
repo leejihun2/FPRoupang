@@ -39,10 +39,12 @@ function writeValidate(f)
 	<h3>방명록(글쓰기) - 
 		<small>Mybatis로 제작한 방명록입니다.</small></h3>
 	
-	<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->
 	<form name="writeFrm" method="post" 
 		onsubmit="return writeValidate(this);"
-		action="<c:url value="/board/writeAction.do" />" >
+		action="<c:url value="/admin/modifyAction.do" />" >	
+	<input type="hid den" name="idx" value="${dto.idx }"/>
+	<input type="hid den" name="id" 
+			value="${sessionScope.siteUserInfo.id }"/>
 		
 	<table class="table table-bordered">
 	<colgroup>
@@ -54,52 +56,32 @@ function writeValidate(f)
 			<th class="text-center" 
 				style="vertical-align:middle;">작성자</th>
 			<td>
-				<!-- 쓰기 페이지는 로그인 후 접근할 수 있으므로 세션
-				영역에 저장한 DTO객체에서 이름을 가져와 삽입한다. -->
 				<input type="text" class="form-control" 
-					style="width:130px;" name="name"
-						value="${siteUserInfo }" />
+					style="width:130px;" name="name" 
+						value="${dto.name }" />
 			</td>
 		</tr>
-		<tr>
-			<td>
-				<select name="title" value="배송관련문의">
-					<option value="유형을 선택해주세요">유형을 선택해주세요</option>
-					<option value="주문 상품 문의">주문 상품 문의</option>
-					<option value="주문 상품 문의">주문 상품 문의</option>
-					<option value="쿠팡 서비스 칭찬">쿠팡 서비스 칭찬</option>
-					<option value="시스템 개선 의견">시스템 개선 의견</option>
-					<option value="시스템(PC/Mobile) 오류 제보">시스템(PC/Mobile) 오류 제보</option>
-					<option value="시스템(PC/Mobile) 오류 제보">시스템(PC/Mobile) 오류 제보</option>
-					<option value="프레시백 반납 신청">프레시백 반납 신청</option>
-					<option value="회수 지연 문의">회수 지연 문의</option>
-				</select>
-			</td>
-		</tr>	
 		<tr>
 			<th class="text-center" 
 				style="vertical-align:middle;">내용</th>
 			<td>
 				<textarea rows="10" class="form-control" 
-				name="contents" placeholder="의견을 남겨주세요"></textarea>
+				name="contents">${dto.contents }</textarea>
 			</td>
 		</tr>	
 	</tbody>
 	</table>
 	
 	<div class="row text-center" style="">
-		<!-- 각종 버튼 부분 -->
-		
-		<button type="submit" class="btn btn-secondary">작성하기</button>
+		<!-- 각종 버튼 부분 -->		
+		<button type="submit" class="btn btn-secondary">수정하기</button>
 		<button type="reset" class="btn btn-secondary">Reset</button>
 		<button type="button" class="btn btn-secondary" 
-			onclick="location.href='lists.do?categoryCode';">리스트보기</button>
+			onclick="location.href='home.do';">리스트보기</button>
 	</div>
 	</form> 
 	</section>
 </div>
-    <div id="copyright">
-         <%@include file="../copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
-    </div>
+
 </body>
 </html>

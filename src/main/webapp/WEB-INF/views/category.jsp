@@ -27,15 +27,15 @@
 				<div class="sc-12nmnou-0 bpNGPm">
 					<div class="sc-twmo0k-0 AeXFW">
 						<div class="sc-twmo0k-0 AeXFW">
-							<a  class="sc-th9t1-0 jjwJpl" href="./inquiry.do">문의내역</a>
-							<a  class="sc-th9t1-0 jjwJpl" href="./faq.do?categoryCode=ALL">자주묻는 질문</a>
-							<a  class="sc-th9t1-0 jjwJpl" href="./voc.do">고객의 소리</a>
-							<a  class="sc-th9t1-0 jjwJpl" href="./notice.do?categoryCode=ALL">쿠팡소식</a>
+							<a  class="sc-th9t1-0 jjwJpl" href="/supports/inquiry.do">문의내역</a>
+							<a  class="sc-th9t1-0 jjwJpl" href="/supports/faq.do?categoryCode=ALL">자주묻는 질문</a>
+							<a  class="sc-th9t1-0 jjwJpl" href="/supports/voc.do">고객의 소리</a>
+							<a  class="sc-th9t1-0 jjwJpl" href="/supports/notice.do?categoryCode=ALL">쿠팡소식</a>
 						</div>
 					</div>
 					<div class="sc-22bvi0-0 OyJfh">
-						<a class="sc-nc5wvm-0 gLLYzi">환불안내</a><a
-							class="sc-nc5wvm-0 gLLYzi">아이디/비밀번호 찾기</a>
+						<a class="sc-nc5wvm-0 gLLYzi">환불안내</a>
+						<a class="sc-nc5wvm-0 gLLYzi" href="/search_id.do">아이디/비밀번호 찾기</a>
 					</div>
 					<div class="sc-12nmnou-1 ilXMXz"></div>
 					<div class="sc-15254j6-0 kpgzYC">

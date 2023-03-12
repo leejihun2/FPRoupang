@@ -174,7 +174,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                <s:authorize access="hasRole('1')">
+                                <s:authorize access="hasRole('admin')">
 									<s:authentication property="name"/>님
 								</s:authorize>
                                 </span>

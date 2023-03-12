@@ -92,7 +92,6 @@ public class SupportsController {
 		model.addAttribute("lists", lists);
 		return "/supports/inquiry";
 	}
-	
 	@RequestMapping("/supports/voc.do")
 	public String write(Model model, HttpSession session,
 			HttpServletRequest req, Principal principal) {
@@ -107,6 +106,7 @@ public class SupportsController {
 	// 글쓰기 처리
 	@RequestMapping(value = "/supports/vocAction.do", method = RequestMethod.POST)
 	public String writeAction(Model model, HttpServletRequest req, HttpSession session, Principal principal) {
+		
 		if (session.getAttribute("siteUserInfo") == null) {
 			return "redirect:/myLogin.do";
 		}
@@ -115,13 +115,7 @@ public class SupportsController {
 								email, 
 								req.getParameter("title"));
 		System.out.println("입력된행의갯수:" + applyRow);
-
-		return "redirect:/";
+		return "redirect:/supports/inquiry.do";
 	}
-	
-
-	
-
-	
 
 }

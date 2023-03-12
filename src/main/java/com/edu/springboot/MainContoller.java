@@ -32,6 +32,11 @@ public class MainContoller {
 	public String login1(Principal principal, Model model, HttpSession session) {
 		try {
 			String email = principal.getName();
+			if(session.getAttribute("siteUserInfo")!=null)
+			{
+				return "redirect:/";
+			}
+			
 			model.addAttribute("user_id", email);
 			session.setAttribute("siteUserInfo", email);
 			

@@ -19,7 +19,7 @@
 	<hr class="sidebar-divider my-0">
 
 	<!-- Nav Item - Dashboard -->
-	<li class="nav-item active"><a class="nav-link" href="index.do">
+	<li class="nav-item active1"><a class="nav-link" href="index.do">
 			<i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
 	</a></li>
 
@@ -54,10 +54,9 @@
 			aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">고객센터:</h6>
+				<a class="collapse-item" href="write.do">글 작성</a>
 				<a class="collapse-item" href="adminFaq.do?categoryCode=ALL">자주 묻는 질문</a>
 				<a class="collapse-item" href="adminNotice.do?categoryCode=ALL">쿠팡소식</a>
-				<a class="collapse-item" href="adminNotice.do?categoryCode=ALL"></a>
-
 			</div>
 		</div></li>
 

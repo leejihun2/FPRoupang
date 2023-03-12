@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+.cifYev {
+	width: 100%;
+	height: 60px;
+	margin: 35px 0px;
+	font-family: "맑은 고딕", malgun gothic, apple sd gothic neo, "나눔고딕",
+		nanumgothic, "돋움", dotum, sans-serif;
+}
+
+.cifYev>li {
+	width: calc(10%);
+}
+
+.dSWQUC {
+	float: left;
+	padding: 19px 0px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	border: 1px solid rgb(238, 238, 238);
+	background-color: rgb(250, 250, 250);
+	color: rgb(85, 85, 85);
+	cursor: pointer;
+}
+
+.question {
+	margin-bottom: 20px;
+}
+
+.accordion {
+	background-color: #eee;
+	color: #444;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 16px;
+	transition: 0.4s;
+}
+
+.active, .accordion:hover {
+	background-color: #ccc;
+}
+
+.panel {
+	padding: 0 18px;
+	background-color: white;
+	display: none;
+	overflow: hidden;
+}
+
+.panel p {
+	margin-top: 0;
+}

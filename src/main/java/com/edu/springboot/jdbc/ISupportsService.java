@@ -23,6 +23,13 @@ public interface ISupportsService {
 	public int write(@Param("_contents") String contents,
 			@Param("_email") String email,
 			@Param("_title") String title);
+
+	
+	public int writeSupports(@Param("_contents") String contents,
+			@Param("_email") String email,
+			@Param("_title") String title,
+			@Param("_categorycode") String categorycode,
+			@Param("_contact") String contact);
 	
 	
 	
