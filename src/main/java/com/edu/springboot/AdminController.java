@@ -28,16 +28,18 @@ public class AdminController {
 	
 	@RequestMapping("/admin/index.do")
 	public String admin(Principal principal,HttpSession session) {
-		String loginId = principal.getName();
-		String member_idx = member_dao.member_idx(loginId);
-
-		SellRightDTO dto  = member_dao.LoginUser(member_idx);
-		String Authority = dto.getAuthority();
-
-		if(Authority.equals("Seller"))
-		{
-			return "redirect:/productInsert";
-		}
+		
+		//오류나서 주석 처리 했더용 - 지훈
+//		String loginId = principal.getName();
+//		String member_idx = member_dao.member_idx(loginId);
+//
+//		SellRightDTO dto  = member_dao.LoginUser(member_idx);
+//		String Authority = dto.getAuthority();
+//
+//		if(Authority.equals("Seller"))
+//		{
+//			return "redirect:/productInsert";
+//		}
 		
 		return "/admin/index";
 	}
