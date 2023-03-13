@@ -41,17 +41,14 @@ public class MemberController {
 //	public String home() {
 //		return "home";
 //	}
-	//패스워드 암화를 위한 메서드 
-	public PasswordEncoder passwordEncoder() {
-		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-	}
-	
 	@RequestMapping(value = "/regist.do", method = RequestMethod.GET)
 	public String member1() {
 		return "/member/regist";
 	}
-	
-	
+	//패스워드 암화를 위한 메서드 
+	public PasswordEncoder passwordEncoder() {
+		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+	}
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public String member6(MemberDTO memberDTO, HttpServletRequest req) {
 		
@@ -113,9 +110,11 @@ public class MemberController {
 
 		// 세션영역에 저장되있던 임시 비밀번호를 암호화해서 setPassword
 		memberDTO.setPassword(passwordEncoder().encode(keyCode));
-
+		//암호화 처리가 끝나고 sessionremove
+		session.removeAttribute(keyCode);
+		
 		int result = dao.tempPass(memberDTO);
-
+		
 		System.out.println("수정된 행의 갯수: " + result);
 		}
 		return "member_info";

@@ -34,6 +34,7 @@ public class MainContoller {
 			String email = principal.getName();
 			model.addAttribute("user_id", email);
 			session.setAttribute("siteUserInfo", email);
+		    
 			
 			String idx = dao.idx(email);
 			session.setAttribute("idx", idx);

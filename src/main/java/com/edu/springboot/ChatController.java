@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +36,7 @@ public class ChatController {
 	static int room_idx = 0;
 	
 	@RequestMapping("/chat")
-	public ModelAndView chat() {
+	public ModelAndView chat(HttpSession session, Model model) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("chat");
 		return mv;
@@ -44,7 +46,7 @@ public class ChatController {
 	@RequestMapping("/supports/room.do")
 	public ModelAndView room(Room room, Model model, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		
+	
 		if(session.getAttribute("siteUserInfo")==null) {
 			
 			mv.setViewName("auth/login");
@@ -52,11 +54,13 @@ public class ChatController {
 			return mv;
 		}
 		String memberidx = (String)session.getAttribute("idx");
-//		Room memberidx = (Room) session.getAttribute("idx");
 		ArrayList<Room> selectList = cdao.getRoom(memberidx);
 		
+		String name =(String)session.getAttribute("siteUserInfo");
+		String username = dao.name(name);
+		model.addAttribute("username",username);
 		model.addAttribute("selectList",selectList);
-		
+
 		mv.setViewName("chat/room");
 		
 		return mv;
@@ -84,33 +88,35 @@ public class ChatController {
 	
 	//방 정보가져오기
 	@RequestMapping("/getRoom")
-	public @ResponseBody List<Room> getRoom(@RequestParam HashMap<Object, Object> params,
-			Room room, Model model, HttpSession session){
+	public @ResponseBody List<Room> getRoom(Room room, Model model, HttpSession session, MemberDTO memberDTO){
 		
-//		Room memberidx = (Room) session.getAttribute("idx");
-		String memberidx = (String) session.getAttribute("idx");
+		String memberidx = (String)session.getAttribute("idx");
+		
 		ArrayList<Room> selectList = cdao.getRoom(memberidx);
 		
 		model.addAttribute("selectList",selectList);
+		System.out.println(selectList);
 		
 		return roomList;
 	}
 	//채팅방
 	@RequestMapping("/moveChating")
-	public ModelAndView chating(@RequestParam HashMap<Object, Object> params, Model model, Room room) {
+	public ModelAndView chating(@RequestParam HashMap<Object, Object> params, Model model, Room room, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		int room_idx = Integer.parseInt((String) params.get("room_idx"));
-		
+		String name =(String)session.getAttribute("siteUserInfo");
+		String username = dao.name(name);
+		model.addAttribute("username",username);
 		List<Room> new_list = roomList.stream().filter(o->o.getRoom_idx()==room_idx).collect(Collectors.toList());
 		System.out.printf("new : " + new_list);
 		System.out.println("room :" +room_idx);
-		//조건에 맞는다면 새로운 채팅방에 들어감
+		
 		if(new_list != null && new_list.size() > 0) {
 			mv.addObject("roomName", params.get("roomName"));
 			mv.addObject("room_idx", params.get("room_idx"));
 			mv.setViewName("chat/chat");
+			System.out.println("새채팅창");
 		}
-		//아닐때 이전에 채팅방을 들어가게됨 <-수정 필요할듯
 		else {
 			ArrayList<Room> selectchat = cdao.getChating(room);
 			for (Room dto : selectchat) {
@@ -118,7 +124,7 @@ public class ChatController {
 				dto.setChatting(temp);
 			}
 			model.addAttribute("selectchat",selectchat);
-			System.out.println(selectchat);
+			System.out.println("이전 채팅방"+selectchat);
 			mv.setViewName("chat/chat");
 		}
 		return mv;
