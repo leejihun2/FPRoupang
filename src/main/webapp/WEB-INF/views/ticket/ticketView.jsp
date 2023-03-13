@@ -84,12 +84,12 @@
     			<h2>티켓/패스 카테고리</h2>
     			<ul>
     				<li class="category-item">
-    					<a href="ticket_List?category=2">
-   							<span class="cate_name">스키/눈썰매장</span>
+    					<a href="ticket_List?category=2,3">
+   							<span class="cate_name">전시/공연</span>
     					</a>
     				</li>
     				<li>
-    					<a href="ticket_List">
+    					<a href="ticket_List?category=8,9,10">
    							<span class="cate_name">스파/온천/워터파크</span>
     					</a>
     				</li>

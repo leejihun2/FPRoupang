@@ -225,6 +225,19 @@ public class TicketController {
 			return sub_cate;
 		}
 	}
+	@ResponseBody
+	@RequestMapping("/category_list2")
+	public ArrayList<ParameterTicketDTO> cate_list2(HttpServletRequest req, Model model){
+		int sub_idx=0;
+		if(!(req.getParameter("sub_idx")==null)) {
+			sub_idx=Integer.parseInt(req.getParameter("sub_idx"));
+		}
+		
+		ArrayList<ParameterTicketDTO> sub_cate = cate_dao.select_cate2(sub_idx);
+		model.addAttribute("mid_cate_idx",sub_cate);
+		
+		return sub_cate;
+	}
 	
 	@ResponseBody
 	@RequestMapping("/ticketInfo")
@@ -310,12 +323,12 @@ public class TicketController {
 		if(!(req.getParameter("product_intro").equals(""))) {
 			ticket_dao.insert_ticket(t_dto);
 		}
-		mv.setViewName("/home");
+		mv.setViewName("redirect:/admin/index.do");
 		return mv;
 	}
 	
 	@RequestMapping("/all_delete_ticket")
-	public String all_delete(HttpServletRequest req) {
+	public String all_delete_ticket(HttpServletRequest req) {
 		String company_name = req.getParameter("company_name");
 		String value = req.getParameter("value");
 		String[] list = value.split(",");
@@ -352,7 +365,7 @@ public class TicketController {
 		ticket_dao.alldelete_ticket_info(val);
 		ticket_dao.delete_bot_category(val, company_name);
 		
-		return "/home";
+		return "redirect:/admin/index.do";
 	}
 	
 	@RequestMapping("/detail_delete_ticket")
@@ -368,7 +381,7 @@ public class TicketController {
 		}
 		
 		ticket_dao.delete_ticket_info(val, company_name);
-		return "/home";
+		return "redirect:/admin/index.do";
 	}
 	
 	@RequestMapping("/ticket_List")

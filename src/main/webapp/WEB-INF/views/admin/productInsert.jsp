@@ -71,7 +71,7 @@ function setSelectBox(obj){
          $('#product_list').empty();
          
          //티켓 idx번호
-         if($("#category1").val()==1){
+         if($("#category1").val()==10){
             $.post(
                "/category_list.do"
                ,{level : $(obj).attr('id').substr(-1,1), sub_idx : $(obj).val(), company_name : $("#company_name").val()}
@@ -88,7 +88,7 @@ function setSelectBox(obj){
                }
             );
          //여행 idx 번호
-         }else if($("#category1").val()==3){
+         }else if($("#category1").val()==9){
             $.post(
                "/category_list.j"
                ,{level : $(obj).attr('id').substr(-1,1), sub_idx : $(obj).val(), company_name : $("#company_name").val()}
@@ -128,7 +128,7 @@ function simple_click(obj){
    $("#product_info_detail").css("display","none");
    $("#product_info").css("display","none");
    
-   if($("#category1").val()==1){
+   if($("#category1").val()==10){
        $.post(
       "/ticketDetailInfo"
       ,{bot_idx : obj}
@@ -203,7 +203,7 @@ function simple_click(obj){
             $('.product_intro').append(table);
          }
       );
-   }else if($("#category1").val()==3){
+   }else if($("#category1").val()==9){
     
        $.post(
           "/journeyDetailInfo"
@@ -301,14 +301,14 @@ function btnclick(obj){
       });
       
       
-      if($("#category1").val()==1){
+      if($("#category1").val()==10){
          var ajaxOp = {
             url : "/editTicket?value="+value,
             type : "POST",
             dataType : "HTML",
             cache : false
          };
-      }else if($("#category1").val()==3){
+      }else if($("#category1").val()==9){
          var ajaxOp = {
             url : "/editJourney?value="+value,
             type : "POST",
@@ -347,7 +347,7 @@ $(function(){
       }
       
       
-      if($("#category1").val()==3){
+      if($("#category1").val()==9){
           var sub_ji_image=$("#ji_image")
          if(sub_ji_image[0].files.length>=5){
             alert("객실 이미지는 최대 4개까지 등록가능합니다.");
@@ -393,10 +393,10 @@ $(function(){
          }
          
          
-         if($("#category1").val()==1){
+         if($("#category1").val()==10){
             form.action="/ticketInsertAction?mid_category="+$("#category2").val()+"&value=0";
          }
-         if($("#category1").val()==3){
+         if($("#category1").val()==9){
             if($("#traffic_info").val()==""){
                alert("교통정보 안내를 입력하세요");
                $("#traffic_info").focus();
@@ -424,10 +424,10 @@ $(function(){
          
          
          alert(value);
-         if($("#category1").val()==1){
+         if($("#category1").val()==10){
             form.action="/ticketInsertAction?value="+value;
        }
-         else if($("#category1").val()==3){
+         else if($("#category1").val()==9){
             form.action="/journeyInsertAction?value="+value;
        }
       }
@@ -446,10 +446,10 @@ $(function(){
          return false;
       }
       if(confirm("선택한 "+delete_val1.length+"개의 상품을 삭제하시겠습니까?")){
-          if($("#category1").val()==1){
+          if($("#category1").val()==10){
             form.action="/detail_delete_ticket?value="+delete_val1+"&company_name="+$("#company_name").val();
           }
-            else if($("#category1").val()==3){
+            else if($("#category1").val()==9){
             form.action="/detail_delete_journey?value="+delete_val1+"&company_name="+$("#company_name").val();
             }
       }
@@ -467,14 +467,12 @@ $(function(){
          return false;
       }
       if(confirm("선택한 "+delete_val2.length+"개의 상품을 삭제하시겠습니까?")){
-         
-          if($("#category1").val()==1){
-            form_ticket.action="/all_delete_ticket?value="+delete_val2+"&company_name="+$("#company_name").val();
+          if($("#category1").val()==10){
+            form_product.action="/all_delete_ticket?value="+delete_val2+"&company_name="+$("#company_name").val();
           }
-            else if($("#category1").val()==3){
-             form_journey.action="/all_delete_journey?value="+delete_val2+"&company_name="+$("#company_name").val();
-            }
-          
+          else if($("#category1").val()==9){
+             form_product.action="/all_delete_journey?value="+delete_val2+"&company_name="+$("#company_name").val();
+          }
       }
    });
 });
@@ -564,7 +562,7 @@ function service_list(e){
    
    var detailinfo ='<tr><th class="info_th">* 상품상세명</th><td><input class="form-control" type="text" id="product_title" name="product_title" /></td></tr>';
    
-   if(e==1){
+   if(e==10){
       briefinfo+='<tr><th class="info_th">* 편의시설</th><td>';
       add=ticket_service;
       for(property in add){
@@ -594,7 +592,7 @@ function service_list(e){
    detailinfo += '<tr><th class="info_th">* 유효기간</th>';
    
    }
-   else if(e==3){
+   else if(e==9){
       briefinfo+='<tr><th class="info_th">* 객실공통 구비항목</th><td>';
       add=journey_common;
       for(property in add){
@@ -702,7 +700,7 @@ function service_list(e){
 			               </select>
 			            </div>
 			         
-			         <form method="POST" id=""form_product"" class="mt-3">
+			         <form method="POST" id="form_product" class="mt-3">
 			            <div class="col-12" id="simple_list">
 			               <table class="table" style="border:1px;">
 			                     <colgroup>

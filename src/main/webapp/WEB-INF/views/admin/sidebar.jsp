@@ -34,7 +34,7 @@
 			</div>
 		</div></li>
 	<li class="nav-item"><a class="nav-link collapsed" href="#">
-	<i class="fa fa-shopping-cart"></i> <span>판매로그</span>
+	<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
 	</a></li>
 
 	<s:authorize access="hasRole('admin')">
@@ -75,13 +75,13 @@
 		<li class="nav-item"><a class="nav-link collapsed" href="charts.do"
 			data-toggle="collapse" data-target="#collapse"
 			aria-expanded="true" aria-controls="collapse"> <i
-				class="fas fa-fw fa-chart-area"></i> <span>Log기록</span>
+				class="fas fa-fw fa-chart-area"></i> <span>전체 기록</span>
 		</a>
 			<div id="collapse" class="collapse"
 				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
-					<a class="collapse-item" href="/admin/adminFaq.do?categoryCode=ALL">검색로그</a>
-					<a class="collapse-item" href="/admin/adminNotice.do?categoryCode=ALL">판매로그</a>
+					<a class="collapse-item" href="/admin/adminFaq.do?categoryCode=ALL">검색 목록</a>
+					<a class="collapse-item" href="/admin/adminNotice.do?categoryCode=ALL">판매 목록</a>
 					<a class="collapse-item" href="/admin/adminNotice.do?categoryCode=ALL"></a>
 	
 				</div>
