@@ -826,11 +826,12 @@
                
                 <dd class="hot-keyword" style="bottom:197px">
                 <strong>HOT키워드</strong>
-                <p><a class="keyword" href="#">#태블릿PC</a></p>
-                <p><a class="keyword" href="#">#공기청정기</a></p>
-                <p><a class="keyword" href="#">#게이밍모니터</a></p>
-                <p><a class="keyword" href="#">#마사지기</a></p>
-                <p><a class="keyword" href="#">#블루투스스피커</a></p>
+                <!-- mid_category list에 담고 뿌랴줌 a태그사이에 ${row.title} -->
+	               	<p><a class="keyword" href="#">#태블릿PC</a></p>
+	                <p><a class="keyword" href="#">#공기청정기</a></p>
+	                <p><a class="keyword" href="#">#게이밍모니터</a></p>
+	                <p><a class="keyword" href="#">#마사지기</a></p>
+	                <p><a class="keyword" href="#">#블루투스스피커</a></p>
                 </dd> 
                <dd class="promotion">
                 <!-- 이미지슬라이드 부트 적용 -->
@@ -839,12 +840,13 @@
                             <span class="caption">
                                 <strong></strong>
                             </span>
-                            <img src="../images/C3_PC.jpg" alt="" width="325" height="536">
+                            <img src="https://thumbnail6.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_52ce5738-e844-4b28-b2a9-42766e71105c.jpg" alt="" width="325" height="536">
                         </li>
                     </ul>
                </dd> 
                <dd class="best-product-list">
                     <ul>
+                    
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link" href="#">
                                 <img  src="../images/버즈.jpg" class="catagory-images" alt="">
@@ -896,11 +898,6 @@
                 </a>
             </dl>
         </div>
-
-        
-        
-
-
         <!-- CRITEO JS TRACKER for MARKETING TEAM -->
         <script type="text/javascript">
             window.criteo_q = window.criteo_q || [];

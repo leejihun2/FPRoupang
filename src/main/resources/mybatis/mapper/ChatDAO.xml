@@ -13,9 +13,10 @@
 		insert into chat_log(room_idx, member_idx, chatting) values(room_idx.currval,#{member_idx},#{chatting})
 	</insert>
 	<select id="getRoom" parameterType="String" resultType="com.edu.springboot.jdbc.Room">
-		select distinct room_idx, member_idx from chat_log where member_idx=#{member_idx}
+		select distinct room_idx, member_idx, regidate from chat_log where member_idx=#{member_idx}
 	</select>
 	<select id="getChating" parameterType="com.edu.springboot.jdbc.Room" resultType="com.edu.springboot.jdbc.Room">
-		select chatting, member_idx from chat_log where room_idx=#{room_idx}
+		select chatting, member_idx from chat_log where room_idx=#{room_idx} order by regidate asc
 	</select>
+	
 </mapper>

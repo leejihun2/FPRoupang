@@ -39,6 +39,7 @@ public class MainContoller {
 			
 			model.addAttribute("user_id", email);
 			session.setAttribute("siteUserInfo", email);
+		    
 			
 			String idx = dao.idx(email);
 			session.setAttribute("idx", idx);
