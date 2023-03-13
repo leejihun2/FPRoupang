@@ -111,18 +111,18 @@ $(function(){
 							</div>
 						</div>
 						<ul class="icon-menus">
-							<li class="my-coupang more"><a
-								href="https://mc.coupang.com/ssr/desktop/order/list"
+							<li class="my-coupang more">
+							<a href="/myroupang/orderlist.do"
 								data-log-props='{ "id": "mycoupang" }'><span
 									class="my-coupang-icon">&nbsp;</span> <span
 									class="my-coupang-title">마이쿠팡</span> </a>
 								<p class="my-coupang-menu">
 									<span class="wrapper"><i class="speech-icon"></i> <a
-										href="https://mc.coupang.com/ssr/desktop/order/list"
+										href="/myroupang/orderlist.do"
 										data-log-props='{ "id": "mycoupang_1" }'>주문목록</a> <a
-										href="https://mc.coupang.com/ssr/desktop/cancel-return-exchange/list"
+										href="/myroupang/cancelReturn.do"
 										data-log-props='{ "id": "mycoupang_2" }'>취소/반품</a> <a
-										href="//wish-web.coupang.com/wishInitView.pang"
+										href="/myroupang/wishlist.do"
 										data-log-props='{ "id": "mycoupang_4" }'>찜 리스트</a> <a
 										href="https://subscribe-order.coupang.com/manage/subs.pang"
 										class="subscription-menu-a"

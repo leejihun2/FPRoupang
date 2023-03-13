@@ -1,0 +1,418 @@
+/*li 태그 점 없애기*/
+dl, dt, dd, ul, ol, menu, li {
+    list-style: none;
+}
+
+/*밑줄 없애기*/
+a {
+    text-decoration: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "맑은 고딕", malgun gothic, apple sd gothic neo, "나눔고딕", nanumgothic, "돋움", dotum, sans-serif;
+    background-color: #ffffff;
+}
+
+.top1 {
+    width: 830px;
+    float: left;
+}
+.mainconcon{
+	background-color: #ffff;
+	width: 	auto;
+	height: 1070px;
+}
+.mainconcon2{
+	background-color: #ffff;
+	width: 980px;
+	height: 1070px;
+    float: middle;
+    margin:auto;
+}
+.top2 {
+    background-color: #82bce2;
+    color: #fff;
+    border: 1px solid #77aed1;
+    border-left: 0;
+    height: 122px;
+    font-weight: 100;
+    font-style: normal;
+    box-sizing: border-box;
+    font-family: "robotoThinNumber", "roboto", "Courier New", Tahoma, NanumGothic, MalgunGothic, "돋움", dotum, sans-serif;
+}
+
+
+.st {
+    position: relative;
+    float: left;
+    min-width: 156px;
+    height: 120px;
+    padding: 19px 0 0 30px;
+    border-right: 1px solid #9bc9e8;
+    border-left: 1px solid #78add0;
+    box-sizing: border-box;
+}
+
+.st:nth-child(4) {
+    border-right: 0;
+    padding-left: 0;
+    padding-top: 0;
+    height: 118px;
+}
+
+
+.giyKno {
+    display: block;
+    margin-bottom: 13px;
+    height: 21px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    font-family: AppleSDGothicNeo;
+}
+
+.numn {
+    display: block;
+    margin-top: -5px;
+    text-shadow: 0 1px 1px rgba(0, 0, 50, 0.15);
+}
+
+.numn span {
+    color: #fff;
+}
+
+.numn .nu1 {
+    color: #fff;
+    font-size: 50px;
+    line-height: 60px;
+    cursor: pointer;
+}
+
+.numn .nu2 {
+    margin-left: 5px;
+    vertical-align: 2px;
+    font-size: 12px;
+}
+
+.cco {
+    width: 360px;
+    height: 62px;
+    border-bottom: 1px solid #78add0;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+/*쿠페이 글씨 색*/
+.cco span {
+    color: #fff;
+}
+
+.cco:nth-child(2) {
+    height: 50%;
+    border-bottom: 0 solid #78add0;
+    border-top: 1px solid #9bc9e8;
+}
+
+.cou {
+    float: left;
+    margin: 0 0 0 30px;
+    height: 21px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    font-family: AppleSDGothicNeo;
+}
+
+.eUaJbX {
+    color: #333;
+    cursor: pointer;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+}
+
+.eUaJbX .won {
+    margin: 12px 30px 0 2px;
+    vertical-align: 2px;
+    font-size: 12px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.eUaJbX .rnum {
+    margin: 0 2px 0 0;
+    color: #fff;
+    font-size: 28px;
+    line-height: 35px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.gvaWmd {
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    text-indent: -9999px;
+    text-align: left;
+}
+
+
+.eJUnUF {
+    width: 150px;
+    float: left;
+}
+
+.di1{
+    width: 150px;
+    float: left;
+}
+
+
+.di2 {
+    height: 122px;
+    padding: 1px;
+    background: #286db4;
+    text-align: center;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+/* my쿠팡 title*/
+.mycoutitle {
+    width: 95px;
+    height: 30px;
+    color: #fff;
+    text-indent: inherit;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 400;
+    -webkit-letter-spacing: -2px;
+    -moz-letter-spacing: -2px;
+    -ms-letter-spacing: -2px;
+    letter-spacing: -2px;
+}
+
+/* 좌측 메뉴 그리드 */
+.me1 {
+    background-color: #f9f9f9;
+    border: 1px solid #e1e4e6;
+    border-top-width: 0;
+    color: #111;
+    padding: 0;
+    margin: 0;
+}
+
+/*좌측 바 자간*/
+.me2{
+   padding: 24px 19px 160px 13px;
+   border-bottom: 1px solid #e1e4e6;
+	
+}
+/*좌측 바 자간*/
+.me3{
+   padding: 8px 19px 64px 13px;
+   border-bottom: 1px solid #e1e4e6;
+	
+}
+/*좌측 바 자간*/
+.me4{
+   padding: 10px 50px 106px 13px;
+   border-bottom: 1px solid #e1e4e6;
+	
+}
+/*좌측 바 자간*/
+.me5{
+   padding: 10px 19px 91px 13px;
+   border-bottom: 1px solid #e1e4e6;
+	
+}
+
+.ttxt {
+    display: inherit;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 45px;
+    color: #111;
+}
+
+.gg {
+    font-size: 12px;
+    line-height: 23px;
+    margin-top: 2px;
+}
+
+.gg a {
+    color: #111;
+    display: block;
+    padding: 0;
+}
+
+.gg a:hover, .gg a:focus {
+    color: #3d82f7;
+    outline: none;
+}
+
+.gg li.selected a {
+    color: #3d82f7;
+}
+
+.oo {
+    word-break: break-all;
+}
+
+
+
+.le1 {
+    margin-top: 10px;
+}
+
+.le2 {
+    padding-top: 1px;
+}
+
+
+.downmenu{
+    margin-top: -1px;
+}
+
+
+.gmkSJg {
+    display: block;
+    border: 1px solid #e1e4e6;
+    color: #333;
+    cursor: pointer;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+}
+
+/* 호버 */
+.gmkSJg:hover, .gmkSJg:focus {
+    position: relative;
+    border: 1px solid #286db4;
+    z-index: 20;
+    outline: none;
+}
+
+data-styled.g324[id=""] {
+    content: "gmkSJg,"
+}
+/*쿠팡문의 */
+.kHVTpM {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    width: 148px;
+    height: 60px;
+    background: url(//img1a.coupangcdn.com/image/my/desktop/sprite-lnb_161021_1.png) no-repeat;
+    background-position: 0 -220px;
+}
+/*고객의소리 */
+.dZcFMb {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    width: 148px;
+    height: 60px;
+    background: url(//img1a.coupangcdn.com/image/my/desktop/sprite-lnb_161021_1.png) no-repeat;
+    background-position: 0 -281px;
+}
+/*취소반품안내 */
+.dEVvkn {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    width: 148px;
+    height: 60px;
+    background: url(//img1a.coupangcdn.com/image/my/desktop/sprite-lnb_161021_1.png) no-repeat;
+    background-position: 0 -403px;
+}
+
+/* 좌측 하단 바 */
+.ledbar {
+    height: 60px;
+    width: 86px;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #fff;
+    color: #286db4;
+    -webkit-letter-spacing: -1px;
+    -moz-letter-spacing: -1px;
+    -ms-letter-spacing: -1px;
+    letter-spacing: -1px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: auto 0;
+    padding-right: 4px;
+    line-height: 1;
+}
+
+
+.sou {
+    width: 86px;
+    font-size: 11px;
+    font-weight: 400;
+    color: #286db4;
+    -webkit-letter-spacing: -1px;
+    -moz-letter-spacing: -1px;
+    -ms-letter-spacing: -1px;
+    letter-spacing: -1px;
+    line-height: 1;
+    padding-right: 4px;
+}
