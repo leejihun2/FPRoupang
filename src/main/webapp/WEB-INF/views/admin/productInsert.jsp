@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>      
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -25,8 +25,8 @@
 <!-- Custom fonts for this template-->
 <link rel="stylesheet" href="../css/all.min.css">
 <link
-	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+   rel="stylesheet">
 
 <!-- Custom styles for this template-->
 <link rel="stylesheet" href="../css/sb-admin-2.min.css">
@@ -47,6 +47,7 @@ function setSelectBox(obj){
    $('#detail_list').css("display","none");
    
    if(sub_idx!=''){
+	  alert(sub_idx);
       if(level <= 1){
          $('#product_list').empty();
          if(level == 1){
@@ -71,7 +72,7 @@ function setSelectBox(obj){
          $('#product_list').empty();
          
          //티켓 idx번호
-         if($("#category1").val()==1){
+         if($("#category1").val()==10){
             $.post(
                "/category_list.do"
                ,{level : $(obj).attr('id').substr(-1,1), sub_idx : $(obj).val(), company_name : $("#company_name").val()}
@@ -88,7 +89,8 @@ function setSelectBox(obj){
                }
             );
          //여행 idx 번호
-         }else if($("#category1").val()==3){
+         }else if($("#category1").val()==9){
+        	 alert("ㅋㅋ"+$("#category1").val());
             $.post(
                "/category_list.j"
                ,{level : $(obj).attr('id').substr(-1,1), sub_idx : $(obj).val(), company_name : $("#company_name").val()}
@@ -100,7 +102,7 @@ function setSelectBox(obj){
                      tabletd+='<td class="td_none"><a href="javascript:;" onclick="simple_click('+data[i].idx+')">'+data[i].title+'</a></td>'
                      tabletd+='</tr>'
                          
-                     $('#journey_list').append(tabletd);
+                     $('#product_list').append(tabletd);
                   });
                }
             );
@@ -128,7 +130,7 @@ function simple_click(obj){
    $("#product_info_detail").css("display","none");
    $("#product_info").css("display","none");
    
-   if($("#category1").val()==1){
+   if($("#category1").val()==10){
        $.post(
       "/ticketDetailInfo"
       ,{bot_idx : obj}
@@ -203,7 +205,7 @@ function simple_click(obj){
             $('.product_intro').append(table);
          }
       );
-   }else if($("#category1").val()==3){
+   }else if($("#category1").val()==9){
     
        $.post(
           "/journeyDetailInfo"
@@ -301,14 +303,14 @@ function btnclick(obj){
       });
       
       
-      if($("#category1").val()==1){
+      if($("#category1").val()==10){
          var ajaxOp = {
             url : "/editTicket?value="+value,
             type : "POST",
             dataType : "HTML",
             cache : false
          };
-      }else if($("#category1").val()==3){
+      }else if($("#category1").val()==9){
          var ajaxOp = {
             url : "/editJourney?value="+value,
             type : "POST",
@@ -347,7 +349,7 @@ $(function(){
       }
       
       
-      if($("#category1").val()==3){
+      if($("#category1").val()==9){
           var sub_ji_image=$("#ji_image")
          if(sub_ji_image[0].files.length>=5){
             alert("객실 이미지는 최대 4개까지 등록가능합니다.");
@@ -393,10 +395,10 @@ $(function(){
          }
          
          
-         if($("#category1").val()==1){
+         if($("#category1").val()==10){
             form.action="/ticketInsertAction?mid_category="+$("#category2").val()+"&value=0";
          }
-         if($("#category1").val()==3){
+         if($("#category1").val()==9){
             if($("#traffic_info").val()==""){
                alert("교통정보 안내를 입력하세요");
                $("#traffic_info").focus();
@@ -424,10 +426,10 @@ $(function(){
          
          
          alert(value);
-         if($("#category1").val()==1){
+         if($("#category1").val()==10){
             form.action="/ticketInsertAction?value="+value;
        }
-         else if($("#category1").val()==3){
+         else if($("#category1").val()==9){
             form.action="/journeyInsertAction?value="+value;
        }
       }
@@ -446,10 +448,10 @@ $(function(){
          return false;
       }
       if(confirm("선택한 "+delete_val1.length+"개의 상품을 삭제하시겠습니까?")){
-          if($("#category1").val()==1){
+          if($("#category1").val()==10){
             form.action="/detail_delete_ticket?value="+delete_val1+"&company_name="+$("#company_name").val();
           }
-            else if($("#category1").val()==3){
+            else if($("#category1").val()==9){
             form.action="/detail_delete_journey?value="+delete_val1+"&company_name="+$("#company_name").val();
             }
       }
@@ -467,14 +469,12 @@ $(function(){
          return false;
       }
       if(confirm("선택한 "+delete_val2.length+"개의 상품을 삭제하시겠습니까?")){
-         
-          if($("#category1").val()==1){
-            form_ticket.action="/all_delete_ticket?value="+delete_val2+"&company_name="+$("#company_name").val();
+          if($("#category1").val()==10){
+            form_product.action="/all_delete_ticket?value="+delete_val2+"&company_name="+$("#company_name").val();
           }
-            else if($("#category1").val()==3){
-             form_journey.action="/all_delete_journey?value="+delete_val2+"&company_name="+$("#company_name").val();
-            }
-          
+          else if($("#category1").val()==9){
+             form_product.action="/all_delete_journey?value="+delete_val2+"&company_name="+$("#company_name").val();
+          }
       }
    });
 });
@@ -564,7 +564,7 @@ function service_list(e){
    
    var detailinfo ='<tr><th class="info_th">* 상품상세명</th><td><input class="form-control" type="text" id="product_title" name="product_title" /></td></tr>';
    
-   if(e==1){
+   if(e==10){
       briefinfo+='<tr><th class="info_th">* 편의시설</th><td>';
       add=ticket_service;
       for(property in add){
@@ -594,7 +594,7 @@ function service_list(e){
    detailinfo += '<tr><th class="info_th">* 유효기간</th>';
    
    }
-   else if(e==3){
+   else if(e==9){
       briefinfo+='<tr><th class="info_th">* 객실공통 구비항목</th><td>';
       add=journey_common;
       for(property in add){
@@ -637,7 +637,7 @@ function service_list(e){
       
    }
    
-   briefinfo += '<tr><th class="info_th">*소개</th><td><textarea class="form-control insert_input" id="product_intro" name="product_intro"/></textarea></td></tr><tr><th class="info_th">알려드리는 말</th><td><textarea class="form-control insert_input" id="notice" name="notice"/></textarea></td></tr><tr><th class="info_th">유의사항</th><td><textarea class="form-control insert_input" id="product_notice" name="product_notice"  /></textarea></td></tr><tr><th class="info_th">*예약안내</th><td><textarea class="form-control insert_input" id="product_booking" name="product_booking"  /></textarea></td></tr><tr><th>*취소수수료안내</th><td><textarea id="product_cancelfee" name="product_cancelfee" /></textarea></td></tr><tr><th>*취소유의사항</th><td><textarea id="product_cancelnoti" name="product_cancelnoti" /></textarea></td></tr>'
+   briefinfo += '<tr><th class="info_th">*소개</th><td><textarea class="form-control insert_input" id="product_intro" name="product_intro"/></textarea></td></tr><tr><th class="info_th">알려드리는 말</th><td><textarea class="form-control insert_input" id="notice" name="notice"/></textarea></td></tr><tr><th class="info_th">유의사항</th><td><textarea class="form-control insert_input" id="product_notice" name="product_notice"  /></textarea></td></tr><tr><th class="info_th">*예약안내</th><td><textarea class="form-control insert_input" id="product_booking" name="product_booking"/></textarea></td></tr><tr><th>*취소수수료안내</th><td><textarea id="product_cancelfee" name="product_cancelfee" /></textarea></td></tr><tr><th>*취소유의사항</th><td><textarea id="product_cancelnoti" name="product_cancelnoti" /></textarea></td></tr>'
    detailinfo += '<td><input type="date" class="date_form" id="product_duetime1" name="product_duetime1" />~<input type="date" class="date_form" id="product_duetime2" name="product_duetime2" /></td></tr><tr><th class="info_th">* 가격</th><td><input class="form-control" type="text" id="product_price" name="product_price" /></td></tr><tr><th class="info_th">* 상품소개</th><td><textarea class="form-control" id="product_intro" name="product_intro" cols="30" rows="10"></textarea></td></tr>'
    
    $('#briefinfo').append(briefinfo);
@@ -664,167 +664,167 @@ function service_list(e){
 
 <body id="page-top">
 
-	<!-- Page Wrapper -->
-	<div id="wrapper">
+   <!-- Page Wrapper -->
+   <div id="wrapper">
 
-		<!-- Sidebar -->
-		<%@include file="./sidebar.jsp"%>
-		<!-- End of Sidebar -->
+      <!-- Sidebar -->
+      <%@include file="./sidebar.jsp"%>
+      <!-- End of Sidebar -->
 
-		<!-- Content Wrapper -->
-		<div id="content-wrapper" class="d-flex flex-column">
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
 
-			<!-- Main Content -->
-			<div id="content">
+         <!-- Main Content -->
+         <div id="content">
 
-				<!-- Topbar -->
-				<%@include file="./topbar.jsp"%>
-				<!-- End of Topbar -->
+            <!-- Topbar -->
+            <%@include file="./topbar.jsp"%>
+            <!-- End of Topbar -->
 
-				<!-- Begin Page Content -->
-				<div class="container-fluid">
-
-
-			      <div class="row" id="row">
-			            <div class="col-1 mt-2 ms-3" style="width: 110px;">
-			               <select class="form-select" style="width: 100px;"
-			                  name="top_category" id="category1" onchange="setSelectBox(this)">
-			                  <option value="">분류</option>
-			                  <c:forEach items="${cate }" var="top" varStatus="loop">
-			                     <option value="${top.idx }">${top.title }</option>
-			                  </c:forEach>
-			               </select>
-			            </div>
-			            <div class="col-1 mt-2" style="width: 110px;">
-			               <select class="form-select" style="width: 100px;"
-			                  name="mid_category" id="category2" onchange="setSelectBox(this)" disabled>
-			                  <option value="">분류</option>
-			               </select>
-			            </div>
-			         
-			         <form method="POST" id=""form_product"" class="mt-3">
-			            <div class="col-12" id="simple_list">
-			               <table class="table" style="border:1px;">
-			                     <colgroup>
-			                        <col width="11%" />
-			                        <col width="40%" />
-			                        <col width="40%" />
-			                     </colgroup>
-			                     <thead>
-			                        <tr>
-			                           <th> 선택 </th>
-			                           <th> 이미지 </th>
-			                           <th> 상품명 </th>
-			                        </tr>
-			                     </thead>
-			                     <tbody id="product_list" style="border:none"></tbody>
-			                  </table>
-			                  <button class="btn btn-primary" type="button" value="all" onclick="btnclick(this)">상품추가</button>
-			                  <button class="btn btn-primary" type="button" value="edit" onclick="btnclick(this)">상품수정</button>
-			                  <button class="btn btn-primary" type="submit" id="delete_all" onclick="btnclick(this)">상품삭제</button>
-			            </div>
-			            <div class="product_intro col-12" style="display:none;"></div>
-			         </form>
-			         <form method="POST" id="form" enctype="multipart/form-data">
-			            
-			            <input type="text" class="form-control ms-3 mb-3" style="width: 200px;"
-			               id="company_name" name="company_name" value="함덕제주비치호텔"/>
-			            <div class="col-12 ms-3" id="detail_list" style="width:100%; display:none; padding: 0px;">
-			               <table style="border:1px;">
-			                  <colgroup>
-			                     <col width="15%" />
-			                     <col width="*%" />
-			                     <col width="20%" />
-			                     <col width="15%" />
-			                  </colgroup>
-			                  <thead>
-			                     <tr>
-			                        <th>선택</th>
-			                        <th>상품상세명</th>
-			                        <th>요금</th>
-			                        <th>할인율</th>
-			                     </tr>
-			                  </thead>
-			                  <tbody id="product_info_list">
-			                  </tbody>
-			               </table>
-			               <button class="btn btn-primary mt-2" type="button" value="info" onclick="btnclick(this)">상품상세추가</button>
-			               <button class="btn btn-primary mt-2" type="submit" id="info_delete" onclick="btnclick(this)">상품삭제</button>
-			            </div>
-			         
-			            <div class="col-5" id="product_info" style="display:none;">
-			               <table class="table" id="briefinfo">
-			               </table>
-			            </div>
-			            <div class="col-5" id="product_info_detail" style="display:none; margin: 0px">
-			               <table id="detailinfo">
-			               </table>
-			               <button class="btn-primary" type="submit" id="submit">등록하기</button>
-			               <button class="btn-primary" type="reset">다시작성</button>
-			            </div>
-			         </form>
-			      </div>
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
 
 
-				</div>
-				<!-- /.container-fluid -->
+               <div class="row" id="row">
+                     <div class="col-1 mt-2 ms-3" style="width: 110px;">
+                        <select class="form-select" style="width: 100px;"
+                           name="top_category" id="category1" onchange="setSelectBox(this)">
+                           <option value="">분류</option>
+                           <c:forEach items="${cate }" var="top" varStatus="loop">
+                              <option value="${top.idx }">${top.title }</option>
+                           </c:forEach>
+                        </select>
+                     </div>
+                     <div class="col-1 mt-2" style="width: 110px;">
+                        <select class="form-select" style="width: 100px;"
+                           name="mid_category" id="category2" onchange="setSelectBox(this)" disabled>
+                           <option value="">분류</option>
+                        </select>
+                     </div>
+                  
+                  <form method="POST" id="form_product" class="mt-3">
+                     <div class="col-12" id="simple_list">
+                        <table class="table" style="border:1px;">
+                              <colgroup>
+                                 <col width="11%" />
+                                 <col width="40%" />
+                                 <col width="40%" />
+                              </colgroup>
+                              <thead>
+                                 <tr>
+                                    <th> 선택 </th>
+                                    <th> 이미지 </th>
+                                    <th> 상품명 </th>
+                                 </tr>
+                              </thead>
+                              <tbody id="product_list" style="border:none"></tbody>
+                           </table>
+                           <button class="btn btn-primary" type="button" value="all" onclick="btnclick(this)">상품추가</button>
+                           <button class="btn btn-primary" type="button" value="edit" onclick="btnclick(this)">상품수정</button>
+                           <button class="btn btn-primary" type="submit" id="delete_all" onclick="btnclick(this)">상품삭제</button>
+                     </div>
+                     <div class="product_intro col-12" style="display:none;"></div>
+                  </form>
+                  <form method="POST" id="form" enctype="multipart/form-data">
+                     
+                     <input type="text" class="form-control ms-3 mb-3" style="width: 200px;"
+                        id="company_name" name="company_name" value="함덕제주비치호텔"/>
+                     <div class="col-12 ms-3" id="detail_list" style="width:100%; display:none; padding: 0px;">
+                        <table style="border:1px;">
+                           <colgroup>
+                              <col width="15%" />
+                              <col width="*%" />
+                              <col width="20%" />
+                              <col width="15%" />
+                           </colgroup>
+                           <thead>
+                              <tr>
+                                 <th>선택</th>
+                                 <th>상품상세명</th>
+                                 <th>요금</th>
+                                 <th>할인율</th>
+                              </tr>
+                           </thead>
+                           <tbody id="product_info_list">
+                           </tbody>
+                        </table>
+                        <button class="btn btn-primary mt-2" type="button" value="info" onclick="btnclick(this)">상품상세추가</button>
+                        <button class="btn btn-primary mt-2" type="submit" id="info_delete" onclick="btnclick(this)">상품삭제</button>
+                     </div>
+                  
+                     <div class="col-5" id="product_info" style="display:none;">
+                        <table class="table" id="briefinfo">
+                        </table>
+                     </div>
+                     <div class="col-5" id="product_info_detail" style="display:none; margin: 0px">
+                        <table id="detailinfo">
+                        </table>
+                        <button class="btn-primary" type="submit" id="submit">등록하기</button>
+                        <button class="btn-primary" type="reset">다시작성</button>
+                     </div>
+                  </form>
+               </div>
 
-			</div>
-			<!-- End of Main Content -->
 
-			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2020</span>
-					</div>
-				</div>
-			</footer>
-			<!-- End of Footer -->
+            </div>
+            <!-- /.container-fluid -->
 
-		</div>
-		<!-- End of Content Wrapper -->
+         </div>
+         <!-- End of Main Content -->
 
-	</div>
-	<!-- End of Page Wrapper -->
+         <!-- Footer -->
+         <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+               <div class="copyright text-center my-auto">
+                  <span>Copyright &copy; Your Website 2020</span>
+               </div>
+            </div>
+         </footer>
+         <!-- End of Footer -->
 
-	<!-- Scroll to Top Button-->
-	<a class="scroll-to-top rounded" href="#page-top"> <i
-		class="fas fa-angle-up"></i>
-	</a>
+      </div>
+      <!-- End of Content Wrapper -->
 
-	<!-- Logout Modal-->
-	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">Ã</span>
-					</button>
-				</div>
-				<div class="modal-body">Select "Logout" below if you are ready
-					to end your current session.</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
-				</div>
-			</div>
-		</div>
-	</div>
+   </div>
+   <!-- End of Page Wrapper -->
 
-	<!-- Bootstrap core JavaScript-->
-	<script src="../css/vendor/jquery/jquery.min.js"></script>
-	<script src="../css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <!-- Scroll to Top Button-->
+   <a class="scroll-to-top rounded" href="#page-top"> <i
+      class="fas fa-angle-up"></i>
+   </a>
 
-	<!-- Core plugin JavaScript-->
-	<script src="../css/vendor/jquery-easing/jquery.easing.min.js"></script>
+   <!-- Logout Modal-->
+   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+               <button class="close" type="button" data-dismiss="modal"
+                  aria-label="Close">
+                  <span aria-hidden="true">Ã</span>
+               </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready
+               to end your current session.</div>
+            <div class="modal-footer">
+               <button class="btn btn-secondary" type="button"
+                  data-dismiss="modal">Cancel</button>
+               <a class="btn btn-primary" href="login.html">Logout</a>
+            </div>
+         </div>
+      </div>
+   </div>
 
-	<!-- Custom scripts for all pages-->
-	<script src="../js/sb-admin-2.min.js"></script>
+   <!-- Bootstrap core JavaScript-->
+   <script src="../css/vendor/jquery/jquery.min.js"></script>
+   <script src="../css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+   <!-- Core plugin JavaScript-->
+   <script src="../css/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+   <!-- Custom scripts for all pages-->
+   <script src="../js/sb-admin-2.min.js"></script>
 
 </body>
 

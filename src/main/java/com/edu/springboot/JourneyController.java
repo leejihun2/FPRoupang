@@ -250,8 +250,7 @@ public class JourneyController {
 	}
 	@ResponseBody
 	@RequestMapping("/category_list.j")
-	public ArrayList<ParameterTicketDTO> cate_list(HttpServletRequest req){
-//		System.out.println("실행");
+	public ArrayList<ParameterTicketDTO> cate_list(HttpServletRequest req, Model model){
 		int sub_idx=0;
 		if(!(req.getParameter("sub_idx")==null)) {
 			sub_idx=Integer.parseInt(req.getParameter("sub_idx"));
@@ -260,6 +259,7 @@ public class JourneyController {
 //		System.out.println(level);
 		if(level.equals("1")) {
 			ArrayList<ParameterTicketDTO> sub_cate = cate_dao.select_cate(sub_idx);
+			model.addAttribute("mid_cate_idx",sub_idx);
 			return sub_cate;
 		}else{
 			String company_name=req.getParameter("company_name");
@@ -287,6 +287,7 @@ public class JourneyController {
 			Model model, MultipartHttpServletRequest req) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int value= Integer.parseInt(req.getParameter("value"));		
+		System.out.println("됩니까");
 		JourneyDTO j_dto = new JourneyDTO();
 		if(value==0) {
 			journey_dao.insert_bot_title(req.getParameter("bot_title"),
@@ -337,18 +338,18 @@ public class JourneyController {
 			j_dto.setCommon_items(comVal);
 			
 			j_dto.setLocation(req.getParameter("location"));
-			j_dto.setJ_intro(req.getParameter("j_intro"));
-			j_dto.setNotice(req.getParameter("notice"));
+			j_dto.setJ_intro(req.getParameter("product_intro"));
+			j_dto.setNotice(req.getParameter("product_notice"));
 			j_dto.setTraffic_info(req.getParameter("traffic_info"));
 			j_dto.setLoging_policy(req.getParameter("loging_policy"));
 			j_dto.setCheck_io(req.getParameter("check_io"));
-			j_dto.setJ_booking(req.getParameter("j_booking"));
+			j_dto.setJ_booking(req.getParameter("product_booking"));
 			j_dto.setAdd_fare(req.getParameter("add_fare"));
 			j_dto.setAdd_bed(req.getParameter("add_bed"));
 			j_dto.setBreakfast_noti(req.getParameter("breakfast_noti"));
-			j_dto.setJ_notice(req.getParameter("j_notice"));
-			j_dto.setJ_cancelfee(req.getParameter("j_cancelfee"));
-			j_dto.setJ_cancelnoti(req.getParameter("j_cancelnoti"));
+			j_dto.setJ_notice(req.getParameter("product_notice"));
+			j_dto.setJ_cancelfee(req.getParameter("product_cancelfee"));
+			j_dto.setJ_cancelnoti(req.getParameter("product_cancelnoti"));
 
 			value=journey_dao.select_new_idx();
 		
@@ -356,14 +357,14 @@ public class JourneyController {
 		try {
 		JourneyInfoDTO ji_dto = new JourneyInfoDTO();
 		ji_dto.setBot_idx(value);
-		ji_dto.setJi_duetime1(req.getParameter("ji_duetime1"));
-		ji_dto.setJi_duetime2(req.getParameter("ji_duetime2"));
-		ji_dto.setJi_price(Integer.parseInt(req.getParameter("ji_price")));
-		ji_dto.setJi_title(req.getParameter("ji_title"));
+		ji_dto.setJi_duetime1(req.getParameter("product_duetime1"));
+		ji_dto.setJi_duetime2(req.getParameter("product_duetime2"));
+		ji_dto.setJi_price(Integer.parseInt(req.getParameter("product_price")));
+		ji_dto.setJi_title(req.getParameter("product_title"));
 		ji_dto.setJi_adult(Integer.parseInt(req.getParameter("ji_adult")));
 		ji_dto.setJi_kid(Integer.parseInt(req.getParameter("ji_kid")));
 		ji_dto.setJi_roomnum(Integer.parseInt(req.getParameter("ji_roomnum")));
-		ji_dto.setJi_intro(req.getParameter("ji_intro"));
+		ji_dto.setJi_intro(req.getParameter("product_intro"));
 		int index=1;
 		for(MultipartFile f: sub_ji_image) {
 			String imgName = saveFile(f);
@@ -379,7 +380,8 @@ public class JourneyController {
 		}
 		catch (Exception e) {}
 		
-		if(!(req.getParameter("j_intro").equals(""))) {
+		if(!(req.getParameter("product_intro").equals(""))) {
+			System.out.println(req.getParameter("product_intro"));
 			journey_dao.insert_journey(j_dto);
 		}
 		mv.setViewName("/home");
@@ -470,14 +472,14 @@ public class JourneyController {
 	@RequestMapping("/journey_List")
 	public ModelAndView show_Journey_List(HttpServletRequest req, HttpSession session, TotalJourneyDTO totaljourneyDTO) {
 		ModelAndView mv = new ModelAndView();
-		int sub_idx = Integer.parseInt(req.getParameter("category"));
+		int sub_idx = Integer.parseInt(req.getParameter("sub_idx"));
 		String location = req.getParameter("location"); 
 		String title = req.getParameter("title");
 		String ji_duetime1 = "";
 		String ji_duetime2 = "";
 		int ji_adult = 2;
 		int ji_kid = 0;
-		
+		System.out.println(sub_idx);
 		if(location != null) {
 			
 			String like_loc = journey_dao.like_journey_List(location);
@@ -520,10 +522,13 @@ public class JourneyController {
 		String category_title = cate_dao.select_one_cate(sub_idx); 
 		ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list(totaljourneyDTO);
 		
+		
 		mv.addObject("sub_idx",sub_idx);
 		mv.addObject("category_title",category_title);
 		mv.addObject("journey_list", journey_list);
 		mv.setViewName("/journey/journeyList");
+	
+		System.out.println(journey_list);
 		
 		session.removeAttribute("ji_adult");
 		session.removeAttribute("ji_kid");
