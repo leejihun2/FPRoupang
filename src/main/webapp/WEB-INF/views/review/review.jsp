@@ -17,8 +17,9 @@
 <link rel="stylesheet" href="../css/common.css" type="text/css">
 <link rel="stylesheet" href="../css/list.css" type="text/css">
 <link rel="stylesheet" href="../css/star_rate.css" type="text/css">
+<link rel="stylesheet" href="../css/roll.css" type="text/css">
   <!-- Latest compiled JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 function deleteRow(idx){
    if(confirm("정말로 삭제하시겠습니까?")){
@@ -26,12 +27,37 @@ function deleteRow(idx){
       location.href = "delete.do?idx="+idx;
    }
 }
-</script>
-</head>
-<body style="background-color: white;">
 
-<div class="container">
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.div2').each(function(index){
+			$(this).attr('div2-index', index);
+		}).click(function(){
+			var index = $(this).attr('div2-index');
+			$('.div2[menu-index=' + index + ']').addClass('clicked');
+			$('.div2[menu-index!=' + index + ']').removeClass('clicked');
+		});
+
+	});
+</script>
+<style>
+
+</style>
+</head>
+<body>
+<%@include file="../myroupang/myroupang.jsp" %>
+<div class="roll" >
+	<h1 class="qwer">리뷰관리</h1>
 	
+	<div class="div1">
+		<div class="div2" onclick="location.href='review.do'">리뷰 작성</div>
+		<div class="div3" onclick="location.href='reviewList.do'">작성한 리뷰</div>
+	</div>
+	
+	
+	
+<div class="container">
 	<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->
 	<form name="writeFrm" method="post" 
 		onsubmit="return writeValidate(this);"
@@ -147,6 +173,7 @@ function deleteRow(idx){
 		<button type="submit" class="btn btn-secondary">작성하기</button>
 	</div>
 	</form> 
+</div>
 </div>
     <div id="copyright">
          <%@include file="../copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
