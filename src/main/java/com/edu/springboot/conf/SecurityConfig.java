@@ -33,14 +33,15 @@ public class SecurityConfig {
 			throws Exception {
 		httpSecurity.authorizeRequests()
 		.antMatchers("/").permitAll()
-		.antMatchers("/**").permitAll()
 		.antMatchers("/css/**","/js/**","/images/**").permitAll()
 		.antMatchers("/guest/**").permitAll()
 		.antMatchers("/member/**").hasAnyRole("admin", "member", "seller")
 		.antMatchers("/supports/voc.jsp").hasAnyRole("admin", "member", "seller")
 		.antMatchers("/supports/inquiry.jsp").hasAnyRole("admin", "member", "seller")
+		.antMatchers("/productInsert").hasAnyRole("admin", "seller")
 		.antMatchers("/admin/**").hasRole("admin")
         .antMatchers("/agreement/**").hasAnyRole("admin", "seller")
+        .antMatchers("/**").permitAll()
 		.anyRequest().authenticated();
 		
 		httpSecurity.formLogin()

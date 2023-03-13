@@ -44,16 +44,21 @@
 
 	<update id="modify" parameterType="com.edu.springboot.jdbc.SupportsDTO">
 		UPDATE inquiry
-		SET name=#{name}, contents=#{contents}
+		SET contents=#{contents}
 		WHERE idx=#{idx} AND email=#{email}
 	</update>
 	
-	<update id="modify2" parameterType="com.edu.springboot.jdbc.SupportsDTO">
+	<update id="modifySupports" parameterType="com.edu.springboot.jdbc.SupportsDTO">
 		UPDATE couboard
-		SET name=#{name}, contents=#{contents}
-		WHERE idx=#{idx} AND email=#{email}
+		SET categorycode=#{categorycode}, contact=#{contact}, title=#{title}, contents=#{contents}
+		WHERE idx=#{idx}
 	</update>
 
+	<select id="view" resultType="com.edu.springboot.jdbc.SupportsDTO"
+		parameterType="com.edu.springboot.jdbc.SupportsDTO">
+		SELECT * FROM couboard WHERE idx=#{idx}
+	</select>
+	
 	<delete id="delete">
 		DELETE FROM couboard WHERE idx=#{param1} AND email=#{param2}
 	</delete>
