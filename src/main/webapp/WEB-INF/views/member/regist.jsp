@@ -66,351 +66,464 @@ font-size: 12px;
 
 <body>
 	<script>
-		var kcheck = true;
-
-		function chkcheck() {
-
-			alert(kcheck);
-			if (kcheck == false) {
-				console.log("회원가입불가");
-				alert('회원가입불가');
+		/**
+		 * 사용자가 입력한 이메일 주소가 이미 존재하는지 여부
+		 */
+		
+		
+		var isEmailDuplicated = null;
+		
+		/**
+		 * 모든 필드의 입력값이 유효한지 여부
+		 */
+		function validateAllFields() {
+			if (isEmailDuplicated != false) {
+				alert("이메일 입력이 잘못되었습니다.");
 				return false;
-			} else {
+			} 
 
-				console.log("회원가입완료");
-				alert('회원가입 완료되었습니다.');
+			var isEmailValid = validateEmail();
+			var isPasswordValid = validatePassword();
+			var isPasswordCheckValid = validatePasswordCheck();
+			var isNameValid = validateName();
+			var isPhoneNumberValid = validatePhoneNumber();
+			var isJuminNumValid = validateJuminNum();
+			var isCheckboxValid = validateCheckbox();
+			var validationResults = [isEmailValid, isPasswordValid, isPasswordValid, isNameValid, isPhoneNumberValid, isJuminNumValid, isCheckboxValid];
+			
+			if(validationResults.includes(false)) {
+				alert("정보입력이 잘못되었습니다.");
+			
+				return false;
 			}
-
-		}
-
-		$(function() {
-
-			$('#email').on("blur", function() {
-				//var email = $('#email').val();
-				if ($("#email").val() != "") {
-					$("#emailgo").hide();
-					console.log("이메일입력됨");
-				} else {
-					$("emailgo").show();
-					$('#emailgo').text('이메일을 입력하세요.').css('color', 'red');
-
-					console.log("이메일 미입력");
-					kcheck = false;
-					return false;
-				}
-				kcheck = true;
-				console.log(kcheck);
-
-				$.ajax({
-					url : "/checkemail.do",
-					type : "post",
-					data : {
-						email : $('#email').val()
-					},
-					dataType : 'json',
-					success : sucCallBack,
-				});
-
+			confirm("회원가입하시겠습니까?");
+			//return false;
+		} 
+		
+		/**
+		 * 초기에 호출되어야하는 함수입니다.
+		 */
+		$(function initialize() {
+			$('#email').focusout(function() {
+				checkEmailDuplication();
+				validateEmail();
 			});
-			function sucCallBack(result) {
 
-				if (result == 0) {
-					$("#search").hide();
-					$('#emailgo1').hide();
-					console.log("이메일사용가능");
-				} else {
-					$("#search").show();
-					$("emailgo1").show();
-					$('#emailgo1').text('이미 가입된 이메일 주소입니다. 다른 이메일을 입력하여 주세요.')
-							.css('color', 'red');
-					$('#input-id').css("margin-bottom","5px");
-					console.log("이메일 중복에러");
-					kcheck = false;
-					return false;
-				}
-				kcheck = true;
-				console.log(kcheck);
+			$('#password').bind("keyup focusout",function() {
+				validatePassword();
+			});
 
-			}
-
-			/* let aaa = 1;
-			$('#password').focus(function(){
-				console.log("aaaa");
-				if(aaa==1){
-					$("#email").focus();
-				}
-			}); */
-
-			$('#password')
-					.bind(
-							"keyup focusout",
-							function() {
-								var pw = $(this).val();
-
-								var SamePass_0 = 0; //동일문자 카운트
-								var SamePass_1 = 0; //연속성(+) 카운드
-								var SamePass_2 = 0; //연속성(-) 카운드
-
-								for (var i = 0; i < pw.length; i++) {
-									var chr_pass_0 = pw.charAt(i);
-									var chr_pass_1 = pw.charAt(i + 1);
-
-									//동일문자 카운트
-									if (chr_pass_0 == chr_pass_1) {
-										SamePass_0 = SamePass_0 + 1
-									}
-
-									var chr_pass_2 = pw.charAt(i + 2);
-
-									//연속성(+) 카운드
-									if (chr_pass_0.charCodeAt(0)
-											- chr_pass_1.charCodeAt(0) == 1
-											&& chr_pass_1.charCodeAt(0)
-													- chr_pass_2.charCodeAt(0) == 1) {
-										SamePass_1 = SamePass_1 + 1
-									}
-									//연속성(-) 카운드
-									if (chr_pass_0.charCodeAt(0)
-											- chr_pass_1.charCodeAt(0) == -1
-											&& chr_pass_1.charCodeAt(0)
-													- chr_pass_2.charCodeAt(0) == -1) {
-										SamePass_2 = SamePass_2 + 1
-									}
-								}
-								if ((SamePass_0 <= 1)
-										&& (SamePass_1 <= 1 && SamePass_2 <= 1)) {
-									$('#passwordgo3').hide();
-									console.log("동일한 문자 3개이하");
-								} else {
-									$('#passwordgo3').show();
-									$('#passwordgo3').text(
-											'X 3개 이상 연속되거나 동일한 문자/숫자 제외').css(
-											'color', 'red');
-									console.log("3개 이상 연속되거나 동일한 문자/숫자 ");
-									kcheck = false;
-									console.log(kcheck);
-									return false;
-								}
-								kcheck = true;
-								console.log(kcheck);
-
-								var inputVal = $(this).val();
-								console.log("입력", inputVal);
-								var strUpper = false, strLower = false, strNumber = false;
-
-								//입력한 패스워드의 길이만큼 반복하여 모든 문자를 검사한다. 
-								for (var i = 0; i < inputVal.length; i++) {
-									//입력값의 아스키코드를 확인해본다.
-									console.log("아스키코드값", inputVal[i]
-											.charCodeAt(0));
-
-									//입력한 문자열 중에 아래조건에 맞는 문자가 하나라도 존재하면 true로 
-									//변경해준다.
-
-									//대문자인지 확인
-									if (inputVal[i].charCodeAt(0) >= 65
-											&& inputVal[i].charCodeAt(0) <= 90) {
-										strUpper = true;
-									}
-									//소문자인지 확인
-									if (inputVal[i].charCodeAt(0) >= 97
-											&& inputVal[i].charCodeAt(0) <= 122) {
-										strLower = true;
-									}
-									//숫자인지 확인
-									if (inputVal[i].charCodeAt(0) >= 48
-											&& inputVal[i].charCodeAt(0) <= 57) {
-										strNumber = true;
-									}
-								}
-								if ((inputVal.length >= 8 && inputVal.length < 20)
-										&& (strUpper == true)
-										&& (strLower == true)
-										&& (strNumber == true)) {
-									$('#passwordgo5').hide();
-								} else {
-
-									$('#passwordgo5').text(
-											'X 영문/숫자/특문자 2가지 이상 조합 (8~20자)')
-											.css('color', 'red');
-									kcheck = false;
-									console.log(kcheck);
-									return false;
-
-								}
-								kcheck = true;
-								console.log(kcheck);
-
-								if ($("#password").val() != "") {
-									$("#passwordgo4").hide();
-									console.log("hide");
-
-									if ($("#password").val() == $("#email")
-											.val()) {
-										$('#passwordgo1').html('X 아이디(이메일) 제외')
-												.css('color', 'red');
-										kcheck = false;
-										console.log(kcheck);
-										return false;
-									}
-									kcheck = true;
-									console.log(kcheck);
-								} else {
-									$("#password").show();
-									$('#passwordgo4').text('비밀번호를 입력하세요.').css(
-											'color', 'red');
-
-									console.log("비밀번호 미입력");
-									kcheck = false;
-									console.log(kcheck);
-									return false;
-								}
-								kcheck = true;
-								console.log(kcheck);
-
-							});
-
-			$('#password_check').bind(
-					"keyup focusout",
-					function() {
-
-						var p1 = $('#password').val();
-						var p2 = $(this).val();
-
-						if (p1 == p2) {
-							$('#passConfirm').html('패스워드가 일치합니다.').css('color',
-									'red');
-						} else {
-							$('#passConfirm').html('패스워드가 틀렸습니다.').css('color',
-									'black');
-							kcheck = false;
-							return false;
-
-						}
-						kcheck = true;
-						console.log(kcheck);
-
-						if ($("#password_check").val() != "") {
-							$("#password_checkgo").hide();
-							console.log("비밀번호확인 입력완료");
-						} else {
-							$("#password_checkgo").show();
-							$("#password_checkgo").text('비밀번호를 확인하세요.').css(
-									'color', 'red');
-
-							console.log("비밀번호확인 미입");
-							kcheck = false;
-							return false;
-
-						}
-						kcheck = true;
-						console.log(kcheck);
-					});
+			$('#password_check').bind("keyup focusout",function() {
+				validatePasswordCheck();
+			});
 
 			$('#name').focusout(function() {
-				if ($("#name").val() != "") {
-					$("#namego").hide();
-					console.log("이름입력완료");
-				} else {
-					$("#namego").show();
-					$('#namego').text('이름을 입력하세요.').css('color', 'red');
-
-					console.log("이름미입력");
-					kcheck = false;
-					return false;
-				}
-				kcheck = true;
-				console.log(kcheck);
-
+				validateName();
 			});
-			$('#phone_number').focusout(
-					function() {
-						if ($("#phone_number").val() != "") {
-							$("#phone_numbergo").hide();
-							console.log("휴대폰번호 입력완료");
-						} else {
-							$("#phone_numbergo").show();
-							$('#phone_numbergo').text('정확한 휴대폰번호를 입력하세요.').css(
-									'color', 'red');
 
-							console.log("휴대폰번호 미입력");
-							kcheck = false;
-							return false;
-						}
-						kcheck = true;
-						console.log(kcheck);
+			$('#phone_number').focusout(function() {
+				validatePhoneNumber();
+			});
 
-					});
-			$('#jumin_num').focusout(
-					function() {
-						if ($("#jumin_num").val() != "") {
-							$("#jumin_numgo").hide();
-							console.log("주민번호 입력완료");
-						} else {
-							$("#jumin_numgo").show();
-							$('#jumin_numgo').text('정확한 주민번호를 입력하세요.').css(
-									'color', 'red');
-
-							console.log("주민번호 미입력");
-							kcheck = false;
-							return false;
-						}
-						kcheck = true;
-						console.log(kcheck);
-					});
+			$('#jumin_num').focusout(function() {
+				validateJuminNum();
+			});
+			$('input:checkbox[name="must"]:checked').each(function() {
+				validateCheckbox();	
+			});
+		
 		});
-	</script>
 
-	<script>
-		function checkYn(obj) {
-			var checked = obj.checked;
-			if (checked) {
-				obj.value = 1;
+		function validateEmail() {
+			var email = $("#email").val();
 
-			} else {
-				obj.value = 0;
+			if(email == "") {
+				$("emailgo").show();
+				$('#emailgo').text('이메일을 입력하세요.').css('color', 'red');
+				emailCheck = false;
+				console.log("이메일 미입력");
+				return false;
 			}
-			console.log(obj.value);
+
+			// TODO: 다른 이메일 형식 검증에 대한 처리가 추가로 필요합니다.
+
+			return true;
 		}
 
-		$(function() {
+		/**
+		 * 이메일의 중복 여부를 검사한 후, isEmailDuplicated 변수에 저장합니다.
+		 */
+		function checkEmailDuplication() {
+			var email = $("#email").val();
 
-			$(".checkbox_group").on(
-					"click",
-					"#checkAll",
-					function() {
-						var checked = $(this).is(":checked");
+			if(email == "") { 
+				return false; 
+				// 이메일이 입력되어있지 않다면 검사하지 않습니다.
+			}
+			
+			console.log("이메일입력됨");
+			$("#emailgo").hide();
 
-						if (checked) {
-							$(this).parents(".checkbox_group").find('input')
-									.prop("checked", true);
-						} else {
-							$(this).parents(".checkbox_group").find('input')
-									.prop("checked", false);
-						}
-					});
+			$.ajax({
+				url : "/checkemail.do",
+				type : "post",
+				data : {
+					email : $('#email').val()
+				},
+				dataType : 'json',
+				success : function (result) {
+					if (result == 0) {
+						$("#search").hide();
+						$('#emailgo1').hide();
+						console.log("이메일사용가능");
+						isEmailDuplicated = false;
+					} else {
+						$("#search").show();
+						$("emailgo1").show();
+						$('#emailgo1').text('이미 가입된 이메일 주소입니다. 다른 이메일을 입력하여 주세요.')
+						.css('color', 'red');
+						$('#input-id').css("margin-bottom","5px");
+						console.log("이메일 중복에러");
+						isEmailDuplicated = true;
+					}	
+				}
+			});
+		}
 
+		/**
+		 * 입력된 패스워드를 검증합니다.
+		 */
+		function validatePassword() {
+			var pw = $("#password").val();
+
+			var SamePass_0 = 0; //동일문자 카운트
+			var SamePass_1 = 0; //연속성(+) 카운드
+			var SamePass_2 = 0; //연속성(-) 카운드
+
+			for (var i = 0; i < pw.length; i++) {
+				var chr_pass_0 = pw.charAt(i);
+				var chr_pass_1 = pw.charAt(i + 1);
+
+				//동일문자 카운트
+				if (chr_pass_0 == chr_pass_1) {
+					SamePass_0 = SamePass_0 + 1
+				}
+
+				var chr_pass_2 = pw.charAt(i + 2);
+
+				//연속성(+) 카운드
+				if (chr_pass_0.charCodeAt(0)
+					- chr_pass_1.charCodeAt(0) == 1
+					&& chr_pass_1.charCodeAt(0)
+					- chr_pass_2.charCodeAt(0) == 1) {
+					SamePass_1 = SamePass_1 + 1
+				}
+				
+				//연속성(-) 카운드
+				if (chr_pass_0.charCodeAt(0)
+					- chr_pass_1.charCodeAt(0) == -1
+					&& chr_pass_1.charCodeAt(0)
+					- chr_pass_2.charCodeAt(0) == -1) {
+					SamePass_2 = SamePass_2 + 1
+				}
+			}
+		
+			if ((SamePass_0 <= 1)
+				&& (SamePass_1 <= 1 && SamePass_2 <= 1)) {
+				$('#passwordgo3').hide();
+				console.log("동일한 문자 3개이하");
+			} else {
+				$('#passwordgo3').show();
+				$('#passwordgo3').text('X 3개 이상 연속되거나 동일한 문자/숫자 제외').css('color', 'red');
+				console.log("3개 이상 연속되거나 동일한 문자/숫자 ");
+				return false;
+			}
+
+			
+
+			//var inputVal = $("#password").val();
+			var strUpper = false, strLower = false, strNumber = false;
+
+			//입력한 패스워드의 길이만큼 반복하여 모든 문자를 검사한다. 
+			
+			for (var i = 0; i < pw.length; i++) {
+				//입력값의 아스키코드를 확인해본다.
+				console.log("아스키코드값", pw[i].charCodeAt(0));
+						
+				//입력한 문자열 중에 아래조건에 맞는 문자가 하나라도 존재하면 true로 
+				//변경해준다.
+				//대문자인지 확인
+				if (pw[i].charCodeAt(0) >= 65 && pw[i].charCodeAt(0) <= 90) {
+					strUpper = true;
+				}
+				
+				//소문자인지 확인
+				if (pw[i].charCodeAt(0) >= 97 && pw[i].charCodeAt(0) <= 122) {
+					strLower = true;
+				}
+
+				//숫자인지 확인	
+				if (pw[i].charCodeAt(0) >= 48 && pw[i].charCodeAt(0) <= 57) {
+					strNumber = true;
+				}
+			}
+
+			if ((pw.length >= 8 && pw.length < 20)
+				&& (strUpper == true)
+				&& (strLower == true)
+				&& (strNumber == true)) {
+				$('#passwordgo5').hide();
+			} else {
+				$('#passwordgo5').text('X 영문/숫자/대소문자 2가지 이상 조합 (8~20자)').css('color', 'red');
+				return false;
+			}
+
+			if (pw != "") {
+				$("#passwordgo4").hide();
+			
+				if (pw == $("#email").val()) {
+					$('#passwordgo1').html('X 아이디(이메일) 제외').css('color', 'red');
+					console.log("아이디패스워드 동일");
+					return false;
+				}
+				else{
+					$("#passwordgo1").hide();
+				}
+				
+				
+			} else {
+				$("#passwordgo4").show();
+				$('#passwordgo4').text('비밀번호를 입력하세요.').css('color', 'red');
+				return false;
+			}
+			return true;
+			
+		}
+
+		/**
+		 * 입력된 패스워드 확인값을 검증합니다.
+		 */
+		function validatePasswordCheck() {
+			var p1 = $('#password').val();
+			var p2 = $('#password_check').val();
+
+			if (p2 != "") {
+				$("#password_checkgo").hide();
+				console.log("비밀번호확인 입력완료");
+				if (p1 == p2) {
+					$('#passConfirm').html('패스워드가 일치합니다.').css('color',
+						'red');
+					
+				} else {
+					$('#passConfirm').html('패스워드가 틀렸습니다.').css('color',
+						'black');
+					return false;
+				}
+			} else {
+				$("#password_checkgo").show();
+				$("#password_checkgo").text('비밀번호를 확인하세요.').css(
+					'color', 'red');
+
+				console.log("비밀번호확인 미입력");			
+				return false;
+			}
+			
+			
+			return true;
+		}
+
+		/**
+		 * 입력된 이름 값을 검증합니다.
+		 */ 
+		function validateName() {
+			var name = $('#name').val();
+			strNumber = false;
+
+			//입력한 패스워드의 길이만큼 반복하여 모든 문자를 검사한다. 
+			for (var i = 0; i < name.length; i++) {
+				//입력값의 아스키코드를 확인해본다.
+				console.log("아스키코드값", name[i].charCodeAt(0));
+
+				//입력한 문자열 중에 아래조건에 맞는 문자가 하나라도 존재하면 true로 
+				//변경해준다.
+				//숫자인지 확인
+				if (name[i].charCodeAt(0) >= 48
+					&& name[i].charCodeAt(0) <= 57) {
+					strNumber = true;
+				}
+			}	
+
+			if(name != ""){
+				$("#namego").hide();
+				console.log("이름입력완료");
+
+				if(strNumber == true){
+					$("#namego1").show();
+					$('#namego1').text('정확한 이름을 입력하세요.(숫자입력됨)').css('color', 'red');
+					return false;		
+					
+				} else {
+					$("#namego1").hide();
+				}
+			} else if(name == "") {	
+				$("#namego").show();
+				$('#namego').text('이름을 입력하세요.').css('color', 'red');
+
+				console.log("이름미입력");
+				
+				return false;	
+			}
+			return true;
+			
+		}
+
+		/**
+		 * 입력된 전화번호 값을 검증합니다.
+		 */
+		function validatePhoneNumber() {
+			var phone_number = $('#phone_number').val();
+			console.log("입력", phone_number);
+			strNumber = false;
+
+			//입력한 패스워드의 길이만큼 반복하여 모든 문자를 검사한다. 
+			for (var i = 0; i < phone_number.length; i++) {
+				//입력값의 아스키코드를 확인해본다.
+				console.log("아스키코드값", phone_number[i].charCodeAt(0));
+
+				//입력한 문자열 중에 아래조건에 맞는 문자가 하나라도 존재하면 true로 
+				//변경해준다.
+				//숫자인지 확인
+				if (phone_number[i].charCodeAt(0) < 48
+					|| phone_number[i].charCodeAt(0) > 57) {
+					strNumber = true;
+				}
+			}	
+
+			if (phone_number != "") {
+				$("#phone_numbergo").hide();
+				console.log("휴대폰번호 입력완료");
+				/////////////////////////////////////////
+				if(strNumber == true) {
+					$("#phone_numbergo1").show();
+					$('#phone_numbergo1').text('휴대폰번호를 숫자로만 입력하세요.').css('color', 'red');
+					
+					return false;
+				}
+				 else{
+					$("#phone_numbergo1").hide();
+				} 
+			} else {
+				$("#phone_numbergo").show();
+				$('#phone_numbergo').text('정확한 휴대폰번호를 입력하세요.').css(
+					'color', 'red');
+
+				console.log("휴대폰번호 미입력");
+				
+				return false;
+			}
+
+			
+			return true;
+		}
+
+		/**
+		 * 입력된 주민번호를 검증합니다.
+		 */
+		function validateJuminNum() {
+			var jumin_num = $('#jumin_num').val();
+			console.log("입력", jumin_num);
+			strNumber = false;
+			for (var i = 0; i < jumin_num.length; i++) {
+				//입력값의 아스키코드를 확인해본다.
+				console.log("아스키코드값", jumin_num[i].charCodeAt(0));
+
+				//입력한 문자열 중에 아래조건에 맞는 문자가 하나라도 존재하면 true로 
+				//변경해준다.
+				//숫자인지 확인
+				if (jumin_num[i].charCodeAt(0) < 48
+					|| jumin_num[i].charCodeAt(0) > 57) {
+					strNumber = true;
+				}
+			}	
+
+			if (jumin_num != "") {
+				$("#jumin_numgo").hide();
+				console.log("주민번호 입력완료");
+				if(strNumber == true){
+					$("#jumin_numgo1").show();
+					$('#jumin_numgo1').text('생년월일을 숫자로만 입력하세요.').css('color', 'red');
+					
+					return false;
+				}
+				else if(strNumber == false){
+					$("#jumin_numgo1").hide();
+				}
+			} else {
+				$("#jumin_numgo").show();
+				$('#jumin_numgo').text('생년월일을 입력하세요.').css('color', 'red');
+				console.log("생년월일 미입력");
+				
+				return false;
+			}
+
+			
+			return true;
+		}
+	
+		$(document).on('click', '#checkAll', function() {
+			if ($('#checkAll').is(':checked')) {
+				$('.form-check-input').prop('checked', true);
+			} else {
+				$('.form-check-input').prop('checked', false);
+			}
 		});
+			
+		function checkYn(obj) {
+			
+			console.log(obj);
+			var checked = obj.checked;
+			if (checked) {
+				marketing_agreement.value = 1;
+			} else {
+				marketing_agreement.value = 0;
+			}
+			console.log(marketing_agreement.value);
+		}
+		
+		function validateCheckbox(){
+			var checkbox = $('input:checkbox[name="must"]:checked').length;
+			
+			console.log(checkbox);
+			
+		   	if(checkbox==5){
+				
+		   		console.log('gd')
+		   	}
+		   	else{
+		 		
+		 		console.log("체크박스 입력부족");
+		 		return false;
+		   	}
+
+		   	console.log("checkboxFinalCheck:"+checkbox);
+			return true;
+			
+		} 
 		
 		$(function(){ 
-			
 			$('#loadUseBtn').click(function(){
 				$('#loadUse').load('./txt/roupangUse1');
-				
-			});	
+			});
 		});	
 		$(function(){ 
-			
 			$('#ebizUseBtn').click(function(){
 				$('#ebizUse').load('./txt/ebizUse');
-				
 			});	
 		});
-		
 	</script>
 	<div class="container d-flex justify-content-center">
 		<form action="regist.do" name="registForm" method="post"
-			onsubmit="return chkcheck();">
+			onsubmit="return validateAllFields();">
 	
 			<div class="container d-flex justify-content-center">
 				<!-- 로고이미지 -->
@@ -427,7 +540,7 @@ font-size: 12px;
 						<div class="input-group" id="input-id">
 							<span class="input-group-text"><i class="bi bi-envelope"></i></span>
 							<input type="text" name="email" id="email" class="form-control"
-								placeholder="아이디(이메일)" required maxLength=50 />
+								placeholder="아이디(이메일)"  maxLength=50 />
 						</div>
 						<span style="font-size: 14px;" id="text"></span>
 						<div class="mb-2 ms-4" style="display: none" id="search">
@@ -445,7 +558,7 @@ font-size: 12px;
 						<div class="input-group">
 							<span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
 							<input type="password" name="password" id="password"
-								class="form-control" placeholder="비밀번호" required maxLength=20 />
+								class="form-control" placeholder="비밀번호"  maxLength=20 />
 	
 						</div>
 						<div style="padding-left: 20px;">
@@ -463,38 +576,42 @@ font-size: 12px;
 							<span class="input-group-text"><i
 								class="bi bi-shield-check"></i></span> <input type="password"
 								name="password_check" id="password_check" class="form-control"
-								placeholder="비밀번호 확인" required maxLength=20 /> <br />
+								placeholder="비밀번호 확인"  maxLength=20 /> <br />
 						</div>
 						<div id="password_checkgo"></div>
 						<div id="passConfirm"></div>
 						<div class="input-group">
 							<span class="input-group-text"><i class="bi bi-person"></i></span>
 							<input type="text" name="name" id="name" class="form-control"
-								placeholder="이름" required maxLength=20 />
+								placeholder="이름"  maxLength=20 />
 						</div>
 						<div id="namego"></div>
+						<div id="namego1"></div>
+						
 						<div class="input-group">
 							<span class="input-group-text"><i class="bi bi-phone"></i></span>
 							<input type="text" name="phone_number" id="phone_number"
-								class="form-control" placeholder="휴대폰 번호" required maxLength=20 />
+								class="form-control" placeholder="휴대폰 번호 ( - 없이 입력)" maxLength=20 />
 						</div>
 						<div id="phone_numbergo"></div>
+						<div id="phone_numbergo1"></div>
 	
 						<div class="input-group">
 							<span class="input-group-text"><i class="bi bi-person-check"></i></span>
 							<input type="text" name="jumin_num" id="jumin_num"
-								class="form-control" placeholder="주민등록번호(외국인등록번호)" required
+								class="form-control" placeholder="생년월일(숫자로만 입력)" 
 								maxLength=20 />
 						</div>
 						<div id="jumin_numgo"></div>
+						<div id="jumin_numgo1"></div>
 					
 						
 					<div class="wrap">
 						<div class="checkbox_group">
 							<div class="form-check">
 								
-								<input class="form-check-input" type="checkbox" name="checkAll" id="checkAll" onchange="checkYn(this);" />
-								<label for="checkAll" class="required">
+								<input class="form-check-input" type="checkbox" name="checkAll" id="checkAll" onchange="checkYn(this); validateCheckbox();" />
+								<label for="checkAll">
 								<p>모두 확인하였으며 동의합니다.</p> 
 								전체 동의에는 필수 및 선택 정보에 대한 동의가 포함되어 있으며, 개별적으로
 									동의를 선택 하실 수 있습니다. 선택 항목에 대한 동의를 거부하시는 경우에도 서비스 이용이 가능합니다
@@ -503,17 +620,15 @@ font-size: 12px;
 							</div>
 							<div class="contents" style="border: solid lightgray 1px;">
 							
-							
-							
 							<div class="form-check">		
-								<input class="form-check-input" type="checkbox" name="agreement" id="ageover" value="ageover" /> 
-								<label for="ageover" class="required">
+								<input class="form-check-input" type="checkbox" name="must" onchange="validateCheckbox();" id="ageover"  /> 
+								<label for="ageover" >
 								[필수] 만 14세 이상입니다
 								</label> 
 							</div>	
 							<div class="form-check" >	
-								<input class="form-check-input" type="checkbox" name="agreement" id="termsOfService" value="termsOfService" /> 
-									<label for="termsOfService" class="required">[필수] 루팡 이용약관 동의 </label>
+								<input class="form-check-input" type="checkbox" name="must" onchange="validateCheckbox();" id="agree" /> 
+									<label for="termsOfService" >[필수] 루팡 이용약관 동의 </label>
 									<span style="float:right" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
 										 <i class="bi bi-chevron-right" id="loadUseBtn"></i>
 									</span>
@@ -536,8 +651,8 @@ font-size: 12px;
 							  </div>
 							</div>
 							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="agreement" id="ebuis" value="ebuis" /> 
-									<label for="ebuis" class="required"> [필수] 전자금융거래 이용약관 동의</label> 
+								<input class="form-check-input" type="checkbox" name="must" onchange="validateCheckbox();" id="ebiz"  /> 
+									<label for="ebuis" "> [필수] 전자금융거래 이용약관 동의</label> 
 									<span style="float:right" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
 										 <i class="bi bi-chevron-right" id="ebizUseBtn"></i>
 									</span>
@@ -560,8 +675,8 @@ font-size: 12px;
 							  </div>
 							</div>
 							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="agreement" id="privacyPolicy" value="privacyPolicy" required /> 
-								<label for="privacyPolicy" class="required"> [필수] 개인정보 수집 및 이용 동의</label> 
+								<input class="form-check-input" type="checkbox" name="must" onchange="validateCheckbox();"id="privacy" /> 
+								<label for="privacyPolicy"> [필수] 개인정보 수집 및 이용 동의</label> 
 									<span style="float:right" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
 											 <i class="bi bi-chevron-right" id="personInfo"></i>
 									</span>
@@ -608,56 +723,58 @@ font-size: 12px;
 										<div style="font-size:12px;">동의를 거부할 수 있으나 동의 거부 시 서비스 이용이 제한됩니다.</div>
 									
 									</div>
-							      </div>
 							      
+							      </div>
 							    </div>
-							  </div>
+								  
+								</div>
+								<div class="form-check">	
+									<input class="form-check-input" type="checkbox" name="must" onchange="validateCheckbox();" id="third"  /> 
+									<label for="privacy" > [필수] 개인정보 제3자 제공 동의</label> 
+										<span style="float:right" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">
+												 <i class="bi bi-chevron-right" id="infoUse"></i>
+										</span>
+								</div>	
+								<!-- Modal -->
+								<div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel4" aria-hidden="true">
+								  <div class="modal-dialog">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title" id="staticBackdropLabel4">개인정보 제3자 제공 동의</h5>
+								        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								      </div>
+								      <div id="infoUse" class="modal-body">
+								       <div class="join__terms-box join__terms-box--text-area _joinTermsTarget" id="agree-to-collect-third-part-information">
+		    								[필수] 개인정보 제 3자 제공 동의에 대한 약관
+										</div>
+										<table class="table table-bordered">
+										    <thead>
+										    <tr>
+										        <th>개인정보</br>제공 받는 자</th>
+										        <th>개인정보</br>제공 항목</th>
+										        <th>개인정보</br>제공 목적</th>
+										        <th>개인정보</br>이용 기간</th>
+										    </tr>
+										    </thead>
+										    <tbody>
+										    <tr>
+										        <td><b>루팡페이 주식회사</b></td>
+										        <td>루팡 아이디</td>
+										        <td><b>루팡캐시 서비스 제공</b></td>
+										        <td><b>전자상거래법에 의해 5년간 보관 후 파기</b></td>
+										    </tr>
+										    </tbody>
+										</table>
+										<div style="font-size:12px;">제공에 동의하지 않을 수 있으나, 동의하지 않으면 회원 가입에 제한이 됩니다.</div>
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
 							
-							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="agreement" id="privacy" value="privacy" required /> 
-								<label for="privacy" class="required"> [필수] 개인정보 제3자 제공 동의</label> 
-									<span style="float:right" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">
-											 <i class="bi bi-chevron-right" id="infoUse"></i>
-									</span>
-							</div>	
-							<!-- Modal -->
-							<div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel4" aria-hidden="true">
-							  <div class="modal-dialog">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="staticBackdropLabel4">개인정보 제3자 제공 동의</h5>
-							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							      </div>
-							      <div id="infoUse" class="modal-body">
-							       <div class="join__terms-box join__terms-box--text-area _joinTermsTarget" id="agree-to-collect-third-part-information">
-	    [								필수] 개인정보 제 3자 제공 동의에 대한 약관
-									</div>
-									<table class="table table-bordered">
-									    <thead>
-									    <tr>
-									        <th>개인정보</br>제공 받는 자</th>
-									        <th>개인정보</br>제공 항목</th>
-									        <th>개인정보</br>제공 목적</th>
-									        <th>개인정보</br>이용 기간</th>
-									    </tr>
-									    </thead>
-									    <tbody>
-									    <tr>
-									        <td><b>루팡페이 주식회사</b></td>
-									        <td>루팡 아이디</td>
-									        <td><b>루팡캐시 서비스 제공</b></td>
-									        <td><b>전자상거래법에 의해 5년간 보관 후 파기</b></td>
-									    </tr>
-									    </tbody>
-									</table>
-									<div style="font-size:12px;">제공에 동의하지 않을 수 있으나, 동의하지 않으면 회원 가입에 제한이 됩니다.</div>
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>
+							
 							<div class="form-check">	
 								<input class="form-check-input" type="checkbox" name="marketing_agreement" id="marketing_agreement" value="" onchange="checkYn(this);" />
 								<label for="marketing_agreement"> [선택] 마케팅 목적의 개인정보 수집 및 이용 동의</label> 
@@ -708,8 +825,8 @@ font-size: 12px;
 							  </div>
 							</div>
 							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="agreement" id="advertisment" value="advertisment" required /> 
-								<label for="advertisment" class="required"> [선택] 광고성 정보 수신 동의</label> 
+								<input class="form-check-input" type="checkbox" name="agreement" id="advertisment" value="advertisment" /> 
+								<label for="advertisment" > [선택] 광고성 정보 수신 동의</label> 
 									<span style="float:right" data-bs-toggle="modal" data-bs-target="#staticBackdrop6">
 												 <i class="bi bi-chevron-right" id="adInfo"></i>
 									</span>
@@ -749,17 +866,9 @@ font-size: 12px;
 							  </div>
 							</div>
 							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="agreement" id="email" value="email" required /> 
-								<label for="email" class="required"> [선택]이메일 수신 동의</label> 
+								<input class="form-check-input" type="checkbox" name="agreement" id="emailsend" value="email"/> 
+								<label for="email"> [선택]이메일 수신 동의</label> 
 							</div>	
-							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="agreement" id="socialmedia" value="socialmedia" required /> 
-								<label for="socialmedia" class="required"> [선택] SMS, SNS 수신 동의</label> 
-							</div>	
-							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="agreement" id="apppush" value="apppush" required /> 
-								<label for="apppush" class="required"> [선택]앱 푸시 수신 동의</label>
-							</div>
 						</div>
 					</div>	
 					</div>	

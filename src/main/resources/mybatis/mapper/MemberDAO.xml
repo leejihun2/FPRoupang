@@ -74,7 +74,7 @@
 		bank_account, 
 		regidate)
   		VALUES(
-  		30, 
+  		#{member_idx}, 
   		#{business_num}, 
   		#{one_rep_co_rep}, 
   		#{rep_name}, #{company_name}, 
@@ -110,7 +110,7 @@
 	</update>
 
 	<update id="seller" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update member set Authority = 'seller' 
+		update member set Authority = 'Role_seller' 
 			where member_idx in
 				<foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
 	          #{member_idx}
@@ -132,7 +132,7 @@
 	
 	
 	<update id="member" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update member set Authority = 'member' 
+		update member set Authority = 'Role_member' 
 			where member_idx in <foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
 	          #{member_idx}
 	       </foreach>
