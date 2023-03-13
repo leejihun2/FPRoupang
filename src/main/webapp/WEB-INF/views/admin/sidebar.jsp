@@ -86,37 +86,6 @@
 	
 				</div>
 		</div></li>
-<<<<<<< HEAD
-
-	<!-- Divider -->
-	<hr class="sidebar-divider">
-
-	<!-- Heading -->
-	<div class="sidebar-heading">Administrator Menu</div>
-
-	<!-- Nav Item - Pages Collapse Menu -->
-	<li class="nav-item"><a class="nav-link collapsed" href="#"
-		data-toggle="collapse" data-target="#collapsePages"
-		aria-expanded="true" aria-controls="collapsePages"> <i
-			class="fas fa-fw fa-folder"></i> <span>관리</span>
-	</a>
-		<div id="collapsePages" class="collapse"
-			aria-labelledby="headingPages" data-parent="#accordionSidebar">
-			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">판매자관리</h6>
-				<a class="collapse-item" href="/admin/applicationList.do">판매권한신청리스트</a> <a
-					class="collapse-item" href="/admin/sellerList.do">판매자리스트</a> <a
-					class="collapse-item" href="/admin/blockList.do">판매차단리스트</a>
-				<div class="collapse-divider"></div>
-				<h6 class="collapse-header">Other Pages:</h6>
-				<a class="collapse-item" href="404.do">404 Page</a> 
-				<a class="collapse-item" href="utilities-other.do">문의내역</a>
-				<a class="collapse-item" href="utilities-color.do">자주 묻는 짋문</a>
-				<a class="collapse-item" href="utilities-border.do">고객의 소리</a>
-				<a class="collapse-item" href="utilities-animation.do">쿠팡소식</a>
-
-			</div>
-		</div></li>
 		
 		<!-- Nav Item - Tables -->
 		<li class="nav-item"><a class="nav-link" href="tables.do"> <i
