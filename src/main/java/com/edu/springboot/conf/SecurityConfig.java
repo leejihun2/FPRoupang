@@ -38,8 +38,8 @@ public class SecurityConfig {
 		.antMatchers("/member/**").hasAnyRole("admin", "member", "seller")
 		.antMatchers("/supports/voc.jsp").hasAnyRole("admin", "member", "seller")
 		.antMatchers("/supports/inquiry.jsp").hasAnyRole("admin", "member", "seller")
-		.antMatchers("/productInsert").hasAnyRole("admin", "seller")
 		.antMatchers("/admin/**").hasRole("admin")
+		.antMatchers("/product_insert").hasAnyRole("admin", "seller")
         .antMatchers("/agreement/**").hasAnyRole("admin", "seller")
         .antMatchers("/**").permitAll()
 		.anyRequest().authenticated();
