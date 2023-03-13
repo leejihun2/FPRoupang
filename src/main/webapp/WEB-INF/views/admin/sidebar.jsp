@@ -8,7 +8,7 @@
 	<!-- Sidebar - Brand -->
 	<a
 		class="sidebar-brand d-flex align-items-center justify-content-center"
-		href="index.do">
+		href="/admin/index.do">
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-laugh-wink"></i>
 		</div>
@@ -78,14 +78,6 @@
 				<a class="collapse-item" href="../applicationList.do">판매권한신청리스트</a> <a
 					class="collapse-item" href="../sellerList.do">판매자리스트</a> <a
 					class="collapse-item" href="../blockList.do">판매차단리스트</a>
-				<div class="collapse-divider"></div>
-				<h6 class="collapse-header">Other Pages:</h6>
-				<a class="collapse-item" href="404.do">404 Page</a> 
-				<a class="collapse-item" href="utilities-other.do">문의내역</a>
-				<a class="collapse-item" href="utilities-color.do">자주 묻는 짋문</a>
-				<a class="collapse-item" href="utilities-border.do">고객의 소리</a>
-				<a class="collapse-item" href="utilities-animation.do">쿠팡소식</a>
-
 			</div>
 		</div></li>
 	
