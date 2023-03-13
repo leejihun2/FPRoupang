@@ -36,12 +36,29 @@
 		(inquiry_seq.nextval, #{_title},#{_email}, #{_contents}, sysdate, '우뇽자', '주문내역')
 	</insert>
 	
+	<insert id="writeSupports">
+		INSERT INTO couboard (idx, contents, email, regidate, categorycode, contact, title)
+		VALUES
+		(couboard_seq.nextval, #{_contents}, #{_email}, sysdate, #{_categorycode}, #{_contact}, #{_title})
+	</insert>
+
 	<update id="modify" parameterType="com.edu.springboot.jdbc.SupportsDTO">
-		UPDATE couboard
-		SET name=#{name}, contents=#{contents}
+		UPDATE inquiry
+		SET contents=#{contents}
 		WHERE idx=#{idx} AND email=#{email}
 	</update>
+	
+	<update id="modifySupports" parameterType="com.edu.springboot.jdbc.SupportsDTO">
+		UPDATE couboard
+		SET categorycode=#{categorycode}, contact=#{contact}, title=#{title}, contents=#{contents}
+		WHERE idx=#{idx}
+	</update>
 
+	<select id="view" resultType="com.edu.springboot.jdbc.SupportsDTO"
+		parameterType="com.edu.springboot.jdbc.SupportsDTO">
+		SELECT * FROM couboard WHERE idx=#{idx}
+	</select>
+	
 	<delete id="delete">
 		DELETE FROM couboard WHERE idx=#{param1} AND email=#{param2}
 	</delete>
