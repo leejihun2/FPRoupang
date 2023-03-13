@@ -15,7 +15,7 @@
 	<select id="select"
 	parameterType="com.edu.springboot.jdbc.MemberDTO"
 	resultType="com.edu.springboot.jdbc.MemberDTO">
-	select email, name from member where name= #{name} and phone_number=#{phone_number}
+	select email, name from member where name=#{name} and phone_number=#{phone_number}
 	</select>
 	<select id="idx" resultType="String" parameterType="com.edu.springboot.jdbc.MemberDTO">
 		select member_idx from member where email=#{email}
@@ -53,7 +53,6 @@
 	resultType="String">
 		select email from member where email=#{email}
 	</select>
-	
 	<select id="name" parameterType="com.edu.springboot.jdbc.MemberDTO" 
 	resultType="String">
 		select name from member where email=#{email}
@@ -113,7 +112,7 @@
 	</update>
 
 	<update id="seller" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update member set Authority = 'seller' 
+		update member set Authority = 'Role_seller' 
 			where member_idx in
 				<foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
 	          #{member_idx}
@@ -135,7 +134,7 @@
 	
 	
 	<update id="member" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update member set Authority = 'member' 
+		update member set Authority = 'Role_member' 
 			where member_idx in <foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
 	          #{member_idx}
 	       </foreach>

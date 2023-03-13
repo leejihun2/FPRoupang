@@ -6,57 +6,18 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-	<title>Chating</title>
-	<style>
-		*{
-			margin:0;
-			padding:0;
-		}
-		.container{
-			width: 500px;
-			margin: 0 auto;
-			padding: 25px
-		}
-		.container h1{
-			text-align: left;
-			padding: 5px 5px 5px 15px;
-			color: #FFBB00;
-			border-left: 3px solid #FFBB00;
-			margin-bottom: 20px;
-		}
-		.chating{
-			background-color: #000;
-			width: 500px;
-			height: 500px;
-			overflow: auto;
-		}
-		.chating .me{
-			color: #F6F6F6;
-			text-align: right;
-		}
-		.chating .others{
-			color: #FFE400;
-			text-align: left;
-		}
-		input{
-			width: 330px;
-			height: 25px;
-		}
-		#yourMsg{
-		}
-	</style>
+<title>Chating</title>
+<link rel="stylesheet" href="../chatcss/chat.css" type="text/css" />
 </head>
-
 <script type="text/javascript">
 	var ws;
-	onload = function (){
+    onload = function (){
 		$('#startBtn').trigger('click');
 	}
-	var webSocket = new WebSocket();
 	function webClose(){
 		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#room_idx").val());
-		ws.close;
-		location.href = 'login';
+		ws.close();
+		location.href = '/supports/room.do';
 	}
 	function wsOpen(){
 		//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
@@ -80,10 +41,10 @@
 						$("#sessionId").val(si); 
 					}
 				}else if(d.type == "message"){
-					if(d.sessionId == $("#sessionId").val()){
-						$("#chating").append("<p class='me'>나 :" + d.msg + "</p>");	
+					if(d.sessionId == $("#sessionId").val()){  
+						$("#chating").append("<div class='me' style='margin-top:10px;'><div class='sender'>"+d.userName+"</div><div class='b'></div><div class='a'style='padding:6px 8px 0px 5px;'>" + d.msg + "</div></div>");	
 					}else{
-						$("#chating").append("<p class='others'>" + d.userName + " :" + d.msg + "</p>");
+						$("#chating").append("<div class='others' style='margin-top:10px;'><div class='sender'>"+d.userName+"</div><div class='a'></div><div class='b'></div><div class='b'  style='padding:6px 8px 0px 5px;'>" + d.msg + "</div></div>");
 					}
 						
 				}else{
@@ -91,7 +52,6 @@
 				}
 			}
 		}
-
 		document.addEventListener("keypress", function(e){
 			if(e.keyCode == 13){ //enter press
 				send();
@@ -122,26 +82,38 @@
 		ws.send(JSON.stringify(option))
 		$('#chatting').val("");
 	}
+
 </script>
 <body>
 	<div id="container" class="container">
-		<h1>채팅상담</h1>
+		<div id="header">	
+			<h3><img src="https://cdn-icons-png.flaticon.com/512/6718/6718168.png
+			"style="width: 30px; border: 3px solid #2f7bed; border-radius: 30px; padding: 2px;" />
+			<span style="position: absolute; left: 98px;top:48px;">1:1 채팅상담</span><button onclick="webClose()" id="closeBtn">상담 종료하기</button></h3>
+		</div>	
+		
 		<input type="hidden" id="sessionId" value="${user_id }">
 		<input type="hidden" id="room_idx" value="${room_idx}">
-			<div id="chating" class="chating">
+		<div id="chating" class="chating">
+			<div style="justify-content: center; display: flex;"></div><br />
 		<c:forEach items="${selectchat}" var="row">
 				<!-- idx부분을 조인을 통해 이름값을 가져오게 수정 -->
-				<span style="color: white;">${row.member_idx}:</span>
-				<p style="color: white;">${row.chatting }</p>
+				<%-- <span style="color: white;">${row.member_idx}:</span> --%>
+				<c:if test="${row.member_idx ne 1 }">
+				<p class='me' style="color: gray;">${row.chatting }</p>
+				</c:if>
+				<c:if test="${row.member_idx eq 1 }">
+				<p class='others' style="color: gray;">상담사 : ${row.chatting }</p>
+				</c:if>
 		</c:forEach>
 			</div>
 		<div id="yourName">
 		
 			<table class="inputTable">
 				<tr>
-					<th>
+					<th> 
 						<input type="hidden" name="member_idx" id="member_idx"  value="${idx}"><br />
-						<input type="hidden" name="userName" id="userName" value="${siteUserInfo }">
+						<input type="hid den" name="userName" id="userName" value="${username }">
 					</th>
 					<th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
 				</tr>
@@ -150,10 +122,13 @@
 		<div id="yourMsg">
 			<table class="inputTable">
 				<tr>
-					<th>메시지</th>
-					<th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
-					<th><button onclick="send()" id="sendBtn">보내기</button></th>
-					<th><button onclick="webClose()" id="closeBtn">종료하기</button></th>
+					<th><input id="chatting" placeholder="문의 사항을 입력해주세요."></th>
+					<th>
+						<button style="border : none;background-color: white;" onclick="send()" id="sendBtn">
+							<img style="width: 35px; background-color: white;"
+							src="https://cdn-icons-png.flaticon.com/512/4436/4436864.png" alt="" />
+						</button>
+					</th>
 				</tr>
 			</table>
 		</div>

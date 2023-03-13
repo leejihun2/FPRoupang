@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface CategoryService {
 	public ArrayList<ParameterTicketDTO> select_cate(int sub_idx);
+	public ArrayList<ParameterTicketDTO> select_cate2(int sub_idx);
 	
 	public ArrayList<ParameterTicketDTO> select_cate_bot(int sub_idx, String company_name);	
 	

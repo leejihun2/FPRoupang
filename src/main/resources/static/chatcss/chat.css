@@ -1,0 +1,100 @@
+@charset "UTF-8";
+*{
+	margin:0;
+	padding:0;
+}
+.container{
+	width: 500px;
+	margin: 0 auto;
+	padding: 25px
+}
+.container h3{
+	text-align: left;
+	padding: 15px 15px 15px 15px;
+	color: black;
+	border-left: 3px solid #2f7bed;
+	margin-bottom: 20px;
+	margin-right:0px;
+	background-color: rgb(235, 240, 254);
+	height: 30px;
+}
+.container h3 button{
+	float: right;
+	border: 1px solid #2f7bed;
+	border-radius : 4px;
+	background-color: white;
+	width: 100px;
+	padding : 3px;
+	height: 30px;
+	font-weight :bold;
+	color: #2f7bed;
+}
+.chating{
+	background-color: #fff;
+	width: 500px;
+	height: 500px;
+	overflow: auto;
+}
+#chatting{
+	border-radius: 15px;
+	padding : 3px;
+	border: 1px solid #e6e6e6;
+	width: 450px;
+}
+input#chatting:focus {
+	outline:none;
+}
+.chating .me{
+	float: right;
+	width: 100%;
+}
+.chating .me .a{
+	color:white;
+	float: right;
+	position: relative;
+	min-height: 24px;
+	max-width: calc(100% - 64px);
+	left: 2px;
+	background-color: #9bbad8;
+	border-radius: 5px;
+	z-index: 2;
+	padding: 0px 4px 0px 4px;
+	word-break: break-all;
+}
+.chating .me .b{
+	float: right;
+	position: relative;
+	width: 8px;
+	height: 22px;
+	z-index: 1;
+}
+.chating .others{
+	float: left;
+	width: 100%;
+}
+.chating .others .a{
+	float: left;
+	position: relative;
+	width: 8px;
+	height: 22px;
+	z-index: 1;
+}
+
+.chating .others .b{
+	color:white;
+	float: left;
+	position: relative;
+	min-height: 24px;
+	max-width: calc(100% - 64px);
+	left: -2px;
+	background-color: #9bbad8;
+	border-radius: 5px;
+	z-index: 2;
+	word-break: break-all;
+}
+.chating .others .sender { font-weight: bold; font-size: 12px; margin-bottom: 5px;}
+.chating .me .sender { font-weight: bold; text-align: right; font-size: 12px; margin-bottom: 5px;}
+input{
+	width: 330px;
+	height: 25px;
+}

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.MemberDTO;
@@ -41,28 +43,37 @@ public class MemberController {
 //	public String home() {
 //		return "home";
 //	}
-	//패스워드 암화를 위한 메서드 
-	public PasswordEncoder passwordEncoder() {
-		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-	}
-	
 	@RequestMapping(value = "/regist.do", method = RequestMethod.GET)
 	public String member1() {
 		return "/member/regist";
 	}
-	
-	
+	//패스워드 암화를 위한 메서드 
+	public PasswordEncoder passwordEncoder() {
+		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+	}
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public String member6(MemberDTO memberDTO, HttpServletRequest req) {
 		
 		System.out.println(memberDTO);
 		 memberDTO.setPassword(passwordEncoder().encode(req.getParameter("password")));
+
+		 if(memberDTO.getMarketing_agreement() == null) {
+			 memberDTO.setMarketing_agreement("0");
+		 }
+		 System.out.println(memberDTO);
+		 
+
 		System.out.println(memberDTO);
+
 		 int result = dao.insert(memberDTO);
 		 
 		 if(result==1) System.out.println("입력되었습니다.");
 		
+
+		
+
 		 return "/myLogin.do";
+
 	}
 	
 	@RequestMapping(value="/search_id.do", method=RequestMethod.GET)
@@ -113,9 +124,11 @@ public class MemberController {
 
 		// 세션영역에 저장되있던 임시 비밀번호를 암호화해서 setPassword
 		memberDTO.setPassword(passwordEncoder().encode(keyCode));
-
+		//암호화 처리가 끝나고 sessionremove
+		session.removeAttribute(keyCode);
+		
 		int result = dao.tempPass(memberDTO);
-
+		
 		System.out.println("수정된 행의 갯수: " + result);
 		}
 		return "member_info";
@@ -277,6 +290,28 @@ public class MemberController {
 		
         return "redirect:/blockList.do";
 	}
+	
+	@RequestMapping("/appDelete.do")
+	public String appDelete(SellRightDTO sellRightDTO, HttpServletRequest req) {
+		
+		System.out.println(req.getParameter("value"));
+		String value= req.getParameter("value");
+		
+		String[] list = value.split(",");
+		List<String> val = new ArrayList<String>();
+		
+		for(int i = 0 ; i < list.length ; i++) {
+			val.add(list[i]);
+			System.out.println(val);
+		}
+//		sellRightDTO.setMember_idx(val);
+		dao.situation_Delete(val);
+		
+//		
+        return "redirect:/admin/index.do";
+	}
+	
+	
 	
 	@RequestMapping("/applicationList.do")
 	public String appList(Model model, SellRightDTO sdto) {

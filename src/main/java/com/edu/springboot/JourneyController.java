@@ -461,6 +461,12 @@ public class JourneyController {
 		journey_dao.delete_journey_info(val, company_name);
 		return "/home";
 	}
+	@RequestMapping("/journeyView")
+	public String view() {
+		
+		return "journey/journeyView";
+	}
+	
 	@RequestMapping("/journey_List")
 	public ModelAndView show_Journey_List(HttpServletRequest req, HttpSession session, TotalJourneyDTO totaljourneyDTO) {
 		ModelAndView mv = new ModelAndView();

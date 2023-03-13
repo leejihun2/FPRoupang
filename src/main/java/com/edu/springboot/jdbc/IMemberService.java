@@ -52,6 +52,8 @@ public interface IMemberService {
 		
 		public int situation_block(List<String>member_idx);
 		
+		public int situation_Delete(List<String>member_idx);
+		
 		public int member(List<String>member_idx);
 		
 		
