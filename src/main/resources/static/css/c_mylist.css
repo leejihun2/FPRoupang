@@ -1,0 +1,272 @@
+
+/*  */
+.titlett{
+	font-size: 24px;
+	color:#1e1e1e;
+	margin-bottom: 15px;
+}
+
+/* 비밀번호 폼*/
+.login-tf,.find-id-name-tf,.find-id-phone-tf,.find-id-auth-tf,.fp1,.fpe1,.fptpt,.usermodify-auth-password-tf,.uemail-tf,.uemail-c-tf,.uphone-tf,.uphone-auth-tf,.uct,.pass-n-tf,.newpass,.uphone-select {
+    border: 1px solid #ccc;
+    vertical-align: middle
+}
+
+/* 비밀번호 폼*/
+.login-tf,.find-id-name-tf,.find-id-phone-tf,.find-id-auth-tf,.fp1,.fpe1,.fptpt,.usermodify-auth-password-tf,.uemail-tf,.uemail-c-tf,.uphone-tf,.uphone-auth-tf,.uct,.pass-n-tf,.newpass {
+    height: 22px;
+    padding: 2px 5px;
+    line-height: 22px
+}
+/**/
+.member__input-guide-line:first-of-type {
+    margin-top: 6px
+}
+
+/*회원가입폼*/
+.find-id-table,.find-password-table,.tab,.edtable,.pincode-input__table {
+    width: 100%;
+    border-top: 2px solid #969696;
+    border-collapse: collapse
+}
+
+/*회원가입폼*/
+.find-id-table th,.find-password-table th,.tab th,.edtable th,.pincode-input__table th,.find-id-table td,.find-password-table td,.tab td,.edtable td,.pincode-input__table td {
+    padding: 14px 30px;
+    border-bottom: 1px solid #ddd
+}
+/*회원가입폼*/
+.find-id-table th,.find-password-table th,.tab th,.edtable th,.pincode-input__table th {
+    background-color: #eef1f8;
+    text-align: left;
+    white-space: nowrap
+}
+/**/
+body {
+    -webkit-text-size-adjust: none;
+    font-family: dotum,sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #666;
+    background: #f5f5f5 url("//img1a.coupangcdn.com/image/www/header/v1/bg_body.gif")
+}
+/**/
+div.member-container {
+    min-height: 900px;
+    padding: 50px;
+    background-color: #fff;
+    border: 1px solid #ccc
+}
+
+/*버튼*/
+.usess-btn,.uemail-c-btn,.uname-cname-btn,.userphone,
+.uphone-auth-resend,.pass-sub,.usermodify-util-button,.p-cancel,
+.find-id-auth-send-btn,.find-id-auth-submit-btn,.uemail-c-auth-send,
+.uemail-c-submit,.uemail-c-resend,.uname-auth-phone-btn,.uphone-auth-send-submit,
+.uphone-auth-submit,.usermodify-submit,.pincode-content__button,.find-id-mailmember-join,
+.find-id-auth-resend-btn,.usermodify-auth-cancel,.uemail-c-cancel,.uemail-c-done-cancel,.uphone-cancelc,
+.uphone-auth-cancel,.emailonly-btn-join,.login-joinbox-link,.login-submit,.activate-submit,
+.find-id-by-auth-phone-btn,.find-id-result-login-btn,.find-dormant-id-result-email-send-btn,
+.find-password-selecttype-submit-btn,.find-password-reset-submit-btn,.find-password-result-login-btn,
+.find-password-nomember-join,.secession-step2-submit,.secession-poll-submit,.secession-done-btn,.usermodify-complete-mailc-login,.usermodify-complete-mailc-gohome,.couponsms-sms-send,.couponsms-mms-send,.couponsms-cancel {
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid #0085da;
+    text-decoration: none;
+    vertical-align: middle;
+    text-align: center
+}
+
+/*버튼*/
+.usess-btn {
+    display: inline-block;
+    padding: 3px 6px;
+    border-radius: 2px;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: -1px
+}
+
+/*버튼*/
+.uemail-c-btn,.uname-cname-btn,.userphone,.uphone-auth-resend,.pass-sub,.usermodify-util-button,.p-cancel,.find-id-auth-send-btn,.find-id-auth-submit-btn,.uemail-c-auth-send,.uemail-c-submit,.uemail-c-resend,.uname-auth-phone-btn,.uphone-auth-send-submit,.uphone-auth-submit,.usermodify-submit,.pincode-content__button,.find-id-mailmember-join,.find-id-auth-resend-btn,.usermodify-auth-cancel,.uemail-c-cancel,.uemail-c-done-cancel,.uphone-cancelc,.uphone-auth-cancel {
+    min-width: 40px;
+    *min-width: auto;
+    padding: 5px 10px;
+    *padding: 4px 5px 3px;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 14px
+}
+
+
+/*버튼*/
+.uemail-c-btn,.uname-cname-btn,.userphone,.uphone-auth-resend,.pass-sub,.usermodify-util-button,.p-cancel,.pincode-content__button {
+    border-color: #bcbfc6;
+    color: #777;
+    background-color: #fafbf6;
+    background-image: linear-gradient(#fff,#f1f1f1)
+}
+
+
+/*회원탈퇴 버튼*/
+.usess-btn {
+    border-color: #898989;
+    color: #fff;
+    background-color: #a8a8a8
+}
+
+/**/
+.modal-active {
+    position: relative;
+    overflow: hidden
+}
+
+ /**/
+.uemail-c-done {
+    margin-top: 14px;
+    display: none
+}
+
+/*휴대번호변경 버튼*/
+.upcunum {
+    margin-right: 1em
+}
+/**/
+.edtable .userpass th {
+    font-weight: normal;
+    padding: 5px 6px 11px 0;
+    background-color: #fff;
+    white-space: nowrap;
+    width: 1%
+}
+ /**/
+.edtable .userpass th,.edtable .userpass td {
+    border-bottom: 0
+}
+/**/
+.edtable .userpass td {
+    border-left: 0
+}
+
+/**/
+.pass-sub {
+    margin-top: 10px
+}
+
+
+/*전문보기*/
+.texb {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle
+}
+
+/*전문보기*/
+.texb button {
+    background-color: transparent;
+    border-radius: 4px;
+    border-style: none;
+    border-width: 0;
+    color: inherit;
+    display: block;
+    height: 100%;
+    margin: 0;
+    max-width: 328px;
+    outline: 0;
+    padding: 0;
+    text-align: center;
+    width: 100%
+}
+
+/**/
+.texb--xs button {
+    font-size: 12px;
+    height: 26px
+}
+
+/**/
+.g5 {
+    color: #aaa !important
+}
+
+/**/
+.rds-popup--visible .rds-popup__wrapper {
+    -webkit-animation: fadeIn .3s linear both;
+    animation: fadeIn .3s linear both
+}
+
+
+
+
+/**/
+.ml22 {
+    margin-left: 22px;
+    margin-bottom: 17px;
+    
+}
+
+.marsns{
+    margin-bottom: 23px
+    
+}
+
+ /**/
+ .mt18 {
+    margin-top: 18px
+}
+/**/
+.rdh {
+    height: 1px !important
+}
+
+
+/**/
+.mr-sub {
+    margin: 10px 0 0
+}
+
+/**/
+.mlw-ads label:not(:last-child) {
+    margin-right: 10px
+}
+ /**/
+.mlw-ads input {
+    margin-right: 6px
+}
+
+/*히든 루팡*/
+.dn {
+    display: none
+}
+
+/**/
+.usess {
+    margin-top: 10px;
+    text-align: right;
+    color: #97979f
+}
+
+/*나가기 버튼*/
+.uf {
+    text-align: center;
+    margin-top: 30px
+}
+/*그리드 */
+.uinputtb th,.uinputtb td {
+    vertical-align: top;
+    padding: 0 0 11px 0
+}
+/*ㅎㄱ*/
+.attempt-limitation-modal__close {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    border: 0
+}
+ /*ㅎㄱ*/
+.scoped-modal__container>.scoped-modal__blocker {
+    opacity: .4;
+    filter: alpha(opacity=40)
+}
+
+
