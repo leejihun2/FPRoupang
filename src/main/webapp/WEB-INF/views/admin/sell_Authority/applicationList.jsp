@@ -46,13 +46,7 @@ td, th {
 			$('.checkbox_group1').prop('checked', false);
 		}
 	});
-	$(document).on('click', '#checkAll2', function() {
-		if ($('#checkAll2').is(':checked')) {
-			$('.checkbox_group2').prop('checked', true);
-		} else {
-			$('.checkbox_group2').prop('checked', false);
-		}
-	});
+	
 
 	$(function(){
 		$("#blockSell").click(function(){
@@ -79,7 +73,7 @@ td, th {
 	$(function(){
 		$("#approveSell").click(function(){
 			var approve_val=[];
-			$("[name=public2]").each(function(idx){
+			$("[name=public1]").each(function(idx){
 				if($(this).is(":checked")==true){
 					approve_val.push($(this).val());
 					console.log(approve_val);
@@ -137,9 +131,6 @@ td, th {
 							<th>전체선택 <input class="checkbox_group1" type="checkbox"
 								name="checkAll1" id="checkAll1" />
 							</th>
-							<th>전체선택 <input class="checkbox_group2" type="checkbox"
-								name="checkAll2" id="checkAll2" />
-							</th>
 							</tr>
 							<c:forEach items="${lists }" var="row" varStatus="loop">
 								<tr>
@@ -154,9 +145,7 @@ td, th {
 									<td><input style='zoom: 1.5;' class="checkbox_group1" name="public1"
 										type="checkbox" value="${row.member_idx }"
 										id="flexCheckDefault"></td>
-									<td><input style='zoom: 1.5;' class="checkbox_group2" name="public2"
-										type="checkbox" value="${row.member_idx }"
-										id="flexCheckDefault"></td>	
+									<td>
 								</tr>
 							</c:forEach>
 							<tr style="border-bottom: hidden;">
@@ -164,13 +153,12 @@ td, th {
 								<td></td>
 								<td></td>
 								<td></td>
-								<td></td>
+								<td><button class="btn btn-outline-secondary" id="approveSell" type="button">승인하기</button>
+								</td>
 								<td>
 									<button class="btn btn-outline-secondary" id="blockSell" type="button">차단하기</button>
 								</td>
-								<td>
-									<button class="btn btn-outline-secondary" id="approveSell" type="button">승인하기</button>
-								</td>
+								
 							</tr>
 						</table>
 					</form>

@@ -250,11 +250,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	<!-- 예약일, 인원 설정없이 기본 -->
  	<select id="show_journey_list" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
- 		SELECT idx, ji_price, j_title_image, ji_title, ji_discount, title
- 		FROM (SELECT bot_idx, ji_price, ji_title, ji_discount,
- 					RANK() OVER (PARTITION BY bot_idx ORDER BY ji_price ASC) rk
-        	FROM journey_info
-        <choose>
+ 		select * from (select bot_idx, location, j_title_image
+                from journey where 
+                	location like '%'||#{location}||'%'
+                ) j join
+            (select bot_idx, ji_price, ji_discount,
+            RANK() OVER (PARTITION BY bot_idx ORDER BY ji_price ASC) rk
+            from journey_info
+        <!-- <choose>
         	<when test='ji_duetime1==""'>
 		        <choose>
 		        	<when test="ji_kid != null">
@@ -283,13 +286,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		             </otherwise>
 		         </choose>
 	         </otherwise>
-         </choose>)ji
-            		JOIN journey j ON ji.bot_idx=j.bot_idx 
- 			JOIN (SELECT * FROM bot_category WHERE sub_idx=#{sub_idx}) bc
- 			ON bc.idx = ji.bot_idx WHERE rk=1 ORDER BY idx
+         </choose> -->
+ 			order by ji_price asc) ji on j.bot_idx = ji.bot_idx join
+            (select * from bot_category where sub_idx = #{sub_idx}) bc 
+            on bc.idx = ji.bot_idx where rk = 1 order by idx
  	</select>
  	<!-- 지역 -->
- 	<select id="like_journey_List" parameterType="com.edu.springboot.jdbc.JourneyDTO" resultType="String">
- 		select location from journey where location like '%'||#{param1}||'%'
+ 	<select id="like_journey_List" parameterType="com.edu.springboot.jdbc.TotalJourneyDTO" resultType="String">
+ 		select distinct location from journey where location like '%'||#{param1}||'%'
  	</select>
  </mapper>

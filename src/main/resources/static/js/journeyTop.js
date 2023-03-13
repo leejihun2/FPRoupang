@@ -6,12 +6,12 @@ function ticketchange(){
 	    $("#dynamicCal").css("display","none");
 	    $("#staticCal").css("display","block")	
 		$("#kidadult").css("display","block")
-		$("#sub_idx").val(1);
+		$("#sub_idx").val(2);
 }
 /* 여행 search 활성화 */
 function journeychange(){
 		$("#journeySearch").css("display","block");
-		$("#sub_idx").val(2);
+		$("#sub_idx").val(1);
 	    $("#ticketSearch").css("display","none");
 	    $("#recommendSelect_t").css("display","none");
 }
@@ -69,7 +69,7 @@ $(function() {
 	 });
   });
   $(".wizard-search-btn").click(function(){
-		  if($("#sub_idx").val()==2){
+		  if($("#sub_idx").val()==1){
 		     if(jSearchBox.value==""){
 			  
 			  alert("안돼 돌아가");

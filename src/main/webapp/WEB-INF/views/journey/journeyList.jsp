@@ -20,8 +20,34 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e6076fe794faf6e2a97f29c6ebfadce5&libraries=services"></script>
 <script src="./js/journeyTop.js"></script>
 </head>
+<script type="text/javascript">
+onload = function(){
+	var mapContainer = document.getElementById('map'),
+	mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 11};  
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	var geocoder = new kakao.maps.services.Geocoder();
+	// 주소로 좌표를 검색합니다 (membership테이블에 사업장 주소명을 파라미터로 받는다.])
+	geocoder.addressSearch('제주도', function(result, status) {
+	// 정상적으로 검색이 완료됐으면 
+	 if (status === kakao.maps.services.Status.OK) {
+	    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	    // 결과값으로 받은 위치를 마커로 표시
+	    var marker = new kakao.maps.Marker({
+	        map: map,
+	        position: coords
+	    });
+    	// 인포윈도우로 장소에 대한 설명을 표시
+	    var infowindow = new kakao.maps.InfoWindow({});
+	    infowindow.open(map);
+	    map.setCenter(coords);
+		} 
+	});  
+}
+</script>
     <style>
     .sticky {
 	  position: -webkit-sticky;
@@ -152,46 +178,53 @@
    			</div>
    		</section>
    		<section class="search-result">
-			<ul class="search-items">
-			<c:if test="${not empty search_list or not empty like_loc}">
-				<c:forEach items="${journey_list }" var="journey" varStatus="loop">
-		  			<li class="search-item">
-		  				<a href="journeyDetail?value=${journey.idx }" target="_blank">
-	 					<div class="journey_img" style="background-image:url(/uploads/${journey.j_title_image })"></div>
-		 					<div class="journey_title">
-		 						${journey.title }
-		 					</div>
-			  				<c:choose>
-			  					<c:when test="${journey.ji_discount ne 0 }">
-			  						<div class="journey_discount">
-			  							<del><fmt:formatNumber value="${journey.ji_price}"/></del>원
-			  							${journey.ji_discount }%
-			  						</div>
-			  						<div class="journey_price" style="color:rgb(174,0,0);">
-			   						<em><b><fmt:formatNumber value="${(journey.ji_price)*(100-journey.ji_discount)/100 }"/></b></em>원 	
-			  						</div>
-			  					</c:when>
-			  					<c:otherwise>
-			  						<div class="journey_price">
-			   						<em><b><fmt:formatNumber value="${journey.ji_price}"/></b></em>원 	
-			  						</div>
-			  					</c:otherwise>
-			  				</c:choose>
-			  				<span class="journey_price_descipt">
-			   					${journey.ji_title } 기준
-			  				</span>
-			  				<div class="cashback-area">
-			  					<div class="search-item-cash-back">
-				  					<span class="cash-text">
-					  					최대 <fmt:formatNumber value="${(journey.ji_price)*(100-journey.ji_discount)/100*0.05 }"/>원 적립
+   			<div class="row">
+	   			<div class="col-9">
+					<ul class="search-items">
+		<%-- 			<c:if test="${not empty search_list or not empty like_loc}">
+		--%>			<c:forEach items="${journey_list }" var="journey" varStatus="loop">
+				  			<li class="search-item">
+				  				<a href="journeyDetail?value=${journey.idx }" target="_blank">
+			 					<div class="journey_img" style="background-image:url(/uploads/${journey.j_title_image })"></div>
+				 					<div class="journey_title">
+				 						${journey.title }
+				 					</div>
+					  				<c:choose>
+					  					<c:when test="${journey.ji_discount ne 0 }">
+					  						<div class="journey_discount">
+					  							<del><fmt:formatNumber value="${journey.ji_price}"/></del>원
+					  							${journey.ji_discount }%
+					  						</div>
+					  						<div class="journey_price" style="color:rgb(174,0,0);">
+					   						<em><b><fmt:formatNumber value="${(journey.ji_price)*(100-journey.ji_discount)/100 }"/></b></em>원 	
+					  						</div>
+					  					</c:when>
+					  					<c:otherwise>
+					  						<div class="journey_price">
+					   						<em><b><fmt:formatNumber value="${journey.ji_price}"/></b></em>원 	
+					  						</div>
+					  					</c:otherwise>
+					  				</c:choose>
+					  				<span class="journey_price_descipt">
+					   					${journey.ji_title } 기준
 					  				</span>
-				  				</div>
-			  				</div>
-		  				</a>
-	 				</li>
-				</c:forEach>
- 				</c:if>
-			</ul>
+					  				<div class="cashback-area">
+					  					<div class="search-item-cash-back">
+						  					<span class="cash-text">
+							  					최대 <fmt:formatNumber value="${(journey.ji_price)*(100-journey.ji_discount)/100*0.05 }"/>원 적립
+							  				</span>
+						  				</div>
+					  				</div>
+				  				</a>
+			 				</li>
+						</c:forEach>
+		 			<%-- 	</c:if> --%>
+					</ul>
+				</div>
+				<div class="col-3 basis-location introduction-item">
+						<div id="map" style="width:100%;height:500px;"></div>
+	        	</div>
+			</div>
 		</section>
 	</div>
 </body>

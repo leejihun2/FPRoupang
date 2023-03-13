@@ -10,7 +10,7 @@
 		insert into chat_log(room_idx, member_idx) values(room_idx.nextval,#{member_idx})
 	</insert>
 	<insert id="savechatting" parameterType="com.edu.springboot.jdbc.Room">
-		insert into chat_log(room_idx, member_idx, chatting) values(room_idx.currval,#{member_idx},#{chatting})
+		insert into chat_log(room_idx, member_idx, chatting, regidate) values(room_idx.currval,#{member_idx},#{chatting},sysdate)
 	</insert>
 	<select id="getRoom" parameterType="String" resultType="com.edu.springboot.jdbc.Room">
 		select distinct room_idx, member_idx, regidate from chat_log where member_idx=#{member_idx}

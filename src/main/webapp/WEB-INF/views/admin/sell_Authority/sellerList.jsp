@@ -68,7 +68,7 @@ td, th {
 				alert("차단할 판매자 계정을 하나 이상 선택해주세요.");
 				return false;
 			}
-			if(confirm("선택한 "+block_val.length+"개의 계정을 차단하시겠습니까?")){
+			if(confirm("선택한 "+block_val.length+"개의 계정을 삭제하시겠습니까?")){
 					location.href="/appRegect.do?value="+block_val;
 					alert(block_val);
 			}

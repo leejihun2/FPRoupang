@@ -41,7 +41,7 @@ public interface JourneyService {
 	public ArrayList<JourneyDTO> journey_Total_image(List<String> bot_idx);
 	public ArrayList<JourneyInfoDTO> journeyinfo_Total_image(List<String> bot_idx);
 	
-	public String like_journey_List(String location);
+	public ArrayList<String> like_journey_List(String location);
 	
 	public ArrayList<TotalJourneyDTO> show_journey_list(TotalJourneyDTO totaljourneyDTO);
 	public ArrayList<TotalJourneyDTO> show_journey_list_addP(int sub_idx, int ji_adult, int ji_kid);

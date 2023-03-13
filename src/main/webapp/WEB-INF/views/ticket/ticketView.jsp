@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,27 +29,62 @@
     <link rel="stylesheet" href="./css/main.css" type="text/css">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
-    <style>
-    .sticky {
-	  position: -webkit-sticky;
-	  position: sticky;
-	  top: 0;
-	}
-	.search_title{
-	    color: #fff;
-	    font-size: 16px;
-	    line-height: 25px;
-	    font-weight: 400;
-	    letter-spacing: -1px;
-	}
-	.search_title>img {
-	    display: block;
-	    margin: 3px 0;
-	    width: 88px;
-	    height: 15px;
-	}
-	</style>
-<body style="background-color: white;">
+<style>
+.sticky {
+  position: sticky;
+  top: 0;
+}
+.search_title{
+    color: #fff;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 400;
+    letter-spacing: -1px;
+}
+.search_title>img {
+    display: block;
+    margin: 3px 0;
+    width: 88px;
+    height: 15px;
+}
+.category-item{
+    width: 13%;
+    margin-right: 20px;
+}
+.category-item>a {
+    display: block;
+    border: 1px solid #eee;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.ticket_sub_category>img {
+    width: 100%;
+    height: 90px;
+}
+.category-item>a .cate_name{
+    width: 15%;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #777;
+    height: 50px;
+    padding: 0 10px;
+}
+.main-banner {
+    position: relative;
+    height: 450px;
+    background: #fafafa;
+}
+.banner-image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -960px;
+}
+</style>
+<body style="background-color: white; overflow-x: hidden; overflow-y: auto;">
     <!-- top.html에서 인클루드 -->
     <div id="top" style="margin-bottom:0px;">
         <%@include file="../top.jsp" %>
@@ -80,27 +116,43 @@
     </nav>
     <div class="container" style="margin-top:0px;">
     	<section class="category-c1-banners">
+    		<div class="main-banner">
+    			<a><img src="/uploads/에버랜드특가.jpg" class="banner-image"/></a>
+    		</div>
     		<div class="sub-category">
     			<h2>티켓/패스 카테고리</h2>
     			<ul>
     				<li class="category-item">
-    					<a href="ticket_List?category=2">
-   							<span class="cate_name">스키/눈썰매장</span>
-    					</a>
-    				</li>
-    				<li>
-    					<a href="ticket_List">
-   							<span class="cate_name">스파/온천/워터파크</span>
-    					</a>
-    				</li>
-    				<li>
     					<a href="ticket_List?category=1">
-   							<span class="cate_name">테마파크</span>
+    					<div class="ticket_sub_category"><img src="/uploads/테마파크.jpg"/></div>
+   						<span class="cate_name">테마파크</span>
+    					</a>
+    				</li>
+    				<li class="category-item">
+    					<a href="ticket_List?category=1">
+    					<div class="ticket_sub_category"><img src="/uploads/워터파크.jpg"/></div>
+   						<span class="cate_name">스파/온천/워터파크</span>
+    					</a>
+    				</li>
+    				<li class="category-item">
+    					<a href="ticket_List?category=1">
+    					<div class="ticket_sub_category"><img src="/uploads/공연.png"/></div>
+   						<span class="cate_name">공연/전시</span>
+    					</a>
+    				</li>
+    				<li class="category-item">
+    					<a href="ticket_List?category=1">
+    					<div class="ticket_sub_category"><img src="/uploads/엑티비티.jpg"/></div>
+   						<span class="cate_name">액티비티</span>
     					</a>
     				</li>
     			</ul>
     		</div>
     	</section>
 	</div>
+	
+	<div id="copyright">
+		<c:import url="../copyright.jsp"></c:import>
+    </div>
 </body>
 </html>

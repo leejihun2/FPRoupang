@@ -47,7 +47,6 @@ function setSelectBox(obj){
    $('#detail_list').css("display","none");
    
    if(sub_idx!=''){
-	  alert(sub_idx);
       if(level <= 1){
          $('#product_list').empty();
          if(level == 1){
@@ -90,7 +89,6 @@ function setSelectBox(obj){
             );
          //여행 idx 번호
          }else if($("#category1").val()==9){
-        	 alert("ㅋㅋ"+$("#category1").val());
             $.post(
                "/category_list.j"
                ,{level : $(obj).attr('id').substr(-1,1), sub_idx : $(obj).val(), company_name : $("#company_name").val()}
@@ -589,7 +587,7 @@ function service_list(e){
    var chkbox = "<input type='checkbox' id='nofac' name='t_fac' value='' onclick='noChk(this)' />없음";
    briefinfo+=chkbox+'</td></tr>';
    
-   briefinfo+='<tr><th>포함사항</th><td><textarea id="t_incmatters" name="t_incmatters"></textarea></td></tr>'
+   briefinfo+='<tr><th>포함사항</th><td><textarea class="form-control text_height id="t_incmatters" name="t_incmatters" cols="30" rows="10"></textarea></td></tr>'
    
    detailinfo += '<tr><th class="info_th">* 유효기간</th>';
    
@@ -631,13 +629,13 @@ function service_list(e){
       var chkbox = "<input type='checkbox' id='nofac' name='j_confacility' value='' onclick='noChk(this)' />없음";
       briefinfo+=chkbox+'</td></tr>';
       
-      briefinfo+='<tr><th class="info_th">*지역</th><td><input class="form-control insert_input" type="text" id="location" name="location"/></td></tr><tr><th class="info_th">*교통 정보</th><td><textarea class="form-control insert_input" id="traffic_info" name="traffic_info"  /></textarea></td></tr><tr><th class="info_th">*숙소 정책</th><td><textarea class="form-control insert_input" id="loging_policy" name="loging_policy"  /></textarea></td></tr><tr><th class="info_th">*체크인/체크아웃</th><td><textarea class="form-control insert_input" id="check_io" name="check_io"  /></textarea></td></tr><tr><th class="info_th">인원 및 추가요금 </th><td><textarea class="form-control insert_input" id="add_fare" name="add_fare"  /></textarea></td></tr><tr><th class="info_th">침구류 추가요금</th><td><textarea class="form-control insert_input" id="add_bed" name="add_bed"  /></textarea></td></tr><tr><th class="info_th">조식 유의 사항</th><td><textarea class="form-control insert_input" id="breakfast_noti" name="breakfast_noti"  /></textarea></td></tr>'
+      briefinfo+='<tr><th class="info_th">*지역</th><td><input class="form-control insert_input" type="text" id="location" name="location"/></td></tr><tr><th class="info_th">*교통 정보</th><td><textarea class="form-control insert_input" id="traffic_info" name="traffic_info" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">*숙소 정책</th><td><textarea class="form-control insert_input" id="loging_policy" name="loging_policy" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">*체크인/체크아웃</th><td><textarea class="form-control insert_input" id="check_io" name="check_io" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">인원 및 추가요금 </th><td><textarea class="form-control insert_input" id="add_fare" name="add_fare" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">침구류 추가요금</th><td><textarea class="form-control insert_input" id="add_bed" name="add_bed" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">조식 유의 사항</th><td><textarea class="form-control insert_input" id="breakfast_noti" name="breakfast_noti" cols="30" rows="10"  /></textarea></td></tr>'
       
-      detailinfo += '<tr><th class="info_th">* 성인</th><td><select class="form-select" id="ji_adult" name="ji_adult"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">* 소인</th><td><select class="form-select" id="ji_kid" name="ji_kid"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">*객실이미지</th><td><div id="ji_thumbnail"></div><input class="form-control" type="file" id="ji_image" name="sub_ji_image" onchange="setSubThumnail(this,event)" multiple/></td></tr><tr><th class="info_th">*잔여객실수</th><td><select class="form-select" id="ji_roomnum" name="ji_roomnum"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">* 개장기간</th>'
+      detailinfo += '<tr><th class="info_th">* 성인</th><td><select class="form-select" id="ji_adult" name="ji_adult"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">* 소인</th><td><select class="form-select" id="ji_kid" name="ji_kid"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">*객실이미지</th><td><div id="ji_thumbnail"></div><input class="form-control" type="file" id="ji_image" name="sub_ji_image" onchange="setSubThumnail(this,event)" multiple/></td></tr><tr><th class="info_th">*잔여객실수</th><td><select class="form-select" id="ji_roomnum" name="ji_roomnum"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">* 개장기간</th>'
       
    }
    
-   briefinfo += '<tr><th class="info_th">*소개</th><td><textarea class="form-control insert_input" id="product_intro" name="product_intro"/></textarea></td></tr><tr><th class="info_th">알려드리는 말</th><td><textarea class="form-control insert_input" id="notice" name="notice"/></textarea></td></tr><tr><th class="info_th">유의사항</th><td><textarea class="form-control insert_input" id="product_notice" name="product_notice"  /></textarea></td></tr><tr><th class="info_th">*예약안내</th><td><textarea class="form-control insert_input" id="product_booking" name="product_booking"/></textarea></td></tr><tr><th>*취소수수료안내</th><td><textarea id="product_cancelfee" name="product_cancelfee" /></textarea></td></tr><tr><th>*취소유의사항</th><td><textarea id="product_cancelnoti" name="product_cancelnoti" /></textarea></td></tr>'
+   briefinfo += '<tr><th class="info_th">*소개</th><td><textarea class="form-control insert_input" id="product_intro" name="product_intro" rows="10" cols="30"/></textarea></td></tr><tr><th class="info_th">알려드리는 말</th><td><textarea class="form-control insert_input" id="notice" name="notice" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">유의사항</th><td><textarea class="form-control insert_input" id="product_notice" name="product_notice" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">*예약안내</th><td><textarea class="form-control insert_input" id="product_booking" name="product_booking" cols="30" rows="10"/></textarea></td></tr><tr><th>*취소수수료안내</th><td><textarea class="form-control id="product_cancelfee" name="product_cancelfee"cols="30" rows="10" /></textarea></td></tr><tr><th>*취소유의사항</th><td><textarea class="form-control id="product_cancelnoti" name="product_cancelnoti"cols="30" rows="10" /></textarea></td></tr>'
    detailinfo += '<td><input type="date" class="date_form" id="product_duetime1" name="product_duetime1" />~<input type="date" class="date_form" id="product_duetime2" name="product_duetime2" /></td></tr><tr><th class="info_th">* 가격</th><td><input class="form-control" type="text" id="product_price" name="product_price" /></td></tr><tr><th class="info_th">* 상품소개</th><td><textarea class="form-control" id="product_intro" name="product_intro" cols="30" rows="10"></textarea></td></tr>'
    
    $('#briefinfo').append(briefinfo);
@@ -646,7 +644,7 @@ function service_list(e){
 </script>
 <style type="text/css">
 .info_th{
-   width: 150px;
+   width: 200px;
 }
 .date_form{
    width: 150px;
@@ -684,88 +682,85 @@ function service_list(e){
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-
-               <div class="row" id="row">
-                     <div class="col-1 mt-2 ms-3" style="width: 110px;">
-                        <select class="form-select" style="width: 100px;"
-                           name="top_category" id="category1" onchange="setSelectBox(this)">
-                           <option value="">분류</option>
-                           <c:forEach items="${cate }" var="top" varStatus="loop">
-                              <option value="${top.idx }">${top.title }</option>
-                           </c:forEach>
-                        </select>
-                     </div>
-                     <div class="col-1 mt-2" style="width: 110px;">
-                        <select class="form-select" style="width: 100px;"
-                           name="mid_category" id="category2" onchange="setSelectBox(this)" disabled>
-                           <option value="">분류</option>
-                        </select>
-                     </div>
-                  
-                  <form method="POST" id="form_product" class="mt-3">
-                     <div class="col-12" id="simple_list">
-                        <table class="table" style="border:1px;">
-                              <colgroup>
-                                 <col width="11%" />
-                                 <col width="40%" />
-                                 <col width="40%" />
-                              </colgroup>
-                              <thead>
-                                 <tr>
-                                    <th> 선택 </th>
-                                    <th> 이미지 </th>
-                                    <th> 상품명 </th>
-                                 </tr>
-                              </thead>
-                              <tbody id="product_list" style="border:none"></tbody>
-                           </table>
-                           <button class="btn btn-primary" type="button" value="all" onclick="btnclick(this)">상품추가</button>
-                           <button class="btn btn-primary" type="button" value="edit" onclick="btnclick(this)">상품수정</button>
-                           <button class="btn btn-primary" type="submit" id="delete_all" onclick="btnclick(this)">상품삭제</button>
-                     </div>
-                     <div class="product_intro col-12" style="display:none;"></div>
-                  </form>
-                  <form method="POST" id="form" enctype="multipart/form-data">
-                     
-                     <input type="text" class="form-control ms-3 mb-3" style="width: 200px;"
-                        id="company_name" name="company_name" value="함덕제주비치호텔"/>
-                     <div class="col-12 ms-3" id="detail_list" style="width:100%; display:none; padding: 0px;">
-                        <table style="border:1px;">
-                           <colgroup>
-                              <col width="15%" />
-                              <col width="*%" />
-                              <col width="20%" />
-                              <col width="15%" />
-                           </colgroup>
-                           <thead>
-                              <tr>
-                                 <th>선택</th>
-                                 <th>상품상세명</th>
-                                 <th>요금</th>
-                                 <th>할인율</th>
-                              </tr>
-                           </thead>
-                           <tbody id="product_info_list">
-                           </tbody>
-                        </table>
-                        <button class="btn btn-primary mt-2" type="button" value="info" onclick="btnclick(this)">상품상세추가</button>
-                        <button class="btn btn-primary mt-2" type="submit" id="info_delete" onclick="btnclick(this)">상품삭제</button>
-                     </div>
-                  
-                     <div class="col-5" id="product_info" style="display:none;">
-                        <table class="table" id="briefinfo">
-                        </table>
-                     </div>
-                     <div class="col-5" id="product_info_detail" style="display:none; margin: 0px">
-                        <table id="detailinfo">
-                        </table>
-                        <button class="btn-primary" type="submit" id="submit">등록하기</button>
-                        <button class="btn-primary" type="reset">다시작성</button>
-                     </div>
-                  </form>
-               </div>
-
-
+			      <div class="row" id="row">
+			            <div class="col-1 mt-2 ms-3" style="width: 110px;">
+			               <select class="form-select" style="width: 100px;"
+			                  name="top_category" id="category1" onchange="setSelectBox(this)">
+			                  <option value="">분류</option>
+			                  <c:forEach items="${cate }" var="top" varStatus="loop">
+			                     <option value="${top.idx }">${top.title }</option>
+			                  </c:forEach>
+			               </select>
+			            </div>
+			            <div class="col-1 mt-2" style="width: 110px;">
+			               <select class="form-select" style="width: 100px;"
+			                  name="mid_category" id="category2" onchange="setSelectBox(this)" disabled>
+			                  <option value="">분류</option>
+			               </select>
+			            </div>
+			         
+			         <form method="POST" id="form_product" class="mt-3">
+			            <div class="col-12" id="simple_list">
+			               <table class="table" style="border:1px;">
+			                     <colgroup>
+			                        <col width="11%" />
+			                        <col width="40%" />
+			                        <col width="40%" />
+			                     </colgroup>
+			                     <thead>
+			                        <tr>
+			                           <th> 선택 </th>
+			                           <th> 이미지 </th>
+			                           <th> 상품명 </th>
+			                        </tr>
+			                     </thead>
+			                     <tbody id="product_list" style="border:none"></tbody>
+			                  </table>
+			                  <button class="btn btn-primary" type="button" value="all" onclick="btnclick(this)">상품추가</button>
+			                  <button class="btn btn-primary" type="button" value="edit" onclick="btnclick(this)">상품수정</button>
+			                  <button class="btn btn-primary" type="submit" id="delete_all" onclick="btnclick(this)">상품삭제</button>
+			            </div>
+			            <div class="product_intro col-12" style="display:none;"></div>
+			         </form>
+			         <form method="POST" id="form" enctype="multipart/form-data">
+			            
+			            <input type="text" class="form-control ms-3 mb-3" style="width: 200px;"
+			               id="company_name" name="company_name" value="함덕제주비치호텔"/>
+			            <div class="col-12 ms-3" id="detail_list" style="width:100%; display:none; padding: 0px;">
+			               <table style="border:1px;">
+			                  <colgroup>
+			                     <col width="15%" />
+			                     <col width="*%" />
+			                     <col width="20%" />
+			                     <col width="15%" />
+			                  </colgroup>
+			                  <thead>
+			                     <tr>
+			                        <th>선택</th>
+			                        <th>상품상세명</th>
+			                        <th>요금</th>
+			                        <th>할인율</th>
+			                     </tr>
+			                  </thead>
+			                  <tbody id="product_info_list">
+			                  </tbody>
+			               </table>
+			               <button class="btn btn-primary mt-2" type="button" value="info" onclick="btnclick(this)">상품상세추가</button>
+			               <button class="btn btn-primary mt-2" type="submit" id="info_delete" onclick="btnclick(this)">상품삭제</button>
+			            </div>
+			         
+			            <div class="col-5" id="product_info" style="display:none;">
+			               <table class="table" id="briefinfo">
+			               </table>
+			            </div>
+			            <div class="col-5" id="product_info_detail" style="display:none; margin: 0px">
+			               <table id="detailinfo">
+			               </table>
+			               <button class="btn-primary" type="submit" id="submit">등록하기</button>
+			               <button class="btn-primary" type="reset">다시작성</button>
+			            </div>
+			         </form>
+			      </div>
             </div>
             <!-- /.container-fluid -->
 
