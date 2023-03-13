@@ -61,18 +61,14 @@ public class MemberController {
 			 memberDTO.setMarketing_agreement("0");
 		 }
 		 System.out.println(memberDTO);
-		 
-
-		System.out.println(memberDTO);
+		
 
 		 int result = dao.insert(memberDTO);
 		 
 		 if(result==1) System.out.println("입력되었습니다.");
 		
 
-		
-
-		 return "/myLogin.do";
+		 return "redirect:/";
 
 	}
 	

@@ -156,20 +156,15 @@ font-size: 12px;
 		function checkEmailDuplication() {
 			var email = $("#email").val();
 
-<<<<<<< HEAD
 			if(email == "") { 
 				return false; 
 				// 이메일이 입력되어있지 않다면 검사하지 않습니다.
 			}
 			
 			console.log("이메일입력됨");
-			$("#emailgo").hide();
-=======
-			$(".checkbox_group").on("click","#checkAll",function(){
-				var checked = $(this).is(":checked");
->>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
+			$("#emailgo").hide(); 
 
-<<<<<<< HEAD
+			
 			$.ajax({
 				url : "/checkemail.do",
 				type : "post",
@@ -194,8 +189,8 @@ font-size: 12px;
 					}	
 				}
 			});
+			
 		}
-
 		/**
 		 * 입력된 패스워드를 검증합니다.
 		 */
@@ -477,12 +472,16 @@ font-size: 12px;
 		}
 	
 		$(document).on('click', '#checkAll', function() {
+			//$(".checkbox_group").on("click","#checkAll",function(){
+				var checked = $(this).is(":checked");
+
+			
 			if ($('#checkAll').is(':checked')) {
 				$('.form-check-input').prop('checked', true);
 			} else {
 				$('.form-check-input').prop('checked', false);
 			}
-=======
+
 				if (checked) {
 					$(this).parents(".checkbox_group").find('input')
 							.prop("checked", true);
@@ -490,11 +489,11 @@ font-size: 12px;
 				else {
 					$(this).parents(".checkbox_group").find('input')
 							.prop("checked", false);
-				}
-			});
->>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
+				} 
+			 
+
 		});
-<<<<<<< HEAD
+
 			
 		function checkYn(obj) {
 			
@@ -528,8 +527,7 @@ font-size: 12px;
 			
 		} 
 		
-=======
->>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
+
 		$(function(){ 
 			$('#loadUseBtn').click(function(){
 				$('#loadUse').load('./txt/roupangUse1');
@@ -542,13 +540,10 @@ font-size: 12px;
 		});
 	</script>
 	<div class="container d-flex justify-content-center">
-<<<<<<< HEAD
+
 		<form action="regist.do" name="registForm" method="post"
 			onsubmit="return validateAllFields();">
-=======
-		<form action="/regist.do" name="registForm" method="post" onsubmit="return chkcheck();">
->>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
-	
+
 			<div class="container d-flex justify-content-center">
 				<!-- 로고이미지 -->
 				<a href="/"> <img src="/images/roupang.png"
@@ -797,56 +792,8 @@ font-size: 12px;
 								    </div>
 								  </div>
 								</div>
-							
-<<<<<<< HEAD
-							
-=======
-							<div class="form-check">	
-								<input class="form-check-input" type="checkbox" name="agreement" id="privacy" value="privacy" required /> 
-								<label for="privacy" class="required"> [필수] 개인정보 제3자 제공 동의</label> 
-									<span style="float:right" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">
-											 <i class="bi bi-chevron-right" id="infoUse"></i>
-									</span>
-							</div>	
-							<!-- Modal -->
-							<div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel4" aria-hidden="true">
-							  <div class="modal-dialog">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="staticBackdropLabel4">개인정보 제3자 제공 동의</h5>
-							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							      </div>
-							      <div id="infoUse" class="modal-body">
-							       <div class="join__terms-box join__terms-box--text-area _joinTermsTarget" id="agree-to-collect-third-part-information">
-	    								[필수] 개인정보 제 3자 제공 동의에 대한 약관
-									</div>
-									<table class="table table-bordered">
-									    <thead>
-									    <tr>
-									        <th>개인정보</br>제공 받는 자</th>
-									        <th>개인정보</br>제공 항목</th>
-									        <th>개인정보</br>제공 목적</th>
-									        <th>개인정보</br>이용 기간</th>
-									    </tr>
-									    </thead>
-									    <tbody>
-									    <tr>
-									        <td><b>루팡페이 주식회사</b></td>
-									        <td>루팡 아이디</td>
-									        <td><b>루팡캐시 서비스 제공</b></td>
-									        <td><b>전자상거래법에 의해 5년간 보관 후 파기</b></td>
-									    </tr>
-									    </tbody>
-									</table>
-									<div style="font-size:12px;">제공에 동의하지 않을 수 있으나, 동의하지 않으면 회원 가입에 제한이 됩니다.</div>
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>
->>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
+						
+
 							<div class="form-check">	
 								<input class="form-check-input" type="checkbox" name="marketing_agreement" id="marketing_agreement" value="1" onchange="checkYn(this);" />
 								<label for="marketing_agreement"> [선택] 마케팅 목적의 개인정보 수집 및 이용 동의</label> 
