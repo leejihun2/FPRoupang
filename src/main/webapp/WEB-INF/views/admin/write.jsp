@@ -34,14 +34,14 @@ function writeValidate(f)
 	<tbody>
 		<tr>
 			<select 
-				name="contact" value="배송관련문의">
+				name="contact" value="faq">
 				<option value="faq">자주묻는 질문</option>
 				<option value="notice">쿠팡 소식</option>
 			</select>
 		</tr>	
 		<tr>
 			<select 
-				name="categorycode" value="배송관련문의">
+				name="categorycode" value="DELIVERY">
 				<option value="DELIVERY">배송문의</option>
 				<option value="CANCEL">취소/교환/반품</option>
 				<option value="REFUND">환불</option>

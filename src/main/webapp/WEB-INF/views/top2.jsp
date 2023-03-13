@@ -24,7 +24,7 @@ $(function(){
 					alert("판매자 신청가능");
 					console.log("판매자 신청가능");
 				} else {
-					alert("이미 판매자신청이 완료된 계정입다.");
+					alert("이미 판매자신청이 완료된 계정입니다.");
 					location.href = "/";
 
 					
@@ -173,6 +173,36 @@ $(function(){
 					<script type="text/javascript">
 						$(function(){
 							$(".menu.shopping-menu-list>li").hover(function(evt){
+								var type = $(this).val();
+								switch(type){
+								case 1:
+									
+									break;
+								case 2:
+									
+									break;
+								case 3:
+									
+									break;
+								case 4:
+									
+									break;
+								case 5:
+									
+									break;
+								case 6:
+									
+									break;
+								case 7:
+									
+									break;
+								case 8:
+									
+									break;
+								case 9:
+									
+									break;
+								}
 							})
 						});
 					</script>
@@ -186,40 +216,31 @@ $(function(){
 						}
 					</style>
 						<ul class="menu shopping-menu-list" id="shopping-menu-list" style="height: 240px;">
-							<li class="fashion-sundries"><a href="#" class="first-depth">
-								패션의류/잡화<i class="select-icon"></i></a>
+							<li class="fashion-sundries" value="1"><a href="#" class="first-depth">패션의류/잡화<i class="select-icon"></i></a>
 								<div class="depth"></div>
 							</li>
-							<li class="beauty"><a href="#" class="first-depth">
-								뷰티<i class="select-icon"></i></a>
+							<li class="beauty" value="2"><a href="#" class="first-depth">뷰티<i class="select-icon"></i></a>
 								<div class="depth"></div>
 							</li>
-							<li class="child-birth"><a href="#" class="first-depth">
-								출산/유아동<i class="select-icon"></i></a>
+							<li class="child-birth" value="3"><a href="#" class="first-depth">출산/유아동<i class="select-icon"></i></a>
 								<div class="depth"></div>
 							</li>
-							<li class="food"><a href="#" class="first-depth">
-								식품<i class="select-icon"></i></a>
+							<li class="food" value="4"><a href="#" class="first-depth">식품<i class="select-icon"></i></a>
 								<div class="depth"></div>
 							</li>
-							<li class="kitchen"><a href="#" class="first-depth">
-								주방용품<i class="select-icon"></i></a>
+							<li class="kitchen" value="5"><a href="#" class="first-depth">주방용품<i class="select-icon"></i></a>
 								<div class="depth"></div>
 							</li>
-							<li class="life"><a href="#" class="first-depth">
-								생활용품<i class="select-icon"></i></a>
+							<li class="life" value="6"><a href="#" class="first-depth">생활용품<i class="select-icon"></i></a>
 								<div class="depth"></div>
 							</li>
-							<li class="home_decoration"><a href="#" class="first-depth">
-								홈인테리어<i class="select-icon"></i></a>
+							<li class="home_decoration" value="7"><a href="#" class="first-depth">홈인테리어<i class="select-icon"></i></a>
 								<div class="depth"></div>
 							</li>
-							<li class="appliances-digital"><a href="#" class="first-depth">
-								가전디지털<i class="select-icon"></i></a>
+							<li class="appliances-digital" value="8"><a href="#" class="first-depth">가전디지털<i class="select-icon"></i></a>
 								<div class="depth"></div>
 							</li>
-							<li class="travel-leisure"><a href="/journey_Main" style="cursor: pointer;">
-								여행/티켓 <i class="select-icon"></i></a>
+							<li class="travel-leisure" value="9"><a href="/journey_Main" style="cursor: pointer;">여행/티켓 <i class="select-icon"></i></a>
 								<div class="depth"></div>
 							</li>
 						</ul>

@@ -1,8 +1,6 @@
 package com.edu.springboot.jdbc;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,7 +29,9 @@ public interface ISupportsService {
 			@Param("_categorycode") String categorycode,
 			@Param("_contact") String contact);
 	
+	public int modify(SupportsDTO supportsDTO);
 	
+	public int modifySupports(SupportsDTO supportsDTO);
 	
 	public SupportsDTO view(SupportsDTO supportsDTO);
 	
