@@ -100,7 +100,7 @@ function setSelectBox(obj){
                      tabletd+='<td class="td_none"><a href="javascript:;" onclick="simple_click('+data[i].idx+')">'+data[i].title+'</a></td>'
                      tabletd+='</tr>'
                          
-                     $('#journey_list').append(tabletd);
+                     $('#product_list').append(tabletd);
                   });
                }
             );

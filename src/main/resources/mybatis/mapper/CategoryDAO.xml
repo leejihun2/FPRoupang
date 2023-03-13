@@ -18,6 +18,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</otherwise>
 		</choose>
 	</select>
+	<select id="select_cate_j"
+	resultType="com.edu.springboot.jdbc.ParameterJourneyDTO">
+		select * from
+		<choose>
+			<when test="sub_idx!=0">
+				mid_category where sub_idx=#{sub_idx}
+			</when>
+			<otherwise>
+		 		top_category
+			</otherwise>
+		</choose>
+	</select>
 	
 	<select id="select_cate2"
 	resultType="com.edu.springboot.jdbc.ParameterTicketDTO">
@@ -41,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="select_cate_bot_j"
 	parameterType="com.edu.springboot.jdbc.CategoryDTO"
-	resultType="com.edu.springboot.jdbc.ParameterTicketDTO">
+	resultType="com.edu.springboot.jdbc.ParameterJourneyDTO">
 		select * from bot_category bc JOIN journey j ON bc.idx=j.bot_idx 
 		where sub_idx=#{param1} and company_name=#{param2}
 	</select>
