@@ -253,47 +253,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		SELECT idx, ji_price, j_title_image, ji_title, ji_discount, title
  		FROM (SELECT bot_idx, ji_price, ji_title, ji_discount,
  					RANK() OVER (PARTITION BY bot_idx ORDER BY ji_price ASC) rk
-        	FROM journey_info where ji_adult>=2 and ji_kid>=0
-        		and sysdate between ji_duetime1 and ji_duetime2 
-             	and sysdate+1 between ji_duetime1 and ji_duetime2)ji
+        	FROM journey_info
+        <choose>
+        	<when test='ji_duetime1==""'>
+		        <choose>
+		        	<when test="ji_kid != null">
+		        	where ji_adult>=#{ji_adult} and ji_kid>=#{ji_kid}
+		        	 	and sysdate between ji_duetime1 and ji_duetime2 
+		             	and sysdate+1 between ji_duetime1 and ji_duetime2
+		             </when>
+		             <otherwise>
+		             where ji_adult>=#{ji_adult} and ji_kid>=0
+		        	 	and sysdate between ji_duetime1 and ji_duetime2 
+		             	and sysdate+1 between ji_duetime1 and ji_duetime2
+		             </otherwise>
+		         </choose>
+	         </when>
+	         <otherwise>
+	         	<choose>
+		        	<when test="ji_kid != null">
+		        	where ji_adult>=#{ji_adult} and ji_kid>=#{ji_kid}
+		        	 	and #{ji_duetime1} between ji_duetime1 and ji_duetime2 
+		             	and #{ji_duetime2} between ji_duetime1 and ji_duetime2
+		             </when>
+		             <otherwise>
+		             where ji_adult>=#{ji_adult} and ji_kid>=0
+		        	 	and #{ji_duetime1} between ji_duetime1 and ji_duetime2 
+		             	and #{ji_duetime2} between ji_duetime1 and ji_duetime2
+		             </otherwise>
+		         </choose>
+	         </otherwise>
+         </choose>)ji
             		JOIN journey j ON ji.bot_idx=j.bot_idx 
- 			JOIN (SELECT * FROM bot_category WHERE sub_idx=#{param1}) bc
- 			ON bc.idx = ji.bot_idx WHERE rk=1 ORDER BY idx
- 	</select>
- 	<!-- 인원만 설정 -->
- 	<select id="show_journey_list_addP" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
- 		SELECT idx, ji_price, j_title_image, ji_title, ji_discount, title
- 		FROM (SELECT bot_idx, ji_price, ji_title, ji_discount,
- 					RANK() OVER (PARTITION BY bot_idx ORDER BY ji_price ASC) rk
-        	FROM journey_info where ji_adult>=#{param2} and ji_kid>=#{param3}
-        	 	and sysdate between ji_duetime1 and ji_duetime2 
-             	and sysdate+1 between ji_duetime1 and ji_duetime2)ji
-            		JOIN journey j ON ji.bot_idx=j.bot_idx 
- 			JOIN (SELECT * FROM bot_category WHERE sub_idx=#{param1}) bc
- 			ON bc.idx = ji.bot_idx WHERE rk=1 ORDER BY idx
- 	</select>
- 	<!-- 예약일만 설정 -->
- 	<select id="show_journey_list_addC" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
- 		SELECT idx, ji_price, j_title_image, ji_title, ji_discount, title
- 		FROM (SELECT bot_idx, ji_price, ji_title, ji_discount,
- 					RANK() OVER (PARTITION BY bot_idx ORDER BY ji_price ASC) rk
-        	FROM journey_info where ji_adult>=2 and ji_kid>=0
-        		and #{param2} between ji_duetime1 and ji_duetime2 
-             	and #{param3} between ji_duetime1 and ji_duetime2)ji
-            		JOIN journey j ON ji.bot_idx=j.bot_idx 
- 			JOIN (SELECT * FROM bot_category WHERE sub_idx=#{param1}) bc
- 			ON bc.idx = ji.bot_idx WHERE rk=1 ORDER BY idx
- 	</select>
- 	<!-- 예약일 인원모두 설정 -->
- 	<select id="show_journey_list_addAll" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
-	 	SELECT idx, ji_price, j_title_image, ji_title, ji_discount, title
- 		FROM (SELECT bot_idx, ji_price, ji_title, ji_discount,
- 					RANK() OVER (PARTITION BY bot_idx ORDER BY ji_price ASC) rk
-        	FROM journey_info where ji_adult>=#{param2} and ji_kid>=#{param3}
-        	 	and #{param4} between ji_duetime1 and ji_duetime2 
-             	and #{param5} between ji_duetime1 and ji_duetime2)ji
-            		JOIN journey j ON ji.bot_idx=j.bot_idx 
- 			JOIN (SELECT * FROM bot_category WHERE sub_idx=#{param1}) bc
+ 			JOIN (SELECT * FROM bot_category WHERE sub_idx=#{sub_idx}) bc
  			ON bc.idx = ji.bot_idx WHERE rk=1 ORDER BY idx
  	</select>
  	<!-- 지역 -->

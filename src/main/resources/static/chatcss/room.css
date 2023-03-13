@@ -1,0 +1,97 @@
+@charset "UTF-8";
+*{
+	margin:0;
+	padding:0;
+}
+.container{
+	width: 500px;
+	margin: 0 auto;
+	padding: 25px
+}
+.container h1{
+	text-align: left;
+	padding: 5px 5px 5px 15px;
+	color: #0099ff;
+	border-left: 3px solid #0099ff;
+	margin-bottom: 20px;
+}
+.roomContainer{
+	background-color: #F6F6F6;
+	width: 500px;
+	height: 500px;
+	overflow: auto;
+}
+.roomList{
+	border: none;
+}
+.roomList th{
+	border: 1px solid #0099ff;
+	background-color: #fff;
+	color: #0099ff;
+}
+.roomList td{
+	border: 1px solid #0099ff;
+	background-color: #fff;
+	text-align: left;
+	color: #0099ff;
+}
+.roomList .num{
+	width: 75px;
+	text-align: center;
+}
+.roomList .room{
+	width: 400px;
+}
+.roomList .go{
+	width: 71px;
+	text-align: center;
+}
+.selectList{
+	border: none;
+}
+.selectList th{
+	background-color: #fff;
+	color: #8fb0c6;
+}
+.selectList td{
+	background-color: #fff;
+	text-align: left;
+	color: #0099ff;
+}
+.selectList .num{
+	width: 75px;
+	text-align: center;
+}
+.selectList .room{
+	width: 400px;
+}
+.selectList .go{
+	width: 71px;
+	text-align: center;
+}
+button{
+	background-color: #0099ff;
+	font-size: 14px;
+	color: white;
+	border: 1px solid #0099ff;
+	padding: 5px;
+	width: 91px;
+}
+.selectList button{
+	background-color: #8fb0c6;
+	border: 1px solid #8fb0c6;
+}
+.inputTable th{
+	padding: 5px;
+}
+.inputTable input{
+	width: 330px;
+	height: 25px;
+}
+.btn{
+	width: 502px;
+	position : absolute;
+	right: 20px;
+	border-radius: 15px;
+	height: 32px;
+} 

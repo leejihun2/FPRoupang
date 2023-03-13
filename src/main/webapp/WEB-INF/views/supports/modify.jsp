@@ -41,7 +41,7 @@ function writeValidate(f)
 	
 	<form name="writeFrm" method="post" 
 		onsubmit="return writeValidate(this);"
-		action="<c:url value="/supports/modifyAction.do" />" >	
+		action="<c:url value="/admin/modifyAction.do" />" >	
 	<input type="hid den" name="idx" value="${dto.idx }"/>
 	<input type="hid den" name="id" 
 			value="${sessionScope.siteUserInfo.id }"/>
@@ -80,6 +80,7 @@ function writeValidate(f)
 			onclick="location.href='home.do';">리스트보기</button>
 	</div>
 	</form> 
+	</section>
 </div>
 
 </body>

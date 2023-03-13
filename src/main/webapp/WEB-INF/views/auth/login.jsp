@@ -91,25 +91,6 @@ function loginValidate(f)
 		<s:authorize access="isAuthenticated()">
 			<s:authentication property="name" var="name" />
 		</s:authorize>
-	<c:choose>
-		<c:when test="${not empty name }">
-			<div class="row" style="border:2px solid #cccccc;padding:10px;">		
-				<!-- 로그인에 성공한 경우 DTO객체에 회원정보를 저장한 후 
-				세션영역에 저장할것이므로, 출력시에는 getter()를 사용하기
-				위해 멤버변수로 접근한다. EL에서는 멤버변수명만으로 getter()
-				에 접근할 수 있다. -->	
-				<h4>아이디:${name }</h4>
-				<br /><br />
-				<button class="btn btn-danger" 
-					onclick="location.href='/myLogout.do';">
-					로그아웃</button>
-				&nbsp;&nbsp;
-				<button class="btn btn-primary" 
-					onclick="location.href='/';">
-					홈</button>
-			</div>
-		</c:when>
-		<c:otherwise>
 			<!-- 로그아웃 상태에서는 로그인폼을 출력한다. -->
 			<!-- 로그인에 실패한 경우 에러메세지를 출력하는 부분 -->
 			<span style="font-size:1.5em; color:red;">${LoginNG }</span>
@@ -154,8 +135,6 @@ function loginValidate(f)
 						</div>
 					</div>
 			</form>
-		</c:otherwise>
-	</c:choose>
 </div>
 </body>
 </html>

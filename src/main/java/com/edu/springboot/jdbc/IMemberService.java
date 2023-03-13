@@ -20,6 +20,7 @@ public interface IMemberService {
 		
 		public int checkEmail(MemberDTO memberDTO);
 		
+		public String idx(String user_id);
 		//비밀번호찾기 이메일검증
 		public int checkInfo(MemberDTO memberDTO);
 		//임시비밀번호
@@ -71,5 +72,5 @@ public interface IMemberService {
 		public ArrayList<SellRightDTO> blockView(int member_idx);
 
 
-	
+		public SellRightDTO LoginUser(String email);
 }

@@ -210,9 +210,6 @@ $(function(){
 			});
 		});
 	});
-	/* $(function sendEmailAjax(){
-	
-	 }); */
 </script>
 <body style="background-color: white;">
 	<div id="top">

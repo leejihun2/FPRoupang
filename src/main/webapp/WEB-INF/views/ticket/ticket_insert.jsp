@@ -353,7 +353,6 @@
 			document.getElementById("title_image").innerHTML='';
 			document.querySelector("div#title_image").appendChild(img);          
 		};
-		
 		reader.readAsDataURL(event.target.files[0]);
 	}
 </script>

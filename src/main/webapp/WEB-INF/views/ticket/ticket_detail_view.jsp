@@ -291,31 +291,38 @@
 		z-index:1000;
 	    border-bottom: 1px solid #ddd;
 	}
+	/* 바디에 스크롤 막는 방법 */
+	.not_scroll{
+	    position: fixed;
+	    overflow: hidden;
+	    width: 100%;
+	    height: 100%
+	}
 </style>
 <script type="text/javascript">
-onload = function(){
-	var mapContainer = document.getElementById('map'),
-	mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 5};  
-	// 지도를 생성합니다    
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
-	var geocoder = new kakao.maps.services.Geocoder();
-	// 주소로 좌표를 검색합니다 (membership테이블에 사업장 주소명을 파라미터로 받는다.])
-	geocoder.addressSearch('대구광역시 동구 동부로 149 9층', function(result, status) {
-	// 정상적으로 검색이 완료됐으면 
-	 if (status === kakao.maps.services.Status.OK) {
-	    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-	    // 결과값으로 받은 위치를 마커로 표시
-	    var marker = new kakao.maps.Marker({
-	        map: map,
-	        position: coords
-	    });
-    	// 인포윈도우로 장소에 대한 설명을 표시
-	    var infowindow = new kakao.maps.InfoWindow({});
-	    infowindow.open(map);
-	    map.setCenter(coords);
-		} 
-	});  
-}
+	onload = function(){
+		var mapContainer = document.getElementById('map'),
+		mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 5};  
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		var geocoder = new kakao.maps.services.Geocoder();
+		// 주소로 좌표를 검색합니다 (membership테이블에 사업장 주소명을 파라미터로 받는다.])
+		geocoder.addressSearch('대구광역시 동구 동부로 149 9층', function(result, status) {
+		// 정상적으로 검색이 완료됐으면 
+		 if (status === kakao.maps.services.Status.OK) {
+		    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		    // 결과값으로 받은 위치를 마커로 표시
+		    var marker = new kakao.maps.Marker({
+		        map: map,
+		        position: coords
+		    });
+	    	// 인포윈도우로 장소에 대한 설명을 표시
+		    var infowindow = new kakao.maps.InfoWindow({});
+		    infowindow.open(map);
+		    map.setCenter(coords);
+			} 
+		});  
+	}
 	$(function(){
 		$(".thumbnail-img").click(function(e){
 			document.getElementById("thumbnail").style.backgroundImage="url("+e.target.src+")";
@@ -355,11 +362,19 @@ onload = function(){
 			}
             location.href="#"+url;
 		});
+
+	    $(".bnt_open").on("click", function(e){
+	        $("html, body").addClass("not_scroll");
+	    });
 	});
 	
 	function replaceClass(){
 		var elem = $(".selected");
 		elem.removeClass("selected");
+	}
+	
+	function addModal(bot_num, idx){
+		$('.modal-content').load('/showModal?bot_idx='+bot_num+'&ti_idx='+idx);
 	}
 	
 	onload = function(){
@@ -471,7 +486,7 @@ onload = function(){
 	                        						</div>
 												</td>
 	                        					<td>
-	                        					<button class="btn btn-primaryinfo" type="button" >선택</button>
+	                        						<button class="btn btn-primaryinfo bnt_open" type="button" onclick="addModal(${row.bot_idx},${row.ti_idx})" data-toggle="modal" data-target="#myModal" >선택</button>
 	                        					</td>
 	                        				</tr>
 		                        			</c:forEach>
@@ -865,5 +880,11 @@ onload = function(){
 	        </div>
 	    </div>
 	</div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content" id="modal_content">
+	    	</div>
+	    </div>
+    </div>
 </body>
 </html>

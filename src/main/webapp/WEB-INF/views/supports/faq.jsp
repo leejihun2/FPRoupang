@@ -16,8 +16,9 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/common.css" type="text/css">
 <link rel="stylesheet" href="../css/list.css" type="text/css">
-  <!-- Latest compiled JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="../css/CustomerService.css" type="text/css">
+<script src="../js/CustomerService.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 function deleteRow(idx){
    if(confirm("정말로 삭제하시겠습니까?")){
@@ -27,53 +28,58 @@ function deleteRow(idx){
 }
 </script>
 </head>
+
 <body style="background-color: #ffffff">
  <div id="top">
     <%@include file="../top.jsp" %>
     </div>
 <div class="container">
 	
-	<%@include file="../category.jsp" %>
-	<div class="text-right">
-	</div>
-		<div class="container d-flex justified-content-center">
-			<ul class="nav nav-justified" style="width: 1500px;">
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=ALL"> <span class="text">젠부</span>
+<%@include file="../category.jsp" %>
+
+	
+	<ul class="sc-nly1np-0 cifYev" style="width: 1500px;">
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=ALL"> 
+					<span class="text">전부</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=DELIVERY"> <span class="text">배송문의</span>
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=DELIVERY"> 
+					<span class="text">배송문의</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=CANCEL"> <span class="text">취소/교환/반품</span>
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=CANCEL"> 
+					<span class="text">취소/교환/반품</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=REFUND"> <span class="text">환불</span>
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=REFUND"> 
+					<span class="text">환불</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=MEMBER"> <span class="text">회원서비스</span>
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=MEMBER"> 
+					<span class="text">회원서비스</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=CASH"> <span class="text">쿠팡캐시</span>
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=CASH"> 
+					<span class="text">쿠팡캐시</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="./faq.do?categoryCode=MOBILE"> <span class="text">로켓모바일</span>
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=MOBILE"> 
+					<span class="text">로켓모바일</span>
 				</a></li>
 			</ul>
-		</div>
-		<!-- 방명록 반복 부분 s -->
-	<c:forEach items="${lists }" var="row" varStatus="loop">		
-		<div class="d-grid gap-2">
-			<button type="button" class="btn"  data-bs-toggle="collapse" data-bs-target="#a${row.idx}">
-		      ${row.title }<br /> </button>
-		    <div id="a${row.idx}" class="collapse" style="background-color: rgb(250,250,250);">
-		    	${row.contents }
-		    </div>
-		</div>
+	<c:forEach items="${lists }" var="row" varStatus="loop">
+		<div class="question">
+			<button class="accordion"><span style="color: #6f6aff ;" >Q</span>${row.title }</button>
+			<div class="panel">
+				<span class="col-3" style="color: #6f6aff ;">A</span>${row.contents }
+			</div>
+		</div>	
 	</c:forEach>
 </div>
     <div id="copyright">
          <%@include file="../copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
     </div>
+    
 </body>
 </html>

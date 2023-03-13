@@ -18,12 +18,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</otherwise>
 		</choose>
 	</select>
+	
+	<select id="select_cate2"
+	resultType="com.edu.springboot.jdbc.ParameterTicketDTO">
+		select * from mid_category where sub_idx
+		<choose>
+			<when test="sub_idx==9">
+				in (#{sub_idx}, #{sub_idx}+1)
+			</when>
+			<otherwise>
+				=#{sub_idx}
+			</otherwise>
+		</choose>
+	</select>
+	
 	<select id="select_cate_bot"
 	parameterType="com.edu.springboot.jdbc.CategoryDTO"
 	resultType="com.edu.springboot.jdbc.ParameterTicketDTO">
 		select * from bot_category bc JOIN ticket t ON bc.idx=t.bot_idx 
 		where sub_idx=#{param1} and company_name=#{param2}
 	</select>
+	
 	<select id="select_cate_bot_j"
 	parameterType="com.edu.springboot.jdbc.CategoryDTO"
 	resultType="com.edu.springboot.jdbc.ParameterTicketDTO">
@@ -43,6 +58,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	
  	<select id="like_bot_title" resultType="String" parameterType="com.edu.springboot.jdbc.CategoryDTO">
+ 		select title from bot_category where sub_idx=#{param1}
+ 		<if test="param2!=null">
+ 		 and title like '%'||#{param2}||'%'
+ 		 </if>
+ 	</select>
+ 	
+	<select id="search_journey_List" resultType="String">
  		select title from bot_category where sub_idx=#{param1} and title like '%'||#{param2}||'%'
  	</select>
  </mapper>

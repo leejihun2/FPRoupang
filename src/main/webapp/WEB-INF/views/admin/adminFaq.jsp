@@ -1,16 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>      
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s"%>
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="../css/CustomerService.css" type="text/css">
+<script src="../js/CustomerService.js"></script>
 <head>
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -28,7 +35,8 @@
 
 <!-- Custom styles for this template-->
 <link rel="stylesheet" href="../css/sb-admin-2.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 function deleteRow(idx){
    if(confirm("정말로 삭제하시겠습니까?")){
@@ -40,10 +48,8 @@ function deleteRow(idx){
 </head>
 
 <body id="page-top">
-
 	<!-- Page Wrapper -->
 	<div id="wrapper">
-
 		<!-- Sidebar -->
 		<%@include file="./sidebar.jsp"%>
 		<!-- End of Sidebar -->
@@ -54,36 +60,31 @@ function deleteRow(idx){
 			<!-- Main Content -->
 			<div id="content">
 
+		<input type="hid den" value="${category }">
+		<input type="hid den" value="${contact }">
 				<!-- Topbar -->
 				<%@include file="./topbar.jsp"%>
 				<!-- End of Topbar -->
-
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-
-
 					<c:forEach items="${lists }" var="row" varStatus="loop">
-						<div class="d-grid gap-2">
-							<button type="button" class="btn" data-bs-toggle="collapse"
-								data-bs-target="#a${row.idx}">
-								${row.title }<br />
-							</button>
-							<div id="a${row.idx}" class="collapse"
-								style="background-color: rgb(250, 250, 250);">
-								${row.contents }</div>
-							<div class="media-right">
-		                  	<s:authorize access="hasRole('admin')">
-			                     <button class="btn btn-secondary"
-										onclick="location.href='modify.do?idx=${row.idx}';">
-										수정</button>
-									<button class="btn btn-secondary"
-										onclick="javascript:deleteRow(${row.idx});">삭제</button>
-			                  </s:authorize>
+						<div class="question">
+							<button class="accordion">
+								<span style="color: #6f6aff;">Q</span>${row.title }</button>
+							<div class="panel">
+								<span class="col-3" style="color: #6f6aff;">A</span>${row.contents }
+								<div class="media-right">
+									<s:authorize access="hasRole('admin')">
+										<button class="btn btn-secondary"
+											onclick="location.href='modify.do?idx=${row.idx}';">
+											수정</button>
+										<button class="btn btn-secondary"
+											onclick="javascript:deleteRow(${row.idx});">삭제</button>
+									</s:authorize>
+								</div>
 							</div>
 						</div>
 					</c:forEach>
-
-
 				</div>
 				<!-- /.container-fluid -->
 

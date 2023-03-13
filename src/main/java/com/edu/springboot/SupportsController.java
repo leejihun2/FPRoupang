@@ -48,7 +48,7 @@ public class SupportsController {
 		}
 		
 		model.addAttribute("lists", lists);
-		return "supports/faq";
+		return "/supports/faq";
 	}
 	@RequestMapping("/supports/notice.do")
 	public String lists2(Model model, HttpServletRequest req) {
@@ -92,54 +92,30 @@ public class SupportsController {
 		model.addAttribute("lists", lists);
 		return "/supports/inquiry";
 	}
-	
 	@RequestMapping("/supports/voc.do")
 	public String write(Model model, HttpSession session,
 			HttpServletRequest req, Principal principal) {
-		String email = principal.getName();
-		session.setAttribute("siteUserInfo", email);
 		if(session.getAttribute("siteUserInfo")==null)
 		{
-			model.addAttribute("backUrl", "supports/voc");
-			return "redirect:login.do";
+			model.addAttribute("backUrl", "/supports/voc");
+			return "redirect:/myLogin.do";
 		}
-		
-		return "supports/voc";
+		return "/supports/voc";
 	}
 	
 	// 글쓰기 처리
 	@RequestMapping(value = "/supports/vocAction.do", method = RequestMethod.POST)
 	public String writeAction(Model model, HttpServletRequest req, HttpSession session, Principal principal) {
-		String email = principal.getName();
-		session.setAttribute("siteUserInfo", email);
+		
 		if (session.getAttribute("siteUserInfo") == null) {
-			return "redirect:login.do";
+			return "redirect:/myLogin.do";
 		}
+		String email = principal.getName();
 		int applyRow = daoo.write(req.getParameter("contents"), 
 								email, 
 								req.getParameter("title"));
 		System.out.println("입력된행의갯수:" + applyRow);
-
-		return "redirect:in.do";
+		return "redirect:/supports/inquiry.do";
 	}
-	
-	@RequestMapping("/supports/delete.do")
-	public String delete(HttpServletRequest req, HttpSession session, Principal principal) {
-		//삭제는 본인만 가능하므로 로그인 확인을 진행한다.
-		String email = principal.getName();
-		session.setAttribute("siteUserInfo", email);
-		if (session.getAttribute("siteUserInfo") == null) {
-			return "redirect:login.do";
-		}
-		int applyRow = daoo
-				.delete(req.getParameter("idx"),
-						email);
-						
-		System.out.println("삭제된 행의 갯수 : " + applyRow);
-		return "redirect:login.do";
-	}
-	
-
-	
 
 }

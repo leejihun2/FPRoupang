@@ -461,68 +461,74 @@ public class JourneyController {
 		journey_dao.delete_journey_info(val, company_name);
 		return "/home";
 	}
-	@RequestMapping("/journey_List")
-	public ModelAndView show_Journey_List(HttpServletRequest req, HttpSession session) {
+	@RequestMapping("/journeyView")
+	public String view() {
 		
+		return "journey/journeyView";
+	}
+	
+	@RequestMapping("/journey_List")
+	public ModelAndView show_Journey_List(HttpServletRequest req, HttpSession session, TotalJourneyDTO totaljourneyDTO) {
+		ModelAndView mv = new ModelAndView();
 		int sub_idx = Integer.parseInt(req.getParameter("category"));
 		String location = req.getParameter("location"); 
+		String title = req.getParameter("title");
+		String ji_duetime1 = "";
+		String ji_duetime2 = "";
+		int ji_adult = 2;
+		int ji_kid = 0;
 		
-		String ji_duetime1 = (String) session.getAttribute("ji_duetime1");
-		String ji_duetime2 = (String) session.getAttribute("ji_duetime2");
-		
-		
-		ModelAndView mv = new ModelAndView();
-		
-		String like_loc = journey_dao.like_journey_List(location);
-		String category_title = cate_dao.select_one_cate(sub_idx);
-		
-		//예약일 인원 모두 적용했을때 
-		if(session.getAttribute("ji_duetime1")!=null && session.getAttribute("ji_duetime2")!=null &&
-				session.getAttribute("ji_adult")!= null && session.getAttribute("ji_kid")!= null) {
-			System.out.println("show_journey_list_addAll : 실행");
-			int ji_kid = Integer.parseInt((String) session.getAttribute("ji_kid")); 
-			int ji_adult = Integer.parseInt((String)session.getAttribute("ji_adult")); 
-			ArrayList<TotalJourneyDTO> journey_list = 
-					journey_dao.show_journey_list_addAll(sub_idx,ji_adult,ji_kid,ji_duetime1,ji_duetime2);
+		if(location != null) {
 			
-			mv.addObject("journey_list", journey_list);
+			String like_loc = journey_dao.like_journey_List(location);
+		
+			mv.addObject("like_loc",like_loc);
 		}
-		//인원만 적용되었을때
-		else if(session.getAttribute("ji_adult")!= null && session.getAttribute("ji_kid")!= null) {
+		else if(title != null) {
 			
-			System.out.println("show_journey_list_addP : 실행");
-			int ji_kid = Integer.parseInt((String) session.getAttribute("ji_kid")); 
-			int ji_adult = Integer.parseInt((String)session.getAttribute("ji_adult")); 
-			ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list_addP(sub_idx,ji_adult,ji_kid);
+			String search_list = cate_dao.search_journey_List(sub_idx, title);
 			
-			mv.addObject("journey_list", journey_list);
+			mv.addObject("search_list",search_list);
 		}
-		//예약일만 적용했을때 
-		else if(session.getAttribute("ji_duetime1")!=null && session.getAttribute("ji_duetime2")!=null){
-			
-			System.out.println("show_journey_list_addC : 실행");
-			ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list_addC(sub_idx,ji_duetime1,ji_duetime2);
-			
-			mv.addObject("journey_list", journey_list);
-			
+	
+		
+		if(session.getAttribute("ji_duetime1")!= null) {
+			totaljourneyDTO.setJi_duetime1((String)session.getAttribute("ji_duetime1"));
+			totaljourneyDTO.setJi_duetime2((String)session.getAttribute("ji_duetime2"));
+		}else {
+			totaljourneyDTO.setJi_duetime1(ji_duetime1);
+			totaljourneyDTO.setJi_duetime2(ji_duetime2);
 		}
-		//지역(직접)검색했을때 
-		else {
-			ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list(sub_idx);
-			
-			//ticketList Search부분에 들어갈 검색어 
-			mv.addObject("journey_list", journey_list);
+		
+		if(session.getAttribute("ji_kid") != null) {
+			totaljourneyDTO.setJi_kid(Integer.parseInt((String)(session.getAttribute("ji_kid")))); 
+		}else {
+			totaljourneyDTO.setJi_kid(ji_kid);
 		}
+		if(session.getAttribute("ji_adult") != null) {
+			totaljourneyDTO.setJi_kid(Integer.parseInt((String)(session.getAttribute("ji_adult")))); 
+		}else {
+			totaljourneyDTO.setJi_kid(ji_adult);
+		}
+		totaljourneyDTO.setSub_idx(sub_idx);
+		
+//		System.out.println("어린이 :"+ totaljourneyDTO.getJi_kid());
+//		System.out.println("성인 :"+ totaljourneyDTO.getJi_adult());
+//		System.out.println("시작일 :"+ totaljourneyDTO.getJi_duetime1());
+//		System.out.println("종료일 :"+ totaljourneyDTO.getJi_duetime2());
+		
+		String category_title = cate_dao.select_one_cate(sub_idx); 
+		ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list(totaljourneyDTO);
+		
+		mv.addObject("sub_idx",sub_idx);
+		mv.addObject("category_title",category_title);
+		mv.addObject("journey_list", journey_list);
+		mv.setViewName("/journey/journeyList");
+		
 		session.removeAttribute("ji_adult");
 		session.removeAttribute("ji_kid");
 		session.removeAttribute("ji_duetime1");
 		session.removeAttribute("ji_duetime2");
-		
-		mv.addObject("sub_idx",sub_idx);
-		//like연산자를 통해 타이틀이 like '%?%' 것을 select
-		mv.addObject("like_loc",like_loc);
-		mv.addObject("category_title",category_title);
-		mv.setViewName("/journey/journeyList");
 		
 		return mv;
 	}

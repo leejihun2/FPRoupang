@@ -26,6 +26,28 @@ function deleteRow(idx){
    }
 }
 </script>
+<style type="text/css">
+.kQQPrS {
+    width: 100%;
+    height: 60px;
+    margin: 35px 0px;
+}
+.dSWQUC {
+    float: left;
+    padding: 19px 0px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid rgb(238, 238, 238);
+    background-color: rgb(250, 250, 250);
+    color: rgb(85, 85, 85);
+    cursor: pointer;
+    width: 280px;
+}
+.kQQPrS > li {
+    width: calc(25%);
+}
+</style>
 </head>
 <body style="background-color: #ffffff">
  <div id="top">
@@ -34,51 +56,35 @@ function deleteRow(idx){
 <div class="container">
 	
 	<%@include file="../category.jsp" %>
-	<div class="text-right">
-	</div>
-		<div class="container d-flex justified-content-center">
-			<ul class="nav nav-justified" style="width: 1500px;">
-				<li class="nav-item"><a class="nav-link"
+		<div class="sc-oaw5ke-1 kCoHZO">
+			<ul class=" sc-nly1np-0 kQQPrS">
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
 					href="./notice.do?categoryCode=ALL"> <span class="text">전체</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
+				<li class=" sc-8mvsno-0 dSWQUC"><a class="nav-link"
 					href="./notice.do?categoryCode=NOTICE"> <span class="text">공지</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
+				<li class=" sc-8mvsno-0 dSWQUC"><a class="nav-link"
 					href="./notice.do?categoryCode=EVENT"> <span class="text">이벤트</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
 					href="./notice.do?categoryCode=AIRTICKET"> <span class="text">항공권</span>
 				</a></li>
 			</ul>
 		</div>
 		<!-- 방명록 반복 부분 s -->
-	<c:forEach items="${lists }" var="row" varStatus="loop">		
-		<div class="d-grid gap-2">
-			<button type="button" class="btn"  data-bs-toggle="collapse" data-bs-target="#a${row.idx}">
-		      ${row.title }<br />
-		      ${row.regidate } </button>
-		    <div id="a${row.idx}" class="collapse" style="background-color: rgb(250,250,250);">
-		    	${row.contents }
-		    </div>
-			<!--  수정,삭제버튼 -->
-			<div class="media-right">
-				<!-- 수정/삭제 버튼은작성자 본인에게만 보여야 하므로 세션영역에 저장된
-				아이디와 게시물을 작성한 아이디가 같을때만 버튼을 출력한다. 
-				EL에서는 영역을 지정하는 내장객체를 생략할 수 있다. 따라서 sessionScope
-				는 삭제해도 무방하다.-->
-				<c:if test="${name eq row.email }">
-					<button class="btn btn-secondary"
-						onclick="location.href='modify.do?idx=${row.idx}';">
-						수정
-					</button>
-					<button class="btn btn-secondary"
-						onclick="javascript:deleteRow(${row.idx});">
-						삭제
-					</button>
-				</c:if>
-			</div>
-		</div>
+	<c:forEach items="${lists }" var="row" varStatus="loop">	
+    	<details class="detail-box">
+	        <summary class="detail-box-title"
+	            style="background-color:#ffffff;border-style:none;cursor:pointer;padding:.5rem 1rem;">
+	            ${row.title }
+	           <br /><span style="font-size: 12px;">${row.regidate }</span> 
+	        </summary>
+	        <div class="detail-box-description"
+	            style="border-bottom-width:1px;border-color:#f5f5f5;border-left-width:1px;border-right-width:1px;border-style:solid;border-top-width:0 !important;margin-top:0;padding:.5rem;">
+	            ${row.contents }
+	        </div>
+    	</details>	
 	</c:forEach>
 </div>
     <div id="copyright">

@@ -11,8 +11,10 @@ public class TotalJourneyDTO {
 	private String ji_title;
 	private String title;
 	private int ji_discount;
-//	private int ji_adult;
-//	private int ji_kid;
-//	private String ji_duetime1;
-//	private String ji_duetime2;
+	
+	private int sub_idx;
+	private int ji_adult;
+	private int ji_kid;
+	private String ji_duetime1;
+	private String ji_duetime2;
 }
