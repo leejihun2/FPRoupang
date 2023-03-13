@@ -142,7 +142,7 @@ hover:
                 </a>
             </li>
             <li id="product-review" >
-                <a href="" title="리뷰관리" target="_self" class="oo">
+                <a href="../review/review.do" title="" target="_self" class="oo">
                     리뷰관리
                 </a>
             </li>

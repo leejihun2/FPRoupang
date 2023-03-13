@@ -61,11 +61,9 @@ public class SupportsController {
 				daoo.listPageSearch("notice",category);
 
 		for (SupportsDTO dto : lists) {
-			System.out.println("나 동작");
 			String temp = dto.getContents()
 					.replace("\r\n", "<br/>");
 			dto.setContents(temp);
-			System.out.println("콘텐츠 >>>>> "+dto.getContents());
 		}
 		
 		model.addAttribute("lists", lists);
@@ -82,11 +80,9 @@ public class SupportsController {
 				daoo.inquirylist(supportsDTO);
 
 		for (SupportsDTO dto : lists) {
-			System.out.println("나 동작");
 			String temp = dto.getContents()
 					.replace("\r\n", "<br/>");
 			dto.setContents(temp);
-			System.out.println("콘텐츠 >>>>> "+dto.getContents());
 		}
 		
 		model.addAttribute("lists", lists);
@@ -95,11 +91,7 @@ public class SupportsController {
 	@RequestMapping("/supports/voc.do")
 	public String write(Model model, HttpSession session,
 			HttpServletRequest req, Principal principal) {
-		if(session.getAttribute("siteUserInfo")==null)
-		{
-			model.addAttribute("backUrl", "/supports/voc");
-			return "redirect:/myLogin.do";
-		}
+		
 		return "/supports/voc";
 	}
 	

@@ -45,7 +45,7 @@ public class AdminController {
 	public String adminFaq(Model model, HttpServletRequest req) {
 		String category = req.getParameter("categoryCode");
 		String contact = req.getParameter("contact");
-		int totalRecordCount = daoo.getTotalCountSearch("faq", category);
+		//int totalRecordCount = daoo.getTotalCountSearch("faq", category);
 
 		ArrayList<SupportsDTO> lists = daoo.listPageSearch("faq", category);
 
@@ -63,15 +63,12 @@ public class AdminController {
 	@RequestMapping("/admin/adminNotice.do")
 	public String blank1(Model model, HttpServletRequest req) {
 		String category = req.getParameter("categoryCode");
-		int totalRecordCount = daoo.getTotalCountSearch("notice", category);
 
 		ArrayList<SupportsDTO> lists = daoo.listPageSearch("notice", category);
 
 		for (SupportsDTO dto : lists) {
-			System.out.println("나 동작");
 			String temp = dto.getContents().replace("\r\n", "<br/>");
 			dto.setContents(temp);
-			System.out.println("콘텐츠 >>>>> " + dto.getContents());
 		}
 
 		model.addAttribute("lists", lists);
