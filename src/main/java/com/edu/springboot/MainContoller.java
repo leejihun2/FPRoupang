@@ -1,4 +1,4 @@
-package com.edu.springboot;
+ package com.edu.springboot;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -10,11 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.springboot.jdbc.IMemberService;
+import com.edu.springboot.jdbc.JourneyService;
 import com.edu.springboot.jdbc.SellRightDTO;
+import com.edu.springboot.jdbc.TotalJourneyDTO;
 import com.edu.springboot.jdbc.CategoryService;
+import com.edu.springboot.jdbc.IMainService;
 
 
 @Controller
@@ -26,8 +29,18 @@ public class MainContoller {
 	@Autowired
 	IMemberService member_dao;
 	
+	@Autowired
+    IMainService main_dao;
+	
 	@RequestMapping("/")
-	public String home() {
+	public String home(Model model) {
+		
+		ArrayList<TotalJourneyDTO> journeyList = main_dao.adJourney_list();
+		
+		model.addAttribute("journeyList",journeyList);
+		
+		System.out.println(journeyList);
+		
 		return "home";
 	}
 	
@@ -90,5 +103,4 @@ public class MainContoller {
 		
 		return "/admin/productInsert";
 	}
-	
 }
