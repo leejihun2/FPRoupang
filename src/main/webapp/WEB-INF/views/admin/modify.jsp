@@ -59,19 +59,6 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<select name="categorycode" value="${dto.categorycode }">
-									<option value="DELIVERY">배송문의</option>
-									<option value="CANCEL">취소/교환/반품</option>
-									<option value="REFUND">환불</option>
-									<option value="MEMBER">회원서비스</option>
-									<option value="CASH">쿠팡캐시</option>
-									<option value="MOBILE">로켓모바일</option>
-									<option value="NOTICE">공지</option>
-									<option value="EVENT">이벤트</option>
-									<option value="AIRTICKET">항공권</option>
-								</select>
-							</tr>
-							<tr>
 								<th class="text-center" style="vertical-align: middle;">제목</th>
 								<td><textarea rows="1" class="form-control" name="title">${dto.title }</textarea></td>
 							</tr>
