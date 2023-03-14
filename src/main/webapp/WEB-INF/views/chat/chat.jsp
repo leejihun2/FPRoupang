@@ -100,10 +100,16 @@
 				<!-- idx부분을 조인을 통해 이름값을 가져오게 수정 -->
 				<%-- <span style="color: white;">${row.member_idx}:</span> --%>
 				<c:if test="${row.member_idx ne 1 }">
-				<p class='me' style="color: gray;">${row.chatting }</p>
+				<div class='me' style='margin-top:10px;'>
+				<div class='sender'>고객</div>
+				<div class='b'></div>
+			    <div class='a'style='padding:6px 8px 0px 5px;'>${row.chatting }</div></div>
 				</c:if>
 				<c:if test="${row.member_idx eq 1 }">
-				<p class='others' style="color: gray;">상담사 : ${row.chatting }</p>
+				<div class='others' style='margin-top:10px;'><div class='sender'>상담사</div>
+				<div class='a'></div>
+				<div class='b'></div>
+				<div class='b'  style='padding:6px 8px 0px 5px;'>${row.chatting }</div></div>
 				</c:if>
 		</c:forEach>
 			</div>
