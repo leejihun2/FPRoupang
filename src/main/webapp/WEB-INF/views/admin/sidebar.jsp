@@ -36,7 +36,6 @@
 	<li class="nav-item"><a class="nav-link collapsed" href="#">
 	<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
 	</a></li>
-
 	<s:authorize access="hasRole('admin')">
 	
 		<!-- Heading -->

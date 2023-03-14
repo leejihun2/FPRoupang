@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link href="../../css/vendor/fontawesome-free/css/all.min.css"
-	rel="stylesheet" type="text/css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s"%>
 <!DOCTYPE html>
@@ -35,6 +33,7 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
+<link href="../css/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../../css/sb-admin-2.min.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -45,6 +44,11 @@ td, th {
 	vertical-align: middle;
 	/* center checkbox vertically */
 }
+button{
+	margin-right: 10px;
+	float: right;
+}
+
 </style>
 <script>
 	$(document).on('click', '#checkAll', function() {
@@ -87,7 +91,7 @@ td, th {
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<%@include file="../sidebar.jsp"%>
+		<%@include file="admin/sidebar.jsp"%>
 		<!-- End of Sidebar -->
 
 		<!-- Content Wrapper -->
@@ -98,52 +102,64 @@ td, th {
 			<div id="content">
 
 				<!-- Topbar -->
-				<%@include file="../topbar.jsp"%>
+				<%@include file="admin/topbar.jsp"%>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
 
 				<div class="container-fluid">
 					<h2>판매자목록</h2>
-					<form id="block" method="post">
-						<table class="table table-hover">
-							<tr>
-							<th>아이디</th>
-							<th>상호</th>
-							<th>이름</th>
-							<th>신청일</th>
-							<th></th>
-							<th>전체선택 <input class="checkbox_group" type="checkbox"
-								name="checkAll" id="checkAll" />
-							</th>
-							</tr>
-							<c:forEach items="${lists }" var="row" varStatus="loop">
-								<tr>
-									<td>${row.email }</td>
-	
-									<td>${row.name }</td>
-									<td>${row.company_name }</td>
-									<td>${row.regidate }</td>
-	
-									<td><a href="sellerView.do?member_idx=${row.member_idx }">상세보기</a>
-									</td>
-									<td><input style='zoom: 1.5;' class="checkbox_group" name="public1"
-										type="checkbox" value="${row.member_idx }"
-										id="flexCheckDefault"></td>
-								</tr>
-							</c:forEach>
-							<tr style="border-bottom: hidden;">
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>
-									<button class="btn btn-outline-secondary" id="blockSell" type="button">차단하기</button>
-								</td>
-							</tr>
-						</table>
-					</form>
+					
+					<!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Admin Tables</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+								<form id="block" method="post">
+									<table class="table table-hover">
+										<thead>
+	                                        <tr>
+												<th>아이디</th>
+												<th>상호</th>
+												<th>이름</th>
+												<th>신청일</th>
+												<th></th>
+												<th>전체선택 <input class="checkbox_group" type="checkbox"
+													name="checkAll" id="checkAll" />
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${lists }" var="row" varStatus="loop">
+												<tr>
+													<td>${row.email }</td>
+					
+													<td>${row.name }</td>
+													<td>${row.company_name }</td>
+													<td>${row.regidate }</td>
+					
+													<td><a href="sellerView.do?member_idx=${row.member_idx }">상세보기</a>
+													</td>
+													<td><input style='zoom: 1.5;' class="checkbox_group" name="public1"
+														type="checkbox" value="${row.member_idx }"
+														id="flexCheckDefault"></td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+										<tr style="border-bottom: hidden;">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>
+												<button class="btn btn-outline-secondary" id="blockSell" type="button">차단하기</button>
+											</td>
+										</tr>
+								</form>
 					<a href="/admin/index.do">관리자 홈으로가기</a>
 				</div>
 				<!-- /.container-fluid -->
