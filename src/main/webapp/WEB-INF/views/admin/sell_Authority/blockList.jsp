@@ -115,8 +115,8 @@ button{
 						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 							<tr>
 							<th>아이디</th>
-							<th>상호</th>
 							<th>이름</th>
+							<th>상호</th>
 							<th>신청일</th>
 							<th>차단계정 상세보기</th>
 							<th>전체선택 <input class="checkbox_group" type="checkbox"

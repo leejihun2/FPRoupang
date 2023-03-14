@@ -35,7 +35,7 @@
 		</div></li>
 	<li class="nav-item"><a class="nav-link collapsed" href="#">
 	<s:authorize access="hasRole('seller')">
-		<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
+		<i class="fa fa-shopping-cart"></i> <span onclick="location.href=' '">판매목록확인</span>
 	</s:authorize>
 	</a></li>
 	<s:authorize access="hasRole('admin')">

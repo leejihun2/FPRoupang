@@ -24,28 +24,41 @@
 <script src="./js/journeyTop.js"></script>
 </head>
 <script type="text/javascript">
+
+
 onload = function(){
-	var mapContainer = document.getElementById('map'),
-	mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 11};  
-	// 지도를 생성합니다    
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
-	var geocoder = new kakao.maps.services.Geocoder();
-	// 주소로 좌표를 검색합니다 (membership테이블에 사업장 주소명을 파라미터로 받는다.])
-	geocoder.addressSearch('제주도', function(result, status) {
-	// 정상적으로 검색이 완료됐으면 
-	 if (status === kakao.maps.services.Status.OK) {
-	    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-	    // 결과값으로 받은 위치를 마커로 표시
-	    var marker = new kakao.maps.Marker({
-	        map: map,
-	        position: coords
-	    });
-    	// 인포윈도우로 장소에 대한 설명을 표시
-	    var infowindow = new kakao.maps.InfoWindow({});
-	    infowindow.open(map);
-	    map.setCenter(coords);
-		} 
-	});  
+	
+	var locationValues = document.getElementById("location").value.split(',');	
+	
+	var mapContainer = document.getElementById('map');
+		var mapOption = {
+			center : new kakao.maps.LatLng(33.450701, 126.570667),
+			level : 11
+		};
+		var map = new kakao.maps.Map(mapContainer, mapOption);
+		var geocoder = new kakao.maps.services.Geocoder();
+		var bounds = new kakao.maps.LatLngBounds();
+		for (var i = 0; i < locationValues.length; i++) {
+			geocoder.addressSearch(locationValues[i],
+					function(result, status) {
+						if (status === kakao.maps.services.Status.OK) {
+							var coords = new kakao.maps.LatLng(result[0].y,
+									result[0].x);
+							var marker = new kakao.maps.Marker({
+								map : map,
+								position : coords
+							});
+							var infowindow = new kakao.maps.InfoWindow({
+								content : '<div>' + locationValues[i]+ '</div>'
+							});
+							kakao.maps.event.addListener(marker, 'click',function() {
+								infowindow.open(map, marker);
+							});
+							bounds.extend(coords);
+						    map.setBounds(bounds);
+						  }
+					  });
+		}
 }
 </script>
     <style>
@@ -74,6 +87,7 @@ onload = function(){
 	    margin: 20px;
 	    padding-bottom: 20px;
 	    letter-spacing: -.4px;
+	    height: 340px;
 	}
 	.sub-category .category-list{
 	    height: 19px;
@@ -120,6 +134,7 @@ onload = function(){
 		margin-bottom: 5px;
 	    font-size: 14px;
 	    line-height: 17px;
+	    height: 34px;
 	}
 	.search-result:after {
 	    content: "";
@@ -177,12 +192,13 @@ onload = function(){
     			</div>
    			</div>
    		</section>
+   		<input type="hidden" id="location" name="location" value="${like_loc }">
    		<section class="search-result">
    			<div class="row">
 	   			<div class="col-9">
 					<ul class="search-items">
-		<%-- 			<c:if test="${not empty search_list or not empty like_loc}">
-		--%>			<c:forEach items="${journey_list }" var="journey" varStatus="loop">
+		<%-- 			<c:if test="${not empty search_list or not empty like_loc}">--%>			
+						<c:forEach items="${journey_list }" var="journey" varStatus="loop">
 				  			<li class="search-item">
 				  				<a href="journeyDetail?value=${journey.idx }" target="_blank">
 			 					<div class="journey_img" style="background-image:url(/uploads/${journey.j_title_image })"></div>

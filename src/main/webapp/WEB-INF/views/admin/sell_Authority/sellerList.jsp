@@ -122,8 +122,8 @@ button{
 										<thead>
 	                                        <tr>
 												<th>아이디</th>
-												<th>상호</th>
 												<th>이름</th>
+												<th>상호</th>
 												<th>신청일</th>
 												<th>판매자 상세보</th>
 												<th>전체선택 <input class="checkbox_group" type="checkbox"
