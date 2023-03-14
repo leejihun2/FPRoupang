@@ -13,7 +13,7 @@
 	var ws;
     onload = function (){
 		$('#startBtn').trigger('click');
-	}
+	} 
 	function webClose(){
 		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#room_idx").val());
 		ws.close();
