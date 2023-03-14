@@ -109,7 +109,7 @@ button{
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<%@include file="admin/sidebar.jsp"%>
+		<%@include file="/admin/sidebar.jsp"%>
 		<!-- End of Sidebar -->
 
 		<!-- Content Wrapper -->
@@ -120,7 +120,7 @@ button{
 			<div id="content">
 
 				<!-- Topbar -->
-				<%@include file="admin/topbar.jsp"%>
+				<%@include file="/admin/topbar.jsp"%>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
