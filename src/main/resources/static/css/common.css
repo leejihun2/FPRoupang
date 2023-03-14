@@ -1174,6 +1174,7 @@ body.renewal {
 }
 
 .category-layer li {
+	z-index: 200;
     height: 29px
 }
 

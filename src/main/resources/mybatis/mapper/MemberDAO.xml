@@ -217,4 +217,8 @@
 	<select id="LoginUser" resultType="com.edu.springboot.jdbc.SellRightDTO">
 		select * from member where email = #{param1}
 	</select>
+	
+	<select id="LoginSeller" resultType="com.edu.springboot.jdbc.SellRightDTO">
+		select * from sell_authorized where member_idx = #{param1}
+	</select>
 </mapper>
