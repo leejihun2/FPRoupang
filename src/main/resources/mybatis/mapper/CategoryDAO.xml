@@ -48,14 +48,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	parameterType="com.edu.springboot.jdbc.CategoryDTO"
 	resultType="com.edu.springboot.jdbc.ParameterTicketDTO">
 		select * from bot_category bc JOIN ticket t ON bc.idx=t.bot_idx 
-		where sub_idx=#{param1} and company_name=#{param2}
+		where sub_idx=#{param1}
+		<if test="param2!='루팡'">
+			and company_name=#{param2}
+		</if>		
 	</select>
 	
 	<select id="select_cate_bot_j"
 	parameterType="com.edu.springboot.jdbc.CategoryDTO"
 	resultType="com.edu.springboot.jdbc.ParameterJourneyDTO">
 		select * from bot_category bc JOIN journey j ON bc.idx=j.bot_idx 
-		where sub_idx=#{param1} and company_name=#{param2}
+		where sub_idx=#{param1}
+		<if test="param2!='루팡'">
+			and company_name=#{param2}
+		</if>
 	</select>
  
  	
