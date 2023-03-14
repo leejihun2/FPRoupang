@@ -423,7 +423,6 @@ $(function(){
          });
          
          
-         alert(value);
          if($("#category1").val()==10){
             form.action="/ticketInsertAction?value="+value;
        }
@@ -576,7 +575,7 @@ function service_list(e){
       briefinfo+=chkbox+'</td></tr>';
       
       briefinfo+='<tr><th class="info_th">* 이용시설</th><td>';
-      add=ticket_service;
+      add=ticket_fac;
       for(property in add){
          var chkbox = "<input type='checkbox' class='fac' name='t_fac' value='"+add[property]+"'/>"+add[property];
          briefinfo+=chkbox;

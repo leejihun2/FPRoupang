@@ -74,7 +74,7 @@ button{
 			}
 			if(confirm("선택한 "+block_val.length+"개의 계정을 삭제하시겠습니까?")){
 					location.href="/appRegect.do?value="+block_val;
-					alert(block_val);
+					
 			}
          
 	
@@ -91,7 +91,7 @@ button{
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<%@include file="admin/sidebar.jsp"%>
+		<%@include file="../sidebar.jsp"%>
 		<!-- End of Sidebar -->
 
 		<!-- Content Wrapper -->
@@ -102,7 +102,7 @@ button{
 			<div id="content">
 
 				<!-- Topbar -->
-				<%@include file="admin/topbar.jsp"%>
+				<%@include file="../topbar.jsp"%>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
@@ -118,14 +118,14 @@ button{
                         <div class="card-body">
                             <div class="table-responsive">
 								<form id="block" method="post">
-									<table class="table table-hover">
+									<table class="table table-bordered">
 										<thead>
 	                                        <tr>
 												<th>아이디</th>
 												<th>상호</th>
 												<th>이름</th>
 												<th>신청일</th>
-												<th></th>
+												<th>판매자 상세보</th>
 												<th>전체선택 <input class="checkbox_group" type="checkbox"
 													name="checkAll" id="checkAll" />
 												</th>

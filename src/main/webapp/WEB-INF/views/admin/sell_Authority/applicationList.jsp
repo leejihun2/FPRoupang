@@ -61,7 +61,7 @@ button{
 			$("[name=public1]").each(function(idx){
 				if($(this).is(":checked")==true){
 					block_val.push($(this).val());
-					console.log(block_val);
+					
 				}
 			});
 			if(block_val.length==0){
@@ -70,7 +70,7 @@ button{
 			}
 			if(confirm("선택한 "+block_val.length+"개의 계정을 차단하시겠습니까?")){
 					location.href="/appRegect.do?value="+block_val;
-					alert(block_val);
+				
 			}
          
 	
@@ -83,7 +83,7 @@ button{
 			$("[name=public1]").each(function(idx){
 				if($(this).is(":checked")==true){
 					approve_val.push($(this).val());
-					console.log(approve_val);
+					
 				}
 			});
 			if(approve_val.length==0){
@@ -92,7 +92,7 @@ button{
 			}
 			if(confirm("선택한 "+approve_val.length+"개의 계정을 승인하시겠습니까?")){
 					location.href="/appOk.do?value="+approve_val;
-					alert(approve_val);
+					
 			}
          
 	
@@ -109,7 +109,7 @@ button{
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<%@include file="/admin/sidebar.jsp"%>
+		<%@include file="../sidebar.jsp"%>
 		<!-- End of Sidebar -->
 
 		<!-- Content Wrapper -->
@@ -120,7 +120,7 @@ button{
 			<div id="content">
 
 				<!-- Topbar -->
-				<%@include file="/admin/topbar.jsp"%>
+				<%@include file="../topbar.jsp"%>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
@@ -139,7 +139,7 @@ button{
                         <div class="card-body">
                             <div class="table-responsive">
                             	<form id="block" method="post">
-	                                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 	                                    <thead>
 	                                        <tr>
 	                                            <th>아이디</th>
@@ -163,7 +163,7 @@ button{
 													<td><input style='zoom: 1.5;' class="checkbox_group1" name="public1"
 														type="checkbox" value="${row.member_idx }"
 														id="flexCheckDefault"></td>
-													<td>  
+													
 		                                        </tr>
 	                                        </c:forEach>
                                          </tbody>
@@ -179,52 +179,7 @@ button{
                             </div>
                         </div>
                     </div>
-					<h2>판매자입점신청목록</h2>
-					<form id="block" method="post">
-						<table class="table table-hover">
-							<tr>
-							<th>아이디</th>
-							<th>상호</th>
-							<th>이름</th>
-							<th>신청일</th>
-							<th></th>
-							<th>전체선택 <input class="checkbox_group1" type="checkbox"
-								name="checkAll1" id="checkAll1" />
-							</th>
-							</tr>
-							<c:forEach items="${lists }" var="row" varStatus="loop">
-								<tr>
-									<td>${row.email }</td>
-	
-									<td>${row.name }</td>
-									<td>${row.company_name }</td>
-									<td>${row.regidate }</td>
-	
-									<td><a href="appView.do?member_idx=${row.member_idx }">상세보기</a>
-									</td>
-									<td><input style='zoom: 1.5;' class="checkbox_group1" name="public1"
-										type="checkbox" value="${row.member_idx }"
-										id="flexCheckDefault"></td>
-									<td>
-								</tr>
-							</c:forEach>
-							<tr style="border-bottom: hidden;">
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td><button class="btn btn-outline-secondary" id="approveSell" type="button">승인하기</button>
-								</td>
-								<td>
-									<button class="btn btn-outline-secondary" id="blockSell" type="button">차단하기</button>
-								</td>
-								
-							</tr>
-						</table>
-					</form>
-
-	<a href="/admin/index.do">관리자 홈으로가기</a>
-
+		
 				</div>
 				<!-- /.container-fluid -->
 
