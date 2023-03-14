@@ -250,25 +250,25 @@ public class JourneyController {
       return "success";
    }
    @ResponseBody
-   @RequestMapping("/category_list.j")
-   public ArrayList<ParameterJourneyDTO> cate_list(HttpServletRequest req, Model model){
-      int sub_idx=0;
-      if(!(req.getParameter("sub_idx")==null)) {
-         sub_idx=Integer.parseInt(req.getParameter("sub_idx"));
-      }
-      String level = req.getParameter("level");
-      
-      if(level.equals("1")) {
-         ArrayList<ParameterJourneyDTO> sub_cate = cate_dao.select_cate_j(sub_idx);
-         model.addAttribute("mid_cate_idx",sub_idx);
-         return sub_cate;
-      }else{
-         String company_name=req.getParameter("company_name");
-         ArrayList<ParameterJourneyDTO> sub_cate = cate_dao.select_cate_bot_j(sub_idx,company_name);
-         System.out.println(sub_cate);
-         return sub_cate;
-      }
-   }
+	@RequestMapping("/category_list.j")
+	public ArrayList<ParameterJourneyDTO> cate_list(HttpServletRequest req, Model model) {
+		int sub_idx = 0;
+		if (!(req.getParameter("sub_idx") == null)) {
+			sub_idx = Integer.parseInt(req.getParameter("sub_idx"));
+		}
+		String level = req.getParameter("level");
+
+		if (level.equals("1")) {
+			ArrayList<ParameterJourneyDTO> sub_cate = cate_dao.select_cate_j(sub_idx);
+			model.addAttribute("mid_cate_idx", sub_idx);
+			return sub_cate;
+		} else {
+			String company_name = req.getParameter("company_name");
+			ArrayList<ParameterJourneyDTO> sub_cate = cate_dao.select_cate_bot_j(sub_idx, company_name);
+			System.out.println(sub_cate);
+			return sub_cate;
+		}
+	}
    @ResponseBody
    @RequestMapping("/journeyInfo")
    public JourneyDTO select_journey(HttpServletRequest req){
@@ -474,7 +474,7 @@ public class JourneyController {
    @RequestMapping("/journey_List")
    public ModelAndView show_Journey_List(HttpServletRequest req, HttpSession session, TotalJourneyDTO totaljourneyDTO) {
       ModelAndView mv = new ModelAndView();
-      int sub_idx = Integer.parseInt(req.getParameter("sub_idx"));
+      int sub_idx = Integer.parseInt(req.getParameter("category"));
       String location = req.getParameter("location"); 
       String title = req.getParameter("title");
       String ji_duetime1 = "";
@@ -483,14 +483,14 @@ public class JourneyController {
       int ji_kid = 0;
       System.out.println(sub_idx);
       if(location != null) {
-         
-         String like_loc = journey_dao.like_journey_List(location);
+          
+         ArrayList<String> like_loc = journey_dao.like_journey_List(location);
       
          mv.addObject("like_loc",like_loc);
       }
-      else if(title != null) {
-         
-         String search_list = cate_dao.search_journey_List(sub_idx, title);
+      else if(title != null) { 
+          
+    	  ArrayList<TotalJourneyDTO> search_list = cate_dao.search_journey_List(sub_idx, title);
          
          mv.addObject("search_list",search_list);
       }
@@ -521,21 +521,24 @@ public class JourneyController {
 //      System.out.println("시작일 :"+ totaljourneyDTO.getJi_duetime1());
 //      System.out.println("종료일 :"+ totaljourneyDTO.getJi_duetime2());
       
-      String category_title = cate_dao.select_one_cate(sub_idx); 
       ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list(totaljourneyDTO);
       
+      String category_title = cate_dao.select_one_cate(sub_idx); 
       
-      mv.addObject("sub_idx",sub_idx);
-      mv.addObject("category_title",category_title);
-      mv.addObject("journey_list", journey_list);
-      mv.setViewName("/journey/journeyList");
-   
       System.out.println(journey_list);
       
-      session.removeAttribute("ji_adult");
-      session.removeAttribute("ji_kid");
-      session.removeAttribute("ji_duetime1");
-      session.removeAttribute("ji_duetime2");
+      mv.addObject("sub_idx",sub_idx);
+      
+      mv.addObject("category_title",category_title);
+      
+      mv.addObject("journey_list", journey_list);
+      
+      mv.setViewName("/journey/journeyList");
+      
+//      session.removeAttribute("ji_adult");
+//      session.removeAttribute("ji_kid");
+//      session.removeAttribute("ji_duetime1");
+//      session.removeAttribute("ji_duetime2");
       
       return mv;
    }

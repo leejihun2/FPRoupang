@@ -25,7 +25,7 @@
                                                 <div class="search-keyword-input">
                                                     <i class="travel-icon icon-search-sm-white search-keyword-icon">icon</i>
 													<form action="/journey_List">
-														<input type="hidden" id="sub_idx" name="category" value="2"/> 
+														<input type="hidden" id="sub_idx" name="category" value="1"/> 
 														<input type="text" class="search-keyword-text" onclick="recommend_j()" id="jSearchBox" name="title"
 															placeholder="국내외 지역명, 숙소명으로 검색" value="">
 															<button class="wizard-search-btn" id="searchIcon" type="submit" style="border: none;">
@@ -36,18 +36,18 @@
 													<div class="best-keyword-group-values-layer">
 													<h5 class="best-keyword-title" style="">주요검색어 바로선택</h5>
 														<ul class="best-keyword-group-value" style="width: 450px;">
-															<li style="width: 80px"><a href="/journey_List?category=2&location=제주" class="best-keyword-group-item">제주</a></li>
-															<li style="width: 80px"><a href="/journey_List?sub_idx=2&location=강원" class="best-keyword-group-item">강원</a></li>
-															<li style="width: 80px"><a href="/journey_List?sub_idx=2&location=부산" class="best-keyword-group-item">부산</a></li>
-															<li style="width: 80px"><a href="/journey_List?sub_idx=2&location=가평" class="best-keyword-group-item">가평</a></li>
-															<li style="width: 80px"><a href="/journey_List?sub_idx=2&location=경주" class="best-keyword-group-item">경주</a></li>
+															<li style="width: 80px"><a href="/journey_List?category=1&location=제주" class="best-keyword-group-item">제주</a></li>
+															<li style="width: 80px"><a href="/journey_List?category=1&location=강원" class="best-keyword-group-item">강원</a></li>
+															<li style="width: 80px"><a href="/journey_List?category=1&location=부산" class="best-keyword-group-item">부산</a></li>
+															<li style="width: 80px"><a href="/journey_List?category=1&location=가평" class="best-keyword-group-item">가평</a></li>
+															<li style="width: 80px"><a href="/journey_List?category=1&location=경주" class="best-keyword-group-item">경주</a></li>
 														</ul>
 														<ul class="best-keyword-group-value" style="width: 450px;">
-															<li style="width: 80px"><a href="/journey_List?sub_idx=2&location=서울" class="best-keyword-group-item">서울</a></li>
-															<li style="width: 80px"><a href="/journey_List?sub_idx=2&location=전주" class="best-keyword-group-item">전주 </a></li>
-															<li style="width: 80px"><a href="/journey_List?sub_idx=2&location=강릉" class="best-keyword-group-item">강릉</a></li>
-															<li style="width: 80px"><a href="/journey_List?sub_idx=2&location=경기" class="best-keyword-group-item">경기</a></li>
-															<li style="width: 80px"><a href="/journey_List?sub_idx=2&location=속초" class="best-keyword-group-item">속초</a></li>
+															<li style="width: 80px"><a href="/journey_List?category=1&location=서울" class="best-keyword-group-item">서울</a></li>
+															<li style="width: 80px"><a href="/journey_List?category=1&location=전주" class="best-keyword-group-item">전주 </a></li>
+															<li style="width: 80px"><a href="/journey_List?category=1&location=강릉" class="best-keyword-group-item">강릉</a></li>
+															<li style="width: 80px"><a href="/journey_List?category=1&location=경기" class="best-keyword-group-item">경기</a></li>
+															<li style="width: 80px"><a href="/journey_List?category=1&location=속초" class="best-keyword-group-item">속초</a></li>
 														</ul>
 													</div>
 												</div>

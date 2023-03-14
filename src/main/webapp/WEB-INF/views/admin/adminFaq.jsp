@@ -59,9 +59,6 @@ function deleteRow(idx){
 
 			<!-- Main Content -->
 			<div id="content">
-
-		<input type="hid den" value="${category }">
-		<input type="hid den" value="${contact }">
 				<!-- Topbar -->
 				<%@include file="./topbar.jsp"%>
 				<!-- End of Topbar -->
