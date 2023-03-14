@@ -99,10 +99,7 @@
 							</tr>
 						</tbody>
 					</table>
-
 					<div class="row text-center" style="">
-						<!-- 각종 버튼 부분 -->
-
 						<button type="submit" class="btn btn-secondary">작성하기</button>
 						<button type="reset" class="btn btn-secondary">Reset</button>
 						<button type="button" class="btn btn-secondary"
