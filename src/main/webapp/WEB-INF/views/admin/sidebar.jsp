@@ -65,7 +65,7 @@
 				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">고객센터:</h6>
-					<a class="collapse-item" href="/admin/write.do">글 작성</a>
+					<a class="collapse-item" href="/admin/writeSupports.do">글 작성</a>
 					<a class="collapse-item" href="/admin/adminFaq.do?categoryCode=ALL">자주 묻는 질문</a>
 					<a class="collapse-item" href="/admin/adminNotice.do?categoryCode=ALL">쿠팡소식</a>
 				</div>
