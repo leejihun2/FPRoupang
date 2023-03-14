@@ -33,7 +33,9 @@ public class AdminController {
 		String loginId = principal.getName();
 		
 		SellRightDTO dto  = member_dao.LoginUser(loginId);
+		
 		String Authority = dto.getAuthority();
+		
 		if(Authority.equals("ROLE_seller"))
 		{
 			return "redirect:/productInsert";

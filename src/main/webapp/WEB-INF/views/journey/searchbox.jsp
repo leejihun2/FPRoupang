@@ -12,6 +12,7 @@
                     <div class="home-search-wizard-wrapper">
                         <div class="search-wizard-container">
                             <ul class="search-wizard-tab">
+                            
                                 <li><a href="javascript:void(0);onclick=journeychange();" id="acc">숙박</a></li>
                                 <li><a href="javascript:void(0);onclick=ticketchange();" id="ticket">티켓</a></li>
                             </ul>

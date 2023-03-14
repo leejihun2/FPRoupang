@@ -1,6 +1,7 @@
 package com.edu.springboot;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import com.edu.springboot.jdbc.IMemberService;
-
-
-
+import com.edu.springboot.jdbc.SellRightDTO;
 import com.edu.springboot.jdbc.CategoryService;
 
 
@@ -23,6 +22,10 @@ public class MainContoller {
 
 	@Autowired 
 	IMemberService dao;
+	
+	@Autowired
+	IMemberService member_dao;
+	
 	@RequestMapping("/")
 	public String home() {
 		return "home";
@@ -68,21 +71,24 @@ public class MainContoller {
 	@Autowired
 	CategoryService cate_dao;
 	@RequestMapping("/productInsert")
-	public String ticket_insert2(Model model, HttpServletRequest req) {
+	public String ticket_insert2(Principal principal, Model model, HttpServletRequest req) {
 		int sub_idx=0;
+		
 		if(!(req.getParameter("sub_idx")==null)) {
 			sub_idx = Integer.parseInt(req.getParameter("sub_idx"));
 		}
+		
+		String loginId = principal.getName();
+		
+		if(!(loginId.equals("admin"))) {
+			SellRightDTO dto  = member_dao.LoginUser(loginId);
+			dto  = member_dao.LoginSeller(dto.getMember_idx());
+			model.addAttribute("company_name", dto.getCompany_name());
+		}
+
 		model.addAttribute("cate",cate_dao.select_cate(sub_idx));
+		
 		return "/admin/productInsert";
 	}
-	@RequestMapping("/product_insert")
-	public String ticket_insert1(Model model, HttpServletRequest req) {
-		int sub_idx=0;
-		if(!(req.getParameter("sub_idx")==null)) {
-			sub_idx = Integer.parseInt(req.getParameter("sub_idx"));
-		}
-		model.addAttribute("cate",cate_dao.select_cate(sub_idx));
-		return "/product_insert";
-	}
+	
 }
