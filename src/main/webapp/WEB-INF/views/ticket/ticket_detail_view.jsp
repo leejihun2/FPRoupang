@@ -828,7 +828,7 @@
              						<div class="star-ratings">
 					          <input type="hidden" name="ratevalue1" value="${totalstar.star_rate}" step="0.1" min="0" max="5" />
 					          <div class="rating-wrap1">
-					            <div class="rating1">상품평 
+					            <div class="rating1">상품평&nbsp;
 					                <div class="overlay1"></div> 
 					            </div>${totalstar.star_rate0}
 					          </div>
@@ -836,7 +836,7 @@
 								<div class="star-ratings">
 					          <input type="hidden" name="ratevalue2" value="${totalstar.star_servey1}" step="0.1" min="0" max="5" />
 					          <div class="rating-wrap2">
-					            <div class="rating2">가격
+					            <div class="rating2">가격&nbsp;&nbsp;&nbsp;
 					                <div class="overlay2"></div>
 					            </div>
 					          </div>
@@ -844,7 +844,7 @@
 								<div class="star-ratings">
 					          <input type="hidden" name="ratevalue3" value="${totalstar.star_servey2}" step="0.1" min="0" max="5" />
 					          <div class="rating-wrap3">
-					            <div class="rating3">서비스
+					            <div class="rating3">서비스&nbsp;
 					                <div class="overlay3"></div>
 					            </div>
 					          </div>
@@ -852,7 +852,7 @@
 								<div class="star-ratings">
 					          <input type="hidden" name="ratevalue4" value="${totalstar.star_servey3}" step="0.1" min="0" max="5" />
 					          <div class="rating-wrap4">
-					            <div class="rating4">시설
+					            <div class="rating4">시설&nbsp;&nbsp;&nbsp;
 					                <div class="overlay4"></div>
 					            </div>
 					          </div>
