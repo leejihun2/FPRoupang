@@ -123,7 +123,7 @@ function loginValidate(f)
 										<input class="login_check" type="checkbox">
 										<span class="check_box">로그인 상태 유지</span>
 									</label>
-									<a href="./search_id.do">아이디/비밀번호찾기
+									<a href="/search_id.do">아이디/비밀번호찾기
 									<span style="font-weight: bold;">></span></a>
 								</div>
 								<button class="login_btn mt-3">
