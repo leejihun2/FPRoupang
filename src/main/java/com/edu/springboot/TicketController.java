@@ -457,18 +457,14 @@ public class TicketController {
 		gdto.setGoods_idx(req.getParameter("ti_idx"));
 		gdto.setGoods_image(req.getParameter("goods_image"));
 		
-		
-		System.out.println("bot>>>"+gdto.getBot_idx());
-		System.out.println("ti>>>"+gdto.getGoods_idx());
-		System.out.println("image>>>"+gdto.getGoods_image());
 		//상품 구매시 로그에 남기기
-//		int result = goods_dao.InsertOrder(gdto);
-//		int result2 = goods_dao.InsertOrderItem(gdto);
-//		if (result == 0 ) {
-//			System.out.println("insert 에러");
-//		}else {
-//			System.out.println("정상 동작");
-//		}
+		int result = goods_dao.InsertOrder(gdto);
+		int result2 = goods_dao.InsertOrderItem(gdto);
+		if (result == 0 ) {
+			System.out.println("insert 에러");
+		}else {
+			System.out.println("정상 동작");
+		}
 		
 		return "/";
 	}
