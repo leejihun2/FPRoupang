@@ -251,44 +251,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<!-- 예약일, 인원 설정없이 기본 -->
  	<select id="show_journey_list" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
  		select * from (select bot_idx, location, j_title_image
-                from journey where 
-                	location like '%'||#{location}||'%'
-                ) j join
+             from journey where 
+             location like '%'||#{location}||'%'
+             ) j join
             (select bot_idx, ji_price, ji_discount,
             RANK() OVER (PARTITION BY bot_idx ORDER BY ji_price ASC) rk
             from journey_info
-        <!-- <choose>
+      <!--  <choose>
         	<when test='ji_duetime1==""'>
 		        <choose>
-		        	<when test="ji_kid != null">
-		        	where ji_adult>=#{ji_adult} and ji_kid>=#{ji_kid}
-		        	 	and sysdate between ji_duetime1 and ji_duetime2 
-		             	and sysdate+1 between ji_duetime1 and ji_duetime2
+		        	<when test="ji_kid == null">
+		        		where ji_adult>=2 and ji_kid>=0
+		        	 		and sysdate between ji_duetime1 and ji_duetime2 
+		             		and sysdate+1 between ji_duetime1 and ji_duetime2
 		             </when>
 		             <otherwise>
-		             where ji_adult>=#{ji_adult} and ji_kid>=0
-		        	 	and sysdate between ji_duetime1 and ji_duetime2 
-		             	and sysdate+1 between ji_duetime1 and ji_duetime2
+		             	where ji_adult>=#{ji_adult} and ji_kid>=#{ji_kid}
+		        	 		and sysdate between ji_duetime1 and ji_duetime2 
+		             		and sysdate+1 between ji_duetime1 and ji_duetime2
 		             </otherwise>
 		         </choose>
 	         </when>
 	         <otherwise>
 	         	<choose>
 		        	<when test="ji_kid != null">
-		        	where ji_adult>=#{ji_adult} and ji_kid>=#{ji_kid}
-		        	 	and #{ji_duetime1} between ji_duetime1 and ji_duetime2 
-		             	and #{ji_duetime2} between ji_duetime1 and ji_duetime2
+			        	where ji_adult>=#{ji_adult} and ji_kid>=#{ji_kid}
+			        	 	and #{ji_duetime1} between ji_duetime1 and ji_duetime2 
+			             	and #{ji_duetime2} between ji_duetime1 and ji_duetime2
 		             </when>
 		             <otherwise>
-		             where ji_adult>=#{ji_adult} and ji_kid>=0
-		        	 	and #{ji_duetime1} between ji_duetime1 and ji_duetime2 
-		             	and #{ji_duetime2} between ji_duetime1 and ji_duetime2
+		             	where ji_adult>=#{ji_adult} and ji_kid>=0
+			        	 	and #{ji_duetime1} between ji_duetime1 and ji_duetime2 
+			             	and #{ji_duetime2} between ji_duetime1 and ji_duetime2
 		             </otherwise>
 		         </choose>
 	         </otherwise>
          </choose> -->
  			order by ji_price asc) ji on j.bot_idx = ji.bot_idx join
-            (select * from bot_category where sub_idx = #{sub_idx}) bc 
+            (select * from bot_category where sub_idx = #{sub_idx}
+            ) bc 
             on bc.idx = ji.bot_idx where rk = 1 order by idx
  	</select>
  	<!-- 지역 -->

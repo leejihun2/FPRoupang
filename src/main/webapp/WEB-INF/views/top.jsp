@@ -39,7 +39,86 @@ $(function(){
 		
 	});
 });
+onload = function(){
+	const select = document.querySelector('.coupang-select');
+	const header = select.querySelector('.coupang-select-header');
+	const label = header.querySelector('.coupang-select-label');
+	const arrow = header.querySelector('.coupang-select-arrow');
+	const options = select.querySelector('.coupang-select-options');
+	const optionLinks = options.querySelectorAll('a');
+	header.addEventListener('click', function() {
+		select.classList.toggle('coupang-select-open');
+		options.style.display = select.classList
+				.contains('coupang-select-open') ? 'block' : 'none';
+	});
+	optionLinks.forEach(function(link) {
+		link.addEventListener('click', function(event) {
+			event.preventDefault();
+			label.textContent = link.textContent;
+			select.dataset.value = link.dataset.value;
+			select.dispatchEvent(new Event('change'));
+			select.classList.remove('coupang-select-open');
+			options.style.display = 'none';
+		});
+	});
+}
 </script>
+<style type="text/css">
+    .coupang-select {
+        position: relative;
+        display: inline-block;
+      }
+      .coupang-select-header {
+        display: flex;
+        align-items: center;
+        padding: 6px 12px;
+        cursor: pointer;
+      }
+      .coupang-select-label {
+        flex-grow: 1;
+        margin-right: 8px;
+        margin-top : 5px;
+        width: 70px;
+        height: 23px;
+        color: #8F8F8F;
+        font-size: 12px;
+      }
+      .coupang-select-arrow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 5px 0 5px;
+        border-color: #8F8F8F transparent transparent transparent;
+      }
+      .coupang-select-options {
+        position: absolute;
+        top: 37px;
+        display: none;
+        right:2px;
+        z-index: 1;
+        list-style: none;
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+        background-color: #fff;
+        max-height: 300px;
+        overflow-y: auto;
+        font-size: 12px;
+        border: 1px solid #e1e1e1;
+        margin-left: 1px solid #e1e1e1;
+      }
+      .coupang-select-options li a {
+        display: block;
+        padding: 6px 12px;
+        color: #333;
+        text-decoration: none;
+        width: 89px;
+      }
+      .coupang-select-options li a:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+</style>
 </head>
 <body>
 	<div id="container" class="renewal home srp-sync srp-sync-brand">
@@ -58,50 +137,30 @@ $(function(){
 								data-actionurl="/np/search">
 								<fieldset>
 									<legend>상품검색</legend>
-									<div class="header-searchForm">
-										<div class="select--category">
-											<a href="#" class="select--category--button"></a> <a href="#"
-												class="select--category__current" id="currentCategoryText"
-												data-linkcode="">전체</a>
-										</div>
-										<select id="searchCategories" class="search_category_filter"
-											data-name="">
-											<option value="-1">전체</option>
-											<option value="/np/categories/186764"
-												data-category-id="186664">여성패션</option>
-											<option value="/np/categories/187069"
-												data-category-id="186969">남성패션</option>
-											<option value="/np/categories/502993"
-												data-category-id="502893">남녀 공용 의류</option>
-											<option value="/np/categories/213201"
-												data-category-id="213101">유아동패션</option>
-											<option value="/np/categories/176522"
-												data-category-id="176422">뷰티</option>
-											<option value="/np/categories/221934"
-												data-category-id="221834">출산/유아동</option>
-											<option value="/np/categories/194276"
-												data-category-id="194176">식품</option>
-											<option value="/np/categories/185669"
-												data-category-id="185569">주방용품</option>
-											<option value="/np/categories/115673"
-												data-category-id="115573">생활용품</option>
-											<option value="/np/categories/184555"
-												data-category-id="184455">홈인테리어</option>
-											<option value="/np/categories/178255"
-												data-category-id="178155">가전디지털</option>
-										</select> 
-										<input type="hidden" name="component"
-											id="searchSelectedCategory" value=""> <label
-											for="headerSearchKeyword"> 
-											<input type="text" 
-											id="headerSearchKeyword" class="coupang-search" name="q"
-											title="쿠팡 상품 검색" value=""
-											data-searchad='{"channel":"", "copy":"찾고 싶은 상품을 검색해보세요!", "linkType":"", "linkContent":"", "newWindow":""}'
-											placeholder="찾고 싶은 상품을 검색해보세요!" autocomplete="off"></label>
+										<div class="header-searchForm select--category" style="width: 110px;">
+									     <div class="coupang-select">
+										    <div class="coupang-select-header">
+										      <span class="coupang-select-label">전체</span>
+										      <span class="coupang-select-arrow"></span>
+										    </div>
+										    <ul class="coupang-select-options">
+										      <li><a href="#" data-value="-1">전체</a></li>
+										      <li><a href="#" data-value="186764">여성패션</a></li>
+										      <li><a href="#" data-value="316168">남성패션</a></li>
+										      <li><a href="#" data-value="383370">뷰티</a></li>
+										      <li><a href="#" data-value="383370">유아동</a></li>
+										      <li><a href="#" data-value="383370">식품</a></li>
+										      <li><a href="#" data-value="383370">주방용품</a></li>
+										      <li><a href="#" data-value="383370">생활용품</a></li>
+										      <li><a href="#" data-value="383370">홈인테리어</a></li>
+										      <li><a href="#" data-value="383370">가전디지털</a></li>
+										    </ul>
+										  </div>
+										<input type="hidden" name="component" id="searchSelectedCategory" value="">
+										<input style="left: 115px;" type="text" id="headerSearchKeyword" class="coupang-search" name="q" title="쿠팡 상품 검색" value=""placeholder="찾고 싶은 상품을 검색해보세요!">
 									</div>
-									<input type="hidden" name="channel" value="user"> <a
-										href="javascript:;" id="headerSearchBtn" class="search"
-										title="검색">검색</a>
+									<input type="hidden" name="channel" value="user"> 
+									<a href="javascript:;" id="headerSearchBtn" class="search" title="검색">검색</a>
 								</fieldset>
 							</form>
 							<div id="headerPopupWords" class="popularity-words"></div>

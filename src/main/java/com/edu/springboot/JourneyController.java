@@ -499,20 +499,29 @@ public class JourneyController {
       if(session.getAttribute("ji_duetime1")!= null) {
          totaljourneyDTO.setJi_duetime1((String)session.getAttribute("ji_duetime1"));
          totaljourneyDTO.setJi_duetime2((String)session.getAttribute("ji_duetime2"));
+         System.out.println(session.getAttribute("ji_duetime1"));
+         System.out.println(session.getAttribute("ji_duetime2"));
       }else {
          totaljourneyDTO.setJi_duetime1(ji_duetime1);
          totaljourneyDTO.setJi_duetime2(ji_duetime2);
+         System.out.println(ji_duetime1);
+         System.out.println(ji_duetime2);
       }
       
       if(session.getAttribute("ji_kid") != null) {
          totaljourneyDTO.setJi_kid(Integer.parseInt((String)(session.getAttribute("ji_kid")))); 
+         System.out.println(session.getAttribute("ji_kid"));
       }else {
          totaljourneyDTO.setJi_kid(ji_kid);
+         System.out.println(ji_kid);
       }
       if(session.getAttribute("ji_adult") != null) {
          totaljourneyDTO.setJi_kid(Integer.parseInt((String)(session.getAttribute("ji_adult")))); 
+         System.out.println(session.getAttribute("ji_adult"));
+
       }else {
          totaljourneyDTO.setJi_kid(ji_adult);
+         System.out.println(ji_adult);
       }
       totaljourneyDTO.setSub_idx(sub_idx);
       
@@ -521,9 +530,9 @@ public class JourneyController {
 //      System.out.println("시작일 :"+ totaljourneyDTO.getJi_duetime1());
 //      System.out.println("종료일 :"+ totaljourneyDTO.getJi_duetime2());
       
-      ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list(totaljourneyDTO);
-      
       String category_title = cate_dao.select_one_cate(sub_idx); 
+      
+      ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list(totaljourneyDTO);
       
       System.out.println(journey_list);
       
@@ -535,10 +544,10 @@ public class JourneyController {
       
       mv.setViewName("/journey/journeyList");
       
-//      session.removeAttribute("ji_adult");
-//      session.removeAttribute("ji_kid");
-//      session.removeAttribute("ji_duetime1");
-//      session.removeAttribute("ji_duetime2");
+      session.removeAttribute("ji_adult");
+      session.removeAttribute("ji_kid");
+      session.removeAttribute("ji_duetime1");
+      session.removeAttribute("ji_duetime2");
       
       return mv;
    }

@@ -636,7 +636,7 @@ function service_list(e){
    }
    
    briefinfo += '<tr><th class="info_th">*소개</th><td><textarea class="form-control insert_input" id="product_intro" name="product_intro" rows="10" cols="30"/></textarea></td></tr><tr><th class="info_th">알려드리는 말</th><td><textarea class="form-control insert_input" id="notice" name="notice" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">유의사항</th><td><textarea class="form-control insert_input" id="product_notice" name="product_notice" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">*예약안내</th><td><textarea class="form-control insert_input" id="product_booking" name="product_booking" cols="30" rows="10"/></textarea></td></tr><tr><th>*취소수수료안내</th><td><textarea class="form-control id="product_cancelfee" name="product_cancelfee"cols="30" rows="10" /></textarea></td></tr><tr><th>*취소유의사항</th><td><textarea class="form-control id="product_cancelnoti" name="product_cancelnoti"cols="30" rows="10" /></textarea></td></tr>'
-   detailinfo += '<td><input type="date" class="date_form" id="product_duetime1" name="product_duetime1" />~<input type="date" class="date_form" id="product_duetime2" name="product_duetime2" /></td></tr><tr><th class="info_th">* 가격</th><td><input class="form-control" type="text" id="product_price" name="product_price" /></td></tr><tr><th class="info_th">* 상품소개</th><td><textarea class="form-control" id="product_intro" name="product_intro" cols="30" rows="10"></textarea></td></tr>'
+   detailinfo += '<td><input type="date" class="date_form" id="product_duetime1" name="product_duetime1" />~<input type="date" class="date_form" id="product_duetime2" name="product_duetime2" /></td></tr><tr><th class="info_th">* 가격</th><td><input class="form-control" type="text" id="product_price" name="product_price" /></td></tr><tr><th class="info_th">* 상품소개</th><td><textarea class="form-control" id="product_intro" name="product_intro" cols="50" rows="10"></textarea></td></tr>'
    
    $('#briefinfo').append(briefinfo);
    $('#detailinfo').append(detailinfo);
@@ -652,7 +652,7 @@ function service_list(e){
    border:solid 1px #dee2e6;
 }
 .insert_input{
-   width: 400px;
+   margin: none;
 }
 .td_none{
    border: none;
