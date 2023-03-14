@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper파일을 구성하기 위한 Doctype 설정 -->
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ 
+ <!-- 서비스 인터페이스를 namespace로 지정한다. -->
+ <mapper namespace="com.edu.springboot.jdbc.MyService">
+ 	
+ 	
+ 	<!-- 회원정보 인출한다. -->
+ 	<select id="selectOne" 
+ 		parameterType="com.edu.springboot.jdbc.MyDTO"
+ 		resultType="com.edu.springboot.jdbc.MyDTO">
+		select * from member 
+		where email=#{email}	
+ 	</select>
+ 	
+ 	
+ 	<!-- 회원정보를 수정한다. -->
+ 	<update id="update" 
+ 		parameterType="com.edu.springboot.jdbc.MyDTO">
+			UPDATE member 
+			set 
+			name=#{name},
+			jumin_num=#{jumin_num},
+			phone_number=#{phone_number},
+			<if test="marketing_agreement!=null">
+				marketing_agreement=#{marketing_agreement},
+			</if>
+			<if test="password!=null">
+				password=#{password}
+			</if>
+			
+			where email=#{email}
+ 	</update>
+ 	
+ 	
+ 	<!-- 삭제처리 -->
+     <delete id="memberDelete" parameterType="com.edu.springboot.jdbc.MyDTO">
+        DELETE from member
+        WHERE email = #{email}
+    </delete>
+ 	
+ 	
+ 	
+ 	<!-- 주소관리~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+ 	<select id="adselectOne" 
+ 		parameterType="com.edu.springboot.jdbc.MyDTO"
+ 		resultType="com.edu.springboot.jdbc.MyDTO">
+		select * from member where email=#{email}	
+ 	</select>
+ 	
+ 	<!-- 기존의 게시물을 인출한다. -->
+ 	<select id="adselect" 
+ 		parameterType="com.edu.springboot.jdbc.MyDTO"
+ 		resultType="com.edu.springboot.jdbc.MyDTO">
+		select * from member where email=#{email}	
+ 	</select>
+ 	
+ 	<update id="adinsert" 
+ 		parameterType="com.edu.springboot.jdbc.MyDTO">
+		UPDATE member
+		set zipcode2=#{zipcode2},
+		address2=#{address2}
+		where email=#{email}
+ 	</update>
+ 	
+ 	
+ 	<!-- 기존의 주소를 수정한다. -->
+ 	<update id="adupdate" 
+ 		parameterType="com.edu.springboot.jdbc.MyDTO">
+		UPDATE member
+		set zipcode1=#{zipcode1},
+		address1=#{address1}
+		where email=#{email}
+ 	</update>
+
+ 	
+ 		<!-- 삭제처리 -->
+ 	<delete id="addelete" 
+ 		parameterType="com.edu.springboot.jdbc.MyDTO">
+		delete from member where name=#{name}
+ 	</delete>
+ 	
+	 
+ 	<!--✯✯✯✯★★✯★★✯✯✯✯★★✯★★ wish 영역 ✯✯✯✯★★✯★★✯✯✯✯★★✯★★-->
+ 	
+	<select id="wishList"
+		parameterType="com.edu.springboot.jdbc.WishDTO"
+		resultType="com.edu.springboot.jdbc.WishDTO">
+		select * from wishlist where idx=#{idx}
+  
+	</select> 	
+	
+	
+	
+	<insert id="addwish" 
+ 		parameterType="com.edu.springboot.jdbc.WishDTO">
+		insert into wishlist(idx, p_title, p_price)
+		values (wishlist_seq.nextval,#{idx},#{p_title},#{p_price})
+ 	</insert>
+	
+	
+	
+	<delete id="wishdelete" 
+ 		parameterType="com.edu.springboot.jdbc.WishDTO">
+		delete from wishlist where idx=#{idx}
+ 	</delete>
+	
+	
+	
+	
+ </mapper>

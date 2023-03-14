@@ -97,7 +97,7 @@ function loginValidate(f)
 			<form name="loginForm" method="post" action="/myLoginAction.do" onsubmit="return loginValidate(this);">
 			 	<div class="container d-flex justify-content-center">
         			<!-- 로고이미지 -->
-       				<a href="#">
+       				<a href="/">
             			<img src="../images/roupang.png"  
                 			style="width: 350px; margin:40px;">
        			 	</a>

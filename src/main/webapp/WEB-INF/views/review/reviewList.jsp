@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="../css/list.css" type="text/css">
 <link rel="stylesheet" href="../css/star_rating.css" type="text/css">
 <link rel="stylesheet" href="../css/star_total.css" type="text/css">
+<link rel="stylesheet" href="../css/roll.css" type="text/css"> 
 <script src="../js/star.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -39,8 +40,16 @@ function deleteRow(idx){
 </script>
 </head>
 <body style="background-color: #ffffff">
-	<%@include file="../top.jsp"%>
-	<div id="top"></div>
+	<%@include file="../myroupang/myroupang.jsp" %>
+	<div class="roll" >
+		<h1 class="qwer">리뷰관리</h1>
+	
+		<div class="div1">
+			<div class="div2" onclick="location.href='review.do'">리뷰 작성</div>
+			<div class="div3" onclick="location.href='reviewList.do'">작성한 리뷰</div>
+		</div>
+		
+		
 	<div class="container">
 	
 			<div class="star-ratings">
@@ -220,6 +229,7 @@ function deleteRow(idx){
  --%>
 			</div>
 		</c:forEach>
+	</div>
 	</div>
 	<div id="copyright">
 		<%@include file="../copyright.jsp"%>

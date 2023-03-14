@@ -39,7 +39,7 @@
 			<h2 class="grid-banner-title">카테고리 인기 상품</h2>
 			<ul class="grid-banners">
 				<li class="grid-banner-item">
-					<a href="/journey_List?category=2&location=제주">
+					<a href="/journey_List?category=1&location=제주">
 						<dl>
 							<dt>
 								<img src="http://image10.coupangcdn.com/image/bannerunit/bannerunit_704ebfec-4468-492d-baaf-cd7fbcb46e2b.jpg" class="banner-item-image">
@@ -51,7 +51,7 @@
 					</a>
 				</li>
 				<li class="grid-banner-item">
-					<a href="/journey_List?category=2&location=강원">
+					<a href="/journey_List?category=1&location=강원">
 						<dl>
 							<dt>
 								<img src="http://image7.coupangcdn.com/image/bannerunit/bannerunit_0f9489f4-eb33-46fb-ad13-96e17c00fbb0.jpg" class="banner-item-image">
@@ -63,7 +63,7 @@
 					</a>
 				</li>
 				<li class="grid-banner-item">
-					<a a href="/journey_List?category=2&location=전라">
+					<a a href="/journey_List?category=1&location=전라">
 						<dl>
 							<dt>
 								<img src="http://image7.coupangcdn.com/image/bannerunit/bannerunit_e6a67865-fb4e-4c9c-89ad-c2bcbc71c669.jpg" class="banner-item-image">
@@ -75,7 +75,7 @@
 					</a>
 				</li>
 				<li class="grid-banner-item">
-					<a href="/journey_List?category=2&location=부산">
+					<a href="/journey_List?category=1&location=부산">
 						<dl>
 							<dt>
 								<img src="http://image6.coupangcdn.com/image/bannerunit/bannerunit_3ed60f56-fce6-4234-883b-a33b33133f7b.jpg" class="banner-item-image">
@@ -87,7 +87,7 @@
 					</a>
 				</li>
 				<li class="grid-banner-item">
-					<a href="/journey_List?category=2&location=서울">
+					<a href="/journey_List?category=1&location=서울">
 						<dl>
 							<dt>
 								<img src="http://image10.coupangcdn.com/image/bannerunit/bannerunit_c0a30210-813e-4f96-980b-f23316d0c1ea.jpg"class="banner-item-image">
@@ -99,7 +99,7 @@
 					</a>
 				</li>
 				<li class="grid-banner-item">
-					<a href="/journey_List?category=2&location=강릉">
+					<a href="/journey_List?category=1&location=강릉">
 						<dl>
 							<dt>
 								<img src="http://image9.coupangcdn.com/image/bannerunit/bannerunit_8c68a97b-1c43-4cb4-9012-c50dab1801c6.jpg" class="banner-item-image">

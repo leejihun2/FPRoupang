@@ -1,11 +1,12 @@
 package com.edu.springboot;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -44,15 +45,19 @@ public class ChatController {
 	
 	 //방 페이지
 	@RequestMapping("/supports/room.do")
-	public ModelAndView room(Room room, Model model, HttpSession session) {
+	public ModelAndView room(Room room, Model model, HttpSession session, Principal principal) {
 		ModelAndView mv = new ModelAndView();
-	
+		
+		String email = principal.getName();
+		session.setAttribute("siteUserInfo", email);
 		if(session.getAttribute("siteUserInfo")==null) {
 			
 			mv.setViewName("auth/login");
 			
 			return mv;
 		}
+		String idx = dao.idx(email);
+		session.setAttribute("idx", idx);
 		String memberidx = (String)session.getAttribute("idx");
 		ArrayList<Room> selectList = cdao.getRoom(memberidx);
 		

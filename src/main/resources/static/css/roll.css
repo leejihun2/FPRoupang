@@ -1,0 +1,78 @@
+
+.roll{
+background-color: white;
+width: 780px;
+height: 800px;
+position: absolute;
+top:350px; 
+right: 259px;
+}
+
+.qwer{
+	font-size: 30px;
+	font-weight: bold;
+	padding-left: 10px;
+	padding-bottom: 27px;
+}
+.te1{
+    border-top: 1px solid #111;
+    margin-bottom: 0px;
+    overflow: visible;
+    width: 100%;
+}
+.te2{
+	display: block;
+	position: relative;
+	float: left;
+	background-color: #fff;
+	z-index: 2;
+    margin-left: 0;
+    border-left: 1px solid #d9d9d9;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 28px;
+}
+.div2{
+    width: 50%;
+	display: block;
+	position: relative;
+	float: left;
+    text-align: center;
+    margin-bottom: 32px;
+    color: #555;
+    font-size: 16px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+.div2:active{
+	background-color: pink;
+}
+
+.div3{
+    width: 50%;
+	display: block;
+	position: relative;
+	float: left;
+    text-align: center;
+    margin-bottom: 32px;
+    color: #555;
+    font-size: 16px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+.div3:active{
+	background-color: aqua;
+}
+
+.clicked {
+  	border-color: #4285f4;
+	background: #e9f1fe;
+}
+
+
