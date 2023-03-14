@@ -421,7 +421,7 @@
 	                                	<img src="/uploads/${Total_Ticket.t_title_image }" class="thumbnail-img" style="outline:2px solid green;"/>
 	                                	</a></li>
 	                                	<c:if test="${not empty Total_Ticket.t_image1 }">
-	                                		<li><a class="thumbnail-item"><img src="/uploads/${Total_Ticket.t_image1 }" class="thumbnail-img" />
+	                                		<li><a class="thumbnail-item"><img src="/uploads/${Total_Ticket.t_image1 }" class="thumbnail-img" /></a></li>
 	                                		<c:if test="${not empty Total_Ticket.t_image2 }">
 			                                	<li><a class="thumbnail-item"><img src="/uploads/${Total_Ticket.t_image2 }" class="thumbnail-img" /></a></li>
 	                                			<c:if test="${not empty Total_Ticket.t_image3 }">
@@ -470,7 +470,7 @@
 	                        					</td>
 	                        					<td style="text-align:right;">
 	                        						<span class="price_title">루팡판매가</span> <br />
-	                        						<em class="price"><b><fmt:formatNumber value="${row.ti_price}"/>원</b></em><br />
+	                        						<em class="price"><b><del><fmt:formatNumber value="${row.ti_price}"/></del>원</b></em><br />
 	                        						<div class="ticket_price" style="color:rgb(174,0,0);">
 	                        						<c:if test="${row.ti_discount ne 0 }">
 		                        						<span class="price_title">할인판매가</span> <br />
