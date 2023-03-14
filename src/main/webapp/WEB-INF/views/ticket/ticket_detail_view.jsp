@@ -469,11 +469,11 @@
 	                        						${row.ti_intro }
 	                        					</td>
 	                        					<td style="text-align:right;">
-	                        						<span class="price_title">쿠팡판매가</span> <br />
+	                        						<span class="price_title">루팡판매가</span> <br />
 	                        						<em class="price"><b><fmt:formatNumber value="${row.ti_price}"/>원</b></em><br />
 	                        						<div class="ticket_price" style="color:rgb(174,0,0);">
 	                        						<c:if test="${row.ti_discount ne 0 }">
-		                        						<span class="price_title">와우판매가</span> <br />
+		                        						<span class="price_title">할인판매가</span> <br />
 		                        						<em class="price"><b><fmt:formatNumber value="${(row.ti_price)*(100-row.ti_discount)/100 }"/>원</b></em><br />
 	                        						</c:if>
 	                        						</div>
@@ -630,7 +630,6 @@
 															</li>
 														</ul>
 														<!--  -->
-														<p>대충 이름</p>
 														<div class="media">
 															<c:forEach begin="1" end="5" var="i">
 																<c:choose>
@@ -722,7 +721,6 @@
 																	</c:choose>
 																</c:forEach>
 															</div>
-															<p>대충 사진</p>
 														</div>
 												</c:forEach>
 											</td>
@@ -741,7 +739,7 @@
 		                	<div class="basis-product">
 		                		<h2 style="margin-top: 0px; margin-bottom: 5px;">${t_title }</h2>
 			                	<div class="basis-product-address">
-			                		대충 주소
+			                		
 			                	</div>
 								<input type="hidden" name="ratevalue5" value="${totalstar.star_rate}"
 									step="0.1" min="0" max="5" />
@@ -759,13 +757,13 @@
 	                			<span class="cashback-info-separator">|</span>
 	                			<ul class="basis-cashback-list">
 	                				<li>
-	                					<span class="cashback-text">쿠페이 머니 결제 시 1% 적립</span>
+	                					<span class="cashback-text">루페이 머니 결제 시 1% 적립</span>
 	                				</li>
 	                				<li>
-	                					<span class="cashback-text">[로켓와우 + 쿠페이 계좌이체] 결제 시 2% 적립</span>
+	                					<span class="cashback-text">[로켓와우 + 루페이 계좌이체] 결제 시 2% 적립</span>
 	                				</li>
 	                				<li>
-	                					<span class="cashback-text">[로켓와우 + 쿠페이 머니] 결제 시 4% 추가적립</span>
+	                					<span class="cashback-text">[로켓와우 + 루페이 머니] 결제 시 4% 추가적립</span>
 	                				</li>
 	                			</ul>
 	                			<div class="basis-cashback-button">
@@ -817,7 +815,7 @@
 	                		</c:if>
 	                		<div class="basis-location introduction-item">
 	                			<h4 class="travel-title travel-title-sm" style="margin-top: 0px; margin-bottom: 10px;">위치</h4>
-	                			<span class="item-subtitle">대충 주소</span>
+	                			<span class="item-subtitle"></span>
 	                		</div>
 	                		<div class="travel-simple-map">
 								<div id="map" style="width:100%;height:350px;"></div>
@@ -863,14 +861,12 @@
 									<div class="border mt-2 mb-2">
 										<div class="media-body">
 											<!--  -->
-											<p>대충 사진</p>
 											<p class="star-ratings">
 											${row.summary }
 											</p>
 											<p>
 											${row.review }
 											</p>
-											<p>대충 이름</p>
 										</div>
 								</c:forEach>
 	                		</div>

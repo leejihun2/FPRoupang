@@ -34,7 +34,9 @@
 			</div>
 		</div></li>
 	<li class="nav-item"><a class="nav-link collapsed" href="#">
-	<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
+	<s:authorize access="hasRole('seller')">
+		<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
+	</s:authorize>
 	</a></li>
 	<s:authorize access="hasRole('admin')">
 	
@@ -74,7 +76,7 @@
 		<li class="nav-item"><a class="nav-link collapsed" href="charts.do"
 			data-toggle="collapse" data-target="#collapse"
 			aria-expanded="true" aria-controls="collapse"> <i
-				class="fas fa-fw fa-chart-area"></i> <span>전체 기록</span>
+				class="fas fa-fw fa-chart-area"></i> <span>최근 기록</span>
 		</a>
 			<div id="collapse" class="collapse"
 				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">

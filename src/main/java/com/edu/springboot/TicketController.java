@@ -453,6 +453,7 @@ public class TicketController {
 		gdto.setAmount(Integer.parseInt(req.getParameter("amount")));
 		
 		
+		//상품 구매시 로그에 남기기
 		int result = goods_dao.InsertOrder(gdto);
 		int result2 = goods_dao.InsertOrderItem(gdto);
 		
