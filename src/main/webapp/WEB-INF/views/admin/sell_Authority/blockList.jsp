@@ -38,6 +38,10 @@ td, th {
 	vertical-align: middle;
 	/* center checkbox vertically */
 }
+button{
+	margin-right: 10px;
+	float: right;
+}
 </style>
 <script>
 	$(document).on('click', '#checkAll', function() {
@@ -63,7 +67,7 @@ td, th {
 			}
 			if(confirm("선택한 "+approve_val.length+"개의 계정을 승인하시겠습니까?")){
 					location.href="/appOk.do?value="+approve_val;
-					alert(approve_val);
+					
 			}
          
 	
@@ -99,14 +103,22 @@ td, th {
 				
 				<div class="container-fluid">
 					<h2>판매자차단목록</h2>
+					
+					<!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Admin Tables</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
 					<form id="block" method="post">
-						<table class="table table-hover">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 							<tr>
 							<th>아이디</th>
 							<th>상호</th>
 							<th>이름</th>
 							<th>신청일</th>
-							<th></th>
+							<th>차단계정 상세보기</th>
 							<th>전체선택 <input class="checkbox_group" type="checkbox"
 								name="checkAll" id="checkAll" />
 							</th>
@@ -126,44 +138,16 @@ td, th {
 										id="flexCheckDefault"></td>
 								</tr>
 							</c:forEach>
-							<tr style="border-bottom: hidden;">
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>
-									<button class="btn btn-outline-secondary" id="approveSell" type="button">승인하기</button>
-								</td>
-							</tr>
-						</table>
+                           </tbody>
+	                     </table>	 
+							
+						<div class="button">	
+						<button class="btn btn-outline-secondary" id="approveSell" type="button">승인하기</button>
+						</div>		
+							
 					</form>
-		<%-- <table border="0">
-		<tr>
-			<th>아이디</th>
-			<th>상호</th>
-			<th>이름</th>
-			<th>신청일</th>
-			
-			<th></th>
-		</tr>
-		<c:forEach items="${lists }" var="row" varStatus="loop">
-		<tr>
-			<td>${row.email }</td>
-		
-			<td>${row.name }</td>
-			<td>${row.company_name }</td>
-			<td>${row.regidate }</td>
-		
-			<td>
-				<a href="blockView.do?member_idx=${row.member_idx }">상세보기</a>
-
-				<a href="appOk.do?member_idx=${row.member_idx }">승인</a>
-			</td>
-		</tr>
-		</c:forEach>
-	</table> --%>
-	<a href="/admin/index.do">관리자 홈으로가기</a>
+	
+				<a href="/admin/index.do">관리자 홈으로가기</a>
 				</div>
 				<!-- /.container-fluid -->
 

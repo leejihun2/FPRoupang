@@ -423,7 +423,6 @@ $(function(){
          });
          
          
-         alert(value);
          if($("#category1").val()==10){
             form.action="/ticketInsertAction?value="+value;
        }
@@ -576,7 +575,7 @@ function service_list(e){
       briefinfo+=chkbox+'</td></tr>';
       
       briefinfo+='<tr><th class="info_th">* 이용시설</th><td>';
-      add=ticket_service;
+      add=ticket_fac;
       for(property in add){
          var chkbox = "<input type='checkbox' class='fac' name='t_fac' value='"+add[property]+"'/>"+add[property];
          briefinfo+=chkbox;
@@ -723,9 +722,14 @@ function service_list(e){
 			            <div class="product_intro col-12" style="display:none;"></div>
 			         </form>
 			         <form method="POST" id="form" enctype="multipart/form-data">
-			            
-			            <input type="text" class="form-control ms-3 mb-3" style="width: 200px;"
-			               id="company_name" name="company_name" value="함덕제주비치호텔"/>
+			         	<s:authorize access="hasRole('admin')">
+				            <input type="hidden" class="form-control ms-3 mb-3" style="width: 200px;"
+				               id="company_name" name="company_name" value="루팡"/>
+			         	</s:authorize>
+			         	<s:authorize access="hasRole('seller')">
+				            <input type="hidden" class="form-control ms-3 mb-3" style="width: 200px;"
+				               id="company_name" name="company_name" value="${company_name}"/>
+			         	</s:authorize>
 			            <div class="col-12 ms-3" id="detail_list" style="width:100%; display:none; padding: 0px;">
 			               <table style="border:1px;">
 			                  <colgroup>

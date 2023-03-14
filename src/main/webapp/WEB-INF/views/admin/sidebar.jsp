@@ -34,9 +34,10 @@
 			</div>
 		</div></li>
 	<li class="nav-item"><a class="nav-link collapsed" href="#">
-	<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
+	<s:authorize access="hasRole('seller')">
+		<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
+	</s:authorize>
 	</a></li>
-
 	<s:authorize access="hasRole('admin')">
 	
 		<!-- Heading -->
@@ -46,15 +47,15 @@
 		<li class="nav-item"><a class="nav-link collapsed" href="#"
 			data-toggle="collapse" data-target="#collapsePages"
 			aria-expanded="true" aria-controls="collapsePages"> <i
-				class="fas fa-fw fa-folder"></i> <span>관리</span>
+				class="fas fa-fw fa-folder"></i> <span>판매자관리</span>
 		</a>
 			<div id="collapsePages" class="collapse"
 				aria-labelledby="headingPages" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
-					<h6 class="collapse-header">판매자관리</h6>
-					<a class="collapse-item" href="../applicationList.do">판매권한신청리스트</a> <a
-						class="collapse-item" href="../sellerList.do">판매자리스트</a> <a
-						class="collapse-item" href="../blockList.do">판매차단리스트</a>
+					<h6 class="collapse-header">판매자관리:</h6>
+					<a class="collapse-item" href="/applicationList.do">판매권한신청리스트</a> <a
+						class="collapse-item" href="/sellerList.do">판매자리스트</a> <a
+						class="collapse-item" href="/blockList.do">판매차단리스트</a>
 				</div>
 			</div></li>
 		<li class="nav-item"><a class="nav-link collapsed" href="#"
@@ -75,7 +76,7 @@
 		<li class="nav-item"><a class="nav-link collapsed" href="charts.do"
 			data-toggle="collapse" data-target="#collapse"
 			aria-expanded="true" aria-controls="collapse"> <i
-				class="fas fa-fw fa-chart-area"></i> <span>전체 기록</span>
+				class="fas fa-fw fa-chart-area"></i> <span>최근 기록</span>
 		</a>
 			<div id="collapse" class="collapse"
 				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link href="../../css/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>      
 <!DOCTYPE html>
@@ -29,6 +28,9 @@
 
 <!-- Custom styles for this template-->
 <link rel="stylesheet" href="../../css/sb-admin-2.min.css">
+
+<!-- Custom styles for this page -->
+<link href="../css/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <style>
 td, th {
@@ -37,6 +39,11 @@ td, th {
 	vertical-align: middle;
 	/* center checkbox vertically */
 }
+button{
+	margin-right: 10px;
+	float: right;
+}
+
 </style>
 <script>
 	$(document).on('click', '#checkAll1', function() {
@@ -54,7 +61,7 @@ td, th {
 			$("[name=public1]").each(function(idx){
 				if($(this).is(":checked")==true){
 					block_val.push($(this).val());
-					console.log(block_val);
+					
 				}
 			});
 			if(block_val.length==0){
@@ -63,7 +70,7 @@ td, th {
 			}
 			if(confirm("선택한 "+block_val.length+"개의 계정을 차단하시겠습니까?")){
 					location.href="/appRegect.do?value="+block_val;
-					alert(block_val);
+				
 			}
          
 	
@@ -76,7 +83,7 @@ td, th {
 			$("[name=public1]").each(function(idx){
 				if($(this).is(":checked")==true){
 					approve_val.push($(this).val());
-					console.log(approve_val);
+					
 				}
 			});
 			if(approve_val.length==0){
@@ -85,7 +92,7 @@ td, th {
 			}
 			if(confirm("선택한 "+approve_val.length+"개의 계정을 승인하시겠습니까?")){
 					location.href="/appOk.do?value="+approve_val;
-					alert(approve_val);
+					
 			}
          
 	
@@ -119,52 +126,60 @@ td, th {
 				<!-- Begin Page Content -->
 				
 				<div class="container-fluid">
-					<h2>판매자입점신청목록</h2>
-					<form id="block" method="post">
-						<table class="table table-hover">
-							<tr>
-							<th>아이디</th>
-							<th>상호</th>
-							<th>이름</th>
-							<th>신청일</th>
-							<th></th>
-							<th>전체선택 <input class="checkbox_group1" type="checkbox"
-								name="checkAll1" id="checkAll1" />
-							</th>
-							</tr>
-							<c:forEach items="${lists }" var="row" varStatus="loop">
-								<tr>
-									<td>${row.email }</td>
-	
-									<td>${row.name }</td>
-									<td>${row.company_name }</td>
-									<td>${row.regidate }</td>
-	
-									<td><a href="appView.do?member_idx=${row.member_idx }">상세보기</a>
-									</td>
-									<td><input style='zoom: 1.5;' class="checkbox_group1" name="public1"
-										type="checkbox" value="${row.member_idx }"
-										id="flexCheckDefault"></td>
-									<td>
-								</tr>
-							</c:forEach>
-							<tr style="border-bottom: hidden;">
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td><button class="btn btn-outline-secondary" id="approveSell" type="button">승인하기</button>
-								</td>
-								<td>
-									<button class="btn btn-outline-secondary" id="blockSell" type="button">차단하기</button>
-								</td>
-								
-							</tr>
-						</table>
-					</form>
+					
+					    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">판매자입점신청목록</h1>
+                    
 
-	<a href="/admin/index.do">관리자 홈으로가기</a>
-
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Admin Tables</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            	<form id="block" method="post">
+	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+	                                    <thead>
+	                                        <tr>
+	                                            <th>아이디</th>
+	                                            <th>이름</th>
+	                                            <th>상호</th>
+	                                            <th>신청일</th>
+	                                            <th>신청내용상세보기</th>
+	                                            <th>전체선택<input class="checkbox_group1" type="checkbox"
+									name="checkAll1" id="checkAll1" /></th>
+	                                        </tr>
+	                                    </thead>
+	                                     <tbody>
+	                                     	<c:forEach items="${lists }" var="row" varStatus="loop">
+		                                        <tr>
+		                                            <td>${row.email }</td>
+													<td>${row.name }</td>
+													<td>${row.company_name }</td>
+													<td>${row.regidate }</td>
+													<td><a href="appView.do?member_idx=${row.member_idx }">상세보기</a>
+													</td>
+													<td><input style='zoom: 1.5;' class="checkbox_group1" name="public1"
+														type="checkbox" value="${row.member_idx }"
+														id="flexCheckDefault"></td>
+													
+		                                        </tr>
+	                                        </c:forEach>
+                                         </tbody>
+	                                </table>	      
+	                                <div class="button">	                                  		
+										<button class="btn btn-outline-secondary" id="approveSell" type="button">승인하기</button>
+											<div class="space"></div>	
+										<button class="btn btn-outline-secondary" id="blockSell" type="button">차단하기</button>
+									</div>				
+												
+                                </form>	        
+                               <a href="/admin/index.do">관리자 홈으로가기</a>                       
+                            </div>
+                        </div>
+                    </div>
+		
 				</div>
 				<!-- /.container-fluid -->
 
@@ -180,7 +195,7 @@ td, th {
 				</div>
 			</footer>
 			<!-- End of Footer -->
-
+			
 		</div>
 		<!-- End of Content Wrapper -->
 
