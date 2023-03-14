@@ -39,7 +39,7 @@ $(function(){
 		
 		if(confirm("해당 계정을 승인하시겠습니까?")){
 				location.href="/appOk.do?value="+approve_val;
-				alert(approve_val);
+			
 		}
      
 
@@ -51,7 +51,7 @@ $(function(){
 		
 		if(confirm("해당 계정을 차단하시겠습니까?")){
 				location.href="/appRegect.do?value="+block_val;
-				alert(block_val);
+				
 		}
      
 
@@ -91,10 +91,8 @@ $(function(){
 	<h3 class="text-center">판매자 신청 상세보기</h3>
 	<c:forEach items="${view }" var="row">		
 		
-	<table border="0">
-		<tr>
-			<td>idx: ${row.member_idx }</td>
-		</tr>
+	 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+		
 		<tr>
 			<td>아이디</td><td>${row.email }</td>
 		</tr>

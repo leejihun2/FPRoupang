@@ -112,7 +112,7 @@
 	</update>
 
 	<update id="seller" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update member set Authority = 'Role_seller' 
+		update member set Authority = 'ROLE_seller' 
 			where member_idx in
 				<foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
 	          #{member_idx}
@@ -134,7 +134,7 @@
 	
 	
 	<update id="member" parameterType="com.edu.springboot.jdbc.SellRightDTO">
-		update member set Authority = 'Role_member' 
+		update member set Authority = 'ROLE_member' 
 			where member_idx in <foreach item="member_idx" open="(" close=")" collection="list" separator=",">   
 	          #{member_idx}
 	       </foreach>
