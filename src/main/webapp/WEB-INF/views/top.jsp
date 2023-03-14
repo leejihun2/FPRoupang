@@ -115,7 +115,7 @@ $(function(){
 							<a href="/myroupang/orderlist.do"
 								data-log-props='{ "id": "mycoupang" }'><span
 									class="my-coupang-icon">&nbsp;</span> <span
-									class="my-coupang-title">마이쿠팡</span> </a>
+									class="my-coupang-title">마이루팡</span> </a>
 								<p class="my-coupang-menu">
 									<span class="wrapper"><i class="speech-icon"></i> <a
 										href="/myroupang/orderlist.do"
