@@ -30,6 +30,9 @@
 <!-- Custom styles for this template-->
 <link rel="stylesheet" href="../../css/sb-admin-2.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+
+</style>
 <script>
 $(function(){
 	$("#blockSell").click(function(){
@@ -39,7 +42,7 @@ $(function(){
 		
 		if(confirm("해당 계정을 차단하시겠습니까?")){
 				location.href="/appRegect.do?value="+block_val;
-				alert(block_val);
+				
 		}
      
 
@@ -77,10 +80,8 @@ $(function(){
 	<h3 class="text-center">판매자 상세보기</h3>
 	<c:forEach items="${view }" var="row">		
 		
-	<table border="0">
-		<tr>
-			<td>idx: ${row.member_idx }</td>
-		</tr>
+	<table class="table table-hover" id="dataTable" width="70%" cellspacing="0" >
+		
 		<tr>
 			<td>아이디</td><td>${row.email }</td>
 		</tr>
@@ -109,7 +110,7 @@ $(function(){
 			<td>입점담당자명</td><td>${row.shop_manager_name }</td>
 		</tr>
 		<tr>
-			<td>정산계좌 </td>
+			<td ><b>정산계좌</b> </td>
 		</tr>
 		<tr>
 			<td>은행</td><td>${row.whichBank }</td>

@@ -96,7 +96,7 @@ font-size: 12px;
 			
 				return false;
 			}
-			confirm("회원가입하시겠습니까?");
+			alert("회원가입이 완료되었습니다.");
 			//return false;
 		} 
 		
@@ -229,8 +229,8 @@ font-size: 12px;
 				}
 			}
 		
-			if ((SamePass_0 <= 1)
-				&& (SamePass_1 <= 1 && SamePass_2 <= 1)) {
+			if ((SamePass_0 < 1)
+				&& (SamePass_1 < 1 && SamePass_2 < 1)) {
 				$('#passwordgo3').hide();
 				console.log("동일한 문자 3개이하");
 			} else {
@@ -275,7 +275,7 @@ font-size: 12px;
 				&& (strNumber == true)) {
 				$('#passwordgo5').hide();
 			} else {
-				$('#passwordgo5').text('X 영문/숫자/대소문자 2가지 이상 조합 (8~20자)').css('color', 'red');
+				$('#passwordgo5').text('X 영문/숫자/대소문자 3가지 이상 조합 (8~20자)').css('color', 'red');
 				return false;
 			}
 

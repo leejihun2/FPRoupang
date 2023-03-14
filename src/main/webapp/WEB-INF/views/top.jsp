@@ -21,7 +21,7 @@ $(function(){
 			success : function(result){ 
 				
 				if (result==0) {
-					alert("판매자 신청가능");
+					
 					console.log("판매자 신청가능");
 				} else {
 					alert("이미 판매자신청이 완료된 계정입니다.");

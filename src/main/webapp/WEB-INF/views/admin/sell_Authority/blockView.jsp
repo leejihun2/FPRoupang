@@ -39,7 +39,7 @@ $(function(){
 		
 		if(confirm("해당 계정을 승인하시겠습니까?")){
 				location.href="/appOk.do?value="+approve_val;
-				alert(approve_val);
+				
 		}
      
 
@@ -78,10 +78,8 @@ $(function(){
 		<h3 class="text-center">판매차단 상세보기</h3>
 	<c:forEach items="${view }" var="row">		
 		
-	<table border="0">
-		<tr>
-			<td>idx: ${row.member_idx }</td>
-		</tr>
+	<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+		
 		<tr>
 			<td>아이디</td><td>${row.email }</td>
 		</tr>
@@ -110,7 +108,7 @@ $(function(){
 			<td>입점담당자명</td><td>${row.shop_manager_name }</td>
 		</tr>
 		<tr>
-			<td>정산계좌 </td>
+			<td><b>정산계좌</b> </td>
 		</tr>
 		<tr>
 			<td>은행</td><td>${row.whichBank }</td>
