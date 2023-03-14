@@ -421,7 +421,7 @@
 	                                	<img src="/uploads/${Total_Ticket.t_title_image }" class="thumbnail-img" style="outline:2px solid green;"/>
 	                                	</a></li>
 	                                	<c:if test="${not empty Total_Ticket.t_image1 }">
-	                                		<li><a class="thumbnail-item"><img src="/uploads/${Total_Ticket.t_image1 }" class="thumbnail-img" />
+	                                		<li><a class="thumbnail-item"><img src="/uploads/${Total_Ticket.t_image1 }" class="thumbnail-img" /></a></li>
 	                                		<c:if test="${not empty Total_Ticket.t_image2 }">
 			                                	<li><a class="thumbnail-item"><img src="/uploads/${Total_Ticket.t_image2 }" class="thumbnail-img" /></a></li>
 	                                			<c:if test="${not empty Total_Ticket.t_image3 }">
@@ -470,7 +470,7 @@
 	                        					</td>
 	                        					<td style="text-align:right;">
 	                        						<span class="price_title">루팡판매가</span> <br />
-	                        						<em class="price"><b><fmt:formatNumber value="${row.ti_price}"/>원</b></em><br />
+	                        						<em class="price"><b><del><fmt:formatNumber value="${row.ti_price}"/></del>원</b></em><br />
 	                        						<div class="ticket_price" style="color:rgb(174,0,0);">
 	                        						<c:if test="${row.ti_discount ne 0 }">
 		                        						<span class="price_title">할인판매가</span> <br />
@@ -828,7 +828,7 @@
              						<div class="star-ratings">
 					          <input type="hidden" name="ratevalue1" value="${totalstar.star_rate}" step="0.1" min="0" max="5" />
 					          <div class="rating-wrap1">
-					            <div class="rating1">상품평 
+					            <div class="rating1">상품평&nbsp;
 					                <div class="overlay1"></div> 
 					            </div>${totalstar.star_rate0}
 					          </div>
@@ -836,7 +836,7 @@
 								<div class="star-ratings">
 					          <input type="hidden" name="ratevalue2" value="${totalstar.star_servey1}" step="0.1" min="0" max="5" />
 					          <div class="rating-wrap2">
-					            <div class="rating2">가격
+					            <div class="rating2">가격&nbsp;&nbsp;&nbsp;
 					                <div class="overlay2"></div>
 					            </div>
 					          </div>
@@ -844,7 +844,7 @@
 								<div class="star-ratings">
 					          <input type="hidden" name="ratevalue3" value="${totalstar.star_servey2}" step="0.1" min="0" max="5" />
 					          <div class="rating-wrap3">
-					            <div class="rating3">서비스
+					            <div class="rating3">서비스&nbsp;
 					                <div class="overlay3"></div>
 					            </div>
 					          </div>
@@ -852,7 +852,7 @@
 								<div class="star-ratings">
 					          <input type="hidden" name="ratevalue4" value="${totalstar.star_servey3}" step="0.1" min="0" max="5" />
 					          <div class="rating-wrap4">
-					            <div class="rating4">시설
+					            <div class="rating4">시설&nbsp;&nbsp;&nbsp;
 					                <div class="overlay4"></div>
 					            </div>
 					          </div>

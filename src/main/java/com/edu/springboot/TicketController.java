@@ -441,6 +441,9 @@ public class TicketController {
 		ArrayList<TicketInfoDTO> Total_Ticket_info = ticket_dao.ticket_info_list(bot_idx);
 		model.addAttribute("Total_Ticket_info",Total_Ticket_info);
 		
+		TicketDTO image = ticket_dao.ticket_image(bot_idx);
+		model.addAttribute("goods_image",image.getT_title_image());
+		
 		return "/ticket/ticket_modal";
 	}
 	
@@ -448,15 +451,15 @@ public class TicketController {
 	@RequestMapping("/cellProduct")
 	public String test(HttpServletRequest req) {
 		TempgoodsOrderDTO gdto = new TempgoodsOrderDTO();
-		gdto.setBot_idx(req.getParameter("ti_idx"));
+		gdto.setBot_idx(req.getParameter("bot_idx"));
 		gdto.setPrice(Integer.parseInt(req.getParameter("price")));
 		gdto.setAmount(Integer.parseInt(req.getParameter("amount")));
-		
+		gdto.setGoods_idx(req.getParameter("ti_idx"));
+		gdto.setGoods_image(req.getParameter("goods_image"));
 		
 		//상품 구매시 로그에 남기기
 		int result = goods_dao.InsertOrder(gdto);
 		int result2 = goods_dao.InsertOrderItem(gdto);
-		
 		if (result == 0 ) {
 			System.out.println("insert 에러");
 		}else {

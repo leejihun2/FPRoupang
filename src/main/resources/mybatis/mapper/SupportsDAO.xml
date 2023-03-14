@@ -50,7 +50,7 @@
 	
 	<update id="modifySupports" parameterType="com.edu.springboot.jdbc.SupportsDTO">
 		UPDATE couboard
-		SET categorycode=#{categorycode}, contact=#{contact}, title=#{title}, contents=#{contents}
+		SET title=#{title}, contents=#{contents}
 		WHERE idx=#{idx}
 	</update>
 
