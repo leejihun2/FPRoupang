@@ -58,7 +58,7 @@ public class SecurityConfig {
 			.logoutUrl("/myLogout.do")
 	        .logoutSuccessUrl("/")
 			.permitAll();
-	
+		
 		httpSecurity.exceptionHandling().accessDeniedPage("/denied.do");
 		
 		httpSecurity.csrf().disable();

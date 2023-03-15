@@ -11,10 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.springboot.jdbc.SupportsDTO;
 import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.ISupportsService;
+import com.edu.springboot.jdbc.JourneyInfoDTO;
 import com.edu.springboot.jdbc.ParameterSupportsDTO;
 import com.edu.springboot.jdbc.SellRightDTO;
 
@@ -43,7 +45,7 @@ public class AdminController {
 			return "/admin/index";
 		}
 	}
-	@RequestMapping("/admin/adminFaq.do")
+	@RequestMapping("/admin/adminfaq.do")
 	public String adminFaq(Model model, HttpServletRequest req) {
 		String category = req.getParameter("categoryCode");
 		String contact = req.getParameter("contact");
@@ -62,7 +64,7 @@ public class AdminController {
 		return "admin/adminFaq";
 	}
 
-	@RequestMapping("/admin/adminNotice.do")
+	@RequestMapping("/admin/adminnotice.do")
 	public String blank1(Model model, HttpServletRequest req) {
 		String category = req.getParameter("categoryCode");
 
@@ -109,26 +111,42 @@ public class AdminController {
 		return "redirect:/admin/index.do";
 	}
 
-	// 수정페이지 매핑
 	@RequestMapping("/admin/modify.do")
-	public String modify(Model model, HttpServletRequest req, HttpSession session, SupportsDTO supportsDTO) {
-
-		//supportsDTO.setIdx(Integer.parseInt((String) req.getParameter("idx")));
-		SupportsDTO dto = daoo.view(supportsDTO);
-
-		model.addAttribute("dto", dto);
-		return "admin/modify";
+	public ModelAndView modify(Model model, HttpServletRequest req, HttpSession session, SupportsDTO supportsDTO) {
+	    
+		int idx = Integer.parseInt(req.getParameter("idx"));
+		
+		ModelAndView mv = new ModelAndView();
+		
+	    SupportsDTO dto = daoo.view(idx);
+	    
+//	    model.addAttribute("dto", dto);
+	    mv.addObject("dto",dto);
+	    mv.setViewName("/admin/modify");
+	    return mv;
 	}
 
-	// 수정처리
 	@RequestMapping("/admin/modifyAction.do")
-	public String modifyAction(HttpSession session, SupportsDTO supportsDTO) {
-
-
-		int applyRow = daoo.modifySupports(supportsDTO);
-		System.out.println("수정된행의갯수:" + applyRow);
-
-		return "redirect:/admin/index.do";
+	public String modifyAction(Model model, HttpSession session, SupportsDTO supportsDTO, HttpServletRequest req) {
+	    
+		
+	    String idxStr = req.getParameter("idx");
+	    if (idxStr == null) {
+	        // idx 값이 null인 경우 처리
+	        // 예를 들어 오류 메시지 출력 등
+	        return "error";
+	    }
+	    
+	    int idx = Integer.parseInt(idxStr);
+	    SupportsDTO dto = new SupportsDTO();
+	    dto.setIdx(idx);
+	    dto.setTitle(req.getParameter("title"));
+	    dto.setContents(req.getParameter("contents"));
+	    
+	    daoo.modifySupports(dto);
+	   
+	    return "redirect:/admin/index.do";
 	}
+
 
 }

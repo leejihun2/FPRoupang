@@ -17,4 +17,10 @@ public interface IReviewService {
 	
 	//기존 게시물의 내용을 인출한다.
 	public ReviewDTO reviewView(ReviewDTO reviewDTO);
+	
+	public ReviewDTO view(int idx);
+	
+	public int modifyReview(ReviewDTO reviewDTO);
+	
+	public int delete(String idx);
 }

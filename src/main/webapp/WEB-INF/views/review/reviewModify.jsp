@@ -27,19 +27,7 @@ function deleteRow(idx){
       location.href = "delete.do?idx="+idx;
    }
 }
-function checkStarRating() {
-	  var stars = document.getElementsByName('star_rate');
-	  var checked = false;
-	  for (var i=0; i<stars.length; i++) {
-	    if (stars[i].checked) {
-	      checked = true;
-	      break;
-	    }
-	  }
-	  if (!checked) {
-	    alert('별점을 선택해주세요');
-	  }
-	}
+
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -58,22 +46,12 @@ function checkStarRating() {
 </style>
 </head>
 <body>
-<%@include file="../myroupang/myroupang.jsp" %>
 <div class="roll" >
-	<h1 class="qwer">리뷰관리</h1>
-	
-	<div class="div1">
-		<div class="div2" onclick="location.href='review.do'">리뷰 작성</div>
-		<div class="div3" onclick="location.href='reviewList.do'">작성한 리뷰</div>
-	</div>
-	
-	
-	
 <div class="container">
 	<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->
 	<form name="writeFrm" method="post" 
 		onsubmit="return writeValidate(this);"
-		action="<c:url value="/review/reviewAction.do" />" >
+		action="<c:url value="/review/reviewModifyAction.do" />" >
 		
 	<table class="table table-bordered">
 	<colgroup>
@@ -82,21 +60,6 @@ function checkStarRating() {
 	</colgroup>
 	<tbody>
 	
-		<tr>
-			<td>
-				<select name="goods_title" value="상품문의">
-					<option value="유형을 선택해주세요">유형을 선택해주세요</option>
-					<option value="주문 상품 문의">주문 상품 문의</option>
-					<option value="주문 상품 문의">주문 상품 문의</option>
-					<option value="쿠팡 서비스 칭찬">쿠팡 서비스 칭찬</option>
-					<option value="시스템 개선 의견">시스템 개선 의견</option>
-					<option value="시스템(PC/Mobile) 오류 제보">시스템(PC/Mobile) 오류 제보</option>
-					<option value="시스템(PC/Mobile) 오류 제보">시스템(PC/Mobile) 오류 제보</option>
-					<option value="프레시백 반납 신청">프레시백 반납 신청</option>
-					<option value="회수 지연 문의">회수 지연 문의</option>
-				</select>
-			</td>
-		</tr>	
 		
 		<div class="mb-3" name="star_rate" id="star_rates"> 
 			<fieldset>
@@ -173,7 +136,7 @@ function checkStarRating() {
 			<th class="text-center" 
 				style="vertical-align:middle;">내용</th>
 			<td>
-				<textarea rows="1" class="form-control" 
+				<textarea rows="10" class="form-control" 
 				name="summary" placeholder="한줄평"></textarea>
 			</td>
 		</tr>	
@@ -182,39 +145,11 @@ function checkStarRating() {
 	
 	<div class="row text-center" style="">
 		
-		<button type="submit" class="btn btn-secondary" onClick="checkStarRating()">작성하기</button>
+		<button type="submit" class="btn btn-secondary">작성하기</button>
 	</div>
 	</form> 
 </div>
 </div>
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br /><br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
     <div id="copyright">
          <%@include file="../copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
     </div>
