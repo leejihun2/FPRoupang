@@ -3,6 +3,12 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>roupang</title>
@@ -57,128 +63,129 @@ hover:
             MY쿠팡
         </span>
     </div>
-<div id="myMenu" class="me1">
-<nav>
-<div class="me2">
-	
-	<s:authorize access="hasAnyRole('admin', 'seller')">
-		<div class="sel-btn">
-			<a href="seller페이지 이동 링크"></a>
-			판매자센터 이동 
+	<div id="myMenu" class="me1">
+		<nav>
+		<div class="me2">
+			
+			<s:authorize access="hasAnyRole('admin', 'seller')">
+					<a href="/admin/index.do">
+						<div class="sel-btn">
+							판매자센터 이동 
+						</div>
+					</a>
+			</s:authorize>
+			
+		    <div class="ttxt">
+		        MY 쇼핑
+		    </div>
+		    <div class="gg">
+		        <ul>
+		            <li id="order-list-page">
+		                <a href="/myroupang/orderlist.do" title="주문목록/배송조회" target="_self" class="oo">
+		                    주문목록/배송조회
+		                </a>
+		            </li>
+		            <li id="cancel-return" >
+		                <a href="/myroupang/cancelReturn.do" title="취소/반품/교환/환불내역" target="_self" class="oo">
+		                        취소/교환/환불내역
+		                </a>
+		            </li>
+		            <li id="rocket-wow" >
+		                <a href="***와우 멤버십 링크 " title="와우 멤버십" target="_self" class="oo">
+		                    와우 멤버십
+		                </a>
+		            </li>
+		            <li id="rocket-fresh" >
+		                <a href="***로켓프레시 프레시백 링크 " title="로켓프레시 프레시백" target="_self" class="oo">
+		                    로켓프레시 프레시백
+		                </a>
+		            </li>
+		            <li id="subscribe-page" >
+		                <a href="***정기배송관리 링크" title="정기배송관리" target="_self" class="oo">
+		                    정기배송관리
+		                </a>
+		            </li>
+		            <li id="receipt-page" >
+		                <a href="***영수증 조회/출력" title="영수증 조회/출력" target="_self" class="oo">
+		                    영수증 조회/출력
+		                </a>
+		            </li>
+		        </ul>
+		    </div>
 		</div>
-	</s:authorize>
-	
-    <div class="ttxt">
-        MY 쇼핑
-    </div>
-    <div class="gg">
-        <ul>
-            <li id="order-list-page" class="selected">
-                <a href="/myroupang/orderlist.do" title="주문목록/배송조회" target="_self" class="oo">
-                    주문목록/배송조회
-                </a>
-            </li>
-            <li id="cancel-return" >
-                <a href="/myroupang/cancelReturn.do" title="취소/반품/교환/환불내역" target="_self" class="oo">
-                        취소/교환/환불내역
-                </a>
-            </li>
-            <li id="rocket-wow" >
-                <a href="***와우 멤버십 링크 " title="와우 멤버십" target="_self" class="oo">
-                    와우 멤버십
-                </a>
-            </li>
-            <li id="rocket-fresh" >
-                <a href="***로켓프레시 프레시백 링크 " title="로켓프레시 프레시백" target="_self" class="oo">
-                    로켓프레시 프레시백
-                </a>
-            </li>
-            <li id="subscribe-page" >
-                <a href="***정기배송관리 링크" title="정기배송관리" target="_self" class="oo">
-                    정기배송관리
-                </a>
-            </li>
-            <li id="receipt-page" >
-                <a href="***영수증 조회/출력" title="영수증 조회/출력" target="_self" class="oo">
-                    영수증 조회/출력
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="me3">
-    <div class="ttxt">
-        MY 혜택
-    </div>
-    <div class="gg">
-        <ul>
-            <li id="discount-coupon" >
-                <a href="****할인쿠폰" title="할인쿠폰" target="_self" class="oo">
-                    할인쿠폰
-                </a>
-            </li>
-            <li id="coupang-cash">
-                <a href="****쿠팡캐시/기프트카드" title="쿠팡캐시/기프트카드" target="_self" class="oo">
-                    쿠팡캐시/기프트카드
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="me4">
-    <div class="ttxt">
-        MY 활동
-    </div>
-    <div class="gg">
-        <ul>
-            <li id="cs-main" >
-                <a href="****문의하기" title="문의하기" target="_self" class="oo">
-                    문의하기
-                </a>
-            </li>
-            <li id="inquiry-list" >
-                <a href="***문의내역 확인" title="문의내역 확인" target="_self" class="oo">
-                    문의내역 확인
-                </a>
-            </li>
-            <li id="product-review" >
-                <a href="../review/review.do" title="" target="_self" class="oo">
-                    리뷰관리
-                </a>
-            </li>
-            <li id="product-wish" >
-                <a href="../myroupang/wishlist.do" title="찜 리스트" target="_self" class="oo">
-                    찜 리스트
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="me5">
-    <div class="ttxt">
-        MY 정보
-    </div>
-        <div class="gg">
-        <ul>
-            <li id="user-modify" >
-                <a href="../myroupang/mylist.do" title="개인정보확인/수정" target="_self" class="oo">
-                    개인정보확인/수정
-                </a>
-            </li>
-            <li id="coupay-page" >
-                <a href="*****" title="결제수단·쿠페이 관리" target="_self" class="oo">
-                    결제수단·쿠페이 관리
-                </a>
-            <li id="zip-page" >
-                <a href="../myroupang/deliverylist.do" title="배송지 관리" target="_self" class="oo">
-                    배송지 관리
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
-</nav>
-</div>
+		<div class="me3">
+		    <div class="ttxt">
+		        MY 혜택
+		    </div>
+		    <div class="gg">
+		        <ul>
+		            <li id="discount-coupon" >
+		                <a href="****할인쿠폰" title="할인쿠폰" target="_self" class="oo">
+		                    할인쿠폰
+		                </a>
+		            </li>
+		            <li id="coupang-cash">
+		                <a href="****쿠팡캐시/기프트카드" title="쿠팡캐시/기프트카드" target="_self" class="oo">
+		                    쿠팡캐시/기프트카드
+		                </a>
+		            </li>
+		        </ul>
+		    </div>
+		</div>
+		<div class="me4">
+		    <div class="ttxt">
+		        MY 활동
+		    </div>
+		    <div class="gg">
+		        <ul>
+		            <li id="cs-main" >
+		                <a href="****문의하기" title="문의하기" target="_self" class="oo">
+		                    문의하기
+		                </a>
+		            </li>
+		            <li id="inquiry-list" >
+		                <a href="***문의내역 확인" title="문의내역 확인" target="_self" class="oo">
+		                    문의내역 확인
+		                </a>
+		            </li>
+		            <li id="product-review" >
+		                <a href="../review/review.do" title="" target="_self" class="oo">
+		                    리뷰관리
+		                </a>
+		            </li>
+		            <li id="product-wish" >
+		                <a href="../myroupang/wishlist.do" title="찜 리스트" target="_self" class="oo">
+		                    찜 리스트
+		                </a>
+		            </li>
+		        </ul>
+		    </div>
+		</div>
+		<div class="me5">
+		    <div class="ttxt">
+		        MY 정보
+		    </div>
+		        <div class="gg">
+		        <ul>
+		            <li id="user-modify" >
+		                <a href="../myroupang/mylist.do" title="개인정보확인/수정" target="_self" class="oo">
+		                    개인정보확인/수정
+		                </a>
+		            </li>
+		            <li id="coupay-page" >
+		                <a href="*****" title="결제수단·쿠페이 관리" target="_self" class="oo">
+		                    결제수단·쿠페이 관리
+		                </a>
+		            <li id="zip-page" >
+		                <a href="../myroupang/deliverylist.do" title="배송지 관리" target="_self" class="oo">
+		                    배송지 관리
+		                </a>
+		            </li>
+		        </ul>
+		    </div>
+		</div>
+		</nav>
+	</div>
 <!-- ---------------------------------------------------------------------------- -->
     <div class="le1">
         <ul class="le2">
@@ -215,10 +222,10 @@ hover:
                         상품취소 안내
                     </span>
                 </span>
-            </a>
-        </li>
-    </ul>
-</div>
+    	        </a>
+	        </li>
+    	</ul>
+	</div>
 </div>
 <!-- ------------------------------------------------------------------- -->
 <div class="top1">

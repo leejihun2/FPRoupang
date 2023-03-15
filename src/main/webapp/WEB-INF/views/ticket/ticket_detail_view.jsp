@@ -374,7 +374,7 @@
 	}
 	
 	function addModal(bot_num, idx){
-		$('.modal-content').load('/showModal?bot_idx='+bot_num+'&ti_idx='+idx);
+		$('.modal-content').load('/showModal?bot_idx='+bot_num+'&ti_idx='+idx+'&seller_idx='+$("#seller_idx").val());
 	}
 	
 	onload = function(){
@@ -414,6 +414,7 @@
 	                        <div class="travel-carousel use-background clickable" style="width: 100%; height: 512px;">
 	                        	<div class="carousel-image" id="thumbnail" style="height: 512px; background-image: url(/uploads/${Total_Ticket.t_title_image }); background-color:rgb(85,85,85);"></div>
 	                        </div>
+	                        <input type="hidden" id="seller_idx" value="${Total_Ticket.member_idx}"/>
 	                        <div class="travel-thumbnail">
 	                            <div class="thumbnails-wrap" style="width:527px;">
 	                                <ul class="thumbnails" style="margin:10px;">
@@ -470,7 +471,7 @@
 	                        					</td>
 	                        					<td style="text-align:right;">
 	                        						<span class="price_title">루팡판매가</span> <br />
-	                        						<em class="price"><b><del><fmt:formatNumber value="${row.ti_price}"/></del>원</b></em><br />
+	                        						<em class="price"><b><fmt:formatNumber value="${row.ti_price}"/>원</b></em><br />
 	                        						<div class="ticket_price" style="color:rgb(174,0,0);">
 	                        						<c:if test="${row.ti_discount ne 0 }">
 		                        						<span class="price_title">할인판매가</span> <br />

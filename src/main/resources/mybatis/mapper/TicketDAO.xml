@@ -52,6 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  				</when>
  				<otherwise>null</otherwise>
  			</choose>
+ 			,#{member_idx}
  		)
  	</insert>
  	

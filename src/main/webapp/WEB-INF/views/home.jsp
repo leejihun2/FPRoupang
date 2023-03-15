@@ -1,6 +1,7 @@
 <%@page import="com.fasterxml.jackson.annotation.JsonInclude.Include"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,15 +24,23 @@
     <!-- 쿠팡 타이틀 이미지 -->
     <link rel="shortcut icon" href="//image9.coupangcdn.com/image/coupang/favicon/v2/favicon.ico" type="image/x-icon" />
     <!-- 쿠팡 css폴더에서 링크드 -->
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/common.css" type="text/css">
-    <link rel="stylesheet" href="./css/ddp.css" type="text/css">
-    <link rel="stylesheet" href="./css/list.css" type="text/css">
-    <link rel="stylesheet" href="./css/productReview.css" type="text/css">
-    <link rel="stylesheet" href="./css/side.css" type="text/css">
-    <link rel="stylesheet" href="./css/main.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/common.css" type="text/css">
+    <link rel="stylesheet" href="/css/ddp.css" type="text/css">
+    <link rel="stylesheet" href="/css/list.css" type="text/css">
+    <link rel="stylesheet" href="/css/productReview.css" type="text/css">
+    <link rel="stylesheet" href="/css/side.css" type="text/css">
+    <link rel="stylesheet" href="/css/main.css" type="text/css">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
+<script>
+  // 현재 URL 정보 가져오기
+  var url = window.location.href;
+  
+  if(url.indexOf("index.do")!=-1){
+	  alert("해당 페이지에 접근 권한이 부족합니다.");
+  }
+</script>
 <body style="background-color: white;">
     <!-- top.html에서 인클루드 -->
     <div id="top">

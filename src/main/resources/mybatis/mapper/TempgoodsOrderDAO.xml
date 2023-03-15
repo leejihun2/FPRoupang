@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="InsertOrder" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
 		INSERT INTO goods_order
-		VALUES (order_seq.nextval, 1, 111111, sysdate, sysdate, sysdate, 0)
+		VALUES (order_seq.nextval, 1, 111111, sysdate, sysdate, sysdate, 0, #{seller_idx})
 	</insert>
 	
 	<insert id="InsertOrderItem" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO">

@@ -328,9 +328,6 @@ onload = function(){
 						<a href="/supports/returnPolicy.do" >취소 / 반품 안내</a>
 					</p></li>
 					
-				<li class="cs-center more"><a
-					href="/product_insert">상품등록</a>
-				</li>
 			</menu>
 			<menu id="subscribeHeader">
 				<li><a class="bookmark" >즐겨찾기</a></li>
