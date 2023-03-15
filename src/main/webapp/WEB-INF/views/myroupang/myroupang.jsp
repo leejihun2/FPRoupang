@@ -54,7 +54,7 @@ hover:
 <div class="di1">
     <div class="di2">
         <span class="mycoutitle">
-            MY쿠팡
+            MY루팡
         </span>
     </div>
 <div id="myMenu" class="me1">
@@ -62,10 +62,9 @@ hover:
 <div class="me2">
 	
 	<s:authorize access="hasAnyRole('admin', 'seller')">
-		<div class="sel-btn">
-			<a href="seller페이지 이동 링크"></a>
-			판매자센터 이동 
-		</div>
+		<a href="/admin/index.do">
+			<div class="sel-btn">판매자센터 이동</div>
+		</a>
 	</s:authorize>
 	
     <div class="ttxt">
@@ -80,7 +79,7 @@ hover:
             </li>
             <li id="cancel-return" >
                 <a href="/myroupang/cancelReturn.do" title="취소/반품/교환/환불내역" target="_self" class="oo">
-                        취소/교환/환불내역
+                        취소/환불내역
                 </a>
             </li>
             <li id="rocket-wow" >
@@ -119,7 +118,7 @@ hover:
             </li>
             <li id="coupang-cash">
                 <a href="****쿠팡캐시/기프트카드" title="쿠팡캐시/기프트카드" target="_self" class="oo">
-                    쿠팡캐시/기프트카드
+                    루팡캐시/기프트카드
                 </a>
             </li>
         </ul>
@@ -167,7 +166,7 @@ hover:
             </li>
             <li id="coupay-page" >
                 <a href="*****" title="결제수단·쿠페이 관리" target="_self" class="oo">
-                    결제수단·쿠페이 관리
+                    결제수단·루페이 관리
                 </a>
             <li id="zip-page" >
                 <a href="../myroupang/deliverylist.do" title="배송지 관리" target="_self" class="oo">
@@ -186,7 +185,7 @@ hover:
                 <a href="문의링크문의링크" class="gmkSJg">
                     <span class=" kHVTpM">
                         <span class="ledbar">
-                            쿠팡문의
+                            루팡문의
                         </span>
                     </span>
                 </a>
