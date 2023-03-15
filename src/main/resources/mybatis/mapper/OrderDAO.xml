@@ -5,6 +5,11 @@
 	
 <mapper namespace="com.edu.springboot.jdbc.OrderService">
 
+<select id="select_goods_order">
+	select order_num, order_date, depart_date, arrive_date, order_status 
+		from goods_order 
+			where order_num=#{}
 
+</select>
 
 </mapper>		
