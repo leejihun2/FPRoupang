@@ -40,6 +40,7 @@ function checkStarRating() {
 	    alert('별점을 선택해주세요');
 	  }
 	}
+	
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -185,38 +186,11 @@ function checkStarRating() {
 		<button type="submit" class="btn btn-secondary" onClick="checkStarRating()">작성하기</button>
 	</div>
 	</form> 
+	
 </div>
 </div>
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br /><br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-    <div id="copyright">
+  <%--   <div id="copyright">
          <%@include file="../copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
-    </div>
+    </div> --%>
 </body>
 </html>

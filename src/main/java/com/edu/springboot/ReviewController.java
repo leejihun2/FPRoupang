@@ -36,15 +36,14 @@ public class ReviewController {
 		ArrayList<ReviewDTO> lists = 
 				daoo.reviewList();
 		
-		for (ReviewDTO dto : lists) {
-			String temp = dto.getReview()
-					.replace("\r\n", "<br/>");
-			dto.setReview(temp);
-		}
+//		for (ReviewDTO dto : lists) {
+//			String temp = dto.getReview()
+//					.replace("\r\n", "<br/>");
+//			dto.setReview(temp);
+//		}
 		
 		model.addAttribute("totalstar", totalstar);
 		model.addAttribute("lists", lists);
-		System.out.println("출력얍"+totalstar);
 		return "review/reviewList";
 	}
 	
@@ -62,7 +61,7 @@ public class ReviewController {
 		int applyRow = daoo.reviewWrite(reviewDTO);
 		System.out.println("입력된행의갯수:" + applyRow);
 
-		return "redirect:review.do";
+		return "redirect:reviewList.do";
 	}
 	
 	@RequestMapping("/review/reviewModify.do")
@@ -83,16 +82,24 @@ public class ReviewController {
 	public String modifyAction(Model model, HttpSession session, HttpServletRequest req) {
 	    
 		
-	    String idxStr = req.getParameter("idx");
-	    if (idxStr == null) {
-	        return "error";
-	    }
 	    
-	    int idx = Integer.parseInt(idxStr);
+	    int idx = Integer.parseInt(req.getParameter("idx"));
+	    Double star_rate = Double.parseDouble(req.getParameter("star_rate"));
+	    Double star_servey1 = Double.parseDouble(req.getParameter("star_servey1"));
+	    Double star_servey2 = Double.parseDouble(req.getParameter("star_servey2"));
+	    Double star_servey3 = Double.parseDouble(req.getParameter("star_servey3"));
 	    ReviewDTO dto = new ReviewDTO();
 	    dto.setIdx(idx);
+	    dto.setReview(req.getParameter("review"));
+	    dto.setStar_rate(star_rate);
+	    dto.setStar_servey1(star_servey1);
+	    dto.setStar_servey2(star_servey2);
+	    dto.setStar_servey3(star_servey3);
+	    dto.setSummary(req.getParameter("summary"));
 	    
+	    System.out.println(dto);
 	    daoo.modifyReview(dto);
+	    
 	   
 	    return "redirect:/review/reviewList.do";
 	}

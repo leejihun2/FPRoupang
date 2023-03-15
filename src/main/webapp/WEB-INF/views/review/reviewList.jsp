@@ -49,8 +49,6 @@ function deleteRow(idx){
 			<div class="div3" onclick="location.href='reviewList.do'">작성한
 				리뷰</div>
 		</div>
-
-
 		<div class="container">
 
 			<div class="star-ratings">
@@ -79,7 +77,6 @@ function deleteRow(idx){
 									</div>
 								</li>
 							</ul>
-							<!--  -->
 							<div class="media">
 								<c:forEach begin="1" end="5" var="i">
 									<c:choose>
@@ -176,7 +173,7 @@ function deleteRow(idx){
 							</div>
 							<div class="media-right"></div>
 							<button class="btn btn-secondary"
-								onclick="location.href='modify.do?idx=${row.idx}';">수정</button>
+								onclick="location.href='reviewModify.do?idx=${row.idx}';">수정</button>
 							<button class="btn btn-secondary"
 								onclick="javascript:deleteRow(${row.idx});">삭제</button>
 						</div>

@@ -92,7 +92,7 @@
 	
 	<update id="modifyReview" parameterType="com.edu.springboot.jdbc.ReviewDTO">
 		UPDATE review
-		SET goods_title=#{goods_title}, review=#{review}, star_rate=#{star_rate}, star_servey1=#{star_servey1},
+		SET review=#{review}, star_rate=#{star_rate}, star_servey1=#{star_servey1},
 		 	star_servey2=#{star_servey2}, star_servey3=#{star_servey3}, summary=#{summary}
 		WHERE idx=#{idx}
 	</update>

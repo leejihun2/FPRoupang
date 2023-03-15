@@ -41,18 +41,23 @@ function deleteRow(idx){
 
 	});
 </script>
-<style>
-
-</style>
 </head>
-<body>
+<body style="background-color: #ffffff">
+<%@include file="../myroupang/myroupang.jsp"%>
 <div class="roll" >
+<h1 class="qwer">리뷰수정</h1>
+
+		<div class="div1">
+			<div class="div2" onclick="location.href='review.do'">리뷰 작성</div>
+			<div class="div3" onclick="location.href='reviewList.do'">작성한
+				리뷰</div>
+		</div>
 <div class="container">
 	<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->
 	<form name="writeFrm" method="post" 
 		onsubmit="return writeValidate(this);"
 		action="<c:url value="/review/reviewModifyAction.do" />" >
-		
+		<input type="hidden" name="idx" value="${dto.idx }" />
 	<table class="table table-bordered">
 	<colgroup>
 		<col width="20%"/>
@@ -79,7 +84,7 @@ function deleteRow(idx){
 		
 		<div class="mb-3" name="star_servey1" id="star_rates">
 			<fieldset>
-				<span class="text-bold">별점을 선택해주세요</span> 
+				<span class="text-bold">가격은 괜찮나요</span> 
 				<input type="radio" name="star_servey1" value="5" id="star_servey1_1" name="star_servey1_1">
 					<label for="star_servey1_1">★</label> 
 				<input type="radio" name="star_servey1" value="4" id="star_servey1_2" name="star_servey1_2">
@@ -95,7 +100,7 @@ function deleteRow(idx){
 		
 		<div class="mb-3" name="star_servey2" id="star_rates">
 			<fieldset>
-				<span class="text-bold">별점을 선택해주세요</span> 
+				<span class="text-bold">서비스는 어떤가요</span> 
 				<input type="radio" name="star_servey2" value="5" id="star_servey2_1" name="star_servey2_1">
 					<label for="star_servey2_1">★</label> 
 				<input type="radio" name="star_servey2" value="4" id="star_servey2_2" name="star_servey2_2">
@@ -108,10 +113,9 @@ function deleteRow(idx){
 					<label for="star_servey2_5">★</label>
 			</fieldset>
 		</div>
-		
 		<div class="mb-3" name="star_servey3" id="star_rates">
 			<fieldset>
-				<span class="text-bold">별점을 선택해주세요</span> 
+				<span class="text-bold">만족스럽나요</span> 
 				<input type="radio" name="star_servey3" value="5" id="star_servey3_1" name="star_servey3_1">
 					<label for="star_servey3_1">★</label> 
 				<input type="radio" name="star_servey3" value="4" id="star_servey3_2" name="star_servey3_2">
@@ -129,15 +133,15 @@ function deleteRow(idx){
 				style="vertical-align:middle;">내용</th>
 			<td>
 				<textarea rows="10" class="form-control" 
-				name="review" placeholder="의견을 남겨주세요"></textarea>
+				name="review" placeholder="의견을 남겨주세요">${dto.review }</textarea>
 			</td>
 		</tr>	
 		<tr>
 			<th class="text-center" 
 				style="vertical-align:middle;">내용</th>
 			<td>
-				<textarea rows="10" class="form-control" 
-				name="summary" placeholder="한줄평"></textarea>
+				<textarea rows="1" class="form-control" 
+				name="summary" placeholder="한줄평">${dto.summary }</textarea>
 			</td>
 		</tr>	
 	</tbody>
@@ -150,8 +154,8 @@ function deleteRow(idx){
 	</form> 
 </div>
 </div>
-    <div id="copyright">
+   <%--  <div id="copyright">
          <%@include file="../copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
-    </div>
+    </div> --%>
 </body>
 </html>
