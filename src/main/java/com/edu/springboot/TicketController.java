@@ -259,7 +259,7 @@ public class TicketController {
 	public ModelAndView ticket_insert2(MultipartFile[] sub_image, MultipartFile title_image, Model model, MultipartHttpServletRequest req) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int value= Integer.parseInt(req.getParameter("value"));		
-		
+		String member_idx = req.getParameter("member_idx");
 		TicketDTO t_dto = new TicketDTO();
 		
 			ticket_dao.insert_bot_title(req.getParameter("bot_title"),
@@ -305,7 +305,8 @@ public class TicketController {
 			t_dto.setT_booking(req.getParameter("product_booking"));
 			t_dto.setT_cancelfee(req.getParameter("product_cancelfee"));
 			t_dto.setT_cancelnoti(req.getParameter("product_cancelnoti"));
-
+			t_dto.setMember_idx(member_idx);
+			
 			value=ticket_dao.select_new_idx();
 		
 		}
@@ -437,7 +438,11 @@ public class TicketController {
 	public String modalPopUp(HttpServletRequest req, Model model) {
 		int bot_idx = Integer.parseInt(req.getParameter("bot_idx")); 
 		String title = cate_dao.select_bot_cate(bot_idx);
+
+
+		
 		model.addAttribute("title", title);
+		model.addAttribute("seller_idx",req.getParameter("seller_idx"));
 		
 		ArrayList<TicketInfoDTO> Total_Ticket_info = ticket_dao.ticket_info_list(bot_idx);
 		model.addAttribute("Total_Ticket_info",Total_Ticket_info);
@@ -457,6 +462,7 @@ public class TicketController {
 		gdto.setAmount(Integer.parseInt(req.getParameter("amount")));
 		gdto.setGoods_idx(req.getParameter("ti_idx"));
 		gdto.setGoods_image(req.getParameter("goods_image"));
+		gdto.setSeller_idx(req.getParameter("seller_idx"));
 		
 		//상품 구매시 로그에 남기기
 		int result = goods_dao.InsertOrder(gdto);

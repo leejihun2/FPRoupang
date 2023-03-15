@@ -723,6 +723,7 @@ function service_list(e){
 			            <div class="product_intro col-12" style="display:none;"></div>
 			         </form>
 			         <form method="POST" id="form" enctype="multipart/form-data">
+			         	<input type="hidden" id="member_idx" name="member_idx" value="${member_idx}" />
 			         	<s:authorize access="hasRole('admin')">
 				            <input type="hidden" class="form-control ms-3 mb-3" style="width: 200px;"
 				               id="company_name" name="company_name" value="루팡"/>

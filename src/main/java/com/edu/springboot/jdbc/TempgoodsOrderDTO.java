@@ -5,7 +5,8 @@ import lombok.Data;
 @Data
 public class TempgoodsOrderDTO {
 	private String idx;
-	private String member_idx;
+	private String buyer_idx;
+	private String seller_idx;
 	private String order_num;
 	private String order_date;
 	private String depart_date;

@@ -24,9 +24,6 @@ import com.edu.springboot.jdbc.IMainService;
 public class MainContoller {
 
 	@Autowired 
-	IMemberService dao;
-	
-	@Autowired
 	IMemberService member_dao;
 	
 	@Autowired
@@ -57,7 +54,7 @@ public class MainContoller {
 			session.setAttribute("siteUserInfo", email);
 		    
 			
-			String idx = dao.idx(email);
+			String idx = member_dao.idx(email);
 			session.setAttribute("idx", idx);
 			System.out.println(session.getAttribute("idx"));
 		}
@@ -96,6 +93,7 @@ public class MainContoller {
 		if(!(loginId.equals("admin"))) {
 			SellRightDTO dto  = member_dao.LoginUser(loginId);
 			dto  = member_dao.LoginSeller(dto.getMember_idx());
+			model.addAttribute("member_idx",dto.getMember_idx());
 			model.addAttribute("company_name", dto.getCompany_name());
 		}
 

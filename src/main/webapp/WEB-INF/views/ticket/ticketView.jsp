@@ -83,7 +83,7 @@
                             </a>
                         </li>
                         <li class="category-item">
-                            <a href="/ticket_List?category=1" target="_blank">
+                            <a href="/ticket_List?title_value=spa" target="_blank">
                              <div class="category-image">
                              <img src="/uploads/워터파크.jpg"/>
                              </div>
@@ -91,7 +91,7 @@
                         </a>
                         </li>
                         <li class="category-item">
-                            <a href="/ticket_List?category=1" target="_blank">
+                            <a href="/ticket_List?title_value=concert" target="_blank">
                                 <div class="category-image">
     							<img src="/uploads/공연.png"/>
                                 </div>
@@ -99,7 +99,7 @@
                             </a>
                         </li>
                         <li class="category-item">
-                            <a href="/ticket_List?category=1" target="_blank">
+                            <a href="/ticket_List?title_value=activity" target="_blank">
                                 <div class="category-image">
     							<img src="/uploads/엑티비티.jpg"/>
                                 </div>

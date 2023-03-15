@@ -280,7 +280,7 @@ body {
     padding: 0;
 }
 
-.gg a:hover, .gg a:focus {
+.gg a:hover {
     color: #3d82f7;
     outline: none;
 }

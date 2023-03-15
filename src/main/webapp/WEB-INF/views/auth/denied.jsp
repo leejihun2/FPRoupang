@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>권한이 부족합니다.</h2>
-	귀하는 접근이 불가합니다. 
+	<jsp:include page="../home.jsp" />
 </body>
 </html>
