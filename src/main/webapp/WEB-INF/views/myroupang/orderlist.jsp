@@ -18,6 +18,7 @@ position: absolute;
 top:350px; 
 right: 259px;
 
+
 }
 .tetete{
 margin:20px;
@@ -45,7 +46,7 @@ font-style: normal;
 line-height: 1.4;
 letter-spacing: -0.5px;
 color: rgb(15, 15, 15);
-}
+}   
 
 
 .dKPECc {
@@ -112,12 +113,40 @@ fill: #346AFF;
 
 </style>
 
+<style>
+.sel-btn{
+background-color: blue;
+background-size: 32px;
+margin: 1px -9px 15px -4px;
+padding: 11px;
+border-radius: 5px;
+border-color: 3px grey;
+color: white;
+box-shadow: 10px 10px 10px;
+align-content: right;
+cursor: pointer;
+hover:
+}
+
+.sel-btn:hover{
+	background-color: orange;
+	blur: 20px;
+	
+}
+
+</style>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/myroupang.css">
+
+
 <body>
 <s:authorize access="isAnonymous()">
 	<%@include file="../auth/login.jsp" %>
 </s:authorize>
 
 <s:authorize access="isAuthenticated()">
+
+
 <%@include file="../myroupang/myroupang.jsp" %>
 
 <div class="roll" >
@@ -127,11 +156,11 @@ fill: #346AFF;
 		<span class="list9">주문목록</span>
 	</div>
 	
-	<div class="list3">
+	<!-- <div class="list3">
 		<img class="se-btn" src="../images/searchbtn.png" 
 			onclick="location.href:'';" style="position:absolute;" alt="검색버튼"  />
 		<input type="text" placeholder="  주문한 상품을 검색할 수 있어요!" class="s-box"/>
-	</div>
+	</div> -->
 
  
 	<div class="list45">
@@ -187,7 +216,6 @@ fill: #346AFF;
 
 
 </div>
-
 
 </s:authorize>
 </body>

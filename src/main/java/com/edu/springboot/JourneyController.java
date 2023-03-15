@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.tools.DocumentationTool.Location;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,12 +25,16 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.springboot.jdbc.CategoryService;
+import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.IReviewService;
 import com.edu.springboot.jdbc.JourneyDTO;
 import com.edu.springboot.jdbc.JourneyInfoDTO;
 import com.edu.springboot.jdbc.JourneyService;
 import com.edu.springboot.jdbc.ParameterJourneyDTO;
 import com.edu.springboot.jdbc.ParameterTicketDTO;
+import com.edu.springboot.jdbc.ReviewDTO;
+import com.edu.springboot.jdbc.TempgoodsOrderDTO;
+import com.edu.springboot.jdbc.TempgoodsService;
 import com.edu.springboot.jdbc.TicketDTO;
 import com.edu.springboot.jdbc.TicketInfoDTO;
 import com.edu.springboot.jdbc.TotalJourneyDTO;
@@ -43,6 +48,12 @@ public class JourneyController {
    
    @Autowired
    JourneyService journey_dao;
+   
+   @Autowired
+   IReviewService dao;
+   
+   @Autowired
+   TempgoodsService goods_dao;
    
    @RequestMapping("/journey_Main")
    public String joureny_Main() {
@@ -572,6 +583,7 @@ public class JourneyController {
        String ji_duetime2 = map.get("ji_duetime2"); 
       
       session.setAttribute("ji_duetime1", ji_duetime1);
+      
       session.setAttribute("ji_duetime2", ji_duetime2);
       
       System.out.println("시작날짜"+session.getAttribute("ji_duetime1"));
@@ -579,4 +591,60 @@ public class JourneyController {
       
       return "/journey/journeyList";
    }
+   
+   @RequestMapping("/journeyDetail")
+	public String movepage(HttpServletRequest req, Model model, JourneyDTO journeyDTO) {
+		int value = Integer.parseInt(req.getParameter("value"));
+		
+		ReviewDTO totalstar = dao.starcount();
+		model.addAttribute("totalstar", totalstar);
+		ArrayList<ReviewDTO> lists = dao.reviewList();
+		
+		for (ReviewDTO dto : lists) {
+			String temp = dto.getReview().replace("\r\n", "<br/>");
+			dto.setReview(temp);
+		}
+		model.addAttribute("lists", lists);
+		
+		JourneyDTO Total_Journey = journey_dao.journey_list(value);
+//		System.out.println(Total_Journey);
+		model.addAttribute("Total_Journey",Total_Journey);
+		
+		String category_title = cate_dao.select_bot_cate(value);
+		model.addAttribute("j_title",category_title);
+		
+		ArrayList<JourneyInfoDTO> Total_Journey_info = journey_dao.journey_info_list(value);
+		for(JourneyInfoDTO dto : Total_Journey_info) {
+			String temp = dto.getJi_intro().replace("\r\n", "<br/>");
+			dto.setJi_intro(temp);
+			System.out.println(temp);
+		}
+		model.addAttribute("Total_Journey_info",Total_Journey_info);
+		System.out.println(Total_Journey);
+		
+		
+		return "/journey/journey_detail_view";
+	}
+   
+   @ResponseBody
+	@RequestMapping("/cellProduct_j")
+	public String test(HttpServletRequest req) {
+		TempgoodsOrderDTO gdto = new TempgoodsOrderDTO();
+		gdto.setBot_idx(req.getParameter("ji_idx"));
+		gdto.setPrice(Integer.parseInt(req.getParameter("price")));
+		gdto.setAmount(Integer.parseInt(req.getParameter("amount")));
+		
+		
+		//상품 구매시 로그에 남기기
+		int result = goods_dao.InsertOrder(gdto);
+		int result2 = goods_dao.InsertOrderItem(gdto);
+		
+		if (result == 0 ) {
+			System.out.println("insert 에러");
+		}else {
+			System.out.println("정상 동작");
+		}
+		
+		return "/";
+	}
 }
