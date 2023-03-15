@@ -1,4 +1,6 @@
 <%@page import="com.fasterxml.jackson.annotation.JsonInclude.Include"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -188,48 +190,18 @@
                </dd> 
                <dd class="best-product-list">
                     <ul>
+                       <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/버즈.jpg" class="catagory-images" alt="">
-                                <span class="name">ACRO 프로 버즈 무선 블루투스 이어폰</span><br>
-                                <span class="price"><strong>70,000</strong>원</span>
+                            <a class="product-unit category-best-link"
+                             href="journeyDetail?value=${row.idx }" target="_blank">
+                                <span class="catagory-images">${row.j_title_image }</span>
+                                <span class="name">${row.title }</span><br>
+                                <span class="price">
+                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                </span>
                             </a>
                         </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어팟케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 변색방지 에어팟 1 / 2 세대</span><br>
-                                <span class="price"><strong>15,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/신지모루.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</span><br>
-                                <span class="price"><strong>12,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어맥스.jpg" class="catagory-images" alt="">
-                                <span class="name">Apple 에어팟 맥스 블루투스헤드셋</span><br>
-                                <span class="price"><strong>700,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">케이스케이스케이스케이스케이스케이스</span><br>
-                                <span class="price"><strong>8,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/충전.jpg" class="catagory-images" alt="">
-                                <span class="name">벨킨 USB 4 C타입 PD 100W 40Gbps 초고속 케이블</span><br>
-                                <span class="price"><strong>29,000</strong>원</span>
-                            </a>
-                        </li>
+                    </c:forEach>
                     </ul>
                </dd> 
             </dl>
@@ -262,48 +234,18 @@
                </dd> 
                <dd class="best-product-list">
                     <ul>
+                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/버즈.jpg" class="catagory-images" alt="">
-                                <span class="name">ACRO 프로 버즈 무선 블루투스 이어폰</span><br>
-                                <span class="price"><strong>70,000</strong>원</span>
+                            <a class="product-unit category-best-link"
+                             href="journeyDetail?value=${row.idx }" target="_blank">
+                                <span class="catagory-images">${row.j_title_image }</span>
+                                <span class="name">${row.title }</span><br>
+                                <span class="price">
+                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                </span>
                             </a>
                         </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어팟케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 변색방지 에어팟 1 / 2 세대</span><br>
-                                <span class="price"><strong>15,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/신지모루.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</span><br>
-                                <span class="price"><strong>12,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어맥스.jpg" class="catagory-images" alt="">
-                                <span class="name">Apple 에어팟 맥스 블루투스헤드셋</span><br>
-                                <span class="price"><strong>700,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">케이스케이스케이스케이스케이스케이스</span><br>
-                                <span class="price"><strong>8,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/충전.jpg" class="catagory-images" alt="">
-                                <span class="name">벨킨 USB 4 C타입 PD 100W 40Gbps 초고속 케이블</span><br>
-                                <span class="price"><strong>29,000</strong>원</span>
-                            </a>
-                        </li>
+                    </c:forEach>
                     </ul>
                </dd> 
             </dl>
@@ -336,48 +278,18 @@
                </dd> 
                <dd class="best-product-list">
                     <ul>
+                       <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/버즈.jpg" class="catagory-images" alt="">
-                                <span class="name">ACRO 프로 버즈 무선 블루투스 이어폰</span><br>
-                                <span class="price"><strong>70,000</strong>원</span>
+                            <a class="product-unit category-best-link"
+                             href="journeyDetail?value=${row.idx }" target="_blank">
+                                <span class="catagory-images">${row.j_title_image }</span>
+                                <span class="name">${row.title }</span><br>
+                                <span class="price">
+                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                </span>
                             </a>
                         </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어팟케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 변색방지 에어팟 1 / 2 세대</span><br>
-                                <span class="price"><strong>15,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/신지모루.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</span><br>
-                                <span class="price"><strong>12,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어맥스.jpg" class="catagory-images" alt="">
-                                <span class="name">Apple 에어팟 맥스 블루투스헤드셋</span><br>
-                                <span class="price"><strong>700,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">케이스케이스케이스케이스케이스케이스</span><br>
-                                <span class="price"><strong>8,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/충전.jpg" class="catagory-images" alt="">
-                                <span class="name">벨킨 USB 4 C타입 PD 100W 40Gbps 초고속 케이블</span><br>
-                                <span class="price"><strong>29,000</strong>원</span>
-                            </a>
-                        </li>
+                    </c:forEach>
                     </ul>
                </dd> 
             </dl>
@@ -410,48 +322,18 @@
                </dd> 
                <dd class="best-product-list">
                     <ul>
+                       <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/버즈.jpg" class="catagory-images" alt="">
-                                <span class="name">ACRO 프로 버즈 무선 블루투스 이어폰</span><br>
-                                <span class="price"><strong>70,000</strong>원</span>
+                            <a class="product-unit category-best-link"
+                             href="journeyDetail?value=${row.idx }" target="_blank">
+                                <span class="catagory-images">${row.j_title_image }</span>
+                                <span class="name">${row.title }</span><br>
+                                <span class="price">
+                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                </span>
                             </a>
                         </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어팟케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 변색방지 에어팟 1 / 2 세대</span><br>
-                                <span class="price"><strong>15,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/신지모루.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</span><br>
-                                <span class="price"><strong>12,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어맥스.jpg" class="catagory-images" alt="">
-                                <span class="name">Apple 에어팟 맥스 블루투스헤드셋</span><br>
-                                <span class="price"><strong>700,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">케이스케이스케이스케이스케이스케이스</span><br>
-                                <span class="price"><strong>8,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/충전.jpg" class="catagory-images" alt="">
-                                <span class="name">벨킨 USB 4 C타입 PD 100W 40Gbps 초고속 케이블</span><br>
-                                <span class="price"><strong>29,000</strong>원</span>
-                            </a>
-                        </li>
+                    </c:forEach>
                     </ul>
                </dd> 
             </dl>
@@ -484,48 +366,18 @@
                </dd> 
                <dd class="best-product-list">
                     <ul>
+                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/버즈.jpg" class="catagory-images" alt="">
-                                <span class="name">ACRO 프로 버즈 무선 블루투스 이어폰</span><br>
-                                <span class="price"><strong>70,000</strong>원</span>
+                            <a class="product-unit category-best-link"
+                             href="journeyDetail?value=${row.idx }" target="_blank">
+                                <span class="catagory-images">${row.j_title_image }</span>
+                                <span class="name">${row.title }</span><br>
+                                <span class="price">
+                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                </span>
                             </a>
                         </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어팟케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 변색방지 에어팟 1 / 2 세대</span><br>
-                                <span class="price"><strong>15,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/신지모루.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</span><br>
-                                <span class="price"><strong>12,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어맥스.jpg" class="catagory-images" alt="">
-                                <span class="name">Apple 에어팟 맥스 블루투스헤드셋</span><br>
-                                <span class="price"><strong>700,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">케이스케이스케이스케이스케이스케이스</span><br>
-                                <span class="price"><strong>8,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/충전.jpg" class="catagory-images" alt="">
-                                <span class="name">벨킨 USB 4 C타입 PD 100W 40Gbps 초고속 케이블</span><br>
-                                <span class="price"><strong>29,000</strong>원</span>
-                            </a>
-                        </li>
+                    </c:forEach>
                     </ul>
                </dd> 
             </dl>
@@ -558,48 +410,18 @@
                </dd> 
                <dd class="best-product-list">
                     <ul>
+                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/버즈.jpg" class="catagory-images" alt="">
-                                <span class="name">ACRO 프로 버즈 무선 블루투스 이어폰</span><br>
-                                <span class="price"><strong>70,000</strong>원</span>
+                            <a class="product-unit category-best-link"
+                             href="journeyDetail?value=${row.idx }" target="_blank">
+                                <span class="catagory-images">${row.j_title_image }</span>
+                                <span class="name">${row.title }</span><br>
+                                <span class="price">
+                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                </span>
                             </a>
                         </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어팟케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 변색방지 에어팟 1 / 2 세대</span><br>
-                                <span class="price"><strong>15,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/신지모루.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</span><br>
-                                <span class="price"><strong>12,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어맥스.jpg" class="catagory-images" alt="">
-                                <span class="name">Apple 에어팟 맥스 블루투스헤드셋</span><br>
-                                <span class="price"><strong>700,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">케이스케이스케이스케이스케이스케이스</span><br>
-                                <span class="price"><strong>8,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/충전.jpg" class="catagory-images" alt="">
-                                <span class="name">벨킨 USB 4 C타입 PD 100W 40Gbps 초고속 케이블</span><br>
-                                <span class="price"><strong>29,000</strong>원</span>
-                            </a>
-                        </li>
+                    </c:forEach>
                     </ul>
                </dd> 
             </dl>
@@ -632,48 +454,18 @@
                </dd> 
                <dd class="best-product-list">
                     <ul>
+                       <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/버즈.jpg" class="catagory-images" alt="">
-                                <span class="name">ACRO 프로 버즈 무선 블루투스 이어폰</span><br>
-                                <span class="price"><strong>70,000</strong>원</span>
+                            <a class="product-unit category-best-link"
+                             href="journeyDetail?value=${row.idx }" target="_blank">
+                                <span class="catagory-images">${row.j_title_image }</span>
+                                <span class="name">${row.title }</span><br>
+                                <span class="price">
+                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                </span>
                             </a>
                         </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어팟케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 변색방지 에어팟 1 / 2 세대</span><br>
-                                <span class="price"><strong>15,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/신지모루.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</span><br>
-                                <span class="price"><strong>12,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어맥스.jpg" class="catagory-images" alt="">
-                                <span class="name">Apple 에어팟 맥스 블루투스헤드셋</span><br>
-                                <span class="price"><strong>700,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">케이스케이스케이스케이스케이스케이스</span><br>
-                                <span class="price"><strong>8,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/충전.jpg" class="catagory-images" alt="">
-                                <span class="name">벨킨 USB 4 C타입 PD 100W 40Gbps 초고속 케이블</span><br>
-                                <span class="price"><strong>29,000</strong>원</span>
-                            </a>
-                        </li>
+                    </c:forEach>
                     </ul>
                </dd> 
             </dl>
@@ -706,48 +498,18 @@
                </dd> 
                <dd class="best-product-list">
                     <ul>
+                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/버즈.jpg" class="catagory-images" alt="">
-                                <span class="name">ACRO 프로 버즈 무선 블루투스 이어폰</span><br>
-                                <span class="price"><strong>70,000</strong>원</span>
+                            <a class="product-unit category-best-link"
+                             href="journeyDetail?value=${row.idx }" target="_blank">
+                                <span class="catagory-images">${row.j_title_image }</span>
+                                <span class="name">${row.title }</span><br>
+                                <span class="price">
+                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                </span>
                             </a>
                         </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어팟케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 변색방지 에어팟 1 / 2 세대</span><br>
-                                <span class="price"><strong>15,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/신지모루.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</span><br>
-                                <span class="price"><strong>12,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어맥스.jpg" class="catagory-images" alt="">
-                                <span class="name">Apple 에어팟 맥스 블루투스헤드셋</span><br>
-                                <span class="price"><strong>700,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">케이스케이스케이스케이스케이스케이스</span><br>
-                                <span class="price"><strong>8,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/충전.jpg" class="catagory-images" alt="">
-                                <span class="name">벨킨 USB 4 C타입 PD 100W 40Gbps 초고속 케이블</span><br>
-                                <span class="price"><strong>29,000</strong>원</span>
-                            </a>
-                        </li>
+                    </c:forEach>
                     </ul>
                </dd> 
             </dl>
@@ -780,48 +542,18 @@
                </dd> 
                <dd class="best-product-list">
                     <ul>
+                       <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/버즈.jpg" class="catagory-images" alt="">
-                                <span class="name">ACRO 프로 버즈 무선 블루투스 이어폰</span><br>
-                                <span class="price"><strong>70,000</strong>원</span>
+                            <a class="product-unit category-best-link"
+                             href="journeyDetail?value=${row.idx }" target="_blank">
+                                <span class="catagory-images">${row.j_title_image }</span>
+                                <span class="name">${row.title }</span><br>
+                                <span class="price">
+                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                </span>
                             </a>
                         </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어팟케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 변색방지 에어팟 1 / 2 세대</span><br>
-                                <span class="price"><strong>15,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/신지모루.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</span><br>
-                                <span class="price"><strong>12,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어맥스.jpg" class="catagory-images" alt="">
-                                <span class="name">Apple 에어팟 맥스 블루투스헤드셋</span><br>
-                                <span class="price"><strong>700,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">케이스케이스케이스케이스케이스케이스</span><br>
-                                <span class="price"><strong>8,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/충전.jpg" class="catagory-images" alt="">
-                                <span class="name">벨킨 USB 4 C타입 PD 100W 40Gbps 초고속 케이블</span><br>
-                                <span class="price"><strong>29,000</strong>원</span>
-                            </a>
-                        </li>
+                    </c:forEach>
                     </ul>
                </dd> 
             </dl>
@@ -830,17 +562,15 @@
         <div id="categoryBest_travel" class="category-best-unit travel">
             <dl class="category-best">
                <dt class="title">
-                <img width="114" src="../images/best_title_travel.png" class="best_title_img"><p>
-                    <a href="" class="go-category">바로가기></a></p></dt>
+                <img width="114" src="../images/best_title_travel.png" class="best_title_img">
+                    <p><a href="" class="go-category">바로가기></a></p></dt>
                
                 <dd class="hot-keyword" style="bottom:197px">
                 <strong>HOT키워드</strong>
                 <!-- mid_category list에 담고 뿌랴줌 a태그사이에 ${row.title} -->
-	               	<p><a class="keyword" href="#">#태블릿PC</a></p>
-	                <p><a class="keyword" href="#">#공기청정기</a></p>
-	                <p><a class="keyword" href="#">#게이밍모니터</a></p>
-	                <p><a class="keyword" href="#">#마사지기</a></p>
-	                <p><a class="keyword" href="#">#블루투스스피커</a></p>
+	               	<p><a class="keyword" href="#">#티켓</a></p>
+	                <p><a class="keyword" href="#">#호텔</a></p>
+	                <p><a class="keyword" href="#">#펜션</a></p>
                 </dd> 
                <dd class="promotion">
                 <!-- 이미지슬라이드 부트 적용 -->
@@ -855,49 +585,18 @@
                </dd> 
                <dd class="best-product-list">
                     <ul>
-                    
+                    <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/버즈.jpg" class="catagory-images" alt="">
-                                <span class="name">ACRO 프로 버즈 무선 블루투스 이어폰</span><br>
-                                <span class="price"><strong>70,000</strong>원</span>
+                            <a class="product-unit category-best-link"
+                             href="journeyDetail?value=${row.idx }" target="_blank">
+                                <span class="catagory-images">${row.j_title_image }</span>
+                                <span class="name">${row.title }</span><br>
+                                <span class="price">
+                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                </span>
                             </a>
                         </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어팟케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 변색방지 에어팟 1 / 2 세대</span><br>
-                                <span class="price"><strong>15,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/신지모루.jpg" class="catagory-images" alt="">
-                                <span class="name">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</span><br>
-                                <span class="price"><strong>12,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/에어맥스.jpg" class="catagory-images" alt="">
-                                <span class="name">Apple 에어팟 맥스 블루투스헤드셋</span><br>
-                                <span class="price"><strong>700,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/케이스.jpg" class="catagory-images" alt="">
-                                <span class="name">케이스케이스케이스케이스케이스케이스</span><br>
-                                <span class="price"><strong>8,000</strong>원</span>
-                            </a>
-                        </li>
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link" href="#">
-                                <img  src="../images/충전.jpg" class="catagory-images" alt="">
-                                <span class="name">벨킨 USB 4 C타입 PD 100W 40Gbps 초고속 케이블</span><br>
-                                <span class="price"><strong>29,000</strong>원</span>
-                            </a>
-                        </li>
+                    </c:forEach>
                     </ul>
                </dd> 
             </dl>

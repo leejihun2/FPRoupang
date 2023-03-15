@@ -261,11 +261,12 @@ public class TicketController {
 		int value= Integer.parseInt(req.getParameter("value"));		
 		String member_idx = req.getParameter("member_idx");
 		TicketDTO t_dto = new TicketDTO();
-		if(value==0) {
+		
 			ticket_dao.insert_bot_title(req.getParameter("bot_title"),
 					Integer.parseInt(req.getParameter("mid_category")),
 					req.getParameter("company_name"));
 			
+			if(value==0) {
 			t_dto.setT_title_image(saveFile(title_image));
 			int index=1;
 			for(MultipartFile f: sub_image) {
@@ -400,7 +401,7 @@ public class TicketController {
 		mv.addObject("sub_idx",sub_idx);
 		mv.addObject("category_title",category_title);
 		mv.addObject("ticket_list", ticket_list);
-		
+		System.out.println(ticket_list);
 		mv.setViewName("/ticket/ticketList");
 		return mv;
 	}

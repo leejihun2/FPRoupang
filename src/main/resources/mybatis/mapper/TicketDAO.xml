@@ -58,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	
  	<insert id="insert_ticket_info"
  	parameterType="com.edu.springboot.jdbc.TicketInfoDTO">
- 		insert into ticket_info 
+ 		insert into ticket_info 		
  		values (ticket_info_seq.nextval, #{bot_idx}, #{ti_title}, #{ti_intro}, #{ti_duetime1}, #{ti_duetime2}, #{ti_price}, 0)
  	</insert>
  	
