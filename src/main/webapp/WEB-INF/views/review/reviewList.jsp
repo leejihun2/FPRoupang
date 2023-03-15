@@ -106,9 +106,11 @@ function deleteRow(idx){
 			<div class="star-ratings">짱인가요? :${totalstar.star_servey3_4 }</div>
 			<div class="star-ratings">짱인가요? :${totalstar.star_servey3_5 }</div>
 				
-
+		
 		<div class="text-right"></div>
 		<!-- 방명록 반복 부분 s -->
+		<s:authorize access="isAuthenticated()">
+			<s:authentication property="name" var="name" />
 		<c:forEach items="${lists }" var="row">
 			<div class="border mt-2 mb-2">
 				<!--  -->
@@ -229,6 +231,7 @@ function deleteRow(idx){
  --%>
 			</div>
 		</c:forEach>
+		</s:authorize>
 	</div>
 	</div>
 	<div id="copyright">

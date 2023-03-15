@@ -13,6 +13,6 @@ public class Room {
 		
 		@Override
 		public String toString() {
-			return "Room [room_idx=" + room_idx + ", member_idx=" + member_idx + "regidate="+ regidate + "]";
+			return "Room [room_idx=" + room_idx + ", member_idx=" + member_idx +"]";
 		}	
 	}

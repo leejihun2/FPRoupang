@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="../chatcss/room.css" type="text/css" />
 </head>
 <script type="text/javascript">
-	var ws;
+	var ws; 
 	window.onload = function(){
 		getRoom();
 		createRoom();

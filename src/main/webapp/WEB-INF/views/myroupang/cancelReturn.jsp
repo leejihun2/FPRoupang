@@ -56,10 +56,20 @@ justify-content:center;
 		<%@include file="../auth/login.jsp" %>
 </s:authorize>
  <s:authorize access="isAuthenticated()">
+<div class="con">
 <%@include file="../myroupang/myroupang.jsp" %>
 
+
 <div class="roll" >
-	<h1 style="font-size: 30px; margin-bottom:30px;">취소/반품/교환/환불내역</h1>
+	<h1 style="font-size: 30px; margin-bottom:30px;">취소/환불내역</h1>
+
+
+
+		
+
+
+
+
 
 	
 		<div class="te99">
@@ -75,6 +85,7 @@ justify-content:center;
 			</button>
 		</div>
 
+</div>
 </div>
  </s:authorize>
 </body>

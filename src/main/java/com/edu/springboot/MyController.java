@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -75,6 +77,13 @@ public class MyController {
 	}
 	
 	 
+	 
+	 //패스워드 암화를 위한 메서드 
+	 public PasswordEncoder passwordEncoder() {
+		 
+		 return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+	}
+	 
 	 //회원정보수정
 	 @ResponseBody
 	 @RequestMapping(value="/myroupang/mylistmodify.do", method = RequestMethod.POST)
@@ -98,25 +107,23 @@ public class MyController {
 		 }
 		 myDTO.setMarketing_agreement(boxvalue);
 		 
+		 
 		 if(!(req.getParameter("password").equals(""))){
 			 
-			 String password = req.getParameter("password");
+			 String password = (passwordEncoder().encode(req.getParameter("password")));
 			 
 			 myDTO.setPassword(password);
 		 }
 		 
+		 
 			 int result = msv.update(myDTO);
-			 
 			 if(result!=1) {
-				 
 				mv.addObject("errorThrown", "Error!");
 			 }
-			 
 			 	myDTO = msv.selectOne(req.getParameter("email"));
 			 	mv.addObject("dto", myDTO);
-			 	
 			 	mv.setViewName("/myroupang/mylist");
-			
+			 	
 		    return mv;
 		 }
 

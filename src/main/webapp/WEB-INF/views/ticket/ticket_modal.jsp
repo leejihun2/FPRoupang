@@ -174,7 +174,8 @@ $(function(){
     				{bot_idx : $("[name=bot"+ti_idx+"]").val(),
     				 ti_idx : ti_idx,
     				 price : $("[name=total"+ti_idx+"]").val(),
-    				 amount : $(this).val()
+    				 amount : $(this).val(),
+    				 goods_image : $("#goods_image").val()
     				 },
     				 function(data){
     					 close()
@@ -257,11 +258,13 @@ function comma(str) {
     </div>
 </div>
 <div class="modal-body">
+	<input type="hidden" id="goods_image" value="${goods_image }"/>
 	<ul class="option-selected-options">
 		<c:forEach items="${Total_Ticket_info}" var="row" varStatus="loop">
 			<li class="select-option" style="font-size: 14px; padding: 12px 20px;">
 				<input type="hidden" name="total${row.ti_idx }" value="0"/>
 				<input type="hidden" name="bot${row.ti_idx }" value="${row.bot_idx }"/>
+				<input type="hidden" name="ti${row.ti_idx }" value="${row.ti_idx }"/>
 				<table class="selected-option-table">
 					<tbody>
 						<tr>
