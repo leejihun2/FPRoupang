@@ -20,6 +20,8 @@ public interface IReviewService {
 	
 	public ReviewDTO view(int idx);
 	
+	public ArrayList<GoodsOrderDTO> order();
+	
 	public int modifyReview(ReviewDTO reviewDTO);
 	
 	public int delete(String idx);

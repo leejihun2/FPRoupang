@@ -7,6 +7,7 @@ public class GoodsOrderDTO {
 	
 	private int idx;
 	private int member_idx;
+	private int order_idx;
 	private String order_num;
 	private String order_date;
 	private String depart_date;
