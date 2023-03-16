@@ -305,7 +305,6 @@ hover:
         </div>
     </li>
 </ul>
-<<<<<<< HEAD
 <%-- 
 </c:when>
 
@@ -314,8 +313,6 @@ hover:
 	</c:otherwise>
 
 </c:choose>   --%>
-=======
->>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
  </s:authorize>
 </body>
 </html>
