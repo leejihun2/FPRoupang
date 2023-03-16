@@ -17,8 +17,11 @@ public class TempgoodsOrderDTO {
 	private String order_idx;
 	private String bot_idx;
 	private String goods_idx;
+	private String top_title;
+	private String main_title;
 	private String goods_image;
 	private int price;
 	private int amount;
 	private int discount;
+	private int sorting;
 }

@@ -463,6 +463,9 @@ public class TicketController {
 		gdto.setGoods_idx(req.getParameter("ti_idx"));
 		gdto.setGoods_image(req.getParameter("goods_image"));
 		gdto.setSeller_idx(req.getParameter("seller_idx"));
+		gdto.setTop_title(req.getParameter("top_title"));
+		gdto.setMain_title(req.getParameter("main_title"));
+		gdto.setSorting(Integer.parseInt(req.getParameter("table_sort")));
 		
 		//상품 구매시 로그에 남기기
 		int result = goods_dao.InsertOrder(gdto);
@@ -473,6 +476,7 @@ public class TicketController {
 		}else {
 			System.out.println("정상 동작");
 		}
+		
 		return "/";
 	}
 
