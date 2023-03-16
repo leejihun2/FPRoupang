@@ -54,10 +54,10 @@ public class ReviewController {
 	@RequestMapping("/review/reviewable.do")
 	public String reviewable(Model model, HttpSession session,
 			HttpServletRequest req) {
-		//int member_idx = Integer.parseInt(req.getParameter("member_idx"));
-		ArrayList<CategoryDTO> order = 
-				daoo.order();
-		model.addAttribute("order", order);
+//		int member_idx = Integer.parseInt(req.getParameter("member_idx"));
+//		ArrayList<CategoryDTO> order = 
+//				daoo.order();
+//		model.addAttribute("order", order);
 		return "review/reviewable";
 	}
 	

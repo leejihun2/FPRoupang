@@ -15,7 +15,6 @@
 			data-category-id="" data-is-subscribable=""
 			data-vendor-item-package-id="">
 
-
 			<div id="returnPolicy">
 				<h3 class="none">취소/반품</h3>
 
@@ -23,9 +22,7 @@
 					<strong>쉽고 빠른 환불!</strong><br> 쿠팡에서는, 망설이지 말고 지르자!<br> <br>
 					지금 바로 <strong>마이쿠팡</strong>에서 <a
 						href="https://www.coupang.com/memberOrderList.pang">취소/반품 신청하기</a>
-
 				</div>
-
 				<div class="content-link">
 					<a href="#content1">반품방법</a> <a href="#content2">배송비 부담여부</a> <a
 						href="#content3">환불과정</a> <a href="#content4">취소방법</a> <a
