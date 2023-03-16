@@ -1,0 +1,3712 @@
+@charset "UTF-8";
+
+    .my-review {
+        letter-spacing: -1px;
+        margin-top: 20px;
+        margin-bottom: 80px
+    }
+
+    .my-review__clear {
+        clear: both
+    }
+
+    .my-review__redirect_link {
+        font-size: 12px;
+        line-height: 15px;
+        color: #346aff
+    }
+
+    .my-review__title {
+        padding-bottom: 13px;
+        border-bottom: 1px #346aff solid
+    }
+
+    .my-review__title .my-review__main__header {
+        width: 122px;
+        height: 33px;
+        font-size: 28px;
+        color: #111111;
+        font-weight: bold
+    }
+
+    .my-review__title .my-review__main__sub_header {
+        width: 98px;
+        height: 15px;
+        font-size: 12px;
+        color: #346aff;
+        margin-left: 4px;
+        cursor: pointer
+    }
+
+    .my-review__title .my-review__header_right {
+        padding-top: 18px
+    }
+
+    .my-review__header_right {
+        padding-right: 1px;
+        text-align: right;
+        float: right;
+        line-height: 20px
+    }
+
+    .my-review__page-btn-container {
+        margin-top: 40px
+    }
+
+    .my-review__no-result-list {
+        height: 250px;
+        line-height: 250px;
+        font-size: 20px;
+        text-align: center;
+        color: #888888
+    }
+
+    .my-review__guide {
+        margin-bottom: 20px;
+        text-align: right
+    }
+
+    .my-review__guide__btn {
+        font-size: 14px;
+        color: #0073e9;
+        vertical-align: middle;
+        letter-spacing: -1px;
+        cursor: pointer
+    }
+
+    .my-review__guide__arrow-img {
+        display: inline-block;
+        width: 6px;
+        height: 11px;
+        background: url("//img1a.coupangcdn.com/image/productreview/web/my/tab/arrow-blue-right.png") 0px 0px no-repeat
+    }
+
+    .my-review__menu.my__nav--a {
+        border-top: 1px solid #111;
+        margin-bottom: 0px;
+        overflow: visible
+    }
+
+    .my-review__menu.my__nav--a li {
+        border-bottom: 0px;
+        height: 46px;
+        line-height: 46px
+    }
+
+    .my-review__menu .my-review__menu__writable-list__anchor,
+    .my-review__menu .my-review__menu__wrote-list__anchor,
+    .my-review__menu .my-review__menu__adventurer-list__anchor {
+        border: 1px solid #ddd;
+        border-top: 0;
+        margin: 0;
+        height: 45px
+    }
+
+    .my-review__menu .my-review__menu__writable-list__anchor.my-review__middle-border-fix,
+    .my-review__menu .my-review__menu__wrote-list__anchor.my-review__middle-border-fix,
+    .my-review__menu .my-review__menu__adventurer-list__anchor.my-review__middle-border-fix {
+        border-right: 0px
+    }
+
+    .my-review__menu .my-review__menu__wrote-list__anchor {
+        border-left: 0px
+    }
+
+    .my-review__menu.writable .my-review__menu__writable-list__anchor {
+        background-color: #fff;
+        z-index: 2
+    }
+
+    .my-review__menu.writable .my-review__menu__writable-list__title {
+        color: #111;
+        font-weight: bold
+    }
+
+    .my-review__menu.wrote .my-review__menu__wrote-list__anchor {
+        background-color: #fff;
+        border-left: 0px;
+        z-index: 2
+    }
+
+    .my-review__menu.wrote .my-review__menu__wrote-list__title {
+        color: #111;
+        font-weight: bold
+    }
+
+    .my-review__menu.adventurer .my-review__menu__adventurer-list__anchor {
+        background-color: #fff;
+        z-index: 2
+    }
+
+    .my-review__menu.adventurer .my-review__menu__adventurer-list__title {
+        color: #111;
+        font-weight: bold
+    }
+
+    .my-review__menu .my-review__menu__adventurer-list {
+        width: 33.4%
+    }
+
+    .my-review__menu .my-review__menu__adventurer-list .opening {
+        width: 47px;
+        height: 30px;
+        top: -14px;
+        left: 140px;
+        position: absolute;
+        background-image: url("//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/icon-vine-open@2x.png");
+        background-size: 47px 30px
+    }
+
+    .lt-ie9 .my-review__menu__adventurer-list .opening {
+        background-image: url("//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/icon-vine-open.png")
+    }
+
+    .lt-ie9 .my-review__modify__star__content__value {
+        width: 32px;
+        height: 31px;
+        background: url(//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/writing-star.png) 0 0px no-repeat
+    }
+
+    .lt-ie9 .my-review__modify__star__content__value--active {
+        background: url(//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/rate-star-l.png) 0 0px no-repeat
+    }
+
+    .lt-ie9 .my-review__wrote__rating {
+        background: url(//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/star-writing-s.png) 0 0px no-repeat;
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/star-writing-s.png', sizingMethod='scale');
+        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/star-writing-s.png', sizingMethod='scale')"
+    }
+
+    .lt-ie9 .my-review__wrote__rating.wrote-list-rating-active {
+        background: url(//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/rate-star-s.png) 0 0px no-repeat;
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/rate-star-s.png', sizingMethod='scale');
+        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/rate-star-s.png', sizingMethod='scale')"
+    }
+
+    .my-review__menu__adventurer-list__title,
+    .my-review__menu__wrote-list__title,
+    .my-review__menu__writable-list__title {
+        color: #555;
+        font-size: 14px;
+        text-align: center;
+        border-bottom: 0px;
+        letter-spacing: -1px;
+        vertical-align: top
+    }
+
+    .my-review__menu__flip-count {
+        margin-left: 1px;
+        margin-right: 1px;
+        display: inline-block;
+        font-size: 14px;
+        letter-spacing: 0px;
+        vertical-align: top
+    }
+
+    .my-review__menu__flip-count div {
+        padding-left: 1px;
+        padding-right: 1px
+    }
+
+    .my-review__menu__flip-count .new__write {
+        position: absolute;
+        display: block;
+        right: -7px;
+        top: 14px;
+        width: 6px;
+        height: 6px;
+        background: url(//img1a.coupangcdn.com/image/asset/asset_256b03e6-2a23-4727-b08f-a6f2e989370a.gif) no-repeat 0 0;
+        background-size: 6px;
+        text-indent: -1000em
+    }
+
+    .my-review__closable-popup-container {
+        background: rgba(0, 0, 0, 0);
+        background: transparent\9
+    }
+
+    .my-review__closable-popup {
+        margin: 200px auto;
+        background: #fff;
+        border: 1px solid #aaa;
+        width: 460px
+    }
+
+    .my-review__closable-popup .header {
+        display: inline-block;
+        width: 100%
+    }
+
+    .my-review__closable-popup .closable__icon {
+        display: inline-block;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        background: url("//img1a.coupangcdn.com/image/my/desktop/sprite-icons_161130_1.png") 2px -79px no-repeat
+    }
+
+    .my-review__closable-popup .footer {
+        margin-top: 30px;
+        margin-bottom: 37px;
+        display: inline-block;
+        width: 100%
+    }
+
+    .my-review__closable-popup .confirm-btn {
+        height: 36px;
+        width: 98px;
+        color: #fff;
+        border: 0px;
+        font-weight: bold;
+        background-color: #346aff;
+        cursor: pointer
+    }
+
+    .my-review__closable-popup .popup__content-container {
+        margin-top: 25px
+    }
+
+    .my-review__closable-popup .popup__body {
+        font-size: 14px;
+        line-height: 17px;
+        color: #111;
+        letter-spacing: -1px
+    }
+
+    .modal-review-gallery {
+        overflow-y: auto;
+        display: none
+    }
+
+    .modal-review-gallery.my-modal {
+        background: transparent
+    }
+
+    .modal-review-gallery .modal-dialog {
+        width: 770px;
+        background: none;
+        border: none;
+        margin: 50px auto
+    }
+
+    .modal-review-gallery .modal-content {
+        position: relative;
+        background: rgba(0, 0, 0, 0.85)
+    }
+
+    .modal-review-gallery .header {
+        display: inline-block;
+        width: 100%
+    }
+
+    .modal-review-gallery .popup__body {
+        width: 570px;
+        margin: 0 auto
+    }
+
+    .modal-review-gallery .popup__body img {
+        width: 500px;
+        height: 500px;
+        display: inline-block;
+        object-fit: cover;
+        font-family: 'object-fit: cover;'
+    }
+
+    .modal-review-gallery .attachment-caption {
+        display: none;
+        overflow: auto;
+        position: absolute;
+        text-align: left;
+        background-color: rgba(255, 255, 255, 0.85);
+        width: 480px;
+        padding: 10px;
+        bottom: 118px;
+        left: 135px
+    }
+
+    .modal-review-gallery .attachment-caption .caption_text {
+        display: block;
+        width: 100%;
+        max-height: 60px;
+        word-break: break-all;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-size: 12px;
+        color: #000
+    }
+
+    .modal-review-gallery .thumbnail_list {
+        margin-top: 30px;
+        padding-bottom: 30px;
+        height: 58px
+    }
+
+    .modal-review-gallery .thumbnail_list .thumbnail_container {
+        width: 58px;
+        height: 58px;
+        margin-left: 2px
+    }
+
+    .modal-review-gallery .thumbnail_list .my-review__caption_tip {
+        left: 44px;
+        top: 43px
+    }
+
+    .modal-review-gallery .thumbnail_list .video_play_foreground {
+        width: 59px;
+        height: 58px;
+        left: 1px
+    }
+
+    .modal-review-gallery .thumbnail_list .video_play_tip {
+        top: 18px;
+        left: 24px
+    }
+
+    .modal-review-gallery .thumbnail_list .video_length_text {
+        display: none
+    }
+
+    .modal-review-gallery .thumbnail_list img {
+        width: 58px;
+        height: 58px;
+        display: inline-block;
+        object-fit: cover;
+        font-family: 'object-fit: cover;'
+    }
+
+    .modal-review-gallery .left_btn {
+        position: absolute;
+        top: 285px;
+        left: 30px;
+        width: 65px;
+        height: 55px;
+        padding: 0;
+        border: none;
+        outline: none;
+        z-index: 10;
+        cursor: pointer;
+        background: url(//img1a.coupangcdn.com/image/productreview/web/pdp/modal/sdp-modal-gallery-arrow-btns_v1.png) 20px 2px no-repeat
+    }
+
+    .modal-review-gallery .left_btn:hover {
+        background-position-y: -116px
+    }
+
+    .modal-review-gallery .right_btn {
+        position: absolute;
+        top: 285px;
+        right: 33px;
+        width: 65px;
+        height: 55px;
+        padding: 0;
+        border: none;
+        outline: none;
+        z-index: 10;
+        cursor: pointer;
+        background: url(//img1a.coupangcdn.com/image/productreview/web/pdp/modal/sdp-modal-gallery-arrow-btns_v1.png) 20px -57px no-repeat
+    }
+
+    .modal-review-gallery .right_btn:hover {
+        background-position-y: -176px
+    }
+
+    .modal-review-gallery .closable__icon {
+        display: inline-block;
+        margin-top: 20px;
+        margin-right: 20px;
+        float: right;
+        cursor: pointer;
+        width: 58px;
+        height: 58px;
+        background: url(//img1a.coupangcdn.com/image/productreview/web/pdp/modal/sdp-modal-close-btns_v1.png) 0 0px no-repeat
+    }
+
+    .modal-review-gallery .closable__icon:hover {
+        background-position-y: -63px
+    }
+
+    @-moz-document url-prefix() {
+        .my-review__menu.my__nav--a {
+            width: 100.1%
+        }
+    }
+
+    .my-review__issued-popup {
+        position: relative;
+        display: inline-block;
+        width: 552px;
+        height: 268px;
+        border: 1px solid #111111;
+        background: #ffffff;
+        border-radius: 2px;
+        vertical-align: middle;
+        letter-spacing: -1px;
+        *display: inline;
+        *zoom: 1
+    }
+
+    .my-review__issued-popup__top {
+        height: 68px;
+        background-color: #eeeeee;
+        padding-left: 20px;
+        line-height: 68px
+    }
+
+    .my-review__issued-popup__title {
+        float: left;
+        font-size: 16px;
+        font-weight: bold
+    }
+
+    .my-review__issued-popup__close-btn {
+        display: inline-block;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        background: url("//img1a.coupangcdn.com/image/my/desktop/sprite-icons_161130_1.png") 2px -98px no-repeat
+    }
+
+    .my-review__issued-popup__content {
+        margin-top: 50px;
+        font-size: 16px;
+        font-weight: bold
+    }
+
+    .my-review__issued-popup__sub-content {
+        font-size: 14px;
+        margin-top: 13px
+    }
+
+    .my-review__issued-popup__next-date {
+        height: 17px;
+        font-size: 14px;
+        margin-top: 4px
+    }
+
+    .my-review__issued-popup__submit-btn {
+        width: 80px;
+        height: 25px;
+        line-height: 25px;
+        padding: 0;
+        margin-top: 22px;
+        border-radius: 2px;
+        border: 1px solid #888888;
+        background-color: #fff;
+        color: #888888;
+        font-weight: bold;
+        outline: none;
+        cursor: pointer
+    }
+
+    .my-review__guide-popup {
+        position: relative;
+        display: inline-block;
+        width: 710px;
+        border: 1px solid #111;
+        background: #fff;
+        border-radius: 2px;
+        vertical-align: middle;
+        letter-spacing: -1px;
+        *display: inline;
+        *zoom: 1
+    }
+
+    .my-review__guide-popup__top {
+        height: 68px;
+        background-color: #eeeeee;
+        padding-left: 20px;
+        line-height: 68px
+    }
+
+    .my-review__guide-popup__title {
+        float: left;
+        font-size: 16px;
+        font-weight: bold
+    }
+
+    .my-review__guide-popup__close-btn {
+        display: inline-block;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        background: url("//img1a.coupangcdn.com/image/my/desktop/sprite-icons_161130_1.png") 2px -98px no-repeat
+    }
+
+    .my-review__guide-popup__content {
+        height: 400px;
+        padding: 20px 20px;
+        overflow: auto
+    }
+
+    .my-review__guide-popup__guide-image {
+        width: 100%
+    }
+
+    .my-review__coupon-popup {
+        position: relative;
+        display: inline-block;
+        width: 710px;
+        height: 702px;
+        border: 1px solid #111;
+        background: #fff;
+        border-radius: 2px;
+        vertical-align: middle;
+        letter-spacing: -1px;
+        *display: inline;
+        *zoom: 1
+    }
+
+    .my-review__coupon-popup__top {
+        height: 68px;
+        background-color: #eeeeee;
+        padding-left: 20px;
+        line-height: 68px
+    }
+
+    .my-review__coupon-popup__title {
+        float: left;
+        font-size: 16px;
+        font-weight: bold
+    }
+
+    .my-review__coupon-popup__close-btn {
+        display: inline-block;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        background: url("//img1a.coupangcdn.com/image/my/desktop/sprite-icons_161130_1.png") 2px -98px no-repeat
+    }
+
+    .my-review__coupon-popup__content {
+        height: 600px;
+        padding: 20px 20px 30px;
+        background-color: #fff;
+        overflow: hidden;
+        overflow-y: auto
+    }
+
+    .my-review__coupon-popup__product-info-container {
+        margin-bottom: 10px;
+        border: 1px solid #d2d2d2;
+        height: 108px;
+        text-align: left
+    }
+
+    .my-review__coupon-popup__product-image-container {
+        float: left;
+        width: 108px;
+        height: 108px
+    }
+
+    .my-review__coupon-popup__product-image {
+        width: 108px;
+        height: 108px
+    }
+
+    .my-review__coupon-popup__info-text-container {
+        float: left;
+        padding-left: 12px;
+        padding-right: 40px;
+        white-space: normal;
+        width: 465px;
+        height: 100%
+    }
+
+    .my-review__coupon-popup__info-title {
+        margin-top: 23px;
+        height: 38px;
+        font-size: 16px;
+        line-height: 20px;
+        color: #111111;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2
+    }
+
+    .my-review__coupon-popup__info-price-container {
+        display: none;
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 16px
+    }
+
+    .my-review__coupon-popup__info-price-container.active {
+        display: inline-block
+    }
+
+    .my-review__coupon-popup__info-price {
+        margin-left: 8px;
+        font-size: 16px;
+        font-weight: bold
+    }
+
+    .my-review__coupon-popup__guide-container {
+        clear: both;
+        height: 300px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #d2d2d2;
+        overflow: hidden;
+        overflow-y: auto
+    }
+
+    .my-review__coupon-popup__coupon-image {
+        width: 100%;
+        height: auto
+    }
+
+    .my-review__coupon-popup__agree-container {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size: 14px;
+        line-height: 19px;
+        color: #111
+    }
+
+    .my-review__coupon-popup__certify-agree-label {
+        display: inline-block;
+        cursor: pointer
+    }
+
+    .my-review__coupon-popup__coupon-agree-label {
+        margin-left: 20px;
+        display: inline-block;
+        cursor: pointer
+    }
+
+    .my-review__coupon-popup__fake-check {
+        display: inline-block;
+        border: 1px solid #d2d2d2;
+        border-radius: 2px;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+        background-color: white
+    }
+
+    .my-review__coupon-popup__fake-check.checked {
+        background: url("//img1a.coupangcdn.com/image/productreview/web/my/checkbox-checked-blue-btn.png") 3px 4px no-repeat
+    }
+
+    .my-review__coupon-popup__agree-message {
+        display: inline-block;
+        margin-left: 2px;
+        vertical-align: middle
+    }
+
+    .my-review__coupon-popup__agree-checkbox {
+        position: absolute;
+        width: 0px;
+        height: 0%;
+        margin-left: -9999px
+    }
+
+    .my-review__coupon-popup__submit-btn {
+        width: 291px;
+        height: 60px;
+        border: 0;
+        padding: 0;
+        outline: none;
+        cursor: pointer;
+        background: url("//img1a.coupangcdn.com/image/productreview/web/my/adventurer-guide-submit-btn-v3.png") 0 0 no-repeat
+    }
+
+    .my-review__manage-popup {
+        position: relative;
+        display: inline-block;
+        width: 550px;
+        border: 1px solid #111;
+        background: #fff;
+        border-radius: 2px;
+        vertical-align: middle;
+        letter-spacing: -1px;
+        *display: inline;
+        *zoom: 1
+    }
+
+    .my-review__manage-popup__top {
+        height: 68px;
+        background-color: #eeeeee;
+        padding-left: 20px;
+        line-height: 68px
+    }
+
+    .my-review__manage-popup__title {
+        float: left;
+        font-size: 16px;
+        font-weight: bold
+    }
+
+    .my-review__manage-popup__close-btn {
+        display: inline-block;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        background: url("//img1a.coupangcdn.com/image/my/desktop/sprite-icons_161130_1.png") 2px -98px no-repeat
+    }
+
+    .my-review__manage-popup__error__content-container {
+        font-family: 'Apple SD Gothic Neo';
+        text-align: center;
+        white-space: normal;
+        word-break: break-all;
+        padding: 0px 8px
+    }
+
+    .my-review__manage-popup__error__content {
+        margin: 0px 0px 22px
+    }
+
+    .my-review__manage-popup__error__header-content {
+        display: inline-block;
+        width: 100%;
+        color: #111111;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        margin-bottom: 8px
+    }
+
+    .my-review__manage-popup__error__subheader-content {
+        display: inline-block;
+        width: 100%;
+        color: #111111;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        margin-bottom: 6px
+    }
+
+    .my-review__manage-popup__error__body-content {
+        display: inline-block;
+        width: 100%;
+        color: #111111;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 19px;
+        margin-bottom: 6px
+    }
+
+    .my-review__manage-popup__ul__error__footer-content {
+        display: inline-block;
+        width: 100%;
+        color: #555555;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 17px
+    }
+
+    .my-review__manage-popup__li__error__footer-content {
+        list-style-type: disc;
+        list-style-position: inside
+    }
+
+    .my-review__manage-popup__content-container {
+        margin-top: 40px;
+        text-align: left;
+        white-space: normal;
+        padding: 0px 20px
+    }
+
+    .my-review__manage-popup__content {
+        border-top: 2px solid #333;
+        height: 250px;
+        overflow: hidden;
+        overflow-y: auto;
+        padding: 0px 15px;
+        font-size: 12px
+    }
+
+    .my-review__manage-popup__header-content {
+        display: inline-block;
+        width: 100%;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 15px;
+        margin-bottom: 12px
+    }
+
+    .my-review__manage-popup__footer-close-btn {
+        display: inline-block;
+        width: 80px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 4px 7px 3px;
+        border: 1px solid #cccbcb;
+        border-bottom: 1px solid #a5a5a8;
+        border-radius: 2px;
+        background-color: #fff;
+        outline: none;
+        color: #888;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 19px;
+        vertical-align: middle;
+        cursor: pointer
+    }
+
+    .my-review__seller-popup-container {
+        background: rgba(0, 0, 0, 0);
+        background: transparent \9
+    }
+
+    .my-review__seller-popup {
+        position: relative;
+        display: inline-block;
+        width: 460px;
+        background: #fff;
+        vertical-align: middle;
+        letter-spacing: -1px;
+        border: 1px solid #aaa;
+        *display: inline;
+        *zoom: 1
+    }
+
+    .my-review__seller-popup .confirm {
+        width: 98px;
+        height: 36px;
+        background-color: #346aff;
+        color: #fff;
+        border: 0px;
+        font-weight: bold;
+        margin-bottom: 37px
+    }
+
+    .my-review__seller-popup__top {
+        height: 50px;
+        background-color: #fff;
+        padding-left: 20px
+    }
+
+    .my-review__seller-popup__title {
+        float: left;
+        font-size: 16px;
+        font-weight: bold
+    }
+
+    .my-review__seller-popup__close-btn {
+        display: inline-block;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        background: url("//img1a.coupangcdn.com/image/my/desktop/sprite-icons_161130_1.png") 2px -79px no-repeat
+    }
+
+    .my-review__seller-popup__content {
+        margin: 0px 0px 22px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #111
+    }
+
+    .my-review__seller-popup__footer {
+        height: 56px;
+        width: 100%;
+        background-color: #fafafa;
+        display: table
+    }
+
+    .my-review__seller-popup__footer-btn {
+        line-height: 17px;
+        border: 0;
+        font-size: 14px;
+        display: table-cell;
+        vertical-align: middle;
+        color: #346aff;
+        cursor: pointer
+    }
+
+    .my-review__seller-popup__arrow-icon {
+        display: inline-block;
+        margin-left: 6px;
+        width: 9px;
+        height: 16px;
+        background: url("//img1a.coupangcdn.com/image/productreview/web/my/btn_white arrow.png")
+    }
+
+    .my-review__seller-register-popup {
+        position: relative;
+        display: inline-block;
+        width: 550px;
+        border: 1px solid #111;
+        background: #fff;
+        border-radius: 2px;
+        vertical-align: middle;
+        letter-spacing: -1px;
+        *display: inline;
+        *zoom: 1
+    }
+
+    .my-review__seller-register-popup__top {
+        height: 68px;
+        background-color: #eeeeee;
+        padding-left: 20px;
+        line-height: 68px
+    }
+
+    .my-review__seller-register-popup__title {
+        float: left;
+        font-size: 16px;
+        font-weight: bold
+    }
+
+    .my-review__seller-register-popup__close-btn {
+        display: inline-block;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        background: url("//img1a.coupangcdn.com/image/my/desktop/sprite-icons_161130_1.png") 2px -98px no-repeat
+    }
+
+    .my-review__seller-register-popup__content {
+        margin-top: 50px;
+        margin-bottom: 52px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #111
+    }
+
+    .my-review__seller-register-popup__footer-btn {
+        width: 80px;
+        margin-bottom: 40px;
+        padding: 4px 7px 3px;
+        border: 1px solid #cccbcb;
+        border-bottom: 1px solid #a5a5a8;
+        border-radius: 2px;
+        background-color: #fff;
+        outline: none;
+        color: #888;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 19px;
+        vertical-align: middle;
+        cursor: pointer
+    }
+
+    .my-review__writable-guide-popup {
+        position: relative;
+        display: inline-block;
+        width: 710px;
+        border: 1px solid #111;
+        background: #fff;
+        border-radius: 2px;
+        vertical-align: middle;
+        letter-spacing: -1px;
+        *display: inline;
+        *zoom: 1
+    }
+
+    .my-review__writable-guide-popup__top {
+        height: 68px;
+        background-color: #eeeeee;
+        padding-left: 20px;
+        line-height: 68px
+    }
+
+    .my-review__writable-guide-popup__title {
+        float: left;
+        font-size: 16px;
+        font-weight: bold
+    }
+
+    .my-review__writable-guide-popup__close-btn {
+        display: inline-block;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        background: url("//img1a.coupangcdn.com/image/my/desktop/sprite-icons_161130_1.png") 2px -98px no-repeat
+    }
+
+    .my-review__writable-guide-popup__content {
+        height: 400px;
+        padding: 20px 20px;
+        overflow: auto
+    }
+
+    .my-review__writable-guide-popup__guide-image {
+        width: 100%
+    }
+
+    .my-review__profile-popup-container {
+        overflow: auto
+    }
+
+    .my-review__profile-popup {
+        position: relative;
+        display: inline-block;
+        border-radius: 2px;
+        vertical-align: middle;
+        margin: 20px
+    }
+
+    .my-review__profile-popup__gallery {
+        display: table-cell;
+        min-width: 980px;
+        min-height: 520px;
+        box-sizing: border-box;
+        background-color: black;
+        overflow: hidden;
+        vertical-align: middle
+    }
+
+    .my-review__profile-popup__gallery__img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        min-height: 520px;
+        overflow: hidden;
+        opacity: 0;
+        -ms-user-select: none;
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none
+    }
+
+    .my-review__profile-popup__close-btn {
+        position: absolute;
+        display: inline-block;
+        top: 20px;
+        right: 20px;
+        width: 23px;
+        height: 23px;
+        border: none;
+        cursor: pointer;
+        background: url("//img1a.coupangcdn.com/image/productreview/web/pdp/btn-productreview-photoviewer-btnclose.png") no-repeat
+    }
+
+    .my-review__detail-popup-container {
+        overflow: auto
+    }
+
+    .my-review__detail-gallery__contents {
+        position: relative;
+        display: inline-block;
+        border-radius: 2px;
+        vertical-align: middle;
+        margin: 20px;
+        opacity: 0
+    }
+
+    .my-review__detail-gallery__contents__close-btn {
+        position: absolute;
+        display: inline-block;
+        top: 20px;
+        right: 20px;
+        width: 23px;
+        height: 23px;
+        border: none;
+        cursor: pointer;
+        background: url("//img1a.coupangcdn.com/image/productreview/web/pdp/btn-productreview-photoviewer-btnclose.png") no-repeat
+    }
+
+    .my-review__detail-gallery__contents__image-section {
+        display: table-cell;
+        min-width: 980px;
+        min-height: 520px;
+        box-sizing: border-box;
+        background-color: black;
+        overflow: hidden;
+        vertical-align: middle
+    }
+
+    .my-review__detail-gallery__contents__image-section__image {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        min-height: 520px;
+        overflow: hidden;
+        -ms-user-select: none;
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none
+    }
+
+    .my-review__detail-gallery__contents__left-btn {
+        position: absolute;
+        border: none;
+        display: none;
+        top: 50%;
+        left: 0;
+        width: 40px;
+        height: 51px;
+        background: url("//img1a.coupangcdn.com/image/productreview/web/pdp/gallery/detail-arrow-left.png") no-repeat;
+        cursor: pointer
+    }
+
+    .my-review__detail-gallery__contents__left-btn.my-review__detail-gallery__contents__btn--active {
+        display: block;
+        border: none
+    }
+
+    .my-review__detail-gallery__contents__left-btn:hover {
+        background: url("//img1a.coupangcdn.com/image/productreview/web/pdp/gallery/detail-arrow-left-over.png") no-repeat
+    }
+
+    .my-review__detail-gallery__contents__right-btn {
+        position: absolute;
+        border: none;
+        display: none;
+        top: 50%;
+        right: 0;
+        width: 40px;
+        height: 51px;
+        background: url("//img1a.coupangcdn.com/image/productreview/web/pdp/gallery/detail-arrow-right.png") no-repeat;
+        cursor: pointer
+    }
+
+    .my-review__detail-gallery__contents__right-btn.my-review__detail-gallery__contents__btn--active {
+        display: block;
+        border: none
+    }
+
+    .my-review__detail-gallery__contents__right-btn:hover {
+        background: url("//img1a.coupangcdn.com/image/productreview/web/pdp/gallery/detail-arrow-right-over.png") no-repeat
+    }
+
+    .my-review-profile {
+        padding-top: 20px;
+        padding-left: 26px;
+        border: 1px solid #eee;
+        border-top: 0px;
+        margin-bottom: 50px
+    }
+
+    .my-review-profile__frame {
+        position: relative;
+        float: left;
+        width: 80px;
+        height: 80px;
+        margin-right: 20px;
+        border-radius: 50%;
+        overflow: hidden
+    }
+
+    .my-review-profile__frame.my-review-profile__frame--loading {
+        background: url("//img1a.coupangcdn.com/image/productreview/web/my/my-profile-image-loading.gif") no-repeat center
+    }
+
+    .my-review-profile__frame.my-review-profile__frame--loading .my-review-profile__frame__image {
+        display: none
+    }
+
+    .my-review-profile__frame__image {
+        position: absolute;
+        border-radius: 5px;
+        cursor: pointer;
+        opacity: 0
+    }
+
+    .my-review-profile__info__identity {
+        padding-top: 8px;
+        margin-bottom: 10px;
+        display: inline-block;
+        float: left
+    }
+
+    .my-review-profile__info__identity .my-review-profile__info__identity__name {
+        display: table-row;
+        font-size: 28px;
+        color: #111111
+    }
+
+    .my-review-profile__info__identity .my-review-profile__info__identity__badge {
+        display: table-row;
+        font-size: 13px;
+        margin-top: 20px;
+        color: #0073e9
+    }
+
+    .my-review-profile__info__identity .my-review-profile__info__identity__badge img {
+        height: 16px;
+        margin-right: 4px
+    }
+
+    .my-review-profile__info__helpful {
+        margin-right: 50px;
+        float: left;
+        display: inline-block;
+        font-size: 14px;
+        color: #111111
+    }
+
+    .my-review-profile__info__helpful .my-review-profile__info__helpful__title {
+        display: table-row
+    }
+
+    .my-review-profile__info__helpful .my-review-profile__info__helpful__count {
+        display: table-row;
+        line-height: 60px
+    }
+
+    .stuning_numbers {
+        font-size: 48px;
+        color: #111;
+        margin-right: 5px
+    }
+
+    .my-review-profile__info__rank {
+        margin-right: 20px;
+        display: inline-block;
+        font-size: 14px;
+        color: #111111
+    }
+
+    .my-review-profile__info__rank .my-review-profile__info__rank__title {
+        display: table-row
+    }
+
+    .my-review-profile__info__rank .my-review-profile__info__rank__order {
+        display: table-row;
+        line-height: 60px
+    }
+
+    .my-review_profile__vertical-align {
+        display: inline-block;
+        margin-right: 30px;
+        margin-left: 30px;
+        width: 1px;
+        border-left: 1px solid #ddd;
+        height: 74px;
+        float: left;
+        vertical-align: middle
+    }
+
+    .my-review__adventurer {
+        margin-bottom: 40px
+    }
+
+    .my-review__adventurer__list {
+        height: 138px;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__adventurer__list.agreement-on {
+        border: 1px solid #888;
+        height: auto
+    }
+
+    .my-review__adventurer__list .customer-agreement-template {
+        display: block
+    }
+
+    .my-review__adventurer__list.disabled-adv-product .my-review__adventurer__list__product__name,
+    .my-review__adventurer__list.disabled-adv-product .my-review__adventurer__list__product__price,
+    .my-review__adventurer__list.disabled-adv-product .my-review__adventurer__list__product__price__value,
+    .my-review__adventurer__list.disabled-adv-product .my-review__adventurer__list__product__remain-coupon {
+        color: #aaa
+    }
+
+    .my-review__adventurer__list__thumb-nail {
+        position: relative;
+        float: left;
+        width: 107px;
+        height: 100px;
+        padding-top: 20px;
+        padding-left: 20px;
+        cursor: pointer
+    }
+
+    .my-review__adventurer__list__thumb-nail .sequence {
+        left: 3px;
+        top: 18px;
+        position: absolute;
+        float: left;
+        font-size: 12px;
+        font-weight: bold;
+        display: inline-block;
+        letter-spacing: 0px
+    }
+
+    .my-review__adventurer__list__thumb-nail__image {
+        width: 100px;
+        height: 100px
+    }
+
+    .my-review__adventurer__list__product {
+        float: left;
+        margin-left: 12px;
+        margin-right: 12px;
+        width: 430px;
+        height: 100%
+    }
+
+    .my-review__adventurer__list__product__name {
+        margin-top: 25px;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 17px;
+        color: #111111;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        cursor: pointer
+    }
+
+    .my-review__adventurer__list__product__price {
+        visibility: hidden;
+        margin-top: 3px;
+        font-size: 12px;
+        color: #9c0002;
+        line-height: 15px
+    }
+
+    .my-review__adventurer__list__product__price--active {
+        visibility: visible
+    }
+
+    .my-review__adventurer__list__product__price__value {
+        font-size: 12px;
+        line-height: 15px;
+        color: #9c0002;
+        letter-spacing: -1px;
+        font-weight: bold
+    }
+
+    .my-review__adventurer__list__product__remain-coupon {
+        margin-top: 38px;
+        font-size: 12px;
+        line-height: 14px;
+        color: #111
+    }
+
+    .my-review__adventurer__list__action {
+        float: right;
+        height: 100%;
+        padding-right: 20px;
+        text-align: center;
+        line-height: 138px
+    }
+
+    .my-review__adventurer__list__action__btn {
+        padding: 0;
+        width: 100px;
+        height: 36px;
+        line-height: 36px;
+        background-color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        outline: none;
+        border: 1px solid #346aff;
+        color: #346aff;
+        letter-spacing: -1px
+    }
+
+    .my-review__adventurer__list__action__btn.disable-btn {
+        border: 1px solid #888888;
+        color: #888888;
+        cursor: auto
+    }
+
+    .customer-agreement-template {
+        width: 640px;
+        border-top: 1px solid #ddd;
+        clear: both;
+        position: relative;
+        margin-left: 135px;
+        display: none
+    }
+
+    .customer-agreement-template .section-title {
+        font-size: 12px;
+        font-weight: bold;
+        text-align: left;
+        color: #111111;
+        margin-top: 20px
+    }
+
+    .customer-agreement-template .agreement-container {
+        background-color: #f9f9f9;
+        border: solid 1px #eeeeee;
+        padding: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 85px;
+        overflow-y: auto
+    }
+
+    .customer-agreement-template .agreement-container .title {
+        font-size: 12px;
+        font-weight: bold;
+        text-align: left;
+        color: #111111
+    }
+
+    .customer-agreement-template .agreement-container .title.next {
+        margin-top: 10px
+    }
+
+    .customer-agreement-template .agreement-container .main-content {
+        margin-top: 10px;
+        font-size: 12px;
+        text-align: left;
+        color: #111111
+    }
+
+    .customer-agreement-template .agreement-container .main-content ul {
+        margin-left: 9px
+    }
+
+    .customer-agreement-template .agreement-container .main-content li:before {
+        content: '•';
+        padding-right: 3px
+    }
+
+    .customer-agreement-template .agreement-check label {
+        font-size: 12px;
+        text-align: left;
+        color: #111111;
+        margin-left: 5px
+    }
+
+    .customer-agreement-template .agreement-action {
+        margin-top: 30px;
+        margin-bottom: 38px
+    }
+
+    .customer-agreement-template .agreement-action button {
+        width: 132px;
+        height: 36px;
+        background-color: #346aff;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        color: #ffffff;
+        margin-left: 200px;
+        border: 0;
+        cursor: pointer;
+        outline: none;
+        letter-spacing: -1px
+    }
+
+    .customer-agreement-template .agreement-action button.disabled,
+    .customer-agreement-template .agreement-action button:disabled {
+        background-color: #ccc;
+        cursor: default
+    }
+
+    .customer-agreement-template #idCardWrap .id-card__input-error {
+        border: solid 1px #e7223d
+    }
+
+    .customer-agreement-template .id-card-wrap {
+        margin-top: 26px;
+        display: none;
+        margin-bottom: 26px
+    }
+
+    .customer-agreement-template .id-card__title {
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    .customer-agreement-template .id-card__must {
+        color: #e7223d;
+        font-size: 11px
+    }
+
+    .customer-agreement-template .id-card__must:before {
+        content: '*'
+    }
+
+    .customer-agreement-template .id-card__description {
+        margin-top: 10px;
+        font-size: 12px
+    }
+
+    .customer-agreement-template .id-card__rule {
+        margin-top: 6px;
+        font-size: 12px
+    }
+
+    .customer-agreement-template .id-card__rule li:before {
+        content: '•';
+        padding-right: 3px
+    }
+
+    .customer-agreement-template .id-card__input-wrap {
+        margin-top: 16px;
+        height: 28px;
+        font-size: 12px;
+        display: flex
+    }
+
+    .customer-agreement-template .id-card__input-wrap input {
+        display: table-cell;
+        height: 28px;
+        font-size: 12px;
+        box-sizing: border-box;
+        padding: 1px 8px 0;
+        vertical-align: center;
+        border: solid 1px #ccc;
+        letter-spacing: -0.2px;
+        color: #333
+    }
+
+    @media all and (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+        .customer-agreement-template .id-card__input-wrap input {
+            padding: 5px 8px 0
+        }
+    }
+
+    .customer-agreement-template .id-card__input-wrap input::placeholder {
+        color: #888
+    }
+
+    .customer-agreement-template .id-card__input-wrap input:focus {
+        border: solid 1px #346AFF
+    }
+
+    .customer-agreement-template .id-card__input-slash {
+        width: 8px;
+        height: 1px;
+        margin: 13px 6px 14px;
+        background-color: #888
+    }
+
+    .customer-agreement-template .id-card__input-left {
+        width: 140px
+    }
+
+    .customer-agreement-template .id-card__input-right {
+        width: 140px;
+        padding-right: 40px
+    }
+
+    .customer-agreement-template .id-card__error-msg {
+        margin-top: 6px;
+        font-size: 12px;
+        line-height: 18px;
+        color: #E7223D
+    }
+
+    .customer-agreement-template .id-card__change-view {
+        box-sizing: border-box;
+        border: none;
+        background: none;
+        padding: 0;
+        font-size: 11px;
+        height: 100%;
+        width: 40px;
+        margin-left: -40px;
+        color: #346aff;
+        letter-spacing: -0.2px
+    }
+
+    .customer-agreement-template .id-card__regular-warn {
+        display: none;
+        padding: 10px 14px;
+        height: 54px;
+        width: 304px;
+        background-color: #fff8dd;
+        box-sizing: border-box;
+        margin-top: 8px;
+        border-radius: 4px;
+        color: #4c3000
+    }
+
+    .customer-agreement-template .id-card__regular-warn__icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+        background-size: cover;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGc+CiAgICAgICAgICAgIDxnPgogICAgICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZmlsbD0iIzRDMzAwMCIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNOCAwYzIuMTM3IDAgNC4xNDYuODMyIDUuNjU3IDIuMzQzQzE1LjE2NyAzLjg1NCAxNiA1Ljg2MyAxNiA4cy0uODMyIDQuMTQ2LTIuMzQzIDUuNjU3QzEyLjE0NiAxNS4xNjcgMTAuMTM3IDE2IDggMTZzLTQuMTQ2LS44MzItNS42NTctMi4zNDNDLjgzMyAxMi4xNDYgMCAxMC4xMzcgMCA4cy44MzItNC4xNDYgMi4zNDMtNS42NTdDMy44NTQuODMzIDUuODYzIDAgOCAwem0wIDExYy0uNDYgMC0uODMzLjM3My0uODMzLjgzMyAwIC40Ni4zNzMuODM0LjgzMy44MzQuNDYgMCAuODMzLS4zNzMuODMzLS44MzQgMC0uNDYtLjM3My0uODMzLS44MzMtLjgzM3ptLjAxNy03LjY2N2MtLjM2OSAwLS42NjcuMjk5LS42NjcuNjY3djUuMzMzbC4wMDQuMDc4Yy4wMzkuMzMyLjMyLjU4OS42NjMuNTg5LjM2OCAwIC42NjYtLjI5OC42NjYtLjY2N1Y0bC0uMDA0LS4wNzhjLS4wMzktLjMzMS0uMzItLjU4OS0uNjYyLS41ODl6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTIzNzQgLTQ2ODEpIHRyYW5zbGF0ZSgxMjMwOCA0NDU5KSB0cmFuc2xhdGUoNjYgMjIyKSIvPgogICAgICAgICAgICAgICAgICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtb3BhY2l0eT0iMCIgZD0iTTAgMTZMMTYgMTYgMTYgMCAwIDB6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTIzNzQgLTQ2ODEpIHRyYW5zbGF0ZSgxMjMwOCA0NDU5KSB0cmFuc2xhdGUoNjYgMjIyKSIvPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K")
+    }
+
+    .customer-agreement-template .id-card__regular-warn__msg {
+        font-size: 12px;
+        line-height: 17px;
+        width: 254px;
+        height: 34px
+    }
+
+    .adventurer-intro {
+        overflow-y: auto
+    }
+
+    .adventurer-intro .popup__body {
+        position: relative;
+        margin: 10px auto
+    }
+
+    .adventurer-intro .popup__body img {
+        width: 707px;
+        height: 980px
+    }
+
+    .adventurer-intro .closable__icon {
+        position: relative;
+        display: inline-block;
+        width: 67px;
+        height: 67px;
+        top: -990px;
+        left: 384px;
+        cursor: pointer;
+        background-color: #000;
+        opacity: 0
+    }
+
+    .adventurer-intro .goto-adv-products {
+        position: relative;
+        display: inline-block;
+        width: 126px;
+        height: 33px;
+        top: -708px;
+        left: -272px;
+        cursor: pointer;
+        background-color: #000;
+        opacity: 0
+    }
+
+    .lt-ie9 .closable__icon,
+    .lt-ie9 .adventurer-intro .goto-adv-products {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+    }
+
+    .my-review__register__notice {
+        font-size: 11px;
+        word-spacing: -1px;
+        color: #888;
+        padding: 15px 0 10px 10px;
+        background: url(../images/myreply_dot.gif) no-repeat 2px 20px
+    }
+
+    .my-review__register {
+        border-top: 2px solid #333
+    }
+
+    .my-review__register__star {
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__register__star__title {
+        display: table-cell;
+        width: 80px;
+        height: 70px;
+        padding-left: 20px;
+        vertical-align: middle;
+        background-color: #fafafa;
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    .my-review__register__star__content {
+        display: table-cell;
+        padding-left: 20px;
+        vertical-align: middle
+    }
+
+    .my-review__register__star__content::after {
+        content: '';
+        clear: both
+    }
+
+    .my-review__register__star__content__value {
+        width: 29px;
+        height: 26px;
+        border: 0;
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+        background: url(//img1a.coupangcdn.com/image/productreview/web/my/rating_star.png) no-repeat;
+        cursor: pointer;
+        outline: none
+    }
+
+    .my-review__register__star__content__value--active {
+        background: url(//img1a.coupangcdn.com/image/productreview/web/my/rating_star.png) 0 -26px no-repeat
+    }
+
+    .my-review__register__star__content__value--disabled {
+        cursor: auto
+    }
+
+    .my-review__register__star__content__status {
+        display: inline-block;
+        padding-left: 5px;
+        margin-top: 5px;
+        vertical-align: top;
+        font-size: 14px;
+        font-weight: bold
+    }
+
+    .my-review__register__star__only-star {
+        margin-top: 10px;
+        font-size: 12px;
+        color: #333
+    }
+
+    .my-review__register__option {
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__register__option__title {
+        display: table-cell;
+        width: 80px;
+        height: 70px;
+        padding-left: 20px;
+        vertical-align: middle;
+        background-color: #fafafa;
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    .my-review__register__option__content {
+        display: table-cell;
+        padding-left: 20px;
+        vertical-align: middle
+    }
+
+    .my-review__register__survey {
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__register__survey__title {
+        display: table-cell;
+        width: 80px;
+        height: 70px;
+        padding-left: 20px;
+        vertical-align: middle;
+        background-color: #fafafa;
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    .my-review__register__survey__content {
+        display: table-cell;
+        padding-left: 20px;
+        vertical-align: middle
+    }
+
+    .my-review__register__survey__content__input {
+        width: 120px;
+        height: 28px;
+        padding: 0 10px;
+        border: 1px solid #ddd;
+        line-height: 30px;
+        outline: none
+    }
+
+    .my-review__register__review {
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__register__review__title {
+        display: table-cell;
+        width: 80px;
+        padding-left: 20px;
+        vertical-align: middle;
+        background-color: #fafafa;
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    .my-review__register__review__content {
+        display: table-cell;
+        padding: 10px 10px 10px 20px;
+        vertical-align: middle
+    }
+
+    .my-review__register__review__content__count {
+        margin-bottom: 10px;
+        text-align: right;
+        font-size: 11px;
+        color: #888
+    }
+
+    .my-review__register__review__content__text-wrap {
+        padding-left: 10px;
+        border: 1px solid #ddd
+    }
+
+    .my-review__register__review__content__text-area {
+        width: 100%;
+        height: 146px;
+        padding: 10px 0;
+        border: none;
+        color: #111;
+        outline: none;
+        resize: none
+    }
+
+    .my-review__register__review__content__text-area::-webkit-input-placeholder {
+        color: #888888
+    }
+
+    .my-review__register__review__content__text-area:-moz-placeholder {
+        color: #888888
+    }
+
+    .my-review__register__review__content__text-area::-moz-placeholder {
+        color: #888888
+    }
+
+    .my-review__register__review__content__text-area:-ms-input-placeholder {
+        color: #888888
+    }
+
+    .my-review__register__review__content__head {
+        padding: 0 10px;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        line-height: 30px
+    }
+
+    .my-review__register__review__content__head__input {
+        width: 100%;
+        height: 29px;
+        line-height: 29px;
+        border: 0;
+        padding: 0;
+        color: #111;
+        outline: none
+    }
+
+    .my-review__register__review__content__head__input::-webkit-input-placeholder {
+        color: #888888
+    }
+
+    .my-review__register__review__content__head__input:-moz-placeholder {
+        color: #888888
+    }
+
+    .my-review__register__review__content__head__input::-moz-placeholder {
+        color: #888888
+    }
+
+    .my-review__register__review__content__head__input:-ms-input-placeholder {
+        color: #888888
+    }
+
+    .my-review__register__review__content__caption {
+        display: block;
+        margin-top: 10px;
+        color: #888
+    }
+
+    .my-review__register__file {
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__register__file__title {
+        display: table-cell;
+        width: 80px;
+        padding-left: 20px;
+        vertical-align: middle;
+        background-color: #fafafa;
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    .my-review__register__file__content {
+        display: table-cell;
+        padding: 20px 20px;
+        vertical-align: middle
+    }
+
+    .my-review__register__file__upload-btn {
+        width: 100px;
+        height: 29px;
+        padding: 0;
+        border: 1px solid #0073e9;
+        border-radius: 2px;
+        vertical-align: middle;
+        line-height: 29px;
+        background-color: #fff;
+        font-weight: bold;
+        color: #0073e9;
+        cursor: pointer;
+        outline: none
+    }
+
+    .my-review__register__file__upload-btn--disabled {
+        color: #888;
+        border: 1px solid #ddd;
+        cursor: auto
+    }
+
+    .my-review__register__file__count {
+        padding-left: 10px
+    }
+
+    .my-review__register__file__guide {
+        clear: both;
+        padding-top: 10px;
+        font-size: 11px;
+        line-height: 15px;
+        color: #888888
+    }
+
+    .my-review__register__file__frame {
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        left: -9999px
+    }
+
+    .my-review__register__footer {
+        text-align: center;
+        margin-top: 25px
+    }
+
+    .my-review__register__footer__submit-btn {
+        width: 120px;
+        height: 38px;
+        border: none;
+        background-color: #346aff;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+        outline: none
+    }
+
+    .my-review__register__footer__submit-btn--disabled {
+        background-color: #fbfbfb;
+        border: 1px solid #c6c6c6;
+        border-bottom: 3px solid #ddd;
+        box-shadow: none;
+        color: #888;
+        cursor: auto
+    }
+
+    .my-review__register__footer__guide-btn {
+        margin-top: 10px;
+        font-size: 11px;
+        color: #0073e9;
+        text-align: center;
+        cursor: pointer
+    }
+
+    .my-review__register__footer__guide-btn__arrow-img {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-left: 4px;
+        background: url("//img1a.coupangcdn.com/image/productreview/web/my/my-register-submit-right-arrow.png") 0px 2px no-repeat
+    }
+
+    .my-review__register__file__list-wrap {
+        display: none;
+        margin-top: 10px
+    }
+
+    .my-review__register__file__list {
+        position: relative;
+        float: left;
+        width: 64px;
+        height: 64px;
+        margin-right: 2px;
+        overflow: hidden
+    }
+
+    .my-review__register__file__list--loading {
+        background: url("../images/loading_32by32.gif") center no-repeat
+    }
+
+    .my-review__register__file__list__delete-btn {
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        width: 13px;
+        height: 13px;
+        border: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        outline: none;
+        background: url(//img1a.coupangcdn.com/image/productreview/web/pdp/product-review-image-delete-btn.png) no-repeat
+    }
+
+    .my-review__register__file__list__delete-btn--disabled {
+        cursor: auto
+    }
+
+    .my-review__seller {
+        display: none
+    }
+
+    .my-review__seller--active {
+        display: block
+    }
+
+    .my-review__seller-dot {
+        margin-right: 5px;
+        padding-top: 10px
+    }
+
+    .my-review__seller-title {
+        margin-top: 40px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #111;
+        color: #111;
+        font-size: 17px;
+        font-weight: bold
+    }
+
+    .my-review__star-container {
+        height: 70px;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__star-title {
+        float: left;
+        width: 80px;
+        line-height: 70px;
+        padding-left: 20px;
+        background-color: #fafafa;
+        font-weight: bold;
+        vertical-align: middle
+    }
+
+    .my-review__star-section {
+        line-height: 70px;
+        padding-left: 120px
+    }
+
+    .my-review__seller-star {
+        vertical-align: middle;
+        margin-top: -5px;
+        width: 29px;
+        height: 26px;
+        border: 0;
+        cursor: pointer;
+        outline: none;
+        background: url("//img1a.coupangcdn.com/image/productreview/web/my/rating_star.png") no-repeat;
+        font-size: 0
+    }
+
+    .my-review__seller-star--active {
+        background-position-y: -26px
+    }
+
+    .my-review__star-text {
+        color: #111;
+        font-size: 14px;
+        font-weight: bold;
+        padding-left: 7px
+    }
+
+    .my-review__seller-content__container {
+        height: 226px;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 25px
+    }
+
+    .my-review__seller-content__title {
+        float: left;
+        width: 80px;
+        padding-left: 20px;
+        line-height: 226px;
+        background-color: #fafafa;
+        font-weight: bold
+    }
+
+    .my-review__seller-content__text-section {
+        float: left;
+        width: 660px;
+        padding: 20px 20px
+    }
+
+    .my-review__seller-content__text-area {
+        width: 650px;
+        height: 177px;
+        padding-left: 10px;
+        padding-top: 10px;
+        outline: none;
+        resize: none;
+        border: 1px solid #ddd
+    }
+
+    .my-review__seller-footer {
+        text-align: center;
+        margin-bottom: 20px
+    }
+
+    .my-review__seller-footer__btn {
+        border: 0;
+        width: 120px;
+        height: 38px;
+        line-height: 36px;
+        border-radius: 2px;
+        border-bottom: 3px solid #0070cc;
+        background-color: #0073e9;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+        outline: none
+    }
+
+    .my-review__modify__notice {
+        font-size: 11px;
+        word-spacing: -1px;
+        color: #888;
+        padding: 15px 0 10px 10px;
+        background: url(../images/myreply_dot.gif) no-repeat 2px 20px
+    }
+
+    .my-review__modify {
+        border-top: 1px solid #111
+    }
+
+    .my-review__modify .my-review__header {
+        padding: 17px 20px;
+        border-bottom: 1px solid #eee
+    }
+
+    .my-review__modify .my-review__header_title {
+        font-size: 14px;
+        color: #111;
+        font-weight: bold;
+        text-align: left
+    }
+
+    .my-review__modify .my-review__writable__list {
+        border-bottom: 1px solid #111
+    }
+
+    .my-review__modify__star {
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__modify__field__title {
+        display: table-cell;
+        width: 80px;
+        padding: 30px 20px;
+        font-size: 14px;
+        color: #111;
+        font-weight: bold
+    }
+
+    .my-review__modify__star__title {
+        display: table-cell;
+        width: 80px;
+        height: 70px;
+        padding-left: 20px;
+        vertical-align: middle;
+        background-color: #fafafa;
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    .my-review__modify__star__content {
+        display: table-cell;
+        padding-left: 20px;
+        vertical-align: middle
+    }
+
+    .my-review__modify__star__content::after {
+        content: '';
+        clear: both
+    }
+
+    .my-review__modify__star__content__value {
+        width: 30px;
+        height: 30px;
+        border: 0;
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+        background: url(//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/writing-star@2x.png) 0 0px no-repeat;
+        background-size: 30px 30px;
+        cursor: pointer;
+        outline: none
+    }
+
+    .my-review__modify__star__content__value--active {
+        background: url(//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/rate-star-l@2x.png) 0 0px no-repeat;
+        background-size: 30px 30px
+    }
+
+    .my-review__modify__star__content__value--disabled {
+        cursor: auto
+    }
+
+    .my-review__modify__star__content__status {
+        display: inline-block;
+        padding-left: 5px;
+        margin-top: 9px;
+        vertical-align: top;
+        font-size: 14px;
+        font-weight: bold
+    }
+
+    .my-review__modify__star__only-star {
+        margin-top: 10px;
+        font-size: 12px;
+        color: #333
+    }
+
+    .my-review__modify__star__only-star {
+        margin-top: 10px;
+        font-size: 12px;
+        color: #333
+    }
+
+    .my-review__modify__option {
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__modify__option__title {
+        display: table-cell;
+        width: 80px;
+        height: 70px;
+        padding-left: 20px;
+        vertical-align: middle;
+        background-color: #fafafa;
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    .my-review__modify__option__content {
+        display: table-cell;
+        width: 280px;
+        padding-left: 20px;
+        vertical-align: middle
+    }
+
+    .my-review__modify__survey {
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__modify__survey__title {
+        display: table-cell;
+        width: 80px;
+        height: 70px;
+        padding-left: 20px;
+        vertical-align: middle;
+        background-color: #fafafa;
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    .my-review__modify__survey__content,
+    .my-review__field__content {
+        display: table-cell;
+        padding: 25px 20px 25px;
+        vertical-align: middle
+    }
+
+    .my-review__modify__survey__content .survey__question,
+    .my-review__field__content .survey__question {
+        font-size: 12px;
+        line-height: 15px;
+        color: #111;
+        font-weight: bold;
+        margin-bottom: 3px;
+        margin-top: 8px;
+        letter-spacing: -1px
+    }
+
+    .my-review__modify__survey__content .survey__answer_container,
+    .my-review__field__content .survey__answer_container {
+        margin-bottom: 17px
+    }
+
+    .my-review__modify__survey__content .survey__answer,
+    .my-review__field__content .survey__answer {
+        line-height: 22px
+    }
+
+    .my-review__modify__survey__content .survey__answer label,
+    .my-review__field__content .survey__answer label {
+        margin-left: 5px;
+        position: relative;
+        top: -1px
+    }
+
+    .my-review__modify__survey__content__input,
+    .my-review__field__content__input {
+        height: 28px;
+        padding: 0 10px;
+        border: 1px solid #ddd;
+        line-height: 30px;
+        outline: none
+    }
+
+    .my-review__modify__survey__content__input.survey__simple_answer,
+    .my-review__field__content__input.survey__simple_answer {
+        width: 120px;
+        margin-top: 5px
+    }
+
+    .my-review__modify__survey__content__input.summary,
+    .my-review__field__content__input.summary {
+        width: 90%
+    }
+
+    .my-review__modify__review {
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__modify__review__title {
+        display: table-cell;
+        width: 80px;
+        padding-left: 20px;
+        vertical-align: middle;
+        background-color: #fafafa;
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    .my-review__modify__review__content {
+        display: table-cell;
+        padding: 10px 10px 10px 20px;
+        vertical-align: middle
+    }
+
+    .my-review__modify__review__content__count {
+        margin-bottom: 10px;
+        text-align: right;
+        font-size: 12px;
+        font-weight: bold;
+        color: #111;
+        margin-top: -10px
+    }
+
+    .my-review__modify__review__content__text-wrap {
+        overflow: hidden;
+        padding-left: 10px;
+        border: 1px solid #ddd
+    }
+
+    .my-review__review__content__placeholder {
+        pointer-events: none;
+        user-select: none;
+        position: absolute;
+        color: #888;
+        padding: 8px 1px
+    }
+
+    .my-review__modify__review__content__text-area {
+        width: 100%;
+        height: 146px;
+        padding: 10px 0px;
+        margin-bottom: 20px;
+        border: none;
+        color: #111;
+        outline: none;
+        resize: none
+    }
+
+    .my-review__modify__review__content__text-area::-webkit-input-placeholder {
+        color: #888888;
+        size: 10px
+    }
+
+    .my-review__modify__review__content__text-area:-moz-placeholder {
+        color: #888888;
+        size: 10px
+    }
+
+    .my-review__modify__review__content__text-area::-moz-placeholder {
+        color: #888888;
+        size: 10px
+    }
+
+    .my-review__modify__review__content__text-area:-ms-input-placeholder {
+        color: #888888;
+        size: 10px
+    }
+
+    .my-review__modify__review__content__head {
+        padding: 0 10px;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        line-height: 30px
+    }
+
+    .my-review__modify__review__content__head__input {
+        width: 100%;
+        height: 29px;
+        line-height: 29px;
+        border: 0;
+        padding: 0;
+        color: #111;
+        outline: none
+    }
+
+    .my-review__modify__review__content__head__input::-webkit-input-placeholder {
+        color: #888888
+    }
+
+    .my-review__modify__review__content__head__input:-moz-placeholder {
+        color: #888888
+    }
+
+    .my-review__modify__review__content__head__input::-moz-placeholder {
+        color: #888888
+    }
+
+    .my-review__modify__review__content__head__input:-ms-input-placeholder {
+        color: #888888
+    }
+
+    .my-review__modify__review__content__caption {
+        display: block;
+        margin-top: -9px;
+        color: #888
+    }
+
+    .my-review__modify__file {
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__modify__file__title {
+        display: table-cell;
+        width: 80px;
+        padding-left: 20px;
+        vertical-align: middle;
+        background-color: #fafafa;
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    .my-review__modify__file__content {
+        display: table-cell;
+        padding: 18px 0px 20px 20px
+    }
+
+    .my-review__modify__file__upload-btn {
+        width: 100px;
+        height: 32px;
+        padding: 0;
+        border: 1px solid #346aff;
+        letter-spacing: -1px;
+        vertical-align: middle;
+        line-height: 32px;
+        background-color: #fff;
+        font-weight: bold;
+        color: #346aff;
+        cursor: pointer;
+        outline: none
+    }
+
+    .my-review__modify__file__upload-btn--disabled {
+        color: #888;
+        border: 1px solid #ddd;
+        cursor: auto
+    }
+
+    .my-review__modify__file__count {
+        padding-left: 10px;
+        width: 77px;
+        font-size: 12px;
+        color: #111;
+        font-weight: bold;
+        display: inline-block
+    }
+
+    .my-review__modify__file__guide {
+        clear: both;
+        padding-top: 10px;
+        font-size: 12px;
+        line-height: 15px;
+        color: #888888;
+        letter-spacing: 0px
+    }
+
+    .my-review__modify__file__frame {
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        left: -9999px
+    }
+
+    .my-review__modify__file__list-wrap {
+        display: none;
+        margin-top: 10px
+    }
+
+    .my-review__modify__file__list-wrap--active {
+        display: block
+    }
+
+    .my-review__modify__file__list-wrap ul {
+        margin-top: 20px;
+        margin-bottom: 20px
+    }
+
+    .my-review__modify__file__list-wrap li {
+        display: table;
+        margin-bottom: 10px
+    }
+
+    .my-review__modify__file__list-wrap .attachment__caption__container {
+        display: table-cell;
+        vertical-align: top;
+        width: 510px;
+        border: 1px solid #ccc;
+        border-left: 0px;
+        font-size: 12px
+    }
+
+    .my-review__modify__file__list-wrap .attachment__caption__container .caption__text {
+        line-height: 15px;
+        margin-top: 10px;
+        margin-left: 10px;
+        display: inline-block;
+        width: 490px;
+        color: #111;
+        border: none;
+        resize: none;
+        outline: none;
+        overflow: hidden
+    }
+
+    .my-review__modify__file__list-wrap .attachment__caption__container .caption__text::-webkit-input-placeholder {
+        color: #888888
+    }
+
+    .my-review__modify__file__list-wrap .attachment__caption__container .caption__text:-moz-placeholder {
+        color: #888888
+    }
+
+    .my-review__modify__file__list-wrap .attachment__caption__container .caption__text::-moz-placeholder {
+        color: #888888
+    }
+
+    .my-review__modify__file__list-wrap .attachment__caption__container .caption__text:-ms-input-placeholder {
+        color: #888888
+    }
+
+    .my-review__modify__file__list-wrap .attachment__caption__right {
+        display: table-cell;
+        vertical-align: middle;
+        padding-left: 20px
+    }
+
+    .my-review__modify__file__list-wrap .attachment__caption__right .word__count {
+        line-height: 15px;
+        display: block;
+        color: #111
+    }
+
+    .my-review__modify__file__list-wrap .attachment__caption__right .word__count .word__count_data {
+        display: inline-block
+    }
+
+    .my-review__modify__file__list-wrap .attachment__caption__right .caption__btn {
+        margin-top: 7px;
+        color: #346aff;
+        display: inline-block;
+        font-size: 12px;
+        line-height: 15px
+    }
+
+    .my-review__modify__file__list-wrap .attachment__caption__right .caption__btn.hide {
+        display: none
+    }
+
+    .word__count {
+        letter-spacing: 0px
+    }
+
+    .word__count_data {
+        margin-right: 2px;
+        font-weight: bold;
+        letter-spacing: 0px
+    }
+
+    .review__summary__wordcount {
+        text-align: right;
+        width: 93%;
+        margin-top: 10px
+    }
+
+    .my-review__attachment__thumbnail {
+        width: 68px;
+        height: 68px;
+        border: 1px solid #ccc;
+        overflow: hidden
+    }
+
+    .my-review__attachment__thumbnail--loading {
+        background: url("../images/loading_32by32.gif") center no-repeat;
+        border: 1px solid #ccc \0
+    }
+
+    .my-review__modify__file__list__image {
+        width: 68px;
+        height: 68px;
+        opacity: 90
+    }
+
+    .my-review__modify__file__list__delete-btn {
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        width: 13px;
+        height: 13px;
+        border: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        outline: none;
+        background: url(//img1a.coupangcdn.com/image/productreview/web/pdp/product-review-image-delete-btn.png) no-repeat
+    }
+
+    .my-review__modify__file__list__delete-btn--disabled {
+        cursor: auto
+    }
+
+    .my-review__modify__footer {
+        text-align: center;
+        margin-top: 25px
+    }
+
+    .my-review__modify__footer__submit-btn {
+        width: 98px;
+        height: 36px;
+        margin-left: 5px;
+        border: none;
+        background-color: #346aff;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: -1px;
+        color: #fff;
+        cursor: pointer;
+        outline: none
+    }
+
+    .my-review__modify__footer__cancel-btn {
+        width: 98px;
+        height: 36px;
+        background-color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: -1px;
+        border: solid 1px #346aff;
+        color: #346aff;
+        cursor: pointer;
+        outline: none
+    }
+
+    .my-review__modify__footer__guide-btn {
+        margin-top: 10px;
+        font-size: 11px;
+        color: #0073e9;
+        text-align: center;
+        cursor: pointer
+    }
+
+    .my-review__modify__footer__guide-btn__arrow-img {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-left: 4px;
+        background: url("//img1a.coupangcdn.com/image/productreview/web/my/my-register-submit-right-arrow.png") 0px 2px no-repeat
+    }
+
+    .my-review__flip-write-tooltip {
+        top: -25px;
+        left: 13px;
+        color: #777777;
+        font-size: 10px;
+        position: relative;
+        perspective: 10000px !important
+    }
+
+    .hidden {
+        display: none
+    }
+
+    .my-review__writable__notice {
+        font-size: 11px;
+        word-spacing: -1px;
+        color: #888;
+        padding: 15px 0 0 10px;
+        background: url(../images/myreply_dot.gif) no-repeat 2px 20px
+    }
+
+    .my-review__writable__list {
+        padding: 20px 20px 20px 30px;
+        border-bottom: 1px solid #ddd
+    }
+
+    .my-review__writable__image-wrap {
+        display: inline-block;
+        vertical-align: top\0
+    }
+
+    .my-review__writable__image {
+        width: 100px;
+        height: 100px
+    }
+
+    .my-review__writable__content-wrap {
+        display: inline-block;
+        width: 430px;
+        margin: 5px 20px 0px;
+        vertical-align: top;
+        position: relative
+    }
+
+    .my-review__writable__content-wrap .adv-product-sign {
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: -0.5px;
+        text-align: left;
+        color: #4fbedc;
+        display: inline-block
+    }
+
+    .my-review__writable__content-title {
+        font-size: 14px;
+        color: #111111;
+        overflow: hidden;
+        font-weight: bold;
+        line-height: 17px;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2
+    }
+
+    .my-review__writable__content {
+        margin-top: 5px;
+        font-size: 12px;
+        line-height: 15px;
+        font-weight: normal;
+        color: #111;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden
+    }
+
+    .my-review__writable__date {
+        margin-top: 32px;
+        font-size: 12px;
+        font-weight: normal;
+        color: #888;
+        line-height: 15px;
+        letter-spacing: 0px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden
+    }
+
+    .my-review__writable__btn-wrap {
+        text-align: center;
+        display: inline-block;
+        margin-top: 16px;
+        float: right
+    }
+
+    .my-review__writable__review-hide-btn {
+        color: #346aff;
+        display: block;
+        margin-top: 20px
+    }
+
+    .my-review__writable__write-btn {
+        width: 100px;
+        height: 36px;
+        vertical-align: middle;
+        padding: 0;
+        background-color: #FBFBFB;
+        border: 1px solid #346aff;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: -1px;
+        color: #346aff;
+        outline: none;
+        cursor: pointer
+    }
+
+    .my-review__writable__write-btn-text {
+        display: inline-block
+    }
+
+    .writable__order-based {
+        border: 1px solid #888
+    }
+
+    .writable__order-based .my-review__header {
+        padding: 17px 20px 17px 23px
+    }
+
+    .writable__order-based .my-review__header .shipment_date {
+        line-height: 17px;
+        font-size: 14px;
+        font-weight: bolder;
+        color: #111
+    }
+
+    .writable__order-based .my-review__header .my-review__redirect_link {
+        float: right;
+        margin-top: 3px
+    }
+
+    .writable__order-based .my-review__writable__list {
+        border-bottom: 0px solid #ddd;
+        border-top: 1px solid #ddd
+    }
+
+    .my-review__wrote__list {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 30px
+    }
+
+    .my-review__wrote__top-wrap {
+        display: table;
+        width: 96%;
+        padding: 10px 20px;
+        border-bottom: 1px solid #eee
+    }
+
+    .my-review__wrote__second-wrap {
+        margin: 20px 0px 10px;
+        display: table
+    }
+
+    .my-review__wrote__main-wrap {
+        padding-left: 20px
+    }
+
+    .my-review__wrote__main-wrap .survey__answer_container {
+        display: table-row
+    }
+
+    .my-review__wrote__main-wrap .survey__question {
+        display: table-cell;
+        text-align: left;
+        white-space: nowrap
+    }
+
+    .my-review__wrote__main-wrap .survey__answer {
+        display: table-cell;
+        text-align: left;
+        padding-left: 15px;
+        white-space: nowrap
+    }
+
+    .my-review__wrote__main-wrap .survey__simple_answer {
+        margin-top: 8px
+    }
+
+    .my-review__wrote__main-wrap .my-review__wrote__content pre,
+    .my-review__wrote__main-wrap span.survey__answer {
+        letter-spacing: 0px;
+        font-family: Dotum, "돋움", Helvetica, AppleSDGothicNeo, sans-serif;
+        white-space: pre-wrap
+    }
+
+    .my-review__wrote__image {
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+        margin-right: 20px
+    }
+
+    .my-review__wrote__item_name {
+        font-size: 14px;
+        color: #346aff;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer
+    }
+
+    .my-review__wrote__date {
+        margin-top: 32px;
+        font-size: 12px;
+        font-weight: normal;
+        color: #888;
+        line-height: 15px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        letter-spacing: 0px;
+        vertical-align: bottom;
+        margin-left: 6px;
+        overflow: hidden
+    }
+
+    .my-review__wrote__btn-wrap {
+        text-align: right;
+        display: table-cell;
+        vertical-align: middle
+    }
+
+    .my-review__wrote__modify-btn {
+        vertical-align: middle;
+        cursor: pointer;
+        outline: none;
+        font-size: 12px;
+        line-height: 14px;
+        color: #346aff;
+        letter-spacing: -0.5px;
+        border-right: 1px solid #d5d5d5;
+        padding-right: 10px;
+        margin-right: 5px
+    }
+
+    .delimiter {
+        display: none
+    }
+
+    .my-review__wrote__delete-btn {
+        vertical-align: middle;
+        outline: none;
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 14px;
+        color: #346aff;
+        letter-spacing: -0.5px
+    }
+
+    .my-review__wrote__modify-btn-text,
+    .my-review__wrote__delete-btn-text {
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: 0px;
+        color: #346aff
+    }
+
+    .my-review__wrote__rating-wrap {
+        margin-top: 10px;
+        height: 14px;
+        font-size: 0px;
+        display: table-cell;
+        vertical-align: middle
+    }
+
+    .my-review__wrote__rating {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 2px;
+        background: url(//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/star-writing-s@2x.png) 0 0px no-repeat;
+        background-size: 16px 16px
+    }
+
+    .my-review__wrote__rating.wrote-list-rating-active {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 2px;
+        background: url(//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/rate-star-s@2x.png) 0 0px no-repeat;
+        background-size: 16px 16px
+    }
+
+    .my-review__wrote__blind {
+        display: -webkit-box;
+        margin-bottom: -11px;
+        margin-top: 20px;
+        height: 36px;
+        font-size: 11px;
+        line-height: 18px;
+        color: #ee0000;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden
+    }
+
+    .my-review__wrote__attachments,
+    .my-review__wrote__content__title,
+    .my-review__wrote__content,
+    .my-review__wrote__survey,
+    .my-review__wrote__helpful_content {
+        margin-top: 20px
+    }
+
+    .thumbnail_container {
+        height: 80px;
+        width: 80px;
+        display: inline-block;
+        overflow: hidden;
+        float: left
+    }
+
+    .thumbnail_container img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        font-family: 'object-fit: cover;'
+    }
+
+    .my-review__wrote__content__title span,
+    .my-review__wrote__survey .survey__question,
+    span.helpful_count {
+        font-size: 12px;
+        font-weight: bold;
+        color: #111
+    }
+
+    .my-review__caption_tip {
+        position: absolute;
+        left: 63px;
+        top: 65px;
+        right: 0px;
+        bottom: 0px;
+        opacity: 0.7;
+        width: 12px;
+        height: 12px;
+        display: none
+    }
+
+    .my-review__caption_tip:before {
+        content: "";
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: url(//img1a.coupangcdn.com/image/coupang/review/web/sdp/captions/icon-caption2x.png) no-repeat;
+        background-size: 12px 12px
+    }
+
+    .attachment__container {
+        display: inline-block;
+        position: relative;
+        margin-right: -1px;
+        margin-top: -3px
+    }
+
+    .attachment__container img {
+        cursor: pointer
+    }
+
+    .attachment__container .video_play_foreground {
+        display: inline-block;
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        top: 0px;
+        left: 0px;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.1);
+        text-align: center
+    }
+
+    .attachment__container .video_play_tip {
+        display: inline-block;
+        width: 17px;
+        height: 22px;
+        top: 20px;
+        left: 33px;
+        position: absolute;
+        content: "";
+        background: url(//img1a.coupangcdn.com/image/productreview/web/pdp/video/play-btn-middle__v1.png) no-repeat;
+        background-size: 17px 22px
+    }
+
+    .attachment__container .video_length_text {
+        color: #fff;
+        display: inline-block;
+        margin-top: 48px;
+        letter-spacing: 0px
+    }
+
+    .lt-ie9 .my-review__caption_tip {
+        top: 62px;
+        left: 58px;
+        filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale'),progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"
+    }
+
+    .lt-ie9 .my-review__caption_tip:before {
+        width: 16px;
+        height: 15px;
+        background: url(//img1a.coupangcdn.com/image/coupang/review/web/sdp/captions/icon-caption1x.png) no-repeat
+    }
+
+    .lt-ie9 .attachment-caption {
+        background-color: #fff;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)"
+    }
+
+    .lt-ie9 .video_play_foreground {
+        background: none
+    }
+
+    .lt-ie9 .video_play_tip {
+        background: url(//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/bt-video-play.png) no-repeat
+    }
+
+    .my-review__detail__header {
+        padding: 20px 20px 16px;
+        background: #fafafa;
+        overflow: hidden
+    }
+
+    .my-review__detail__header__helpful {
+        padding-bottom: 5px;
+        font-size: 12px;
+        color: #888
+    }
+
+    .my-review__detail__header__info {
+        padding-top: 2px
+    }
+
+    .my-review__detail__header__info__rating-value {
+        float: left;
+        display: inline-block;
+        width: 15px;
+        height: 14px;
+        margin-left: 1px;
+        background: url(../images/ico_ratingstar_type02.png) left top no-repeat
+    }
+
+    .my-review__detail__header__info__rating-value--active {
+        float: left;
+        display: inline-block;
+        width: 15px;
+        height: 14px;
+        margin-left: 1px;
+        background: url(../images/ico_ratingstar_type02.png) 0 -14px no-repeat
+    }
+
+    .my-review__detail__header__info__product {
+        float: left;
+        width: 310px;
+        margin-left: 6px;
+        font-size: 12px;
+        color: #111
+    }
+
+    .my-review__detail__header__info__reg-date {
+        float: right;
+        margin-right: 20px;
+        font-size: 12px;
+        color: #888
+    }
+
+    .my-review__detail__header__info__mod-btn {
+        float: right;
+        width: 34px;
+        height: 20px;
+        margin-top: -2px;
+        padding: 0;
+        border: 1px solid #cbcbcb;
+        background-color: #fbfbfb;
+        font-size: 10px;
+        outline: none;
+        cursor: pointer
+    }
+
+    .my-review__detail__header__info__del-btn {
+        float: right;
+        width: 34px;
+        height: 20px;
+        margin-top: -2px;
+        margin-left: 2px;
+        padding: 0;
+        border: 1px solid #cbcbcb;
+        background-color: #fbfbfb;
+        font-size: 10px;
+        outline: none;
+        cursor: pointer
+    }
+
+    .my-review__detail__article {
+        padding: 22px 10px 25px
+    }
+
+    .my-review__detail__article__survey {
+        margin-bottom: 10px;
+        font-size: 12px;
+        color: #111
+    }
+
+    .my-review__detail__article__survey__list {
+        margin-right: 5px
+    }
+
+    .my-review__detail__article__survey__content {
+        line-height: 18px;
+        font-size: 12px;
+        color: #111
+    }
+
+    .my-review__detail__article__head-line {
+        padding-bottom: 20px;
+        font-weight: bold
+    }
+
+    .my-review__detail__article__content {
+        padding-bottom: 20px
+    }
+
+    .my-review__detail__article__thumbnail {
+        padding-bottom: 20px;
+        overflow: hidden
+    }
+
+    .my-review__detail__article__thumbnail__list {
+        float: left;
+        width: 74px;
+        height: 74px;
+        margin-right: 2px;
+        overflow: hidden;
+        cursor: pointer
+    }
+
+    .my-review__detail__article__thumbnail__list__image {
+        opacity: 0
+    }
+
+    .my-review__detail__article__comment__list {
+        background: #fafafa;
+        border-bottom: 1px solid #ebeced;
+        padding: 17px 20px 16px 24px;
+        line-height: 18px
+    }
+
+    .my-review__detail__article__comment__list__writer {
+        padding-left: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #111;
+        background: url(../images/myreply_addition_bg_01.png) left 1px no-repeat
+    }
+
+    .my-review__detail__article__comment__list__reg-date {
+        padding-left: 18px;
+        font-size: 11px;
+        color: #888
+    }
+
+    .my-review__detail__article__comment__list__comment {
+        font-size: 12px;
+        color: #111
+    }
+
+    .my-review__detail__article__footer {
+        padding-top: 25px;
+        text-align: center
+    }
+
+    .my-review__detail__article__footer__btn {
+        width: 126px;
+        height: 38px;
+        padding: 0;
+        margin: 0;
+        border: none;
+        border-radius: 2px;
+        box-shadow: inset 0 -2px #0070cc;
+        background-color: #008cff;
+        color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        outline: none;
+        cursor: pointer
+    }
+
+    .seller-review {
+        padding-bottom: 50px;
+        border-top: 1px solid #111
+    }
+
+    .review-intake-form {
+        padding-top: 25px
+    }
+
+    .review-intake-form .review-intake-form__head {
+        padding-bottom: 25px;
+        border-bottom: 1px solid #ddd
+    }
+
+    .review-intake-form .review-intake-form__title {
+        line-height: 26px
+    }
+
+    .review-intake-form .review-intake-form__title .review-intake-form__logo {
+        height: 26px;
+        vertical-align: middle
+    }
+
+    .review-intake-form .review-intake-form__title .review-intake-form__text {
+        font-size: 24px;
+        color: #111;
+        padding-left: 10px;
+        vertical-align: middle;
+        font-weight: bold
+    }
+
+    .review-intake-form .review-intake-form__subtitle {
+        padding-top: 10px
+    }
+
+    .review-intake-form .review-intake-form__subtitle .review-intake-form__sub-logo {
+        margin-right: -1px;
+        vertical-align: middle;
+        height: 16px
+    }
+
+    .review-intake-form .review-intake-form__subtitle .review-intake-form__sub-text {
+        font-size: 14px;
+        color: #111;
+        vertical-align: middle
+    }
+
+    .review-intake-form .review-intake-form__satisfaction .review-table {
+        border-bottom: 1px solid #ddd
+    }
+
+    .review-intake-form ._seller_detail_review {
+        display: none
+    }
+
+    .review-intake-form .review-intake-form__detail-review .answer-list {
+        display: none;
+        width: 400px;
+        margin-bottom: 20px
+    }
+
+    .review-intake-form .review-intake-form__detail-review .answer {
+        height: 34px;
+        box-sizing: border-box;
+        padding: 9px 12px 0 12px;
+        margin-bottom: 8px;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.42;
+        text-align: center;
+        border-radius: 17px;
+        border: solid 1px #c4cdd5;
+        color: #454f5b;
+        background-color: #ffffff;
+        margin-right: 4px;
+        cursor: pointer
+    }
+
+    .review-intake-form .review-intake-form__detail-review .answer.on {
+        background-color: #346aff;
+        color: #fff
+    }
+
+    .review-intake-form .review-textarea-wrap {
+        border: 1px solid #ddd
+    }
+
+    .review-intake-form .review-textarea-wrap .review-textarea-wrap__input {
+        width: 100%;
+        height: 155px;
+        padding: 10px;
+        box-sizing: border-box;
+        border: none;
+        color: #111;
+        outline: none;
+        resize: none;
+        font-size: 12px
+    }
+
+    .review-intake-form .textarea-count {
+        font-size: 12px;
+        font-weight: bold;
+        text-align: right;
+        padding: 8px 0 25px 0;
+        color: #111
+    }
+
+    .review-intake-form .question {
+        font-size: 12px;
+        font-weight: 500;
+        color: #21844f;
+        position: absolute;
+        margin: -45px 0 0 10px
+    }
+
+    .review-intake-form .review-intake-form__rating {
+        border-bottom: 1px solid #ddd
+    }
+
+    .review-intake-form .review-intake-form__rating .review-intake-form__product-title {
+        padding-top: 19px;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1.29;
+        color: #111
+    }
+
+    .review-intake-form .review-intake-form__rating .review-intake-form__rating-star {
+        padding-top: 12px
+    }
+
+    .review-intake-form .review-intake-form__rating .review-intake-form__rating-star .my-review__modify__star__content__status {
+        color: #333;
+        font-weight: normal
+    }
+
+    .review-intake-form .review-intake-form__rating .review-intake-form__rating-star .my-review__modify__star {
+        border-bottom: none
+    }
+
+    .review-intake-form .review-intake-form__check-options {
+        border-bottom: 1px solid #ddd
+    }
+
+    .review-intake-form .review-intake-form__check-options .radio-survey-wrap .input-answer {
+        width: 142px;
+        height: 30px;
+        border: solid 1px #ddd;
+        box-sizing: border-box;
+        padding: 3px 8px
+    }
+
+    .review-intake-form .review-intake-form__check-options .radio-survey {
+        font-size: 12px;
+        letter-spacing: -0.9px;
+        color: #111;
+        padding-bottom: 20px
+    }
+
+    .review-intake-form .review-intake-form__check-options .radio-survey dt {
+        font-weight: bold;
+        padding-bottom: 5px
+    }
+
+    .review-intake-form .review-intake-form__check-options .radio-survey dd {
+        letter-spacing: -1px;
+        color: #333;
+        padding-bottom: 6px
+    }
+
+    .review-intake-form .review-intake-form__check-options .radio-survey dd input {
+        margin-right: 4px;
+        vertical-align: middle
+    }
+
+    .review-intake-form .review-intake-form__summary .summary-input {
+        width: 90%;
+        height: 28px;
+        padding: 0 10px;
+        border: 1px solid #ddd;
+        line-height: 30px;
+        outline: none;
+        font-size: 12px;
+        color: #111
+    }
+
+    .review-intake-form .review-intake-form__summary .summary-count {
+        padding-top: 8px;
+        font-size: 12px;
+        letter-spacing: -0.5px;
+        text-align: right;
+        color: #333;
+        font-weight: bold
+    }
+
+    .review-intake-form .review-intake-form__summary .summary-count .summary-count__word {
+        color: #111
+    }
+
+    .review-intake-form .default-review-star {
+        font-weight: normal;
+        color: #333
+    }
+
+    .review-intake-form .default-review-star em {
+        list-style: none;
+        color: #e12705
+    }
+
+    .review-intake-form .seller-image-attach {
+        border-top: 1px solid #ddd
+    }
+
+    .review-intake-form .my-review__modify__star {
+        border-bottom: none
+    }
+
+    .review-intake-form .my-review__modify__star__content {
+        padding: 12px 0 0 0
+    }
+
+    .review-intake-form .my-review__modify__review__content {
+        padding-top: 25px
+    }
+
+    .review-intake-form .my-review__field__content {
+        padding: 25px 10px 10px 20px
+    }
+
+    .review-intake-form .my-review__field__content__input {
+        box-sizing: border-box;
+        padding: 2px 10px 0
+    }
+
+    .review-intake-form .my-review__field__content__input.summary {
+        width: 100%
+    }
+
+    .review-intake-form .review__summary__wordcount {
+        width: 100%
+    }
+
+    .review-intake-form .my-review__modify__star__content__status {
+        margin-top: 0;
+        vertical-align: middle
+    }
+
+    .review-intake-form .my-review__modify__file__list-wrap ul {
+        margin-top: 10px
+    }
+
+    .review-table {
+        display: table;
+        width: 100%
+    }
+
+    .review-table .review-table__cell {
+        display: table-cell
+    }
+
+    .review-table .review-table__cell.title {
+        width: 140px;
+        padding: 36px 20px;
+        box-sizing: border-box;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1.29;
+        letter-spacing: -0.8px;
+        color: #111111;
+        vertical-align: top
+    }
+
+    .review-table .review-table__cell.description {
+        padding-top: 25px
+    }
+
+    .review-table .review-table__cell.review-intake-head {
+        padding: 25px 20px
+    }
+
+    .icon-thumbs {
+        width: 40px;
+        height: 40px;
+        box-sizing: border-box;
+        border: solid 1px #ddd;
+        border-radius: 50%;
+        display: inline-block;
+        text-indent: -9999em;
+        margin-right: 4px;
+        background-color: #fff;
+        background-size: 18px 18px;
+        background-position: center;
+        background-repeat: no-repeat
+    }
+
+    .icon-thumbs.thumbs-down {
+        background-image: url("//static.coupangcdn.com/image/productreview/icon/icon-thumb-down-off.png")
+    }
+
+    .icon-thumbs.thumbs-down.on {
+        background-image: url("//static.coupangcdn.com/image/productreview/icon/icon-thumb-down-on.png");
+        background-color: #346aff
+    }
+
+    .icon-thumbs.thumbs-up {
+        background-image: url("//static.coupangcdn.com/image/productreview/icon/icon-thumb-up-off.png")
+    }
+
+    .icon-thumbs.thumbs-up.on {
+        background-image: url("//static.coupangcdn.com/image/productreview/icon/icon-thumb-up-on.png");
+        background-color: #346aff
+    }
+
+    .review-intake-register {
+        padding-top: 30px;
+        text-align: center
+    }
+
+    .cancel-button {
+        width: 120px;
+        height: 38px;
+        box-sizing: border-box;
+        background-color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        color: #111;
+        cursor: pointer;
+        outline: none;
+        border: 1px solid #ccc;
+        margin-right: 4px
+    }
+
+    .submit-button {
+        width: 120px;
+        height: 38px;
+        box-sizing: border-box;
+        border: none;
+        background-color: #346aff;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+        outline: none
+    }
+
+    ._upload-button-disable {
+        color: #888;
+        border: 1px solid #ddd;
+        cursor: auto
+    }
+
+    .review-popup {
+        text-align: center;
+        background: none
+    }

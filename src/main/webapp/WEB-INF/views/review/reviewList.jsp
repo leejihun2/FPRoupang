@@ -251,7 +251,7 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-
+<link rel="stylesheet" href="../css/Review.css" type="text/css">
 <link rel="stylesheet" href="../css/category.css">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/common.css" type="text/css">

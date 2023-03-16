@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="/css/main.css" type="text/css">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
-<body style="background-color: white;">
+<body style="background-color: white;  overflow-x: hidden; overflow-y: hidden;">
     <!-- top.html에서 인클루드 -->
     <div id="top">
         <%@include file="./top.jsp" %>

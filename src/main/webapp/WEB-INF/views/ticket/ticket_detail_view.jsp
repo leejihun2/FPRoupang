@@ -337,6 +337,10 @@
 		margin-bottom: 30px;
 		overflow: hidden;
 	}
+	#myModal{
+		position:fixed;
+		z-index:9999;
+	}
 </style>
 <script type="text/javascript">
 	onload = function(){
@@ -404,6 +408,10 @@
 
 	    $(".bnt_open").on("click", function(e){
 	        $("html, body").addClass("not_scroll");
+	        $("ul").attr("style","margin-bottom:0px; padding-left:0px;");
+	        $("a").attr("style","text-decoration:none");
+	        $(".gnb-menu").attr("style","margin-top:10px; margin-left:65px; padding-left:0px;");
+	        $(".thumbnails").attr("style","margin:10px; padding-left:0px;")
 	    });
 	});
 	
