@@ -48,9 +48,6 @@ function deleteRow(idx){
 <h1 class="qwer">리뷰수정</h1>
 
 		<div class="div1">
-			<div class="div2" onclick="location.href='reviewable.do'">리뷰 작성</div>
-			<div class="div3" onclick="location.href='reviewList.do'">작성한
-				리뷰</div>
 		</div>
 <div class="container">
 	<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->
@@ -154,8 +151,12 @@ function deleteRow(idx){
 	</form> 
 </div>
 </div>
-   <%--  <div id="copyright">
+</div>
+</div>
+</div>
+
+    <div id="copyright">
          <%@include file="../copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
-    </div> --%>
+    </div>
 </body>
 </html>

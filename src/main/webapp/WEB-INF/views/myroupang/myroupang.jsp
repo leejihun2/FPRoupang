@@ -305,18 +305,6 @@ hover:
         </div>
     </li>
 </ul>
-</div>
-
-</div>
-</div>
-<%-- 
-</c:when>
-
-	<c:otherwise>
-	<%@include file="../auth/login.jsp" %>
-	</c:otherwise>
-
-</c:choose>   --%>
  </s:authorize>
 </body>
 </html>
