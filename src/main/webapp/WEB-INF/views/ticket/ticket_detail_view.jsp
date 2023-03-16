@@ -298,6 +298,45 @@
 	    width: 100%;
 	    height: 100%
 	}
+	
+	.inquiryContents{
+	    border: 1px solid #ddd;
+	    padding: 30px;
+	}
+	.inquiry-title{
+		float: left;
+	    line-height: 40px;
+	    margin-top: 0px;
+	    margin-bottom: 0px;
+	}
+	.inquiryContents button{
+		width: 80px;
+		height: 36px;
+		line-height: 34px;
+		float: right;
+	    font-size: 14px;
+	    font-weight: 700;
+	    background-color: #fff;
+	    color: #346aff;
+	    border: 1px solid #346aff;
+	}
+	.inquiry-header:after {
+	    content: "";
+	    display: block;
+	    clear: both;
+	}
+	.inquiry-header {
+	    margin-bottom: 25px;
+	}
+	.inquiry-notice li {
+		font-size: 13px;
+		letter-spacing: -1px;
+		color: #555;
+	}
+	.inquiry-notice{
+		margin-bottom: 30px;
+		overflow: hidden;
+	}
 </style>
 <script type="text/javascript">
 	onload = function(){
@@ -725,11 +764,50 @@
 														</div>
 												</c:forEach>
 											</td>
+											
 									</table>
 								</div>
 
 								<div id="inquiryProduct">
-		                        
+									<section class="inquiryContents">
+										<div class="inquiry-header">
+											<h4 class="inquiry-title">상품문의</h4>
+											<button type="button" onclick="location.href='/supports/voc.do'">문의하기</button>
+										</div>
+										<ul class="inquiry-notice">
+											<li>
+												구매한 상품의 <strong>취소/환불은 마이루팡 구매내역에서 신청</strong> 가능합니다.
+											</li>
+											<li>
+ 												상품문의 및 후기게시판을 통해 취소나 환불, 반품 등은 처리되지 않습니다.
+											</li>
+											<li>
+ 												<strong>가격, 판매자, 취소/환불 및 배송 등 해당 상품 자체와 관련 없는 문의는 고객센터 내 1:1 문의하기</strong>를 이용해주세요.
+											</li>
+											<li>
+ 												<strong>"해당 상품 자체"와 관계없는 글, 양도, 광고성, 욕설, 비방, 도배 등의 글은 예고 없이 이동, 노출제한, 삭제 등의 조치가 취해질 수 있습니다.</strong>
+											</li>
+											<li>
+												공개 게시판이므로 전화번호, 메일 주소 등 고객님의 소중한 개인정보는 절대 남기지 말아주세요.
+											</li>
+										</ul>
+										<div class="inquiry-content">
+											<table style="border-top : solid 3px; width:100%;">
+												<c:choose>
+													<c:when test="${not empty inquryList }">
+													
+													</c:when>
+													<c:otherwise>
+													<tr>
+														<td style="text-align:center; height:250px;">
+															<strong>문의사항이 없습니다.</strong>
+														</td>
+													</tr>
+													</c:otherwise>
+												</c:choose>
+											</table>
+										</div>
+									</section>
 		                        </div>
 	                        </section>
 	                    </article>

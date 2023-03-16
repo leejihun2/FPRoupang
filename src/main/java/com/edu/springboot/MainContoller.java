@@ -90,11 +90,13 @@ public class MainContoller {
 		
 		String loginId = principal.getName();
 		
+		SellRightDTO dto  = member_dao.LoginUser(loginId);
 		if(!(loginId.equals("admin"))) {
-			SellRightDTO dto  = member_dao.LoginUser(loginId);
 			dto  = member_dao.LoginSeller(dto.getMember_idx());
-			model.addAttribute("member_idx",dto.getMember_idx());
 			model.addAttribute("company_name", dto.getCompany_name());
+			model.addAttribute("member_idx",dto.getMember_idx());
+		}else {
+			model.addAttribute("member_idx",dto.getMember_idx());
 		}
 
 		model.addAttribute("cate",cate_dao.select_cate(sub_idx));

@@ -145,7 +145,7 @@
 	    color: #333;
 	}
 	</style>
-<body style="background-color: white;">
+<body style="background-color: white; overflow-x: hidden; overflow-y: auto;">
     <!-- top.html에서 인클루드 -->
     <div id="top" style="margin-bottom:0px;">
         <%@include file="../top.jsp" %>
@@ -201,5 +201,9 @@
 			</ul>
 		</section>
 	</div>
+	
+	<div id="copyright">
+		<c:import url="../copyright.jsp"></c:import>
+    </div>
 </body>
 </html>
