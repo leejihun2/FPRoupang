@@ -41,17 +41,14 @@
 </script>
 <body id="page-top">
 	<div id="wrapper">
-		<!-- Sidebar -->
 		<%@include file="./sidebar.jsp"%>
-		<!-- End of Sidebar -->
-
-		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
 			<%@include file="./topbar.jsp"%>
 			<div class="container">
 				<form name="writeFrm" method="post"
 					onsubmit="return writeValidate(this);"
 					action="<c:url value="/admin/modifyAction.do" />">
+					<input type="hidden" name="idx" value="${dto.idx }" />
 					<table class="table table-bordered">
 						<colgroup>
 							<col width="20%" />
@@ -69,13 +66,11 @@
 							</tr>
 						</tbody>
 					</table>
-
 					<div class="row text-center" style="">
-						<!-- 각종 버튼 부분 -->
 						<button type="submit" class="btn btn-secondary">수정하기</button>
 						<button type="reset" class="btn btn-secondary">Reset</button>
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='/admin/index.do';">리스트보기</button>
+							onclick="location.href='/admin/admin${dto.contact}.do?categoryCode=ALL';">리스트보기</button>
 					</div>
 				</form>
 			</div>

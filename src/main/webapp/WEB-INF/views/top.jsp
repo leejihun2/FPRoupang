@@ -328,16 +328,11 @@ onload = function(){
 						<a href="/supports/returnPolicy.do" >취소 / 반품 안내</a>
 					</p></li>
 					
-				<li class="cs-center more"><a
-					href="/product_insert">상품등록</a>
-				</li>
 			</menu>
 			<menu id="subscribeHeader">
-				<li><a class="bookmark" >즐겨찾기</a></li>
-				<li class="vendor-join more"><a href="./Sell_Authorized.do" id="sellerApp">입점신청<i class="ic"></i></a>
+				<li class="vendor-join more"><a href="/Sell_Authorized.do" id="sellerApp">입점신청<i class="ic"></i></a>
 					<p>
-						<a
-							href="https://wing.coupang.com/vendor/joining/welcome?inflow=WEB_HEADER_B" target="_blank">오픈마켓</a>
+						<a href="https://wing.coupang.com/vendor/joining/welcome?inflow=WEB_HEADER_B" target="_blank">오픈마켓</a>
 						<a href="/journey_Main" target="_blank">여행·티켓</a>
 						<a href="https://supplier.coupang.com/welcome/join" target="_blank">로켓배송</a>
 						<a href="https://partners.coupang.com" target="_blank">제휴마케팅</a>

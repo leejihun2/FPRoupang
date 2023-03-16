@@ -5,10 +5,240 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
+<style>
+.my-review__wrote__list {
+	border-bottom: 1px solid #aaa;
+	padding-bottom: 30px
+}
+
+.my-review__wrote__top-wrap {
+	display: table;
+	width: 96%;
+	padding: 10px 20px;
+	border-bottom: 1px solid #eee
+}
+
+.my-review__wrote__second-wrap {
+	margin: 20px 0px 10px;
+	display: table
+}
+
+.my-review__wrote__main-wrap {
+	padding-left: 20px
+}
+
+.my-review__wrote__main-wrap .survey__answer_container {
+	display: table-row
+}
+
+.my-review__wrote__main-wrap .survey__question {
+	display: table-cell;
+	text-align: left;
+	white-space: nowrap
+}
+
+.my-review__wrote__main-wrap .survey__answer {
+	display: table-cell;
+	text-align: left;
+	padding-left: 15px;
+	white-space: nowrap
+}
+
+.my-review__wrote__main-wrap .survey__simple_answer {
+	margin-top: 8px
+}
+
+.my-review__wrote__main-wrap .my-review__wrote__content pre,
+	.my-review__wrote__main-wrap span.survey__answer {
+	letter-spacing: 0px;
+	font-family: Dotum, "돋움", Helvetica, AppleSDGothicNeo, sans-serif;
+	white-space: pre-wrap
+}
+
+.my-review__wrote__image {
+	width: 40px;
+	height: 40px;
+	vertical-align: middle;
+	margin-right: 20px
+}
+
+.my-review__wrote__item_name {
+	font-size: 14px;
+	color: #346aff;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer
+}
+
+.my-review__wrote__date {
+	margin-top: 32px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #888;
+	line-height: 15px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	letter-spacing: 0px;
+	vertical-align: bottom;
+	margin-left: 6px;
+	overflow: hidden
+}
+
+.my-review__wrote__btn-wrap {
+	text-align: right;
+	display: table-cell;
+	vertical-align: middle
+}
+
+.my-review__wrote__modify-btn {
+	vertical-align: middle;
+	cursor: pointer;
+	outline: none;
+	font-size: 12px;
+	line-height: 14px;
+	color: #346aff;
+	letter-spacing: -0.5px;
+	border-right: 1px solid #d5d5d5;
+	padding-right: 10px;
+	margin-right: 5px
+}
+
+.delimiter {
+	display: none
+}
+
+.my-review__wrote__delete-btn {
+	vertical-align: middle;
+	outline: none;
+	cursor: pointer;
+	font-size: 12px;
+	line-height: 14px;
+	color: #346aff;
+	letter-spacing: -0.5px
+}
+
+.my-review__wrote__modify-btn-text, .my-review__wrote__delete-btn-text {
+	display: inline-block;
+	font-size: 12px;
+	letter-spacing: 0px;
+	color: #346aff
+}
+
+.my-review__wrote__rating-wrap {
+	margin-top: 10px;
+	height: 14px;
+	font-size: 0px;
+	display: table-cell;
+	vertical-align: middle
+}
+
+.my-review__wrote__rating {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-right: 2px;
+	background:
+		url(//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/star-writing-s@2x.png)
+		0 0px no-repeat;
+	background-size: 16px 16px
+}
+
+.my-review__wrote__rating.wrote-list-rating-active {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-right: 2px;
+	background:
+		url(//img1a.coupangcdn.com/image/coupang/review/web/mycoupang/rate-star-s@2x.png)
+		0 0px no-repeat;
+	background-size: 16px 16px
+}
+
+.my-review__wrote__blind {
+	display: -webkit-box;
+	margin-bottom: -11px;
+	margin-top: 20px;
+	height: 36px;
+	font-size: 11px;
+	line-height: 18px;
+	color: #ee0000;
+	text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden
+}
+
+.my-review__wrote__attachments, .my-review__wrote__content__title,
+	.my-review__wrote__content, .my-review__wrote__survey,
+	.my-review__wrote__helpful_content {
+	margin-top: 20px
+}
+
+.thumbnail_container {
+	height: 80px;
+	width: 80px;
+	display: inline-block;
+	overflow: hidden;
+	float: left
+}
+
+.thumbnail_container img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	font-family: 'object-fit: cover;'
+}
+
+.my-review__wrote__content__title span, .my-review__wrote__survey .survey__question,
+	span.helpful_count {
+	font-size: 12px;
+	font-weight: bold;
+	color: #111
+}
+
+.my-review__caption_tip {
+	position: absolute;
+	left: 63px;
+	top: 65px;
+	right: 0px;
+	bottom: 0px;
+	opacity: 0.7;
+	width: 12px;
+	height: 12px;
+	display: none
+}
+
+.my-review__caption_tip:before {
+	content: "";
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background:
+		url(//img1a.coupangcdn.com/image/coupang/review/web/sdp/captions/icon-caption2x.png)
+		no-repeat;
+	background-size: 12px 12px
+}
+
+.attachment__container {
+	display: inline-block;
+	position: relative;
+	margin-right: -1px;
+	margin-top: -3px
+}
+
+.attachment__container img {
+	cursor: pointer
+}
+</style>
 <head>
 <meta charset="UTF-8">
 <title>목록</title>
-<link rel="stylesheet" 
+<link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
@@ -26,7 +256,7 @@
 <link rel="stylesheet" href="../css/list.css" type="text/css">
 <link rel="stylesheet" href="../css/star_rating.css" type="text/css">
 <link rel="stylesheet" href="../css/star_total.css" type="text/css">
-<link rel="stylesheet" href="../css/roll.css" type="text/css"> 
+<link rel="stylesheet" href="../css/roll.css" type="text/css">
 <script src="../js/star.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -40,198 +270,108 @@ function deleteRow(idx){
 </script>
 </head>
 <body style="background-color: #ffffff">
-	<%@include file="../myroupang/myroupang.jsp" %>
-	<div class="roll" >
+	<%@include file="../myroupang/myroupang.jsp"%>
+	<div class="roll">
 		<h1 class="qwer">리뷰관리</h1>
-	
 		<div class="div1">
-			<div class="div2" onclick="location.href='review.do'">리뷰 작성</div>
+			<div class="div2" onclick="location.href='reviewable.do'">리뷰 작성</div>
 			<div class="div3" onclick="location.href='reviewList.do'">작성한 리뷰</div>
 		</div>
 		
-		
-	<div class="container">
-	
-			<div class="star-ratings">
-          <input type="hi dden" name="ratevalue1" value="${totalstar.star_rate}" step="0.1" min="0" max="5" />
-          <div class="rating-wrap1">
-            <div class="rating1">
-                <div class="overlay1"></div>
-            </div>
-          </div>
-			</div>
-			<div class="star-ratings">
-          <input type="hi dden" name="ratevalue2" value="${totalstar.star_servey1}" step="0.1" min="0" max="5" />
-          <div class="rating-wrap2">
-            <div class="rating2">
-                <div class="overlay2"></div>
-            </div>
-          </div>
-			</div>
-			<div class="star-ratings">
-          <input type="hi dden" name="ratevalue3" value="${totalstar.star_servey2}" step="0.1" min="0" max="5" />
-          <div class="rating-wrap3">
-            <div class="rating3">
-                <div class="overlay3"></div>
-            </div>
-          </div>
-			</div>
-			<div class="star-ratings">
-          <input type="hi dden" name="ratevalue4" value="${totalstar.star_servey3}" step="0.1" min="0" max="5" />
-          <div class="rating-wrap4">
-            <div class="rating4">
-                <div class="overlay4"></div>
-            </div>
-          </div>
-			</div>
-			
-			<div class="star-ratings">1점 :${totalstar.star_rate1 }</div>
-			<div class="star-ratings">2점 :${totalstar.star_rate2 }</div>
-			<div class="star-ratings">3점 :${totalstar.star_rate3 }</div>
-			<div class="star-ratings">4점 :${totalstar.star_rate4 }</div>
-			<div class="star-ratings">5점 :${totalstar.star_rate5 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey1_1 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey1_2 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey1_3 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey1_4 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey1_5 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey2_1 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey2_2 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey2_3 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey2_4 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey2_5 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey3_1 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey3_2 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey3_3 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey3_4 }</div>
-			<div class="star-ratings">짱인가요? :${totalstar.star_servey3_5 }</div>
-				
-		
-		<div class="text-right"></div>
-		<!-- 방명록 반복 부분 s -->
+
 		<s:authorize access="isAuthenticated()">
 			<s:authentication property="name" var="name" />
-		<c:forEach items="${lists }" var="row">
-			<div class="border mt-2 mb-2">
-				<!--  -->
-				<ul class="comment">
-					<li>
-						<div class="score_info">
-							<div>
-								<div class="star-ratings">${row.star_rate }</div>
-							</div>
-						</div>
-					</li>
-				</ul>
-				<!--  -->
-				<div class="media">
-					<c:forEach begin="1" end="5" var="i">
-						<c:choose>
-							<c:when test="${Math.round(row.star_rate) >= i }">
-								<div class="star-ratings">
-									<div class="star-ratings-fill space-x-2 text-lg"
-										:style="{ width: ratingToPercent + '%' }">
-										<span>★</span>
+			<c:forEach items="${lists }" var="row" varStatus="loop">
+				<div class="my-review__wrote js_reviewWroteListContainer">
+
+					<div class="my-review__wrote__list-container" data-total-wrote="4">
+						<ul id="review_wrote_list" data-has-more="false"
+							data-current-page="1">
+
+							<li class="my-review__wrote__list">
+								<div
+									class="my-review__wrote__top-wrap js_reviewWroteListProductImage"
+									data-product-review-id="118563038" data-page="1">
+									<img class="my-review__wrote__image"
+										src="https://thumbnail10.coupangcdn.com/thumbnails/remote/250x250ex/image/vendor_inventory/f783/e827c88bb90dfeda35ddabba96d6d5c129565b6567f09fc3dc23e4da4346.jpg"
+										title="도넛 휴대용 약통 랜덤발송, 2개" alt="도넛 휴대용 약통 랜덤발송, 2개"> <span
+										class="my-review__wrote__item_name js_reviewWroteListProductTitle"
+										data-vendor-item-id="70278535334" data-product-id="1275397869"
+										data-vendor-item-package-id="0" data-is-deal-product="false">${row.goods_title }</span> <span class="my-review__wrote__btn-wrap">
+										<a href="javascript:void(0);"
+										class="my-review__wrote__modify-btn js_reviewWroteListModifyBtn"
+										data-reviewid="118563038"
+										onclick="location.href='reviewModify.do?idx=${row.idx}';">수정</a>
+										<span class="delimiter">|</span> <a href="javascript:void(0);"
+										class="my-review__wrote__delete-btn js_reviewWroteListDeleteBtn"
+										data-reviewid="118563038"
+										onclick="javascript:deleteRow(${row.idx});">삭제</a>
+									</span>
+								</div>
+								<div class="my-review__wrote__main-wrap">
+
+									<div class="my-review__wrote__second-wrap"
+										data-product-review-id="118563038" data-page="1">
+
+										<div class="media">
+											<c:forEach begin="1" end="5" var="i">
+												<c:choose>
+													<c:when test="${Math.round(row.star_rate) >= i }">
+														<div class="star-ratings">
+															<div class="star-ratings-fill space-x-2 text-lg"
+																:style="{ width: ratingToPercent + '%' }">
+																<span>★</span>
+															</div>
+															<div class="star-ratings-base space-x-2 text-lg">
+																<span>★</span>
+															</div>
+														</div>
+													</c:when>
+													<c:otherwise>
+														<div class="star-ratings text-lg">
+															<span>★</span>
+														</div>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</div>
+
+										<span class="my-review__wrote__date">2020.07.02</span>
 									</div>
-									<div class="star-ratings-base space-x-2 text-lg">
-										<span>★</span>
+									<div class="my-review__wrote__attachments" data-page="1">
+
+
+										<div class="attachment__container">
+											<span class="thumbnail_container"> <img
+												src="https://ts.coupangcdn.com/thumbnails/local/org/image2/PRODUCTREVIEW/202007/2/8346521484181569649/f3f1036e-ae91-49ea-b92f-1e048a502eb8.jpg">
+											</span> <span class="my-review__caption_tip"
+												data-has-caption="false"></span>
+										</div>
+
+										<div class="attachment__container">
+											<span class="thumbnail_container"> <img
+												src="https://ts.coupangcdn.com/thumbnails/local/org/image2/PRODUCTREVIEW/202007/2/8346521484181569649/b77630eb-2151-465a-9685-d2f893a48a2d.jpg">
+											</span> <span class="my-review__caption_tip"
+												data-has-caption="false"></span>
+										</div>
+
+									</div>
+
+									<div class="my-review__wrote__content__title">
+										<span>${row.summary }</span>
+									</div>
+									<div class="my-review__wrote__content">
+										<pre>${row.review } 안녕하세요 반가워요 하이룽 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</pre>
 									</div>
 								</div>
-							</c:when>
-							<c:otherwise>
-								<div class="star-ratings text-lg">
-									<span>★</span>
-								</div>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div class="media-body">
-					<!--  -->
-					<h4 class="media-heading">제목:${row.goods_title }</h4>
-					<p>
-					${row.review }
-					</p>
-					<div class="media">
-					<c:forEach begin="1" end="5" var="i">
-						<c:choose>
-							<c:when test="${Math.round(row.star_servey1) >= i }">
-								<div class="star-ratings">
-									<div class="star-ratings-fill space-x-2 text-lg"
-										:style="{ width: ratingToPercent + '%' }">
-										<span>★</span>
-									</div>
-									<div class="star-ratings-base space-x-2 text-lg">
-										<span>★</span>
-									</div>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div class="star-ratings text-lg">
-									<span>★</span>
-								</div>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					</div>
-					<div class="media">
-					<c:forEach begin="1" end="5" var="i">
-						<c:choose>
-							<c:when test="${Math.round(row.star_servey2) >= i }">
-								<div class="star-ratings">
-									<div class="star-ratings-fill space-x-2 text-lg"
-										:style="{ width: ratingToPercent + '%' }">
-										<span>★</span>
-									</div>
-									<div class="star-ratings-base space-x-2 text-lg">
-										<span>★</span>
-									</div>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div class="star-ratings text-lg">
-									<span>★</span>
-								</div>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					</div>
-					<div class="media">
-					<c:forEach begin="1" end="5" var="i">
-						<c:choose>
-							<c:when test="${Math.round(row.star_servey3) >= i }">
-								<div class="star-ratings">
-									<div class="star-ratings-fill space-x-2 text-lg"
-										:style="{ width: ratingToPercent + '%' }">
-										<span>★</span>
-									</div>
-									<div class="star-ratings-base space-x-2 text-lg">
-										<span>★</span>
-									</div>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div class="star-ratings text-lg">
-									<span>★</span>
-								</div>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					</div>
-					<p>${row.summary }</p>
-				</div>
-				<div class="media-right"></div>
-				<%-- 							<c:if test="${sessionScope.siteUserInfo.id eq row.id }">
-								<button class="btn btn-secondary"
-									onclick="location.href='modify.do?idx=${row.idx}';">
-									수정</button>
-								<button class="btn btn-secondary"
-									onclick="javascript:deleteRow(${row.idx});">삭제</button>
-							</c:if>
- --%>
-			</div>
-		</c:forEach>
+			</c:forEach>
 		</s:authorize>
+	</div>
+	</div>
 	</div>
 	</div>
 	<div id="copyright">

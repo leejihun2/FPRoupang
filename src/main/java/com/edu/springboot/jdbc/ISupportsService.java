@@ -31,10 +31,10 @@ public interface ISupportsService {
 	
 	public int modify(SupportsDTO supportsDTO);
 	
+	
+	public SupportsDTO view(int idx);
+	
 	public int modifySupports(SupportsDTO supportsDTO);
-	
-	public SupportsDTO view(SupportsDTO supportsDTO);
-	
 	public int delete(String idx, String email);
 	
 	

@@ -33,11 +33,11 @@
 				<a class="collapse-item" href="/productInsert">여행/티켓</a>
 			</div>
 		</div></li>
-	<li class="nav-item"><a class="nav-link collapsed" href="#">
 	<s:authorize access="hasRole('seller')">
-		<i class="fa fa-shopping-cart"></i> <span onclick="location.href=' '">판매목록확인</span>
-	</s:authorize>
+	<li class="nav-item"><a class="nav-link collapsed" href="/orderlist.do">
+		<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
 	</a></li>
+	</s:authorize>
 	<s:authorize access="hasRole('admin')">
 	
 		<!-- Heading -->
@@ -68,8 +68,8 @@
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">고객센터:</h6>
 					<a class="collapse-item" href="/admin/writeSupports.do">글 작성</a>
-					<a class="collapse-item" href="/admin/adminFaq.do?categoryCode=ALL">자주 묻는 질문</a>
-					<a class="collapse-item" href="/admin/adminNotice.do?categoryCode=ALL">쿠팡소식</a>
+					<a class="collapse-item" href="/admin/adminfaq.do?categoryCode=ALL">자주 묻는 질문</a>
+					<a class="collapse-item" href="/admin/adminnotice.do?categoryCode=ALL">쿠팡소식</a>
 				</div>
 			</div></li>
 		
@@ -87,10 +87,6 @@
 	
 				</div>
 		</div></li>
-		
-		<!-- Nav Item - Tables -->
-		<li class="nav-item"><a class="nav-link" href="tables.do"> <i
-				class="fas fa-fw fa-table"></i> <span>Tables</span></a></li>
 	
 	</s:authorize>
 	<!-- Divider -->

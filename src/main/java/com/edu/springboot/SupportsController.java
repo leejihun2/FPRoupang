@@ -29,11 +29,6 @@ public class SupportsController {
 	@RequestMapping("/supports/faq.do")
 	public String faq(Model model, HttpServletRequest req) {
 		
-//		SupportsDTO supportsDTO = new supportsDTO();
-//		SupportsDTO.setSearchField(req.getParameter("searchField"));
-//		SupportsDTO.setSearchTxt(req.getParameter("searchTxt"));
-//		SupportsDTO.setCategoryCode(req.getParameter("categoryCode"));
-		
 		String category = req.getParameter("categoryCode");
 		int totalRecordCount = 
 				daoo.getTotalCountSearch("faq",category);
@@ -52,6 +47,8 @@ public class SupportsController {
 	}
 	@RequestMapping("/supports/notice.do")
 	public String lists2(Model model, HttpServletRequest req) {
+		
+		
 		
 		String category = req.getParameter("categoryCode");
 		int totalRecordCount = 
