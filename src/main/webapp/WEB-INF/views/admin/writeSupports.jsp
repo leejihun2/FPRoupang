@@ -45,6 +45,41 @@
 			return false;
 		}
 	}
+	  $(document).ready(function() {
+	    // contact 값이 변경될 때마다 Ajax 요청을 보냅니다.
+	    $('#contact').change(function() {
+	      // 선택된 contact 값을 가져옵니다.
+	      var contact = $(this).val();
+	      
+	      // categoryOptions를 초기화합니다.
+	      var categoryOptions = [];
+	      
+	      // 선택된 contact 값에 따라 categoryOptions를 설정합니다.
+	      if (contact === 'faq') {
+	        categoryOptions = [
+	          {"value": "DELIVERY", "text": "배송문의"},
+	          {"value": "CANCEL", "text": "취소"},
+	          {"value": "REFUND", "text": "환불"},
+	          {"value": "MEMBER", "text": "회원서비스"},
+	          {"value": "CASH", "text": "쿠팡캐시"},
+	          {"value": "MOBILE", "text": "로켓모바일"}
+	        ];
+	      } else if (contact === 'notice') {
+	        categoryOptions = [
+	          {"value": "NOTICE", "text": "공지"},
+	          {"value": "EVENT", "text": "이벤트"},
+	          {"value": "AIRTICKET", "text": "항공권"}
+	        ];
+	      }
+	      
+	      // categorycode select 태그에 option 태그를 추가합니다.
+	      var options = '';
+	      for (var i = 0; i < categoryOptions.length; i++) {
+	        options += '<option value="' + categoryOptions[i].value + '">' + categoryOptions[i].text + '</option>';
+	      }
+	      $('#categorycode').html(options);
+	    });
+	  });
 </script>
 <body id="page-top">
 	<div id="wrapper">
@@ -57,6 +92,7 @@
 
 			<!-- Main Content -->
 			<div id="content">
+				
 				<!-- Topbar -->
 				<%@include file="./topbar.jsp"%>
 				<form name="writeFrm" method="post"
@@ -69,24 +105,18 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<select name="contact" value="faq">
+								<select name="contact" id="contact">
+									<option value="">선택하제욤</option>
 									<option value="faq">자주묻는 질문</option>
 									<option value="notice">쿠팡 소식</option>
 								</select>
 							</tr>
 							<tr>
-								<select name="categorycode" value="DELIVERY">
-									<option value="DELIVERY">배송문의</option>
-									<option value="CANCEL">취소/교환/반품</option>
-									<option value="REFUND">환불</option>
-									<option value="MEMBER">회원서비스</option>
-									<option value="CASH">쿠팡캐시</option>
-									<option value="MOBILE">로켓모바일</option>
-									<option value="NOTICE">공지</option>
-									<option value="EVENT">이벤트</option>
-									<option value="AIRTICKET">항공권</option>
+								<select name="categorycode" id="categorycode">
+									<option value="">카테고리를 선택하세요</option>
 								</select>
 							</tr>
+
 							<tr>
 								<th class="text-center" style="vertical-align: middle;">제목</th>
 								<td><textarea rows="1" class="form-control" name="title"
