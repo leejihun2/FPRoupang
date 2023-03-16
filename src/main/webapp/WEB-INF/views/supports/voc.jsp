@@ -228,7 +228,7 @@ function deleteRow(idx){
 	width: inherit;
 }
 </style>
-<body>
+<body style="background: white;">
 	<script type="text/javascript">
 function writeValidate(f)
 {
@@ -248,7 +248,7 @@ function writeValidate(f)
 	<div id="top">
 		<%@include file="../top.jsp"%>
 	</div>
-	<div class="container" style="background: white;">
+	<div class="container">
 
 		<%@include file="../category.jsp"%>
 		<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->

@@ -40,42 +40,37 @@ function deleteRow(idx){
 		<%@include file="../top.jsp"%>
 	</div>
 	<div class="container">
-
-		<%@include file="../category.jsp"%>
-
-
-		<ul class="sc-nly1np-0 cifYev" style="width: 1500px;">
-			<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
-				href="./faq.do?categoryCode=ALL"> <span class="text">전부</span>
-			</a></li>
-			<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
-				href="./faq.do?categoryCode=DELIVERY"> <span class="text">배송문의</span>
-			</a></li>
-			<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
-				href="./faq.do?categoryCode=CANCEL"> <span class="text">취소/교환/반품</span>
-			</a></li>
-			<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
-				href="./faq.do?categoryCode=REFUND"> <span class="text">환불</span>
-			</a></li>
-			<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
-				href="./faq.do?categoryCode=MEMBER"> <span class="text">회원서비스</span>
-			</a></li>
-			<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
-				href="./faq.do?categoryCode=CASH"> <span class="text">쿠팡캐시</span>
-			</a></li>
-			<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
-				href="./faq.do?categoryCode=MOBILE"> <span class="text">로켓모바일</span>
-			</a></li>
-		</ul>
-		<c:forEach items="${lists }" var="row" varStatus="loop">
-			<div class="question">
-				<button class="accordion">
-					<span style="color: #6f6aff;">Q</span>${row.title }
-				</button>
-				<div class="panel">
-					<span class="col-3" style="color: #6f6aff;">A</span>${row.contents }
-				</div>
-			</div>
+	<ul class="sc-nly1np-0 cifYev" style="width: 1500px;">
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=ALL"> 
+					<span class="text">전부</span>
+				</a></li>
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=DELIVERY"> 
+					<span class="text">배송문의</span>
+				</a></li>
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=CANCEL"> 
+					<span class="text">취소/환불</span>
+				</a></li>
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=MEMBER"> 
+					<span class="text">회원서비스</span>
+				</a></li>
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=CASH"> 
+					<span class="text">루팡캐시</span>
+				</a></li>
+				<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
+					href="./faq.do?categoryCode=MOBILE"> 
+					<span class="text">로켓모바일</span>
+				</a></li>
+			</ul>
+	<c:forEach items="${lists }" var="row" varStatus="loop">
+		<div class="question">
+			<button class="accordion" onclick="viewContent()"><span style="color: #6f6aff ;" >Q</span>${row.title }</button>
+			<div class="panel">
+				<span class="col-3" style="color: #6f6aff ;">A</span>${row.contents }
 		</c:forEach>
 	</div>
 	<div id="copyright">
