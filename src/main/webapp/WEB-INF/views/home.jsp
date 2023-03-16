@@ -35,14 +35,6 @@
     <link rel="stylesheet" href="/css/main.css" type="text/css">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
-<script>
-  // 현재 URL 정보 가져오기
-  var url = window.location.href;
-  
-  if(url.indexOf("index.do")!=-1){
-	  alert("해당 페이지에 접근 권한이 부족합니다.");
-  }
-</script>
 <body style="background-color: white;">
     <!-- top.html에서 인클루드 -->
     <div id="top">

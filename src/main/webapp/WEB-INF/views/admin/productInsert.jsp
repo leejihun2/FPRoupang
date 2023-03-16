@@ -729,7 +729,7 @@ function service_list(e){
 				               id="company_name" name="company_name" value="루팡"/>
 			         	</s:authorize>
 			         	<s:authorize access="hasRole('seller')">
-				            <input type="hid den" class="form-control ms-3 mb-3" style="width: 200px;"
+				            <input type="hidden" class="form-control ms-3 mb-3" style="width: 200px;"
 				               id="company_name" name="company_name" value="${company_name}"/>
 			         	</s:authorize>
 			            <div class="col-12 ms-3" id="detail_list" style="width:100%; display:none; padding: 0px;">

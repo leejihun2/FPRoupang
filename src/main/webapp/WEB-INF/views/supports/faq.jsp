@@ -70,7 +70,7 @@ function deleteRow(idx){
 			</ul>
 	<c:forEach items="${lists }" var="row" varStatus="loop">
 		<div class="question">
-			<button class="accordion"><span style="color: #6f6aff ;" >Q</span>${row.title }</button>
+			<button class="accordion" onclick="viewContent()"><span style="color: #6f6aff ;" >Q</span>${row.title }</button>
 			<div class="panel">
 				<span class="col-3" style="color: #6f6aff ;">A</span>${row.contents }
 			</div>

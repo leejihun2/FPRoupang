@@ -401,7 +401,7 @@ public class TicketController {
 		mv.addObject("sub_idx",sub_idx);
 		mv.addObject("category_title",category_title);
 		mv.addObject("ticket_list", ticket_list);
-		System.out.println(ticket_list);
+
 		mv.setViewName("/ticket/ticketList");
 		return mv;
 	}
@@ -467,12 +467,12 @@ public class TicketController {
 		//상품 구매시 로그에 남기기
 		int result = goods_dao.InsertOrder(gdto);
 		int result2 = goods_dao.InsertOrderItem(gdto);
+		
 		if (result == 0 ) {
 			System.out.println("insert 에러");
 		}else {
 			System.out.println("정상 동작");
 		}
-		
 		return "/";
 	}
 

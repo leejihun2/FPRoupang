@@ -16,5 +16,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES (order_item_seq.nextval, order_seq.currval, #{bot_idx}, #{price}, #{amount}, #{discount}
 		,#{goods_idx}, #{goods_image})
 	</insert>
-
  </mapper>

@@ -33,11 +33,11 @@
 				<a class="collapse-item" href="/productInsert">여행/티켓</a>
 			</div>
 		</div></li>
-	<li class="nav-item"><a class="nav-link collapsed" href="#">
 	<s:authorize access="hasRole('seller')">
-		<i class="fa fa-shopping-cart"></i> <span onclick="location.href='orderlist.do'">판매목록확인</span>
-	</s:authorize>
+	<li class="nav-item"><a class="nav-link collapsed" href="/orderlist.do">
+		<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
 	</a></li>
+	</s:authorize>
 	<s:authorize access="hasRole('admin')">
 	
 		<!-- Heading -->
