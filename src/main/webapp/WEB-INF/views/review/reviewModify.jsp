@@ -183,11 +183,8 @@
 
 												<div
 													class="my-review__modify__file__list-wrap
-  
-                  
-                      my-review__modify__file__list-wrap--active
-                  
-                      js_reviewModifyImageListContainer">
+									                      my-review__modify__file__list-wrap--active
+									                      js_reviewModifyImageListContainer">
 													<ul>
 
 

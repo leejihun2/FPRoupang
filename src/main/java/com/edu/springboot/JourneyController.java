@@ -492,7 +492,13 @@ public class JourneyController {
       String ji_duetime2 = "";
       int ji_adult = 2;
       int ji_kid = 0;
+      
+      
       System.out.println(sub_idx);
+      if(location!=null) {
+    	  journey_dao.log(location);
+			System.out.println("져니성공");
+      }
       if(location != null) {
           
          ArrayList<String> like_loc = journey_dao.like_journey_List(location);
@@ -505,7 +511,6 @@ public class JourneyController {
          
          mv.addObject("search_list",search_list);
       }
-   
       
       if(session.getAttribute("ji_duetime1")!= null) {
          totaljourneyDTO.setJi_duetime1((String)session.getAttribute("ji_duetime1"));

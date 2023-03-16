@@ -160,6 +160,11 @@
 						data-total-writable="48">
 						<ul id="writable_reviews" data-current-page="1">
 
+							<select name="goods_title" value="상품문의">
+									<c:forEach items="${order }" var="row" varStatus="loop">
+										<option value="${row.title }">${row.title }</option>
+									</c:forEach>
+							</select>
 
 							<li class="my-review__writable__list">
 								<div class="my-review__writable__image-wrap">
