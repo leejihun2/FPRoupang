@@ -67,7 +67,7 @@ padding-top: 13px;
 	background: #fafafa;
 /* 	background-color: #eee; */
     position: relative;
-    margin: 21px 16px 30px -1px;
+    margin: 21px 16px 8px -1px;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     padding: 13px 0px;
@@ -159,12 +159,17 @@ display: inline-block;
 	display: table-row;
 	vertical-align: inherit;
 	border-color: inherit;
-	margin-bottom: 1px solid #eee;
+	margin-bottom: 1px solid;
+	border-bottom: 1px solid #eee;
 }
 
 .item-info {
-    vertical-align: top;
-    padding-left: 30px;
+    vertical-align: middle;
+    padding-left: 20px;
+    margin-top: 30px; 
+    padding-top:38px;
+    padding-bottom:38px;
+    
 }
 .delivery-info{
     margin-bottom: 7px;
@@ -216,6 +221,8 @@ display: inline-block;
 .t-edit{
 	margin-left: 30px;
 	position: absolute;
+	padding-top:45px;
+	
 }
 
 .nowish{

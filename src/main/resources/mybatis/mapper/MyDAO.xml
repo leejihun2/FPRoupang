@@ -89,27 +89,51 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 
  	<!--✯✯✯✯★★✯★★✯✯✯✯★★✯★★ wish 영역 ✯✯✯✯★★✯★★✯✯✯✯★★✯★★-->
  	
-	<select id="wishList"
+<!-- 	<select id="sewishlist"  
 		parameterType="com.edu.springboot.jdbc.WishDTO"
 		resultType="com.edu.springboot.jdbc.WishDTO">
-		select * from wishlist where idx=#{idx}
+		select * from wishList where p_title=#{p_title}
   
 	</select> 	
 	
 	
-	
 	<insert id="addwish" 
  		parameterType="com.edu.springboot.jdbc.WishDTO">
-		insert into wishlist(idx, p_title, p_price)
-		values (wishlist_seq.nextval,#{idx},#{p_title},#{p_price})
+		insert into wishList
+		(p_title, p_price)
+		values 
+		(wishlist_seq.nextval,#{p_title},#{p_price})
  	</insert>
-	
 	
 	
 	<delete id="wishdelete" 
  		parameterType="com.edu.springboot.jdbc.WishDTO">
-		delete from wishlist where idx=#{idx}
- 	</delete>
+		delete from wishList where p_title=#{p_title}
+ 	</delete> 
+ 	 -->
+ 	
+ 	
+ 	
+	<select id="tiList"
+		parameterType="com.edu.springboot.jdbc.TicketInfoDTO"
+		resultType="com.edu.springboot.jdbc.TicketInfoDTO">
+		select ti_title, ti_price from ticket_info 
+	</select> 	
+	
+	
+	<insert id="addwish" 
+ 		parameterType="com.edu.springboot.jdbc.TicketInfoDTO">
+		insert into ticket_info
+		(ti_idx, ti_intro, ti_price)
+		values 
+		(wishlist_seq.nextval,#{ti_idx},#{ti_intro},#{ti_price})
+ 	</insert>
+	
+	
+	<delete id="deletewish" 
+ 		parameterType="com.edu.springboot.jdbc.TicketInfoDTO">
+ 		DELETE FROM ticket_info WHERE ti_idx=#{ti_idx}
+ 	</delete>  
 	
 	
 	
