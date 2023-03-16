@@ -30,26 +30,25 @@ public class AdminController {
 	IMemberService member_dao;
 
 	@RequestMapping("/admin/index.do")
-	public String admin(Principal principal,HttpSession session) {
-		
+	public String admin(Principal principal, HttpSession session) {
+
 		String loginId = principal.getName();
-		
-		SellRightDTO dto  = member_dao.LoginUser(loginId);
-		
+
+		SellRightDTO dto = member_dao.LoginUser(loginId);
+
 		String Authority = dto.getAuthority();
-		
-		if(Authority.equals("ROLE_seller"))
-		{
+
+		if (Authority.equals("ROLE_seller")) {
 			return "redirect:/productInsert";
-		}else {
+		} else {
 			return "/admin/index";
 		}
 	}
+
 	@RequestMapping("/admin/adminfaq.do")
 	public String adminFaq(Model model, HttpServletRequest req) {
 		String category = req.getParameter("categoryCode");
 		String contact = req.getParameter("contact");
-		//int totalRecordCount = daoo.getTotalCountSearch("faq", category);
 
 		ArrayList<SupportsDTO> lists = daoo.listPageSearch("faq", category);
 
@@ -81,7 +80,6 @@ public class AdminController {
 
 	@RequestMapping("/admin/delete.do")
 	public String delete(HttpServletRequest req, HttpSession session, Principal principal) {
-		// 삭제는 본인만 가능하므로 로그인 확인을 진행한다.
 		String email = principal.getName();
 		session.setAttribute("siteUserInfo", email);
 		if (session.getAttribute("siteUserInfo") == null) {
@@ -100,53 +98,49 @@ public class AdminController {
 		return "/admin/writeSupports";
 	}
 
-	// 글쓰기 처리
 	@RequestMapping(value = "/admin/writeSupportsAction.do", method = RequestMethod.POST)
 	public String writeSupportsAction(Model model, HttpServletRequest req, HttpSession session, Principal principal) {
 
 		String email = principal.getName();
 		int applyRow = daoo.writeSupports(req.getParameter("title"), email, req.getParameter("contents"),
-				req.getParameter("categorycode"), req.getParameter("contact"));
+						req.getParameter("categorycode"), req.getParameter("contact"));
+		
 		System.out.println("입력된행의갯수:" + applyRow);
+
 		return "redirect:/admin/index.do";
 	}
 
 	@RequestMapping("/admin/modify.do")
 	public ModelAndView modify(Model model, HttpServletRequest req, HttpSession session, SupportsDTO supportsDTO) {
-	    
+
 		int idx = Integer.parseInt(req.getParameter("idx"));
-		
+
 		ModelAndView mv = new ModelAndView();
-		
-	    SupportsDTO dto = daoo.view(idx);
-	    
-//	    model.addAttribute("dto", dto);
-	    mv.addObject("dto",dto);
-	    mv.setViewName("/admin/modify");
-	    return mv;
+
+		SupportsDTO dto = daoo.view(idx);
+
+		mv.addObject("dto", dto);
+		mv.setViewName("/admin/modify");
+		return mv;
 	}
 
 	@RequestMapping("/admin/modifyAction.do")
 	public String modifyAction(Model model, HttpSession session, SupportsDTO supportsDTO, HttpServletRequest req) {
-	    
-		
-	    String idxStr = req.getParameter("idx");
-	    if (idxStr == null) {
-	        // idx 값이 null인 경우 처리
-	        // 예를 들어 오류 메시지 출력 등
-	        return "error";
-	    }
-	    
-	    int idx = Integer.parseInt(idxStr);
-	    SupportsDTO dto = new SupportsDTO();
-	    dto.setIdx(idx);
-	    dto.setTitle(req.getParameter("title"));
-	    dto.setContents(req.getParameter("contents"));
-	    
-	    daoo.modifySupports(dto);
-	   
-	    return "redirect:/admin/index.do";
-	}
 
+		String idxStr = req.getParameter("idx");
+		if (idxStr == null) {
+			return "error";
+		}
+
+		int idx = Integer.parseInt(idxStr);
+		SupportsDTO dto = new SupportsDTO();
+		dto.setIdx(idx);
+		dto.setTitle(req.getParameter("title"));
+		dto.setContents(req.getParameter("contents"));
+
+		daoo.modifySupports(dto);
+
+		return "redirect:/admin/index.do";
+	}
 
 }

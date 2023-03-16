@@ -6,7 +6,6 @@
  
  <mapper namespace="com.edu.springboot.jdbc.IReviewService">
  
- 
 	<insert id="reviewWrite" >
 		INSERT INTO REVIEW 
 		(idx, product_idx, bot_cate_idx, member_idx, goods_title, review, star_rate, star_servey1, star_servey2, star_servey3, summary)
@@ -19,7 +18,6 @@
 		SELECT * FROM review WHERE idx=#{idx}
 		AND goods_title=#{goods_title}
 	</select>
- 
  
  	<select id="starcount" resultType="com.edu.springboot.jdbc.ReviewDTO">
         SELECT	ROUND(AVG(star_rate),1) star_rate,
@@ -56,6 +54,7 @@
         ,COUNT(CASE WHEN star_servey2=3 THEN 1 END) servey3_5
 		FROM REVIEW ORDER BY idx
  	</select>
+ 	
  	<select id="starDTO" resultType="com.edu.springboot.jdbc.ReviewDTO">
         SELECT ROUND(AVG(star_rate),1) star_rate
         ,COUNT(goods_title) goods_title
@@ -74,6 +73,12 @@
         ,COUNT(CASE WHEN servey3=2 THEN 1 END) servey3_2
         ,COUNT(CASE WHEN servey3=3 THEN 1 END) servey3_3
 		FROM REVIEW ORDER BY idx desc
+ 	</select>
+ 
+ 	<select id="order" resultType="com.edu.springboot.jdbc.GoodsOrderDTO">
+ 		select * from goods_order_item goi 
+  		join goods_order go 
+    	on go.idx=goi.order_idx
  	</select>
  
 	<select id="reviewcount" resultType="int">
@@ -96,7 +101,8 @@
 		 	star_servey2=#{star_servey2}, star_servey3=#{star_servey3}, summary=#{summary}
 		WHERE idx=#{idx}
 	</update>
-		<select id="view" resultType="com.edu.springboot.jdbc.ReviewDTO"
+	
+	<select id="view" resultType="com.edu.springboot.jdbc.ReviewDTO"
 		parameterType="com.edu.springboot.jdbc.ReviewDTO">
 		SELECT * FROM review WHERE idx=#{idx}
 	</select>
@@ -104,4 +110,5 @@
 	<delete id="delete">
 		DELETE FROM review WHERE idx=#{param1}
 	</delete>
+	
  </mapper>

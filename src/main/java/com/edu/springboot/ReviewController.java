@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.edu.springboot.jdbc.GoodsOrderDTO;
 import com.edu.springboot.jdbc.IReviewService;
 import com.edu.springboot.jdbc.ReviewDTO;
 import com.edu.springboot.jdbc.SupportsDTO;
@@ -36,11 +37,16 @@ public class ReviewController {
 		ArrayList<ReviewDTO> lists = 
 				daoo.reviewList();
 		
-//		for (ReviewDTO dto : lists) {
-//			String temp = dto.getReview()
-//					.replace("\r\n", "<br/>");
-//			dto.setReview(temp);
-//		}
+		
+		
+		for (ReviewDTO dto : lists) {
+			if(dto.getReview()!=null) {
+				
+				String temp = dto.getReview()
+						.replace("\r\n", "<br/>");
+				dto.setReview(temp);
+			}
+		}
 		
 		model.addAttribute("totalstar", totalstar);
 		model.addAttribute("lists", lists);
@@ -51,6 +57,9 @@ public class ReviewController {
 	public String reviewWrite(Model model, HttpSession session,
 			HttpServletRequest req) {
 		
+		ArrayList<GoodsOrderDTO> order = 
+				daoo.order();
+		model.addAttribute("order", order);
 		return "review/review";
 	}
 	

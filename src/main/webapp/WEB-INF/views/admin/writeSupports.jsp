@@ -46,15 +46,11 @@
 		}
 	}
 	  $(document).ready(function() {
-	    // contact 값이 변경될 때마다 Ajax 요청을 보냅니다.
 	    $('#contact').change(function() {
-	      // 선택된 contact 값을 가져옵니다.
 	      var contact = $(this).val();
 	      
-	      // categoryOptions를 초기화합니다.
 	      var categoryOptions = [];
 	      
-	      // 선택된 contact 값에 따라 categoryOptions를 설정합니다.
 	      if (contact === 'faq') {
 	        categoryOptions = [
 	          {"value": "DELIVERY", "text": "배송문의"},
@@ -71,8 +67,6 @@
 	          {"value": "AIRTICKET", "text": "항공권"}
 	        ];
 	      }
-	      
-	      // categorycode select 태그에 option 태그를 추가합니다.
 	      var options = '';
 	      for (var i = 0; i < categoryOptions.length; i++) {
 	        options += '<option value="' + categoryOptions[i].value + '">' + categoryOptions[i].text + '</option>';
