@@ -14,10 +14,7 @@
 background-color: white;
 width: 780px;
 height: 800px;
-position: absolute;
-top:350px; 
-right: 259px;
-
+margin: 40px;
 
 }
 .tetete{

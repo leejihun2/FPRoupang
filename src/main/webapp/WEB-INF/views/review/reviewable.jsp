@@ -37,8 +37,10 @@
 }
 
 .my-review__writable__list {
-	padding: 20px 20px 20px 30px;
-	border-bottom: 1px solid #ddd
+	padding: 30px 30px 30px 30px;
+	margin: 5px;
+	border-bottom: 1px solid #ddd;
+	margin-left: 53px;
 }
 
 .my-review__writable__image-wrap {
@@ -133,9 +135,9 @@
 </style>
 </head>
 <body>
-	<%@include file="../myroupang/myroupang.jsp"%>
+	<%@include file="../myroupang/myroumenu.jsp"%>
 	<div class="roll">
-		<h1 class="qwer">리뷰관리</h1>
+		<h1 class="qwer">&nbsp;&nbsp;&nbsp;&nbsp;리뷰관리</h1>
 
 		<div class="div1">
 			<div class="div2" onclick="location.href='reviewable.do'">리뷰 작성</div>

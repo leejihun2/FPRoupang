@@ -27,7 +27,9 @@ hover:
 	blur: 20px;
 	
 }
-
+.gongback{
+	border: 13px solid white;
+}
 </style>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/myroupang.css">
@@ -49,7 +51,7 @@ hover:
 <%@include file="../top.jsp" %>
  
 <div class="mainconcon">
-    
+<div class="gongback"></div>
 <div class="mainconcon2">
 <div class="di1">
     <div class="di2">

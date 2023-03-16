@@ -7,15 +7,16 @@
 <html>
 <style>
 .my-review__wrote__list {
-	border-bottom: 1px solid #aaa;
-	padding-bottom: 30px
+	padding-bottom: 47px
 }
 
 .my-review__wrote__top-wrap {
 	display: table;
-	width: 96%;
-	padding: 10px 20px;
-	border-bottom: 1px solid #eee
+	width: 100%;
+	padding: 4px 5px;
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+	margin-left:67px;
 }
 
 .my-review__wrote__second-wrap {
@@ -24,7 +25,8 @@
 }
 
 .my-review__wrote__main-wrap {
-	padding-left: 20px
+	padding-left: 100px;
+	width: 702px;
 }
 
 .my-review__wrote__main-wrap .survey__answer_container {
@@ -270,9 +272,9 @@ function deleteRow(idx){
 </script>
 </head>
 <body style="background-color: #ffffff">
-	<%@include file="../myroupang/myroupang.jsp"%>
+	<%@include file="../myroupang/myroumenu.jsp"%>
 	<div class="roll">
-		<h1 class="qwer">리뷰관리</h1>
+		<h1 class="qwer">&nbsp;&nbsp;&nbsp;&nbsp;리뷰관리</h1>
 		<div class="div1">
 			<div class="div2" onclick="location.href='reviewable.do'">리뷰 작성</div>
 			<div class="div3" onclick="location.href='reviewList.do'">작성한 리뷰</div>
@@ -361,7 +363,7 @@ function deleteRow(idx){
 										<span>${row.summary }</span>
 									</div>
 									<div class="my-review__wrote__content">
-										<pre>${row.review } 안녕하세요 반가워요 하이룽 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</pre>
+										<pre>${row.review } 안녕하세요 반가워요 하이룽 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ안녕하세요 정말 좋은 제품이네요 홍홍홍</pre>
 									</div>
 								</div>
 							</li>
