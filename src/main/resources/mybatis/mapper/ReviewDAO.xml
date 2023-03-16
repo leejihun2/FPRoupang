@@ -77,8 +77,8 @@
  
  	<select id="order" resultType="com.edu.springboot.jdbc.GoodsOrderDTO">
  		select * from goods_order_item goi 
-  		join goods_order go 
-    	on go.idx=goi.order_idx
+	    join (select * from goods_order where member_idx=#{member_idx}) go 
+	    on go.idx=goi.order_idx;
  	</select>
  
 	<select id="reviewcount" resultType="int">

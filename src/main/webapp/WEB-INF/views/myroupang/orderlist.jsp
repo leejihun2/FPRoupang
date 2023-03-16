@@ -216,7 +216,7 @@ hover:
 
 
 </div>
-
+<%@include file="../copyright.jsp" %>
 </s:authorize>
 </body>
 </html>

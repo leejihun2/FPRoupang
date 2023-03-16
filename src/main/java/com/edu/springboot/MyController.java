@@ -2,6 +2,7 @@ package com.edu.springboot;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.springboot.jdbc.MyDTO;
 import com.edu.springboot.jdbc.MyService;
+import com.edu.springboot.jdbc.TicketInfoDTO;
+import com.edu.springboot.jdbc.TotalJourneyDTO;
 import com.edu.springboot.jdbc.WishDTO;
 
 
@@ -255,49 +258,43 @@ public class MyController {
 		
 	}
 	
-	
-//  //주소지 삭제
-//  @RequestMapping("/addelete.do")
-//  public String member4(MemberDTO memberDTO) {
-//  	
-//		//파라미터로 전달된 아이디에 해당하는 
-//		int result = msv.addelete(memberDTO);
-//		
-//		if(result==1) System.out.println("삭제되었습니다.");
-//		
-//		return "redirect:deliverylist.do";
-//  }
+
     
 /////////////////////////////찜 리스트 ////////////////////////////////
 
 
-	
-	//찜 매핑 and list 호출
-	@RequestMapping("/myroupang/wishlist.do")
-	public String wish(Model model) {
-		
-//		model.addAttribute("wishList", msv.wishlist());
-		
-		return "myroupang/wishlist";
-	}
-	
-	
-	//찜 추가
-	@RequestMapping("myroupang/wishadd.do")
-	public String wishlist() {
-		
-		return " myroupang/wishlist";
-	}
-	
-	
-	//찜 삭제
-	@RequestMapping("myroupang/")
-	public String wishdelete(WishDTO wishDTO) {
-		
-		return" myroupang/wishlist";
-	}
-	
-	
+//	
+//	//찜 매핑 and list 호출
+//	@RequestMapping("/myroupang/wishlist.do")
+//	public String wish(Model model, WishDTO wishDTO) {
+//		
+//		List<WishDTO> wishhList = msv.sewishlist();
+//		model.addAttribute("wishlist", wishhList);
+//		
+////		model.addAttribute("wishList", msv.wishlist());
+//		
+//		return "myroupang/wishlist";
+//	}
+//	
+//	
+//	//찜 추가
+//	@RequestMapping("myroupang/wishadd.do")
+//	public String wishlist() {
+//		
+//		return " myroupang/wishlist";
+//	}
+//	
+//	
+//	//찜 삭제
+//	@RequestMapping("myroupang/")
+//	public String wishdelete(WishDTO wishDTO) {
+//		
+//		String result = msv.wishdelete(wishDTO);
+//		
+//		if(result== null) System.out.println("삭제되었습니다.");
+//		
+//		return" myroupang/wishlist";
+//	}
 	
 //	//회원목록 : 회원가입폼 매핑
 //	@RequestMapping(value="/regist.do", method = RequestMethod.GET)
@@ -317,6 +314,49 @@ public class MyController {
 //	}
 //	
 	
+	
+	
+	//찜 매핑 and list 호출
+	@RequestMapping("/myroupang/wishlist.do")
+	public String wish(Model model, TicketInfoDTO ticketInfoDTO) {
+		
+		List<TicketInfoDTO> ticket = msv.tiList();
+		model.addAttribute("wishList", ticket);
+		
+//		model.addAttribute("wishList", msv.wishlist());
+		
+		return "myroupang/wishlist";
+	}
+	
+	
+//	//찜 추가
+//	@RequestMapping("myroupang/wishadd.do")
+//	public String wishlist() {
+//		
+//		return " myroupang/wishlist";
+//	}
+//	
+		
+		
+	@RequestMapping(value="/deletewish", method=RequestMethod.GET)
+	public String postdelete(String ti_idx) throws Exception {
+		 msv.deletewish(ti_idx);
+		 
+		 return "myroupang/wishlist";
+	 }
+	
+	
+	@RequestMapping(value="/deletewish")
+	public String ajaxTest(HttpServletRequest req) throws Exception {
+		
+		String[] ajaxMsg = req.getParameterValues("vaArr");
+		System.out.println(req.getParameterValues("vaArr"));
+		int size = ajaxMsg.length;
+		for(int i=0; i<size; i++) {
+			msv.deletewish(ajaxMsg[i]);
+		}
+		return "myroupang/wishlist";
+	}
 	
 	
 	
