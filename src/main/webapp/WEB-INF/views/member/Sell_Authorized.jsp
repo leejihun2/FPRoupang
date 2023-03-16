@@ -81,7 +81,7 @@ input{
                     <label for="one_rep_co_rep">대표구성
                 </td>
                 <td>
-                    <input type="radio" style="background-color: #e2e2e2;" name="one_rep_co_rep" value="1인대표">1인대표
+                    <input type="radio" style="background-color: #e2e2e2;" name="one_rep_co_rep" value="1인대표" checked>1인대표
                     <input type="radio" style="background-color: #e2e2e2;" name="one_rep_co_rep" value="공동대표">공동대표
                     <div id='result'></div>
                 </td>
@@ -140,7 +140,7 @@ input{
                    입점 담당자 명  
                 </td>
                 <td>
-                    <input type="text" style="background-color: #e2e2e2;" name="shop_manager_name" id="shop_manager_name" size="20px">
+                    <input type="text" style="background-color: #e2e2e2;" name="shop_manager_name" id="shop_manager_name" size="20px" placeholder="담당자명">
                 </td>
             </tr>
             <tr>
@@ -150,7 +150,7 @@ input{
                 <td>
                     <div>
 	                    <select id="whichBank" name="whichBank">
-	                        <option value="" ></option>
+	                        <option value="" >==분류==</option>
 	                        <option value="국민은행">국민은행</option>
 	                        <option value="신한은행">신한은행</option>
 	                        <option value="하나은행">하나은행</option>

@@ -37,6 +37,9 @@ hover:
       padding: 20px 20px 20px 30px;
       border-bottom: 1px solid #ddd;
   }
+ .gongback{
+ 	border: 13px solid white;
+ }
 </style>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/myroupang.css">
@@ -58,7 +61,7 @@ hover:
 <%@include file="../top.jsp" %>
  
 <div class="mainconcon">
-    
+<div class="gongback"></div>
 <div class="mainconcon2">
 <div class="di1">
     <div class="di2">
@@ -305,14 +308,6 @@ hover:
         </div>
     </li>
 </ul>
-<%-- 
-</c:when>
-
-	<c:otherwise>
-	<%@include file="../auth/login.jsp" %>
-	</c:otherwise>
-
-</c:choose>   --%>
  </s:authorize>
 </body>
 </html>

@@ -35,7 +35,7 @@ function deleteRow(idx){
 </script>
 </head>
 
-<body style="background-color: #ffffff">
+<body style="background-color: #ffffff; overflow-x: hidden; overflow-y: hidden;">
 	<div id="top">
 		<%@include file="../top.jsp"%>
 	</div>

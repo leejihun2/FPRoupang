@@ -16,9 +16,7 @@
 background-color: white;
 width: 780px;
 height: 500px;
-position: absolute;
-top:350px; 
-right: 259px;
+margin: 40px; 
 }
 
 /*  */
@@ -84,7 +82,7 @@ justify-content:center;
 </div>
 </div>
 
-<%@include file="../copyright.jsp" %>
+<%-- <%@include file="../copyright.jsp" %> --%>
  </s:authorize>
 </body>
 </html>
