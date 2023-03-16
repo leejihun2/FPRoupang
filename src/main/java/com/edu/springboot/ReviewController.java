@@ -52,20 +52,26 @@ public class ReviewController {
 		model.addAttribute("lists", lists);
 		return "review/reviewList";
 	}
+	@RequestMapping("/review/reviewable.do")
+	public String reviewable(Model model, HttpSession session,
+			HttpServletRequest req) {
+//		int member_idx = Integer.parseInt(req.getParameter("member_idx"));
+//		ArrayList<GoodsOrderDTO> order = 
+//				daoo.order(member_idx);
+//		model.addAttribute("order", order);
+		return "review/reviewable";
+	}
 	
 	@RequestMapping("/review/review.do")
 	public String reviewWrite(Model model, HttpSession session,
 			HttpServletRequest req) {
 		
-		ArrayList<GoodsOrderDTO> order = 
-				daoo.order();
-		model.addAttribute("order", order);
 		return "review/review";
 	}
 	
 	// 글쓰기 처리
 	@RequestMapping(value = "/review/reviewAction.do", method = RequestMethod.POST)
-	public String writeAction(ReviewDTO reviewDTO, Model model, HttpServletRequest req, HttpSession session, Principal principal) {
+	public String reviewWriteAction(ReviewDTO reviewDTO, Model model, HttpServletRequest req, HttpSession session, Principal principal) {
 
 		int applyRow = daoo.reviewWrite(reviewDTO);
 		System.out.println("입력된행의갯수:" + applyRow);

@@ -48,7 +48,7 @@ function deleteRow(idx){
 <h1 class="qwer">리뷰수정</h1>
 
 		<div class="div1">
-			<div class="div2" onclick="location.href='review.do'">리뷰 작성</div>
+			<div class="div2" onclick="location.href='reviewable.do'">리뷰 작성</div>
 			<div class="div3" onclick="location.href='reviewList.do'">작성한
 				리뷰</div>
 		</div>

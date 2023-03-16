@@ -33,7 +33,10 @@ hover:
 	blur: 20px;
 	
 }
-
+.my-review__writable__list {
+      padding: 20px 20px 20px 30px;
+      border-bottom: 1px solid #ddd;
+  }
 </style>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/myroupang.css">
@@ -147,7 +150,7 @@ hover:
                 </a>
             </li>
             <li id="product-review" >
-                <a href="../review/review.do" title="" target="_self" class="oo">
+                <a href="../review/reviewable.do" title="" target="_self" class="oo">
                     리뷰관리
                 </a>
             </li>
