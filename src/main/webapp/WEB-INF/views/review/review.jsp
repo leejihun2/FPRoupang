@@ -65,12 +65,10 @@
 <style>
 </style>
 </head>
-<body>
+<body style="overflow-x: hidden; overflow-y: hidden;">>
 	<%@include file="../myroupang/myroupang.jsp"%>
 	<div class="roll">
 		<h1 class="qwer">리뷰관리</h1>
-
-
 		<div class="container">
 			<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->
 			<form name="writeFrm" method="post"
