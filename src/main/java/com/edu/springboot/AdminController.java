@@ -39,7 +39,7 @@ public class AdminController {
 	IMainImageService image_dao;
 
 	@RequestMapping("/admin/index.do")
-	public String admin(Principal principal, HttpSession session) {
+	public String admin(Principal principal, HttpSession session, Model model) {
 
 		String loginId = principal.getName();
 		
@@ -50,6 +50,7 @@ public class AdminController {
 		if (Authority.equals("ROLE_seller")) {
 			return "redirect:/productInsert";
 		} else {
+			model.addAttribute("member_idx", dto.getMember_idx());
 			return "/admin/index";
 		}
 	}
@@ -102,7 +103,7 @@ public class AdminController {
 	public String saveFile(MultipartFile file, String prevName) {
 	    if (file == null || file.getSize() == 0) {
 	        return prevName;
-	    }
+	    } 
 	    
 	    UUID uid = UUID.randomUUID();
 	    String saveName = uid + "_" + file.getOriginalFilename();
@@ -128,7 +129,7 @@ public class AdminController {
 	        @RequestParam("image3") MultipartFile image3,
 	        @RequestParam("image4") MultipartFile image4,
 	        @RequestParam("image5") MultipartFile image5,
-	        @RequestParam("image6") MultipartFile image6) {
+	        @RequestParam("image6") MultipartFile image6) { 
 
 	    int idx = Integer.parseInt(req.getParameter("idx"));
 

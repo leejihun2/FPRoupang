@@ -24,7 +24,7 @@
 		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#room_idx").val());
 		wsEvt();
 	}
-		
+	
 	function wsEvt() {
 		ws.onopen = function(data){
 			//소켓이 열리면 동작
@@ -95,7 +95,10 @@
 		<input type="hidden" id="sessionId" value="${user_id }">
 		<input type="hidden" id="room_idx" value="${room_idx}">
 		<div id="chating" class="chating">
-			<div style="justify-content: center; display: flex;"></div><br />
+			<div style="justify-content: center; display: flex;">
+				${start}
+			</div>
+			<br />
 		<c:forEach items="${selectchat}" var="row">
 				<!-- idx부분을 조인을 통해 이름값을 가져오게 수정 -->
 				<%-- <span style="color: white;">${row.member_idx}:</span> --%>
@@ -112,7 +115,7 @@
 				<div class='b'  style='padding:6px 8px 0px 5px;'>${row.chatting }</div></div>
 				</c:if>
 		</c:forEach>
-			</div>
+		</div>
 		<div id="yourName">
 		
 			<table class="inputTable">

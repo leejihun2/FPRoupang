@@ -111,16 +111,17 @@ public class ChatController {
 		int room_idx = Integer.parseInt((String) params.get("room_idx"));
 		String name =(String)session.getAttribute("siteUserInfo");
 		String username = dao.name(name);
+		
+		
 		model.addAttribute("username",username);
 		List<Room> new_list = roomList.stream().filter(o->o.getRoom_idx()==room_idx).collect(Collectors.toList());
-		System.out.printf("new : " + new_list);
-		System.out.println("room :" +room_idx);
+		String start = "채팅이 시작되었습니다.";
 		
 		if(new_list != null && new_list.size() > 0) {
 			mv.addObject("roomName", params.get("roomName"));
 			mv.addObject("room_idx", params.get("room_idx"));
 			mv.setViewName("chat/chat");
-			System.out.println("새채팅창");
+			model.addAttribute("start",start);
 		}
 		else {
 			ArrayList<Room> selectchat = cdao.getChating(room);
@@ -129,7 +130,6 @@ public class ChatController {
 				dto.setChatting(temp);
 			}
 			model.addAttribute("selectchat",selectchat);
-			System.out.println("이전 채팅방"+selectchat);
 			mv.setViewName("chat/chat");
 		}
 		return mv;
