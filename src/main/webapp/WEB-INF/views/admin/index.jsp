@@ -172,7 +172,7 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                	<img class="li-img-min" src="../images/countGood.jpg" alt="">
+                                	<img class="li-img-min" src="../images/search_Word.png" alt="">
                                 </div>
                             </div>
                         </div>

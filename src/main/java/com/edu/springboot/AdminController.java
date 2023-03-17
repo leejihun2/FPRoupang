@@ -1,14 +1,21 @@
 package com.edu.springboot;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
@@ -18,16 +25,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-import com.edu.springboot.jdbc.SupportsDTO;
+
 import com.edu.springboot.jdbc.IMainImageService;
 import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.ISupportsService;
 import com.edu.springboot.jdbc.MainImageDTO;
 import com.edu.springboot.jdbc.SellRightDTO;
+import com.edu.springboot.jdbc.SupportsDTO;
 
 @Controller
 public class AdminController {
 
+	 @Autowired
+    private JdbcTemplate jdbcTemplate;
+	
 	@Autowired
 	ISupportsService daoo;
 
@@ -39,13 +50,37 @@ public class AdminController {
 
 	@RequestMapping("/admin/index.do")
 	public String admin(Principal principal, HttpSession session) {
-
+		
+		String query = "SELECT SEARCH_WORD, MEMBER_IDX, USER_BIRTH, to_char(SEARCH_REGIDATE,'HH24') AS SearchRegidate FROM search_log";
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(query);
+        // 나이승 나이승 나이승
+        try (PrintWriter writer = new PrintWriter(new FileWriter("C:\\Users\\82104\\search_log11.txt"))) {
+            rows.stream().map(row -> {
+                // 컬럼 이름을 바꿔줍니다.
+                Map<String, Object> newRow = new HashMap<>();
+                newRow.put("SearchWord", row.get("SEARCH_WORD"));
+                newRow.put("MemberIndex", row.get("MEMBER_IDX"));
+				newRow.put("UserBirth", row.get("USER_BIRTH"));
+				newRow.put("SearchRegidate", row.get("SearchRegidate")+"시");
+                
+                return newRow;
+            }).forEach(row -> {
+                for (Map.Entry<String, Object> entry : row.entrySet()) {
+                    writer.println(entry.getKey() + ": " + (entry.getValue() != null ? entry.getValue().toString() : "null"));
+                }
+                writer.println();
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
 		String loginId = principal.getName();
-
+		
 		SellRightDTO dto = member_dao.LoginUser(loginId);
-
+		
 		String Authority = dto.getAuthority();
-
+		
+		
 		if (Authority.equals("ROLE_seller")) {
 			return "redirect:/productInsert";
 		} else {
@@ -99,9 +134,9 @@ public class AdminController {
 	}
 	
 	public String saveFile(MultipartFile file, String prevName) {
-	    if (file == null || file.getSize() == 0) {
-	        return prevName;
-	    }
+//	    if (file == null || file.getSize() == 0) {
+//	        return prevName;
+//	    }
 	    
 	    UUID uid = UUID.randomUUID();
 	    String saveName = uid + "_" + file.getOriginalFilename();
