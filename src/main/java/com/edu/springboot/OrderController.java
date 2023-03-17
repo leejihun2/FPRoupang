@@ -39,21 +39,28 @@ public class OrderController {
 		String Authority = srdto.getAuthority();
 		int member_idx = srdto.getMember_idx();
 		
-		if(Authority.equals("ROLE_seller"))
-		{
-			ArrayList<TempgoodsOrderDTO>sellerOrderlists = order_dao.SellerSelectGoodsOrder(member_idx);
-			model.addAttribute("lists",sellerOrderlists);
-			System.out.println(model.getAttribute("lists"));
-		}
-		else {
-			ArrayList<TempgoodsOrderDTO>sellerOrderlists = order_dao.AdminSelectGoodsOrder(member_idx);
-			model.addAttribute("lists",sellerOrderlists);
-			System.out.println(model.getAttribute("lists"));
-		}
+		ArrayList<TempgoodsOrderDTO>sellerOrderlists = order_dao.SellerSelectGoodsOrder(member_idx);
+		model.addAttribute("lists",sellerOrderlists);
+
 		return "/admin/orderList";
 	}
 	
-	
+	@RequestMapping(value = "/orderAdminView.do", method = RequestMethod.GET)
+	public String orderAdminView(Principal principal, Model model) {
+		
+
+		List<String>orderAdminView = new ArrayList<String>();
+		
+		String loginId = principal.getName();
+		SellRightDTO srdto  = member_dao.LoginUser(loginId);
+		String Authority = srdto.getAuthority();
+		int member_idx = srdto.getMember_idx();
+		
+		ArrayList<TempgoodsOrderDTO>adminViewlists= order_dao.AdminSelectGoodsOrder(member_idx);
+		model.addAttribute("lists",adminViewlists);
+
+		return "/admin/orderList";
+	}
 	@RequestMapping("/orderRelease.do")
 	public String orderRelease(HttpServletRequest req, TempgoodsOrderDTO todto) {
 		

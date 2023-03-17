@@ -39,7 +39,7 @@ public class AdminController {
 	IMainImageService image_dao;
 
 	@RequestMapping("/admin/index.do")
-	public String admin(Principal principal, HttpSession session) {
+	public String admin(Principal principal, HttpSession session, Model model) {
 
 		String loginId = principal.getName();
 		
@@ -50,6 +50,7 @@ public class AdminController {
 		if (Authority.equals("ROLE_seller")) {
 			return "redirect:/productInsert";
 		} else {
+			model.addAttribute("member_idx", dto.getMember_idx());
 			return "/admin/index";
 		}
 	}

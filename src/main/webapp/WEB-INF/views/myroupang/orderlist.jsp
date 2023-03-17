@@ -10,6 +10,21 @@
 </head>
 <link rel="stylesheet" href="../css/common.css" type="text/css">
 <style>
+td, th {
+	text-align: center;
+	/* center checkbox horizontally */
+	vertical-align: middle;
+	/* center checkbox vertically */
+}
+
+.banner-image{
+	width: 100px;
+    height: 50px;
+}
+button{
+	margin-right: 10px;
+	float: right;
+}
 .roll{
 background-color: white;
 width: 780px;
@@ -134,7 +149,34 @@ hover:
 </style>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/myroupang.css">
+<script>
+$(function(){
+	$("#release").click(function(){
+		console.log(this.value);
+		var release_val=this.value;
+	
+		if(confirm("해당 주문을 출고하시겠습니까?")){
+				location.href="/orderRelease.do?value="+release_val;
+			
+		}
+     
 
+	});
+	$("#completed").click(function(){
+		console.log(this.value);
+		var completed_val=this.value;
+		
+		if(confirm("해당 주문을 배송완료 처리하시겠습니까?")){
+				location.href="/ordercompleted.do?value="+completed_val;	
+		}
+     
+
+	});
+});  
+
+
+
+</script>
 
 <body>
 <s:authorize access="isAnonymous()">
@@ -170,7 +212,93 @@ hover:
 			</div>
 		</div>
 	</div>
+	
+				<div class="container-fluid">
+					
+				
 
+                    <!-- DataTales Example -->
+                   
+                            <div class="table-responsive">
+                            	<form id="block" method="post">
+	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+	                                    <thead>
+	                                        <tr>
+	                                            <th>주문번호</th>
+	                                            <s:authorize access="hasRole('admin')">
+	                                            <th>판매자</th>
+	                                            <th>구매자</th>
+	                                            </s:authorize>
+	                                            <th>상품이미지</th>	                                            
+	                                            <th>상품</th>
+	                                            <th>주문날짜</th>
+	                                            <th>배송여부</th>
+	                                            <s:authorize access="hasRole('seller')">
+	                                            <th>상세보기</th>
+	                                            <th>전체선택</th>
+	                                            </s:authorize>
+	                                        </tr>
+	                                    </thead>
+	                                     <tbody id="list">
+	                                		<c:forEach items="${lists }" var="row"  begin="0" end="30" varStatus="loop">
+		                                            	
+		                                        <tr>
+		                                            <td>${row.order_num }
+		                                            <input type="hidden" name="status" value="${row.order_item_idx }"/>
+		                                            </td>
+		                                            <s:authorize access="hasRole('admin')">
+		                                           	<td>${row.company_name }</td>
+		                                           	<td>${row.buyer_name }</td>
+		                                           	</s:authorize>
+		                                            <td><a><img src="/uploads/${row.goods_image }" class="banner-image"/></a></td>
+													<td>${row.top_title }</td>
+													<td>${row.order_date }</td>
+													<td id="st">
+													<input type="hidden" name="status" value="${row.order_status }"/>
+													<c:if test="${row.order_status eq '0'}">
+													미출발
+													</c:if>
+													<c:if test="${row.order_status eq '1'}">
+													배송중
+													</c:if>
+													<c:if test="${row.order_status eq '2'}">
+													배송완료
+													</c:if>
+													</td>
+													<s:authorize access="hasRole('seller')">
+													<td><a href="orderView.do?order_item_idx=${row.order_item_idx }">상세보기</a>
+													</td>
+													<td>
+													<div class="button">	
+					                                	<c:if test="${row.order_status eq '0'}">
+															<button class="btn btn-outline-secondary" id="release" name="public1" value="${row.idx }" type="button">출고</button>
+														</c:if>                  		
+															<c:if test="${row.order_status eq '1'}">
+														<button class="btn btn-outline-secondary" id="completed" name="public1" value="${row.idx }" type="button">배송완료</button>
+														</c:if>
+														<c:if test="${row.order_status eq '2'}">
+																	완료
+														</c:if>
+													</div> 
+													</td>
+													</s:authorize>
+		                                        </tr>
+                                    		</c:forEach>
+                                         </tbody>
+	                                </table>	      
+	                               
+	                                
+	                               
+												
+                                </form>	        
+                               <a href="/admin/index.do">관리 홈으로가기</a>                       
+
+                            </div>
+                        
+		
+				</div>
+				<!-- /.container-fluid -->
+			</div>
 
 
 	<div class="conten99">

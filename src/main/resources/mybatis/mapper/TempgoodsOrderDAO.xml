@@ -26,7 +26,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             	(select idx from goods_order_item where order_idx = goods_order.idx) as order_item_idx
 			from goods_order
 				where seller_idx=#{member_idx}
-	
 	</select>
 	
 	<select id="AdminSelectGoodsOrder" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO" 
