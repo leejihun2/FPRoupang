@@ -16,4 +16,59 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES (order_item_seq.nextval, order_seq.currval, #{bot_idx}, #{price}, #{amount}, #{discount}
 		,#{goods_idx}, #{goods_image})
 	</insert>
+
+
+	<select id="SellerSelectGoodsOrder" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO" 
+	resultType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
+		select idx, buyer_idx, seller_idx, order_num, order_date, depart_date, arrive_date, order_status, 
+        (select title from bot_category where idx=goods_order.idx) as top_title,
+            (select goods_image from goods_order_item where order_idx = goods_order.idx) as goods_image,
+            	(select idx from goods_order_item where order_idx = goods_order.idx) as order_item_idx
+			from goods_order
+				where seller_idx=#{member_idx}
+	
+	</select>
+	
+	<select id="AdminSelectGoodsOrder" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO" 
+	resultType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
+		select idx, buyer_idx, seller_idx, order_num, order_date, depart_date, arrive_date, order_status, 
+        (select title from bot_category where idx=goods_order.idx) as top_title,
+            (select goods_image from goods_order_item where order_idx = goods_order.idx) as goods_image,
+            	(select idx from goods_order_item where order_idx = goods_order.idx) as order_item_idx,
+            		(select company_name from sell_authorized where member_idx=seller_idx)as company_name,
+            			(select name from member where member_idx=buyer_idx)as buyer_name
+				from goods_order
+	
+	</select>
+	
+	<update id="orderRealease" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
+		update goods_order set order_status ='1'
+			where idx in
+			<foreach item="idx" open="(" close=")" collection="list" separator=",">   
+	          #{idx}
+	       </foreach>
+	</update>
+	
+	<update id="ordercompleted" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
+		update goods_order set order_status ='2'
+			where idx in
+			<foreach item="idx" open="(" close=")" collection="list" separator=",">   
+	          #{idx}
+	       </foreach>
+	</update>
+	
+	<select id="orderView" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO" 
+	resultType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
+		select goods_image, price, amount, top_title, order_idx,
+			(select zipcode1 from member where member_idx=
+				(select buyer_idx from goods_order where idx=goods_order_item.order_idx)) as zipcode1,
+					(select address1 from member where member_idx=
+						(select buyer_idx from goods_order where idx=goods_order_item.order_idx)) as address1,
+					 		(select order_status from goods_order where idx = goods_order_item.order_idx) as order_status,
+					 			(select name from member where member_idx=
+		                            (select idx from goods_order where idx=goods_order_item.order_idx))as buyer_name
+		                            	
+				from goods_order_item
+					where idx=#{order_item_idx}
+	</select>
  </mapper>

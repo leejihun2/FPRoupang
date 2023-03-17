@@ -37,6 +37,190 @@ td, th {
 	vertical-align: middle;
 	/* center checkbox vertically */
 }
+<<<<<<< HEAD
+.banner-image{
+	width: 100px;
+    height: 50px;
+}
+button{
+	margin-right: 10px;
+	float: right;
+}
+</style>
+<script>
+$(function(){
+	$("#release").click(function(){
+		console.log(this.value);
+		var release_val=this.value;
+	
+		if(confirm("해당 주문을 출고하시겠습니까?")){
+				location.href="/orderRelease.do?value="+release_val;
+			
+		}
+     
+
+	});
+	$("#completed").click(function(){
+		console.log(this.value);
+		var completed_val=this.value;
+		
+		if(confirm("해당 주문을 배송완료 처리하시겠습니까?")){
+				location.href="/ordercompleted.do?value="+completed_val;	
+		}
+     
+
+	});
+});  
+
+/* $(function(){
+	$("#release").click(function(){
+		var release_val=[];
+		console
+		$("[name=public1]").each(function(idx){
+			if($(this).is(":checked")==true){
+				release_val.push($(this).val());
+				
+			}
+		});
+		if(confirm("선택한 주문을 배송하시겠습니까?")){
+			console.log(release_val);
+				location.href="/orderRelease.do?value="+release_val;			
+		}
+			
+	});
+});
+
+$(function(){
+	$("#completed").click(function(){
+		var completed_val=[];
+		
+	    
+		$("[name=public1]").each(function(idx){
+			if($(this).is(":checked")==true){
+				completed_val.push($(this).val());
+				console.log(rows);
+			}
+		});
+		
+		
+			if(confirm("선택한 주문을 배송완료 처리하시겠습니까?")){
+				console.log(completed_val);
+					location.href="/ordercompleted.do?value="+completed_val;			
+			}
+	});
+});
+ */
+
+</script>
+</head>
+<body id="page-top">
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<%@include file="../admin/sidebar.jsp"%>
+		<!-- End of Sidebar -->
+
+		<!-- Content Wrapper -->
+
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<%@include file="../admin/topbar.jsp"%>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				
+				<div class="container-fluid">
+					
+					    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">판매목록</h1>
+                    
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Tables </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            	<form id="block" method="post">
+	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+	                                    <thead>
+	                                        <tr>
+	                                            <th>주문번호</th>
+	                                            <s:authorize access="hasRole('admin')">
+	                                            <th>판매자</th>
+	                                            <th>구매자</th>
+	                                            </s:authorize>
+	                                            <th>상품이미지</th>	                                            
+	                                            <th>상품</th>
+	                                            <th>주문날짜</th>
+	                                            <th>배송여부</th>
+	                                            <s:authorize access="hasRole('seller')">
+	                                            <th>상세보기</th>
+	                                            <th>전체선택</th>
+	                                            </s:authorize>
+	                                        </tr>
+	                                    </thead>
+	                                     <tbody id="list">
+	                                		<c:forEach items="${lists }" var="row"  begin="0" end="30" varStatus="loop">
+		                                            	
+		                                        <tr>
+		                                            <td>${row.order_num }
+		                                            <input type="hidden" name="status" value="${row.order_item_idx }"/>
+		                                            </td>
+		                                            <s:authorize access="hasRole('admin')">
+		                                           	<td>${row.company_name }</td>
+		                                           	<td>${row.buyer_name }</td>
+		                                           	</s:authorize>
+		                                            <td><a><img src="/uploads/${row.goods_image }" class="banner-image"/></a></td>
+													<td>${row.top_title }</td>
+													<td>${row.order_date }</td>
+													<td id="st">
+													<input type="hidden" name="status" value="${row.order_status }"/>
+													<c:if test="${row.order_status eq '0'}">
+													미출발
+													</c:if>
+													<c:if test="${row.order_status eq '1'}">
+													배송중
+													</c:if>
+													<c:if test="${row.order_status eq '2'}">
+													배송완료
+													</c:if>
+													</td>
+													<s:authorize access="hasRole('seller')">
+													<td><a href="orderView.do?order_item_idx=${row.order_item_idx }">상세보기</a>
+													</td>
+													<td>
+													<div class="button">	
+					                                	<c:if test="${row.order_status eq '0'}">
+															<button class="btn btn-outline-secondary" id="release" name="public1" value="${row.idx }" type="button">출고</button>
+														</c:if>                  		
+															<c:if test="${row.order_status eq '1'}">
+														<button class="btn btn-outline-secondary" id="completed" name="public1" value="${row.idx }" type="button">배송완료</button>
+														</c:if>
+														<c:if test="${row.order_status eq '2'}">
+																	완료
+														</c:if>
+													</div> 
+													</td>
+													</s:authorize>
+		                                        </tr>
+                                    		</c:forEach>
+                                         </tbody>
+	                                </table>	      
+	                               
+	                                
+	                               
+												
+                                </form>	        
+                               <a href="/admin/index.do">관리 홈으로가기</a>                       
+=======
 
 
 </style>
@@ -63,7 +247,67 @@ td, th {
 
 				<!-- Begin Page Content -->
 				
+<<<<<<< HEAD
 				<%@include file="orderListIclued.jsp" %>
+=======
+				<div class="container-fluid">
+					
+					    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">판매목록</h1>
+                    ${member_idx }
+                    ${company_name }
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Tables </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            	<form id="block" method="post">
+	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+	                                    <thead>
+	                                        <tr>
+	                                            <th>주문번호</th>
+	                                            <th>상품</th>
+	                                            <th>주문날짜</th>
+	                                            <th>도착일</th>
+	                                            <th>배송여부</th>
+	                                            
+	                                        </tr>
+	                                    </thead>
+	                                     <tbody>
+	                                     	<c:forEach items="${lists }" var="row" varStatus="loop">
+		                                        <tr>
+		                                            <td>${row.idx }</td>
+													<td>${row.name }</td>
+													<td>${row.company_name }</td>
+													<td>${row.regidate }</td>
+													<td><a href="appView.do?member_idx=${row.member_idx }">상세보기</a>
+													</td>
+													<td><input style='zoom: 1.5;' class="checkbox_group1" name="public1"
+														type="checkbox" value="${row.member_idx }"
+														id="flexCheckDefault"></td>
+													
+		                                        </tr>
+	                                        </c:forEach>
+                                         </tbody>
+	                                </table>	      
+	                                <div class="button">	                                  		
+										<button class="btn btn-outline-secondary" id="approveSell" type="button">승인하기</button>
+											<div class="space"></div>	
+										<button class="btn btn-outline-secondary" id="blockSell" type="button">차단하기</button>
+									</div>				
+												
+                                </form>	        
+                               <a href="/admin/index.do">판매자 홈으로가기</a>                       
+>>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
+                            </div>
+                        </div>
+                    </div>
+		
+				</div>
+>>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
 				<!-- /.container-fluid -->
 			</div>
 			<!-- End of Main Content -->
