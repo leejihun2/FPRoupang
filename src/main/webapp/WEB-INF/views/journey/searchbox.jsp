@@ -5,6 +5,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script src="./js/journeyTop.js"></script>
+<script type="text/javascript">
+	onload = function(){
+		sysdateLoad();
+	};
+</script>
 <section id="contents" style="width: 1910px;" class="contents">
         <div id="travel-container">
             <div class="travel-home-gateway">
@@ -72,7 +78,7 @@
                                      	</div>
 											<div class="personnel-selector-layer" style="display: none;">
 												<div class="personnel-selector-pane"
-													style="width: 300px; top: 98px; left: 1260px;">
+													style="width: 300px; top: 98px; left: 1260px; z-index: 33;">
 													<div class="personnel-selector-pane__spinner-wrap">
 														<label>성인</label>
 														<div class="travel-spinner"
@@ -131,8 +137,8 @@
 									<li class="wizard-dates" style="display: none;" id="dynamicCal" >
 	                                    <div class="date-picker-layer" style="top: 57px;">
 											<div class="date-picker-text"></div>
-											
 										</div>
+										
 									</li>
                                 </ul>
                             </div>

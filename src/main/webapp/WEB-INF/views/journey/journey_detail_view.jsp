@@ -5,11 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- daterangepicker cdn -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<!-- map apikey -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e6076fe794faf6e2a97f29c6ebfadce5&libraries=services"></script>
 <meta charset="UTF-8">
 <title>Roupang</title>
@@ -25,420 +31,70 @@
     <link rel="stylesheet" href="./css/main.css" type="text/css">
     <link rel="stylesheet" href="../css/star_rating.css" type="text/css">
 	<link rel="stylesheet" href="../css/star_total.css" type="text/css">
+	<link rel="stylesheet" href="./journeycss/travel.css" type="text/css" />
+	<link rel="stylesheet" href="./journeycss/bundle3.css" type="text/css" />
+	<!-- <link rel="stylesheet" href="./journeycss/bundle2.css" type="text/css" /> -->
+	<link rel="stylesheet" href="./journeycss/viewdetail.css" type="text/css" />
 	<script src="../js/star.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-</head>
-<style>
-	*{
-	    margin: 0;
-	    padding: 0;
-	}
-	
-	html {
-	  scroll-behavior: smooth;
-	}
-	h4 {
-	    display: block;
-	    margin-block-start: 1.33em;
-	    margin-block-end: 1.33em;
-	    margin-inline-start: 0px;
-	    margin-inline-end: 0px;
-	    font-weight: bold;
-	}
-	.cash-text {
-	    display: inline-block;
-	    vertical-align: top;
-	    color: #333;
-	    font-size: 12px;
-	    font-weight: 400;
-	    letter-spacing: normal;
-	    line-height: 19px;
-	}
-	.cashback-area{
-		margin-top: 10px;
-	}
-	.carousel-image {
-	    width: 100%;
-	    background-position: 50% 50%;
-	    background-repeat: no-repeat;
-	    background-size: contain;
-	    margin-top: -1px;
-	}
-	.search-item-cash-back {
-	    position: relative;
-	    display: inline-block;
-	    -webkit-box-sizing: border-box;
-	    box-sizing: border-box;
-	    height: 20px;
-	    padding: 0 8px 0 8px;
-	    border-radius: 10px;
-	    border: 1px solid #ccc;
-	    background-color: #fff;
-	    font-size: 12px;
-	    line-height: 20px;
-	    color: #333;
-	}
-	.travel-detail-content {
-	    float: left;
-	    margin-left:50px;
-	    width: 685px;
-	}
-	.travel-thumbnail .thumbnails-wrap {
-	    position: relative;
-	    float: left;
-	    overflow: hidden;
-	    height: 70px;
-	    margin-right: 3px;
-	}
-	.travel-detail-basis {
-	    float: left;
-	    width: 270px;
-	    border: 1px solid #ddd;
-	    color: #333;
-	    border-top: 1px solid #ddd;
-	    margin-left:20px;
-	}
-	.thumbnail-img {
-	    width: 50px;
-	    height: 50px;
-	}
-	.travel-thumbnail:after .thumbnails:after, .travel-thumbnail:after .travel-scroll-tab-header:after .travel-scroll-tab-header-wrapper:after {
-	    content: "";
-	    display: block;
-	    clear: both;
-	}
-	.travel-scroll-tab-header-wrapper{
-		display:flex;
-		background-color:white;
-		z-index:0;
-	}
-	.travel-scroll-tab-headers li {
-		cursor: pointer;
-	}
-	.thumbnails li {
-		cursor: pointer;
-	}	
-	.thumbnail-img:hover {
-		outline: 2px solid green;
-	}	
-	.basis-cashback-list{
-	    padding-inline-start: 40px;
-	}
-	.travel-scroll-tab-headers li {
-	    font-size: 18px;
-	    height: 48px;
-	    line-height: 48px;
-	    padding: 0 40px;
-	    display: block;
-	    color: #111;
-	    text-align: center;
-	}
-	.travel-scroll-tab-headers.lg li.selected , .travel-scroll-tab-headers.lg li:hover {
-	    font-weight: 700;
-	    color: #00a289;
-		border-bottom: 3px solid #00a289;
-	}
-	.travel-scroll-tab-headers{
-		clear:both;
-	}
-	th{
-		height: 56px;
-	    padding: 13px 13px;
-	    background-color: #fafafa;
-	    border-top: 1px solid #ddd;
-	}
-	table th:not(:first-child){
-		border-left: 1px solid #ddd;
-	}
-	.ticket-detail-vendor-items-result td{
-		height: 56px;
-	    padding: 13px 10px;
-	    border-bottom: 1px solid #ddd;
-	    border-top: 1px solid #ddd;
-	}
-	
-	td{
-		height: 56px;
-	    padding: 13px 10px;
-	}
-	.ticket-detail-vendor-items-result td:nth-child(2n+1){
-	    letter-spacing: -1px;
-	    line-height: 23px;
-        font-size: 14px;
-    	font-weight: 400;
-	}
-	tr:not(:last-child) td:nth-child(2n){
-	    border-bottom: 1px solid #ddd;
-	}
-	.ticket-detail-vendor-items-result td:not(:first-child){
-		border-left: 1px solid #ddd;
-	}
-	.price_title{
-		font-size: 13px;
-	    padding-right: 0;
-	}
-	.price{
-		font-size: 18px;
-		font-style: normal;
-	}
-	.duetime{
-	    font-size: 13px;
-	    font-weight: 600;
-	    letter-spacing: -1px;
-	    color: #999;
-	    margin-bottom: 6px;
-	}
-	.item-title>label {
-	    font-size: 15px;
-	    font-weight: 700;
-	    color: #333;
-	    letter-spacing: -.9px;
-	    margin-left:30px;
-	}
-	.item-content{
-	    padding: 30px 0;
-	    font-size: 14px;
-	    letter-spacing: -.7px;
-	}
-	p {
-	    display: block;
-	    margin-block-start: 1em;
-	    margin-block-end: 1em;
-	    margin-inline-start: 0px;
-	    margin-inline-end: 0px;
-	}
-	.cashback-title{
-		display: inline-block;
-    	height: 24px;
-	}
-	.basis-cashback-list {
-	    margin-top: 6px;
-	    margin-left: -10px;
-	}
-	.cashback-text {
-	    display: block;
-	    color: #555;
-	    letter-spacing: -1px;
-	}
-	.basis-cashback-list li {
-	    font-size: 13px;
-	    line-height: 18px;
-	    margin-top: 5px;
-	}
-	.ticket-basis-product{
-	    padding: 30px 20px;
-    	color: #333;
-	}
-	.basis-aside-cashback{
-	    padding: 20px;
-    	border-top: 1px solid #ddd;
-	}
-	
-	.basis-aside-section {
-	    padding: 30px 20px;
-	    border-top: 1px solid #ddd;
-	}
-	.basis-cashback-button {
-	    margin-top: 8px;
-	    margin-left: 30px;
-	}
-	.basis-cashback-button-text {
-	    margin-top: 8px;
-	    margin-bottom: 8px;
-	    font-size: 14px;
-	    font-weight: 700;
-	    color: #111;
-	}
-	.key-info-title {
-	    float: left;
-	    display: block;
-	    width: 65px;
-	    top: 0;
-	    color: #999;
-	}
-	.key-info-description {
-	    float: left;
-	    display: block;
-	    width: calc(100% - 65px);
-	    padding-left: 8px;
-	    color: #111;
-	}
-	.basis-key-infos{
-		padding-inline-start: 0px; 
-		font-size: 14px;
-	}
-	.thumbnail-item{
-	    margin-right: 3px;
-	    margin-bottom: 3px;
-	}
-	.sticky{
-		position: sticky;
-		top: 0;
-	}
-	.fixed{
-		position: fixed;
-		top:0;
-		z-index:1000;
-	    border-bottom: 1px solid #ddd;
-	}
-	/* 바디에 스크롤 막는 방법 */
-	.not_scroll{
-	    position: fixed;
-	    overflow: hidden;
-	    width: 100%;
-	    height: 100%;
-	}
-	.Bookingbtn{
-		width: 100%;
-		background-color: #346aff;
-		color: white;
-		padding: 1px;
-		margin: 1px;
-	}
-	#Bookingselect{
-	 	width: 100%;
-	 	padding: 1px;
-	    margin: 1px;
-	}
-	.travel-icon.icon-adult {
-    	width: 11px;
-    	height: 18px;
-   		background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjExcHgiIGhlaWdodD0iMThweCIgdmlld0JveD0iMCAwIDExIDE4IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA0OC4yICg0NzMyNykgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+aWNvbl9zZWF0X2FkdWx0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlREUF9ob3RlbCZhbXA7cmVzb3J0IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjkxLjAwMDAwMCwgLTExMTMuMDAwMDAwKSI+CiAgICAgICAgPGcgaWQ9InJvb21zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3MC4wMDAwMDAsIDEwMzguMDAwMDAwKSIgc3Ryb2tlPSIjODg4ODg4Ij4KICAgICAgICAgICAgPGcgaWQ9InBheF9hZHVsdCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjIxLjAwMDAwMCwgNzAuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8ZyBpZD0iaWNvbl9zZWF0X2FkdWx0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNS4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMi4yNSwzLjU5OTk5OTkgQzIuMjUsNS4zMDkwNTc0OCAzLjY0MDk0MjMzLDYuNjk5OTk5ODEgNS4zNDk5OTk5LDYuNjk5OTk5ODEgQzcuMDU5MDU3NDgsNi42OTk5OTk4MSA4LjQ0OTk5OTgxLDUuMzA5MDU3NDggOC40NDk5OTk4MSwzLjU5OTk5OTkgQzguNDQ5OTk5ODEsMS44OTA5NDIzMyA3LjA1OTA1NzQ4LDAuNSA1LjM0OTk5OTksMC41IEMzLjY0MDk0MjMzLDAuNSAyLjI1LDEuODkwOTQyMzMgMi4yNSwzLjU5OTk5OTkgWiBNMTAuNSwxNy41IEwxMC41LDEwLjY5MjMzMDcgQzEwLjUsOC45MTUzNDQ4MiA4LjM5MTc0NjgzLDcuNSA1LjUsNy41IEMyLjYwODI1MzE3LDcuNSAwLjUsOC45MTUzNDQ4MiAwLjUsMTAuNjkyMzMwNyBMMC41LDE3LjUgTDEwLjUsMTcuNSBaIiBpZD0iQ29tYmluZWQtU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+) no-repeat;
-    	background-size: 11px 18px;
-	}
-	.travel-icon {
-	    display: inline-block;
-	    text-indent: -9999px;
-	}
-	/**********************************/
-	tr {
-	    display: table-row;
-	    vertical-align: inherit;
-	    border-color: inherit;
-	}
-	.lodging-room .room-item {
-    	width: 100%;
-	    border-collapse: collapse;
-	    border-spacing: 0;
-	    border-top: 1px solid #ccc;
-	    border-bottom: 1px solid #ddd;
-	}
-	.col-summary {
-    	width: 170px;
-	}
-	.col-guest {
-	    width: 85px;
-	}
-	.col-price {
-	    width: 133px;
-	}
-	.col-reservation {
-	    width: 119px;
-	}
-	.room-item th.room-header__item-name {
-	    padding-left: 15px;
-	    font-size: 18px;
-	    color: #111;
-	    letter-spacing: -1px;
-	}
-	.room-item th:first-child {
-	    border-left: none;
-	}
-	.room-item th {
-	    padding: 13px 0;
-	    background-color: #fafafa;
-	    border-left: 1px solid #ddd;
-	    border-bottom: 1px solid #ddd;
-	}
-	.room-item th.room-header__guest {
-	    font-size: 16px;
-	    font-weight: 400;
-	    color: #111;
-	    letter-spacing: -1px;
-	    text-align: center;
-	}
-	.room-item th.room-header__price {
-	    padding-right: 16px;
-	    font-size: 16px;
-	    font-weight: 400;
-	    color: #333;
-	    letter-spacing: -1px;
-	    text-align: right;
-	    width: 181px;
-	}
-	.room-item th.room-header__reservation {
-	    font-size: 16px;
-	    font-weight: 400;
-	    color: #333;
-	    letter-spacing: -1px;
-	    text-align: center;
-	}
-	.room-item tbody td:first-child {
-	    border-left: none;
-	}
-	.room-item tbody td {
-	    padding: 12px;
-	    color: #333;
-	    border-left: 1px solid #eee;
-	    vertical-align: top;
-	}
-	.room-summary .room-thumbnail {
-	    display: block;
-	    cursor: pointer;
-	}
-	.room-summary .room-thumbnail .thumbnail-img {
-	    width: 100%;
-	    height: 96px;
-	     vertical-align: top;
-	}
-	.room-summary .room-main-facilities li.facility .facility-item {
-	    position: relative;
-	    display: block;
-	    width: 100%;
-	}
-	.room-summary .room-thumbnail > a {
-	    display: block;
-	    background: #333;
-	    color: #fff;
-	    font-size: 12px;
-	    text-align: center;
-	    padding: 5px;
-	    text-decoration: underline;
-	    letter-spacing: -1px;
-	}
-	.rate-plan{
-		font-size: 12px;
-	}
-	.search-item-cash-back {
-	    position: relative;
-	    display: inline-block;
-	    -webkit-box-sizing: border-box;
-	    box-sizing: border-box;
-	    height: 20px;
-	    padding: 0 8px 0 24px;
-	    border-radius: 10px;
-	    border: 1px solid #ccc;
-	    background-color: #fff;
-	    font-size: 12px;
-	    line-height: 20px;
-	    color: #333;
-	}
-	.search-item-cash-back .list-cash-icon {
-	    position: absolute;
-	    top: 2px;
-	    left: 4px;
-	    width: 14px;
-	    height: 14px;
-	}
-	.travel-web-tdp-price.right {
-    text-align: right;
-	}
-	.travel-web-tdp-price {
-	    display: inline-block;
-	    min-width: 150px;
-	    width: 100%;
-	}
+	<script src="./js/journeyTop.js"></script>
+<style type="text/css">
+.travel-spinner button {
+    display: block;
+    position: relative;
+    float: left;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    border: 0
+}
+.travel-spinner button.spinner-minus .spinner-minus-icon,
+.travel-spinner button.spinner-plus .spinner-plus-icon {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    border-top-width: 2px;
+    border-top-style: solid
+}
+
+.travel-spinner button.spinner-plus .spinner-plus-icon>i {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    border-left-width: 2px;
+    border-left-style: solid
+}
+.travel-spinner .spinner-number {
+    float: left;
+    text-align: center;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-right-width: 1px;
+    border-right-style: solid;
+    letter-spacing: -.9px;
+}
+.spinner-minus {
+	width: 30px;
+    height: 30px;
+    background: rgb(255, 255, 255);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+.spinner-plus {
+	width: 30px;
+    height: 30px;
+    background: rgb(255, 255, 255);
+    border-top-rigth-radius: 16px;
+    border-bottom-rigth-radius: 16px;
+}
+.travel-spinner {
+    border-width: 1px;
+    border-style: solid
+}
+
 </style>
+</head>
 <script type="text/javascript">
 	$(function(){
 		$(".thumbnail-img").click(function(e){
@@ -446,6 +102,7 @@
 			$(".thumbnail-img").each(function(index, item){
 				item.style.outline="";
 			})
+			console.log("ss");
 			e.target.style.outline="2px solid green";
 		});
 
@@ -487,6 +144,115 @@
 		elem.removeClass("selected");
 	}
 </script>
+<script type="text/javascript">
+function exit(){
+	$(".personnel-selector-layer").css("display","none")
+}
+var countA=2;
+var countK=0;
+
+var countUp=function(){
+    countA=countA+1;
+    document.querySelector("#ji_adult1").innerText=countA;
+    document.querySelector("#ji_adult").innerText=countA;
+    document.querySelector("#adult").value=countA;
+};
+var countDown=function(){
+    if(countA>0){
+        countA=countA-1;        
+        document.querySelector("#ji_adult1").innerText=countA;
+        document.querySelector("#ji_adult").innerText=countA;
+        document.querySelector("#adult").value=countA;
+    }
+};
+var countUp2=function(){
+    countK=countK+1;
+    document.querySelector("#ji_kid1").innerText=countK;
+    document.querySelector("#ji_kid").innerText=countK;
+    document.querySelector("#kid").value=countK;
+};
+var countDown2=function(){
+    if(countK>0){
+        countK=countK-1;        
+        document.querySelector("#ji_kid1").innerText=countK;
+        document.querySelector("#ji_kid").innerText=countK;
+        document.querySelector("#kid").value=countK;
+    }
+};
+function detail_Serach(){
+	
+	$.ajax({
+	    type: 'GET',
+	    url: '/detailSearch', 
+	    data: {
+	        bot_idx: $('#bot_idx').val(),
+	        ji_adult: $('#adult').val(),
+	        ji_kid: $('#kid').val(),
+	        ji_duetime1: $('#start').val(),
+	        ji_duetime2: $('#end').val()
+	    },
+	    dataType: 'json',
+	    success: function(resp) {
+	    	if(resp.length === 0){
+	    		$("#room-item").empty();
+	    	}
+	    	else {
+	    		$("#room-item").empty();
+	    		var tabletd = ""
+		    		
+	    		$.each(resp, function(i){
+	    			tabletd += "<colgroup>"+
+	            	"<col class='col-summary' /><col /><col class='col-guest' />"+
+	            	"<thead><tr><th class='room-header__item-name roomheader' colspan='2'>" + resp[i].ji_title + "</th>"+
+	            	"<th class='room-header__guest roomheader'>인원</th><th class='room-header__price roomheader'>1박 기준 요금</th><th class='room-header__reservation roomheader'>구매</th></tr></thead>"+
+	            	"<tbody><tr data-rate-category-id='3245'><td rowspan='1'><div class='room-summary'><div class='room-thumbnail'><img src='/uploads/" + resp[i].ji_image1 + " 'style='width: 160px;'/>"+
+	            	"<a onclick='addModal("+resp[i].bot_idx+","+resp[i].ji_idx+")' data-toggle='modal' data-target='#myModal'>객실사진 및 정보 더보기&gt;</a></div>"+
+	            	"</div></div></td><td style='width:90px;'><ul class='room-rate-plans'><li class='room-rate-plan'><span class='rate-plan'>"+ resp[i].ji_intro+"</span></li></ul></td>";
+	    			tabletd += '<td><ul class="room-guest"><li><span class="travel-icon-text room-guest-text" style="line-height: 20px;"><i class="travel-icon icon-adult" style="margin-bottom: 2px; margin-right: 3px;">icon</i>x'+resp[i].ji_adult;
+	    			if(resp[i].ji_kid != 0){
+	    				tabletd += '<i class="bi bi-person"></i>x<b>'+resp[i].ji_kid+'</b>';		
+	    			}
+	    			tabletd += '</span></li></ul></td>';
+	    			if(resp[i].ji_roomnum != 0 ){
+		    			tabletd += "<td><div class='rate-category-price'><div class='travel-web-tdp-price travel-price__md right'>";
+		    			tabletd += "<div class='travel-price__discount'><div><span class='travel-price__dynamic-discount'><em class='price'><b>"+ comma(resp[i].ji_price) +"원</b></em></span><span class='travel-price__discount-rate'>";
+		    			if(resp[i].ji_discount != 0 ){
+	            			tabletd += "<span class='price_title'>할인판매가</span><br /><em class='price'><b>" + comma(resp[i].ji_price * (100- resp[i].ji_discount)/100) +"원</b></em><br /></span>";
+	            		}
+		    			tabletd += "</div></div><div class='travel-price__cashback'>"+
+	            		"<div class='search-item-cash-back'><img class='list-cash-icon' src='//image11.coupangcdn.com/image/badges/cashback/web/list-cash-icon@2x.png'><span class='ctravel-price__sale benefit'><em>최대"+
+	            		comma(resp[i].ji_price * (100- resp[i].ji_discount)/100*0.05)+"원 적립</em></span></div></div></div></div></td>";
+	    			}else{
+	    				tabletd += "<td><span>매진</span></td>";
+	    			}
+	    			tabletd += "<td><div class='rate-category-reservation'><div class='travel-select full-width'style='margin: 0px;'><input type='hidden' value="+ resp[i].ji_idx +"/>";
+	    			if(resp[i].ji_roomnum > 0){
+	            		tabletd+= "<select name='' id='Bookingselect'>";
+	            		for(var cnt = 1; cnt <= resp[i].ji_roomnum ; cnt++){
+	            			tabletd += "<option value='"+cnt+"'";
+	            			if(cnt == 1){
+	            				tabletd+=" selected";
+	            			}
+	            			tabletd += ">객실 "+cnt+"개</option>";
+	            		}
+	            		tabletd+="</select><button class='Bookingbtn'>구매</button>";
+	            	}				 
+	    			tabletd += "</div></div></td></tr></tbody>";
+	    		});
+    			$('#room-item').append(tabletd);
+	    	}
+	    }
+	});
+}
+function comma(str) {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+function addModal(bot_num, idx){
+	console.log("나");
+	$('.modal-content').load('/showModalRoom?bot_idx='+bot_num+'&ji_idx='+idx);
+}
+</script>
 <body style="background-color: white;">
     <div id="top" style="margin-bottom:0px;">
         <%@include file="../top.jsp" %>
@@ -498,22 +264,22 @@
 	                <section class="travel-detail-content">
 	                    <div class="travel-carousel-container">
 	                        <div class="travel-carousel use-background clickable" style="width: 100%; height: 512px;">
-	                        	<div class="carousel-image" id="thumbnail" style="height: 512px; background-image: url(/uploads/${Total_journey.j_title_image }); background-color:rgb(85,85,85);"></div>
+	                        	<div class="carousel-image" id="thumbnail" style="height: 512px; background-image: url('/uploads/${Total_Journey.j_title_image }'); background-color:rgb(85,85,85);"></div>
 	                        </div>
 	                        <div class="travel-thumbnail">
 	                            <div class="thumbnails-wrap" style="width:527px;">
 	                                <ul class="thumbnails" style="margin:10px;">
 	                                	<li><a class="thumbnail-item">
-	                                	<img src="/uploads/${Total_journey.j_title_image }" class="thumbnail-img" style="outline:2px solid green;"/>
+	                                	<img src="/uploads/${Total_Journey.j_title_image }" class="thumbnail-img" style="outline:2px solid green;"/>
 	                                	</a></li>
-	                                	<c:if test="${not empty Total_journey.j_image1 }">
-	                                		<li><a class="thumbnail-item"><img src="/uploads/${Total_journey.j_image1 }" class="thumbnail-img" />
-	                                		<c:if test="${not empty Total_journey.j_image2 }">
-			                                	<li><a class="thumbnail-item"><img src="/uploads/${Total_journey.j_image2 }" class="thumbnail-img" /></a></li>
-	                                			<c:if test="${not empty Total_journey.j_image3 }">
-		            	        	            	<li><a class="thumbnail-item"><img src="/uploads/${Total_journey.j_image3 }" class="thumbnail-img" /></a></li>
-	                	        	        		<c:if test="${not empty Total_journey.j_image4 }">
-			    	        	                    	<li><a class="thumbnail-item"><img src="/uploads/${Total_journey.j_image4 }" class="thumbnail-img" /></a></li>
+	                                	<c:if test="${not empty Total_Journey.j_image1 }">
+	                                		<li id="li-1"><a class="thumbnail-item"><img src="/uploads/${Total_Journey.j_image1 }" class="thumbnail-img" /></a></li>
+	                                		<c:if test="${not empty Total_Journey.j_image2 }">
+			                                	<li id="li-2"><a class="thumbnail-item"><img src="/uploads/${Total_Journey.j_image2 }" class="thumbnail-img" /></a></li>
+	                                			<c:if test="${not empty Total_Journey.j_image3 }">
+		            	        	            	<li id="li-3"><a class="thumbnail-item"><img src="/uploads/${Total_Journey.j_image3 }" class="thumbnail-img" /></a></li>
+	                	        	        		<c:if test="${not empty Total_Journey.j_image4 }">
+			    	        	                    	<li><a class="thumbnail-item"><img src="/uploads/${Total_Journey.j_image4 }" class="thumbnail-img" /></a></li>
 				                                	</c:if>
 			                                	</c:if>
 		                                	</c:if>
@@ -531,12 +297,111 @@
 	                                    <li class="lg" value="3">상품평</li>
 	                                    <li class="lg" value="4">상품문의</li>
 	                                </ul>
-	                            </div>
-		                        <div class="ilpPanel" style="margin-bottom:10px;" id="selectProduct">
+	                            </div> 
+								<div class="lodging-room-search">
+									<div class="date-range-picker-wrapper">
+										<div class="date-range">
+											<span class="travel-icon-text date-range__selected-date" style="margin-left: 11px;">
+												<i class="travel-icon icon-calendar" style="margin-top: -3px; margin-right: 10px;">icon</i>
+											</span>
+											<input type="text" name="daterange" id="inputDate"
+												style="border: none; width: 230px; color: black;"value="" />
+											<script>
+											$(function() {
+											  $('input[name="daterange"]').daterangepicker({
+											     	opens: 'center'
+											    }, 
+											    function(start, end, label) {
+											    	var startDate = start.format('YY/MM/DD');
+											        var endDate = end.format('YY/MM/DD');
+											        
+											        document.querySelector("#start").value=startDate;
+											        document.querySelector("#end").value=endDate;
+											    });
+											});
+											</script>
+										</div>
+									</div>
+									<div class="personnel-selector-wrap">
+									 <input type="hidden" name="bot_idx" id="bot_idx" value="${Total_Journey.bot_idx }" />
+									 <input type="hidden" name="ji_duetime1" id="start" value="" />
+									 <input type="hidden" name="ji_duetime2" id="end" value="" />
+									 
+										<div class="personnel-selector" onclick="personnel();">
+											<span id="result" class="travel-icon-text personnel-selector__selected-number" style="margin-left: 11px;">
+												<i class="travel-icon icon-person" style="margin-top: -3px; margin-right: 5px;">icon</i>
+												성인 <span id="ji_adult1">2</span>, 아동 <span id="ji_kid1">0</span>
+											</span><i class="travel-icon icon-arrow-down"style="margin-top: 15px; margin-right: 13px; float: right;">icon</i>
+										</div>
+										<div class="personnel-selector-layer" style="display: none;">
+												<div class="personnel-selector-pane"
+													style="width: 300px; left:342px; z-index: 33;">
+													<div class="personnel-selector-pane__spinner-wrap">
+														<label>성인</label>
+														<div class="travel-spinner"
+															style="float: right; width: 106px; height: 32px; border-radius: 17px; border-color: rgb(52, 106, 255);">
+															<button class="spinner-minus" type="button"
+																onclick="countDown();"
+																style="width: 30px; height: 30px; background: rgb(255, 255, 255); border-top-left-radius: 16px; border-bottom-left-radius: 16px;">
+																<i class="spinner-minus-icon"
+																	style="width: 8px; height: 8px; margin-top: 14px; margin-left: 11px; border-top-color: rgb(52, 106, 255);"></i>
+															</button>
+															<div class="spinner-number result"
+																style="width: 44px; height: 30px; line-height: 30px; font-size: 14px; font-weight: bold; color: rgb(74, 74, 74); border-left-color: rgb(52, 106, 255); border-right-color: rgb(52, 106, 255);">
+																<span id="ji_adult">2</span>
+																<input type="hidden" value="2" id="adult" name="ji_adult">
+															</div>
+															<button class="spinner-plus" type="button"
+																onclick="countUp();"
+																style="width: 30px; height: 30px; background: rgb(255, 255, 255); border-top-right-radius: 16px; border-bottom-right-radius: 16px;">
+																<i class="spinner-plus-icon"
+																	style="width: 8px; height: 8px; margin-top: 14px; margin-left: 11px; border-top-color: rgb(52, 106, 255);">
+																	<i
+																	style="width: 8px; height: 8px; margin-top: -5px; margin-left: 3px; border-left-color: rgb(52, 106, 255);"></i>
+																</i>
+															</button>
+														</div>
+													</div>
+													<div class="personnel-selector-pane__spinner-wrap">
+														<label>아동</label>
+														<div class="travel-spinner result"
+															style="float: right; width: 106px; height: 32px; border-radius: 17px; border-color: rgb(52, 106, 255);">
+															<button class="spinner-minus" type="button" onclick="countDown2();" style="width: 30px; height: 30px; background: rgb(255, 255, 255); border-top-left-radius: 16px; border-bottom-left-radius: 16px;">
+																<i class="spinner-minus-icon" style="width: 8px; height: 8px; margin-top: 14px; margin-left: 11px; border-top-color: rgb(52, 106, 255);"></i>
+															</button>
+															<div class="spinner-number result"
+																style="width: 44px; height: 30px; line-height: 30px; font-size: 14px; font-weight: bold; color: rgb(74, 74, 74); border-left-color: rgb(52, 106, 255); border-right-color: rgb(52, 106, 255);">
+																<span id="ji_kid">0</span>
+																<input type="hidden" value="0" id="kid" name="ji_kid" >
+															</div>
+															<button class="spinner-plus" type="button" onclick="countUp2();"
+																style="width: 30px; height: 30px; background: rgb(255, 255, 255); border-top-right-radius: 16px; border-bottom-right-radius: 16px;">
+																<i class="spinner-plus-icon" style="width: 8px; height: 8px; margin-top: 14px; margin-left: 11px; border-top-color: rgb(52, 106, 255);">
+																<i style="width: 8px; height: 8px; margin-top: -5px; margin-left: 3px; border-left-color: rgb(52, 106, 255);"></i></i>
+															</button>
+														</div>
+													</div>
+													<div class="personnel-selector-pane__button-wrap">
+														<button type="button" class="travel-button travel-button__white md" onclick="exit()" style="color: rgb(85, 85, 85); font-size: 14px; font-weight: bold; border: 1px solid rgb(204, 204, 204); width: 100px; height: 32px; line-height: 30px; margin-right: 10px;">취소</button>
+														<button type="button" class="travel-button travel-button__blue md" onclick="exit()" style="font-size: 14px; width: 100px; height: 32px; line-height: 30px; background-color: rgb(52, 106, 255);color: white;">확인</button>
+													</div>
+												</div>
+											</div>
+									</div>
+									<button class="travel-button travel-button__white md" type="button" onclick="detail_Serach();"
+										style="margin-right: 0px; outline: none; width: 116px; height: 40px; line-height: 38px;">객실확인</button>
+									<div class="calendar-frame">
+										<div class="lodging-price-calendar">
+											<button class="price-calendar-show">
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="ilpPanel" style="margin-bottom:10px;" id="selectProduct">
 		                        	<div class="ticket-detail-vendor-items">
-										<c:forEach items="${Total_Journey_info}" var="row"
-											varStatus="loop">
-											<table class="room-item">
+									<c:forEach items="${Total_Journey_info}" var="row" varStatus="loop">
+										 <input type="hidden" name="ji_idx" id="ji_idx" value="${row.ji_idx }"/>
+											<table class="room-item" id="room-item">
 												<colgroup>
 													<col class="col-summary">
 													<col>
@@ -546,20 +411,22 @@
 												</colgroup>
 												<thead>
 													<tr>
-														<th class="room-header__item-name" colspan="2">${row.ji_title }</th>
-														<th class="room-header__guest">인원</th>
-														<th class="room-header__price">1박 기준 요금</th>
-														<th class="room-header__reservation">예약</th>
+														<th class="room-header__item-name roomheader" colspan="2">${row.ji_title }</th>
+														<th class="room-header__guest roomheader">인원</th>
+														<th class="room-header__price roomheader">1박 기준 요금</th>
+														<th class="room-header__reservation roomheader">구매</th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr data-rate-category-id="3245">
-														<td rowspan="1"><div class="room-summary">
+														<td rowspan="1">
+														<div class="room-summary">
 																<div class="room-thumbnail">
-																	<span>${row.ji_image1 }</span> <a>객실사진 및 정보 더보기
-																		&gt;</a>
+																	<img src="/uploads/${row.ji_image1}" style="width: 160px;"/>
+																	<a onclick="addModal(${row.bot_idx},${row.ji_idx})" data-toggle="modal" data-target="#myModal">객실사진 및 정보 더보기&gt;</a>
 																</div>
-															</div></td>
+															</div>
+														</td>
 														<td>
 															<ul class="room-rate-plans">
 																<li class="room-rate-plan">
@@ -569,17 +436,20 @@
 																</li>
 															</ul>
 														</td>
-														<td><ul class="room-guest">
-																<li><span class="travel-icon-text room-guest-text"
-																	style="line-height: 20px;"> <i
-																		class="travel-icon icon-adult"
-																		style="margin-bottom: 2px; margin-right: 3px;">icon</i>
+														<td>
+															<ul class="room-guest">
+																<li>
+																	<span class="travel-icon-text room-guest-text" style="line-height: 20px;">
+																	 <i class="travel-icon icon-adult" style="margin-bottom: 2px; margin-right: 3px;">icon</i>
 																		x ${row.ji_adult } <c:if test="${row.ji_kid ne 0}">
 																			<i class="bi bi-person"></i>x<b>${row.ji_kid }</b>
 																		</c:if>
-																</span></li>
-															</ul></td>
-														<td><c:choose>
+																	</span>
+																</li>
+															</ul>
+														</td>
+														<td>
+														<c:choose>
 																<c:when test="${row.ji_roomnum ne 0 }">
 																	<div class="rate-category-price">
 																		<div
@@ -588,8 +458,9 @@
 																				<div>
 																					<span class="travel-price__dynamic-discount">
 																						<em class="price"><b><fmt:formatNumber
-																									value="${row.ji_price}" />원</b></em>
-																					</span> <span class="travel-price__discount-rate">
+																								value="${row.ji_price}" />원</b></em>
+																					</span> 
+																					<span class="travel-price__discount-rate">
 																						<c:if test="${row.ji_discount ne 0 }">
 																							<span class="price_title">할인판매가</span>
 																							<br />
@@ -620,7 +491,8 @@
 																<c:otherwise>
 																	<span>매진</span>
 																</c:otherwise>
-															</c:choose></td>
+															</c:choose>
+														</td>
 														<td>
 															<div class="rate-category-reservation">
 																<div class="travel-select full-width"
@@ -633,7 +505,7 @@
 																					<option>객실 ${i}개</option>
 																				</c:forEach>
 																			</select>
-																			<button class="Bookingbtn">예약</button>
+																			<button class="Bookingbtn">구매</button>
 																		</c:when>
 																		<c:otherwise>
 																		</c:otherwise>
@@ -648,16 +520,16 @@
 									</div>
 		                     </div>
 		                        <div class="service-infomation" style="margin-bottom: 10px;" id="introProduct">
-		                        <c:if test="${Total_journey.j_conservice ne '' && Total_journey.j_confacility ne '' && Total_journey.common_items ne ''}">
+		                        <c:if test="${Total_Journey.j_conservice ne '' && Total_Journey.j_confacility ne '' && Total_Journey.common_items ne ''}">
 	                        		<table class="ticket-service-infomation" style="width:100%;">
 	                        			<colgroup>
 	                        				<col width="30%"/>
 	                        				<col width="*"/>
 	                        			</colgroup>
 	                        			<tr>
-	                        				<th colspan="2">시설안내</th>
+	                        				<th class="info-th" colspan="2">시설안내</th>
 	                        			</tr>
-	                        			<c:if test="${Total_journey.common_items ne ''}">
+	                        			<c:if test="${Total_Journey.common_items ne ''}">
 		                       				<tr>
 		                       					<td>
 		                       						<h4 class="item-title">
@@ -666,12 +538,12 @@
 		                       					</td>
 		                       					<td>
 		                       						<div class="item-content">
-		                       							${Total_journey.common_items }
+		                       							${Total_Journey.common_items }
 		                       						</div>
 												</td>
 		                       				</tr>
 	                       				</c:if>
-	                        			<c:if test="${Total_journey.j_confacility ne ''}">
+	                        			<c:if test="${Total_Journey.j_confacility ne ''}">
 		                       				<tr>
 		                       					<td>
 		                       						<h4 class="item-title">
@@ -680,12 +552,12 @@
 		                       					</td>
 		                       					<td>
 		                       						<div class="item-content">
-			                       						${Total_journey.j_confacility }
+			                       						${Total_Journey.j_confacility }
 		                       						</div>
 												</td>
 		                       				</tr>
 	                       				</c:if>
-	                        			<c:if test="${Total_journey.j_conservice ne ''}">
+	                        			<c:if test="${Total_Journey.j_conservice ne ''}">
 		                       				<tr>
 		                       					<td>
 		                       						<h4 class="item-title">
@@ -694,7 +566,7 @@
 		                       					</td>
 		                       					<td>
 		                       						<div class="item-content">
-			                       						${Total_journey.j_conservice}
+			                       						${Total_Journey.j_conservice}
 		                       						</div>
 												</td>
 		                       				</tr>
@@ -709,7 +581,7 @@
 	                        				<col width="*"/>
 	                        			</colgroup>
 	                        			<tr>
-	                        				<th colspan="2">숙소 정책</th>
+	                        				<th class="info-th" colspan="2">숙소 정책</th>
 	                        			</tr>
 	                        			<tr>
 	                       					<td>
@@ -998,7 +870,7 @@
 	                			</ul>
 	                			<div class="basis-cashback-button">
 	                				<span class="basis-cashback-button-text">아직 멤버쉽 회원이 아니신가요?</span><br />
-	                				<button type="button" class="btn btn-primaryinfo">멤버쉽 가입하기</button>
+	                				<button type="button" class="btn btn-primary">멤버쉽 가입하기</button>
 	                			</div>
 	                		</div>
 	                	</div>
@@ -1053,6 +925,8 @@
 	                		</div>
 	                		<script type="text/javascript">
 	                		 kakao.maps.load(function() {
+	                		  sysdateLoad();
+	                			 
 	           				  var locationValues = document.getElementById("location").value.split(',');
 	           				  var mapContainer = document.getElementById('map');
 	           				  var mapOption = {
@@ -1132,6 +1006,7 @@
 											${row.review }
 											</p>
 										</div>
+									</div>
 								</c:forEach>
 	                		</div>
 	                	</div>

@@ -118,6 +118,7 @@
 	.thumbnails li {
 		cursor: pointer;
 	}	
+	
 	.thumbnail-img:hover {
 		outline: 2px solid green;
 	}	

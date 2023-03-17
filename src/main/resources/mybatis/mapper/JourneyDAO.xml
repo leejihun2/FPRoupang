@@ -13,7 +13,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="journey_info_list" resultType="com.edu.springboot.jdbc.JourneyInfoDTO">
  		select * from journey_info where bot_idx=#{param1} order by 1 asc 
  	</select>
- 	
+ 	<select id="journeyDetailSearch" resultType="com.edu.springboot.jdbc.JourneyInfoDTO">
+ 		select * from journey_info where bot_idx=#{bot_idx} 
+ 			<choose>
+ 				<when test="ji_duetime1 != ''">
+					and ji_adult=#{ji_adult} 
+ 					and ji_kid=#{ji_kid}
+ 					and #{ji_duetime1} between ji_duetime1 and ji_duetime2 
+           			and #{ji_duetime2} between ji_duetime1 and ji_duetime2
+ 				</when>
+ 				<otherwise>
+       	 			and ji_adult=#{ji_adult} 
+ 					and ji_kid=#{ji_kid}
+ 					and sysdate between ji_duetime1 and ji_duetime2 
+           			and sysdate+1 between ji_duetime1 and ji_duetime2
+           		</otherwise>
+ 			</choose>
+ 	</select>
  	<select id="select_journey_info" resultType="com.edu.springboot.jdbc.JourneyInfoDTO">
  		select * from journey_info where ji_idx=#{param1}
  	</select>
@@ -296,4 +312,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="like_journey_List" parameterType="com.edu.springboot.jdbc.TotalJourneyDTO" resultType="String">
  		select distinct location from journey where location like '%'||#{param1}||'%'
  	</select>
+ 	
  </mapper>
