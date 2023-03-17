@@ -103,7 +103,7 @@ public class AdminController {
 	public String saveFile(MultipartFile file, String prevName) {
 	    if (file == null || file.getSize() == 0) {
 	        return prevName;
-	    }
+	    } 
 	    
 	    UUID uid = UUID.randomUUID();
 	    String saveName = uid + "_" + file.getOriginalFilename();
@@ -129,7 +129,7 @@ public class AdminController {
 	        @RequestParam("image3") MultipartFile image3,
 	        @RequestParam("image4") MultipartFile image4,
 	        @RequestParam("image5") MultipartFile image5,
-	        @RequestParam("image6") MultipartFile image6) {
+	        @RequestParam("image6") MultipartFile image6) { 
 
 	    int idx = Integer.parseInt(req.getParameter("idx"));
 

@@ -26,7 +26,7 @@
 </script>
 <style type="text/css">
 img{
-	width:400px; 
+	width:600px; 
 	height: 300px;
 }
 </style>

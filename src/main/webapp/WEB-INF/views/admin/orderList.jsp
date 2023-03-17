@@ -176,11 +176,7 @@ $(function(){
 		                                        </tr>
                                     		</c:forEach>
                                          </tbody>
-	                                </table>	      
-	                               
-	                                
-	                               
-												
+	                                </table>	      			
                                 </form>	        
                                <a href="/admin/index.do">관리 홈으로가기</a>                       
 
@@ -189,6 +185,7 @@ $(function(){
                     </div>
 		
 				</div>
+
 				<!-- /.container-fluid -->
 			</div>
 			<!-- End of Main Content -->
@@ -240,7 +237,7 @@ $(function(){
 	<script src="../../css/vendor/jquery/jquery.min.js"></script>
 	<script src="../../css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<!-- Core plugin JavaScript-->
+	<!-- Core JavaScript-->
 	<script src="../../css/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
