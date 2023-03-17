@@ -92,6 +92,9 @@
     border-width: 1px;
     border-style: solid
 }
+a{
+	cursor: pointer;
+}
 
 </style>
 </head>
@@ -136,7 +139,10 @@
             location.href="#"+url;
 		});
 	    $(".bnt_open").on("click", function(e){
-	        $("html, body").addClass("not_scroll");
+	        $("ul").attr("style","margin-bottom:0px; padding-left:0px;");
+	        $("a").attr("style","text-decoration:none");
+	        $(".gnb-menu").attr("style","margin-top:10px; margin-left:65px; padding-left:0px;");
+	        $(".thumbnails").attr("style","margin:10px; padding-left:0px;")
 	    });
 	});
 	function replaceClass(){
@@ -206,7 +212,7 @@ function detail_Serach(){
 	            	"<thead><tr><th class='room-header__item-name roomheader' colspan='2'>" + resp[i].ji_title + "</th>"+
 	            	"<th class='room-header__guest roomheader'>인원</th><th class='room-header__price roomheader'>1박 기준 요금</th><th class='room-header__reservation roomheader'>구매</th></tr></thead>"+
 	            	"<tbody><tr data-rate-category-id='3245'><td rowspan='1'><div class='room-summary'><div class='room-thumbnail'><img src='/uploads/" + resp[i].ji_image1 + " 'style='width: 160px;'/>"+
-	            	"<a onclick='addModal("+resp[i].bot_idx+","+resp[i].ji_idx+")' data-toggle='modal' data-target='#myModal'>객실사진 및 정보 더보기&gt;</a></div>"+
+	            	"<a class='bnt_open' onclick='addModal("+resp[i].bot_idx+","+resp[i].ji_idx+")' data-toggle='modal' data-target='#myModal'>객실사진 및 정보 더보기&gt;</a></div>"+
 	            	"</div></div></td><td style='width:90px;'><ul class='room-rate-plans'><li class='room-rate-plan'><span class='rate-plan'>"+ resp[i].ji_intro+"</span></li></ul></td>";
 	    			tabletd += '<td><ul class="room-guest"><li><span class="travel-icon-text room-guest-text" style="line-height: 20px;"><i class="travel-icon icon-adult" style="margin-bottom: 2px; margin-right: 3px;">icon</i>x'+resp[i].ji_adult;
 	    			if(resp[i].ji_kid != 0){
@@ -423,7 +429,7 @@ function addModal(bot_num, idx){
 														<div class="room-summary">
 																<div class="room-thumbnail">
 																	<img src="/uploads/${row.ji_image1}" style="width: 160px;"/>
-																	<a onclick="addModal(${row.bot_idx},${row.ji_idx})" data-toggle="modal" data-target="#myModal">객실사진 및 정보 더보기&gt;</a>
+																	<a class="bnt_open" onclick="addModal(${row.bot_idx},${row.ji_idx})" data-toggle="modal" data-target="#myModal">객실사진 및 정보 더보기&gt;</a>
 																</div>
 															</div>
 														</td>

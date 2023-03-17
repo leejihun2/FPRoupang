@@ -310,178 +310,6 @@ public class JourneyController {
 		JourneyDTO journey = journey_dao.journey_list(bot_idx);
 		return journey;
 	}
-//=======
-//         value=journey_dao.select_new_idx();
-//      
-//      }
-//      try {
-//      JourneyInfoDTO ji_dto = new JourneyInfoDTO();
-//      ji_dto.setBot_idx(value);
-//      ji_dto.setJi_duetime1(req.getParameter("product_duetime1"));
-//      ji_dto.setJi_duetime2(req.getParameter("product_duetime2"));
-//      ji_dto.setJi_price(Integer.parseInt(req.getParameter("product_price")));
-//      ji_dto.setJi_title(req.getParameter("product_title"));
-//      ji_dto.setJi_adult(Integer.parseInt(req.getParameter("ji_adult")));
-//      ji_dto.setJi_kid(Integer.parseInt(req.getParameter("ji_kid")));
-//      ji_dto.setJi_roomnum(Integer.parseInt(req.getParameter("ji_roomnum")));
-//      ji_dto.setJi_intro(req.getParameter("product_intro"));
-//      int index=1;
-//      for(MultipartFile f: sub_ji_image) {
-//         String imgName = saveFile(f);
-//         switch(index) {
-//            case 1:ji_dto.setJi_image1(imgName); break;
-//            case 2:ji_dto.setJi_image2(imgName); break;
-//            case 3:ji_dto.setJi_image3(imgName); break;
-//            case 4:ji_dto.setJi_image4(imgName); break;
-//         }
-//         index++;
-//      }
-//      journey_dao.insert_journey_info(ji_dto);
-//      }
-//      catch (Exception e) {}
-//      
-//      if(!(req.getParameter("product_intro").equals(""))) {
-//         System.out.println(req.getParameter("product_intro"));
-//         journey_dao.insert_journey(j_dto);
-//      }
-//      mv.setViewName("/home");
-//      return mv;
-//   }
-//   @RequestMapping("/all_delete_journey")
-//   public String all_delete(HttpServletRequest req) {
-//      String company_name = req.getParameter("company_name");
-//      String value = req.getParameter("value");
-//      String[] list = value.split(",");
-//      List<String> val = new ArrayList<String>();
-//      
-//      for(int i = 0 ; i < list.length ; i++) {
-//         val.add(list[i]);
-//      }
-//      
-//      ArrayList<JourneyDTO> total_image = journey_dao.journey_Total_image(val);
-//      ArrayList<JourneyInfoDTO> total_ji_image = journey_dao.journeyinfo_Total_image(val);
-//      ArrayList<String> image = new ArrayList<String>();
-//      ArrayList<String> image_ji = new ArrayList<String>();
-//      
-//      for(int i = 0 ; i < total_image.size(); i++) {
-//         JourneyDTO dto = total_image.get(i);
-//         image.add(dto.getJ_title_image());
-//         if(dto.getJ_image1()!=null) {
-//            image.add(dto.getJ_image1());
-//            if(dto.getJ_image2()!=null) {
-//               image.add(dto.getJ_image2());
-//               if(dto.getJ_image3()!=null) {
-//                  image.add(dto.getJ_image3());
-//                  if(dto.getJ_image4()!=null) {
-//                     image.add(dto.getJ_image4());
-//                  }
-//               }
-//            }
-//         }
-//      }
-//      for(int i = 0 ; i < image.size(); i++) {
-//         deleteFile(image.get(i));
-//      }
-//      for(int i = 0 ; i < total_image.size(); i++) {
-//         JourneyInfoDTO dto = total_ji_image.get(i);
-//         if(dto.getJi_image1()!=null) {
-//            image_ji.add(dto.getJi_image1());
-//            if(dto.getJi_image2()!=null) {
-//               image_ji.add(dto.getJi_image2());
-//               if(dto.getJi_image3()!=null) {
-//                  image_ji.add(dto.getJi_image3());
-//                  if(dto.getJi_image4()!=null) {
-//                     image_ji.add(dto.getJi_image4());
-//                  }
-//               }
-//            }
-//         }
-//      }
-//      for(int i = 0 ; i < image_ji.size(); i++) {
-//         deleteFile(image_ji.get(i));
-//      }
-//      
-//      journey_dao.delete_journey(val);
-//      journey_dao.alldelete_journey_info(val);
-//      journey_dao.delete_bot_category_j(val, company_name);
-//      
-//      return "/home";
-//   }
-//   
-//   @RequestMapping("/detail_delete_journey")
-//   public String delete(HttpServletRequest req) {
-//      String company_name = req.getParameter("company_name");
-//      String value = req.getParameter("value");
-//      
-//      String[] list = value.split(",");
-//      List<String> val = new ArrayList<String>();
-//      
-//      for(int i = 0 ; i < list.length ; i++) {
-//         val.add(list[i]);
-//      }
-//      
-//      journey_dao.delete_journey_info(val, company_name);
-//      return "/home";
-//   }
-//   @RequestMapping("/journeyView")
-//   public String view() {
-//      
-//      return "journey/journeyView";
-//   }
-//   
-//   @RequestMapping("/journey_List")
-//   public ModelAndView show_Journey_List(HttpServletRequest req, HttpSession session, TotalJourneyDTO totaljourneyDTO) {
-//      ModelAndView mv = new ModelAndView();
-//      int sub_idx = Integer.parseInt(req.getParameter("category"));
-//      String location = req.getParameter("location"); 
-//      String title = req.getParameter("title");
-//      String ji_duetime1 = "";
-//      String ji_duetime2 = "";
-//      int ji_adult = 2;
-//      int ji_kid = 0;
-//      
-//      
-//      System.out.println(sub_idx);
-//      if(location!=null) {
-//    	  journey_dao.log(location);
-//			System.out.println("져니성공");
-//      }
-//      if(location != null) {
-//          
-//         ArrayList<String> like_loc = journey_dao.like_journey_List(location);
-//      
-//         mv.addObject("like_loc",like_loc);
-//      }
-//      else if(title != null) { 
-//          
-//    	  ArrayList<TotalJourneyDTO> search_list = cate_dao.search_journey_List(sub_idx, title);
-//         
-//         mv.addObject("search_list",search_list);
-//      }
-//      
-//      if(session.getAttribute("ji_duetime1")!= null) {
-//         totaljourneyDTO.setJi_duetime1((String)session.getAttribute("ji_duetime1"));
-//         totaljourneyDTO.setJi_duetime2((String)session.getAttribute("ji_duetime2"));
-//         System.out.println(session.getAttribute("ji_duetime1"));
-//         System.out.println(session.getAttribute("ji_duetime2"));
-//      }else {
-//         totaljourneyDTO.setJi_duetime1(ji_duetime1);
-//         totaljourneyDTO.setJi_duetime2(ji_duetime2);
-//         System.out.println(ji_duetime1);
-//         System.out.println(ji_duetime2);
-//      }
-//      
-//      if(session.getAttribute("ji_kid") != null) {
-//         totaljourneyDTO.setJi_kid(Integer.parseInt((String)(session.getAttribute("ji_kid")))); 
-//         System.out.println(session.getAttribute("ji_kid"));
-//      }else {
-//         totaljourneyDTO.setJi_kid(ji_kid);
-//         System.out.println(ji_kid);
-//      }
-//      if(session.getAttribute("ji_adult") != null) {
-//         totaljourneyDTO.setJi_kid(Integer.parseInt((String)(session.getAttribute("ji_adult")))); 
-//         System.out.println(session.getAttribute("ji_adult"));
-//>>>>>>> branch 'main' of https://github.com/leejohun/FPRoupang.git
 
 	@ResponseBody
 	@RequestMapping("/journeyDetailInfo")
@@ -730,7 +558,14 @@ public class JourneyController {
 			System.out.println(ji_duetime1);
 			System.out.println(ji_duetime2);
 		}
+		if (session.getAttribute("ji_adult") != null) {
+			totaljourneyDTO.setJi_adult(Integer.parseInt((String) (session.getAttribute("ji_adult"))));
+			System.out.println(session.getAttribute("ji_adult"));
 
+		} else {
+			totaljourneyDTO.setJi_kid(ji_adult);
+			System.out.println(ji_adult);
+		}
 		if (session.getAttribute("ji_kid") != null) {
 			totaljourneyDTO.setJi_kid(Integer.parseInt((String) (session.getAttribute("ji_kid"))));
 			System.out.println(session.getAttribute("ji_kid"));
@@ -738,20 +573,13 @@ public class JourneyController {
 			totaljourneyDTO.setJi_kid(ji_kid);
 			System.out.println(ji_kid);
 		}
-		if (session.getAttribute("ji_adult") != null) {
-			totaljourneyDTO.setJi_kid(Integer.parseInt((String) (session.getAttribute("ji_adult"))));
-			System.out.println(session.getAttribute("ji_adult"));
-
-		} else {
-			totaljourneyDTO.setJi_kid(ji_adult);
-			System.out.println(ji_adult);
-		}
+		
 		totaljourneyDTO.setSub_idx(sub_idx);
 
-//      System.out.println("어린이 :"+ totaljourneyDTO.getJi_kid());
-//      System.out.println("성인 :"+ totaljourneyDTO.getJi_adult());
-//      System.out.println("시작일 :"+ totaljourneyDTO.getJi_duetime1());
-//      System.out.println("종료일 :"+ totaljourneyDTO.getJi_duetime2());
+		System.out.println("성인 :"+ totaljourneyDTO.getJi_adult());
+      System.out.println("어린이 :"+ totaljourneyDTO.getJi_kid());
+      System.out.println("시작일 :"+ totaljourneyDTO.getJi_duetime1());
+      System.out.println("종료일 :"+ totaljourneyDTO.getJi_duetime2());
 
 		String category_title = cate_dao.select_one_cate(sub_idx);
 
