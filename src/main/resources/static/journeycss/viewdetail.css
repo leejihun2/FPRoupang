@@ -1,0 +1,472 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.cash-text {
+    display: inline-block;
+    vertical-align: top;
+    color: #333;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 19px;
+}
+.cashback-area{
+	margin-top: 10px;
+}
+.carousel-image {
+    width: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-top: -1px;
+}
+.search-item-cash-back {
+    position: relative;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 20px;
+    padding: 0 8px 0 8px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    color: #333;
+}
+.travel-detail-content {
+    float: left;
+    width: 685px;
+}
+.travel-thumbnail .thumbnails-wrap {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    height: 70px;
+    margin-right: 3px;
+}
+.travel-detail-basis {
+    float: left;
+    width: 270px;
+    border: 1px solid #ddd;
+    color: #333;
+    border-top: 1px solid #ddd;
+    margin-left:20px;
+}
+.thumbnail-img {
+    width: 50px;
+    height: 50px;
+}
+/* .travel-thumbnail:after .thumbnails:after, .travel-thumbnail:after .travel-scroll-tab-header:after .travel-scroll-tab-header-wrapper:after {
+    content: "";
+    display: block;
+    clear: both;
+} */
+.travel-scroll-tab-header-wrapper{
+	display:flex;
+	background-color:white;
+	z-index:0;
+}
+.travel-scroll-tab-headers li {
+	cursor: pointer;
+}
+.thumbnails li {
+	cursor: pointer !important; 
+}	
+.thumbnail-img:hover {
+	outline: 2px solid green !important;
+}	
+.basis-cashback-list{
+    padding-inline-start: 40px;
+}
+.travel-scroll-tab-headers li {
+    font-size: 18px;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 40px;
+    display: block;
+    color: #111;
+    text-align: center;
+}
+.travel-scroll-tab-headers.lg li.selected , .travel-scroll-tab-headers.lg li:hover {
+    font-weight: 700;
+    color: #00a289;
+	border-bottom: 3px solid #00a289;
+}
+.travel-scroll-tab-headers{
+	clear:both;
+}
+	.info-th {
+	height: 56px;
+    padding: 13px 13px;
+    background-color: #fafafa;
+    border-top: 1px solid #ddd;
+}
+table th:not(:first-child){
+	border-left: 1px solid #ddd;
+}
+.ticket-detail-vendor-items-result td{
+	height: 56px;
+    padding: 13px 10px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+}
+.ticket-detail-vendor-items-result td:nth-child(2n+1){
+    letter-spacing: -1px;
+    line-height: 23px;
+       font-size: 14px;
+   	font-weight: 400;
+}
+.ticket-detail-vendor-items-result td:not(:first-child){
+	border-left: 1px solid #ddd;
+}
+.price_title{
+	font-size: 13px;
+    padding-right: 0;
+}
+.price{
+	font-size: 18px;
+	font-style: normal;
+}
+.duetime{
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    color: #999;
+    margin-bottom: 6px;
+}
+.item-title>label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    letter-spacing: -.9px;
+    margin-left:30px;
+}
+.item-content{
+    padding: 30px 0;
+    font-size: 14px;
+    letter-spacing: -.7px;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.cashback-title{
+	display: inline-block;
+   	height: 24px;
+}
+.basis-cashback-list {
+    margin-top: 6px;
+    margin-left: -10px;
+}
+.cashback-text {
+    display: block;
+    color: #555;
+    letter-spacing: -1px;
+}
+.basis-cashback-list li {
+    font-size: 13px;
+    line-height: 18px;
+    margin-top: 5px;
+}
+.ticket-basis-product{
+    padding: 30px 20px;
+   	color: #333;
+}
+.basis-aside-cashback{
+    padding: 20px;
+   	border-top: 1px solid #ddd;
+}
+
+.basis-aside-section {
+    padding: 30px 20px;
+    border-top: 1px solid #ddd;
+}
+.basis-cashback-button {
+    margin-top: 8px;
+    margin-left: 20px;
+}
+.basis-cashback-button-text {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #111;
+}
+.key-info-title {
+    float: left;
+    display: block;
+    width: 65px;
+    top: 0;
+    color: #999;
+}
+.key-info-description {
+    float: left;
+    display: block;
+    width: calc(100% - 65px);
+    padding-left: 8px;
+    color: #111;
+}
+.basis-key-infos{
+	padding-inline-start: 0px; 
+	font-size: 14px;
+}
+.thumbnail-item{
+    margin-right: 3px;
+    margin-bottom: 3px;
+}
+.sticky{
+	position: sticky;
+	top: 0;
+}
+.fixed{
+	position: fixed;
+	top:0;
+	z-index:1000;
+    border-bottom: 1px solid #ddd;
+}
+/* 바디에 스크롤 막는 방법 */
+.not_scroll{
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.Bookingbtn{
+	width: 100%;
+	background-color: #346aff;
+	color: white;
+	padding: 1px;
+	margin: 1px;
+}
+#Bookingselect{
+ 	width: 100%;
+ 	padding: 1px;
+    margin: 1px;
+}
+.travel-icon.icon-adult {
+   	width: 11px;
+   	height: 18px;
+  		background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjExcHgiIGhlaWdodD0iMThweCIgdmlld0JveD0iMCAwIDExIDE4IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA0OC4yICg0NzMyNykgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+aWNvbl9zZWF0X2FkdWx0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlREUF9ob3RlbCZhbXA7cmVzb3J0IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjkxLjAwMDAwMCwgLTExMTMuMDAwMDAwKSI+CiAgICAgICAgPGcgaWQ9InJvb21zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3MC4wMDAwMDAsIDEwMzguMDAwMDAwKSIgc3Ryb2tlPSIjODg4ODg4Ij4KICAgICAgICAgICAgPGcgaWQ9InBheF9hZHVsdCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjIxLjAwMDAwMCwgNzAuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8ZyBpZD0iaWNvbl9zZWF0X2FkdWx0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNS4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMi4yNSwzLjU5OTk5OTkgQzIuMjUsNS4zMDkwNTc0OCAzLjY0MDk0MjMzLDYuNjk5OTk5ODEgNS4zNDk5OTk5LDYuNjk5OTk5ODEgQzcuMDU5MDU3NDgsNi42OTk5OTk4MSA4LjQ0OTk5OTgxLDUuMzA5MDU3NDggOC40NDk5OTk4MSwzLjU5OTk5OTkgQzguNDQ5OTk5ODEsMS44OTA5NDIzMyA3LjA1OTA1NzQ4LDAuNSA1LjM0OTk5OTksMC41IEMzLjY0MDk0MjMzLDAuNSAyLjI1LDEuODkwOTQyMzMgMi4yNSwzLjU5OTk5OTkgWiBNMTAuNSwxNy41IEwxMC41LDEwLjY5MjMzMDcgQzEwLjUsOC45MTUzNDQ4MiA4LjM5MTc0NjgzLDcuNSA1LjUsNy41IEMyLjYwODI1MzE3LDcuNSAwLjUsOC45MTUzNDQ4MiAwLjUsMTAuNjkyMzMwNyBMMC41LDE3LjUgTDEwLjUsMTcuNSBaIiBpZD0iQ29tYmluZWQtU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+) no-repeat;
+   	background-size: 11px 18px;
+}
+.travel-icon {
+    display: inline-block;
+    text-indent: -9999px;
+}
+/* 상품들이 나오는부분 */
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.lodging-room .room-item {
+   	width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ddd;
+}
+.col-summary {
+   	width: 170px;
+}
+.col-guest {
+    width: 85px;
+}
+.col-price {
+    width: 133px;
+}
+.col-reservation {
+    width: 119px;
+}
+.room-item th.room-header__item-name {
+    padding-left: 15px;
+    font-size: 18px;
+    color: #111;
+    letter-spacing: -1px;
+}
+.room-item th:first-child {
+    border-left: none;
+}
+.room-item th {
+    padding: 13px 0;
+    background-color: #fafafa;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.room-item th.room-header__guest {
+    font-size: 16px;
+    font-weight: 400;
+    color: #111;
+    letter-spacing: -1px;
+    text-align: center;
+}
+.room-item th.room-header__price {
+    padding-right: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    letter-spacing: -1px;
+    text-align: right;
+    width: 181px;
+}
+.room-item th.room-header__reservation {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    letter-spacing: -1px;
+    text-align: center;
+}
+.room-item tbody td:first-child {
+    border-left: none;
+}
+.room-item tbody td {
+    padding: 12px;
+    color: #333;
+    border-left: 1px solid #eee;
+    vertical-align: top;
+}
+.room-summary .room-thumbnail {
+    display: block;
+    cursor: pointer;
+}
+.room-summary .room-thumbnail .thumbnail-img {
+    width: 100%;
+    height: 96px;
+     vertical-align: top;
+}
+.room-summary .room-main-facilities li.facility .facility-item {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+.room-summary .room-thumbnail > a {
+    display: block;
+    background: #333;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+    text-decoration: underline;
+    letter-spacing: -1px;
+}
+.rate-plan{
+	font-size: 12px;
+}
+.search-item-cash-back {
+    position: relative;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 20px;
+    padding: 0 8px 0 24px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    color: #333;
+}
+.search-item-cash-back .list-cash-icon {
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    width: 14px;
+    height: 14px;
+}
+.travel-web-tdp-price.right {
+   text-align: right;
+}
+.travel-web-tdp-price {
+    display: inline-block;
+    min-width: 150px;
+    width: 100%;
+}
+/* 날짜 및 인원수 체크부분 */
+.lodging-room-search:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.lodging-room-search>* {
+    float: left;
+    margin-right: 7px;
+}
+.lodging-room-search {
+    position: relative;
+    padding: 34px 0 34px 30px;
+    background: #f1faf3;
+    margin: 15px 0 30px;
+}
+.date-range {
+    position: relative;
+    width: 304px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.date-range__selected-date {
+    font-size: 16px;
+    line-height: 40px;
+    color: #111;
+    font-weight: 500;
+}
+.icon-calendar {
+    width: 17px;
+    height: 18px;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTciIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxNyAxOCI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYSIgZD0iTTMuNjQzIDcuMmgyLjQyOXYxLjJIMy42NDN6Ii8+CiAgICAgICAgPHBhdGggaWQ9ImIiIGQ9Ik0zLjY0MyA5LjZoMi40Mjl2MS4ySDMuNjQzeiIvPgogICAgICAgIDxwYXRoIGlkPSJjIiBkPSJNMy42NDMgMTJoMi40Mjl2MS4ySDMuNjQzeiIvPgogICAgICAgIDxwYXRoIGlkPSJkIiBkPSJNNy4yODYgNy4yaDIuNDI5djEuMkg3LjI4NnoiLz4KICAgICAgICA8cGF0aCBpZD0iZSIgZD0iTTcuMjg2IDkuNmgyLjQyOXYxLjJINy4yODZ6Ii8+CiAgICAgICAgPHBhdGggaWQ9ImYiIGQ9Ik03LjI4NiAxMmgyLjQyOXYxLjJINy4yODZ6Ii8+CiAgICAgICAgPHBhdGggaWQ9ImciIGQ9Ik0xMC45MjkgNy4yaDIuNDI5djEuMmgtMi40Mjl6Ii8+CiAgICAgICAgPHBhdGggaWQ9ImgiIGQ9Ik0xMC45MjkgOS42aDIuNDI5djEuMmgtMi40Mjl6Ii8+CiAgICAgICAgPHBhdGggaWQ9ImkiIGQ9Ik0xMC45MjkgMTJoMi40Mjl2MS4yaC0yLjQyOXoiLz4KICAgIDwvZGVmcz4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHVzZSBmaWxsPSIjRDhEOEQ4IiB4bGluazpocmVmPSIjYSIvPgogICAgICAgIDxwYXRoIHN0cm9rZT0iIzk3OTc5NyIgZD0iTTQuMTQzIDcuN2gxLjQyOXYxSDQuMTQzeiIvPgogICAgICAgIDx1c2UgZmlsbD0iI0Q4RDhEOCIgeGxpbms6aHJlZj0iI2IiLz4KICAgICAgICA8cGF0aCBzdHJva2U9IiM5Nzk3OTciIGQ9Ik00LjE0MyAxMC4xaDEuNDI5djFINC4xNDN6Ii8+CiAgICAgICAgPHVzZSBmaWxsPSIjRDhEOEQ4IiB4bGluazpocmVmPSIjYyIvPgogICAgICAgIDxwYXRoIHN0cm9rZT0iIzk3OTc5NyIgZD0iTTQuMTQzIDEyLjVoMS40Mjl2MUg0LjE0M3oiLz4KICAgICAgICA8dXNlIGZpbGw9IiNEOEQ4RDgiIHhsaW5rOmhyZWY9IiNkIi8+CiAgICAgICAgPHBhdGggc3Ryb2tlPSIjOTc5Nzk3IiBkPSJNNy43ODYgNy43aDEuNDI5djFINy43ODZ6Ii8+CiAgICAgICAgPHVzZSBmaWxsPSIjRDhEOEQ4IiB4bGluazpocmVmPSIjZSIvPgogICAgICAgIDxwYXRoIHN0cm9rZT0iIzk3OTc5NyIgZD0iTTcuNzg2IDEwLjFoMS40Mjl2MUg3Ljc4NnoiLz4KICAgICAgICA8dXNlIGZpbGw9IiNEOEQ4RDgiIHhsaW5rOmhyZWY9IiNmIi8+CiAgICAgICAgPHBhdGggc3Ryb2tlPSIjOTc5Nzk3IiBkPSJNNy43ODYgMTIuNWgxLjQyOXYxSDcuNzg2eiIvPgogICAgICAgIDx1c2UgZmlsbD0iI0Q4RDhEOCIgeGxpbms6aHJlZj0iI2ciLz4KICAgICAgICA8cGF0aCBzdHJva2U9IiM5Nzk3OTciIGQ9Ik0xMS40MjkgNy43aDEuNDI5djFoLTEuNDI5eiIvPgogICAgICAgIDxnPgogICAgICAgICAgICA8dXNlIGZpbGw9IiNEOEQ4RDgiIHhsaW5rOmhyZWY9IiNoIi8+CiAgICAgICAgICAgIDxwYXRoIHN0cm9rZT0iIzk3OTc5NyIgZD0iTTExLjQyOSAxMC4xaDEuNDI5djFoLTEuNDI5eiIvPgogICAgICAgIDwvZz4KICAgICAgICA8Zz4KICAgICAgICAgICAgPHVzZSBmaWxsPSIjRDhEOEQ4IiB4bGluazpocmVmPSIjaSIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2U9IiM5Nzk3OTciIGQ9Ik0xMS40MjkgMTIuNWgxLjQyOXYxaC0xLjQyOXoiLz4KICAgICAgICA8L2c+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjE0LjYiIHg9Ii41IiB5PSIyLjkiIHN0cm9rZT0iIzg4OCIgcng9IjIiLz4KICAgICAgICA8cGF0aCBzdHJva2U9IiM4ODgiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIGQ9Ik00LjI1Ljc0NFY0LjA1TTguNS43NDRWNC4wNU0xMi43NS43NDRWNC4wNSIvPgogICAgPC9nPgo8L3N2Zz4K) no-repeat;
+    background-size: 17px 18px;
+    vertical-align: middle;
+}
+.personnel-selector {
+    width: 180px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.personnel-selector-wrap .personnel-selector .personnel-selector__selected-number {
+    font-size: 16px;
+    color: #111;
+    font-weight: 500;
+    line-height: 40px;
+}
+.travel-icon.icon-person {
+    width: 14px;
+    height: 16px;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE0IDE2Ij4KICAgIDxwYXRoIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlPSIjNTU1IiBkPSJNNCA0LjAyNUEzLjAxIDMuMDEgMCAwIDAgNyA3LjA0YzEuNjUzIDAgMy0xLjM1MiAzLTMuMDE1YTMuMDEgMy4wMSAwIDAgMC0zLTMuMDE0IDMuMDEgMy4wMSAwIDAgMC0zIDMuMDE0ek0xMy41IDE0Ljh2LTIuMzMzQzEzLjUgMTAuMTM1IDEwLjc0NyA4LjMgNyA4LjNTLjUgMTAuMTM1LjUgMTIuNDY3VjE0LjhoMTN6Ii8+Cjwvc3ZnPgo=) no-repeat;
+    background-size: 14px 16px;
+    vertical-align: middle;
+}
+.travel-button__white {
+    background-color: #fff;
+    color: #346aff;
+    border: 1px solid #346aff;
+    margin-right: 0px;
+    outline: none;
+    width: 116px;
+    height: 40px;
+    line-height: 38px;
+}
+#inputDate:focus {
+	outline:none;
+}	
