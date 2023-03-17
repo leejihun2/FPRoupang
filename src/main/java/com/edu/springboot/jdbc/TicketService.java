@@ -41,6 +41,7 @@ public interface TicketService {
 	
 	//상품 소비자에게 출력
 	public ArrayList<TotalTicketDTO> show_ticket_list(int sub_idx, String location);
+	public ArrayList<TotalTicketDTO> show_ticket_list2(String title_value);
 	
 	public int log(String search_word);
 }
