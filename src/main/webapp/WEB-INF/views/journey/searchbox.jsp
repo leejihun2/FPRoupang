@@ -11,7 +11,7 @@
 		sysdateLoad();
 	};
 </script>
-<section id="contents" style="width: 1910px;" class="contents">
+<section id="contents" style="width: 100%;" class="contents">
         <div id="travel-container">
             <div class="travel-home-gateway">
 				<section class="home-search-wizard">

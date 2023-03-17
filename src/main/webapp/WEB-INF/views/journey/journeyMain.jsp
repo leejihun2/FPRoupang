@@ -55,7 +55,7 @@
 	        <h4 class="travel-sub-category-title">여행 카테고리</h4>
 	        <ul class="travel-sub-categories">
 	            <li class="category-item">
-	                <a href="/journeyView" target="_blank">
+	                <a href="/journeyView">
 	                    <div class="category-image">
 	                    <img src="http://image9.coupangcdn.com/image/component_62_asset/component_62_asset_94b4ab55-3357-4680-8ad8-c166613c87af.png">
 	                    </div>
@@ -63,7 +63,7 @@
 	                </a>
 	            </li>
 	            <li class="category-item">
-	                <a target="_blank">
+	                <a>
 	                 <div class="category-image">
 	                 <img src="http://image7.coupangcdn.com/image/component_62_asset/component_62_asset_9d112669-36f4-41cc-b1f3-ecf301781d8a.png">
 	                 </div>
@@ -71,7 +71,7 @@
 	            </a>
 	            </li>
 	            <li class="category-item">
-	                <a href="/ticketView" target="_blank">
+	                <a href="/ticketView">
 	                    <div class="category-image">
 	                    <img src="http://image6.coupangcdn.com/image/component_62_asset/component_62_asset_2c199468-9831-4429-8972-58862551484d.png">
 	                    </div>

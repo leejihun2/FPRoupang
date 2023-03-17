@@ -33,11 +33,10 @@
 				<a class="collapse-item" href="/productInsert">여행/티켓</a>
 			</div>
 		</div></li>
-	<s:authorize access="hasRole('seller')">
 	<li class="nav-item"><a class="nav-link collapsed" href="/orderlist.do">
+		<input type="hidden" id="seller_idx" value="${member_idx}"/>
 		<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
 	</a></li>
-	</s:authorize>
 	<s:authorize access="hasRole('admin')">
 	
 		<!-- Heading -->
@@ -83,7 +82,7 @@
 				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<a class="collapse-item" href="/admin/adminFaq.do?categoryCode=ALL">검색 목록</a>
-					<a class="collapse-item" href="/admin/adminNotice.do?categoryCode=ALL">판매 목록</a>
+					<a class="collapse-item" href="/orderAdminView.do">판매 목록</a>
 					<a class="collapse-item" href="/admin/adminNotice.do?categoryCode=ALL"></a>
 	
 				</div>

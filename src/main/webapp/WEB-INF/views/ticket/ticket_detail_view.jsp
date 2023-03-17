@@ -36,6 +36,8 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <style>
+<<<<<<<
+HEAD
 * {
 	margin: 0;
 	padding: 0;
@@ -403,6 +405,417 @@ p {
 	position: fixed;
 	z-index: 9999;
 }
+
+=======
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+h4 {
+	display: block;
+	margin-block-start: 1.33em;
+	margin-block-end: 1.33em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+
+.cash-text {
+	display: inline-block;
+	vertical-align: top;
+	color: #333;
+	font-size: 12px;
+	font-weight: 400;
+	letter-spacing: normal;
+	line-height: 19px;
+}
+
+.cashback-area {
+	margin-top: 10px;
+}
+
+.carousel-image {
+	width: 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin-top: -1px;
+}
+
+.search-item-cash-back {
+	position: relative;
+	display: inline-block;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	height: 20px;
+	padding: 0 8px 0 8px;
+	border-radius: 10px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	font-size: 12px;
+	line-height: 20px;
+	color: #333;
+}
+
+.travel-detail-content {
+	float: left;
+	margin-left: 50px;
+	width: 685px;
+}
+
+.travel-thumbnail .thumbnails-wrap {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	height: 70px;
+	margin-right: 3px;
+}
+
+.travel-detail-basis {
+	float: left;
+	width: 270px;
+	border: 1px solid #ddd;
+	color: #333;
+	border-top: 1px solid #ddd;
+	margin-left: 20px;
+}
+
+.thumbnail-img {
+	width: 50px;
+	height: 50px;
+}
+
+.travel-thumbnail:after .thumbnails:after, .travel-thumbnail:after .travel-scroll-tab-header:after .travel-scroll-tab-header-wrapper:after
+	{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.travel-scroll-tab-header-wrapper {
+	display: flex;
+	background-color: white;
+	z-index: 0;
+}
+
+.travel-scroll-tab-headers li {
+	cursor: pointer;
+}
+
+.thumbnails li {
+	cursor: pointer;
+}
+
+.thumbnail-img:hover {
+	outline: 2px solid green;
+}
+
+.basis-cashback-list {
+	padding-inline-start: 40px;
+}
+
+.travel-scroll-tab-headers li {
+	font-size: 18px;
+	height: 48px;
+	line-height: 48px;
+	padding: 0 40px;
+	display: block;
+	color: #111;
+	text-align: center;
+}
+
+.travel-scroll-tab-headers.lg li.selected, .travel-scroll-tab-headers.lg li:hover
+	{
+	font-weight: 700;
+	color: #00a289;
+	border-bottom: 3px solid #00a289;
+}
+
+.travel-scroll-tab-headers {
+	clear: both;
+}
+
+.ticket-detail-vendor-items-result th {
+	text-align: center;
+	padding: 13px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+.ticket-cancellation-refund-policy th {
+	padding: 13px 13px;
+	background-color: #FFFEED;
+	border-top: 1px solid #ddd;
+}
+
+th {
+	height: 56px;
+	padding: 13px 13px;
+	background-color: #fafafa;
+	border-top: 1px solid #ddd;
+}
+
+table th:not(:first-child) {
+	border-left: 1px solid #ddd;
+}
+
+.ticket-detail-vendor-items-result td {
+	height: 56px;
+	padding: 13px 10px;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+}
+
+td {
+	height: 56px;
+	padding: 13px 10px;
+}
+
+.ticket-detail-vendor-items-result td:nth-child(2n+1) {
+	letter-spacing: -1px;
+	line-height: 23px;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+tr:not(:last-child) td:nth-child(2n) {
+	border-bottom: 1px solid #ddd;
+}
+
+.ticket-detail-vendor-items-result td:not(:first-child) {
+	border-left: 1px solid #ddd;
+}
+
+.price_title {
+	font-size: 13px;
+	padding-right: 0;
+}
+
+.price {
+	font-size: 18px;
+	font-style: normal;
+}
+
+.duetime {
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: -1px;
+	color: #999;
+	margin-bottom: 6px;
+}
+
+.item-title>label {
+	font-size: 15px;
+	font-weight: 700;
+	color: #333;
+	letter-spacing: -.9px;
+	margin-left: 30px;
+}
+
+.item-content {
+	padding: 30px 0;
+	font-size: 14px;
+	letter-spacing: -.7px;
+}
+
+p {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+
+.cashback-title {
+	display: inline-block;
+	height: 24px;
+}
+
+.basis-cashback-list {
+	margin-top: 6px;
+	margin-left: -10px;
+}
+
+.cashback-text {
+	display: block;
+	color: #555;
+	letter-spacing: -1px;
+}
+
+.basis-cashback-list li {
+	font-size: 13px;
+	line-height: 18px;
+	margin-top: 5px;
+}
+
+.ticket-basis-product {
+	padding: 30px 20px;
+	color: #333;
+}
+
+.basis-aside-cashback {
+	padding: 20px;
+	border-top: 1px solid #ddd;
+}
+
+.basis-aside-section {
+	padding: 30px 20px;
+	border-top: 1px solid #ddd;
+}
+
+.basis-cashback-button {
+	margin-top: 8px;
+	margin-left: 30px;
+}
+
+.basis-cashback-button-text {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	font-size: 14px;
+	font-weight: 700;
+	color: #111;
+}
+
+.key-info-title {
+	float: left;
+	display: block;
+	width: 65px;
+	top: 0;
+	color: #999;
+}
+
+.key-info-description {
+	float: left;
+	display: block;
+	width: calc(100% - 65px);
+	padding-left: 8px;
+	color: #111;
+}
+
+.basis-key-infos {
+	padding-inline-start: 0px;
+	font-size: 14px;
+}
+
+.thumbnail-item {
+	margin-right: 3px;
+	margin-bottom: 3px;
+}
+
+.sticky {
+	position: sticky;
+	top: 0;
+}
+
+.fixed {
+	position: fixed;
+	top: 0;
+	z-index: 1000;
+	border-bottom: 1px solid #ddd;
+}
+/* 바디에 스크롤 막는 방법 */
+.not_scroll {
+	position: fixed;
+	overflow: hidden;
+	width: 100%;
+	height: 100%
+}
+
+.inquiryContents {
+	border: 1px solid #ddd;
+	padding: 30px;
+}
+
+.inquiry-title {
+	float: left;
+	line-height: 40px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.inquiryContents button {
+	width: 80px;
+	height: 36px;
+	line-height: 34px;
+	float: right;
+	font-size: 14px;
+	font-weight: 700;
+	background-color: #fff;
+	color: #346aff;
+	border: 1px solid #346aff;
+}
+
+.inquiry-header:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.inquiry-header {
+	margin-bottom: 25px;
+}
+
+.inquiry-notice li {
+	font-size: 13px;
+	letter-spacing: -1px;
+	color: #555;
+}
+
+.inquiry-notice {
+	margin-bottom: 30px;
+	overflow: hidden;
+}
+
+#myModal {
+	position: fixed;
+	z-index: 9999;
+}
+
+.container:after {
+	clear: both;
+	display: block;
+	content: "";
+}
+>>>>>>>
+branch
+
+ 
+
+'
+main
+
+
+'
+of
+
+ 
+
+https
+
+
+:
+//
+
+
+github
+
+
+.com
+/
+
+
+leejohun
+/
+
+
+FPRoupang
+
+
+.git
 </style>
 <script type="text/javascript">
 	onload = function(){
@@ -855,6 +1268,7 @@ p {
 															</div>
 														</div>
 												</c:forEach></td>
+										</tr>
 									</table>
 								</div>
 
@@ -1012,6 +1426,9 @@ p {
 				</div>
 			</div>
 		</div>
+	</div>
+	<div id="copyright">
+		<c:import url="../copyright.jsp"></c:import>
 	</div>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
