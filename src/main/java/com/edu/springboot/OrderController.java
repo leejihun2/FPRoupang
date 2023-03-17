@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.edu.springboot.jdbc.IMemberService;
+import com.edu.springboot.jdbc.GoodsOrderDTO;
 import com.edu.springboot.jdbc.SellRightDTO;
 import com.edu.springboot.jdbc.TempgoodsOrderDTO;
 import com.edu.springboot.jdbc.TempgoodsService;
@@ -25,10 +26,12 @@ public class OrderController {
 	
 	@Autowired
 	IMemberService member_dao;
+
 	
-	@RequestMapping("/orderlist.do")
-	public String orderlist(Principal principal, TempgoodsOrderDTO todto, Model model) {
+	@RequestMapping(value = "/orderlist.do", method = RequestMethod.GET)
+	public String member1(Principal principal, Model model) {
 		
+
 		List<String>orderList = new ArrayList<String>();
 		
 		String loginId = principal.getName();
@@ -102,5 +105,6 @@ public class OrderController {
 		System.out.println(model.getAttribute("view"));
 		
 		return "/admin/orderView";
+
 	}
 }

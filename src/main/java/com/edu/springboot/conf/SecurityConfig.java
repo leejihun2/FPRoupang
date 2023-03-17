@@ -1,10 +1,16 @@
 package com.edu.springboot.conf;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -30,42 +36,54 @@ public class SecurityConfig {
 	}
 	
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) 
-			throws Exception {
-		httpSecurity.authorizeRequests()
-		.antMatchers("/").permitAll()
-		.antMatchers("/css/**","/js/**","/images/**").permitAll()
-		.antMatchers("/guest/**").permitAll()
-		.antMatchers("/member/**").hasAnyRole("admin", "member", "seller")
-		.antMatchers("/supports/voc.jsp").hasAnyRole("admin", "member", "seller")
-		.antMatchers("/supports/inquiry.jsp").hasAnyRole("admin", "member", "seller")
-		.antMatchers("/admin/index.do").hasAnyRole("admin","seller")
-		.antMatchers("/admin/**").hasRole("admin")
-		.antMatchers("/product_insert").hasAnyRole("admin", "seller")
-        .antMatchers("/agreement/**").hasAnyRole("admin", "seller")
-        .antMatchers("/**").permitAll()
-		.anyRequest().authenticated();
-		
-		httpSecurity.formLogin()
-			.loginPage("/myLogin.do")
+	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+	    httpSecurity.authorizeRequests()
+	        .antMatchers("/").permitAll()
+	        .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
+	        .antMatchers("/guest/**").permitAll()
+	        .antMatchers("/member/**").hasAnyRole("admin", "member", "seller")
+	        .antMatchers("/supports/voc.do").hasAnyRole("admin", "member", "seller")
+	        .antMatchers("/supports/inquiry.do").hasAnyRole("admin", "member", "seller")
+	        .antMatchers("/Sell_Authorized.do").hasAnyRole("member", "seller")
+	        .antMatchers("/admin/index.do").hasAnyRole("admin", "seller")
+	        .antMatchers("/admin/**").hasRole("admin")
+	        .antMatchers("/product_insert").hasAnyRole("admin", "seller")
+	        .antMatchers("/agreement/**").hasAnyRole("admin", "seller")
+	        .antMatchers("/**").permitAll()
+	        .anyRequest().authenticated();
+
+	    httpSecurity.formLogin()
+	        .loginPage("/myLogin.do")
 	        .loginProcessingUrl("/myLoginAction.do")
 	        .defaultSuccessUrl("/")
-	        .failureHandler(authenticationFailureHandler) 
-	        .usernameParameter("my_id")	
+	        .failureHandler(authenticationFailureHandler)
+	        .usernameParameter("my_id")
 	        .passwordParameter("my_pass")
-        	.permitAll();
-		
-		httpSecurity.logout()
-			.logoutUrl("/myLogout.do")
+	        .permitAll();
+
+	    httpSecurity.logout()
+	        .logoutUrl("/myLogout.do")
 	        .logoutSuccessUrl("/")
-			.permitAll();
-	
-		httpSecurity.exceptionHandling().accessDeniedPage("/");
-		
-		httpSecurity.csrf().disable();
-		
-		return httpSecurity.build();
+	        .permitAll();
+
+	    httpSecurity.exceptionHandling()
+	        .accessDeniedHandler(new CustomAccessDeniedHandler())
+	        .accessDeniedPage("/");
+
+	    httpSecurity.csrf().disable();
+
+	    return httpSecurity.build();
 	}
+
+	public class CustomAccessDeniedHandler implements AccessDeniedHandler {
+	    @Override
+	    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+	        String referer = request.getHeader("Referer");
+	        response.sendRedirect(referer);
+	    }
+	}
+
+	
     @Autowired
     private DataSource dataSource;
     

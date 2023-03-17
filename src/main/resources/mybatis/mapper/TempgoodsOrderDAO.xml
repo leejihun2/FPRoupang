@@ -17,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		,#{goods_idx}, #{goods_image})
 	</insert>
 
+
 	<select id="SellerSelectGoodsOrder" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO" 
 	resultType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
 		select idx, buyer_idx, seller_idx, order_num, order_date, depart_date, arrive_date, order_status, 

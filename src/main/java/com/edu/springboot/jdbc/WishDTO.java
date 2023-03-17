@@ -9,5 +9,4 @@ public class WishDTO {
 	private String p_title; //상품 이름
 	private String p_price; //가격
 	private String pImage;  //사진 
-
 }

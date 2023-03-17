@@ -34,10 +34,8 @@
 			</div>
 		</div></li>
 	<li class="nav-item"><a class="nav-link collapsed" href="/orderlist.do">
-	<s:authorize access="hasRole('seller')">
 		<input type="hidden" id="seller_idx" value="${member_idx}"/>
 		<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
-	</s:authorize>
 	</a></li>
 	<s:authorize access="hasRole('admin')">
 	
@@ -54,9 +52,9 @@
 				aria-labelledby="headingPages" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">판매자관리:</h6>
-					<a class="collapse-item" href="/applicationList.do">판매권한신청리스트</a> <a
-						class="collapse-item" href="/sellerList.do">판매자리스트</a> <a
-						class="collapse-item" href="/blockList.do">판매차단리스트</a>
+					<a class="collapse-item" href="/applicationList.do">판매권한신청리스트</a> 
+					<a class="collapse-item" href="/sellerList.do">판매자리스트</a>
+					<a class="collapse-item" href="/blockList.do">판매차단리스트</a>
 				</div>
 			</div></li>
 		<li class="nav-item"><a class="nav-link collapsed" href="#"
@@ -69,6 +67,7 @@
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">고객센터:</h6>
 					<a class="collapse-item" href="/admin/writeSupports.do">글 작성</a>
+					<a class="collapse-item" href="/admin/mainImageUpdate.do">메인이미지 수정</a>
 					<a class="collapse-item" href="/admin/adminFaq.do?categoryCode=ALL">자주 묻는 질문</a>
 					<a class="collapse-item" href="/admin/adminNotice.do?categoryCode=ALL">쿠팡소식</a>
 				</div>
@@ -88,10 +87,6 @@
 	
 				</div>
 		</div></li>
-		
-		<!-- Nav Item - Tables -->
-		<li class="nav-item"><a class="nav-link" href="tables.do"> <i
-				class="fas fa-fw fa-table"></i> <span>Tables</span></a></li>
 	
 	</s:authorize>
 	<!-- Divider -->

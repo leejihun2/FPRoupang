@@ -14,10 +14,7 @@
 background-color: white;
 width: 780px;
 height: 800px;
-position: absolute;
-top:350px; 
-right: 259px;
-
+margin: 40px;
 
 }
 .tetete{
@@ -216,7 +213,11 @@ hover:
 
 
 </div>
-
+</div>
+</div>
 </s:authorize>
+<div>
+	<%@include file="../copyright.jsp" %>
+</div>
 </body>
 </html>

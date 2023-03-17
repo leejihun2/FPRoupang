@@ -25,20 +25,18 @@ body {
 
 .top1 {
     width: 830px;
-    float: left;
+    float: left
 }
 .mainconcon{
 	background-color: white;
 	width: 	auto;
-	height: 1070px;
 }
 .mainconcon2{
 	background-color: white;
 	width: 980px;
-	height: 1070px;
-    float: middle;
     margin:auto;
 }
+
 .top2 {
     background-color: #82bce2;
     color: #fff;
@@ -50,7 +48,12 @@ body {
     box-sizing: border-box;
     font-family: "robotoThinNumber", "roboto", "Courier New", Tahoma, NanumGothic, MalgunGothic, "돋움", dotum, sans-serif;
 }
-
+.di1:after, .di2:after,
+.mainconcon:after, .mainconcon2:after, top1:after, top2:after{
+	content: "";
+    display: block;
+    clear: both;
+}
 
 .st {
     position: relative;

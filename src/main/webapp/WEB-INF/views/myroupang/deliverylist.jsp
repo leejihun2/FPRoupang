@@ -22,9 +22,7 @@ box-sizing: border-box;
 background-color: white;
 width: 780px;
 height: 500px;
-position: absolute;
-top:350px; 
-right: 259px;
+margin: 50px;
 }
 
 .input{

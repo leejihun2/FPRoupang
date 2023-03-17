@@ -393,15 +393,16 @@ public class TicketController {
 		String location = ""; 
 		if(req.getParameter("location")!=null) {
 			location = req.getParameter("location");
+			ticket_dao.log(location);
 		}
+		
 		ModelAndView mv = new ModelAndView();
 		ArrayList<TotalTicketDTO> ticket_list = ticket_dao.show_ticket_list(sub_idx, location);
 		String category_title = cate_dao.select_one_cate(sub_idx);
-		
 		mv.addObject("sub_idx",sub_idx);
 		mv.addObject("category_title",category_title);
 		mv.addObject("ticket_list", ticket_list);
-		System.out.println(ticket_list);
+
 		mv.setViewName("/ticket/ticketList");
 		return mv;
 	}
@@ -463,10 +464,14 @@ public class TicketController {
 		gdto.setGoods_idx(req.getParameter("ti_idx"));
 		gdto.setGoods_image(req.getParameter("goods_image"));
 		gdto.setSeller_idx(req.getParameter("seller_idx"));
+		gdto.setTop_title(req.getParameter("top_title"));
+		gdto.setMain_title(req.getParameter("main_title"));
+		gdto.setSorting(Integer.parseInt(req.getParameter("table_sort")));
 		
 		//상품 구매시 로그에 남기기
 		int result = goods_dao.InsertOrder(gdto);
 		int result2 = goods_dao.InsertOrderItem(gdto);
+		
 		if (result == 0 ) {
 			System.out.println("insert 에러");
 		}else {

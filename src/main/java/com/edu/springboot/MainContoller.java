@@ -10,13 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.springboot.jdbc.IMemberService;
-import com.edu.springboot.jdbc.JourneyService;
+import com.edu.springboot.jdbc.MainImageDTO;
 import com.edu.springboot.jdbc.SellRightDTO;
 import com.edu.springboot.jdbc.TotalJourneyDTO;
 import com.edu.springboot.jdbc.CategoryService;
+import com.edu.springboot.jdbc.IMainImageService;
 import com.edu.springboot.jdbc.IMainService;
 
 
@@ -29,12 +29,20 @@ public class MainContoller {
 	@Autowired
     IMainService main_dao;
 	
+	@Autowired
+	IMainImageService image_dao;
+	
 	@RequestMapping("/")
 	public String home(Model model) {
 		
 		ArrayList<TotalJourneyDTO> journeyList = main_dao.adJourney_list();
 		
 		model.addAttribute("journeyList",journeyList);
+		
+		
+		ArrayList<MainImageDTO> image_dto = image_dao.select_images(1);
+		
+		model.addAttribute("image_dto",image_dto);
 		
 		System.out.println(journeyList);
 		
@@ -90,11 +98,13 @@ public class MainContoller {
 		
 		String loginId = principal.getName();
 		
+		SellRightDTO dto  = member_dao.LoginUser(loginId);
 		if(!(loginId.equals("admin"))) {
-			SellRightDTO dto  = member_dao.LoginUser(loginId);
 			dto  = member_dao.LoginSeller(dto.getMember_idx());
-			model.addAttribute("member_idx",dto.getMember_idx());
 			model.addAttribute("company_name", dto.getCompany_name());
+			model.addAttribute("member_idx",dto.getMember_idx());
+		}else {
+			model.addAttribute("member_idx",dto.getMember_idx());
 		}
 
 		model.addAttribute("cate",cate_dao.select_cate(sub_idx));

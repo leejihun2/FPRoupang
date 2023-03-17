@@ -310,13 +310,13 @@ function zipclick(){
 		</div>
 		
 		<div>
-			<input type="text" class="ing991" style="float:left; color:grey;" placeholder=" 우편번호" 
-				name="zipcode1" onclick="zipclick();" value="  ${dto.zipcode1}"  id="zipcode1">
+			<input type="text" class="ing991" style="float:left; color:grey;" placeholder="   우편번호" 
+				name="zipcode1" onclick="zipclick();" value="${dto.zipcode1}"  id="zipcode1">
 		</div>
 		
 		<div>
 			<input type="text" class="ing99" style="float:left; color:grey;" 
-				placeholder="  상세주소" id="address1" name="address1" value="  ${dto.address1}">
+				placeholder="   상세주소" id="address1" name="address1" <c:if test="${dto.address1 ne null}">value="${dto.address1}"</c:if> />
 		</div>
 		
 		
