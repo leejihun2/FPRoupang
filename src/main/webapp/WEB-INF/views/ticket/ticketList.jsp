@@ -150,32 +150,8 @@
     <div id="top" style="margin-bottom:0px;">
         <%@include file="../top.jsp" %>
     </div>
-	<nav class="navbar navbar-expand-sm navbar-dark sticky" style="background-color:rgb(3,194,165); height: 123px;">
-	    <div class="container">
-            <ul class="navbar-nav me-auto search-wizard-tab">
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">숙박</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">티켓/패스</a>
-                </li>
-            </ul>
-            <div class="collapse navbar-collapse">
-            	<h4 class="search_title">
-	                <img src="https://img1a.coupangcdn.com/image/coupang/travel/logo/logo-travel-white.png">
-	                <p>티켓/패스</p>
-                </h4>
-	            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-	            <span class="navbar-toggler-icon"></span>
-	            </button>
-	            <form action="/ticket_List" class="d-flex">
-	                <input class="form-control me-2" type="hidden" name="category" value="${sub_idx}">
-	                <input class="form-control me-2" type="text" name="title" value="${title }">
-	                <button class="btn btn-primary" type="submit">Search</button>
-	            </form>
-            </div>
-        </div>
-    </nav>
+    
+	<%@include file="../journey/searchbox.jsp" %> 
     <div class="container" style="margin-top:0px;">
     	<section class="category-c1-banners">
     		<div class="sub-category">

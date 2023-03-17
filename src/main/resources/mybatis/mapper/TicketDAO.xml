@@ -52,12 +52,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  				</when>
  				<otherwise>null</otherwise>
  			</choose>
+ 			,#{member_idx}
  		)
  	</insert>
  	
  	<insert id="insert_ticket_info"
  	parameterType="com.edu.springboot.jdbc.TicketInfoDTO">
- 		insert into ticket_info 
+ 		insert into ticket_info 		
  		values (ticket_info_seq.nextval, #{bot_idx}, #{ti_title}, #{ti_intro}, #{ti_duetime1}, #{ti_duetime2}, #{ti_price}, 0)
  	</insert>
  	
@@ -167,4 +168,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			ON bc.idx = ti.bot_idx
  		WHERE rk=1 ORDER BY idx
  	</select>
+ 	
+ 	<insert id="log">
+		INSERT INTO search_log 
+		(search_word, member_idx, user_birth)
+		VALUES
+		(#{search_word}, 12, 97)
+	</insert>
  </mapper>

@@ -46,4 +46,6 @@ public interface JourneyService {
 	public ArrayList<TotalJourneyDTO> show_journey_list(TotalJourneyDTO totaljourneyDTO);
 
 	public ArrayList<JourneyInfoDTO> journeyDetailSearch(JourneyInfoDTO journeyInfoDTO);
+	
+	public int log(String search_word);
 }

@@ -14,10 +14,10 @@ public class ReviewDTO {
 	private String goods_title;
 	private String review;
 	private Date regiDate;
-	private float star_rate;
-	private float star_servey1;
-	private float star_servey2;
-	private float star_servey3;
+	private Double star_rate;
+	private Double star_servey1;
+	private Double star_servey2;
+	private Double star_servey3;
 	private String summary;
 	
 	private int star_rate0;

@@ -1,0 +1,901 @@
+@charset "UTF-8";
+    #contents.etc {
+        margin-top: 20px
+    }
+
+    .etc .introduce {
+        padding: 70px 0 0 0
+    }
+
+    .etc .introduce h2,
+    .etc .introduce menu a {
+        background-image: url('//img1a.coupangcdn.com/image/coupang/etc/companyinfo/bg_etc_introduce.png');
+        background-repeat: no-repeat
+    }
+
+    .etc .introduce h2 {
+        width: 87px;
+        height: 23px;
+        float: left;
+        margin-left: 55px;
+        text-indent: -9999em
+    }
+
+    .etc .introduce menu {
+        float: right;
+        padding: 2px 37px 0 0;
+        overflow: hidden
+    }
+
+    .etc .introduce menu li {
+        float: left
+    }
+
+    .etc .introduce menu a {
+        display: block;
+        height: 21px;
+        text-indent: -9999em
+    }
+
+    .etc .introduce menu .hello a {
+        width: 110px;
+        background-position: 14px -41px
+    }
+
+    .etc .introduce menu .hello a.selected {
+        width: 110px;
+        background-position: 14px -93px
+    }
+
+    .etc .introduce menu .value a {
+        width: 93px;
+        background-position: -101px -41px
+    }
+
+    .etc .introduce menu .value a.selected {
+        width: 93px;
+        background-position: -101px -93px
+    }
+
+    .etc .introduce menu .culture a {
+        width: 92px;
+        background-position: -196px -41px
+    }
+
+    .etc .introduce menu .culture a.selected {
+        width: 92px;
+        background-position: -196px -93px
+    }
+
+    .etc .introduce menu .customer a {
+        width: 96px;
+        background-position: -294px -41px
+    }
+
+    .etc .introduce menu .customer a.selected {
+        width: 96px;
+        background-position: -294px -93px
+    }
+
+    .etc .introduce menu .growth a {
+        width: 108px;
+        background-position: -403px -41px
+    }
+
+    .etc .introduce menu .growth a.selected {
+        width: 108px;
+        background-position: -403px -93px
+    }
+
+    .etc .introduce menu .history a {
+        width: 91px;
+        background-position: -513px -41px
+    }
+
+    .etc .introduce menu .history a.selected {
+        width: 91px;
+        background-position: -513px -93px
+    }
+
+    .etc .introduce menu .recruit a {
+        width: 92px;
+        background-position: -600px -41px
+    }
+
+    .etc .introduce .intro-section {
+        clear: both
+    }
+
+    .etc .introduce .intro-section div {
+        display: none
+    }
+
+    .etc .introduce .intro-section h3,
+    .etc .introduce .intro-section h4,
+    .etc .introduce .intro-section strong,
+    .etc .introduce .intro-section span,
+    .etc .introduce .intro-section em,
+    .etc .introduce .intro-section p,
+    .etc .introduce .intro-section dl,
+    .etc .introduce .intro-section dt,
+    .etc .introduce .intro-section dd,
+    .etc .introduce .intro-section ul,
+    .etc .introduce .intro-section ol,
+    .etc .introduce .intro-section li {
+        display: block;
+        text-indent: -9999em
+    }
+
+    .etc .introduce .intro-section .hello {
+        height: 1244px;
+        background: url('//img1a.coupangcdn.com/image/coupang/etc/companyinfo/01_ceo.png') no-repeat
+    }
+
+    .etc .introduce .intro-section .value {
+        height: 2600px;
+        background: url('//img1a.coupangcdn.com/image/coupang/etc/companyinfo/02_value_1.png') no-repeat
+    }
+
+    .etc .introduce .intro-section .culture {
+        height: 1480px;
+        position: relative;
+        background: url('//img1a.coupangcdn.com/image/coupang/etc/companyinfo/03_culture.png') no-repeat
+    }
+
+    .etc .introduce .intro-section .culture a {
+        display: block;
+        width: 74px;
+        height: 25px;
+        position: absolute
+    }
+
+    .etc .introduce .intro-section .culture .link1 {
+        left: 290px;
+        top: 665px
+    }
+
+    .etc .introduce .intro-section .culture .link2 {
+        left: 332px;
+        top: 694px
+    }
+
+    .etc .introduce .intro-section .culture .link3 {
+        left: 190px;
+        top: 725px
+    }
+
+    .etc .introduce .intro-section .culture .custory {
+        position: absolute;
+        display: block;
+        width: 105px;
+        height: 21px;
+        top: 2667px;
+        padding-top: 4px;
+        background: url('//img1a.coupangcdn.com/image/coupang/etc/introduce/btn_introduce_culture_btn_bg.gif') no-repeat;
+        font-size: 12px;
+        font-weight: lighter;
+        text-indent: 0;
+        text-align: center;
+        color: #fff
+    }
+
+    .etc .introduce .intro-section .culture .link2013 {
+        left: 89px
+    }
+
+    .etc .introduce .intro-section .culture .link2014 {
+        left: 198px
+    }
+
+    .etc .introduce .intro-section .customer {
+        height: 3100px;
+        position: relative;
+        background: url('//img1a.coupangcdn.com/image/coupang/etc/companyinfo/04_customer_2.png') no-repeat
+    }
+
+    .etc .introduce .intro-section .customer a {
+        display: block;
+        width: 74px;
+        height: 25px;
+        position: absolute
+    }
+
+    .etc .introduce .intro-section .growth {
+        height: 2350px;
+        position: relative;
+        background: url('//img1a.coupangcdn.com/image/coupang/etc/companyinfo/05_growth.png') no-repeat
+    }
+
+    .etc .introduce .intro-section .growth a {
+        display: block;
+        width: 74px;
+        height: 25px;
+        position: absolute
+    }
+
+    .etc .introduce .intro-section .history {
+        height: 2500px;
+        background: url('//img1a.coupangcdn.com/image/coupang/etc/companyinfo/06_history.png') no-repeat
+    }
+
+    .etc .partnership {
+        width: 978px;
+        background: #fff;
+        border: 1px solid #dbdbdb
+    }
+
+    .etc .partnership h2 {
+        height: 46px;
+        padding: 18px 0 0 26px;
+        background: url('//img1a.coupangcdn.com/image/coupang/etc/partnership/bg_partnership_title.png') repeat
+    }
+
+    .etc .partnership h2 span,
+    .etc .partnership .intro {
+        background-image: url('//img1a.coupangcdn.com/image/coupang/etc/partnership/bg_partnership_header.png');
+        background-repeat: no-repeat
+    }
+
+    .etc .partnership h2 span {
+        display: block;
+        width: 150px;
+        height: 28px;
+        background-position: 0 0;
+        text-indent: -9999em
+    }
+
+    .etc .partnership .intro,
+    .etc .partnership .intro strong,
+    .etc .partnership .intro em,
+    .etc .partnership .intro span {
+        display: block;
+        text-indent: -9999em
+    }
+
+    .etc .partnership .intro {
+        height: 478px;
+        background-position: 0 100%;
+        border-top: 1px solid #dbdbdb
+    }
+
+    .etc .partnership .partnership-section {
+        padding: 70px 70px 50px
+    }
+
+    .etc .partnership .partnership-section h3,
+    .etc .partnership .step-section h4,
+    .etc .partnership .step-section em,
+    .etc .partnership .step-section strong span,
+    .etc .partnership .inquire-section span,
+    .etc .partnership .step-section .label a {
+        background-image: url('//img1a.coupangcdn.com/image/coupang/etc/partnership/bg_partnership_contents_151022.png');
+        background-repeat: no-repeat
+    }
+
+    .etc .partnership .partnership-section h3 {
+        height: 27px;
+        text-indent: -9999em
+    }
+
+    .etc .partnership .step-section {
+        position: relative;
+        padding-bottom: 143px;
+        background-color: #e1e1e1
+    }
+
+    .etc .partnership .step-section>div {
+        position: relative
+    }
+
+    .etc .partnership .step-section h3 {
+        background-position: 0 0
+    }
+
+    .etc .partnership .step-section ol {
+        height: 312px;
+        padding: 30px 0 0 25px;
+        position: relative;
+        overflow: hidden;
+        list-style: none
+    }
+
+    .etc .partnership .step-section .shopping-step {
+        height: 298px
+    }
+
+    .etc .partnership .step-section li {
+        float: left;
+        width: 135px
+    }
+
+    .etc .partnership .step-section .shopping-step li {
+        width: 153px
+    }
+
+    .etc .partnership .step-section a {
+        display: block
+    }
+
+    .etc .partnership .step-section h4 {
+        height: 130px;
+        text-indent: -9999em
+    }
+
+    .etc .partnership .step-section strong,
+    .etc .partnership .step-section em,
+    .etc .partnership .step-section span {
+        display: block
+    }
+
+    .etc .partnership .step-section strong {
+        width: 752px;
+        height: 110px;
+        padding: 40px 0 0 30px;
+        position: absolute;
+        left: 25px;
+        top: 188px;
+        background-color: #fff;
+        border: 2px solid #1fa5f6;
+        visibility: hidden
+    }
+
+    .etc .partnership .step-section .shopping-step strong {
+        width: 752px;
+        height: 96px;
+        padding: 40px 0 0 30px;
+        position: absolute;
+        background-color: #fff;
+        border: 2px solid #1fa5f6;
+        visibility: hidden
+    }
+
+    .etc .partnership .step-section em {
+        height: 85px;
+        text-indent: -9999em
+    }
+
+    .etc .partnership .step-section .shopping-step em {
+        height: 60px;
+        text-indent: -9999em
+    }
+
+    .etc .partnership .step-section .label {
+        margin: 0 25px;
+        border-bottom: 1px solid #000;
+        text-indent: -9999em
+    }
+
+    .etc .partnership .step-section em.shopping-label {
+        width: 70px;
+        height: 43px;
+        background-position: 0 -1500px
+    }
+
+    .etc .partnership .step-section em.local-label {
+        width: 200px;
+        height: 44px;
+        margin-top: 80px;
+        background-position: -90px -1500px
+    }
+
+    .etc .partnership .step-section .rocket-delivery-btn,
+    .etc .partnership .step-section .shopping-btn,
+    .etc .partnership .step-section .local-btn {
+        position: absolute;
+        width: 210px;
+        height: 40px;
+        top: -7px;
+        right: 25px;
+        background-position: 0 -940px
+    }
+
+    .etc .partnership .step-section .rocket-delivery-btn {
+        right: 240px;
+        background-position: -220px -940px
+    }
+
+    .etc .partnership .step-section .local-btn {
+        width: 300px;
+        background-position: -440px -940px
+    }
+
+    .etc .partnership .step-section .mouse-over-noti {
+        position: absolute;
+        width: 784px;
+        height: 138px;
+        top: 232px;
+        left: 25px;
+        padding: 0;
+        border: 1px solid #cecece;
+        visibility: visible;
+        background-color: transparent
+    }
+
+    .etc .partnership .step-section .mouse-over-noti.local-noti {
+        height: 152px
+    }
+
+    .etc .partnership .step-section em.notice {
+        position: relative;
+        width: 383px;
+        height: 18px;
+        top: 59px;
+        left: 201px;
+        background-position: 0 -836px
+    }
+
+    .etc .partnership .step-section .local-noti em.notice {
+        top: 68px
+    }
+
+    .etc .partnership .step-section strong span {
+        width: 21px;
+        height: 18px;
+        position: absolute;
+        top: -18px;
+        background-position: 100% -298px;
+        text-indent: -9999em
+    }
+
+    .etc .partnership .step-section .step1 h4 {
+        background-position: 0 -38px
+    }
+
+    .etc .partnership .step-section .step1 em {
+        background-position: 0 -316px
+    }
+
+    .etc .partnership .step-section .step1 span {
+        left: 42px
+    }
+
+    .etc .partnership .step-section .step2 h4 {
+        background-position: -135px -38px
+    }
+
+    .etc .partnership .step-section .step2 em {
+        background-position: 0 -401px
+    }
+
+    .etc .partnership .step-section .step2 span {
+        left: 178px
+    }
+
+    .etc .partnership .step-section .step3 h4 {
+        background-position: -270px -38px
+    }
+
+    .etc .partnership .step-section .step3 em {
+        background-position: 0 -486px
+    }
+
+    .etc .partnership .step-section .step3 span {
+        left: 317px
+    }
+
+    .etc .partnership .step-section .step4 h4 {
+        background-position: -405px -38px
+    }
+
+    .etc .partnership .step-section .step4 em {
+        background-position: 0 -571px
+    }
+
+    .etc .partnership .step-section .step4 span {
+        left: 452px
+    }
+
+    .etc .partnership .step-section .step5 h4 {
+        background-position: -540px -38px
+    }
+
+    .etc .partnership .step-section .step5 em {
+        background-position: 0 -656px
+    }
+
+    .etc .partnership .step-section .step5 span {
+        left: 589px
+    }
+
+    .etc .partnership .step-section .step6 h4 {
+        background-position: -675px -38px
+    }
+
+    .etc .partnership .step-section .step6 em {
+        background-position: 0 -741px
+    }
+
+    .etc .partnership .step-section .step6 span {
+        left: 724px
+    }
+
+    .etc .partnership .step-section .step1 a:hover h4,
+    .etc .partnership .step-section .step1 a:active h4,
+    .etc .partnership .step-section .step1 a:focus h4 {
+        background-position: 0 -176px
+    }
+
+    .etc .partnership .step-section .step2 a:hover h4,
+    .etc .partnership .step-section .step2 a:active h4,
+    .etc .partnership .step-section .step2 a:focus h4 {
+        background-position: -135px -176px
+    }
+
+    .etc .partnership .step-section .step3 a:hover h4,
+    .etc .partnership .step-section .step3 a:active h4,
+    .etc .partnership .step-section .step3 a:focus h4 {
+        background-position: -270px -176px
+    }
+
+    .etc .partnership .step-section .step4 a:hover h4,
+    .etc .partnership .step-section .step4 a:active h4,
+    .etc .partnership .step-section .step4 a:focus h4 {
+        background-position: -405px -176px
+    }
+
+    .etc .partnership .step-section .step5 a:hover h4,
+    .etc .partnership .step-section .step5 a:active h4,
+    .etc .partnership .step-section .step5 a:focus h4 {
+        background-position: -540px -176px
+    }
+
+    .etc .partnership .step-section .step6 a:hover h4,
+    .etc .partnership .step-section .step6 a:active h4,
+    .etc .partnership .step-section .step6 a:focus h4 {
+        background-position: -675px -176px
+    }
+
+    .etc .partnership .step-section li a:hover strong,
+    .etc .partnership .step-section li a:active strong,
+    .etc .partnership .step-section li a:focus strong {
+        visibility: visible
+    }
+
+    .etc .partnership .step-section .shopping-step .step1 h4 {
+        background-position: 0 -1008px
+    }
+
+    .etc .partnership .step-section .shopping-step .step1 em {
+        background-position: 0 -1300px
+    }
+
+    .etc .partnership .step-section .shopping-step .step2 h4 {
+        background-position: -153px -1008px
+    }
+
+    .etc .partnership .step-section .shopping-step .step2 em {
+        background-position: 0 -1362px
+    }
+
+    .etc .partnership .step-section .shopping-step .step3 h4 {
+        background-position: -307px -1008px
+    }
+
+    .etc .partnership .step-section .shopping-step .step3 em {
+        background-position: 0 -1430px
+    }
+
+    .etc .partnership .step-section .shopping-step .step1 a:hover h4,
+    .etc .partnership .step-section .shopping-step .step1 a:active h4,
+    .etc .partnership .step-section .shopping-step .step1 a:focus h4 {
+        background-position: 0 -1146px
+    }
+
+    .etc .partnership .step-section .shopping-step .step2 a:hover h4,
+    .etc .partnership .step-section .shopping-step .step2 a:active h4,
+    .etc .partnership .step-section .shopping-step .step2 a:focus h4 {
+        background-position: -153px -1146px
+    }
+
+    .etc .partnership .step-section .shopping-step .step3 a:hover h4,
+    .etc .partnership .step-section .shopping-step .step3 a:active h4,
+    .etc .partnership .step-section .shopping-step .step3 a:focus h4 {
+        background-position: -307px -1146px
+    }
+
+    .etc .partnership .step-section li a:hover strong {
+        z-index: 2
+    }
+
+    .etc .partnership .step-section li a:focus strong {
+        z-index: 1
+    }
+
+    .etc .partnership .faq {
+        padding-left: 25px
+    }
+
+    .etc .partnership .faq em {
+        width: 137px;
+        height: 22px;
+        margin: 50px 0 15px;
+        background-position: -400px -1500px
+    }
+
+    .etc .partnership .faq .qnas {
+        width: 784px;
+        border-top: 1px solid #a4a4a4
+    }
+
+    .etc .partnership .faq .q {
+        height: 14px;
+        position: relative;
+        padding: 13px 0 13px 35px;
+        font-size: 13px;
+        border-bottom: 1px solid #c3c3c3;
+        cursor: pointer
+    }
+
+    .etc .partnership .faq .qnas>div .qa-img {
+        width: 10px;
+        height: 15px;
+        position: absolute;
+        display: block;
+        margin-left: -20px;
+        content: " ";
+        background: url('//img1a.coupangcdn.com/image/coupang/etc/partnership/bg_partnership_contents_151022.png');
+        background-position: -400px -1530px
+    }
+
+    .etc .partnership .faq .qnas .q .q-open-img {
+        width: 13px;
+        height: 15px;
+        position: absolute;
+        display: block;
+        top: 17px;
+        right: 0;
+        margin-right: 15px;
+        float: right;
+        content: " ";
+        background: url('//img1a.coupangcdn.com/image/coupang/etc/partnership/bg_partnership_contents_151022.png');
+        background-position: -458px -1530px
+    }
+
+    .etc .partnership .faq .qnas .q .q-open-img.selected {
+        background-position: -440px -1530px
+    }
+
+    .etc .partnership .faq .a {
+        display: none;
+        padding: 30px 50px 35px;
+        font-size: 13px;
+        line-height: 23px;
+        background-color: #efefef
+    }
+
+    .etc .partnership .faq .a a {
+        display: inline-block
+    }
+
+    .etc .partnership .faq .a a:hover {
+        text-decoration: underline
+    }
+
+    .etc .partnership .faq .a span {
+        font-weight: normal;
+        color: #dc1c1c
+    }
+
+    .etc .partnership .faq .a table {
+        width: 100%;
+        margin: 5px 0
+    }
+
+    .etc .partnership .faq .a table,
+    .etc .partnership .faq .a th,
+    .etc .partnership .faq .a td {
+        border: 1px solid #c3c3c3;
+        text-align: center
+    }
+
+    .etc .partnership .faq .qnas .a .qa-img {
+        margin-top: 4px;
+        background-position: -420px -1530px
+    }
+
+    #wowServiceInfo {
+        position: relative
+    }
+
+    #wowServiceInfo .title {
+        height: 70px;
+        text-indent: -999em;
+        background: url(//img1a.coupangcdn.com/image/coupang/etc/wow/wowservice_title.gif) no-repeat
+    }
+
+    #wowServiceInfo h4 {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 245px;
+        height: 51px;
+        text-indent: -999em;
+        background: url(//img1a.coupangcdn.com/image/coupang/etc/wow/bg_wowservice_tab.gif) no-repeat
+    }
+
+    #wowServiceInfo h4.free-delivery.selected {
+        background-position: 0 -51px
+    }
+
+    #wowServiceInfo h4.return {
+        left: 245px;
+        background-position: -245px 0
+    }
+
+    #wowServiceInfo h4.return.selected {
+        left: 245px;
+        background-position: -245px -51px
+    }
+
+    #wowServiceInfo h4.cs {
+        left: 490px;
+        background-position: -490px 0
+    }
+
+    #wowServiceInfo h4.cs.selected {
+        left: 490px;
+        background-position: -490px -51px
+    }
+
+    #wowServiceInfo h4.food {
+        left: 735px;
+        background-position: -735px 0
+    }
+
+    #wowServiceInfo h4.food.selected {
+        left: 735px;
+        background-position: -735px -51px
+    }
+
+    #wowServiceInfo h4 a {
+        display: block;
+        height: 51px
+    }
+
+    #wowServiceInfo .content {
+        display: none;
+        text-indent: -999em;
+        font-size: 0;
+        line-height: 0;
+        overflow: hidden;
+        margin-top: 51px
+    }
+
+    #wowServiceInfo .free-delivery-content {
+        display: block;
+        height: 650px;
+        background: url(//img1a.coupangcdn.com/image/coupang/etc/wow/img_free_1.gif) no-repeat
+    }
+
+    #wowServiceInfo .return-content .cont-intro {
+        height: 330px;
+        background: url(//img1a.coupangcdn.com/image/coupang/etc/wow/img_easy_1.gif) no-repeat
+    }
+
+    #wowServiceInfo .return-content .cont1 {
+        position: relative;
+        height: 552px;
+        background: url(//img1a.coupangcdn.com/image/coupang/etc/wow/img_easy_2.gif) no-repeat
+    }
+
+    #wowServiceInfo .return-content .cont1 a {
+        position: absolute;
+        top: 87px;
+        left: 779px;
+        display: block;
+        width: 146px;
+        height: 30px
+    }
+
+    #wowServiceInfo .return-content .cont2 {
+        height: 278px;
+        background: url(//img1a.coupangcdn.com/image/coupang/etc/wow/img_easy_3_1.gif) no-repeat
+    }
+
+    #wowServiceInfo .return-content .cont3 {
+        position: relative;
+        height: 1107px;
+        background: url(//img1a.coupangcdn.com/image/coupang/etc/wow/img_easy_4.gif) no-repeat
+    }
+
+    #wowServiceInfo .return-content td .more {
+        position: absolute;
+        top: 451px;
+        left: 644px;
+        width: 78px;
+        height: 22px
+    }
+
+    #wowServiceInfo .return-content td .more.travel {
+        top: 367px
+    }
+
+    #wowServiceInfo .cs-content .cont-intro {
+        height: 330px;
+        background: url(//img1a.coupangcdn.com/image/coupang/etc/wow/img_cscenter_1.gif) no-repeat
+    }
+
+    #wowServiceInfo .cs-content .cont1 {
+        height: 310px;
+        background: url(//img1a.coupangcdn.com/image/coupang/etc/wow/img_cscenter_2_1.jpg) no-repeat
+    }
+
+    #wowServiceInfo .cs-content .cont2 {
+        height: 807px;
+        background: url(//img1a.coupangcdn.com/image/coupang/etc/wow/img_cscenter_3_1.jpg) no-repeat
+    }
+
+    #wowServiceInfo .food-content .cont-intro {
+        height: 330px;
+        background: url(//img1a.coupangcdn.com/image/coupang/etc/wow/img_csfood_1.gif) no-repeat
+    }
+
+    #wowServiceInfo .food-content .cont1 {
+        height: 780px;
+        background: url(//img1a.coupangcdn.com/image/coupang/etc/wow/img_csfood_2.gif) no-repeat
+    }
+
+    #returnPolicy {
+        text-indent: -999em;
+        font-size: 0;
+        line-height: 0;
+        overflow: hidden
+    }
+
+    #returnPolicy .content-link {
+        height: 84px;
+        padding: 20px 0 0 55px;
+        background: url(//img1a.coupangcdn.com/image/www/cs/webrefundpolicy/webrefundPolicy_menu.gif) no-repeat
+    }
+
+    #returnPolicy .content-link a {
+        float: left;
+        display: block;
+        width: 145px;
+        height: 42px
+    }
+
+    #returnPolicy .intro {
+        position: relative;
+        height: 164px;
+        background: url(//img1a.coupangcdn.com/image/www/cs/webrefundpolicy/v1/policy_top.png) no-repeat
+    }
+
+    #returnPolicy .intro a {
+        position: absolute;
+        top: 58px;
+        right: 46px;
+        display: block;
+        width: 160px;
+        height: 50px
+    }
+
+    #returnPolicy .content1 {
+        height: 720px;
+        background: url(//img1a.coupangcdn.com/image/www/cs/webrefundpolicy/v1/policy_contents01.png) no-repeat
+    }
+
+    #returnPolicy .content2 {
+        height: 594px;
+        background: url(//img1a.coupangcdn.com/image/www/cs/webrefundpolicy/v1/policy_contents02.png) no-repeat
+    }
+
+    #returnPolicy .content3 {
+        height: 433px;
+        background: url(//img1a.coupangcdn.com/image/www/cs/webrefundpolicy/v1/policy_contents03.png) no-repeat
+    }
+
+    #returnPolicy .content4 {
+        height: 737px;
+        background: url(//img1a.coupangcdn.com/image/www/cs/webrefundpolicy/v1/policy_contents04.png) no-repeat
+    }
+
+    #returnPolicy .content5 {
+        height: 852px;
+        background: url(//img1a.coupangcdn.com/image/www/cs/webrefundpolicy/v1/policy_contents05.png) no-repeat
+    }
+
+    #returnPolicy .content6 {
+        height: 938px;
+        background: url(//img1a.coupangcdn.com/image/www/cs/webrefundpolicy/v1/policy_contents06.png) no-repeat
+    }

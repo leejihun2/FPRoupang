@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class TicketDTO {
 	private int bot_idx;
+	private String member_idx;
 	private String t_intro;
 	private String notice;
 	private String t_conservice;

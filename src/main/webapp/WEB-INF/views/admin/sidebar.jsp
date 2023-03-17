@@ -33,11 +33,11 @@
 				<a class="collapse-item" href="/productInsert">여행/티켓</a>
 			</div>
 		</div></li>
-	<li class="nav-item"><a class="nav-link collapsed" href="#">
 	<s:authorize access="hasRole('seller')">
-		<i class="fa fa-shopping-cart"></i> <span onclick="location.href=' '">판매목록확인</span>
-	</s:authorize>
+	<li class="nav-item"><a class="nav-link collapsed" href="/orderlist.do">
+		<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
 	</a></li>
+	</s:authorize>
 	<s:authorize access="hasRole('admin')">
 	
 		<!-- Heading -->
@@ -88,10 +88,6 @@
 	
 				</div>
 		</div></li>
-		
-		<!-- Nav Item - Tables -->
-		<li class="nav-item"><a class="nav-link" href="tables.do"> <i
-				class="fas fa-fw fa-table"></i> <span>Tables</span></a></li>
 	
 	</s:authorize>
 	<!-- Divider -->

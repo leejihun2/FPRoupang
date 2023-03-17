@@ -228,7 +228,7 @@ function deleteRow(idx){
 	width: inherit;
 }
 </style>
-<body>
+<body style="background: white;">
 	<script type="text/javascript">
 function writeValidate(f)
 {
@@ -248,7 +248,7 @@ function writeValidate(f)
 	<div id="top">
 		<%@include file="../top.jsp"%>
 	</div>
-	<div class="container" style="background: white;">
+	<div class="container">
 
 		<%@include file="../category.jsp"%>
 		<!-- JSTL의 url태그는 컨텍스트루트 경로를 자동으로 포함시켜 준다. -->
@@ -274,9 +274,6 @@ function writeValidate(f)
 					<div class="sc-so9ho9-3 dBPfIJ">문의량이 많아 답변은 24시간 이상 소요될 수
 						있습니다.</div>
 				</div>
-				<form name="writeFrm" method="post"
-					onsubmit="return writeValidate(this);"
-					action="<c:url value="/supports/vocAction.do" />">
 					<div class="sc-1uwr20l-0 fGSwLE">
 						<div class="sc-2u5cmp-0 ycZdw">
 							<select class="sc-46148w-0 cfScjT" class="sc-46148w-1 kplpza"
@@ -301,7 +298,7 @@ function writeValidate(f)
 								</div>
 							</div>
 							<div class="sc-2u5cmp-1 apQSA">
-								<button class="sc-1vm0jpx-4 dRiHfk">주문상품 선택</button>
+								<button type="button" class="sc-1vm0jpx-4 dRiHfk">주문상품 선택</button>
 							</div>
 						</div>
 						<div class="sc-1wpxynf-0 iSxnmm">
@@ -330,12 +327,12 @@ function writeValidate(f)
 							<button width="180px" class="sc-1vm0jpx-4 jqrURU">보내기</button>
 						</div>
 					</div>
-				</form>
-				</section>
-				</div>
-				<div id="copyright">
-					<%@include file="../copyright.jsp"%>
-					<!-- 원하는 파일 경로를 삽입하면 된다 -->
-				</div>
+			</table>
+		</form>
+		</div>
+	<div id="copyright">
+		<%@include file="../copyright.jsp"%>
+		<!-- 원하는 파일 경로를 삽입하면 된다 -->
+	</div>
 </body>
 </html>

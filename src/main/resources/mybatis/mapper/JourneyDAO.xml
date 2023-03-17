@@ -312,5 +312,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="like_journey_List" parameterType="com.edu.springboot.jdbc.TotalJourneyDTO" resultType="String">
  		select distinct location from journey where location like '%'||#{param1}||'%'
  	</select>
- 	
+ 	<insert id="log">
+		INSERT INTO search_log 
+		(search_word, member_idx, user_birth)
+		VALUES
+		(#{search_word}, 12, 97)
+	</insert>
  </mapper>

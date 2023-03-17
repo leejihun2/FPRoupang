@@ -168,14 +168,17 @@ $(function(){
 
     			var id = $(this).attr("id");
     			var ti_idx = id.substr(id.indexOf("_")+1);
-    			
     			$.post(
     				"/cellProduct",
     				{bot_idx : $("[name=bot"+ti_idx+"]").val(),
     				 ti_idx : ti_idx,
+    				 top_title : $("#myModalLabel").text(),
+    				 main_title : $("[name=sub_title"+ti_idx+"]").text(),
     				 price : $("[name=total"+ti_idx+"]").val(),
     				 amount : $(this).val(),
-    				 goods_image : $("#goods_image").val()
+    				 goods_image : $("#goods_image").val(),
+    				 seller_idx : $("#seller_idx").val(),
+    				 table_sort: $("#table_sort").val()
     				 },
     				 function(data){
     					 close()
@@ -259,6 +262,8 @@ function comma(str) {
 </div>
 <div class="modal-body">
 	<input type="hidden" id="goods_image" value="${goods_image }"/>
+	<input type="hidden" id="seller_idx" value="${seller_idx}"/>
+	<input type="hidden" id="table_sort" value="10"/>
 	<ul class="option-selected-options">
 		<c:forEach items="${Total_Ticket_info}" var="row" varStatus="loop">
 			<li class="select-option" style="font-size: 14px; padding: 12px 20px;">

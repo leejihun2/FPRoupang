@@ -259,13 +259,14 @@ public class TicketController {
 	public ModelAndView ticket_insert2(MultipartFile[] sub_image, MultipartFile title_image, Model model, MultipartHttpServletRequest req) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int value= Integer.parseInt(req.getParameter("value"));		
-		
+		String member_idx = req.getParameter("member_idx");
 		TicketDTO t_dto = new TicketDTO();
-		if(value==0) {
+		
 			ticket_dao.insert_bot_title(req.getParameter("bot_title"),
 					Integer.parseInt(req.getParameter("mid_category")),
 					req.getParameter("company_name"));
 			
+			if(value==0) {
 			t_dto.setT_title_image(saveFile(title_image));
 			int index=1;
 			for(MultipartFile f: sub_image) {
@@ -304,7 +305,8 @@ public class TicketController {
 			t_dto.setT_booking(req.getParameter("product_booking"));
 			t_dto.setT_cancelfee(req.getParameter("product_cancelfee"));
 			t_dto.setT_cancelnoti(req.getParameter("product_cancelnoti"));
-
+			t_dto.setMember_idx(member_idx);
+			
 			value=ticket_dao.select_new_idx();
 		
 		}
@@ -391,15 +393,16 @@ public class TicketController {
 		String location = ""; 
 		if(req.getParameter("location")!=null) {
 			location = req.getParameter("location");
+			ticket_dao.log(location);
 		}
+		
 		ModelAndView mv = new ModelAndView();
 		ArrayList<TotalTicketDTO> ticket_list = ticket_dao.show_ticket_list(sub_idx, location);
 		String category_title = cate_dao.select_one_cate(sub_idx);
-		
 		mv.addObject("sub_idx",sub_idx);
 		mv.addObject("category_title",category_title);
 		mv.addObject("ticket_list", ticket_list);
-		
+
 		mv.setViewName("/ticket/ticketList");
 		return mv;
 	}
@@ -436,7 +439,11 @@ public class TicketController {
 	public String modalPopUp(HttpServletRequest req, Model model) {
 		int bot_idx = Integer.parseInt(req.getParameter("bot_idx")); 
 		String title = cate_dao.select_bot_cate(bot_idx);
+
+
+		
 		model.addAttribute("title", title);
+		model.addAttribute("seller_idx",req.getParameter("seller_idx"));
 		
 		ArrayList<TicketInfoDTO> Total_Ticket_info = ticket_dao.ticket_info_list(bot_idx);
 		model.addAttribute("Total_Ticket_info",Total_Ticket_info);
@@ -456,10 +463,15 @@ public class TicketController {
 		gdto.setAmount(Integer.parseInt(req.getParameter("amount")));
 		gdto.setGoods_idx(req.getParameter("ti_idx"));
 		gdto.setGoods_image(req.getParameter("goods_image"));
+		gdto.setSeller_idx(req.getParameter("seller_idx"));
+		gdto.setTop_title(req.getParameter("top_title"));
+		gdto.setMain_title(req.getParameter("main_title"));
+		gdto.setSorting(Integer.parseInt(req.getParameter("table_sort")));
 		
 		//상품 구매시 로그에 남기기
 		int result = goods_dao.InsertOrder(gdto);
 		int result2 = goods_dao.InsertOrderItem(gdto);
+		
 		if (result == 0 ) {
 			System.out.println("insert 에러");
 		}else {

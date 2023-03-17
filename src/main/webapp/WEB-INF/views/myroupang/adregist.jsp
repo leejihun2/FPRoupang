@@ -294,7 +294,7 @@ function zipclick(){
 
 <h2>배송지 추가</h2>
 
-<div class="roll" style="position: absolute; top:350px; right: 259px;">
+<div class="roll" style="margin:40px;">
 
 	<form method="post">
 
@@ -315,13 +315,13 @@ function zipclick(){
 		</div>
 		
 		<div>
-			<input type="text" class="ing991" style="float:left; color:grey;"  placeholder=" 우편번호" 
-				name="zipcode2" onclick="zipclick();" value="  ${dto.zipcode2}"  id="zipcode2">
+			<input type="text" class="ing991" style="float:left; color:grey;"  placeholder="   우편번호" 
+				name="zipcode2" onclick="zipclick();" value="${dto.zipcode2}"  id="zipcode2">
 		</div>
 		
 		<div>
 			<input type="text" class="ing99" style="float:left; color:grey;" 
-				placeholder=" 상세주소" id="address2" name="address2" value="  ${dto.address2}">
+				placeholder="   상세주소" id="address2" name="address2" <c:if test="${dto.address2 ne null}">value="${dto.address2}"</c:if> />
 		</div>
 		
 		
@@ -359,6 +359,12 @@ function zipclick(){
 	        <span class="delspan" style="font-weight: bold;">이전</span>
 	    </button>
 	
+</div>
+
+
+
+</div>
+</div>
 </div>
 	
 			

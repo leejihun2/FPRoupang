@@ -3,12 +3,6 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>roupang</title>
@@ -33,13 +27,9 @@ hover:
 	blur: 20px;
 	
 }
-.my-review__writable__list {
-      padding: 20px 20px 20px 30px;
-      border-bottom: 1px solid #ddd;
-  }
- .gongback{
- 	border: 13px solid white;
- }
+.gongback{
+	border: 13px solid white;
+}
 </style>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/myroupang.css">
@@ -153,7 +143,7 @@ hover:
                 </a>
             </li>
             <li id="product-review" >
-                <a href="../review/reviewable.do" title="" target="_self" class="oo">
+                <a href="../review/review.do" title="" target="_self" class="oo">
                     리뷰관리
                 </a>
             </li>
@@ -226,88 +216,12 @@ hover:
                         상품취소 안내
                     </span>
                 </span>
-    	        </a>
-	        </li>
-    	</ul>
-	</div>
+            </a>
+        </li>
+    </ul>
+</div>
 </div>
 <!-- ------------------------------------------------------------------- -->
-<div class="top1">
-    <ul class="top2">
-        <li class="st">
-            <strong class=" giyKno ">
-                미사용티켓
-            </strong>
-            <div class="numn ">
-            <a href=" 링크링크링크링크링크 ">
-                <span class="nu1" id="unTicketCount">
-                    0
-                </span>
-                <span class="nu2">
-                    장
-                </span>
-            </a>
-        </div>
-    </li>
-    <li class="st">
-        <strong class=" giyKno ">
-            배송중
-        </strong>
-        <div class="numn ">
-            <a href="  ***   " >
-                <span class="nu1" id="deliveringCount">
-                    0
-                </span>
-                <span class="nu2">
-                    개
-                </span>
-            </a>
-        </div>
-    </li>
-    <li class="st">
-        <strong class=" giyKno ">
-            할인쿠폰
-        </strong>
-        <div class="numn ">
-            <a href=" **** ">
-                <span class="nu1" id="DiscountCount">
-                    0
-                </span>
-                <span class="nu2">
-                    장
-                </span>
-            </a>
-        </div>
-    </li>
-    <li class="st">
-        <div class="cco">
-            <span class="cou">
-                쿠페이 머니
-            </span>
-            <a href=" **** " >
-                <span class="rnum" id="couMoneyBalance">
-                    0
-                </span>
-                <span class="won">
-                    원
-                </span>
-            </a>
-        </div>
-        <div class="cco">
-            <span class="cou">
-                쿠팡캐시
-            </span>
-            <a href=" **** "  >
-                <span class="rnum" id="couCashBalance">
-                    0
-                </span>
-                <span class="won">
-                    원
-                </span>
-            </a>
-        </div>
-    </li>
-</ul>
  </s:authorize>
 </body>
 </html>
