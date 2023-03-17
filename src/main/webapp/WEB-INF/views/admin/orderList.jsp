@@ -63,62 +63,7 @@ td, th {
 
 				<!-- Begin Page Content -->
 				
-				<div class="container-fluid">
-					
-					    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">판매목록</h1>
-                    ${member_idx }
-                    ${company_name }
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Tables </h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                            	<form id="block" method="post">
-	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-	                                    <thead>
-	                                        <tr>
-	                                            <th>주문번호</th>
-	                                            <th>상품</th>
-	                                            <th>주문날짜</th>
-	                                            <th>도착일</th>
-	                                            <th>배송여부</th>
-	                                            
-	                                        </tr>
-	                                    </thead>
-	                                     <tbody>
-	                                     	<c:forEach items="${lists }" var="row" varStatus="loop">
-		                                        <tr>
-		                                            <td>${row.idx }</td>
-													<td>${row.name }</td>
-													<td>${row.company_name }</td>
-													<td>${row.regidate }</td>
-													<td><a href="appView.do?member_idx=${row.member_idx }">상세보기</a>
-													</td>
-													<td><input style='zoom: 1.5;' class="checkbox_group1" name="public1"
-														type="checkbox" value="${row.member_idx }"
-														id="flexCheckDefault"></td>
-													
-		                                        </tr>
-	                                        </c:forEach>
-                                         </tbody>
-	                                </table>	      
-	                                <div class="button">	                                  		
-										<button class="btn btn-outline-secondary" id="approveSell" type="button">승인하기</button>
-											<div class="space"></div>	
-										<button class="btn btn-outline-secondary" id="blockSell" type="button">차단하기</button>
-									</div>				
-												
-                                </form>	        
-                               <a href="/admin/index.do">판매자 홈으로가기</a>                       
-                            </div>
-                        </div>
-                    </div>
-		
-				</div>
+				<%@include file="orderListIclued.jsp" %>
 				<!-- /.container-fluid -->
 			</div>
 			<!-- End of Main Content -->
