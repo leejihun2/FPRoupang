@@ -342,6 +342,11 @@
 		position:fixed;
 		z-index:9999;
 	}
+	.container:after{
+		clear:both;
+		display:block;
+		content:"";
+	}
 </style>
 <script type="text/javascript">
 	onload = function(){
@@ -449,7 +454,7 @@
 		});  
 	}
 </script>
-<body style="background-color: white;">
+<body style="background-color: white; overflow-x: hidden; overflow-y: hidden;">
     <div id="top" style="margin-bottom:0px;">
         <%@include file="../top.jsp" %>
     </div>
@@ -964,6 +969,9 @@
 	        </div>
 	    </div>
 	</div>
+	<div id="copyright">
+		<c:import url="../copyright.jsp"></c:import>
+    </div>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   		<div class="modal-dialog" role="document">
     		<div class="modal-content" id="modal_content">

@@ -144,6 +144,11 @@
 	    line-height: 20px;
 	    color: #333;
 	}
+	.container{
+		clear:both;
+		display:block;
+		content:"";
+	}
 	</style>
 <body style="background-color: white;">
     <!-- top.html에서 인클루드 -->
@@ -201,5 +206,8 @@
 			</ul>
 		</section>
 	</div>
+	<div id="copyright">
+		<c:import url="../copyright.jsp"></c:import>
+    </div>
 </body>
 </html>
