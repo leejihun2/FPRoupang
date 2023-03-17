@@ -33,9 +33,10 @@
 				<a class="collapse-item" href="/productInsert">여행/티켓</a>
 			</div>
 		</div></li>
-	<li class="nav-item"><a class="nav-link collapsed" href="#">
+	<li class="nav-item"><a class="nav-link collapsed" href="/orderlist.do">
 	<s:authorize access="hasRole('seller')">
-		<i class="fa fa-shopping-cart"></i> <span onclick="location.href='orderlist.do'">판매목록확인</span>
+		<input type="hidden" id="seller_idx" value="${member_idx}"/>
+		<i class="fa fa-shopping-cart"></i> <span>판매목록확인</span>
 	</s:authorize>
 	</a></li>
 	<s:authorize access="hasRole('admin')">
@@ -82,7 +83,7 @@
 				aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<a class="collapse-item" href="/admin/adminFaq.do?categoryCode=ALL">검색 목록</a>
-					<a class="collapse-item" href="/admin/adminNotice.do?categoryCode=ALL">판매 목록</a>
+					<a class="collapse-item" href="/orderlist.do">판매 목록</a>
 					<a class="collapse-item" href="/admin/adminNotice.do?categoryCode=ALL"></a>
 	
 				</div>
