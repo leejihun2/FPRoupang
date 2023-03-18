@@ -12,12 +12,6 @@
 		VALUES  
 		(REVIEW_seq.nextval, 2, 2, 2, #{goods_title}, #{review}, #{star_rate}, #{star_servey1}, #{star_servey2}, #{star_servey3}, #{summary})
 	</insert>
-
-	<select id="reviewView" resultType="com.edu.springboot.jdbc.ReviewDTO"
-		parameterType="com.edu.springboot.jdbc.ReviewDTO">
-		SELECT * FROM review WHERE idx=#{idx}
-		AND goods_title=#{goods_title}
-	</select>
  
  	<select id="starcount" resultType="com.edu.springboot.jdbc.ReviewDTO">
         SELECT	ROUND(AVG(star_rate),1) star_rate,
@@ -89,10 +83,7 @@
 	</select>
 
 	<select id="reviewList" resultType="com.edu.springboot.jdbc.ReviewDTO">
-		SELECT * FROM review order by idx desc
-		<if test="search_word!=null and !search_word.equals('')">
-			WHERE ${searchField} like '%'||#{search_word}||'%'
-		</if>
+		select * from review where bot_cate_idx = #{param1}
 	</select>
 	
 	<update id="modifyReview" parameterType="com.edu.springboot.jdbc.ReviewDTO">

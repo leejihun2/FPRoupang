@@ -643,7 +643,7 @@ public class JourneyController {
 
 		ReviewDTO totalstar = dao.starcount();
 		model.addAttribute("totalstar", totalstar);
-		ArrayList<ReviewDTO> lists = dao.reviewList();
+		ArrayList<ReviewDTO> lists = dao.reviewList(value);
 
 		for (ReviewDTO dto : lists) {
 			String temp = dto.getReview().replace("\r\n", "<br/>");

@@ -9,14 +9,11 @@ public interface IReviewService {
 
 	public int reviewcount();
 	public ArrayList<ReviewDTO>
-	reviewList();	
+	reviewList(int bot_idx);	
 	
 	public int reviewWrite(ReviewDTO reviewDTO);
 	
 	public ReviewDTO starcount();
-	
-	//기존 게시물의 내용을 인출한다.
-	public ReviewDTO reviewView(ReviewDTO reviewDTO);
 	
 	public ReviewDTO view(int idx);
 	
