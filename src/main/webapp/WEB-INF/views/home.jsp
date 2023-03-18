@@ -41,7 +41,7 @@
         <%@include file="./top.jsp" %>
     </div>
         <section class="main-today reach-ratio-wrap" id="todaysHot"> 
-        <c:forEach items="${image_dto}" var="dto" varStatus="loop">
+        <%-- <c:forEach items="${image_dto}" var="dto" varStatus="loop">
         <div id="demo" class="carousel slide carousel-fade" data-bs-ride="carousel">
         	<div class="carousel-inner">
         		<div class="carousel-item active">
@@ -64,7 +64,8 @@
             	</div>
             </div>
         </div>    
-        </c:forEach>
+        </c:forEach>  --%>
+        <img src="https://image6.coupangcdn.com/image/ccm/banner/c9216903fb26f1f6b42e11b89150f56d.jpg" alt="" />
         </section>
         <hr/>
 <section id="contents" class="contents home">

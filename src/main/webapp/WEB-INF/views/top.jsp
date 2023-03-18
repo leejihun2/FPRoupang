@@ -285,7 +285,7 @@ onload = function(){
 				<c:choose>
 					<c:when test="${not empty name }">
 						<li id="login" class="log">
-						<s:authentication property="name" />님
+						<a href="/myroupang/orderlist.do"><s:authentication property="name" />님</a>
 						<a href="../myLogout.do" data-replaced="true" class="login" > 로그아웃</a></li>
 					</c:when>
 					<c:otherwise>

@@ -262,11 +262,12 @@ public class TicketController {
 		String member_idx = req.getParameter("member_idx");
 		TicketDTO t_dto = new TicketDTO();
 		
+		
+		if(value==0) {
 			ticket_dao.insert_bot_title(req.getParameter("bot_title"),
 					Integer.parseInt(req.getParameter("mid_category")),
 					req.getParameter("company_name"));
 			
-			if(value==0) {
 			t_dto.setT_title_image(saveFile(title_image));
 			int index=1;
 			for(MultipartFile f: sub_image) {
@@ -279,7 +280,7 @@ public class TicketController {
 				}
 				index++;
 			}
-			
+				
 			String[] chkService = req.getParameterValues("t_conservice");
 			String ServiceVal = "";
 			for(int i = 0 ; i < chkService.length ; i++) {
@@ -308,7 +309,6 @@ public class TicketController {
 			t_dto.setMember_idx(member_idx);
 			
 			value=ticket_dao.select_new_idx();
-		
 		}
 		try {
 		TicketInfoDTO ti_dto = new TicketInfoDTO();
@@ -325,7 +325,9 @@ public class TicketController {
 		if(!(req.getParameter("product_intro").equals(""))) {
 			ticket_dao.insert_ticket(t_dto);
 		}
+		
 		mv.setViewName("redirect:/admin/index.do");
+		
 		return mv;
 	}
 	

@@ -39,7 +39,7 @@
 			<h2 class="grid-banner-title">카테고리 인기 상품</h2>
 			<ul class="grid-banners">
 				<li class="grid-banner-item">
-					<a href="/journey_List?category=1&location=제주">
+					<a href="/journey_List?category=3&location=제주">
 						<dl>
 							<dt>
 								<img src="http://image10.coupangcdn.com/image/bannerunit/bannerunit_704ebfec-4468-492d-baaf-cd7fbcb46e2b.jpg" class="banner-item-image">

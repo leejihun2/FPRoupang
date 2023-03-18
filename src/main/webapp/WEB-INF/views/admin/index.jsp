@@ -82,6 +82,9 @@
                                     </div>
                                 </div>
                                 <!-- Card Body -->
+                                <div class="card-body">
+                                	<img class="li-img-min" src="../images/search_Word.png" alt="">
+                               	</div>
                                 <div class="card-body" style="height: 361px; text-align: center;">
                                 	<img style="width: 500px;" 
                                 		class="li-img-min" src="../images/countGood.jpg" alt="">
