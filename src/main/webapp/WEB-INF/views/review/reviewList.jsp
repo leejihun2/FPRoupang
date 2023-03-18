@@ -272,6 +272,7 @@ function deleteRow(idx){
 </script>
 </head>
 <body style="background-color: #ffffff">
+<s:authorize access="isAuthenticated()">
 	<%@include file="../myroupang/myroumenu.jsp"%>
 	<div class="roll">
 		<h1 class="qwer">&nbsp;&nbsp;&nbsp;&nbsp;리뷰관리</h1>
@@ -281,7 +282,6 @@ function deleteRow(idx){
 		</div>
 		
 
-		<s:authorize access="isAuthenticated()">
 			<s:authentication property="name" var="name" />
 			<c:forEach items="${lists }" var="row" varStatus="loop">
 				<div class="my-review__wrote js_reviewWroteListContainer">
@@ -371,7 +371,6 @@ function deleteRow(idx){
 					</div>
 				</div>
 			</c:forEach>
-		</s:authorize>
 	</div>
 	</div>
 	</div>
@@ -380,5 +379,6 @@ function deleteRow(idx){
 		<%@include file="../copyright.jsp"%>
 		<!-- 원하는 파일 경로를 삽입하면 된다 -->
 	</div>
+</s:authorize>
 </body>
 </html>

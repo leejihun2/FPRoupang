@@ -81,8 +81,11 @@ justify-content:center;
 
 </div>
 </div>
-
-<%-- <%@include file="../copyright.jsp" %> --%>
- </s:authorize>
+</div>
+</div>
+</s:authorize>
+<div>
+	<%@include file="../copyright.jsp" %>
+</div>
 </body>
 </html>

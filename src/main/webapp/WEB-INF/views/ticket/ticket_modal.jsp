@@ -261,15 +261,15 @@ function comma(str) {
     </div>
 </div>
 <div class="modal-body">
-	<input type="hid den" id="goods_image" value="${goods_image }"/>
-	<input type="hid den" id="seller_idx" value="${seller_idx}"/>
-	<input type="hid den" id="table_sort" value="10"/>
+	<input type="hidden" id="goods_image" value="${goods_image }"/>
+	<input type="hidden" id="seller_idx" value="${seller_idx}"/>
+	<input type="hidden" id="table_sort" value="10"/>
 	<ul class="option-selected-options">
 		<c:forEach items="${Total_Ticket_info}" var="row" varStatus="loop">
 			<li class="select-option" style="font-size: 14px; padding: 12px 20px;">
-				<input type="hid den" name="total${row.ti_idx }" value="0"/>
-				<input type="hidd en" name="bot${row.ti_idx }" value="${row.bot_idx }"/>
-				<input type="hidd en" name="ti${row.ti_idx }" value="${row.ti_idx }"/>
+				<input type="hidden" name="total${row.ti_idx }" value="0"/>
+				<input type="hidden" name="bot${row.ti_idx }" value="${row.bot_idx }"/>
+				<input type="hidden" name="ti${row.ti_idx }" value="${row.ti_idx }"/>
 				<table class="selected-option-table">
 					<tbody>
 						<tr>

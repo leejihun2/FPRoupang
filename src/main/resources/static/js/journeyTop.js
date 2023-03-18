@@ -1,3 +1,4 @@
+
 /* 티켓 search 활성화 */
 function ticketchange(){
 		$("#journeySearch").css("display","none");
@@ -15,6 +16,7 @@ function journeychange(){
 	    $("#ticketSearch").css("display","none");
 	    $("#recommendSelect_t").css("display","none");
 }
+
 function recommend_t(){
 	$("#recommendSelect_t").css("display","block");
 }

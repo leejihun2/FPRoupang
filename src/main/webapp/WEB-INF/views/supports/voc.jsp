@@ -227,6 +227,9 @@ function deleteRow(idx){
 	font-weight: bold;
 	width: inherit;
 }
+.gongback{
+	border: 13px solid white;
+}
 </style>
 <body style="background: white;">
 	<script type="text/javascript">
@@ -248,6 +251,7 @@ function writeValidate(f)
 	<div id="top">
 		<%@include file="../top.jsp"%>
 	</div>
+	<div class="gongback"></div>
 	<div class="container">
 
 		<%@include file="../category.jsp"%>
