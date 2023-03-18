@@ -26,15 +26,13 @@ public class ReviewController {
 	@RequestMapping("/review/reviewList.do")
 	public String review(Model model, HttpServletRequest req) {
 		
-		
-		int totalRecordCount = 
-				daoo.reviewcount();
+		int bot_idx = Integer.parseInt(req.getParameter("bot_idx"));
 		
 		ReviewDTO totalstar = 
 				daoo.starcount();
 		
 		ArrayList<ReviewDTO> lists = 
-				daoo.reviewList();
+				daoo.reviewList(bot_idx);
 		
 		
 		

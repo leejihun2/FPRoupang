@@ -420,7 +420,7 @@ public class TicketController {
 		ReviewDTO totalstar = dao.starcount();
 		model.addAttribute("totalstar", totalstar);
 		ArrayList<ReviewDTO> lists = 
-				dao.reviewList();
+				dao.reviewList(value);
 		
 		for (ReviewDTO dto : lists) {
 			String temp = dto.getReview()
