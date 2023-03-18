@@ -46,6 +46,15 @@
 	    $("#ticketSearch").css("display","none");
 	    $("#recommendSelect_t").css("display","none");
 	}
+	$(function(){
+		var url = window.location.href;
+		
+		if(url.indexOf("ticket")!=-1){
+			$(".search-wizard-tab").attr("style","display:none;");
+			$("#journeySearch").attr("style","display:none;");
+			$("#ticketSearch").attr("style","display:block; padding-top:3%;");
+		}
+	})
 </script>
 <style>
 	.main-banner {

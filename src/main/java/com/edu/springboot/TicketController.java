@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.springboot.jdbc.CategoryDTO;
 import com.edu.springboot.jdbc.CategoryService;
+import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.IReviewService;
 import com.edu.springboot.jdbc.ParameterTicketDTO;
 import com.edu.springboot.jdbc.ReviewDTO;
@@ -53,6 +54,9 @@ public class TicketController {
 	
 	@Autowired
 	TempgoodsService goods_dao;
+	
+	@Autowired
+	IMemberService member_dao;
 	
 	@RequestMapping("/ticket_edit")
 	public String ticket_edit(Model model, HttpServletRequest req) {
@@ -262,11 +266,12 @@ public class TicketController {
 		String member_idx = req.getParameter("member_idx");
 		TicketDTO t_dto = new TicketDTO();
 		
+		
+		if(value==0) {
 			ticket_dao.insert_bot_title(req.getParameter("bot_title"),
 					Integer.parseInt(req.getParameter("mid_category")),
 					req.getParameter("company_name"));
 			
-			if(value==0) {
 			t_dto.setT_title_image(saveFile(title_image));
 			int index=1;
 			for(MultipartFile f: sub_image) {
@@ -279,7 +284,7 @@ public class TicketController {
 				}
 				index++;
 			}
-			
+				
 			String[] chkService = req.getParameterValues("t_conservice");
 			String ServiceVal = "";
 			for(int i = 0 ; i < chkService.length ; i++) {
@@ -308,7 +313,6 @@ public class TicketController {
 			t_dto.setMember_idx(member_idx);
 			
 			value=ticket_dao.select_new_idx();
-		
 		}
 		try {
 		TicketInfoDTO ti_dto = new TicketInfoDTO();
@@ -325,7 +329,9 @@ public class TicketController {
 		if(!(req.getParameter("product_intro").equals(""))) {
 			ticket_dao.insert_ticket(t_dto);
 		}
+		
 		mv.setViewName("redirect:/admin/index.do");
+		
 		return mv;
 	}
 	
@@ -425,6 +431,9 @@ public class TicketController {
 		
 		TicketDTO Total_Ticket = ticket_dao.ticket_list(value);
 		model.addAttribute("Total_Ticket",Total_Ticket);
+		
+		model.addAttribute("Company_Addr",member_dao.GetCompanyAddr(Integer.parseInt(Total_Ticket.getMember_idx())));
+		
 		
 		String category_title = cate_dao.select_bot_cate(value);
 		model.addAttribute("t_title",category_title);

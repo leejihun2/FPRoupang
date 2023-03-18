@@ -44,6 +44,7 @@ public class SecurityConfig {
 	        .antMatchers("/member/**").hasAnyRole("admin", "member", "seller")
 	        .antMatchers("/supports/voc.do").hasAnyRole("admin", "member", "seller")
 	        .antMatchers("/supports/inquiry.do").hasAnyRole("admin", "member", "seller")
+	        .antMatchers("/myroupang/**").hasAnyRole("admin", "member", "seller")
 	        .antMatchers("/Sell_Authorized.do").hasAnyRole("member", "seller")
 	        .antMatchers("/admin/index.do").hasAnyRole("admin", "seller")
 	        .antMatchers("/admin/**").hasRole("admin")
@@ -79,7 +80,10 @@ public class SecurityConfig {
 	    @Override
 	    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
 	        String referer = request.getHeader("Referer");
+	        String errMessage = "해당 페이지에 접근이 불가능합니다. 관리자에게 문의해주세요";
+	        request.setAttribute("errMessage", errMessage);
 	        response.sendRedirect(referer);
+	        
 	    }
 	}
 

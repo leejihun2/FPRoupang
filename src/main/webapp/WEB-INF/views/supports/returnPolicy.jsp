@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+
+</style>
 <link rel="stylesheet" href="../css/ReturnPolicy.css" type="text/css">
 <link rel="stylesheet" href="../css/common.css" type="text/css">
 <body>

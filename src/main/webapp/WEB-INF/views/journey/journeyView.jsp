@@ -42,7 +42,7 @@
 					<a href="/journey_List?category=3&location=제주">
 						<dl>
 							<dt>
-								<img src="http://image10.coupangcdn.com/image/bannerunit/bannerunit_704ebfec-4468-492d-baaf-cd7fbcb46e2b.jpg" class="banner-item-image">
+								<img src="/images/제주.png" class="banner-item-image">
 							</dt>
 							<dd>
 								<span class="banner-item-title">국내여행 NO.1 핫플레이스</span><span class="banner-item-description">#가족여행 #인피니티풀 #오션뷰</span>
@@ -54,7 +54,7 @@
 					<a href="/journey_List?category=1&location=강원">
 						<dl>
 							<dt>
-								<img src="http://image7.coupangcdn.com/image/bannerunit/bannerunit_0f9489f4-eb33-46fb-ad13-96e17c00fbb0.jpg" class="banner-item-image">
+								<img src="/images/강원.png" class="banner-item-image">
 							</dt>
 							<dd>
 								<span class="banner-item-title">청정 동해바다 힐링여행</span><span class="banner-item-description">#속초 #양양 #삼척 #홍천 #고성</span>
@@ -66,7 +66,7 @@
 					<a a href="/journey_List?category=1&location=전라">
 						<dl>
 							<dt>
-								<img src="http://image7.coupangcdn.com/image/bannerunit/bannerunit_e6a67865-fb4e-4c9c-89ad-c2bcbc71c669.jpg" class="banner-item-image">
+								<img src="/images/전라.png" class="banner-item-image">
 							</dt>
 							<dd>
 								<span class="banner-item-title">다채로운 미식과 문화의 고장</span><span class="banner-item-description">#여수 #진도 #목포 #순천 #전주</span>
@@ -78,7 +78,7 @@
 					<a href="/journey_List?category=1&location=부산">
 						<dl>
 							<dt>
-								<img src="http://image6.coupangcdn.com/image/bannerunit/bannerunit_3ed60f56-fce6-4234-883b-a33b33133f7b.jpg" class="banner-item-image">
+								<img src="/images/부산.png" class="banner-item-image">
 							</dt>
 							<dd>
 								<span class="banner-item-title">화려한 해변과 영화의 도시</span><span class="banner-item-description">#해운대 #사상 #동구 #중구</span>
@@ -90,7 +90,7 @@
 					<a href="/journey_List?category=1&location=서울">
 						<dl>
 							<dt>
-								<img src="http://image10.coupangcdn.com/image/bannerunit/bannerunit_c0a30210-813e-4f96-980b-f23316d0c1ea.jpg"class="banner-item-image">
+								<img src="/images/서울.png"class="banner-item-image">
 							</dt>
 							<dd>
 								<span class="banner-item-title">서울 도심 힐링 호캉스</span><span class="banner-item-description">#강남 #마포 #종로 #서초 #중구</span>
@@ -102,7 +102,7 @@
 					<a href="/journey_List?category=1&location=강릉">
 						<dl>
 							<dt>
-								<img src="http://image9.coupangcdn.com/image/bannerunit/bannerunit_8c68a97b-1c43-4cb4-9012-c50dab1801c6.jpg" class="banner-item-image">
+								<img src="/images/강릉.png" class="banner-item-image">
 							</dt>
 							<dd>
 								<span class="banner-item-title">바다와 커피와 힐링의 도시</span><span

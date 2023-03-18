@@ -4,12 +4,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.edu.springboot.jdbc.JourneyService">
- 	<!-- ticket테이블에서 정보 가져오기 -->
+ 
 	<select id="journey_list" resultType="com.edu.springboot.jdbc.JourneyDTO">
 		select * from journey where bot_idx=#{param1} order by 1 asc
 	</select>
- 	
- 	<!-- ticket_info에서 리스트 가져오기 -->
  	<select id="journey_info_list" resultType="com.edu.springboot.jdbc.JourneyInfoDTO">
  		select * from journey_info where bot_idx=#{param1} order by 1 asc 
  	</select>
@@ -273,7 +271,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             (select bot_idx, ji_price, ji_discount,
             RANK() OVER (PARTITION BY bot_idx ORDER BY ji_price ASC) rk
             from journey_info
-       <!-- 	<choose>
+       <choose>
         	<when test='ji_duetime1==""'>
 		        <choose>
 		        	<when test="ji_kid != null">
@@ -302,7 +300,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		             </otherwise>
 		         </choose>
 	         </otherwise>
-         </choose> -->
+         </choose>
  			order by ji_price asc) ji on j.bot_idx = ji.bot_idx join
             (select * from bot_category where sub_idx = #{sub_idx}
             ) bc 

@@ -13,8 +13,8 @@
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e6076fe794faf6e2a97f29c6ebfadce5&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e6076fe794faf6e2a97f29c6ebfadce5&libraries=services"></script>
+	
 
 <meta charset="UTF-8">
 <title>Roupang</title>
@@ -37,377 +37,6 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <style>
-<<<<<<<
-HEAD
-* {
-	margin: 0;
-	padding: 0;
-}
-
-html {
-	scroll-behavior: smooth;
-}
-
-h4 {
-	display: block;
-	margin-block-start: 1.33em;
-	margin-block-end: 1.33em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-	font-weight: bold;
-}
-
-.cash-text {
-	display: inline-block;
-	vertical-align: top;
-	color: #333;
-	font-size: 12px;
-	font-weight: 400;
-	letter-spacing: normal;
-	line-height: 19px;
-}
-
-.cashback-area {
-	margin-top: 10px;
-}
-
-.carousel-image {
-	width: 100%;
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-	background-size: contain;
-	margin-top: -1px;
-}
-
-.search-item-cash-back {
-	position: relative;
-	display: inline-block;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	height: 20px;
-	padding: 0 8px 0 8px;
-	border-radius: 10px;
-	border: 1px solid #ccc;
-	background-color: #fff;
-	font-size: 12px;
-	line-height: 20px;
-	color: #333;
-}
-
-.travel-detail-content {
-	float: left;
-	margin-left: 50px;
-	width: 685px;
-}
-
-.travel-thumbnail .thumbnails-wrap {
-	position: relative;
-	float: left;
-	overflow: hidden;
-	height: 70px;
-	margin-right: 3px;
-}
-
-.travel-detail-basis {
-	float: left;
-	width: 270px;
-	border: 1px solid #ddd;
-	color: #333;
-	border-top: 1px solid #ddd;
-	margin-left: 20px;
-}
-
-.thumbnail-img {
-	width: 50px;
-	height: 50px;
-}
-
-.travel-thumbnail:after .thumbnails:after, .travel-thumbnail:after .travel-scroll-tab-header:after .travel-scroll-tab-header-wrapper:after
-	{
-	content: "";
-	display: block;
-	clear: both;
-}
-
-.travel-scroll-tab-header-wrapper {
-	display: flex;
-	background-color: white;
-	z-index: 0;
-}
-
-.travel-scroll-tab-headers li {
-	cursor: pointer;
-}
-
-.thumbnails li {
-	cursor: pointer;
-}
-
-.thumbnail-img:hover {
-	outline: 2px solid green;
-}
-
-.basis-cashback-list {
-	padding-inline-start: 40px;
-}
-
-.travel-scroll-tab-headers li {
-	font-size: 18px;
-	height: 48px;
-	line-height: 48px;
-	padding: 0 40px;
-	display: block;
-	color: #111;
-	text-align: center;
-}
-
-.travel-scroll-tab-headers.lg li.selected, .travel-scroll-tab-headers.lg li:hover
-	{
-	font-weight: 700;
-	color: #00a289;
-	border-bottom: 3px solid #00a289;
-}
-
-.travel-scroll-tab-headers {
-	clear: both;
-}
-
-.ticket-detail-vendor-items-result th {
-	text-align: center;
-	padding: 13px 0;
-	border-bottom: 1px solid #ddd;
-}
-
-.ticket-cancellation-refund-policy th {
-	padding: 13px 13px;
-	background-color: #FFFEED;
-	border-top: 1px solid #ddd;
-}
-
-th {
-	height: 56px;
-	padding: 13px 13px;
-	background-color: #fafafa;
-	border-top: 1px solid #ddd;
-}
-
-table th:not(:first-child) {
-	border-left: 1px solid #ddd;
-}
-
-.ticket-detail-vendor-items-result td {
-	height: 56px;
-	padding: 13px 10px;
-	border-bottom: 1px solid #ddd;
-	border-top: 1px solid #ddd;
-}
-
-td {
-	height: 56px;
-	padding: 13px 10px;
-}
-
-.ticket-detail-vendor-items-result td:nth-child(2n+1) {
-	letter-spacing: -1px;
-	line-height: 23px;
-	font-size: 14px;
-	font-weight: 400;
-}
-
-tr:not(:last-child) td:nth-child(2n) {
-	border-bottom: 1px solid #ddd;
-}
-
-.ticket-detail-vendor-items-result td:not(:first-child) {
-	border-left: 1px solid #ddd;
-}
-
-.price_title {
-	font-size: 13px;
-	padding-right: 0;
-}
-
-.price {
-	font-size: 18px;
-	font-style: normal;
-}
-
-.duetime {
-	font-size: 13px;
-	font-weight: 600;
-	letter-spacing: -1px;
-	color: #999;
-	margin-bottom: 6px;
-}
-
-.item-title>label {
-	font-size: 15px;
-	font-weight: 700;
-	color: #333;
-	letter-spacing: -.9px;
-	margin-left: 30px;
-}
-
-.item-content {
-	padding: 30px 0;
-	font-size: 14px;
-	letter-spacing: -.7px;
-}
-
-p {
-	display: block;
-	margin-block-start: 1em;
-	margin-block-end: 1em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-}
-
-.cashback-title {
-	display: inline-block;
-	height: 24px;
-}
-
-.basis-cashback-list {
-	margin-top: 6px;
-	margin-left: -10px;
-}
-
-.cashback-text {
-	display: block;
-	color: #555;
-	letter-spacing: -1px;
-}
-
-.basis-cashback-list li {
-	font-size: 13px;
-	line-height: 18px;
-	margin-top: 5px;
-}
-
-.ticket-basis-product {
-	padding: 30px 20px;
-	color: #333;
-}
-
-.basis-aside-cashback {
-	padding: 20px;
-	border-top: 1px solid #ddd;
-}
-
-.basis-aside-section {
-	padding: 30px 20px;
-	border-top: 1px solid #ddd;
-}
-
-.basis-cashback-button {
-	margin-top: 8px;
-	margin-left: 30px;
-}
-
-.basis-cashback-button-text {
-	margin-top: 8px;
-	margin-bottom: 8px;
-	font-size: 14px;
-	font-weight: 700;
-	color: #111;
-}
-
-.key-info-title {
-	float: left;
-	display: block;
-	width: 65px;
-	top: 0;
-	color: #999;
-}
-
-.key-info-description {
-	float: left;
-	display: block;
-	width: calc(100% - 65px);
-	padding-left: 8px;
-	color: #111;
-}
-
-.basis-key-infos {
-	padding-inline-start: 0px;
-	font-size: 14px;
-}
-
-.thumbnail-item {
-	margin-right: 3px;
-	margin-bottom: 3px;
-}
-
-.sticky {
-	position: sticky;
-	top: 0;
-}
-
-.fixed {
-	position: fixed;
-	top: 0;
-	z-index: 1000;
-	border-bottom: 1px solid #ddd;
-}
-/* 바디에 스크롤 막는 방법 */
-.not_scroll {
-	position: fixed;
-	overflow: hidden;
-	width: 100%;
-	height: 100%
-}
-
-.inquiryContents {
-	border: 1px solid #ddd;
-	padding: 30px;
-}
-
-.inquiry-title {
-	float: left;
-	line-height: 40px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-}
-
-.inquiryContents button {
-	width: 80px;
-	height: 36px;
-	line-height: 34px;
-	float: right;
-	font-size: 14px;
-	font-weight: 700;
-	background-color: #fff;
-	color: #346aff;
-	border: 1px solid #346aff;
-}
-
-.inquiry-header:after {
-	content: "";
-	display: block;
-	clear: both;
-}
-
-.inquiry-header {
-	margin-bottom: 25px;
-}
-
-.inquiry-notice li {
-	font-size: 13px;
-	letter-spacing: -1px;
-	color: #555;
-}
-
-.inquiry-notice {
-	margin-bottom: 30px;
-	overflow: hidden;
-}
-
-#myModal {
-	position: fixed;
-	z-index: 9999;
-}
-
-=======
 * {
 	margin: 0;
 	padding: 0;
@@ -781,67 +410,8 @@ p {
 	display: block;
 	content: "";
 }
->>>>>>>
-branch
-
- 
-
-'
-main
-
-
-'
-of
-
- 
-
-https
-
-
-:
-//
-
-
-github
-
-
-.com
-/
-
-
-leejohun
-/
-
-
-FPRoupang
-
-
-.git
 </style>
 <script type="text/javascript">
-	onload = function(){
-		var mapContainer = document.getElementById('map'),
-		mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 5};  
-		// 지도를 생성합니다    
-		var map = new kakao.maps.Map(mapContainer, mapOption); 
-		var geocoder = new kakao.maps.services.Geocoder();
-		// 주소로 좌표를 검색합니다 (membership테이블에 사업장 주소명을 파라미터로 받는다.])
-		geocoder.addressSearch('대구광역시 동구 동부로 149 9층', function(result, status) {
-		// 정상적으로 검색이 완료됐으면 
-		 if (status === kakao.maps.services.Status.OK) {
-		    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-		    // 결과값으로 받은 위치를 마커로 표시
-		    var marker = new kakao.maps.Marker({
-		        map: map,
-		        position: coords
-		    });
-	    	// 인포윈도우로 장소에 대한 설명을 표시
-		    var infowindow = new kakao.maps.InfoWindow({});
-		    infowindow.open(map);
-		    map.setCenter(coords);
-			} 
-		});  
-	}
 	$(function(){
 		$(".thumbnail-img").click(function(e){
 			document.getElementById("thumbnail").style.backgroundImage="url("+e.target.src+")";
@@ -898,30 +468,6 @@ FPRoupang
 	
 	function addModal(bot_num, idx){
 		$('.modal-content').load('/showModal?bot_idx='+bot_num+'&ti_idx='+idx+'&seller_idx='+$("#seller_idx").val());
-	}
-	
-	onload = function(){
-		var mapContainer = document.getElementById('map'),
-		mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667),level: 3};  
-		// 지도를 생성합니다    
-		var map = new kakao.maps.Map(mapContainer, mapOption); 
-		var geocoder = new kakao.maps.services.Geocoder();
-		// 주소로 좌표를 검색합니다 (membership테이블에 사업장 주소명을 파라미터로 받는다.])
-		geocoder.addressSearch('서울시 중구 신당동 432-2008', function(result, status) {
-		// 정상적으로 검색이 완료됐으면 
-		 if (status === kakao.maps.services.Status.OK) {
-		    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-		    // 결과값으로 받은 위치를 마커로 표시
-		    var marker = new kakao.maps.Marker({
-		        map: map,
-		        position: coords
-		    });
-	    	// 인포윈도우로 장소에 대한 설명을 표시
-		    var infowindow = new kakao.maps.InfoWindow({});
-		    infowindow.open(map);
-		    map.setCenter(coords);
-			} 
-		});  
 	}
 </script>
 <body style="background-color: white;">
@@ -1383,11 +929,48 @@ FPRoupang
 							<div class="basis-location introduction-item">
 								<h4 class="travel-title travel-title-sm"
 									style="margin-top: 0px; margin-bottom: 10px;">위치</h4>
-								<span class="item-subtitle"></span>
+								<span class="item-subtitle">${Company_Addr }</span>
+								<input type="hidden" value="${Company_Addr }" id="location">
 							</div>
 							<div class="travel-simple-map">
 								<div id="map" style="width: 100%; height: 350px;"></div>
 							</div>
+							<script type="text/javascript">
+	                		 kakao.maps.load(function() {
+	                			 
+	           				  var locationValues = document.getElementById("location").value.split(',');
+	           				  var mapContainer = document.getElementById('map');
+	           				  var mapOption = {
+	           				    center: new kakao.maps.LatLng(33.450701, 126.570667),
+	           				    level: 5
+	           				  };
+	           				  var map = new kakao.maps.Map(mapContainer, mapOption);
+	           				  var geocoder = new kakao.maps.services.Geocoder();
+	           				  var bounds = new kakao.maps.LatLngBounds();
+	           				
+	           				  for (var i = 0; i < locationValues.length; i++) {
+	           				    (function(i) {
+	           				      geocoder.addressSearch(locationValues[i], function(result, status) {
+	           				        if (status === kakao.maps.services.Status.OK) {
+	           				          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	           				          var marker = new kakao.maps.Marker({
+	           				            map: map,
+	           				            position: coords
+	           				          });
+	           				          var infowindow = new kakao.maps.InfoWindow({
+	           				            content: '<div>' + locationValues[i]+ '</div>'
+	           				          });
+	           				          kakao.maps.event.addListener(marker, 'click', function() {
+	           				            infowindow.open(map, marker);
+	           				          });
+	           				          bounds.extend(coords);
+	           				          map.setBounds(bounds);
+	           				        }
+	           				      });
+	           				    })(i)	           				  
+	           				    };
+	           				});
+	                		</script>
 						</div>
 
 
@@ -1406,8 +989,7 @@ FPRoupang
 								<ul class="basis-review-section-list">
 									<div class="basis-review-section-list-item">
 										<div class="basis-review-item">
-											<div
-												style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 4;">
+											<div style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 4;">
 												아쿠아 필드 좋아해서 미리 예매해 가보았어요 요즘 사람들 마스크 전부 안쓰네요 실내에서도 마스크 해제되서
 												안써도되나? 하고 안썼다가 감기몸살 옴팡 지게 걸렸어요. 코로나일지도… 마스크는 쓰는게 좋겠습니다.</div>
 											<div class="basis-review-item-author">

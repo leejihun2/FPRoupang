@@ -71,62 +71,32 @@
 <section id="contents" class="contents home">
   
         <div id="personalCategories" data-personalcategories='[WOMAN_CLOTHE, MAN_CLOTHE, BEAUTY, BABY, FOOD, KITCHEN, LIVING, FURNITURE, ELECTRONICS, SPORTS, CAR, HOBBY, OFFICE, BOOKS, PETS, TRAVEL, BABY_FASHION, HEALTH]'></div>
-            <div id="todayDiscoveryUnit" class="reach-ratio-wrap" style="margin-bottom: 50px;">
-                <div class="main-section today-discovery" style="width: 977px; margin-bottom: 0px;">
-                    <h2>오늘의 발견<small style="font-size: 14px; color: gray;"> | 오늘 루팡이 엄선한 가장 HOT한 상품!</small></h2>
-                    <div class="discovery-list">
-                        <ul>
-                            <li class="li-list">
-                                <img class="li-img" src="../images/C2-1-한국피앤지판매유한회사.jpg" alt=""></li>
-                            <li class="li-list">
-                                <img src="../images/C2-2-프리즘.jpg" alt=""></li>
-                            <li class="li-list">
-                                <img class="li-img-min" src="../images/C2_3.jpg" alt="">
-                            </li>
-                            <li class="li-list">
-                                <img class="li-img-min" src="../images/C2_3.jpg" alt="">
-                            </li>
-                            <li class="li-list">
-                                <img class="li-img-min" src="../images/C2_3.jpg" alt="">
-                            </li>
-                            <li class="li-list">
-                                <img class="li-img-min" src="../images/C2_3.jpg" alt="">
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         <div class="decker-carousel">
             <h2><i class="bi bi-bag-check" style="color: violet;"></i><strong> 오늘의 쇼핑 제안</strong></h2> 
             <div id="pd" class="carousel carousel-dark slide" >
                 <div class="carousel-inner">
                   <div class="carousel-item active">
+                   <c:forEach items="${todayShop}" var="row" varStatus="loop">
                     <ul>
-                        <li><a href=""><img class="today-pd" src="../images/버즈.jpg" alt=""><p class="today-p">ACRO 프로 버즈 무선 블루투스 이어폰</p></a></li>
-                        <li><a href=""><img class="today-pd" src="../images/에어팟케이스.jpg" alt=""><p class="today-p">신지모루 변색방지 에어팟 1 / 2 세대 TPU 케이스 + 철가루 방지 스티커 + 카라비너</p></a></li>
-                        <li><a href=""><img class="today-pd" src="../images/신지모루.jpg" alt=""><p class="today-p">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</p></a></li>
-                        <li><a href=""><img class="today-pd" src="../images/에어맥스.jpg" alt=""><a href=""><p class="today-p">Apple 에어팟 맥스 블루투스헤드셋</p></a></li>
-                        <li><a href=""><img class="today-pd" src="../images/케이스.jpg" alt=""><a href=""><p class="today-p">케이스케이스케이스케이스케이스케이스</p></a></li>
+                        <li><a href="journeyDetail?value=${row.idx }"><img class="today-pd" src="/uploads/${row.j_title_image}"><p class="today-p">${row.title}</p></a></li>
                     </ul>
+                   </c:forEach> 
                   </div>
                   <div class="carousel-item">
+                    <c:forEach items="${todayShop}" var="row" varStatus="loop">
                     <ul>
-                        <li><a href="#"><img class="today-pd" src="../images/버즈.jpg" alt=""><p class="today-p">ACRO 프로 버즈 무선 블루투스 이어폰</p></a></li>
-                        <li><a href=""><img class="today-pd" src="../images/에어팟케이스.jpg" alt=""><p class="today-p">신지모루 변색방지 에어팟 1 / 2 세대 TPU 케이스 + 철가루 방지 스티커 + 카라비너</p></a></li>
-                        <li><a href=""><img class="today-pd" src="../images/신지모루.jpg" alt=""><p class="today-p">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</p></a></li>
-                        <li><a href=""><img class="today-pd" src="../images/에어맥스.jpg" alt=""><a href=""><p class="today-p">Apple 에어팟 맥스 블루투스헤드셋</p></a></li>
-                        <li><a href=""><img class="today-pd" src="../images/케이스.jpg" alt=""><a href=""><p class="today-p">케이스케이스케이스케이스케이스케이스</p></a></li>
+                        <li><a href=""><img class="today-pd" src="/uploads/${row.j_title_image}"><p class="today-p">${row.title}</p></a></li>
                     </ul>
+                   </c:forEach> 
                   </div>
                   <div class="carousel-item">
+                    <c:forEach items="${todayShop}" var="row" varStatus="loop">
                     <ul>
-                        <li><a href="#"><img class="today-pd" src="../images/버즈.jpg" alt=""><p class="today-p">ACRO 프로 버즈 무선 블루투스 이어폰</p></a></li>
-                        <li><a href=""><img class="today-pd" src="../images/에어팟케이스.jpg" alt=""><p class="today-p">신지모루 변색방지 에어팟 1 / 2 세대 TPU 케이스 + 철가루 방지 스티커 + 카라비너</p></a></li>
-                        <li><a href=""><img class="today-pd" src="../images/신지모루.jpg" alt=""><p class="today-p">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</p></a></li>
-                        <li><a href=""><img class="today-pd" src="../images/에어맥스.jpg" alt=""><a href=""><p class="today-p">Apple 에어팟 맥스 블루투스헤드셋</p></a></li>
-                        <li><a href=""><img class="today-pd" src="../images/케이스.jpg" alt=""><a href=""><p class="today-p">케이스케이스케이스케이스케이스케이스</p></a></li>
+                        <li><a href=""><img class="today-pd" src="/uploads/${row.j_title_image}"><p class="today-p">${row.title}</p></a></li>
                     </ul>
+                   </c:forEach> 
                   </div>
+                
                   <button class="carousel-control-prev" type="button" data-bs-target="#pd" data-bs-slide="prev" style="left: -63px;">
                     <span class="carousel-control-prev-icon" ></span>
                   </button>
@@ -141,30 +111,20 @@
             <div id="tpd" class="carousel carousel-dark slide" >
                 <div class="carousel-inner">
                   <div class="carousel-item active">
+                  <c:forEach  items="${likeCate}" var="row" varStatus="loop">
                     <ul>
-                        <li><a href="#"><img class="like-pd" src="../images/버즈.jpg" alt=""><p class="like-p">ACRO 프로 버즈 무선 블루투스 이어폰</p></a></li>
-                        <li><a href="#"><img class="like-pd" src="../images/에어팟케이스.jpg" alt=""><p class="like-p">신지모루 변색방지 에어팟 1 / 2 세대 TPU 케이스 + 철가루 방지 스티커 + 카라비너</p></a></li>
-                        <li><a href="#"><img class="like-pd" src="../images/신지모루.jpg" alt=""><p class="like-p">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</p></a></li>
-                        <li><a href="#"><img class="like-pd" src="../images/에어맥스.jpg" alt=""><p class="like-p">Apple 에어팟 맥스 블루투스헤드셋</p></a></li>
-                        <li><a href="#"><img class="like-pd" src="../images/케이스.jpg" alt=""><p class="like-p">케이스케이스케이스케이스케이스케이스</p></a></li>케이스케이스케이스</p></a></li>
+                        <li><a href=""><img class="like-pd" src="/uploads/${row.j_title_image}"><p class="today-p">${row.title}</p></a></li>
+                    </ul>
+                  </c:forEach>
+                  </div>
+                  <div class="carousel-item">
+                    <ul>
+                        <li><a href=""><img class="like-pd" src="/uploads/${row.j_title_image}"><p class="today-p">${row.title}</p></a></li>
                     </ul>
                   </div>
                   <div class="carousel-item">
                     <ul>
-                        <li><a href="#"><img class="like-pd" src="../images/버즈.jpg" alt=""><p class="like-p">ACRO 프로 버즈 무선 블루투스 이어폰</p></a></li>
-                        <li><a href="#"><img class="like-pd" src="../images/에어팟케이스.jpg" alt=""><p class="like-p">신지모루 변색방지 에어팟 1 / 2 세대 TPU 케이스 + 철가루 방지 스티커 + 카라비너</p></a></li>
-                        <li><a href="#"><img class="like-pd" src="../images/신지모루.jpg" alt=""><p class="like-p">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</p></a></li>
-                        <li><a href="#"><img class="like-pd" src="../images/에어맥스.jpg" alt=""><p class="like-p">Apple 에어팟 맥스 블루투스헤드셋</p></a></li>
-                        <li><a href="#"><img class="like-pd" src="../images/케이스.jpg" alt=""><p class="like-p">케이스케이스케이스케이스케이스케이스</p></a></li>케이스케이스케이스</p></a></li>
-                    </ul>
-                  </div>
-                  <div class="carousel-item">
-                    <ul>
-                        <li><a href="#"><img class="like-pd" src="../images/버즈.jpg" alt=""><p class="like-p">ACRO 프로 버즈 무선 블루투스 이어폰</p></a></li>
-                        <li><a href="#"><img class="like-pd" src="../images/에어팟케이스.jpg" alt=""><p class="like-p">신지모루 변색방지 에어팟 1 / 2 세대 TPU 케이스 + 철가루 방지 스티커 + 카라비너</p></a></li>
-                        <li><a href="#"><img class="like-pd" src="../images/신지모루.jpg" alt=""><p class="like-p">신지모루 애플워치 풀커버 자가복원 TPU 액정보호필름 3p</p></a></li>
-                        <li><a href="#"><img class="like-pd" src="../images/에어맥스.jpg" alt=""><p class="like-p">Apple 에어팟 맥스 블루투스헤드셋</p></a></li>
-                        <li><a href="#"><img class="like-pd" src="../images/케이스.jpg" alt=""><p class="like-p">케이스케이스케이스케이스케이스케이스</p></a></li>케이스케이스케이스</p></a></li>
+                        <li><a href=""><img class="like-pd" src="/uploads/${row.j_title_image}"><p class="today-p">${row.title}</p></a></li>
                     </ul>
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#tpd" data-bs-slide="prev" style="left: -63px;">
@@ -208,7 +168,7 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -251,7 +211,7 @@
                         <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -295,7 +255,7 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -339,7 +299,7 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -383,7 +343,7 @@
                         <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -426,7 +386,7 @@
                         <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -470,7 +430,7 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -514,7 +474,7 @@
                         <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -558,7 +518,7 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -601,7 +561,7 @@
                     <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -628,14 +588,9 @@
                 { event: "viewHome" });
         </script>
         <!-- 장바구니 네비게이션 바 -->
-        <div id="cartnav">
-            <%@include file="./cartnav.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
-        </div>
     </section>
     <div id="copyright">
-         <%@include file="./copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
+         <%@include file="./copyright.jsp" %>  
     </div>
-
-<!-- copyright.html에서 인클루드 -->
 </body>
 </html>
