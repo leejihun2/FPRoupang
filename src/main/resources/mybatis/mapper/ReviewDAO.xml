@@ -75,11 +75,11 @@
 		FROM REVIEW ORDER BY idx desc
  	</select>
  
- 	<select id="order" resultType="com.edu.springboot.jdbc.GoodsOrderDTO">
- 		select * from goods_order_item goi 
-	    join (select * from goods_order where member_idx=#{member_idx}) go 
-	    on go.idx=goi.order_idx;
- 	</select>
+<!--  	<select id="order" resultType="com.edu.springboot.jdbc.CategoryDTO">
+ 		select * from bot_category goi 
+	  	join (select * from goods_order where member_idx=1) go 
+	    on go.idx=goi.idx
+ 	</select> -->
  
 	<select id="reviewcount" resultType="int">
 		SELECT COUNT(*) from review

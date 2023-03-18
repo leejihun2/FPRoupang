@@ -75,7 +75,7 @@
                     <h4 class="travel-sub-category-title">티켓/패스 카테고리</h4>
                     <ul class="travel-sub-categories">
                         <li class="category-item">
-                            <a href="/ticket_List?category=1" target="_blank">
+                            <a href="/ticket_List?category=1">
                                 <div class="category-image">
                                 <img src="/uploads/테마파크.jpg"/>
                                 </div>
@@ -83,7 +83,7 @@
                             </a>
                         </li>
                         <li class="category-item">
-                            <a href="/ticket_List?title_value=spa" target="_blank">
+                            <a href="/ticket_List?title_value=spa">
                              <div class="category-image">
                              <img src="/uploads/워터파크.jpg"/>
                              </div>
@@ -91,7 +91,7 @@
                         </a>
                         </li>
                         <li class="category-item">
-                            <a href="/ticket_List?title_value=concert" target="_blank">
+                            <a href="/ticket_List?title_value=concert">
                                 <div class="category-image">
     							<img src="/uploads/공연.png"/>
                                 </div>
@@ -99,7 +99,7 @@
                             </a>
                         </li>
                         <li class="category-item">
-                            <a href="/ticket_List?title_value=activity" target="_blank">
+                            <a href="/ticket_List?title_value=activity">
                                 <div class="category-image">
     							<img src="/uploads/엑티비티.jpg"/>
                                 </div>

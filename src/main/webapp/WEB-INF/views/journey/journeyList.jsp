@@ -23,7 +23,6 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e6076fe794faf6e2a97f29c6ebfadce5&libraries=services"></script>
 <script src="./js/journeyTop.js"></script>
 </head>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e6076fe794faf6e2a97f29c6ebfadce5&libraries=services"></script>
 <script type="text/javascript">
 
 </script>
@@ -163,7 +162,7 @@
    			<div class="row">
 	   			<div class="col-9">
 					<ul class="search-items">
-		<%-- 			<c:if test="${not empty search_list or not empty like_loc}">--%>			
+				<%-- <c:if test="${not empty search_list or not empty like_loc}">--%>			
 						<c:forEach items="${journey_list }" var="journey" varStatus="loop">
 				  			<li class="search-item">
 				  				<a href="journeyDetail?value=${journey.idx }" target="_blank">
@@ -208,6 +207,7 @@
 	        	</div>
 	        	<script type="text/javascript">
 				 kakao.maps.load(function() {
+					  sysdateLoad();
 				  var locationValues = document.getElementById("location").value.split(',');
 				  var mapContainer = document.getElementById('map');
 				  var mapOption = {

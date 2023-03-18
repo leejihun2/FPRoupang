@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.edu.springboot.jdbc.GoodsOrderDTO;
+import com.edu.springboot.jdbc.CategoryDTO;
 import com.edu.springboot.jdbc.IReviewService;
 import com.edu.springboot.jdbc.ReviewDTO;
-import com.edu.springboot.jdbc.SupportsDTO;
 
 @Controller
 public class ReviewController {
@@ -56,8 +55,8 @@ public class ReviewController {
 	public String reviewable(Model model, HttpSession session,
 			HttpServletRequest req) {
 //		int member_idx = Integer.parseInt(req.getParameter("member_idx"));
-//		ArrayList<GoodsOrderDTO> order = 
-//				daoo.order(member_idx);
+//		ArrayList<CategoryDTO> order = 
+//				daoo.order();
 //		model.addAttribute("order", order);
 		return "review/reviewable";
 	}

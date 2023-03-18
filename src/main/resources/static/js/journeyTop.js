@@ -33,7 +33,7 @@ function personnel(){
 function del(){
 	$(".personnel-selector-layer").css("display","none")
 }
-window.onload = function(){
+function sysdateLoad(){
 	date = new Date;
 	
     var year = date.getFullYear();
@@ -120,8 +120,7 @@ function resultPerson(){
         }, 
         success: function(response) { 
             console.log(response);
-            $("#ji_kid").text(countK);
-            $("#ji_adult").text(countA);
+            
             $("#result").text('성인 ' + countA + ', ' + '아동 ' + countK);
             $(".personnel-selector-layer").css("display","none");
         },

@@ -22,4 +22,6 @@ public interface CategoryService {
 	public String like_bot_title(int sub_idx, String title);
 	
 	public ArrayList<TotalJourneyDTO> search_journey_List(int sub_idx, String title);
+	
+	
 }

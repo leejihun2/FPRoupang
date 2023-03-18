@@ -41,8 +41,31 @@
         <%@include file="./top.jsp" %>
     </div>
         <section class="main-today reach-ratio-wrap" id="todaysHot"> 
-            <img src="https://static.coupangcdn.com/ra/cmg_paperboy/image/1676615742559/0222%5BPC%5DC1.jpg"
-                onload="logImageLoadTime2(this);" width="1920" height="450"> 
+        <%-- <c:forEach items="${image_dto}" var="dto" varStatus="loop">
+        <div id="demo" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        	<div class="carousel-inner">
+        		<div class="carousel-item active">
+            		<img src="/uploads/${dto.image1}" width="1920" height="450">
+            	</div>
+            	<div class="carousel-item">
+            		<img src="/uploads/${dto.image2}" width="1920" height="450">
+            	</div>
+            	<div class="carousel-item">
+            		<img src="/uploads/${dto.image3}" width="1920" height="450">
+            	</div>
+            	<div class="carousel-item">
+            		<img src="/uploads/${dto.image4}" width="1920" height="450">
+            	</div>
+            	<div class="carousel-item">
+            		<img src="/uploads/${dto.image5}" width="1920" height="450">
+            	</div>
+            	<div class="carousel-item">
+            		<img src="/uploads/${dto.image6}" width="1920" height="450">
+            	</div>
+            </div>
+        </div>    
+        </c:forEach>  --%>
+        <img src="https://image6.coupangcdn.com/image/ccm/banner/c9216903fb26f1f6b42e11b89150f56d.jpg" alt="" />
         </section>
         <hr/>
 <section id="contents" class="contents home">
@@ -185,8 +208,8 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
-                                <span class="catagory-images">${row.j_title_image }</span>
+                             href="journeyDetail?value=${row.idx }"  >
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
                                 	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
@@ -207,11 +230,10 @@
                
                 <dd class="hot-keyword" style="bottom:5013px">
                 <strong>HOT키워드</strong>
-                <p><a class="keyword" href="#">#태블릿PC</a></p>
-                <p><a class="keyword" href="#">#공기청정기</a></p>
-                <p><a class="keyword" href="#">#게이밍모니터</a></p>
-                <p><a class="keyword" href="#">#마사지기</a></p>
-                <p><a class="keyword" href="#">#블루투스스피커</a></p>
+                <p><a class="keyword" href="#">#수분토너</a></p>
+                <p><a class="keyword" href="#">#클렌징폼</a></p>
+                <p><a class="keyword" href="#">#에센스</a></p>
+                <p><a class="keyword" href="#">#톤업크림</a></p>
                 </dd> 
                <dd class="promotion">
                 <!-- 이미지슬라이드 부트 적용 -->
@@ -220,7 +242,7 @@
                             <span class="caption">
                                 <strong></strong>
                             </span>
-                            <img src="../images/C3_PC.jpg" alt="" width="325" height="536">
+                            <img src="https://thumbnail6.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_9554df12-148a-4870-a666-d5c46c278fc2.jpg" alt="" width="325" height="536">
                         </li>
                     </ul>
                </dd> 
@@ -229,8 +251,8 @@
                         <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
-                                <span class="catagory-images">${row.j_title_image }</span>
+                             href="journeyDetail?value=${row.idx }"  >
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
                                 	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
@@ -251,11 +273,11 @@
                
                 <dd class="hot-keyword" style="bottom:4411px">
                 <strong>HOT키워드</strong>
-                <p><a class="keyword" href="#">#태블릿PC</a></p>
-                <p><a class="keyword" href="#">#공기청정기</a></p>
-                <p><a class="keyword" href="#">#게이밍모니터</a></p>
-                <p><a class="keyword" href="#">#마사지기</a></p>
-                <p><a class="keyword" href="#">#블루투스스피커</a></p>
+                <p><a class="keyword" href="#">#비타민</a></p>
+                <p><a class="keyword" href="#">#다이어트</a></p>
+                <p><a class="keyword" href="#">#간편식</a></p>
+                <p><a class="keyword" href="#">#야식</a></p>
+                <p><a class="keyword" href="#">#간식</a></p>
                 </dd> 
                <dd class="promotion">
                 <!-- 이미지슬라이드 부트 적용 -->
@@ -264,7 +286,7 @@
                             <span class="caption">
                                 <strong></strong>
                             </span>
-                            <img src="../images/C3_PC.jpg" alt="" width="325" height="536">
+                            <img src="https://static.coupangcdn.com/na/cmg_paperboy/image/1678424573085/0315_%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%B3_%E1%84%8C%E1%85%AE%E1%84%89%E1%85%B5%E1%86%A8%E1%84%92%E1%85%AC%E1%84%89%E1%85%A1_C3_PC.jpg" alt="" width="325" height="536">
                         </li>
                     </ul>
                </dd> 
@@ -273,8 +295,8 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
-                                <span class="catagory-images">${row.j_title_image }</span>
+                             href="journeyDetail?value=${row.idx }"  >
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
                                 	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
@@ -295,11 +317,11 @@
                
                 <dd class="hot-keyword" style="bottom:3809px">
                 <strong>HOT키워드</strong>
-                <p><a class="keyword" href="#">#태블릿PC</a></p>
-                <p><a class="keyword" href="#">#공기청정기</a></p>
-                <p><a class="keyword" href="#">#게이밍모니터</a></p>
-                <p><a class="keyword" href="#">#마사지기</a></p>
-                <p><a class="keyword" href="#">#블루투스스피커</a></p>
+                <p><a class="keyword" href="#">#원피스</a></p>
+                <p><a class="keyword" href="#">#청바지</a></p>
+                <p><a class="keyword" href="#">#반팔</a></p>
+                <p><a class="keyword" href="#">#에코백</a></p>
+                <p><a class="keyword" href="#">#샌들</a></p>
                 </dd> 
                <dd class="promotion">
                 <!-- 이미지슬라이드 부트 적용 -->
@@ -308,7 +330,7 @@
                             <span class="caption">
                                 <strong></strong>
                             </span>
-                            <img src="../images/C3_PC.jpg" alt="" width="325" height="536">
+                            <img src="https://thumbnail8.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_44c91377-add6-44fd-bc68-4732a37303e9.jpg" alt="" width="325" height="536">
                         </li>
                     </ul>
                </dd> 
@@ -317,8 +339,8 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
-                                <span class="catagory-images">${row.j_title_image }</span>
+                             href="journeyDetail?value=${row.idx }"  >
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
                                 	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
@@ -339,11 +361,11 @@
                
                 <dd class="hot-keyword" style="bottom:3207px">
                 <strong>HOT키워드</strong>
-                <p><a class="keyword" href="#">#태블릿PC</a></p>
-                <p><a class="keyword" href="#">#공기청정기</a></p>
-                <p><a class="keyword" href="#">#게이밍모니터</a></p>
-                <p><a class="keyword" href="#">#마사지기</a></p>
-                <p><a class="keyword" href="#">#블루투스스피커</a></p>
+                <p><a class="keyword" href="#">#반바지</a></p>
+                <p><a class="keyword" href="#">#반팔</a></p>
+                <p><a class="keyword" href="#">#셔츠</a></p>
+                <p><a class="keyword" href="#">#카드지갑</a></p>
+                <p><a class="keyword" href="#">#슬리퍼</a></p>
                 </dd> 
                <dd class="promotion">
                 <!-- 이미지슬라이드 부트 적용 -->
@@ -352,7 +374,7 @@
                             <span class="caption">
                                 <strong></strong>
                             </span>
-                            <img src="../images/C3_PC.jpg" alt="" width="325" height="536">
+                            <img src="https://thumbnail8.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_b045cab8-340b-454e-91c9-299315e9bfe6.jpg" alt="" width="325" height="536">
                         </li>
                     </ul>
                </dd> 
@@ -361,8 +383,8 @@
                         <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
-                                <span class="catagory-images">${row.j_title_image }</span>
+                             href="journeyDetail?value=${row.idx }"  >
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
                                 	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
@@ -383,11 +405,10 @@
                
                 <dd class="hot-keyword" style="bottom:2605px">
                 <strong>HOT키워드</strong>
-                <p><a class="keyword" href="#">#태블릿PC</a></p>
-                <p><a class="keyword" href="#">#공기청정기</a></p>
-                <p><a class="keyword" href="#">#게이밍모니터</a></p>
-                <p><a class="keyword" href="#">#마사지기</a></p>
-                <p><a class="keyword" href="#">#블루투스스피커</a></p>
+                <p><a class="keyword" href="#">#물티슈</a></p>
+                <p><a class="keyword" href="#">#아기과자</a></p>
+                <p><a class="keyword" href="#">#출산준비물</a></p>
+                <p><a class="keyword" href="#">#카시트</a></p>
                 </dd> 
                <dd class="promotion">
                 <!-- 이미지슬라이드 부트 적용 -->
@@ -396,7 +417,7 @@
                             <span class="caption">
                                 <strong></strong>
                             </span>
-                            <img src="../images/C3_PC.jpg" alt="" width="325" height="536">
+                            <img src="https://thumbnail8.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_f4b2a56d-efa0-43d7-9ca8-4148fe47358c.jpg" alt="" width="325" height="536">
                         </li>
                     </ul>
                </dd> 
@@ -405,8 +426,8 @@
                         <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
-                                <span class="catagory-images">${row.j_title_image }</span>
+                             href="journeyDetail?value=${row.idx }"  >
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
                                 	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
@@ -427,11 +448,11 @@
                
                 <dd class="hot-keyword" style="bottom:2003px">
                 <strong>HOT키워드</strong>
-                <p><a class="keyword" href="#">#태블릿PC</a></p>
-                <p><a class="keyword" href="#">#공기청정기</a></p>
-                <p><a class="keyword" href="#">#게이밍모니터</a></p>
-                <p><a class="keyword" href="#">#마사지기</a></p>
-                <p><a class="keyword" href="#">#블루투스스피커</a></p>
+                <p><a class="keyword" href="#">#행거</a></p>
+                <p><a class="keyword" href="#">#수건</a></p>
+                <p><a class="keyword" href="#">#매트리스</a></p>
+                <p><a class="keyword" href="#">#서랍장</a></p>
+                <p><a class="keyword" href="#">#옷걸이</a></p>
                 </dd> 
                <dd class="promotion">
                 <!-- 이미지슬라이드 부트 적용 -->
@@ -440,7 +461,7 @@
                             <span class="caption">
                                 <strong></strong>
                             </span>
-                            <img src="../images/C3_PC.jpg" alt="" width="325" height="536">
+                            <img src="https://thumbnail7.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_4bd168b7-dea8-4188-ab8b-0f40fbdbc824.png" alt="" width="325" height="536">
                         </li>
                     </ul>
                </dd> 
@@ -449,8 +470,8 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
-                                <span class="catagory-images">${row.j_title_image }</span>
+                             href="journeyDetail?value=${row.idx }"  >
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
                                 	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
@@ -471,11 +492,11 @@
                
                 <dd class="hot-keyword" style="bottom:1401px">
                 <strong>HOT키워드</strong>
-                <p><a class="keyword" href="#">#태블릿PC</a></p>
-                <p><a class="keyword" href="#">#공기청정기</a></p>
-                <p><a class="keyword" href="#">#게이밍모니터</a></p>
-                <p><a class="keyword" href="#">#마사지기</a></p>
-                <p><a class="keyword" href="#">#블루투스스피커</a></p>
+                <p><a class="keyword" href="#">#텀블러</a></p>
+                <p><a class="keyword" href="#">#수세미</a></p>
+                <p><a class="keyword" href="#">#프라이팬</a></p>
+                <p><a class="keyword" href="#">#도마</a></p>
+                <p><a class="keyword" href="#">#식기건조대</a></p>
                 </dd> 
                <dd class="promotion">
                 <!-- 이미지슬라이드 부트 적용 -->
@@ -484,7 +505,7 @@
                             <span class="caption">
                                 <strong></strong>
                             </span>
-                            <img src="../images/C3_PC.jpg" alt="" width="325" height="536">
+                            <img src="https://thumbnail7.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_77121383-41a5-4cdd-922f-1b57d771cc12.png" alt="" width="325" height="536">
                         </li>
                     </ul>
                </dd> 
@@ -493,8 +514,8 @@
                         <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
-                                <span class="catagory-images">${row.j_title_image }</span>
+                             href="journeyDetail?value=${row.idx }"  >
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
                                 	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
@@ -515,11 +536,11 @@
                
                 <dd class="hot-keyword" style="bottom:799px">
                 <strong>HOT키워드</strong>
-                <p><a class="keyword" href="#">#태블릿PC</a></p>
-                <p><a class="keyword" href="#">#공기청정기</a></p>
-                <p><a class="keyword" href="#">#게이밍모니터</a></p>
-                <p><a class="keyword" href="#">#마사지기</a></p>
-                <p><a class="keyword" href="#">#블루투스스피커</a></p>
+                <p><a class="keyword" href="#">#바디워시</a></p>
+                <p><a class="keyword" href="#">#제습제</a></p>
+                <p><a class="keyword" href="#">#액체세제</a></p>
+                <p><a class="keyword" href="#">#헤어스페리이</a></p>
+                <p><a class="keyword" href="#">#키친타올</a></p>
                 </dd> 
                <dd class="promotion">
                 <!-- 이미지슬라이드 부트 적용 -->
@@ -528,7 +549,7 @@
                             <span class="caption">
                                 <strong></strong>
                             </span>
-                            <img src="../images/C3_PC.jpg" alt="" width="325" height="536">
+                            <img src="https://static.coupangcdn.com/xa/cmg_paperboy/image/1678352800511/C3_PC%EC%97%98%EC%98%A4%EC%BC%80%EC%9D%B4%28%EC%9C%A0%29%28%ED%86%A0%ED%83%88%EB%A6%AC%ED%8E%98%EC%96%B4%29.jpg" alt="" width="325" height="536">
                         </li>
                     </ul>
                </dd> 
@@ -537,8 +558,8 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
-                                <span class="catagory-images">${row.j_title_image }</span>
+                             href="journeyDetail?value=${row.idx }"  >
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
                                 	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
@@ -580,8 +601,8 @@
                     <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
-                                <span class="catagory-images">${row.j_title_image }</span>
+                             href="journeyDetail?value=${row.idx }"  >
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
                                 	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
@@ -607,14 +628,9 @@
                 { event: "viewHome" });
         </script>
         <!-- 장바구니 네비게이션 바 -->
-        <div id="cartnav">
-            <%@include file="./cartnav.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
-        </div>
     </section>
     <div id="copyright">
-         <%@include file="./copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
+         <%@include file="./copyright.jsp" %>  
     </div>
-
-<!-- copyright.html에서 인클루드 -->
 </body>
 </html>

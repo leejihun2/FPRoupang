@@ -4,16 +4,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.edu.springboot.jdbc.JourneyService">
- 	<!-- ticket테이블에서 정보 가져오기 -->
+ 
 	<select id="journey_list" resultType="com.edu.springboot.jdbc.JourneyDTO">
 		select * from journey where bot_idx=#{param1} order by 1 asc
 	</select>
- 	
- 	<!-- ticket_info에서 리스트 가져오기 -->
  	<select id="journey_info_list" resultType="com.edu.springboot.jdbc.JourneyInfoDTO">
  		select * from journey_info where bot_idx=#{param1} order by 1 asc 
  	</select>
- 	
+ 	<select id="journeyDetailSearch" resultType="com.edu.springboot.jdbc.JourneyInfoDTO">
+ 		select * from journey_info where bot_idx=#{bot_idx} 
+ 			<choose>
+ 				<when test="ji_duetime1 != ''">
+					and ji_adult=#{ji_adult} 
+ 					and ji_kid=#{ji_kid}
+ 					and #{ji_duetime1} between ji_duetime1 and ji_duetime2 
+           			and #{ji_duetime2} between ji_duetime1 and ji_duetime2
+ 				</when>
+ 				<otherwise>
+       	 			and ji_adult=#{ji_adult} 
+ 					and ji_kid=#{ji_kid}
+ 					and sysdate between ji_duetime1 and ji_duetime2 
+           			and sysdate+1 between ji_duetime1 and ji_duetime2
+           		</otherwise>
+ 			</choose>
+ 	</select>
  	<select id="select_journey_info" resultType="com.edu.springboot.jdbc.JourneyInfoDTO">
  		select * from journey_info where ji_idx=#{param1}
  	</select>
@@ -257,10 +271,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             (select bot_idx, ji_price, ji_discount,
             RANK() OVER (PARTITION BY bot_idx ORDER BY ji_price ASC) rk
             from journey_info
-      <!--  <choose>
+       <!-- 	<choose>
         	<when test='ji_duetime1==""'>
 		        <choose>
-		        	<when test="ji_kid == null">
+		        	<when test="ji_kid != null">
 		        		where ji_adult>=2 and ji_kid>=0
 		        	 		and sysdate between ji_duetime1 and ji_duetime2 
 		             		and sysdate+1 between ji_duetime1 and ji_duetime2
@@ -296,4 +310,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="like_journey_List" parameterType="com.edu.springboot.jdbc.TotalJourneyDTO" resultType="String">
  		select distinct location from journey where location like '%'||#{param1}||'%'
  	</select>
+ 	<insert id="log">
+		INSERT INTO search_log 
+		(search_word, member_idx, user_birth)
+		VALUES
+		(#{search_word}, 12, 97)
+	</insert>
  </mapper>

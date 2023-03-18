@@ -424,11 +424,12 @@ $(function(){
          
          
          if($("#category1").val()==10){
+        	 alert("sd");
             form.action="/ticketInsertAction?value="+value;
-     	  }
+       }
          else if($("#category1").val()==9){
             form.action="/journeyInsertAction?value="+value;
-      	 }
+       }
       }
    });
    
@@ -504,7 +505,7 @@ function setSubThumnail(tag, event){
          sel_files.push(e);
          var reader = new FileReader();
          reader.onload = function(f){
-            var img = "<img style='width:200px; height:110px;' src=\"" + f.target.result + "\" />&nbsp;&nbsp;";
+            var img = "<img style='width:200px; heigth:200px;' src=\"" + f.target.result + "\" /><br/><br/>";
             $("#"+div_id+"thumbnail").append(img);
          }
          reader.readAsDataURL(e);
@@ -557,36 +558,36 @@ function service_list(e){
    document.getElementById("briefinfo").innerHTML='';
    document.getElementById("detailinfo").innerHTML='';
    
-   var briefinfo='<tr><th class="info_th">* 상품명</th><td><input class="form-control insert_input" type="text" id="bot_title" name="bot_title"/><tr><th class="info_th">* 메인이미지</th><td><div id="title_image"></div><input class="form-control insert_input" type="file" name="title_image" id="main_image" onchange="setThumbnail(event)" /></td><tr><th class="info_th">서브이미지</th><td><div id="sub_thumbnail"></div><input class="form-control insert_input" type="file" id="sub_image" name="sub_image" onchange="setSubThumnail(this,event)" multiple/></td></tr>';
+   var briefinfo='<tr><th class="info_th">* 상품명</th><td><input class="form-control insert_input" type="text" id="bot_title" name="bot_title"/><tr><th class="info_th">* 메인이미지</th><td><div id="title_image"></div><input class="form-control insert_input" type="file" name="title_image" id="main_image" onchange="setThumbnail(event)" /><tr><th class="info_th">서브이미지</th><td><div id="sub_thumbnail"></div><input class="form-control insert_input" type="file" id="sub_image" name="sub_image" onchange="setSubThumnail(this,event)" multiple/></td></tr>';
    
    var detailinfo ='<tr><th class="info_th">* 상품상세명</th><td><input class="form-control" type="text" id="product_title" name="product_title" /></td></tr>';
    
    if(e==10){
-      briefinfo+='<tr><th class="info_th">* 편의시설</th><td class="com_td">';
+      briefinfo+='<tr><th class="info_th">* 편의시설</th><td>';
       add=ticket_service;
       for(property in add){
-         var chkbox = "<input type='checkbox' class='service' name='t_conservice' value='"+add[property]+"'/>"+add[property]+"<br>";
+         var chkbox = "<input type='checkbox' class='service' name='t_conservice' value='"+add[property]+"'/>"+add[property];
          briefinfo+=chkbox;
          if(property%4 == 3){
-            briefinfo+="";
+            briefinfo+="<br>";
          }
       }
       var chkbox = "<input type='checkbox' id='noservice' name='t_conservice' value='' onclick='noChk(this)' />없음";
-      briefinfo+=chkbox+'</td>';
+      briefinfo+=chkbox+'</td></tr>';
       
-      briefinfo+='<th class="info_th">* 이용시설</th><td class="td_w">';
+      briefinfo+='<tr><th class="info_th">* 이용시설</th><td>';
       add=ticket_fac;
       for(property in add){
-         var chkbox = "<input type='checkbox' class='fac' name='t_fac' value='"+add[property]+"'/>"+add[property]+"<br>";
+         var chkbox = "<input type='checkbox' class='fac' name='t_fac' value='"+add[property]+"'/>"+add[property];
          briefinfo+=chkbox;
          if(property%4 == 3){
-            briefinfo+="";
+            briefinfo+="<br>";
       }
    }
    var chkbox = "<input type='checkbox' id='nofac' name='t_fac' value='' onclick='noChk(this)' />없음";
    briefinfo+=chkbox+'</td></tr>';
    
-   briefinfo+='<tr><th>포함사항</th><td class="td_w"><textarea class="text-area text_height id="t_incmatters" name="t_incmatters" cols="40" rows="6"></textarea></td></tr>'
+   briefinfo+='<tr><th>포함사항</th><td><textarea class="form-control text_height id="t_incmatters" name="t_incmatters" cols="30" rows="10"></textarea></td></tr>'
    
    detailinfo += '<tr><th class="info_th">* 유효기간</th>';
    
@@ -628,17 +629,14 @@ function service_list(e){
       var chkbox = "<input type='checkbox' id='nofac' name='j_confacility' value='' onclick='noChk(this)' />없음";
       briefinfo+=chkbox+'</td></tr>';
       
-      briefinfo+='<tr><th class="info_th">*지역</th><td><input class="form-control insert_input" type="text" id="location" name="location"/></td></tr><tr><th class="info_th">*교통 정보</th><td><textarea class="text-area insert_input" id="traffic_info" name="traffic_info" cols="40" rows="10"/></textarea></td></tr><tr><th class="info_th">*숙소 정책</th><td><textarea class="text-area insert_input" id="loging_policy" name="loging_policy" cols="40" rows="10"/></textarea></td></tr><tr><th class="info_th">*체크인/체크아웃</th><td><textarea class="text-area insert_input" id="check_io" name="check_io" cols="40" rows="10"/></textarea></td></tr><tr><th class="info_th">인원 및 추가요금 </th><td><textarea class="text-area insert_input" id="add_fare" name="add_fare" cols="40" rows="10"/></textarea></td></tr><tr><th class="info_th">침구류 추가요금</th><td><textarea class="text-area insert_input" id="add_bed" name="add_bed" cols="40" rows="10"/></textarea></td></tr><tr><th class="info_th">조식 유의 사항</th><td><textarea class="text-area insert_input" id="breakfast_noti" name="breakfast_noti" cols="40" rows="10"  /></textarea></td></tr>'
+      briefinfo+='<tr><th class="info_th">*지역</th><td><input class="form-control insert_input" type="text" id="location" name="location"/></td></tr><tr><th class="info_th">*교통 정보</th><td><textarea class="form-control insert_input" id="traffic_info" name="traffic_info" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">*숙소 정책</th><td><textarea class="form-control insert_input" id="loging_policy" name="loging_policy" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">*체크인/체크아웃</th><td><textarea class="form-control insert_input" id="check_io" name="check_io" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">인원 및 추가요금 </th><td><textarea class="form-control insert_input" id="add_fare" name="add_fare" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">침구류 추가요금</th><td><textarea class="form-control insert_input" id="add_bed" name="add_bed" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">조식 유의 사항</th><td><textarea class="form-control insert_input" id="breakfast_noti" name="breakfast_noti" cols="30" rows="10"  /></textarea></td></tr>'
       
       detailinfo += '<tr><th class="info_th">* 성인</th><td><select class="form-select" id="ji_adult" name="ji_adult"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">* 소인</th><td><select class="form-select" id="ji_kid" name="ji_kid"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">*객실이미지</th><td><div id="ji_thumbnail"></div><input class="form-control" type="file" id="ji_image" name="sub_ji_image" onchange="setSubThumnail(this,event)" multiple/></td></tr><tr><th class="info_th">*잔여객실수</th><td><select class="form-select" id="ji_roomnum" name="ji_roomnum"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr><tr><th class="info_th">* 개장기간</th>'
       
    }
    
-   briefinfo += '<tr><th class="info_th">*소개</th><td class="td_w"><textarea class="text-area insert_input" id="product_intro" name="product_intro" rows="10" cols="40"/></textarea></td><th class="info_th">알려드리는 말</th><td class="td_w"><textarea class="text-area insert_input" id="notice" name="notice" cols="40" rows="10"/></textarea></td><td></td></tr>'+
-   				'<tr><th class="info_th">유의사항</th><td class="td_w"><textarea class="text-area insert_input" id="product_notice" name="product_notice" cols="40" rows="10"/></textarea></td><th class="info_th">*예약안내</th><td class="td_w"><textarea class="text-area insert_input" id="product_booking" name="product_booking" cols="40" rows="10"/></textarea></td><td></td></tr>'+
-   				'<tr><th>*취소수수료안내</th><td class="td_w"><textarea class="text-area id="product_cancelfee" name="product_cancelfee"cols="40" rows="10" /></textarea></td><th>*취소유의사항</th><td class="td_w"><textarea class="text-area id="product_cancelnoti" name="product_cancelnoti"cols="40" rows="10" /></textarea></td><td></td></tr>'
-   
-   detailinfo += '<td><input type="date" class="date_form" id="product_duetime1" name="product_duetime1" />~<input type="date" class="date_form" id="product_duetime2" name="product_duetime2" /></td></tr><tr><th class="info_th">* 가격</th><td><input class="form-control" type="text" id="product_price" name="product_price" /></td></tr><tr><th class="info_th">* 상품소개</th><td><textarea class="text-area" id="product_intro" name="product_intro" cols="50" rows="10"></textarea></td></tr>'
+   briefinfo += '<tr><th class="info_th">*소개</th><td><textarea class="form-control insert_input" id="product_intro" name="product_intro" rows="10" cols="30"/></textarea></td></tr><tr><th class="info_th">알려드리는 말</th><td><textarea class="form-control insert_input" id="notice" name="notice" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">유의사항</th><td><textarea class="form-control insert_input" id="product_notice" name="product_notice" cols="30" rows="10"/></textarea></td></tr><tr><th class="info_th">*예약안내</th><td><textarea class="form-control insert_input" id="product_booking" name="product_booking" cols="30" rows="10"/></textarea></td></tr><tr><th>*취소수수료안내</th><td><textarea class="form-control id="product_cancelfee" name="product_cancelfee"cols="30" rows="10" /></textarea></td></tr><tr><th>*취소유의사항</th><td><textarea class="form-control id="product_cancelnoti" name="product_cancelnoti"cols="30" rows="10" /></textarea></td></tr>'
+   detailinfo += '<td><input type="date" class="date_form" id="product_duetime1" name="product_duetime1" />~<input type="date" class="date_form" id="product_duetime2" name="product_duetime2" /></td></tr><tr><th class="info_th">* 가격</th><td><input class="form-control" type="text" id="product_price" name="product_price" /></td></tr><tr><th class="info_th">* 상품소개</th><td><textarea class="form-control" id="product_intro" name="product_intro" cols="50" rows="10"></textarea></td></tr>'
    
    $('#briefinfo').append(briefinfo);
    $('#detailinfo').append(detailinfo);
@@ -646,7 +644,7 @@ function service_list(e){
 </script>
 <style type="text/css">
 .info_th{
-   width: 144px;
+   width: 200px;
 }
 .date_form{
    width: 150px;
@@ -658,21 +656,6 @@ function service_list(e){
 }
 .td_none{
    border: none;
-}
-.td_w{
-	width: 200px;
-}
-textarea:focus{
-	outline: none;
-}
-textarea{
-	border: 1px solid #e1e1e1;
-	border-radius: 12px;
-	resize: none;
-	background-color: white;
-}
-.text-area{
-	background-color: white;
 }
 </style>
 </head>
@@ -740,8 +723,7 @@ textarea{
 			            <div class="product_intro col-12" style="display:none;"></div>
 			         </form>
 			         <form method="POST" id="form" enctype="multipart/form-data">
-			            <input type="hidden" class="form-control ms-3 mb-3" style="width: 200px;"
-				               id="member_idx" name="member_idx" value="${member_idx}"/>
+			         	<input type="hidden" id="member_idx" name="member_idx" value="${member_idx}" />
 			         	<s:authorize access="hasRole('admin')">
 				            <input type="hidden" class="form-control ms-3 mb-3" style="width: 200px;"
 				               id="company_name" name="company_name" value="루팡"/>
@@ -773,11 +755,11 @@ textarea{
 			               <button class="btn btn-primary mt-2" type="submit" id="info_delete" onclick="btnclick(this)">상품삭제</button>
 			            </div>
 			         
-			            <div class="col-12" id="product_info" style="display:none;">
+			            <div class="col-5" id="product_info" style="display:none;">
 			               <table class="table" id="briefinfo">
 			               </table>
 			            </div>
-			            <div class="col-12" id="product_info_detail" style="display:none; margin: 0px">
+			            <div class="col-5" id="product_info_detail" style="display:none; margin: 0px">
 			               <table id="detailinfo">
 			               </table>
 			               <button class="btn-primary" type="submit" id="submit">등록하기</button>
