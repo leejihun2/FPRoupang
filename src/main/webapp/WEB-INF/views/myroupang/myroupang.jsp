@@ -95,7 +95,7 @@ hover:
                 </a>
             </li>
             <li id="rocket-wow" >
-                <a href="***와우 멤버십 링크 " title="와우 멤버십" target="_self" class="oo">
+                <a href="#" title="와우 멤버십" target="_self" class="oo">
                     와우 멤버십
                 </a>
             </li>
@@ -105,12 +105,12 @@ hover:
                 </a>
             </li>
             <li id="subscribe-page" >
-                <a href="***정기배송관리 링크" title="정기배송관리" target="_self" class="oo">
+                <a href="#" title="정기배송관리" target="_self" class="oo">
                     정기배송관리
                 </a>
             </li>
             <li id="receipt-page" >
-                <a href="***영수증 조회/출력" title="영수증 조회/출력" target="_self" class="oo">
+                <a href="#" title="영수증 조회/출력" target="_self" class="oo">
                     영수증 조회/출력
                 </a>
             </li>
@@ -124,16 +124,16 @@ hover:
     <div class="gg">
         <ul>
             <li id="discount-coupon" >
-                <a href="****할인쿠폰" title="할인쿠폰" target="_self" class="oo">
+                <a href="#" title="할인쿠폰" target="_self" class="oo">
                     할인쿠폰
                 </a>
             </li>
             <li id="coupang-cash">
-                <a href="****쿠팡캐시/기프트카드" title="쿠팡캐시/기프트카드" target="_self" class="oo">
+                <a href="#" title="쿠팡캐시/기프트카드" target="_self" class="oo">
                     루팡캐시/기프트카드
                 </a>
             </li>
-        </ul>
+        </ul> 
     </div>
 </div>
 <div class="me4">
@@ -143,12 +143,12 @@ hover:
     <div class="gg">
         <ul>
             <li id="cs-main" >
-                <a href="****문의하기" title="문의하기" target="_self" class="oo">
+                <a href="../supports/voc.do" title="문의하기" target="_self" class="oo">
                     문의하기
                 </a>
             </li>
             <li id="inquiry-list" >
-                <a href="***문의내역 확인" title="문의내역 확인" target="_self" class="oo">
+                <a href="../supports/voc.do" title="문의내역 확인" target="_self" class="oo">
                     문의내역 확인
                 </a>
             </li>
@@ -177,7 +177,7 @@ hover:
                 </a>
             </li>
             <li id="coupay-page" >
-                <a href="*****" title="결제수단·쿠페이 관리" target="_self" class="oo">
+                <a href="#" title="결제수단·쿠페이 관리" target="_self" class="oo">
                     결제수단·루페이 관리
                 </a>
             <li id="zip-page" >
@@ -194,7 +194,7 @@ hover:
     <div class="le1">
         <ul class="le2">
             <li class="downmenu ">
-                <a href="문의링크문의링크" class="gmkSJg">
+                <a href="../supports/voc.do" class="gmkSJg">
                     <span class=" kHVTpM">
                         <span class="ledbar">
                             루팡문의
@@ -203,7 +203,7 @@ hover:
                 </a>
             </li>
             <li class="downmenu">
-                <a href=" 고객의 소리 고객의 소리 고객의 소리" 
+                <a href="#" 
                     class=" gmkSJg " 
                     
                     >
@@ -239,7 +239,7 @@ hover:
                 미사용티켓
             </strong>
             <div class="numn ">
-            <a href=" 링크링크링크링크링크 ">
+            <a>
                 <span class="nu1" id="unTicketCount">
                     0
                 </span>
@@ -254,7 +254,7 @@ hover:
             배송중
         </strong>
         <div class="numn ">
-            <a href="  ***   " >
+            <a>
                 <span class="nu1" id="deliveringCount">
                     0
                 </span>
@@ -269,7 +269,7 @@ hover:
             할인쿠폰
         </strong>
         <div class="numn ">
-            <a href=" **** ">
+            <a>
                 <span class="nu1" id="DiscountCount">
                     0
                 </span>
@@ -284,7 +284,7 @@ hover:
             <span class="cou">
                 쿠페이 머니
             </span>
-            <a href=" **** " >
+            <a>
                 <span class="rnum" id="couMoneyBalance">
                     0
                 </span>
@@ -297,7 +297,7 @@ hover:
             <span class="cou">
                 쿠팡캐시
             </span>
-            <a href=" **** "  >
+            <a>
                 <span class="rnum" id="couCashBalance">
                     0
                 </span>
