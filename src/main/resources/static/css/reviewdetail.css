@@ -1,0 +1,322 @@
+@charset "UTF-8";
+
+.basis-aside-section {
+	padding: 30px 20px;
+	border-top: 1px solid #ddd
+}
+
+.basis-aside-section-small {
+	padding: 20px;
+	border-top: 1px solid #ddd
+}
+
+.basis-review-section {
+	position: relative
+}
+
+.basis-review-section .basis-review-section-rating {
+	color: #333;
+	margin-bottom: 10px
+}
+
+.basis-review-section .basis-review-section-rating .basis-review-section-title
+	{
+	display: inline-block;
+	width: 67px;
+	height: 21px;
+	font-size: 18px;
+	font-weight: 700
+}
+
+.basis-review-section .basis-review-section-rating .basis-review-section-rating-star
+	{
+	display: inline-block;
+	vertical-align: middle
+}
+
+.basis-review-section .basis-review-section-rating .basis-review-section-count
+	{
+	margin-left: 6px;
+	height: 23px;
+	line-height: 1.64;
+	font-size: 14px;
+	font-weight: 700;
+	cursor: pointer
+}
+
+.basis-review-section .basis-review-section-survey {
+	margin-bottom: 24px
+}
+
+.basis-review-section .basis-review-section-survey li:not(:first-child)
+	{
+	margin-top: 6px
+}
+
+.basis-review-section .basis-review-section-survey label {
+	display: inline-block;
+	width: 67px;
+	font-weight: 700;
+	font-size: 14px
+}
+
+.basis-review-section .basis-review-section-survey .basis-review-section-rating-star
+	{
+	display: inline-block;
+	vertical-align: middle
+}
+
+.basis-review-section .basis-review-section-list .basis-review-section-list-item
+	{
+	border-top: 1px solid #eee;
+	background-color: #fafafa
+}
+
+.basis-review-section .basis-review-section-list .basis-review-section-list-item:last-child
+	{
+	border-bottom: 1px solid #eee
+}
+
+.basis-review-section .basis-review-section-all {
+	margin-top: 10px;
+	text-align: right
+}
+
+.basis-review-section .basis-review-section-all .basis-review-section-all-link
+	{
+	font-size: 14px;
+	line-height: 1.57;
+	color: #346aff;
+	text-decoration: underline;
+	cursor: pointer
+}
+
+.rating-star {
+	position: relative
+}
+
+.rating-star-empty {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background:
+		url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyMSIgdmlld0JveD0iMCAwIDIzIDIxIj4KICAgIDxwYXRoIGZpbGw9IiNDQ0MiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTE1IDYuMzY4bDYuNjk0IDEuMTE5Yy43NTQuMTI1LjkzMi42Ni4zOTggMS4xOTdsLTQuNzQ0IDQuNzQ4Ljk4MSA2LjU2MmMuMTEuNzQtLjM1NyAxLjA3Mi0xLjA0Mi43NGwtNi4wODctMi45NC02LjA4NyAyLjk0Yy0uNjg1LjMzMi0xLjE1MiAwLTEuMDQyLS43NGwuOTgtNi41NjJMLjMwOCA4LjY4NGMtLjUzNC0uNTM2LS4zNTYtMS4wNzIuMzk4LTEuMTk3TDcuNCA2LjM2OCAxMC41NTcuNDk2Yy4zNTUtLjY2MS45MzEtLjY2MSAxLjI4NiAwTDE1IDYuMzY4eiIvPgo8L3N2Zz4K)
+		repeat-x
+}
+
+.rating-star-full {
+	position: relative;
+	height: 100%;
+	background:
+		url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyMSIgdmlld0JveD0iMCAwIDIzIDIxIj4KICAgIDxwYXRoIGZpbGw9IiNGRjk2MDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTExLjg0My40OTZMMTUgNi4zNjhsNi42OTQgMS4xMTljLjc1NC4xMjUuOTMyLjY2LjM5OCAxLjE5N2wtNC43NDQgNC43NDguOTgxIDYuNTYyYy4xMS43NC0uMzU3IDEuMDcyLTEuMDQyLjc0bC02LjA4Ny0yLjk0LTYuMDg3IDIuOTRjLS42ODUuMzMyLTEuMTUyIDAtMS4wNDItLjc0bC45OC02LjU2MkwuMzA4IDguNjg0Yy0uNTM0LS41MzYtLjM1Ni0xLjA3Mi4zOTgtMS4xOTdMNy40IDYuMzY4IDEwLjU1Ny40OTZjLjM1NS0uNjYxLjkzMS0uNjYxIDEuMjg2IDAiLz4KPC9zdmc+Cg==)
+		repeat-x
+}
+
+.basis-product-buttons li.button-reservation.full-width {
+	width: 100%
+}
+
+.travel-simple-map .full-map-button {
+	width: 20px;
+	height: 20px;
+	background-color: rgba(0, 0, 0, .4);
+	border-radius: 4px;
+	float: right;
+	margin: 10px
+}
+
+.travel-simple-map .full-map-button>i.icon-fullscreen {
+	background-size: 10px 10px;
+	width: 10px;
+	height: 10px;
+	margin: 5px
+}
+
+#travel-modal-map {
+	background-color: #a4bdd6
+}
+
+.video-js:-moz-full-screen {
+	position: absolute
+}
+
+.video-js:-webkit-full-screen {
+	width: 100% !important;
+	height: 100% !important
+}
+
+.video-js[tabindex="-1"] {
+	outline: none
+}
+
+body.vjs-full-window {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	overflow-y: auto
+}
+
+.vjs-full-window .video-js.vjs-fullscreen {
+	position: fixed;
+	overflow: hidden;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0
+}
+
+.basis-review-item {
+	position: relative;
+	padding: 20px 15px;
+	font-size: 14px;
+	color: #333;
+	line-height: 21px
+}
+
+.basis-review-item .basis-review-item-media {
+	margin-bottom: 13px
+}
+
+.basis-review-item .basis-review-item-title {
+	font-weight: 700
+}
+
+.basis-review-item .basis-review-item-body {
+	position: relative;
+	font-weight: 400;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	line-height: 21px;
+	max-height: 63px
+}
+
+.basis-review-item .basis-review-item-author {
+	margin-top: 5px
+}
+
+.basis-review-item .basis-review-item-author .basis-review-item-author-icon
+	{
+	display: inline-block;
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	margin-bottom: 2px
+}
+
+.basis-review-item .basis-review-item-author .basis-review-item-author-name
+	{
+	margin-left: 10px;
+	font-weight: 700
+}
+
+.basis-element-attachments .basis-review-thumbnail {
+	float: none;
+	display: inline-block;
+	width: 40px;
+	height: 40px
+}
+
+.basis-element-attachments .basis-review-thumbnail .basis-review-thumbnail-count
+	{
+	background-color: hsla(0, 0%, 7%, .65);
+	font-size: 12px;
+	font-weight: 700;
+	text-align: center;
+	color: #fff;
+	padding-top: 12px;
+	height: 100%
+}
+
+.basis-element-attachments .basis-review-thumbnail .basis-review-thumbnail-video
+	{
+	background-color: hsla(0, 0%, 7%, .65);
+	text-align: center;
+	padding: 2px;
+	height: 100%
+}
+
+.basis-element-attachments .basis-review-thumbnail .basis-review-thumbnail-video .play-button
+	{
+	display: inline-block;
+	background:
+		url("//img1a.coupangcdn.com/image/productreview/web/pdp/video/play-btn-middle__v1.png")
+		no-repeat;
+	background-size: 8px 10px;
+	width: 8px;
+	height: 10px
+}
+
+.basis-element-attachments .basis-review-thumbnail .basis-review-thumbnail-video .video-duration
+	{
+	color: #fff;
+	text-align: center;
+	font-size: 10px
+}
+
+.product-review-thumbnail {
+	float: left;
+	width: 14%;
+	height: 100%;
+	margin-right: 2px;
+	position: relative;
+	cursor: pointer
+}
+
+.product-review-thumbnail:last-child {
+	margin-right: 0
+}
+
+.product-review-thumbnail .thumbnail-image {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: 50%
+}
+
+.product-review-thumbnail .product-review-thumbnail__layer {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+	height: 100%
+}
+
+.product-review-thumbnail .product-review-thumbnail__caption {
+	position: absolute;
+	background:
+		url("//img1a.coupangcdn.com/image/coupang/review/web/sdp/captions/icon-caption2x.png")
+		no-repeat;
+	background-size: 14px 14px;
+	width: 14px;
+	height: 14px;
+	bottom: 5px;
+	right: 5px;
+	float: right;
+	opacity: .7
+}
+
+.product-review-summary__attachment-thumbnails .product-review-thumbnail
+	{
+	cursor: pointer
+}
+
+.product-review-summary__attachment-thumbnails .product-review-thumbnail .product-review-thumbnail__layer
+	{
+	background-color: rgba(0, 0, 0, .7);
+	border: 1px solid #979797;
+	color: #fff;
+	text-align: center
+}
+
+.product-review-item .element-attachments .product-review-thumbnail {
+	width: 75px;
+	height: 75px;
+	margin-right: 3px;
+	margin-bottom: 3px
+}

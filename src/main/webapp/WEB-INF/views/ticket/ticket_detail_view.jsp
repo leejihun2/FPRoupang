@@ -32,6 +32,7 @@
 <link rel="stylesheet" href="./css/main.css" type="text/css">
 <link rel="stylesheet" href="../css/star_rating.css" type="text/css">
 <link rel="stylesheet" href="../css/star_total.css" type="text/css">
+<link rel="stylesheet" href="../css/reviewdetail.css" type="text/css">
 <script src="../js/star.js"></script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
