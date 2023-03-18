@@ -179,13 +179,6 @@ $(function(){
 </script>
 
 <body>
-<s:authorize access="isAnonymous()">
-	<%@include file="../auth/login.jsp" %>
-</s:authorize>
-
-<s:authorize access="isAuthenticated()">
-
-
 <%@include file="../myroupang/myroupang.jsp" %>
 
 <div class="roll" >
@@ -300,7 +293,6 @@ $(function(){
 				<!-- /.container-fluid -->
 			</div>
 
-
 	<div class="conten99">
 	
 	<!-- 주문 목록 loop 주문 목록 loop 주문 목록 loop 주문 목록 loop 주문 목록 loop--> 
@@ -341,9 +333,9 @@ $(function(){
 
 
 </div>
+
 </div>
 </div>
-</s:authorize>
 <div>
 	<%@include file="../copyright.jsp" %>
 </div>

@@ -43,28 +43,30 @@ function deleteBtn(){
         	vaArr.push(wishList[i].value);
         }
     }
+    alert(vaArr)
     if(vaArr.length == 0){
         alert("삭제할 게시물을 선택하세여");
     }
     else{
-    	var chk = confirm("정말 삭제?");
-        $.ajax({
-            url : "/wishlish",
-            type: 'POST',
-            trandional : true,
-            data : {
-            	vaArr : vaArr   //보내고자하는 data 변수
-            },
-            success: function(jdata){
-                if(jdata = 1){
-                    alert("삭제성공");
-                    location.replace("wishlist") //wishlist로 새로고침한다.
-                }
-                else{
-                    alert("삭제실패")
-                }
-            }
-        });
+    	if(confirm("정말 삭제?")){
+	        $.ajax({
+	            url : url,
+	            type: 'POST',
+	            trandional : true,
+	            data : {
+	            	vaArr : vaArr   //보내고자하는 data 변수
+	            },
+	            success: function(jdata){
+	                if(jdata = 1){
+	                    alert("삭제성공");
+	                    location.replace("wishlist") //wishlist로 새로고침한다.
+	                }
+	                else{
+	                    alert("삭제실패")
+	                }
+	            }
+	        });
+    	}
     }
 }
 
@@ -103,7 +105,7 @@ function deleteBtn(){
 		<img class="zzim" src="../images/wish.png" alt="찜 리스트" />
 	</span>
 	<span style="line-height:155px; display:inline-block; color:gray;">
-		총 <%-- ${totalCount} --%>개
+	<%-- 	총 ${totalRecordCount}개 --%>
 	</span>
 </div>
 <div class="witab">
@@ -140,7 +142,7 @@ function deleteBtn(){
 		<tr class="table1">   
 			<td style="width:100px;">
 				<input type="checkbox" name="RowCheck" class="all-select"
-					value="${wishList.ti_idx}">
+					value="${wishList.product_idx}">${wishList.product_idx}
 			</td>
 			
 			<td class="item-img" style="width:100px;">
@@ -152,9 +154,9 @@ function deleteBtn(){
 			<td class="item-info" style="width:500px;">
 	         	<div class="delivery-info">무료배송</div>
 	         		<a href="" 
-         		class="item-name">${wishList.ti_title}</a>
+         		class="item-name">${wishList.p_title}</a>
 	       		<div class="price-info">
-	       			<span class="item-price">${wishList.ti_price}</span>
+	       			<span class="item-price">${wishList.p_price}</span>
 	       		</div>
 	         </td>
 	         <td class="t-edit" style="width:150px;">
@@ -165,7 +167,7 @@ function deleteBtn(){
 	       				<div class="add-to-cart-pop"></div>
 	       			</div>
 	       		</div>
-	        	<div class="item-delete" >삭제</div>
+	        	<div class="item-delete" >상품으로 이동</div>
 	        </td>
 		</tr>
 		</c:forEach>
@@ -179,23 +181,6 @@ function deleteBtn(){
 		</c:otherwise> 
 	</c:choose>
 </table>
-
-	
-	<%-- <!-- ------하단 바---------- -->
-	<div class="bottom">
-		<input type="checkbox" checked="checked" class="all-select">
-	    <span class="select-txt">
-	         전체선택 <a href="#" class="selected-delete">삭제</a>
-	     </span>
-	     <div class="p-area">
-	        <button type="button" class="prev-page" disabled="">
-	        	<span class="p-ico">이전페이지</span>
-	        </button>
-			<button type="button" class="next-page" disabled="">
-				<span class="n-ico">다음페이지</span>
-			</button>
-	     </div>
-	</div> --%>
 	    
 </div>
 </div>

@@ -50,6 +50,20 @@ public class MyController {
 		
 		return "myroupang/cancelReturn";
 	}
+	//취소/교환 가이드 
+	@RequestMapping("/myroupang/cancelGuide.do")
+	public String cancelguide() {
+		
+		return "myroupang/cancelGuide";
+	}
+	//프레시 백 
+	@RequestMapping("/myroupang/freshbag.do")
+	public String freshbb() {
+		
+		return "myroupang/freshbag";
+	}
+	
+	
 	
 	//내 정보 수정
 	 @RequestMapping("/myroupang/mylist.do")
@@ -142,15 +156,6 @@ public class MyController {
 		 }
 		 
 	 
-	 
-	 //주소 팝업
-	@RequestMapping("/url.do")
-	public String urlMethod(HttpServletRequest request , HttpServletResponse response, Model model ) throws Exception {		
-	 	
-		 // url.jsp라는 이름을 가진 팝업 생성
-	 	return "/myroupang/url";
-	 } 
-	 
 	
 	//주소지 리스트
 	@RequestMapping("/myroupang/deliverylist.do")
@@ -164,7 +169,6 @@ public class MyController {
 	
 		//회원정보가 저장된 DTO를 Model로 저장한 후 뷰로 전달한다.
 		model.addAttribute("dto", dto);
-		System.out.println("주소목록 불러옴");
 		
 		return "myroupang/deliverylist";
 	}
@@ -312,22 +316,20 @@ public class MyController {
 //		if(result==1) System.out.println("입력되었습니다.");
 //		return "redirect:list.do";
 //	}
-//	
-	
-	
-	
+		
+		
 	//찜 매핑 and list 호출
 	@RequestMapping("/myroupang/wishlist.do")
-	public String wish(Model model, TicketInfoDTO ticketInfoDTO) {
+	public String wish(Model model, HttpServletRequest req) {
 		
-		List<TicketInfoDTO> ticket = msv.tiList();
-		model.addAttribute("wishList", ticket);
 		
-//		model.addAttribute("wishList", msv.wishlist());
+//		int totalRecordCount = msv.reviewcount(); 
+		
+		ArrayList<WishDTO> wilist = msv.wishView();
+		model.addAttribute("wishList", wilist);
 		
 		return "myroupang/wishlist";
 	}
-	
 	
 //	//찜 추가
 //	@RequestMapping("myroupang/wishadd.do")
@@ -338,28 +340,41 @@ public class MyController {
 //	
 		
 		
-	@RequestMapping(value="/deletewish", method=RequestMethod.GET)
-	public String postdelete(String ti_idx) throws Exception {
-		 msv.deletewish(ti_idx);
-		 
-		 return "myroupang/wishlist";
-	 }
+
 	
-	
-	@RequestMapping(value="/deletewish")
-	public String ajaxTest(HttpServletRequest req) throws Exception {
+	@RequestMapping("/deletewish.do")
+	public String delete(HttpServletRequest req, HttpSession session, Principal principal) {
 		
-		String[] ajaxMsg = req.getParameterValues("vaArr");
-		System.out.println(req.getParameterValues("vaArr"));
-		int size = ajaxMsg.length;
-		for(int i=0; i<size; i++) {
-			msv.deletewish(ajaxMsg[i]);
+		String email = principal.getName();
+		
+		session.setAttribute("siteUserInfo", email);
+		
+		if (session.getAttribute("siteUserInfo") == null) {
+			
+			return "redirect:/myLogin.do";
 		}
-		return "myroupang/wishlist";
+//		int applyRow = msv.wishdelete(req.getParameter("member_idx"));
+
+
+		return "redirect:/review/reviewList.do";
 	}
 	
 	
 	
+	
+	
+	
+//	@RequestMapping(value="/deletewish", method=RequestMethod.POST)
+//	public String ajaxTest(HttpServletRequest req) throws Exception {
+//		
+//		String[] ajaxMsg = req.getParameterValues("vaArr");
+//		System.out.println(req.getParameterValues("vaArr"));
+//		int size = ajaxMsg.length;
+//		for(int i=0; i<size; i++) {
+//			msv.deletewish(ajaxMsg[i]);
+//		}
+//		return "myroupang/wishlist";
+//	}
 
 	
 	

@@ -18,5 +18,5 @@
 	<select id="getChating" parameterType="com.edu.springboot.jdbc.Room" resultType="com.edu.springboot.jdbc.Room">
 		select chatting, member_idx from chat_log where room_idx=#{room_idx} order by regidate asc
 	</select>
-	
+	 
 </mapper>

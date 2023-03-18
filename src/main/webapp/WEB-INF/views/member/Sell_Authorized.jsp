@@ -44,17 +44,31 @@ input{
 </style>
     </head>
 <body>
-   	<script type="text/javascript">
-   	function sub(){
-   		document.form.submit();
-   		address1=document.form.office_address1.value;
-   		address2=document.form.office_address2.value;
-   		address=address1+address2;
-   		document.form.office_address.value=address;
+<script type="text/javascript">
+function sub(){
+	document.form.submit();
+	address1=document.form.office_address1.value;
+	address2=document.form.office_address2.value;
+	address=address1+address2;
+	document.form.office_address.value=address;
 
-   	}
+}
+
+</script>
    	
-   	</script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function zipclick(){
+    new daum.Postcode({
+        oncomplete: function(data) {
+        	 document.getElementById("office_zipcode").value = data.zonecode; // 주소 넣기
+        	 document.getElementById("office_address1").value = data.address; // 주소 넣기
+             document.querySelector("input[name=office_address2]").focus(); //상세입력 포커싱
+        }
+    }).open();
+}
+</script>
+   	
    	<body style="background-color: white;">
 	<div id="top">
         <%@include file="../top.jsp" %>
@@ -108,7 +122,7 @@ input{
                 </td>
                 <td>
                 	
-                    <input type="text" style="background-color: #e2e2e2;" class="office_zipcode" name="office_zipcode" size="10" placeholder="우편번호">
+                    <input type="text" style="background-color: #e2e2e2;" onclick="zipclick();" id="office_zipcode" class="office_zipcode" name="office_zipcode" size="10" placeholder="우편번호">
                     
                 </td>
             </tr>
@@ -118,13 +132,13 @@ input{
                 </td>
                 
                 <td>
-                    <input type="text" style="background-color: #e2e2e2;" name="office_address1" size="60" placeholder="기본주소"> 
+                    <input type="text" style="background-color: #e2e2e2;" name="office_address1"  id="office_address1" size="60" placeholder="기본주소"> 
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    <input type="text" style="background-color: #e2e2e2;" name="office_address2" size="60" placeholder="상세주소">   
+                    <input type="text" style="background-color: #e2e2e2;" name="office_address2" id="office_address2" size="60" placeholder="상세주소">   
                 </td>
             </tr>
             <tr>

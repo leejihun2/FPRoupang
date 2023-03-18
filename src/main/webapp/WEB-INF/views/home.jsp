@@ -208,7 +208,7 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -251,7 +251,7 @@
                         <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -295,7 +295,7 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -339,7 +339,7 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -383,7 +383,7 @@
                         <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -426,7 +426,7 @@
                         <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -470,7 +470,7 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -514,7 +514,7 @@
                         <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -558,7 +558,7 @@
                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -601,7 +601,7 @@
                     <c:forEach items="${journeyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }" target="_blank">
+                             href="journeyDetail?value=${row.idx }"  >
                                 <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
                                 <span class="name">${row.title }</span><br>
                                 <span class="price">
@@ -628,14 +628,9 @@
                 { event: "viewHome" });
         </script>
         <!-- 장바구니 네비게이션 바 -->
-        <div id="cartnav">
-            <%@include file="./cartnav.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
-        </div>
     </section>
     <div id="copyright">
-         <%@include file="./copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
+         <%@include file="./copyright.jsp" %>  
     </div>
-
-<!-- copyright.html에서 인클루드 -->
 </body>
 </html>

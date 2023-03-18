@@ -4,12 +4,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.edu.springboot.jdbc.JourneyService">
- 	<!-- ticket테이블에서 정보 가져오기 -->
+ 
 	<select id="journey_list" resultType="com.edu.springboot.jdbc.JourneyDTO">
 		select * from journey where bot_idx=#{param1} order by 1 asc
 	</select>
- 	
- 	<!-- ticket_info에서 리스트 가져오기 -->
  	<select id="journey_info_list" resultType="com.edu.springboot.jdbc.JourneyInfoDTO">
  		select * from journey_info where bot_idx=#{param1} order by 1 asc 
  	</select>
