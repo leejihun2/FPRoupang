@@ -207,7 +207,7 @@
 	        	</div>
 	        	<script type="text/javascript">
 				 kakao.maps.load(function() {
-					 sysdateLoad();
+					  sysdateLoad();
 				  var locationValues = document.getElementById("location").value.split(',');
 				  var mapContainer = document.getElementById('map');
 				  var mapOption = {

@@ -124,7 +124,7 @@ onload = function(){
 	<div id="container" class="renewal home srp-sync srp-sync-brand">
 		<div class="renewal-header">
 			<header id="header">
-				<section style="margin-left: 130px;" id="contents"
+				<section style="margin-top: 35px; auto;" id="contents"
 					class="contents home">
 					<div class="clearFix">
 						<h1>
@@ -200,30 +200,6 @@ onload = function(){
 								</div></li>
 						</ul>
 					</div>
-					<!-- 상대 네비게이션 바 <i class="ic-new" <- new아이콘 -->
-					<ul class="gnb-menu clearFix"
-						style="margin-left: 65px; margin-top: 10px;">
-						<li class="rocket-delivery" style="margin-right: 9px;"><a
-							href="https://www.coupang.com/np/campaigns/82"
-							class="rocket-delivery">로켓배송</a><i class="ic-new"></i>&nbsp;</li>
-						<li class="rocket-fresh"><a
-							href="https://www.coupang.com/np/categories/393760"
-							class="rocket-fresh"> 로켓프레시</a><i class="ic-new"></i></li>
-						<li class="sustainable-market"><a
-							href="https://pages.coupang.com/p/63240"
-							class="sustainable-market">착한상점</a><i class="ic-new"></i></li>
-						<li class="travel"><a
-							href="/journey_Main">여행/티켓</a><i class=""></i><i
-							class="ic-new"></i></li>
-						<li class="subscription"><a
-							href="https://www.coupang.com/np/campaigns/83"
-							class="subscription">와우회원할인</a></li>
-						<li class="gnb-coupangbenefit"><a
-							href="https://www.coupang.com/np/coupangbenefit"
-							class="gnb-coupangbenefit">이벤트/쿠폰</a></li>
-						<li class="gnb-exhibition"><a
-							href="https://pages.coupang.com/p/bep" class="gnb-exhibition">기획전</a></li>
-					</ul>
 				</section>
 				<!-- 카테고리 부분  -->
 				<div class="category-btn category-2depth-active">

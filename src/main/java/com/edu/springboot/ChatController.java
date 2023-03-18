@@ -107,13 +107,13 @@ public class ChatController {
 	//채팅방
 	@RequestMapping("/moveChating")
 	public ModelAndView chating(@RequestParam HashMap<Object, Object> params, Model model, Room room, HttpSession session) {
-		ModelAndView mv = new ModelAndView();
+		
 		int room_idx = Integer.parseInt((String) params.get("room_idx"));
+		ModelAndView mv = new ModelAndView();
 		String name =(String)session.getAttribute("siteUserInfo");
 		String username = dao.name(name);
 		
-		
-		model.addAttribute("username",username);
+		model.addAttribute("username",username); 
 		List<Room> new_list = roomList.stream().filter(o->o.getRoom_idx()==room_idx).collect(Collectors.toList());
 		String start = "채팅이 시작되었습니다.";
 		
@@ -128,8 +128,8 @@ public class ChatController {
 			for (Room dto : selectchat) {
 				String temp = dto.getChatting().replace("\r\n", "<br/>");
 				dto.setChatting(temp);
+				model.addAttribute("selectchat",selectchat);
 			}
-			model.addAttribute("selectchat",selectchat);
 			mv.setViewName("chat/chat");
 		}
 		return mv;

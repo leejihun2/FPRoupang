@@ -4,9 +4,12 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.edu.springboot.jdbc.IMainService">
 	<select id="adJourney_list" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
+	select * from (
 		select title, j_title_image, ji_price, idx
 		from bot_category bc
         join journey j on bc.idx = j.bot_idx
         join journey_info ji on bc.idx = ji.bot_idx
+    )
+    where rownum <![CDATA[ <= ]]> 6
 	</select>
 </mapper>
