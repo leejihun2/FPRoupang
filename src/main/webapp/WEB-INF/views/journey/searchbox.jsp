@@ -154,7 +154,7 @@
                                                     <i class="travel-icon icon-search-sm-white search-keyword-icon">icon</i>
                                                  <form action="/ticket_List">
                                                     <input type="hidden" id="sub_idx" name="category" value="1"/>
-                                                    <input type="text" class="search-keyword-text" onclick="recommend_t()"  name="title" id="tSearchBox" placeholder="국내외 지역명, 숙소명으로 검색" value="">
+                                                    <input type="text" class="search-keyword-text" onclick="recommend_t()"  name="title" id="tSearchBox" placeholder="상품명으로 검색" value="">
                                                 	<button class="wizard-search-btn" id="searchIcon" type="submit" style="border: none;">
 														<i class="travel-icon icon-search-blue">icon</i></button>
 												</form>

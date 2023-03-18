@@ -28,26 +28,6 @@
 	<section class="home-c1-banners">
 	    <div class="main-banner">
 	        <a><img src="http://image8.coupangcdn.com/image/bannerunit/bannerunit_8044d229-e229-482a-ab12-7da4ce0005c2.jpg" class="banner-image selected" data-tti-key="sync"></a>
-	        <a><img src="http://image6.coupangcdn.com/image/bannerunit/bannerunit_8e45dcfa-e3fa-4304-93de-94e7485dc51e.jpg" class="banner-image"></a>
-	        <a><img src="http://image6.coupangcdn.com/image/bannerunit/bannerunit_1a507dba-ed5c-402c-adb6-a8eb8be95723.jpg" class="banner-image"></a>
-	        <div class="banner-info">
-	            <div class="info-indicator">
-	                <ul class="info-indicators">
-	                    <li class="selected" style="width: 144.444px;"><span class="indicator-bar">&nbsp;</span>
-	                        <p class="indicator-description"><i class="icon-dot"></i><span>화이트데이 티켓/패스</span></p>
-	                    </li>
-	                    <li class="" style="width: 144.444px;"><span class="indicator-bar">&nbsp;</span>
-	                        <p class="indicator-description"><i class="icon-dot"></i><span>와우회원 추가할인</span></p>
-	                    </li>
-	                    <li class="" style="width: 144.444px;"><span class="indicator-bar">&nbsp;</span>
-	                        <p class="indicator-description"><i class="icon-dot"></i><span>단독 특가 펜션</span></p>
-	                    </li>
-	                    <li class="" style="width: 144.444px;"><span class="indicator-bar">&nbsp;</span>
-	                        <p class="indicator-description"><i class="icon-dot"></i><span>금호리조트 4개 지점</span></p>
-	                    </li>
-	                </ul>
-	            </div>
-	        </div>
 	    </div>
 	</section>
 	<section class="home-category-section home-section">
@@ -126,109 +106,6 @@
 	                </a>
 	            </li>
 	        </ul>
-	    </div>
-	</section>
-	<section class="home-recommendation home-section">
-	    <div class="listing-widget">
-	        <h2 class="listing-widget-title">고객님을 위한 여행상품</h2>
-	        <div class="listing-widget-nav"><a class="product-nav nav-left disabled"><i
-	                    class="arrow-left"></i></a><a class="product-nav nav-right"><i class="arrow-right"></i></a>
-	        </div>
-	        <div class="listing-widget-results">
-	            <ul class="product-items" style="left: 0px;">
-	                <li class="product-item">
-	                    <a>
-	                        <div class="item-thumbnail" style="background-image: url(&quot;//thumbnail8.coupangcdn.com/thumbnails/remote/800x400q65crop400x400/image/travel_reactor/travelSeller/common/A00165112/cda052fb-a987-4acb-a66f-27e106245106.JPG&quot;), url(&quot;//img1a.coupangcdn.com/image/coupang/travel/tlp/no-image/no-image-200x200.svg&quot;);"></div>
-	                        <div class="item-content">
-	                            <div class="item-title"
-	                                style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">
-	                                [양평] 양평패러글라이딩 미래항공스포츠 체험비행 이용권
-	                            </div>
-	                            <div class="item-price"><span class="price-sale"><em>140,000</em>원</span></div>
-	                            <div class="item-rating">
-	                                <div class="rating-star" style="width: 70px; height: 14px;">
-	                                    <div class="rating-star-empty" style="background-size: 14px;"></div>
-	                                    <div class="rating-star-full" style="width: 70px; background-size: 14px;"></div>
-	                                </div>(15)
-	                            </div>
-	                        </div>
-	                    </a>
-	                </li>
-	                <li class="product-item">
-	                    <a>
-	                        <div class="item-thumbnail"  style="background-image: url(&quot;//thumbnail9.coupangcdn.com/thumbnails/remote/800x400q65crop400x400/image/travel_reactor/travelSeller/common/A00186378/29da4be0-1b62-4a56-addb-249bac068448.jpg&quot;), url(&quot;//img1a.coupangcdn.com/image/coupang/travel/tlp/no-image/no-image-200x200.svg&quot;);"></div>
-	                        
-	                        <div class="item-content">
-	                            <div class="item-title"
-	                                style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">
-	                                [제주] 세리월드 카트+세계자동차박물관 /서귀포 카트체험</div>
-	                            <div class="item-price"><span class="price-sale"><em>20,000</em>원</span></div>
-	                            <div class="item-rating">
-	                                <div class="rating-star" style="width: 70px; height: 14px;">
-	                                    <div class="rating-star-empty" style="background-size: 14px;"></div>
-	                                    <div class="rating-star-full" style="width: 70px; background-size: 14px;"></div>
-	                                </div>(3)
-	                            </div>
-	                        </div>
-	                    </a>
-	                </li>
-	                <li class="product-item">
-	                    <a>
-	                        <div class="item-thumbnail" style="background-image: url(&quot;//thumbnail7.coupangcdn.com/thumbnails/remote/800x400q65crop400x400/image/travel_reactor/travelSeller/common/A00186565/22c88ddd-544f-4d5c-b5fa-bda8f800fa1d.jpg&quot;), url(&quot;//img1a.coupangcdn.com/image/coupang/travel/tlp/no-image/no-image-200x200.svg&quot;);"></div>
-	                        <div class="item-content">
-	                            <div class="item-title"
-	                                style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">
-	                                [세종시] 베어트리파크 입장권</div>
-	                            <div class="item-price"><span class="price-sale"><em>8,000</em>원</span></div>
-	                            <div class="item-rating">
-	                                <div class="rating-star" style="width: 70px; height: 14px;">
-	                                    <div class="rating-star-empty" style="background-size: 14px;"></div>
-	                                    <div class="rating-star-full" style="width: 70px; background-size: 14px;">
-	                                    </div>
-	                                </div>(67)
-	                            </div>
-	                        </div>
-	                    </a>
-	                </li>
-	                <li class="product-item">
-	                    <a>
-	                        <div class="item-thumbnail" style="background-image: url(&quot;//thumbnail6.coupangcdn.com/thumbnails/remote/800x400q65crop400x400/image/travel_reactor/travelSeller/common/A00056672/2c5927d3-b2ab-47c2-a038-84de743acdbb.jpg&quot;), url(&quot;//img1a.coupangcdn.com/image/coupang/travel/tlp/no-image/no-image-200x200.svg&quot;);"></div>
-	                        <div class="item-content">
-	                            <div class="item-title"
-	                                style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">
-	                                [코타키나발루] 무료 1Day 시티투어+디나완 반딧불 투어</div>
-	                            <div class="item-price"><span class="price-sale"><em>55,000</em>원</span></div>
-	                            <div class="item-rating">
-	                                <div class="rating-star" style="width: 70px; height: 14px;">
-	                                    <div class="rating-star-empty" style="background-size: 14px;"></div>
-	                                    <div class="rating-star-full" style="width: 70px; background-size: 14px;">
-	                                    </div>
-	                                </div>(1)
-	                            </div>
-	                        </div>
-	                    </a>
-	                </li>
-	                <li class="product-item">
-	                    <a>
-	                        <div class="item-thumbnail"  style="background-image: url(&quot;//thumbnail10.coupangcdn.com/thumbnails/remote/800x400q65crop400x400/image/travel_reactor/travelSeller/hotel/A00127940/55e426a9-266d-4a0a-aa51-ae19573756a6.jpeg&quot;), url(&quot;//img1a.coupangcdn.com/image/coupang/travel/tlp/no-image/no-image-200x200.svg&quot;);">
-	                        </div>
-	                        <div class="item-content">
-	                            <div class="item-title"
-	                                style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">
-	                                [서귀포] 브리즈베이호텔</div>
-	                            <div class="item-price"><span class="price-sale"><em>55,000</em>원</span></div>
-	                            <div class="item-rating">
-	                                <div class="rating-star" style="width: 70px; height: 14px;">
-	                                    <div class="rating-star-empty" style="background-size: 14px;"></div>
-	                                    <div class="rating-star-full" style="width: 56px; background-size: 14px;">
-	                                    </div>
-	                                </div>(20)
-	                            </div>
-	                        </div>
-	                    </a>
-	                </li>
-	            </ul>
-	        </div>
 	    </div>
 	</section>
            

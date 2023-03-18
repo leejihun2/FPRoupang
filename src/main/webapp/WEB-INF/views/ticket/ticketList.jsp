@@ -150,6 +150,17 @@
 		content:"";
 	}
 	</style>
+	<script type="text/javascript">
+		$(function(){
+			var url = window.location.href;
+			
+			if(url.indexOf("ticket")!=-1){
+				$(".search-wizard-tab").attr("style","display:none;");
+				$("#journeySearch").attr("style","display:none;");
+				$("#ticketSearch").attr("style","display:block; padding-top:3%;");
+			}
+		})
+	</script>
 <body style="background-color: white;">
     <!-- top.html에서 인클루드 -->
     <div id="top" style="margin-bottom:0px;">
