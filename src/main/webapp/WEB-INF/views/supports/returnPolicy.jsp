@@ -6,6 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+#returnPolicy {
+    text-indent: -999em;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+</style>
 <body>
 <div id="returnPolicy">
         <h3 class="none">취소/반품</h3>

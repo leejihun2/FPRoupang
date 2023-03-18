@@ -100,7 +100,7 @@ hover:
                 </a>
             </li>
             <li id="rocket-fresh" >
-                <a href="***로켓프레시 프레시백 링크 " title="로켓프레시 프레시백" target="_self" class="oo">
+                <a href="/myroupang/freshbag.do" title="로켓프레시 프레시백" target="_self" class="oo">
                     로켓프레시 프레시백
                 </a>
             </li>
@@ -218,7 +218,7 @@ hover:
                 </a>
             </li>
             <li class="downmenu">
-                <a href="../myroupang/cancelReturn.do" 
+                <a href="../myroupang/cancelGuide.do" 
                 class=" gmkSJg " 
                 >
                 <span class="dEVvkn">

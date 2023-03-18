@@ -137,13 +137,6 @@ hover:
 
 
 <body>
-<s:authorize access="isAnonymous()">
-	<%@include file="../auth/login.jsp" %>
-</s:authorize>
-
-<s:authorize access="isAuthenticated()">
-
-
 <%@include file="../myroupang/myroupang.jsp" %>
 
 <div class="roll" >
@@ -170,7 +163,6 @@ hover:
 			</div>
 		</div>
 	</div>
-
 
 
 	<div class="conten99">
@@ -213,9 +205,9 @@ hover:
 
 
 </div>
+
 </div>
 </div>
-</s:authorize>
 <div>
 	<%@include file="../copyright.jsp" %>
 </div>

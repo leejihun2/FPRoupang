@@ -135,7 +135,7 @@ box-sizing: border-box;
 
 <s:authorize access="isAuthenticated()">
    <s:authentication property="principal" var="principal" />
-</s:authorize>
+
 <body>
 <%-- <%@include file="../mycoupang/mycoupang.jsp" %> --%>
 <%@include file="../myroupang/myroupang.jsp" %>
@@ -181,9 +181,6 @@ box-sizing: border-box;
 	</form>
 	
 	
-	<!-- 배송지 2번째 -->
-	<%-- <c:forEach test= "{dto not null }"> --%>
-	
 	<form action="myroupang/deliverylist.do" method="post" id="regform" 
 		style="margin-top:18px; margin-bottom: 31px;">
 		
@@ -220,36 +217,15 @@ box-sizing: border-box;
    		</div>
 		</div>
 	</form>
-	<%-- </c:forEach> --%>
-	
-	
-	
-	
-	
-	
-		<div class="addressbook__button-fixer" onclick="location.href='adregist.do'">
-	       	 <p class="pp">+ 배송지 추가</p>
-		</div>
-	</div>
+</div>
 
-<%-- 
- <table border="1">
-<c:forEach items="${addressList }" var="del" varStatus="loop">
-
-	<tr>
-		<td>
-			<strong>${del.name }</strong>
-		</td>
-		<td>${del.zipcode1 }</td>
-		<td>${del.phone_number }</td>
-		<td>${del.adReq }</td>
-		<td>
-			<a href="adeditAction.do?id=${del.name }">수정</a>			
-			<a href="addelete.do?id=${del.name }">삭제</a>			
-	</tr>
- </c:forEach>
-</table> --%>
+</div>
+</div>
 
  
+ </s:authorize>
+ 	<div>
+		<%@include file="../copyright.jsp"%>
+	</div>
 </body>
 </html>

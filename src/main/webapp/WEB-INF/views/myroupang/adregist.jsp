@@ -194,8 +194,6 @@ vertical-align: middle;
     text-align: center;
     white-space: nowrap;
     background-color: var(--bs-tertiary-bg);
-    border: var(--bs-border-width) solid var(--bs-border-color);
-    border-radius: 0.375rem;
 }
 
 .ing-text1 {
@@ -209,8 +207,6 @@ vertical-align: middle;
     text-align: center;
     white-space: nowrap;
     background-color: var(--bs-tertiary-bg);
-    border: var(--bs-border-width) solid var(--bs-border-color);
-    border-radius: 0.375rem;
 }
 
 .inging {
@@ -294,7 +290,7 @@ function zipclick(){
 
 <h2>배송지 추가</h2>
 
-<div class="roll" style="margin:40px;">
+<div class="roll" style="margin-left:30px; margin:40px;">
 
 	<form method="post">
 
@@ -361,16 +357,12 @@ function zipclick(){
 	
 </div>
 
+	</div>
+	</div>
 
-
-</div>
-</div>
+<div>
+	<%@include file="../copyright.jsp"%>
 </div>
 	
-			
-			<%-- <tr>
-				<th>배송 요청사항</th>
-				<td><input type="text" name="adReq" value="${dto.adReq }"/></td>
-			</tr> --%>
 </body>
 </html>
