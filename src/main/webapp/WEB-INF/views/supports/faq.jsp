@@ -41,7 +41,7 @@ function deleteRow(idx){
 	</div>
 	<div class="container">
 		<%@include file="../category.jsp"%>
-		<ul class="sc-nly1np-0 cifYev" style="width: 1500px;">
+		<ul class="sc-nly1np-0 cifYev" style="width: 1960px;">
 			<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
 				href="./faq.do?categoryCode=ALL"> 
 				<span class="text">전부</span>
@@ -57,10 +57,6 @@ function deleteRow(idx){
 			<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
 				href="./faq.do?categoryCode=MEMBER"> 
 				<span class="text">회원서비스</span>
-			</a></li>
-			<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
-				href="./faq.do?categoryCode=CASH"> 
-				<span class="text">루팡캐시</span>
 			</a></li>
 			<li class="sc-8mvsno-0 dSWQUC"><a class="nav-link"
 				href="./faq.do?categoryCode=MOBILE"> 
