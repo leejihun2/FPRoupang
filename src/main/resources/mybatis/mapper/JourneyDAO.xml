@@ -293,13 +293,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			        	 	and #{ji_duetime1} between ji_duetime1 and ji_duetime2 
 			             	and #{ji_duetime2} between ji_duetime1 and ji_duetime2
 		             </when>
-		             <otherwise>
+		             <otherwise> 
 		             	where ji_adult>=#{ji_adult} and ji_kid>=0
 			        	 	and #{ji_duetime1} between ji_duetime1 and ji_duetime2 
 			             	and #{ji_duetime2} between ji_duetime1 and ji_duetime2
 		             </otherwise>
-		         </choose>
-	         </otherwise>
+		         </choose> 
+	         </otherwise> 
          </choose>
  			order by ji_price asc) ji on j.bot_idx = ji.bot_idx join
             (select * from bot_category where sub_idx = #{sub_idx}
