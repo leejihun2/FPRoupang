@@ -704,8 +704,6 @@ public class JourneyController {
 		ArrayList<JourneyInfoDTO> Total_Journey_info = journey_dao.journey_info_list(bot_idx);
 		model.addAttribute("Total_Journey_info",Total_Journey_info);
 		
-//		TicketDTO image = journey_dao.ticket_image(bot_idx);
-//		model.addAttribute("goods_image",image.getT_title_image());
 		
 		return "/journey/journey_modal";
 	}
@@ -715,21 +713,26 @@ public class JourneyController {
 	        @RequestParam int ji_kid, @RequestParam String ji_duetime1, @RequestParam String ji_duetime2, Model model,
 	        JourneyInfoDTO journeyInfoDTO) {
 
-	    System.out.println(ji_duetime1);
-	    System.out.println(ji_duetime2);
-	    System.out.println(bot_idx);
-	    System.out.println(ji_adult);
-	    System.out.println(ji_kid); 
-	    	
-	    journeyInfoDTO.setBot_idx(bot_idx);
-	    journeyInfoDTO.setJi_adult(ji_adult);
-	    journeyInfoDTO.setJi_kid(ji_kid); 
-	    journeyInfoDTO.setJi_duetime1(ji_duetime1);
-	    journeyInfoDTO.setJi_duetime2(ji_duetime2);
+	   
+	    try {
+	    	journeyInfoDTO.setBot_idx(bot_idx);
+		    journeyInfoDTO.setJi_adult(ji_adult);
+		    journeyInfoDTO.setJi_kid(ji_kid); 
+		    journeyInfoDTO.setJi_duetime1(ji_duetime1);
+		    journeyInfoDTO.setJi_duetime2(ji_duetime2);
+		    System.out.println(ji_duetime1);
+		    System.out.println(ji_duetime2);
+		    System.out.println(bot_idx);
+		    System.out.println(ji_adult);
+		    System.out.println(ji_kid); 
+	    }
+	    catch (Exception e) {
+		}
+	    
 	    
 	    ArrayList<JourneyInfoDTO> Total_Journey_info = journey_dao.journeyDetailSearch(journeyInfoDTO);
 	    model.addAttribute(Total_Journey_info);
-	    System.out.println(Total_Journey_info);
+//	    System.out.println(Total_Journey_info);
 	    
 	    
 	    return Total_Journey_info;

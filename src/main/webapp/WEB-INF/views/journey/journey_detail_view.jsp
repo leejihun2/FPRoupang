@@ -142,10 +142,10 @@ function detail_Serach(){
 	    dataType: 'json',
 	    success: function(resp) {
 	    	if(resp.length === 0){
-	    		$("#room-item").empty();
+    			  $(".room-item").empty();
 	    	}
 	    	else {
-	    		$("#room-item").empty();
+	    		$(".room-item").empty();
 	    		var tabletd = ""
 		    		
 	    		$.each(resp, function(i){
@@ -163,7 +163,7 @@ function detail_Serach(){
 	    			tabletd += '</span></li></ul></td>';
 	    			if(resp[i].ji_roomnum != 0 ){
 		    			tabletd += "<td><div class='rate-category-price'><div class='travel-web-tdp-price travel-price__md right'>";
-		    			tabletd += "<div class='travel-price__discount'><div><span class='travel-price__dynamic-discount'><em class='price'><b>"+ comma(resp[i].ji_price) +"원</b></em></span><span class='travel-price__discount-rate'>";
+		    			tabletd += "<div class='travel-price__discount'><div><span class='travel-price__dynamic-discount'><em class='price'><b>"+ comma(resp[i].ji_price) +"원</b></em></span><br /><span class='travel-price__discount-rate'>";
 		    			if(resp[i].ji_discount != 0 ){
 	            			tabletd += "<span class='price_title'>할인판매가</span><br /><em class='price'><b>" + comma(resp[i].ji_price * (100- resp[i].ji_discount)/100) +"원</b></em><br /></span>";
 	            		}
@@ -407,7 +407,7 @@ function addModal(bot_num, idx){
 																					<span class="travel-price__dynamic-discount">
 																						<em class="price"><b><fmt:formatNumber
 																								value="${row.ji_price}" />원</b></em>
-																					</span> 
+																					</span><br />
 																					<span class="travel-price__discount-rate">
 																						<c:if test="${row.ji_discount ne 0 }">
 																							<span class="price_title">할인판매가</span>
