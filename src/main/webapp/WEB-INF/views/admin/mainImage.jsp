@@ -39,41 +39,42 @@ img{
 			
 			<h2>Main Image</h2>
 		<form action="/admin/mainImageUpdateAct.do?idx=1" method="POST" enctype="multipart/form-data">
+				<c:forEach items="${image_dto }" var="dto" varStatus="loop">		
 			<table>
 			<tr>	
 				<td>
-						
 					<c:if test="${not empty dto.image1 }">
+						<input type="file" class="form-control" name="image1"/>
 						<img src="/uploads/${dto.image1}" />
 					</c:if>
 						
 					<c:if test="${not empty dto.image2 }">
+						<input type="file" class="form-control" name="image2"/>
 						<img src="/uploads/${dto.image2}" />
 					</c:if>
 						
 					<c:if test="${not empty dto.image3 }">
+						<input type="file" class="form-control" name="image3"/>
 						<img src="/uploads/${dto.image3}" />
 					</c:if>				
 				</td>
 				<td>
 					<c:if test="${not empty dto.image4 }">
+						<input type="file" class="form-control" name="image4"/>
 						<img src="/uploads/${dto.image4}" />
 					</c:if>
 					<c:if test="${not empty dto.image5 }">
+						<input type="file" class="form-control" name="image5"/>
 						<img src="/uploads/${dto.image5}" />
 					</c:if>
 					<c:if test="${not empty dto.image6 }">
+						<input type="file" class="form-control" name="image6"/>
 						<img src="/uploads/${dto.image6}" />
 					</c:if>	
-					<input type="file" class="form-control" name="image1"/>
-					<input type="file" class="form-control" name="image2"/>
-					<input type="file" class="form-control" name="image3"/>
-						<input type="file" class="form-control" name="image4"/>
-						<input type="file" class="form-control" name="image5"/>
-						<input type="file" class="form-control" name="image6"/>
 				</td>			
 			</tr>
 			</table>
+				</c:forEach>
 			<button class="btn btn-primary" style="width: 200px;">수정하기</button>
 		</form>
 			</div>

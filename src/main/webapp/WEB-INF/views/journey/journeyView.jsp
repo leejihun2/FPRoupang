@@ -51,7 +51,7 @@
 					</a>
 				</li>
 				<li class="grid-banner-item">
-					<a href="/journey_List?category=1&location=강원">
+					<a href="/journey_List?category=91&location=강원">
 						<dl>
 							<dt>
 								<img src="/images/강원.png" class="banner-item-image">
@@ -63,7 +63,7 @@
 					</a>
 				</li>
 				<li class="grid-banner-item">
-					<a a href="/journey_List?category=1&location=전라">
+					<a a href="/journey_List?category=91&location=전라">
 						<dl>
 							<dt>
 								<img src="/images/전라.png" class="banner-item-image">
@@ -75,7 +75,7 @@
 					</a>
 				</li>
 				<li class="grid-banner-item">
-					<a href="/journey_List?category=1&location=부산">
+					<a href="/journey_List?category=91&location=부산">
 						<dl>
 							<dt>
 								<img src="/images/부산.png" class="banner-item-image">
@@ -87,7 +87,7 @@
 					</a>
 				</li>
 				<li class="grid-banner-item">
-					<a href="/journey_List?category=1&location=서울">
+					<a href="/journey_List?category=91&location=서울">
 						<dl>
 							<dt>
 								<img src="/images/서울.png"class="banner-item-image">
@@ -99,7 +99,7 @@
 					</a>
 				</li>
 				<li class="grid-banner-item">
-					<a href="/journey_List?category=1&location=강릉">
+					<a href="/journey_List?category=91&location=강릉">
 						<dl>
 							<dt>
 								<img src="/images/강릉.png" class="banner-item-image">
