@@ -3,13 +3,40 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.edu.springboot.jdbc.IMainService">
+	<select id="todayDiscovery" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
+		select * from (
+			select j_title_image, idx
+			from bot_category bc
+	        join journey j on bc.idx = j.bot_idx
+	        join journey_info ji on bc.idx = ji.bot_idx
+		)
+		where rownum <![CDATA[ <= ]]> 4
+	</select>
+	<select id="todayShop" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
+		select * from (
+			select j_title_image, title, idx
+			from journey j 
+			join bot_category bc on j.bot_idx = bc.idx 
+		)
+		where rownum <![CDATA[ <= ]]> 5
+	</select>
+	<!-- 판매 카운터로 할 예정 -->
+	<select id="likeCate" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
+		select * from (
+			select j_title_image, title, idx
+			from journey j 
+			join bot_category bc on j.bot_idx = bc.idx 
+		)
+		where rownum <![CDATA[ <= ]]> 5
+	</select>
 	<select id="adJourney_list" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
-	select * from (
-		select title, j_title_image, ji_price, idx
-		from bot_category bc
-        join journey j on bc.idx = j.bot_idx
-        join journey_info ji on bc.idx = ji.bot_idx
-    )
-    where rownum <![CDATA[ <= ]]> 6
+		select * from (
+			select title, j_title_image, ji_price, idx
+			from bot_category bc
+	        join journey j on bc.idx = j.bot_idx
+	        join journey_info ji on bc.idx = ji.bot_idx
+	        order by DBMS_RANDOM.RANDOM
+	    )
+	    where rownum <![CDATA[ <= ]]> 6
 	</select>
 </mapper>

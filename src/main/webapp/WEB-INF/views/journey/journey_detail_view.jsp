@@ -38,64 +38,6 @@
 	<script src="../js/star.js"></script>
 	<script src="./js/journeyTop.js"></script>
 <style type="text/css">
-.travel-spinner button {
-    display: block;
-    position: relative;
-    float: left;
-    cursor: pointer;
-    outline: none;
-    padding: 0;
-    border: 0
-}
-.travel-spinner button.spinner-minus .spinner-minus-icon,
-.travel-spinner button.spinner-plus .spinner-plus-icon {
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    border-top-width: 2px;
-    border-top-style: solid
-}
-
-.travel-spinner button.spinner-plus .spinner-plus-icon>i {
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    border-left-width: 2px;
-    border-left-style: solid
-}
-.travel-spinner .spinner-number {
-    float: left;
-    text-align: center;
-    border-left-width: 1px;
-    border-left-style: solid;
-    border-right-width: 1px;
-    border-right-style: solid;
-    letter-spacing: -.9px;
-}
-.spinner-minus {
-	width: 30px;
-    height: 30px;
-    background: rgb(255, 255, 255);
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
-}
-.spinner-plus {
-	width: 30px;
-    height: 30px;
-    background: rgb(255, 255, 255);
-    border-top-rigth-radius: 16px;
-    border-bottom-rigth-radius: 16px;
-}
-.travel-spinner {
-    border-width: 1px;
-    border-style: solid
-}
-a{
-	cursor: pointer;
-}
-
 </style>
 </head>
 <script type="text/javascript">

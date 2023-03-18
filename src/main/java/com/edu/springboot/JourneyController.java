@@ -534,9 +534,9 @@ public class JourneyController {
 		String ji_duetime2 = "";
 		int ji_adult = 2;
 		int ji_kid = 0;
-		if(location!=null) {
-			journey_dao.log(location);
-		}
+//		if(location!=null) {
+//			journey_dao.log(location);
+//		}
 		System.out.println(sub_idx);
 		if (location != null) {
 

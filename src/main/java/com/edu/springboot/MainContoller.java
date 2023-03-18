@@ -34,17 +34,31 @@ public class MainContoller {
 	
 	@RequestMapping("/")
 	public String home(Model model) {
+		//메인 이미지
+		ArrayList<MainImageDTO> image_dto = image_dao.select_images(1);
 		
+		model.addAttribute("image_dto",image_dto);
+		
+		//오늘의 발견 todayDiscovery
+		ArrayList<TotalJourneyDTO> todayDiscovery = main_dao.todayDiscovery();
+		
+		model.addAttribute("todayDiscovery",todayDiscovery);
+		//오늘의 쇼핑제안(랜덤 5개 상품)
+		ArrayList<TotalJourneyDTO> todayShop = main_dao.todayShop();
+				
+		model.addAttribute("todayShop",todayShop);
+		
+		//좋아할만한 카테고리
+		ArrayList<TotalJourneyDTO> likeCate = main_dao.likeCate();
+		
+		model.addAttribute("likeCate",likeCate);
+		
+		//카테고리별 아직은 여행만
 		ArrayList<TotalJourneyDTO> journeyList = main_dao.adJourney_list();
 		
 		model.addAttribute("journeyList",journeyList);
 		
 		
-		ArrayList<MainImageDTO> image_dto = image_dao.select_images(1);
-		
-		model.addAttribute("image_dto",image_dto);
-		
-		System.out.println(journeyList);
 		
 		return "home";
 	}

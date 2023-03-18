@@ -169,7 +169,7 @@
 			<ul class="search-items">
 				<c:forEach items="${ticket_list }" var="ticket" varStatus="loop">
 		  			<li class="search-item">
-		  				<a href="ticketDetail?value=${ticket.idx }" target="_blank">
+		  				<a href="ticketDetail?value=${ticket.idx }">
 		 					<div class="ticket_img" style="background-image:url(/uploads/${ticket.t_title_image })"></div>
 		 					<div class="ticket_title">
 		 						${ticket.title }

@@ -42,7 +42,7 @@
 													<div class="best-keyword-group-values-layer">
 													<h5 class="best-keyword-title" style="">주요검색어 바로선택</h5>
 														<ul class="best-keyword-group-value" style="width: 450px;">
-															<li style="width: 80px"><a href="/journey_List?category=3&location=제주" class="best-keyword-group-item">제주</a></li>
+															<li style="width: 80px"><a href="/journey_List?category=1&location=제주" class="best-keyword-group-item">제주</a></li>
 															<li style="width: 80px"><a href="/journey_List?category=1&location=강원" class="best-keyword-group-item">강원</a></li>
 															<li style="width: 80px"><a href="/journey_List?category=1&location=부산" class="best-keyword-group-item">부산</a></li>
 															<li style="width: 80px"><a href="/journey_List?category=1&location=가평" class="best-keyword-group-item">가평</a></li>

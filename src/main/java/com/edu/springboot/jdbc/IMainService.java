@@ -8,5 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface IMainService {
 	
 	ArrayList<TotalJourneyDTO> adJourney_list();
-
+	ArrayList<TotalJourneyDTO> todayShop();
+	ArrayList<TotalJourneyDTO> likeCate();
+	ArrayList<TotalJourneyDTO> todayDiscovery();
 }
