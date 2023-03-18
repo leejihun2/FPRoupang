@@ -41,31 +41,30 @@
         <%@include file="./top.jsp" %>
     </div>
         <section class="main-today reach-ratio-wrap" id="todaysHot"> 
-        <%-- <c:forEach items="${image_dto}" var="dto" varStatus="loop">
+        <c:forEach items="${image_dto}" var="dto" varStatus="loop">
         <div id="demo" class="carousel slide carousel-fade" data-bs-ride="carousel">
         	<div class="carousel-inner">
         		<div class="carousel-item active">
-            		<img src="/uploads/${dto.image1}" width="1920" height="450">
+            		<img src="/uploads/${dto.image1}" style="width: 100%">
             	</div>
             	<div class="carousel-item">
-            		<img src="/uploads/${dto.image2}" width="1920" height="450">
+            		<img src="/uploads/${dto.image2}" style="width: 100%">
             	</div>
             	<div class="carousel-item">
-            		<img src="/uploads/${dto.image3}" width="1920" height="450">
+            		<img src="/uploads/${dto.image3}" style="width: 100%">
             	</div>
             	<div class="carousel-item">
-            		<img src="/uploads/${dto.image4}" width="1920" height="450">
+            		<img src="/uploads/${dto.image4}" style="width: 100%">
             	</div>
             	<div class="carousel-item">
-            		<img src="/uploads/${dto.image5}" width="1920" height="450">
+            		<img src="/uploads/${dto.image5}" style="width: 100%">
             	</div>
             	<div class="carousel-item">
-            		<img src="/uploads/${dto.image6}" width="1920" height="450">
+            		<img src="/uploads/${dto.image6}" style="width: 100%">
             	</div>
             </div>
         </div>    
-        </c:forEach>  --%>
-        <img src="https://image6.coupangcdn.com/image/ccm/banner/c9216903fb26f1f6b42e11b89150f56d.jpg" alt="" />
+        </c:forEach> 
         </section>
         <hr/>
 <section id="contents" class="contents home">
