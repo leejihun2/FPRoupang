@@ -13,8 +13,9 @@
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e6076fe794faf6e2a97f29c6ebfadce5&libraries=services"></script>
-	
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e6076fe794faf6e2a97f29c6ebfadce5&libraries=services"></script>
+
 
 <meta charset="UTF-8">
 <title>Roupang</title>
@@ -929,8 +930,8 @@ p {
 							<div class="basis-location introduction-item">
 								<h4 class="travel-title travel-title-sm"
 									style="margin-top: 0px; margin-bottom: 10px;">위치</h4>
-								<span class="item-subtitle">${Company_Addr }</span>
-								<input type="hidden" value="${Company_Addr }" id="location">
+								<span class="item-subtitle">${Company_Addr }</span> <input
+									type="hidden" value="${Company_Addr }" id="location">
 							</div>
 							<div class="travel-simple-map">
 								<div id="map" style="width: 100%; height: 350px;"></div>
@@ -978,28 +979,32 @@ p {
 							<div class="basis-review-section">
 								<div class="basis-review-section-rating">
 									<label class="basis-review-section-title">상품평</label>
-									<div class="basis-review-section-rating-star rating-star"
-										style="width: 110px; height: 22px;">
-										<div class="rating-star-empty" style="background-size: 22px;"></div>
-										<div class="rating-star-full"
-											style="width: 110px; background-size: 22px;"></div>
+									<div class="rating-wrap1">
+										<div class="rating1">
+											<div class="overlay1"></div>
+										</div>${totalstar.star_rate0}
 									</div>
-									<span class="basis-review-section-count">3 &gt;</span>
+									
 								</div>
+								<c:forEach items="${lists }" var="row" >
 								<ul class="basis-review-section-list">
 									<div class="basis-review-section-list-item">
 										<div class="basis-review-item">
-											<div style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 4;">
-												아쿠아 필드 좋아해서 미리 예매해 가보았어요 요즘 사람들 마스크 전부 안쓰네요 실내에서도 마스크 해제되서
-												안써도되나? 하고 안썼다가 감기몸살 옴팡 지게 걸렸어요. 코로나일지도… 마스크는 쓰는게 좋겠습니다.</div>
+											<p class="star-ratings">
+											${row.summary }
+											</p>
+											<div
+												style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 4;">
+												${row.review }</div>
 											<div class="basis-review-item-author">
 												<img class="basis-review-item-author-icon"
 													src="//img1a.coupangcdn.com/image/productreview/web/pdp/profile/img-profile-empty.png"><span
-													class="basis-review-item-author-name">슈퍼윙스</span>
+													class="basis-review-item-author-name"></span>
 											</div>
 										</div>
 									</div>
 								</ul>
+								</c:forEach>
 								<div class="basis-review-section-all">
 									<a class="basis-review-section-all-link">전체 상품평 보기</a>
 								</div>

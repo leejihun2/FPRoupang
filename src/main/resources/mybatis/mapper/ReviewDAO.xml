@@ -12,6 +12,12 @@
 		VALUES  
 		(REVIEW_seq.nextval, 2, 2, 2, #{goods_title}, #{review}, #{star_rate}, #{star_servey1}, #{star_servey2}, #{star_servey3}, #{summary})
 	</insert>
+
+	<select id="reviewView" resultType="com.edu.springboot.jdbc.ReviewDTO"
+		parameterType="com.edu.springboot.jdbc.ReviewDTO">
+		SELECT * FROM review WHERE idx=#{idx}
+		AND goods_title=#{goods_title}
+	</select>
  
  	<select id="starcount" resultType="com.edu.springboot.jdbc.ReviewDTO">
         SELECT	ROUND(AVG(star_rate),1) star_rate,
