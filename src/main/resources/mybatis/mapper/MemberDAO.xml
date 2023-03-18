@@ -221,4 +221,8 @@
 	<select id="LoginSeller" resultType="com.edu.springboot.jdbc.SellRightDTO">
 		select * from sell_authorized where member_idx = #{param1}
 	</select>
+	
+	<select id="GetCompanyAddr" resultType="String">
+		select OFFICE_ADDRESS from sell_authorized where member_idx = #{param1}
+	</select>
 </mapper>

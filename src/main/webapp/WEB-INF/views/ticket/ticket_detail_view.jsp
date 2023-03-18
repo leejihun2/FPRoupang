@@ -975,7 +975,7 @@ p {
 							<div class="basis-location introduction-item">
 								<h4 class="travel-title travel-title-sm"
 									style="margin-top: 0px; margin-bottom: 10px;">위치</h4>
-								<span class="item-subtitle"></span>
+								<span class="item-subtitle">${Company_Addr }</span>
 							</div>
 							<div class="travel-simple-map">
 								<div id="map" style="width: 100%; height: 350px;"></div>
@@ -998,8 +998,7 @@ p {
 								<ul class="basis-review-section-list">
 									<div class="basis-review-section-list-item">
 										<div class="basis-review-item">
-											<div
-												style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 4;">
+											<div style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 4;">
 												아쿠아 필드 좋아해서 미리 예매해 가보았어요 요즘 사람들 마스크 전부 안쓰네요 실내에서도 마스크 해제되서
 												안써도되나? 하고 안썼다가 감기몸살 옴팡 지게 걸렸어요. 코로나일지도… 마스크는 쓰는게 좋겠습니다.</div>
 											<div class="basis-review-item-author">

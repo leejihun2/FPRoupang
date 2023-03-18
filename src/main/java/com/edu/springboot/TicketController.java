@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.springboot.jdbc.CategoryDTO;
 import com.edu.springboot.jdbc.CategoryService;
+import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.IReviewService;
 import com.edu.springboot.jdbc.ParameterTicketDTO;
 import com.edu.springboot.jdbc.ReviewDTO;
@@ -53,6 +54,9 @@ public class TicketController {
 	
 	@Autowired
 	TempgoodsService goods_dao;
+	
+	@Autowired
+	IMemberService member_dao;
 	
 	@RequestMapping("/ticket_edit")
 	public String ticket_edit(Model model, HttpServletRequest req) {
@@ -427,6 +431,9 @@ public class TicketController {
 		
 		TicketDTO Total_Ticket = ticket_dao.ticket_list(value);
 		model.addAttribute("Total_Ticket",Total_Ticket);
+		
+		model.addAttribute("Company_Addr",member_dao.GetCompanyAddr(Integer.parseInt(Total_Ticket.getMember_idx())));
+		
 		
 		String category_title = cate_dao.select_bot_cate(value);
 		model.addAttribute("t_title",category_title);
