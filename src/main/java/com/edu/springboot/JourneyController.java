@@ -1,6 +1,7 @@
 package com.edu.springboot;
 
 import java.io.File;
+import java.security.Principal;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,18 +35,17 @@ import com.edu.springboot.jdbc.JourneyDTO;
 import com.edu.springboot.jdbc.JourneyInfoDTO;
 import com.edu.springboot.jdbc.JourneyService;
 import com.edu.springboot.jdbc.ParameterJourneyDTO;
-import com.edu.springboot.jdbc.ParameterTicketDTO;
 import com.edu.springboot.jdbc.ReviewDTO;
 import com.edu.springboot.jdbc.TempgoodsOrderDTO;
 import com.edu.springboot.jdbc.TempgoodsService;
-import com.edu.springboot.jdbc.TicketDTO;
-import com.edu.springboot.jdbc.TicketInfoDTO;
 import com.edu.springboot.jdbc.TotalJourneyDTO;
-import com.edu.springboot.jdbc.TotalTicketDTO;
 
 @Controller
 public class JourneyController {
 
+	@Autowired
+	IMemberService memdao;
+	
 	@Autowired
 	CategoryService cate_dao;
 
@@ -525,7 +525,7 @@ public class JourneyController {
 
 	@RequestMapping("/journey_List")
 	public ModelAndView show_Journey_List(HttpServletRequest req, HttpSession session,
-			TotalJourneyDTO totaljourneyDTO) {
+			TotalJourneyDTO totaljourneyDTO, Principal principal) {
 		ModelAndView mv = new ModelAndView();
 		int sub_idx = Integer.parseInt(req.getParameter("category"));
 		String location = req.getParameter("location");
@@ -534,9 +534,11 @@ public class JourneyController {
 		String ji_duetime2 = "";
 		int ji_adult = 2;
 		int ji_kid = 0;
+		
 		if(location!=null) {
 			journey_dao.log(location);
 		}
+		
 		System.out.println(sub_idx);
 		if (location != null) {
 
