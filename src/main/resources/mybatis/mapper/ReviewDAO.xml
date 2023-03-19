@@ -89,10 +89,9 @@
 	</select>
 
 	<select id="reviewList" resultType="com.edu.springboot.jdbc.ReviewDTO">
-		SELECT * FROM review order by idx desc
-		<if test="search_word!=null and !search_word.equals('')">
-			WHERE ${searchField} like '%'||#{search_word}||'%'
-		</if>
+		select * from review rv 
+		  join (select email, name, member_idx from member) mv 
+		    on mv.MEMBER_IDX=rv.MEMBER_IDX where bot_cate_idx = #{param1}
 	</select>
 	
 	<update id="modifyReview" parameterType="com.edu.springboot.jdbc.ReviewDTO">

@@ -4,7 +4,7 @@ import org.apache.commons.mail.HtmlEmail;
 
 public class MailUtil {
 
-	public static void sendMail(String email, String subject, String msg) throws Exception {
+	public static void sendMail(String email, String subject, StringBuffer msg) throws Exception {
 		
 		//mail server 설정
 		String charSet = "utf-8";
@@ -31,7 +31,7 @@ public class MailUtil {
 			mail.addTo(email);
 			mail.setFrom(fromEmail, fromName, charSet);
 			mail.setSubject(subject);
-			mail.setHtmlMsg(msg);
+			mail.setHtmlMsg(msg.toString());
 			mail.send();
 		}
 		catch(Exception e) {

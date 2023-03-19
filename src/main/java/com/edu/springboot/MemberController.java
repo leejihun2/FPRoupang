@@ -87,46 +87,44 @@ public class MemberController {
 	public String member3() {
 		return "member/search_pw";
 	}
-	//비밀번호 찾기 처리 post
-	
-	@RequestMapping(value = "/search_pw.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/checkInfo.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String member4(MemberDTO memberDTO, HttpServletRequest req, HttpSession session, String email,String name) throws Exception {
-		
+	public String member4(MemberDTO memberDTO, HttpServletRequest req, String email,String name) {
+			
 		memberDTO.setEmail(email);
 		memberDTO.setName(name);
 		int checkInfo = dao.checkInfo(memberDTO);
-		
 		
 		if(checkInfo == 0) {
 			System.out.println("없음");
 		    return "no_member_info";
 		}
-		else {
+		return "member_info";
+	}
+	//비밀번호 찾기 처리 post
+	@RequestMapping(value = "/search_pw.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String member5(MemberDTO memberDTO, HttpServletRequest req, HttpSession session,
+			String email,String name) throws Exception {
 		String keyCode = FindUtil.createKey();
 		
 		session.setAttribute("keyCode", keyCode);
 		String subject = "비밀번호 찾기 인증코드 안내";
-		String msg = "";
-		msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
-		msg += "<h3 style='color:blue;'>임시비밀번호 안내입니다.</h3>";
-		msg += "<div style='font-size:130%'>";
-		msg += "로그인페이지로 돌아가 <strong>";
-		msg += keyCode + "</strong>를 입력해주세요.</div><br/>";
-		msg += "<div>로그인 후 <strong>바로</strong> 회원정보 수정을 통해 비밀번호를 변경해주세요.</div>";
+		StringBuffer msg = new StringBuffer();
+		msg.append("<div align='center' style='border:1px solid #e1e1e1; font-family:verdana'>");
+		msg.append("<h3 style='color:blue;'>임시비밀번호 안내입니다.</h3>");
+		msg.append("<div style='font-size:130%'>");
+		msg.append("로그인페이지로 돌아가 <strong>");
+		msg.append(keyCode);
+		msg.append("</strong>를 입력해주세요.</div><br/>");
+		msg.append("<div>로그인 후 <strong>바로</strong> 회원정보 수정을 통해 비밀번호를 변경해주세요.</div>");
 
-		// 파라미터로 받은 이메일과 메세지를 이메일로 보냄
 		MailUtil.sendMail(email, subject, msg);
 
-		// 세션영역에 저장되있던 임시 비밀번호를 암호화해서 setPassword
 		memberDTO.setPassword(passwordEncoder().encode(keyCode));
-		//암호화 처리가 끝나고 sessionremove
 		session.removeAttribute(keyCode);
 		
 		int result = dao.tempPass(memberDTO);
-		
-		System.out.println("수정된 행의 갯수: " + result);
-		}
 		return "member_info";
 	}
 	

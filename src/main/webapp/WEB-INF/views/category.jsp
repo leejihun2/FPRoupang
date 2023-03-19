@@ -34,7 +34,7 @@
 						</div>
 					</div>
 					<div class="sc-22bvi0-0 OyJfh">
-						<a class="sc-nc5wvm-0 gLLYzi" href="/supports/returnPolicy.do">환불안내</a>
+						<a class="sc-nc5wvm-0 gLLYzi" href="/myroupang/cancelGuide.do">환불안내</a>
 						<a class="sc-nc5wvm-0 gLLYzi" href="/search_id.do">아이디/비밀번호 찾기</a>
 					</div>
 					<div class="sc-12nmnou-1 ilXMXz"></div>

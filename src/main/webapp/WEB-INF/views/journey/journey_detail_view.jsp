@@ -38,64 +38,6 @@
 	<script src="../js/star.js"></script>
 	<script src="./js/journeyTop.js"></script>
 <style type="text/css">
-.travel-spinner button {
-    display: block;
-    position: relative;
-    float: left;
-    cursor: pointer;
-    outline: none;
-    padding: 0;
-    border: 0
-}
-.travel-spinner button.spinner-minus .spinner-minus-icon,
-.travel-spinner button.spinner-plus .spinner-plus-icon {
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    border-top-width: 2px;
-    border-top-style: solid
-}
-
-.travel-spinner button.spinner-plus .spinner-plus-icon>i {
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    border-left-width: 2px;
-    border-left-style: solid
-}
-.travel-spinner .spinner-number {
-    float: left;
-    text-align: center;
-    border-left-width: 1px;
-    border-left-style: solid;
-    border-right-width: 1px;
-    border-right-style: solid;
-    letter-spacing: -.9px;
-}
-.spinner-minus {
-	width: 30px;
-    height: 30px;
-    background: rgb(255, 255, 255);
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
-}
-.spinner-plus {
-	width: 30px;
-    height: 30px;
-    background: rgb(255, 255, 255);
-    border-top-rigth-radius: 16px;
-    border-bottom-rigth-radius: 16px;
-}
-.travel-spinner {
-    border-width: 1px;
-    border-style: solid
-}
-a{
-	cursor: pointer;
-}
-
 </style>
 </head>
 <script type="text/javascript">
@@ -200,10 +142,10 @@ function detail_Serach(){
 	    dataType: 'json',
 	    success: function(resp) {
 	    	if(resp.length === 0){
-	    		$("#room-item").empty();
+    			  $(".room-item").empty();
 	    	}
 	    	else {
-	    		$("#room-item").empty();
+	    		$(".room-item").empty();
 	    		var tabletd = ""
 		    		
 	    		$.each(resp, function(i){
@@ -221,7 +163,7 @@ function detail_Serach(){
 	    			tabletd += '</span></li></ul></td>';
 	    			if(resp[i].ji_roomnum != 0 ){
 		    			tabletd += "<td><div class='rate-category-price'><div class='travel-web-tdp-price travel-price__md right'>";
-		    			tabletd += "<div class='travel-price__discount'><div><span class='travel-price__dynamic-discount'><em class='price'><b>"+ comma(resp[i].ji_price) +"원</b></em></span><span class='travel-price__discount-rate'>";
+		    			tabletd += "<div class='travel-price__discount'><div><span class='travel-price__dynamic-discount'><em class='price'><b>"+ comma(resp[i].ji_price) +"원</b></em></span><br /><span class='travel-price__discount-rate'>";
 		    			if(resp[i].ji_discount != 0 ){
 	            			tabletd += "<span class='price_title'>할인판매가</span><br /><em class='price'><b>" + comma(resp[i].ji_price * (100- resp[i].ji_discount)/100) +"원</b></em><br /></span>";
 	            		}
@@ -465,7 +407,7 @@ function addModal(bot_num, idx){
 																					<span class="travel-price__dynamic-discount">
 																						<em class="price"><b><fmt:formatNumber
 																								value="${row.ji_price}" />원</b></em>
-																					</span> 
+																					</span><br />
 																					<span class="travel-price__discount-rate">
 																						<c:if test="${row.ji_discount ne 0 }">
 																							<span class="price_title">할인판매가</span>

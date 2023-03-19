@@ -85,22 +85,22 @@ hover:
                 </a>
             </li>
             <li id="rocket-wow" >
-                <a href="***와우 멤버십 링크 " title="와우 멤버십" target="_self" class="oo">
+                <a href="#" title="와우 멤버십" target="_self" class="oo">
                     와우 멤버십
                 </a>
             </li>
             <li id="rocket-fresh" >
-                <a href="***로켓프레시 프레시백 링크 " title="로켓프레시 프레시백" target="_self" class="oo">
+                <a href="/myroupang/freshbag.do" title="로켓프레시 프레시백" target="_self" class="oo">
                     로켓프레시 프레시백
                 </a>
             </li>
             <li id="subscribe-page" >
-                <a href="***정기배송관리 링크" title="정기배송관리" target="_self" class="oo">
+                <a href="#" title="정기배송관리" target="_self" class="oo">
                     정기배송관리
                 </a>
             </li>
             <li id="receipt-page" >
-                <a href="***영수증 조회/출력" title="영수증 조회/출력" target="_self" class="oo">
+                <a href="#" title="영수증 조회/출력" target="_self" class="oo">
                     영수증 조회/출력
                 </a>
             </li>
@@ -114,12 +114,12 @@ hover:
     <div class="gg">
         <ul>
             <li id="discount-coupon" >
-                <a href="****할인쿠폰" title="할인쿠폰" target="_self" class="oo">
+                <a href="#" title="할인쿠폰" target="_self" class="oo">
                     할인쿠폰
                 </a>
             </li>
             <li id="coupang-cash">
-                <a href="****쿠팡캐시/기프트카드" title="쿠팡캐시/기프트카드" target="_self" class="oo">
+                <a href="#" title="쿠팡캐시/기프트카드" target="_self" class="oo">
                     루팡캐시/기프트카드
                 </a>
             </li>
@@ -133,12 +133,12 @@ hover:
     <div class="gg">
         <ul>
             <li id="cs-main" >
-                <a href="****문의하기" title="문의하기" target="_self" class="oo">
+                <a href="../supports/voc.do" title="문의하기" target="_self" class="oo">
                     문의하기
                 </a>
             </li>
             <li id="inquiry-list" >
-                <a href="***문의내역 확인" title="문의내역 확인" target="_self" class="oo">
+                <a href="#" title="문의내역 확인" target="_self" class="oo">
                     문의내역 확인
                 </a>
             </li>
@@ -167,7 +167,7 @@ hover:
                 </a>
             </li>
             <li id="coupay-page" >
-                <a href="*****" title="결제수단·쿠페이 관리" target="_self" class="oo">
+                <a href="#" title="결제수단·쿠페이 관리" target="_self" class="oo">
                     결제수단·루페이 관리
                 </a>
             <li id="zip-page" >
@@ -184,7 +184,7 @@ hover:
     <div class="le1">
         <ul class="le2">
             <li class="downmenu ">
-                <a href="문의링크문의링크" class="gmkSJg">
+                <a href="#" class="gmkSJg">
                     <span class=" kHVTpM">
                         <span class="ledbar">
                             루팡문의
@@ -193,7 +193,7 @@ hover:
                 </a>
             </li>
             <li class="downmenu">
-                <a href=" 고객의 소리 고객의 소리 고객의 소리" 
+                <a href="#" 
                     class=" gmkSJg " 
                     
                     >

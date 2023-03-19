@@ -86,15 +86,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from member where name=#{name}
  	</delete>
  	
-	 
  	<!--✯✯✯✯★★✯★★✯✯✯✯★★✯★★ wish 영역 ✯✯✯✯★★✯★★✯✯✯✯★★✯★★-->
  	
-<!-- 	<select id="sewishlist"  
-		parameterType="com.edu.springboot.jdbc.WishDTO"
+ 	<select id="wishView"  
 		resultType="com.edu.springboot.jdbc.WishDTO">
-		select * from wishList where p_title=#{p_title}
-  
-	</select> 	
+		SELECT * FROM wishList order by member_idx desc
+	</select>
 	
 	
 	<insert id="addwish" 
@@ -108,16 +105,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<delete id="wishdelete" 
  		parameterType="com.edu.springboot.jdbc.WishDTO">
-		delete from wishList where p_title=#{p_title}
+		delete from wishList 
+		where 
+		member_idx=#{member_idx} AND product_idx=#{product_idx}
  	</delete> 
- 	 -->
+ 	
+ 	
+ 	<select id="reviewcount" resultType="com.edu.springboot.jdbc.WishDTO">
+		SELECT COUNT(*) from wishList
+	</select>
  	
  	
  	
-	<select id="tiList"
+ 	
+ 	
+ 	
+	<!-- <select id="tiList"
 		parameterType="com.edu.springboot.jdbc.TicketInfoDTO"
 		resultType="com.edu.springboot.jdbc.TicketInfoDTO">
-		select ti_title, ti_price from ticket_info 
+		select * from ticket_info where idx=#{idx}
 	</select> 	
 	
 	
@@ -135,6 +141,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		DELETE FROM ticket_info WHERE ti_idx=#{ti_idx}
  	</delete>  
 	
+	
+	게시물 총 갯수
+	<select id="wishlistCount"
+	parameterType="com.edu.springboot.jdbc.TicketInfoDTO"
+		resultType="com.edu.springboot.jdbc.TicketInfoDTO">
+	 select count(bno) from ticket_info
+	</select> -->
 	
 	
 	

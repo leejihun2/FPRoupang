@@ -9,7 +9,7 @@ public interface IReviewService {
 
 	public int reviewcount();
 	public ArrayList<ReviewDTO>
-	reviewList();	
+	reviewList(int bot_idx);	
 	
 	public int reviewWrite(ReviewDTO reviewDTO);
 	

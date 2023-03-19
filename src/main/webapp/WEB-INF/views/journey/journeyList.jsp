@@ -165,7 +165,7 @@
 				<%-- <c:if test="${not empty search_list or not empty like_loc}">--%>			
 						<c:forEach items="${journey_list }" var="journey" varStatus="loop">
 				  			<li class="search-item">
-				  				<a href="journeyDetail?value=${journey.idx }" target="_blank">
+				  				<a href="journeyDetail?value=${journey.idx }">
 			 					<div class="journey_img" style="background-image:url(/uploads/${journey.j_title_image })"></div>
 				 					<div class="journey_title">
 				 						${journey.title }
@@ -207,7 +207,7 @@
 	        	</div>
 	        	<script type="text/javascript">
 				 kakao.maps.load(function() {
-					 sysdateLoad();
+					  sysdateLoad();
 				  var locationValues = document.getElementById("location").value.split(',');
 				  var mapContainer = document.getElementById('map');
 				  var mapOption = {

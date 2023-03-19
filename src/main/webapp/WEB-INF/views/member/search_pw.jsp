@@ -178,7 +178,7 @@ $(function(){
 	   } 
 	   $.ajax({
 		   type : 'POST',
-		   url : '/search_pw.do',
+		   url : '/checkInfo.do',
 		   data : {
 				email:$('#email').val(),name:$('#username').val()
 		   },
@@ -200,13 +200,19 @@ $(function(){
 								$('#inputInfo').css("display", "none");
 								$('#noticeTemp').css("display", "none");
 								$('#submitBtn').css("display", "none");
-								$('#tempResult').css("display", "block");
 								$('#showLogin').css("display", "block");
+								var result = "";
+								result += 
+									"<tr><td>"+
+									" <h3 style='font-weight: bold; margin-left: 120px; text-decoration: underline 2px;'>"+
+									$('#email').val()+"로 임시비밀번호가 전송되었습니다.</h3>"+
+									"</td></tr>"
+									
+								$('#tempResult').append(result);
 							}
 						});
 					}
 				}
-
 			});
 		});
 	});
@@ -261,13 +267,13 @@ $(function(){
 											<p style="font-size: 11px;">루팡에 가입된 계정 이메일을 정확히 기입해주시길 바랍니다.</p></td>
 									</tr>
 								</table>
-								<table  id="tempResult" style="display:none;">
-									<tr>
+								<table  id="tempResult"> 
+									<!-- <tr>
 										<td>
 										 <h3 style="font-weight: bold; margin-left: 160px; text-decoration: underline 2px;"
 										 >"고객님의 이메일로 임시비밀번호가 전송되었습니다."</h3>
 										</td>
-									</tr>
+									</tr> -->
 								</table>
 								<section class="find-password-type">
 									<div class="find-password-type-box" id="noticeTemp">

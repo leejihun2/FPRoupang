@@ -76,4 +76,6 @@ public interface IMemberService {
 		public SellRightDTO LoginUser(String email);
 		
 		public SellRightDTO LoginSeller(int member_idx);
+		
+		public String GetCompanyAddr(int member_idx);
 }
