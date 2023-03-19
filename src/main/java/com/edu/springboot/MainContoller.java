@@ -55,12 +55,16 @@ public class MainContoller {
 		
 		
 		//가전디지털 
+		ArrayList<TotalJourneyDTO> digitalList = main_dao.adDigital_list();
 		
+		model.addAttribute("digitalList",digitalList);
 		
 		//뷰티
+		ArrayList<TotalJourneyDTO> beautyList = main_dao.adBeauty_list();
 		
-		
-		//카테고리별 아직은 여행만
+		model.addAttribute("beautyList",beautyList);
+		 
+		//여행
 		ArrayList<TotalJourneyDTO> journeyList = main_dao.adJourney_list();
 		
 		model.addAttribute("journeyList",journeyList);
