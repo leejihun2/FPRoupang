@@ -611,7 +611,7 @@ function errCallBack(errData) {
           <div class="payment-reward-cash-area">
              <img class="payment-reward-cash-area__icon" src="//img1a.coupangcdn.com/image/cart/generalCart/ico_cash_m_2x.png">
              <h3 class="payment-reward-cash-area__title">캐시적립 혜택</h3>
-             <span class="payment-reward-cash-area__desc">쿠페이 머니 결제 시 3% 적립</span>
+             <span class="payment-reward-cash-area__desc">쿠페이 머니 결제 시 5% 적립</span>
           </div>
        <div class="cart-total-price" data-total-price="0" data-discount-price="0">
             <div class="cart-total-price__inner">
@@ -636,7 +636,7 @@ function errCallBack(errData) {
        </div>
       <div class="order-buttons">
           <a id="continueShoopingBtn" class="goShopping logging" href="//www.coupang.com" data-view-type="shoppingCart" data-event-name="continuouslyShoppingClick" data-log-label="cart-p-continuouslyShoppingClick" data-coulog-type="clickEvent" data-listener-event-type="click">계속 쇼핑하기</a>
-          <a href="javascript:void(0);" class="goPayment" id="btnPay" data-pay-url="/cart/orderV3?isAllChecked=false">구매하기</a>
+          <a href="javascript:void(0);" class="goPayment" id="btnPay" data-pay-url="/cart/orderV3?isAllChecked=false">제품구매하기</a>
           <div class="item-disabled" style="display: none;"></div>
       </div>
        <iframe id="ab_iframe" class="ab_test" src="" width="0" height="0" frameborder="0" vspace="0"></iframe>
