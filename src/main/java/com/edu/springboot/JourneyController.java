@@ -643,7 +643,7 @@ public class JourneyController {
 	public String movepage(HttpServletRequest req, Model model, JourneyDTO journeyDTO) {
 		int value = Integer.parseInt(req.getParameter("value"));
 
-		ReviewDTO totalstar = dao.starcount();
+		ReviewDTO totalstar = dao.starcount(value);
 		model.addAttribute("totalstar", totalstar);
 		ArrayList<ReviewDTO> lists = dao.reviewList(value);
 

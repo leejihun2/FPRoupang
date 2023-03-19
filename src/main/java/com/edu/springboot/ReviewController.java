@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.springboot.jdbc.CategoryDTO;
+import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.IReviewService;
 import com.edu.springboot.jdbc.ReviewDTO;
+import com.edu.springboot.jdbc.SellRightDTO;
+import com.edu.springboot.jdbc.TempgoodsOrderDTO;
+import com.edu.springboot.jdbc.TempgoodsService;
 
 @Controller
 public class ReviewController {
@@ -23,18 +27,30 @@ public class ReviewController {
 	@Autowired
 	IReviewService daoo;
 	
+	@Autowired
+	IMemberService member_dao;
+	
+	@Autowired
+	TempgoodsService order_dao;
+	
 	@RequestMapping("/review/reviewList.do")
-	public String review(Model model, HttpServletRequest req) {
+	public String review(Model model, HttpServletRequest req, Principal principal) {
 		
-		int value = Integer.parseInt(req.getParameter("value"));
+		int value = Integer.parseInt(req.getParameter("bot_cate_idx"));
 		
 		
 		ReviewDTO totalstar = 
-				daoo.starcount();
+				daoo.starcount(value);
 		
 		ArrayList<ReviewDTO> lists = 
 				daoo.reviewList(value);
-		
+		String loginId = principal.getName();
+		SellRightDTO srdto  = member_dao.LoginUser(loginId);
+		int member_idx = srdto.getMember_idx();
+		ArrayList<TempgoodsOrderDTO>buyerOrderlists = order_dao.buyerInfo(member_idx);
+	
+		model.addAttribute("buyerOrderlists",buyerOrderlists);
+		model.addAttribute("value",value);
 		
 		
 		for (ReviewDTO dto : lists) {
@@ -52,11 +68,13 @@ public class ReviewController {
 	}
 	@RequestMapping("/review/reviewable.do")
 	public String reviewable(Model model, HttpSession session,
-			HttpServletRequest req) {
-//		int member_idx = Integer.parseInt(req.getParameter("member_idx"));
-//		ArrayList<CategoryDTO> order = 
-//				daoo.order();
-//		model.addAttribute("order", order);
+			HttpServletRequest req, Principal principal) {
+		String loginId = principal.getName();
+		SellRightDTO srdto  = member_dao.LoginUser(loginId);
+		int member_idx = srdto.getMember_idx();
+		ArrayList<TempgoodsOrderDTO>buyerOrderlists = order_dao.buyerInfo(member_idx);
+	
+		model.addAttribute("buyerOrderlists",buyerOrderlists);
 		return "review/reviewable";
 	}
 	

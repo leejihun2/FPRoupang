@@ -53,6 +53,13 @@ public class MainContoller {
 		
 		model.addAttribute("likeCate",likeCate);
 		
+		
+		//가전디지털 
+		
+		
+		//뷰티
+		
+		
 		//카테고리별 아직은 여행만
 		ArrayList<TotalJourneyDTO> journeyList = main_dao.adJourney_list();
 		

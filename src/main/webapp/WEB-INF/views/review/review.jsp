@@ -108,8 +108,7 @@
 													<div class="review-table__cell review-intake-head title">
 														<img
 															src="https://thumbnail6.coupangcdn.com/thumbnails/remote/250x250ex/image/retail/images/8232508872667180-9619be42-39ca-404f-8981-19b314c1e170.jpg"
-															width="100" height="100" title="몽베스트 생수, 2L, 24개"
-															alt="몽베스트 생수, 2L, 24개">
+															width="100" height="100">
 													</div>
 													<div class="review-table__cell description">
 														<select name="goods_title" value="몽베스트
@@ -118,12 +117,10 @@
 														</select>
 														<div class="review-intake-form__product-title" >몽베스트
 															생수, 2L, 24개</div>
-
 														<div
 															class="my-review__modify__star js_reviewModifyStarContainer"
 															data-star="" data-text="최고">
 															<div class="my-review__modify__star__content">
-
 																<div class="mb-3" name="star_rate" id="star_rates">
 																	<fieldset>
 																		<span class="text-bold">(필수)<em>*</em></span> <input
