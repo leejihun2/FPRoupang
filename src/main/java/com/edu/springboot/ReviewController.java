@@ -36,7 +36,7 @@ public class ReviewController {
 	@RequestMapping("/review/reviewList.do")
 	public String review(Model model, HttpServletRequest req, Principal principal) {
 		
-		int value = Integer.parseInt(req.getParameter("value"));
+		int value = Integer.parseInt(req.getParameter("bot_cate_idx"));
 		
 		
 		ReviewDTO totalstar = 
@@ -50,7 +50,7 @@ public class ReviewController {
 		ArrayList<TempgoodsOrderDTO>buyerOrderlists = order_dao.buyerInfo(member_idx);
 	
 		model.addAttribute("buyerOrderlists",buyerOrderlists);
-		System.out.println(buyerOrderlists);
+		model.addAttribute("value",value);
 		
 		
 		for (ReviewDTO dto : lists) {
@@ -75,7 +75,6 @@ public class ReviewController {
 		ArrayList<TempgoodsOrderDTO>buyerOrderlists = order_dao.buyerInfo(member_idx);
 	
 		model.addAttribute("buyerOrderlists",buyerOrderlists);
-		System.out.println(buyerOrderlists);
 		return "review/reviewable";
 	}
 	

@@ -16,7 +16,7 @@
 	padding: 4px 5px;
 	border-bottom: 1px solid #eee;
 	border-top: 1px solid #eee;
-	margin-left:67px;
+	margin-left: 67px;
 }
 
 .my-review__wrote__second-wrap {
@@ -256,8 +256,6 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/common.css" type="text/css">
 <link rel="stylesheet" href="../css/list.css" type="text/css">
-<link rel="stylesheet" href="../css/star_rating.css" type="text/css">
-<link rel="stylesheet" href="../css/star_total.css" type="text/css">
 <link rel="stylesheet" href="../css/roll.css" type="text/css">
 <script src="../js/star.js"></script>
 <script
@@ -272,20 +270,22 @@ function deleteRow(idx){
 </script>
 </head>
 <body style="background-color: #ffffff">
-<s:authorize access="isAuthenticated()">
-	<%@include file="../myroupang/myroumenu.jsp"%>
-	<div class="roll">
-		<h1 class="qwer">&nbsp;&nbsp;&nbsp;&nbsp;리뷰관리</h1>
-		<div class="div1">
-			<div class="div2" onclick="location.href='reviewable.do'">리뷰 작성</div>
-			<div class="div3" onclick="location.href='reviewList.do'">작성한 리뷰</div>
-		</div>
-		
+	<s:authorize access="isAuthenticated()">
+		<%@include file="../myroupang/myroumenu.jsp"%>
+		<div class="roll">
+		<%@include file="../star.jsp"%>
+			<h1 class="qwer">&nbsp;&nbsp;&nbsp;&nbsp;리뷰관리</h1>
+			<div class="div1">
+				<div class="div2" onclick="location.href='reviewable.do'">리뷰
+					작성</div>
+				<div class="div3" onclick="location.href='reviewList.do'">작성한
+					리뷰</div>
+			</div>
+
 
 			<s:authentication property="name" var="name" />
 			<c:forEach items="${lists }" var="row" varStatus="loop">
 				<div class="my-review__wrote js_reviewWroteListContainer">
-
 					<div class="my-review__wrote__list-container" data-total-wrote="4">
 						<ul id="review_wrote_list" data-has-more="false"
 							data-current-page="1">
@@ -299,8 +299,9 @@ function deleteRow(idx){
 										title="도넛 휴대용 약통 랜덤발송, 2개" alt="도넛 휴대용 약통 랜덤발송, 2개"> <span
 										class="my-review__wrote__item_name js_reviewWroteListProductTitle"
 										data-vendor-item-id="70278535334" data-product-id="1275397869"
-										data-vendor-item-package-id="0" data-is-deal-product="false">${row.goods_title }</span> <span class="my-review__wrote__btn-wrap">
-										<a href="javascript:void(0);"
+										data-vendor-item-package-id="0" data-is-deal-product="false">${row.goods_title }</span>
+									<span class="my-review__wrote__btn-wrap"> <a
+										href="javascript:void(0);"
 										class="my-review__wrote__modify-btn js_reviewWroteListModifyBtn"
 										data-reviewid="118563038"
 										onclick="location.href='reviewModify.do?idx=${row.idx}';">수정</a>
@@ -311,74 +312,58 @@ function deleteRow(idx){
 									</span>
 								</div>
 								<div class="my-review__wrote__main-wrap">
-
 									<div class="my-review__wrote__second-wrap"
 										data-product-review-id="118563038" data-page="1">
+										<div class="element-rating">${row.name }
+											<div class="rating-wrap">
+												<input type="hidden" name="ratevalue"
+													value="${row.star_rate}" step="0.1" min="0" max="5" />
+												<div class="rating">
+													<div class="overlay"></div>
+												</div>${row.star_rate}
+											</div>
+						
+											<span class="my-review__wrote__date">${row.regiDate }</span>
+										</div>
+										<div class="my-review__wrote__attachments" data-page="1">
 
-										<div class="media">
-											<c:forEach begin="1" end="5" var="i">
-												<c:choose>
-													<c:when test="${Math.round(row.star_rate) >= i }">
-														<div class="star-ratings">
-															<div class="star-ratings-fill space-x-2 text-lg"
-																:style="{ width: ratingToPercent + '%' }">
-																<span>★</span>
-															</div>
-															<div class="star-ratings-base space-x-2 text-lg">
-																<span>★</span>
-															</div>
-														</div>
-													</c:when>
-													<c:otherwise>
-														<div class="star-ratings text-lg">
-															<span>★</span>
-														</div>
-													</c:otherwise>
-												</c:choose>
-											</c:forEach>
+
+											<div class="attachment__container">
+												<span class="thumbnail_container"> <img
+													src="https://ts.coupangcdn.com/thumbnails/local/org/image2/PRODUCTREVIEW/202007/2/8346521484181569649/f3f1036e-ae91-49ea-b92f-1e048a502eb8.jpg">
+												</span> <span class="my-review__caption_tip"
+													data-has-caption="false"></span>
+											</div>
+
+											<div class="attachment__container">
+												<span class="thumbnail_container"> <img
+													src="https://ts.coupangcdn.com/thumbnails/local/org/image2/PRODUCTREVIEW/202007/2/8346521484181569649/b77630eb-2151-465a-9685-d2f893a48a2d.jpg">
+												</span> <span class="my-review__caption_tip"
+													data-has-caption="false"></span>
+											</div>
+
 										</div>
 
-										<span class="my-review__wrote__date">2020.07.02</span>
-									</div>
-									<div class="my-review__wrote__attachments" data-page="1">
-
-
-										<div class="attachment__container">
-											<span class="thumbnail_container"> <img
-												src="https://ts.coupangcdn.com/thumbnails/local/org/image2/PRODUCTREVIEW/202007/2/8346521484181569649/f3f1036e-ae91-49ea-b92f-1e048a502eb8.jpg">
-											</span> <span class="my-review__caption_tip"
-												data-has-caption="false"></span>
+										<div class="my-review__wrote__content__title">
+											<span>${row.summary }</span>
 										</div>
-
-										<div class="attachment__container">
-											<span class="thumbnail_container"> <img
-												src="https://ts.coupangcdn.com/thumbnails/local/org/image2/PRODUCTREVIEW/202007/2/8346521484181569649/b77630eb-2151-465a-9685-d2f893a48a2d.jpg">
-											</span> <span class="my-review__caption_tip"
-												data-has-caption="false"></span>
+										<div class="my-review__wrote__content">
+											<pre>${row.review }</pre>
 										</div>
-
 									</div>
-
-									<div class="my-review__wrote__content__title">
-										<span>${row.summary }</span>
-									</div>
-									<div class="my-review__wrote__content">
-										<pre>${row.review } 안녕하세요 반가워요 하이룽 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ안녕하세요 정말 좋은 제품이네요 홍홍홍</pre>
-									</div>
-								</div>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</c:forEach>
-	</div>
-	</div>
-	</div>
-	</div>
-	<div id="copyright">
-		<%@include file="../copyright.jsp"%>
-		<!-- 원하는 파일 경로를 삽입하면 된다 -->
-	</div>
-</s:authorize>
+		</div>
+		</div>
+		</div>
+		</div>
+		<div id="copyright">
+			<%@include file="../copyright.jsp"%>
+			<!-- 원하는 파일 경로를 삽입하면 된다 -->
+		</div>
+	</s:authorize>
 </body>
 </html>
