@@ -223,6 +223,49 @@
                </dd> 
             </dl>
         </div>
+        <!-- 여행 -->
+        <div id="categoryBest_travel" class="category-best-unit travel">
+            <dl class="category-best">
+               <dt class="title">
+                <img width="114" src="../images/best_title_travel.png" class="best_title_img">
+                    <p><a href="" class="go-category">바로가기></a></p></dt>
+               
+                <dd class="hot-keyword" style="bottom:197px">
+                <strong>HOT키워드</strong>
+                <!-- mid_category list에 담고 뿌랴줌 a태그사이에 ${row.title} -->
+	               	<p><a class="keyword" href="#">#티켓</a></p>
+	                <p><a class="keyword" href="#">#호텔</a></p>
+	                <p><a class="keyword" href="#">#펜션</a></p>
+                </dd> 
+               <dd class="promotion">
+                <!-- 이미지슬라이드 부트 적용 -->
+                    <ul>
+                        <li>
+                            <span class="caption">
+                                <strong></strong>
+                            </span>
+                            <img src="https://thumbnail6.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_52ce5738-e844-4b28-b2a9-42766e71105c.jpg" alt="" width="325" height="536">
+                        </li>
+                    </ul>
+               </dd> 
+               <dd class="best-product-list">
+                    <ul>
+                    <c:forEach items="${journeyList}" varStatus="loop" var="row">
+                        <li class="category-best__ad-badge">
+                            <a class="product-unit category-best-link"
+                             href="journeyDetail?value=${row.idx }"  >
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
+                                <span class="name">${row.title }</span><br>
+                                <span class="price">
+                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                </span>
+                            </a>
+                        </li>
+                    </c:forEach>
+                    </ul>
+               </dd> 
+            </dl>
+        </div>
         <!-- 식품 -->
         <div id="categoryBest_food" class="category-best-unit food">
             <dl class="category-best">
@@ -529,50 +572,7 @@
                     </ul>
                </dd> 
             </dl>
-        </div>
-        <!-- 여행 -->
-        <div id="categoryBest_travel" class="category-best-unit travel">
-            <dl class="category-best">
-               <dt class="title">
-                <img width="114" src="../images/best_title_travel.png" class="best_title_img">
-                    <p><a href="" class="go-category">바로가기></a></p></dt>
-               
-                <dd class="hot-keyword" style="bottom:197px">
-                <strong>HOT키워드</strong>
-                <!-- mid_category list에 담고 뿌랴줌 a태그사이에 ${row.title} -->
-	               	<p><a class="keyword" href="#">#티켓</a></p>
-	                <p><a class="keyword" href="#">#호텔</a></p>
-	                <p><a class="keyword" href="#">#펜션</a></p>
-                </dd> 
-               <dd class="promotion">
-                <!-- 이미지슬라이드 부트 적용 -->
-                    <ul>
-                        <li>
-                            <span class="caption">
-                                <strong></strong>
-                            </span>
-                            <img src="https://thumbnail6.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_52ce5738-e844-4b28-b2a9-42766e71105c.jpg" alt="" width="325" height="536">
-                        </li>
-                    </ul>
-               </dd> 
-               <dd class="best-product-list">
-                    <ul>
-                    <c:forEach items="${journeyList}" varStatus="loop" var="row">
-                        <li class="category-best__ad-badge">
-                            <a class="product-unit category-best-link"
-                             href="journeyDetail?value=${row.idx }"  >
-                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
-                                <span class="name">${row.title }</span><br>
-                                <span class="price">
-                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
-                                </span>
-                            </a>
-                        </li>
-                    </c:forEach>
-                    </ul>
-               </dd> 
-            </dl>
-            <dl>
+             <dl>
                 <a href="">
                     <img src="../images/쿠키트래블_CM_PC.jpg" style="width: 950px;" alt="">
                 </a>

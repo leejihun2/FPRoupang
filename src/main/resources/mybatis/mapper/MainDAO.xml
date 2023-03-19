@@ -39,4 +39,14 @@
 	    )
 	    where rownum <![CDATA[ <= ]]> 6
 	</select>
+	
+	<select id="adDigital_list" resultType="com.edu.springboot.jdbc.TotalProductDTO">
+		select * from (
+			select pi_title, p_title_image, pi_price, idx
+			from bot_category bc
+	        join product p on bc.idx = p.bot_idx
+	        order by DBMS_RANDOM.RANDOM
+	    )
+	    where rownum <![CDATA[ <= ]]> 6
+	</select>
 </mapper>
