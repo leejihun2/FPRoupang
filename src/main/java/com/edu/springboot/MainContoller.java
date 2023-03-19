@@ -65,8 +65,6 @@ public class MainContoller {
 		
 		model.addAttribute("journeyList",journeyList);
 		
-		
-		
 		return "home";
 	}
 	
