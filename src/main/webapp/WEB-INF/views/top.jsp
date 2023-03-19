@@ -224,9 +224,9 @@ onload = function(){
 										});
 										$("#"+sub_idx).append("</ul>");
 									}
-								);
+								)
 							});
-						})
+						});
 					</script>
 					<style>
 						.menu.shopping-menu-list>li:hover>.depth{

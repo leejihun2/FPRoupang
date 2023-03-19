@@ -141,10 +141,9 @@
 		<h1 class="qwer">&nbsp;&nbsp;&nbsp;&nbsp;리뷰관리</h1>
 
 		<div class="div1">
-			<div class="div2" onclick="location.href='/review/reviewable.do'">리뷰 작성</div>
-			<div class="div3" onclick="location.href='/review/reviewList.do'">작성한
-				리뷰
-			</div>
+			<div class="div2" onclick="location.href='reviewable.do'">리뷰 작성</div>
+			<div class="div3" onclick="location.href='reviewList.do'">작성한
+				리뷰</div>
 		</div>
 
 

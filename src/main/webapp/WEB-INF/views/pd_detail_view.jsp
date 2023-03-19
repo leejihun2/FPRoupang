@@ -363,8 +363,8 @@ function info_close(){
  </script>
 </head>
 <body style="background-color: white;">
-	<%@ include file="../top.jsp" %>
-	<%@include file="../star.jsp"%>
+	<%@ include file="top.jsp" %>
+	<%@include file="./star.jsp"%>
 	<section id="contents" class="contents product">
 		<div class="prod-atf">
 			<div class="prod-atf-main">
@@ -643,7 +643,7 @@ function info_close(){
 												<th>생산자 및 소재지</th>
 												<td>컨텐츠참조</td>
 												<th>제조연월일, 소비기한 또는 품질유지기한</th>
-												<td>소비기한(또는 유통기한) : 2023년 04월 20일 이거나 그 이후인 상품</td>
+												<td>소비기한(또는 유통기한) : 2023년 04월 18일 이거나 그 이후인 상품</td>
 											</tr>
 											<tr>
 												<th>포장단위별 내용물의 용량(중량), 수량</th>
@@ -844,7 +844,7 @@ function info_close(){
 									        <td colspan="3">
 								           	 	<ul>
 								                    <li class="prod-delivery-period-contents etc-pdd-info">
-								                            <span>ㆍ쿠팡친구 배송 지역 : 주문 및 결제 완료 후, 2-3일 이내 도착</span>
+								                            <span>ㆍ쿠팡친구 배송 지역 : 주문 및 결제 완료 후, 1-2일 이내 도착</span>
 								                    </li>
 								                    <li class="prod-delivery-period-contents">
 								                        ㆍ쿠팡친구 미배송 지역 : 주문 및 결제 완료 후, 2-3일 이내 도착

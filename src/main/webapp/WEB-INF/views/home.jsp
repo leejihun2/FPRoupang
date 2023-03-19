@@ -164,14 +164,14 @@
                </dd> 
                <dd class="best-product-list">
                     <ul>
-                       <c:forEach items="${journeyList}" varStatus="loop" var="row">
+                       <c:forEach items="${digitalList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
                              href="journeyDetail?value=${row.idx }"  >
-                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
-                                <span class="name">${row.title }</span><br>
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.p_title_image})"></div>
+                                <span class="name">${row.pi_title }</span><br>
                                 <span class="price">
-                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                	<b><fmt:formatNumber value="${row.pi_price}" />원</b>
                                 </span>
                             </a>
                         </li>
@@ -207,14 +207,14 @@
                </dd> 
                <dd class="best-product-list">
                     <ul>
-                        <c:forEach items="${journeyList}" varStatus="loop" var="row">
+                        <c:forEach items="${beautyList}" varStatus="loop" var="row">
                         <li class="category-best__ad-badge">
                             <a class="product-unit category-best-link"
                              href="journeyDetail?value=${row.idx }"  >
-                                <div class="catagory-images" style="background-image:url(/uploads/${row.j_title_image})"></div>
-                                <span class="name">${row.title }</span><br>
+                                <div class="catagory-images" style="background-image:url(/uploads/${row.p_title_image})"></div>
+                                <span class="name">${row.pi_title }</span><br>
                                 <span class="price">
-                                	<b><fmt:formatNumber value="${row.ji_price}" />원</b>
+                                	<b><fmt:formatNumber value="${row.pi_price}" />원</b>
                                 </span>
                             </a>
                         </li>

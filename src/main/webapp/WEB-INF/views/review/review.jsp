@@ -117,10 +117,12 @@
 														</select>
 														<div class="review-intake-form__product-title" >몽베스트
 															생수, 2L, 24개</div>
+
 														<div
 															class="my-review__modify__star js_reviewModifyStarContainer"
 															data-star="" data-text="최고">
 															<div class="my-review__modify__star__content">
+
 																<div class="mb-3" name="star_rate" id="star_rates">
 																	<fieldset>
 																		<span class="text-bold">(필수)<em>*</em></span> <input

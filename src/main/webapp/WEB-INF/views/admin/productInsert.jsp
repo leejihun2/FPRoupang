@@ -105,24 +105,6 @@ function setSelectBox(obj){
                }
             );
          }
-         // 그 외의 카테고리(상품)
-         else if ($('#category1').val() >= 1 && $('#category1').val() <= 8){
-        	 $.post(
-        		"/category_list_p"
-        		,{level : $(obj).attr('id').substr(-1,1), sub_idx : $(obj).val(), company_name : $("#company_name").val()}
-         		,function(data) {
-         			$.each(data, function(i){
-         				var tabletd='<tr>';
-						tabletd+='<td class="td_none"><input type="checkbox" name="product_select" id="product_select'+ data[i].idx +'" value="'+data[i].idx+'"/>'
-						tabletd+='<td class="td_none"><img src="/uploads/'+ data[i].p_title_image +'"/>'
-						tabletd+='<td class="td_none"><a href="javascript:;" onclick="simple_click('+data[i].idx+')">'+data[i].title+'</a></td>'
-						tabletd+='</tr>'
-						
-						$('#product_list').append(tabletd);
-         			});
-         		}
-        	 );
-         }
       }
    }else{
       /* --분류--를 선택할 경우 초기화 */
@@ -297,83 +279,8 @@ function simple_click(obj){
              $('.product_intro').append(table);
           }
        );
-  	}
-   	// 상품 상세 정보 출력
-   	else {
-   		$.post(
-	      "/productDetailInfo"
-	      ,{bot_idx : obj}
-	      ,function(data){
-	         $.each(data, function(i){
-	            var tabletd='<tr>';
-	            tabletd+='<td><input type="checkbox" name="product_info_select" value="'+data[i].pi_idx+'"/>'
-	            tabletd+='<td><a href="/product_edit?product_idx='+data[i].pi_idx+'">'+data[i].pi_title+'</a><br/>'
-	               +'로켓배송여부 '+data[i].pi_isrocket+'<br/>'
-	               +'배송비 '+data[i].pi_delifee+'원<br/>'
-	            tabletd+='<td>'+data[i].pi_price+'</td>'
-	            tabletd+='<td>'+data[i].pi_discount+'</td>'
-	            tabletd+='</tr>'
-	            $('#product_info_list').append(tabletd);
-	         });
-	      }
-	      );
-	  		// 상품 정보 출력
-	       $.post(
-	         "/productInfo"
-	         ,{bot_idx : obj}
-	         ,function(data){
-	            var table = '<table class="table">';
-	            if((data.p_image1)!=null){
-	               table += '<tr><th class="info_th">서브이미지</th><td><img style="width:300px;" src="/uploads/'+data.p_image1+'"/>'
-	               if((data.p_image2)!=null){
-	                  table += '<img style="width:300px;" src="/uploads/'+data.p_image2+'" />'
-	                  if((data.p_image3)!=null){
-	                     table += '<img style="width:300px;" src="/uploads/'+data.p_image3+'" />'
-	                     if((data.p_image4)!=null){
-	                        table += '<img style="width:300px;" src="/uploads/'+data.p_image4+'" />'
-	                     }
-	                  }
-	               }
-	               table += '</td></tr>'
-	            }
-	            if (data.p_production != null) {
-		            table += '<tr><th class="info_th">*제조사(판매사)</th><td><input class="form-control insert_input" type="text" id="p_production" name="p_production"/>'+data.p_production+'</td></tr>'
-	            }
-	            if (data.p_pro_country != null) {
-	            	table += '<tr><th class="info_th">*제조국</th><td><input class="form-control insert_input" type="text" id="p_pro_country" name="p_pro_country"/>'+data.p_pro_country+'</td></tr>'
-	            }
-	            if (data.p_pro_date != null) {
-	            	table += '<tr><th class="info_th">*제조일자</th><td><input type="date" class="date_form" id="p_pro_date" name="p_pro_date"/>'+data.p_pro_date+'<td></tr>'
-	            }
-	            if (data.p_callnum != null) {
-	            	table += '<tr><th class="info_th">소비자관련 상담번호</th><td><input class="form-control insert_input" type="text" id="p_callnum" name="p_callnum"/>'+data.p_callnum+'</td></tr>'
-	            }
-	            if (data.p_useway != null) {
-	            	table += '<tr><th class="info_th">사용방법</th><td><textarea id="p_useway" name="p_useway"/></textarea>'+data.p_useway+'</td></tr>'
-	            }
-	            if (data.p_size != null) {
-	            	table += '<tr><th class="info_th">크기</th><td><input class="form-control insert_input" type="text" id="p_size" name="p_size"/>'+data.p_size+'</td></tr>'
-	            }
-	            if (data.p_as_info != null) {
-	            	table += '<tr><th class="info_th">A/S관련정보</th><td><input class="form-control insert_input" type="text" class="date_form" id="p_as_info" name="p_as_info"/>'+data.p_as_info+'</td></tr>'
-	            }
-	            if (data.p_composition != null) {
-	            	table += '<tr><th class="info_th">구성</th><td><input class="form-control insert_input" type="text" id="p_composition" name="p_composition"/>'+data.p_composition+'</td></tr>'
-	            }
-	            if (data.p_caution != null) {
-	            	table += '<tr><th class="info_th">주의사항</th><td><textarea id="p_caution" name="p_caution"/></textarea>'+data.p_caution+'</td></tr>'
-	            }
-	            if (data.p_assurance != null) {
-	            	table += '<tr><th class="info_th">품질보증사항</th><td><textarea id="p_assurance" name="p_assurance"/></textarea>'+data.p_assurance+'</td></tr>'
-	            }
-	            if (data.p_cup_num != null) {
-	            	table += '<tr><th class="info_th">*쿠팡상품번호</th><td><input class="form-control insert_input" id="p_cup_num" name="p_cup_num"/>'+data.p_cup_num+'</td></tr>'
-	            }
-	            $('#product_intro').append(table);
-	         }
-    	);
-	}
-}
+   }
+ }
 //버튼 클릭시 발생 이벤트 정리
 function btnclick(obj){
    var mode = $(obj).val();
@@ -408,14 +315,9 @@ function btnclick(obj){
             dataType : "HTML",
             cache : false
          };
-      } else {
-    	  var ajaxOp = {
-    		url : "/editProduct?value="+value,
-    		type : "POST",
-    		dataType : "HTML",
-    		cache : false
-    	  };
       }
+      
+      
       $.ajax(ajaxOp).done(function(data){
          $('#row').children().remove();
          $('#row').html(data);
@@ -443,6 +345,8 @@ $(function(){
          $("#product_price").focus();
          return false;
       }
+      
+      
       if($("#category1").val()==9){
           var sub_ji_image=$("#ji_image")
          if(sub_ji_image[0].files.length>=5){
@@ -450,6 +354,8 @@ $(function(){
             return false;
          }
       }
+      
+      
       if($("#product_intro").val()!=""){
          if($("#main_image").val()==""){
             alert("메인 이미지는 필수로 등록해야합니다.");
@@ -485,6 +391,8 @@ $(function(){
             $("#product_cancelnoti").focus();
             return false;
          }
+         
+         
          if($("#category1").val()==10){
             form.action="/ticketInsertAction?mid_category="+$("#category2").val()+"&value=0";
          }
@@ -648,36 +556,6 @@ function service_list(e){
     
    document.getElementById("briefinfo").innerHTML='';
    document.getElementById("detailinfo").innerHTML='';
-   
-   if(e >= 1 && e <= 8) {
-	   
-	   var briefinfo='<tr><th class="info_th">* 상품명</th><td><input class="form-control insert_input" type="text" id="bot_title" name="bot_title"/><tr><th class="info_th">* 메인이미지</th><td><div id="title_image"></div><input class="form-control insert_input" type="file" name="title_image" id="main_image" onchange="setThumbnail(event)" /><tr><th class="info_th">서브이미지</th><td><div id="sub_thumbnail"></div><input class="form-control insert_input" type="file" id="sub_image" name="sub_image" onchange="setSubThumnail(this,event)" multiple/></td></tr>';
-	   var detailinfo ='<tr><th class="info_th">* 상품상세명</th><td><input class="form-control" type="text" id="product_title" name="product_title" /></td></tr>';
-	  
-	   briefinfo += '<tr><th class="info_th">*제조사</th><td><input class="form-control insert_input" type="text" id="p_production" name="p_production"/></td></tr>'
-	   briefinfo += '<tr><th class="info_th">*제조국</th><td><input class="form-control insert_input" type="text" id="p_pro_country" name="p_pro_country"/></td></tr>'
-	   briefinfo += '<tr><th class="info_th">*제조일자</th><td><input type="date" class="date_form" id="p_pro_date" name="p_pro_date"/></td></tr>'
-	   briefinfo += '<tr><th class="info_th">*소비기한</th><td><input type="date" class="date_form" id="p_duetime" name="p_duetime"/></td></tr>'
-	   briefinfo += '<tr><th class="info_th">소비자관련 상담번호</th><td><input class="form-control insert_input" type="text" id="p_callnum" name="p_callnum"/></td></tr>'
-	   briefinfo += '<tr><th class="info_th">사용방법</th><td><textarea id="p_useway" name="p_useway"/></textarea></td></tr>'
-	   briefinfo += '<tr><th class="info_th">크기</th><td><input class="form-control insert_input" type="text" id="p_size" name="p_size"/></td></tr>'
-	   briefinfo += '<tr><th class="info_th">A/S관련정보</th><td><input class="form-control insert_input" type="text" class="date_form" id="p_as_info" name="p_as_info"/></td></tr>'
-	   briefinfo += '<tr><th class="info_th">구성</th><td><input class="form-control insert_input" type="text" id="p_composition" name="p_composition"/></td></tr>'
-	   briefinfo += '<tr><th class="info_th">주의사항</th><td><textarea id="p_caution" name="p_caution"/></textarea></td></tr>'
-	   briefinfo += '<tr><th class="info_th">품질보증사항</th><td><textarea id="p_assurance" name="p_assurance"/></textarea></td></tr>'
-	   briefinfo += '<tr><th class="info_th">*쿠팡상품번호</th><td><input class="form-control insert_input" id="p_cup_num" name="p_cup_num"/></td></tr>'
-	   
-	   detailinfo += '<tr><th class="info_th">*가격</th><td><input class="form-control insert_input" type="text" id="pi_price" name="pi_price" placeholder="0"/></td></tr>'
-	   detailinfo += '<tr><th class="info_th">*판매수량</th><td><input class="form-control insert_input" type="text" id="pi_amount" name="pi_amount" placeholder="0"/></td></tr>'
-	   detailinfo += '<tr><th class="info_th">*할인율</th><td><input class="form-control insert_input" type="text" id="pi_discount" name="pi_discount" placeholder="0"/></td></tr>'
-	   detailinfo += '<tr><th class="info_th" onchange="changeValue();")>*제품구분</th><td><label><input type="radio" id="pi_isrocket" name="pi_isrocket" value="1" checked/>로켓상품</label><label><input type="radio" id="pi_isnormal" name="pi_isrocket" value="0"/>일반상품</label></td></tr>'
-	   detailinfo += '<tr id="pi_delicom_container"><th class="info_th">*택배유형</th><td onclick="updateDeliFee();"><label><input type="radio" id="pi_delicom_rk" name="pi_delicom" value="0" checked/>로켓배송</label>'
-	   detailinfo += '<tr"><th class="info_th">*택배비</th><td><input type="text" id="pi_delifee" name="pi_delifee" value="0" readonly/>'
-	   
-	   $('#briefinfo').append(briefinfo);
-	   $('#detailinfo').append(detailinfo);
-	   return false;
-   }
    
    var briefinfo='<tr><th class="info_th">* 상품명</th><td><input class="form-control insert_input" type="text" id="bot_title" name="bot_title"/><tr><th class="info_th">* 메인이미지</th><td><div id="title_image"></div><input class="form-control insert_input" type="file" name="title_image" id="main_image" onchange="setThumbnail(event)" /></td><tr><th class="info_th">서브이미지</th><td><div id="sub_thumbnail"></div><input class="form-control insert_input" type="file" id="sub_image" name="sub_image" onchange="setSubThumnail(this,event)" multiple/></td></tr>';
    

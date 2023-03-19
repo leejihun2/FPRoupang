@@ -41,9 +41,6 @@ import com.edu.springboot.jdbc.TempgoodsService;
 public class AdminController {
 
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
-
-	@Autowired
 	ISupportsService daoo;
 
 	@Autowired
@@ -58,41 +55,17 @@ public class AdminController {
 	@RequestMapping("/admin/index.do")
 	public String admin(Principal principal, HttpSession session, Model model, MemberDTO memberDTO) {
 
-		String query = "SELECT SEARCH_WORD, to_char(SEARCH_REGIDATE,'HH24') AS SearchRegidate FROM search_log";
-        List<Map<String, Object>> rows = jdbcTemplate.queryForList(query);
-        // 나이승 나이승 나이승
-        try (PrintWriter writer = new PrintWriter(new FileWriter("C:\\Users\\82104\\search_log11.txt"))) {
-            rows.stream().map(row -> {
-                // 컬럼 이름을 바꿔줍니다.
-                Map<String, Object> newRow = new HashMap<>();
-                newRow.put("SearchWord", row.get("SEARCH_WORD"));
-				newRow.put("SearchRegidate", row.get("SearchRegidate")+"시");
-                
-                return newRow;
-            }).forEach(row -> {
-                for (Map.Entry<String, Object> entry : row.entrySet()) {
-                    writer.println((entry.getValue() != null ? entry.getValue().toString() : "null"));
-                }
-                writer.println();
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
 		String loginId = principal.getName();
 
 		SellRightDTO dto = member_dao.LoginUser(loginId);
 
 		String Authority = dto.getAuthority();
 
-		
-		
 		if (Authority.equals("ROLE_seller")) {
 			return "redirect:/productInsert";
 		} else {
 			model.addAttribute("member_idx", dto.getMember_idx());
 			List<String>orderAdminView = new ArrayList<String>();
-			
 			
 			SellRightDTO srdto  = member_dao.LoginUser(loginId);
 			
