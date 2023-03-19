@@ -41,22 +41,25 @@
 	</select>
 	
 	<select id="adDigital_list" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
-		select pi_title, p_title_image, pi_price, pi.idx
-			from bot_category bc
-	        join product p on bc.idx = p.bot_idx
-            join product_info pi on bc.idx = pi.bot_idx
-	        where bc.sub_idx = 92 or bc.sub_idx=93
-	        order by DBMS_RANDOM.RANDOM
+		select * from (
+			select pi_title, p_title_image, pi_price, pi.idx
+				from bot_category bc
+		        join product p on bc.idx = p.bot_idx
+	            join product_info pi on bc.idx = pi.bot_idx
+		        where bc.sub_idx = 92 or bc.sub_idx=93
+		        order by DBMS_RANDOM.RANDOM
 	    )
 	    where rownum <![CDATA[ <= ]]> 6
 	</select>
+	
 	<select id="adBeauty_list" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
-		select pi_title, p_title_image, pi_price, pi.idx
-			from bot_category bc
-	        join product p on bc.idx = p.bot_idx
-            join product_info pi on bc.idx = pi.bot_idx
-	        where bc.sub_idx = 4
-	        order by DBMS_RANDOM.RANDOM
+		select * from (
+			select pi_title, p_title_image, pi_price, pi.idx
+				from bot_category bc
+		        join product p on bc.idx = p.bot_idx
+	            join product_info pi on bc.idx = pi.bot_idx
+		        where bc.sub_idx = 4
+		        order by DBMS_RANDOM.RANDOM
 	    )
 	    where rownum <![CDATA[ <= ]]> 6
 	</select>
