@@ -31,8 +31,11 @@ import com.edu.springboot.jdbc.IMainImageService;
 import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.ISupportsService;
 import com.edu.springboot.jdbc.MainImageDTO;
+import com.edu.springboot.jdbc.MemberDTO;
 import com.edu.springboot.jdbc.SellRightDTO;
 import com.edu.springboot.jdbc.SupportsDTO;
+import com.edu.springboot.jdbc.TempgoodsOrderDTO;
+import com.edu.springboot.jdbc.TempgoodsService;
 
 @Controller
 public class AdminController {
@@ -48,9 +51,12 @@ public class AdminController {
 
 	@Autowired
 	IMainImageService image_dao;
+	
+	@Autowired
+	TempgoodsService order_dao;
 
 	@RequestMapping("/admin/index.do")
-	public String admin(Principal principal, HttpSession session, Model model) {
+	public String admin(Principal principal, HttpSession session, Model model, MemberDTO memberDTO) {
 
 		
 
@@ -60,10 +66,21 @@ public class AdminController {
 
 		String Authority = dto.getAuthority();
 
+		
+		
 		if (Authority.equals("ROLE_seller")) {
 			return "redirect:/productInsert";
 		} else {
 			model.addAttribute("member_idx", dto.getMember_idx());
+			List<String>orderAdminView = new ArrayList<String>();
+			
+			
+			SellRightDTO srdto  = member_dao.LoginUser(loginId);
+			
+			int member_idx = srdto.getMember_idx();
+			
+			ArrayList<TempgoodsOrderDTO>adminViewlists= order_dao.AdminSelectGoodsOrder(member_idx);
+			model.addAttribute("lists",adminViewlists);
 			return "/admin/index";
 		}
 	}
