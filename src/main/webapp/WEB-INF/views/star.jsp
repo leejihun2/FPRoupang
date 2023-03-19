@@ -50,8 +50,8 @@ input[type=number]{
     height: 30px;
     margin-right: 2px;
 }
-.starcolor{
-   fill: #ff8844;
+.starcolor {
+	fill: #ff8844;
 }
 .star:last-of-type {
     margin-right: 0;

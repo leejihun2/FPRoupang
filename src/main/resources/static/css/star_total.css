@@ -147,8 +147,8 @@ input[type=number] {
 	transition: all 0.3s ease-in-out;
 }
 
-@
-supports (mix-blend-mode: color) { .overlay1 { mix-blend-mode:color;
+@supports (mix-blend-mode: color) { 
+	.overlay1 { mix-blend-mode:color;
 	opacity: unset;
 }
 
