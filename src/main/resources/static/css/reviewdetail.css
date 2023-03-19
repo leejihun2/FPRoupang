@@ -1,5 +1,961 @@
 @charset "UTF-8";
+    .basis-product .basis-product-review:after {
+        content: "";
+        display: block;
+        clear: both
+    }
+	    .basis-product .basis-product-review {
+        padding: 5px 0
+    }
 
+    .basis-product .basis-product-review .rating-star {
+        float: left;
+        margin-top: 2px;
+        margin-right: 2px
+    }
+
+    .basis-product .basis-product-review .review-badge {
+        float: left;
+        margin-top: 2px;
+        margin-right: 8px
+    }
+
+    .basis-product .basis-product-review .review-text {
+        float: left;
+        display: block;
+        font-size: 14px;
+        letter-spacing: -1px;
+        line-height: 22px;
+        color: #555;
+        padding-right: 3px;
+        margin-right: 5px
+    }
+
+    .basis-product .basis-product-review .review-text:before {
+        content: "|";
+        padding: 0 3px 0 0
+    }
+
+    .basis-product .basis-product-review .review-count {
+        float: left;
+        display: block;
+        font-size: 14px;
+        color: #346aff;
+        line-height: 22px;
+        cursor: pointer;
+        letter-spacing: -1px
+    }
+
+    .basis-product .travel-title-xxs {
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: -.8px
+    }
+
+    .basis-product .travel-local-language-title {
+        line-height: 1;
+        margin-bottom: 10px
+    }
+
+    html[data-useragent*="Windows NT"] .basis-product .basis-product-review .rating-star {
+        float: left;
+        margin-top: 4px;
+        margin-right: 2px
+    }
+	    .product-review-thumbnail {
+        float: left;
+        width: 14%;
+        height: 100%;
+        margin-right: 2px;
+        position: relative;
+        cursor: pointer
+    }
+
+    .product-review-thumbnail:last-child {
+        margin-right: 0
+    }
+
+    .product-review-thumbnail .thumbnail-image {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: 50%
+    }
+
+    .product-review-thumbnail .product-review-thumbnail__layer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%
+    }
+
+    .product-review-thumbnail .product-review-thumbnail__caption {
+        position: absolute;
+        background: url("//img1a.coupangcdn.com/image/coupang/review/web/sdp/captions/icon-caption2x.png") no-repeat;
+        background-size: 14px 14px;
+        width: 14px;
+        height: 14px;
+        bottom: 5px;
+        right: 5px;
+        float: right;
+        opacity: .7
+    }
+	    .travel-modal-container .travel-modal-dialog .modal-dialog .review-image-carousel .carousel-thumbnails li .product-review-thumbnail__layer {
+        background: rgba(0, 0, 0, .5) url("//img1a.coupangcdn.com/image/productreview/web/pdp/video/play-btn-middle__v1.png") 18px no-repeat;
+        background-size: 16px 20px
+    }
+	    .review-gallery-modal .review-gallery-thumbnail .product-review-thumbnail__layer {
+        font-size: 13px;
+        color: #fff;
+        left: unset;
+        top: unset;
+        right: 0;
+        bottom: 0;
+        width: 52px;
+        height: 25px;
+        background-color: rgba(0, 0, 0, .5);
+        text-align: center;
+        line-height: 25px
+    }
+	    .product-review-summary__attachment-thumbnails:after {
+        content: "";
+        display: block;
+        clear: both
+    }
+
+    .product-review-summary__attachment-thumbnails {
+        margin-top: 47px;
+        height: 133px
+    }
+
+    .product-review-summary__attachment-thumbnails .product-review-thumbnail {
+        cursor: pointer
+    }
+
+    .product-review-summary__attachment-thumbnails .product-review-thumbnail .product-review-thumbnail__layer {
+        background-color: rgba(0, 0, 0, .7);
+        border: 1px solid #979797;
+        color: #fff;
+        text-align: center
+    }
+
+    .product-review-summary__attachment-thumbnails .product-review-summary__attachment-thumbnails-count {
+        font-size: 36px;
+        font-weight: 300;
+        height: 43px;
+        margin-top: 25px;
+        margin-bottom: 20px
+    }
+
+    .product-review-summary__attachment-thumbnails .product-review-summary__attachment-thumbnails-more {
+        font-size: 12px;
+        letter-spacing: -.5px
+    }
+
+    .product-review-summary__attachment-thumbnails .product-review-summary__attachment-video-play {
+        background: url("//img1a.coupangcdn.com/image/productreview/web/pdp/video/play-btn-middle__v1.png") no-repeat;
+        background-size: 30px 40px;
+        width: 30px;
+        height: 40px;
+        margin: 31px 53px 20px
+    }
+
+    .product-review-summary__attachment-thumbnails .product-review-summary__attachment-video-duration {
+        font-size: 16px
+    }
+
+    @media screen and (max-width:1300px) {
+        .product-review-summary__attachment-thumbnails {
+            height: 96px
+        }
+
+        .product-review-summary__attachment-thumbnails .product-review-summary__attachment-thumbnails-count {
+            margin: 15px 0;
+            font-size: 30px;
+            height: 30px
+        }
+
+        .product-review-summary__attachment-thumbnails .product-review-summary__attachment-video-play {
+            background-size: 20px 30px;
+            width: 20px;
+            height: 30px;
+            margin: 17px 39px
+        }
+
+        .product-review-summary__attachment-thumbnails .product-review-summary__attachment-video-duration {
+            font-size: 12px
+        }
+    }
+
+    .product-review-summary__rating-detail-modal-graph-row:after,
+    .product-review-summary__rating:after {
+        content: "";
+        display: block;
+        clear: both
+    }
+
+    .product-review-summary__rating .rating-star {
+        float: left
+    }
+
+    .product-review-summary__rating-count {
+        font-size: 30px;
+        color: #333;
+        height: 50px;
+        line-height: 48px;
+        margin-left: 14px;
+        float: left
+    }
+
+    .product-review-summary__rating-detail {
+        font-size: 12px;
+        color: #346aff;
+        margin-left: 10px;
+        letter-spacing: -1px;
+        height: 50px;
+        line-height: 48px;
+        position: relative;
+        cursor: pointer;
+        float: left
+    }
+
+    .product-review-summary__rating-detail-text:hover {
+        color: #0052a3;
+        text-decoration: underline
+    }
+
+    .product-review-summary__rating-detail-modal {
+        cursor: default;
+        width: 420px;
+        height: 360px;
+        z-index: 3;
+        border: 1px solid #333;
+        position: absolute;
+        background: #fff
+    }
+
+    .product-review-summary__rating-detail-modal-title {
+        color: #fff;
+        background: #333;
+        padding: 18px 20px;
+        font-size: 12px;
+        height: 51px;
+        line-height: 15px
+    }
+
+    .product-review-summary__rating-detail-modal-average {
+        margin: 34px 0 21px;
+        height: 30px;
+        text-align: center
+    }
+
+    .product-review-summary__rating-detail-modal-average .rating-star {
+        display: inline-block;
+        float: none
+    }
+
+    .product-review-summary__rating-detail-modal-average-score {
+        color: #111;
+        font-size: 24px;
+        height: 30px;
+        line-height: 33px;
+        margin-left: 10px;
+        vertical-align: top;
+        display: inline-block
+    }
+
+    .product-review-summary__rating-detail-modal-graph {
+        color: #111;
+        line-height: 32px;
+        width: 323px;
+        margin: 0 auto
+    }
+
+    .product-review-summary__rating-detail-modal-graph-row {
+        margin-top: 5px
+    }
+
+    .product-review-summary__rating-detail-modal-graph-text {
+        font-size: 14px;
+        font-weight: 700;
+        float: left
+    }
+
+    .product-review-summary__rating-detail-modal-graph-bar {
+        width: 240px;
+        height: 32px;
+        float: left;
+        position: relative;
+        margin-left: 12px
+    }
+
+    .product-review-summary__rating-detail-modal-graph-bar-gray {
+        position: absolute;
+        width: 100%;
+        height: 32px;
+        left: 0;
+        top: 0;
+        background: #eee
+    }
+
+    .product-review-summary__rating-detail-modal-graph-bar-yellow {
+        position: absolute;
+        height: 32px;
+        left: 0;
+        top: 0;
+        background: #ff9600
+    }
+
+    .product-review-summary__rating-detail-modal-graph-percentage {
+        margin-left: 10px;
+        font-size: 15px;
+        float: left
+    }
+
+    .product-review-summary__survey {
+        width: 726px;
+        margin-top: 72px
+    }
+
+    .product-review-summary__survey .survey-title {
+        float: left;
+        width: 72px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+        color: #111
+    }
+
+    .product-review-summary__survey .rating-star {
+        float: left
+    }
+
+    .product-review-summary__survey .survey-rating-text {
+        float: left;
+        display: block;
+        line-height: 22px;
+        margin-left: 10px
+    }
+
+    .travel-modal-container .travel-modal-dialog .review-item-attachment-modal .carousel-thumbnails:after {
+        content: "";
+        display: block;
+        clear: both
+    }
+
+    .element-attachments .product-review-thumbnail__layer {
+        background-color: hsla(0, 0%, 7%, .65)
+    }
+
+    .element-attachments .product-review-thumbnail__layer .play-button {
+        background: url("//img1a.coupangcdn.com/image/productreview/web/pdp/video/play-btn-middle__v1.png") no-repeat;
+        background-size: 16px 20px;
+        width: 16px;
+        height: 20px;
+        margin: 20px auto 10px
+    }
+
+    .element-attachments .product-review-thumbnail__layer .video-duration {
+        color: #fff;
+        text-align: center;
+        font-size: 10px
+    }
+
+    .travel-modal-container .travel-modal-dialog .review-item-attachment-modal.modal-dialog {
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        overflow: hidden
+    }
+
+    .travel-modal-container .travel-modal-dialog .review-item-attachment-modal .modal-content {
+        background-color: transparent
+    }
+
+    .travel-modal-container .travel-modal-dialog .review-item-attachment-modal .carousel-thumbnails {
+        width: 100%
+    }
+
+    .product-review-item .element-attachments:after,
+    .product-review-item .element-contents:after,
+    .product-review-item .element-helpful-report:after,
+    .product-review-item .element-survey li:after {
+        content: "";
+        display: block;
+        clear: both
+    }
+
+    .product-review-item .element-item-name {
+        margin-top: 15px;
+        margin-bottom: 13px;
+        color: #888;
+        width: 100%
+    }
+
+    .product-review-item .element-contents .title,
+    .product-review-item .element-item-name {
+        font-size: 12px;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        white-space: nowrap
+    }
+
+    .product-review-item .element-contents .title {
+        margin-bottom: 8px;
+        font-weight: 700;
+        color: #333
+    }
+
+    .product-review-item .element-contents .content {
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow: hidden;
+        font-size: 13px;
+        line-height: 19px;
+        color: #111;
+        display: -webkit-box
+    }
+
+    .product-review-item .element-contents .content.folded {
+        height: 190px;
+        -webkit-line-clamp: 10;
+        -webkit-box-orient: vertical
+    }
+
+    .product-review-item .element-contents .content-more {
+        color: #346aff;
+        font-size: 12px;
+        margin-top: 10px;
+        cursor: pointer;
+        float: left
+    }
+
+    .product-review-item .element-contents .content-more:hover {
+        text-decoration: underline
+    }
+
+    .product-review-item .element-attachments {
+        margin: 13px 0
+    }
+
+    .product-review-item .element-attachments .product-review-thumbnail {
+        width: 75px;
+        height: 75px;
+        margin-right: 3px;
+        margin-bottom: 3px
+    }
+
+    .product-review-item .element-survey {
+        margin: 30px 0 0;
+        font-size: 12px;
+        color: #111
+    }
+
+    .product-review-item .element-survey li {
+        padding-top: 5px;
+        line-height: 13px
+    }
+
+    .product-review-item .element-survey li:first-child {
+        padding-top: 0
+    }
+
+    .product-review-item .element-survey li>label,
+    .product-review-item .element-survey li>span {
+        float: left;
+        line-height: 13px
+    }
+
+    .product-review-item .element-survey li .element-survey-title {
+        width: 50px;
+        font-weight: 700
+    }
+
+    .product-review-item .element-survey li .element-survey-text {
+        margin-left: 5px
+    }
+
+    .product-review-item .element-helpful-report {
+        margin-top: 30px
+    }
+
+    .product-review-item .element-helpful-report .helpful-count {
+        font-size: 11px
+    }
+
+    .product-review-item .element-helpful-report .helpful-count .helpful-true-count {
+        font-weight: 700
+    }
+
+    .product-review-item .element-helpful-report .travel-button {
+        border-radius: 0
+    }
+
+    .product-review-item .element-helpful-report .travel-button:hover {
+        background-color: #346aff;
+        color: #fff;
+        border: 1px solid transparent
+    }
+
+    .product-review-item .element-helpful-report .travel-button:disabled,
+    .product-review-item .element-helpful-report .travel-button:disabled:hover {
+        border-color: #111;
+        color: #111;
+        background-color: #fff;
+        cursor: default
+    }
+
+    .product-review-item .element-helpful-report .element-edit,
+    .product-review-item .element-helpful-report .element-remove,
+    .product-review-item .element-helpful-report .element-report {
+        color: #346aff;
+        font-size: 12px;
+        cursor: pointer;
+        margin-top: 5px
+    }
+
+    .product-review-item .element-helpful-report .element-edit:hover,
+    .product-review-item .element-helpful-report .element-remove:hover,
+    .product-review-item .element-helpful-report .element-report:hover {
+        text-decoration: underline
+    }
+
+    .travel-modal-container .travel-modal-dialog .modal-dialog.element-report-modal .modal-content {
+        padding: 30px 26px 20px;
+        height: 432px;
+        overflow-y: scroll
+    }
+
+    .positive-critical .review-wrap:after,
+    .positive-critical:after {
+        content: "";
+        display: block;
+        clear: both
+    }
+
+    .positive-critical {
+        margin-top: 60px
+    }
+
+    .positive-critical .review-wrap {
+        width: calc(50% - 30px);
+        float: left;
+        padding-top: 10px;
+        border-top: 1px solid #111
+    }
+
+    .positive-critical .review-wrap:first-child {
+        margin-right: 59px
+    }
+
+    .product-review-list {
+        position: relative;
+        margin-top: 50px
+    }
+
+    .product-review-list .product-review-item {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 30px
+    }
+
+    .product-review-list .travel-pagination {
+        margin: 35px 0 70px
+    }
+	    .product-review .product-review__title-wrap:after {
+        content: "";
+        display: block;
+        clear: both
+    }
+
+    .product-review .product-review__title-wrap {
+        border-top: 1px solid #333;
+        padding: 30px 0
+    }
+
+    .product-review .product-review__title-wrap .travel-title {
+        float: left
+    }
+
+    .product-review .product-review__title-wrap .travel-button {
+        float: right;
+        font-size: 12px
+    }
+
+    .product-review .product-review-none {
+        font-size: 12px;
+        color: #2f2f2f;
+        margin-top: 20px;
+        padding: 30px 0 80px;
+        text-align: center
+    }
+
+    .product-review .product-review__policy {
+        font-size: 12px;
+        margin-top: 10px;
+        letter-spacing: -.5px;
+        color: #346aff;
+        float: right;
+        cursor: pointer
+    }
+
+    .product-review .product-review__policy:hover {
+        color: #0052a3;
+        text-decoration: underline
+    }
+
+    .travel-modal-container .travel-modal-dialog .modal-dialog.product-review-modal.review-policy-modal .review-policy-title {
+        border-top: 2px solid #333;
+        padding: 15px 0;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: -1px
+    }
+
+    .travel-modal-container .travel-modal-dialog .modal-dialog.product-review-modal.review-policy-modal li {
+        font-size: 12px;
+        line-height: 19px;
+        letter-spacing: -1px
+    }
+
+    .travel-modal-container .travel-modal-dialog .modal-dialog.product-review-modal.review-policy-modal .review-policies-number {
+        width: 630px;
+        padding-left: 13px
+    }
+
+    .travel-modal-container .travel-modal-dialog .modal-dialog.product-review-modal.review-policy-modal .review-policies-number>li {
+        text-indent: -12px;
+        list-style: decimal inside
+    }
+
+    .travel-modal-container .travel-modal-dialog .modal-dialog.product-review-modal.review-policy-modal .review-policies-alphabet {
+        padding-left: 20px
+    }
+
+    .travel-modal-container .travel-modal-dialog .modal-dialog.product-review-modal.review-policy-modal .review-policies-alphabet>li {
+        list-style: upper-alpha inside
+    }
+	   .review-gallery-modal .review-gallery-content-wrap:after,
+    .review-gallery-modal .review-gallery-items:after,
+    .review-gallery-modal .title-wrap:after,
+    .review-gallery-modal:after {
+        content: "";
+        display: block;
+        clear: both
+    }
+
+    .review-gallery-modal .title-wrap {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #333
+    }
+
+    .review-gallery-modal .title-wrap .title {
+        float: left;
+        font-size: 40px;
+        font-weight: 300;
+        color: #111
+    }
+
+    .review-gallery-modal .title-wrap .title .title-info {
+        margin-left: 10px;
+        font-size: 12px;
+        color: #888;
+        letter-spacing: -.5px
+    }
+
+    .review-gallery-modal .title-wrap .close-button {
+        float: right;
+        background: none;
+        border: none;
+        cursor: pointer
+    }
+
+    .review-gallery-modal .title-wrap .close-button:active,
+    .review-gallery-modal .title-wrap .close-button:focus {
+        outline: none
+    }
+	    .element-profile .element-profile-content .element-rating:after,
+    .element-profile:after {
+        content: "";
+        display: block;
+        clear: both
+    }
+
+    .element-profile {
+        margin-top: 32px
+    }
+
+    .element-profile .element-profile-image {
+        float: left;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: no-repeat 50%;
+        background-size: cover;
+        margin-right: 6px
+    }
+
+    .element-profile .element-profile-content {
+        float: left
+    }
+
+
+    .element-profile .element-profile-content .element-rating .rating-star {
+        float: left
+    }
+
+    .element-profile .element-profile-content .element-rating .element-review-date {
+        float: left;
+        color: #555;
+        font-size: 12px;
+        line-height: 18px;
+        margin-left: 5px
+    }
+	    .travel-modal-container .travel-modal-dialog .modal-dialog .review-image-carousel .close-button-wrap .element-profile .element-display-name {
+        color: #fff
+    }
+
+    .travel-modal-container .travel-modal-dialog .modal-dialog .review-image-carousel .close-button-wrap .element-profile .element-review-date {
+        color: #aaa
+    }
+	    .basis-element-attachments .basis-review-thumbnail {
+        float: none;
+        display: inline-block;
+        width: 40px;
+        height: 40px
+    }
+
+    .basis-element-attachments .basis-review-thumbnail .basis-review-thumbnail-count {
+        background-color: hsla(0, 0%, 7%, .65);
+        font-size: 12px;
+        font-weight: 700;
+        text-align: center;
+        color: #fff;
+        padding-top: 12px;
+        height: 100%
+    }
+
+    .basis-element-attachments .basis-review-thumbnail .basis-review-thumbnail-video {
+        background-color: hsla(0, 0%, 7%, .65);
+        text-align: center;
+        padding: 2px;
+        height: 100%
+    }
+
+    .basis-element-attachments .basis-review-thumbnail .basis-review-thumbnail-video .play-button {
+        display: inline-block;
+        background: url("//img1a.coupangcdn.com/image/productreview/web/pdp/video/play-btn-middle__v1.png") no-repeat;
+        background-size: 8px 10px;
+        width: 8px;
+        height: 10px
+    }
+
+    .basis-element-attachments .basis-review-thumbnail .basis-review-thumbnail-video .video-duration {
+        color: #fff;
+        text-align: center;
+        font-size: 10px
+    }
+	    #travel-modal-map .travel-modal-map__nearby-list-pane .travel-modal-map__nearby-list-content {
+        margin: 20px 16px;
+        height: 314px;
+        overflow-y: scroll
+    }
+
+    #travel-modal-map .travel-modal-map__nearby-list-pane .travel-modal-map__nearby-list-content .travel-modal-map__nearby-list-name {
+        font-size: 14px;
+        color: #333;
+        line-height: 28px;
+        height: 30px;
+        cursor: pointer
+    }
+
+    #travel-modal-map .travel-modal-map__nearby-list-pane .travel-modal-map__nearby-list-content .travel-modal-map__nearby-list-name:hover {
+        text-decoration: underline
+    }
+
+    #travel-modal-map .travel-modal-map__nearby-list-pane .travel-modal-map__nearby-list-content .travel-modal-map__nearby-list-name.selected {
+        font-weight: 700;
+        color: #346aff
+    }
+
+    #travel-modal-map .travel-modal-map__nearby-list-pane .travel-modal-map__nearby-list-content .travel-modal-map__nearby-list-marker {
+        width: 10px;
+        height: 16px;
+        margin-top: 5px;
+        margin-right: 10px
+    }
+
+    #travel-modal-map .travel-modal-map__nearby-list-pane .travel-modal-map__nearby-list-content .travel-modal-map__nearby-list-distance {
+        font-size: 14px;
+        margin-left: 5px;
+        color: #888
+    }
+	    .travel-detail-title {
+        font-weight: 600;
+        line-height: 26px
+    }
+
+    .travel-detail-title .grade {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: -.5px;
+        line-height: 30px;
+        color: #666;
+        vertical-align: middle;
+        word-break: keep-all
+    }
+
+    .travel-detail-title .grade:before {
+        content: " |";
+        color: #ccc;
+        font-weight: 400;
+        letter-spacing: 2px;
+        padding-right: 3px
+    }
+
+    .travel-detail-title .travel-price__dynamic-discount-help-wrap {
+        position: relative;
+        line-height: 16px;
+        display: inline-block;
+        margin-left: 5px
+    }
+
+    .travel-detail-title .travel-price__dynamic-discount-help-wrap .travel-price__dynamic-discount-help {
+        width: 14px;
+        height: 14px;
+        cursor: pointer
+    }
+
+    .travel-detail-title .travel-price__dynamic-discount-help-wrap .travel-price__dynamic-discount-layer {
+        display: none;
+        position: absolute;
+        right: -24px;
+        z-index: 999
+    }
+
+    .travel-detail-title .travel-price__dynamic-discount-help-wrap .travel-price__dynamic-discount-layer .travel-price__dynamic-discount-layer-content {
+        width: 305px;
+        background-color: #fffeef;
+        border: 1px solid #d9d5b4;
+        border-radius: 5px;
+        -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .14);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .14);
+        color: #333;
+        line-height: 1.54;
+        letter-spacing: -1px;
+        font-size: 13px;
+        padding: 30px 25px;
+        text-align: left;
+        margin-top: -4px
+    }
+
+    .travel-detail-title .travel-price__dynamic-discount-help-wrap .travel-price__dynamic-discount-layer .travel-price__dynamic-discount-layer-icon {
+        display: block;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        background-color: #fffeef;
+        border-left: 1px solid #d9d5b4;
+        border-top: 1px solid #d9d5b4;
+        width: 8px;
+        height: 8px;
+        margin-left: 270px
+    }
+
+    .travel-detail-title .travel-price__dynamic-discount-help-wrap:hover .travel-price__dynamic-discount-layer {
+        display: block
+    }
+	    .basis-key-infos li.basis-key-info .key-info-title {
+        float: left;
+        display: block;
+        width: 65px;
+        top: 0;
+        color: #999
+    }
+	    #travel-modal-map .travel-modal-map__nearby-list-pane .travel-modal-map__nearby-list-title {
+        height: 50px;
+        background-color: #eee;
+        padding-left: 15px;
+        line-height: 50px;
+        color: #333;
+        font-size: 16px;
+        font-weight: 700
+    }
+	    .basis-product-cashback-column .cashback-title {
+        display: inline-block;
+        height: 24px
+    }
+
+    .basis-product-cashback-column .cashback-title .cashback-icon {
+        width: 20px;
+        height: 20px
+    }
+
+    .basis-product-cashback-column .cashback-title .cashback-title-text {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 24px;
+        color: #111;
+        margin-left: 10px
+    }
+
+    @media only screen and (min-width:1300px) {
+        .basis-product-cashback-column .cashback-title .cashback-title-text {
+            font-size: 16px
+        }
+    }
+
+    .basis-product-cashback-column .cashback-title .cashback-help {
+        margin-left: 5px;
+        margin-top: 3px;
+        cursor: pointer
+    }
+
+    .basis-product-cashback-column .cashback-title-info {
+        display: inline-block;
+        font-size: 13px;
+        letter-spacing: -1px;
+        font-weight: 400
+    }
+
+    @media only screen and (min-width:1300px) {
+        .basis-product-cashback-column .cashback-title-info {
+            font-size: 14px;
+            letter-spacing: 0
+        }
+    }
+
+    .basis-product-cashback-column .cashback-title-info .cashback-info-separator {
+        padding: 0 6px;
+        color: #ccc
+    }
+
+    .basis-product-cashback-column .cashback-title-info .cashback-info-text strong {
+        font-weight: 700
+    }
+	    .basis-product-promotion-column .promotion-title {
+        height: 24px
+    }
+
+    .basis-product-promotion-column .promotion-title .promotion-title-text {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: -1px;
+        color: #111;
+        margin-left: 10px
+    }
+
+    @media only screen and (min-width:1300px) {
+        .basis-product-promotion-column .promotion-title .promotion-title-text {
+            font-size: 16px
+        }
+    }
 .basis-aside-section {
 	padding: 30px 20px;
 	border-top: 1px solid #ddd
