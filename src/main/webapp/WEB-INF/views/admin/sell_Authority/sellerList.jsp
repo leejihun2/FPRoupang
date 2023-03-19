@@ -65,7 +65,7 @@ button{
 			$("[name=public1]").each(function(idx){
 				if($(this).is(":checked")==true){
 					block_val.push($(this).val());
-					console.log(block_val);
+				
 				}
 			});
 			if(block_val.length==0){

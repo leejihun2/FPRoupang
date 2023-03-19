@@ -33,7 +33,7 @@
 <script>
 $(function(){
 	$("#approveSell").click(function(){
-		console.log(this.value);
+
 		var approve_val=this.value;
 		
 		

@@ -89,7 +89,9 @@
 	</select>
 
 	<select id="reviewList" resultType="com.edu.springboot.jdbc.ReviewDTO">
-		select * from review where bot_cate_idx = #{param1}
+		select * from review rv 
+		  join (select email, name, member_idx from member) mv 
+		    on mv.MEMBER_IDX=rv.MEMBER_IDX where bot_cate_idx = #{param1}
 	</select>
 	
 	<update id="modifyReview" parameterType="com.edu.springboot.jdbc.ReviewDTO">

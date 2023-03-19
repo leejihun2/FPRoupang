@@ -71,4 +71,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				from goods_order_item
 					where idx=#{order_item_idx}
 	</select>
+	
+	<select id="buyerInfo" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO" 
+	resultType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
+		select idx, buyer_idx, order_num, order_date, order_status, 
+    (select goods_image from goods_order_item where order_idx = goods_order.idx)as goods_image, 
+        (select price from goods_order_item where order_idx = goods_order.idx)as price,
+        (select amount from goods_order_item where order_idx = goods_order.idx)as amount,
+        (select title from bot_category where idx=goods_order.idx)as top_title
+        	from goods_order 
+        		where buyer_idx=#{member_idx}
+	</select>
+	
+	<update id="orderCancel">
+		update goods_order set order_status ='3'
+			where idx=#{idx}
+	
+	</update>
+	
+	<update id="approveCancel">
+		update goods_order set order_status ='4'
+			where idx=#{idx}
+	
+	</update>
  </mapper>
