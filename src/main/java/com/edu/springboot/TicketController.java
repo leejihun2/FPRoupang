@@ -2,6 +2,7 @@ package com.edu.springboot;
 
 
 import java.io.File;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -465,8 +466,11 @@ public class TicketController {
 	
 	@ResponseBody
 	@RequestMapping("/cellProduct")
-	public String test(HttpServletRequest req) {
+	public String test(HttpServletRequest req, Principal principal) {
+		String email = principal.getName();
+		
 		TempgoodsOrderDTO gdto = new TempgoodsOrderDTO();
+		gdto.setBuyer_idx(member_dao.member_idx(email));
 		gdto.setBot_idx(req.getParameter("bot_idx"));
 		gdto.setPrice(Integer.parseInt(req.getParameter("price")));
 		gdto.setAmount(Integer.parseInt(req.getParameter("amount")));

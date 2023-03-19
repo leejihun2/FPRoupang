@@ -474,6 +474,7 @@ p {
 <body style="background-color: white;">
 	<div id="top" style="margin-bottom: 0px;">
 		<%@include file="../top.jsp"%>
+		<%@include file="../star.jsp"%>
 	</div>
 	<div class="container">
 		<div id="travel-container">
@@ -713,109 +714,76 @@ p {
 											<th colspan="2">리뷰</th>
 										</tr>
 										<tr>
-											<td><c:forEach items="${lists }" var="row">
-													<div class="border mt-2 mb-2">
-														<!--  -->
-														<ul class="comment">
-															<li></li>
-														</ul>
-														<!--  -->
-														<div class="media">
-															<c:forEach begin="1" end="5" var="i">
-																<c:choose>
-																	<c:when test="${Math.round(row.star_rate) >= i }">
-																		<div class="star-ratings">
-																			<div class="star-ratings-fill space-x-2 text-lg"
-																				:style="{ width: ratingToPercent + '%' }">
-																				<span>★</span>
-																			</div>
-																			<div class="star-ratings-base space-x-2 text-lg">
-																				<span>★</span>
-																			</div>
-																		</div>
-																	</c:when>
-																	<c:otherwise>
-																		<div class="star-ratings text-lg">
-																			<span>★</span>
-																		</div>
-																	</c:otherwise>
-																</c:choose>
-															</c:forEach>
+											<td>
+												<div class="product-review">
+													<div class="product-review__title-wrap"></div>
+													<div>
+														<h4 class="travel-title travel-title-sm"
+															style="margin-top: 0px; margin-bottom: 0px;">가격</h4>
+														<input type="hidden" name="ratevalue2"
+															value="${totalstar.star_servey1}" step="0.1" min="0"
+															max="5" />
+														<div class="rating-wrap2">
+															<div class="rating2">
+																<div class="overlay2"></div>
+															</div>${totalstar.servey1_0}
 														</div>
-														<div class="media-body">
-															<p class="star-ratings">${row.summary }</p>
-															<p>${row.review }</p>
-															<div class="media">
-																가격&nbsp;&nbsp;&nbsp;
-																<c:forEach begin="1" end="5" var="i">
-																	<c:choose>
-																		<c:when test="${Math.round(row.star_servey1) >= i }">
-																			<div class="star-ratings">
-																				<div class="star-ratings-fill space-x-2 text-lg"
-																					:style="{ width: ratingToPercent + '%' }">
-																					<span>★</span>
-																				</div>
-																				<div class="star-ratings-base space-x-2 text-lg">
-																					<span>★</span>
-																				</div>
+														<h4 class="travel-title travel-title-sm"
+															style="margin-top: 0px; margin-bottom: 0px;">서비스</h4>
+														<input type="hidden" name="ratevalue3"
+															value="${totalstar.star_servey2}" step="0.1" min="0"
+															max="5" />
+														<div class="rating-wrap3">
+															<div class="rating3">
+																<div class="overlay3"></div>
+															</div>${totalstar.servey2_0}
+														</div>
+														<h4 class="travel-title travel-title-sm"
+															style="margin-top: 0px; margin-bottom: 0px;">시설</h4>
+														<input type="hidden" name="ratevalue4"
+															value="${totalstar.star_servey3}" step="0.1" min="0"
+															max="5" />
+														<div class="rating-wrap4">
+															<div class="rating4">
+																<div class="overlay4"></div>
+															</div>${totalstar.servey3_0}
+														</div>
+													</div>
+													<c:forEach items="${lists }" var="row">
+														<div class="product-review-list" id="product-reviews">
+															<div class="product-review-item">
+																<div class="element-profile">
+																	<div class="element-profile-image"
+																		style="background-image: url(&quot;//img1a.coupangcdn.com/image/productreview/web/pdp/profile/img-profile-empty.png&quot;);">
+																	</div>
+																	<div class="element-profile-content">
+																		<div class="element-names">
+																			<span class="element-display-name">${row.name }</span>
+																		</div>
+																		<div class="element-rating">
+																			<div class="rating-wrap">
+																				<input type="hidden" name="ratevalue"
+																					value="${row.star_rate}" step="0.1" min="0" max="5" />
+																				<div class="rating">
+																					<div class="overlay"></div>
+																				</div>${row.star_rate}
 																			</div>
-																		</c:when>
-																		<c:otherwise>
-																			<div class="star-ratings text-lg">
-																				<span>★</span>
-																			</div>
-																		</c:otherwise>
-																	</c:choose>
-																</c:forEach>
-															</div>
-															<div class="media">
-																서비스&nbsp;
-																<c:forEach begin="1" end="5" var="i">
-																	<c:choose>
-																		<c:when test="${Math.round(row.star_servey2) >= i }">
-																			<div class="star-ratings">
-																				<div class="star-ratings-fill space-x-2 text-lg"
-																					:style="{ width: ratingToPercent + '%' }">
-																					<span>★</span>
-																				</div>
-																				<div class="star-ratings-base space-x-2 text-lg">
-																					<span>★</span>
-																				</div>
-																			</div>
-																		</c:when>
-																		<c:otherwise>
-																			<div class="star-ratings text-lg">
-																				<span>★</span>
-																			</div>
-																		</c:otherwise>
-																	</c:choose>
-																</c:forEach>
-															</div>
-															<div class="media">
-																시설&nbsp;&nbsp;&nbsp;
-																<c:forEach begin="1" end="5" var="i">
-																	<c:choose>
-																		<c:when test="${Math.round(row.star_servey3) >= i }">
-																			<div class="star-ratings">
-																				<div class="star-ratings-fill space-x-2 text-lg"
-																					:style="{ width: ratingToPercent + '%' }">
-																					<span>★</span>
-																				</div>
-																				<div class="star-ratings-base space-x-2 text-lg">
-																					<span>★</span>
-																				</div>
-																			</div>
-																		</c:when>
-																		<c:otherwise>
-																			<div class="star-ratings text-lg">
-																				<span>★</span>
-																			</div>
-																		</c:otherwise>
-																	</c:choose>
-																</c:forEach>
+																			<span class="element-review-date">${row.regiDate }</span>
+																		</div>
+																	</div>
+																</div>
+																<div class="element-item-name"></div>
+																<ul class="element-attachments"></ul>
+																<div class="element-contents">
+																	<p class="title">${row.summary }</p>
+																	<p class="content">${row.review }</p>
+																</div>
 															</div>
 														</div>
-												</c:forEach></td>
+													</c:forEach>
+												</div>
+												</div>
+											</td>
 										</tr>
 									</table>
 								</div>
@@ -865,8 +833,8 @@ p {
 							<div class="basis-product">
 								<h2 style="margin-top: 0px; margin-bottom: 5px;">${t_title }</h2>
 								<div class="basis-product-address"></div>
-								<input type="hidden" name="ratevalue5"
-									value="${totalstar.star_rate}" step="0.1" min="0" max="5" />
+								<input type="hidden" name="ratevalue5" value="5" step="0.1"
+									min="0" max="5" />
 								<div class="rating-wrap5">
 									<div class="rating5">
 										<div class="overlay5"></div>
@@ -973,37 +941,36 @@ p {
 	           				});
 	                		</script>
 						</div>
-
-
 						<div class="basis-aside-section">
 							<div class="basis-review-section">
 								<div class="basis-review-section-rating">
-									<label class="basis-review-section-title">상품평</label>
+									<h4 class="travel-title travel-title-sm"
+										style="margin-top: 0px; margin-bottom: 0px;">상품평</h4>
 									<div class="rating-wrap1">
+										<input type="hidden" name="ratevalue1"
+											value="${totalstar.star_rate}" step="0.1" min="0" max="5" />
 										<div class="rating1">
 											<div class="overlay1"></div>
 										</div>${totalstar.star_rate0}
 									</div>
-									
 								</div>
-								<c:forEach items="${lists }" var="row" >
-								<ul class="basis-review-section-list">
-									<div class="basis-review-section-list-item">
-										<div class="basis-review-item">
-											<p class="star-ratings">
-											${row.summary }
-											</p>
-											<div
-												style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 4;">
-												${row.review }</div>
-											<div class="basis-review-item-author">
-												<img class="basis-review-item-author-icon"
-													src="//img1a.coupangcdn.com/image/productreview/web/pdp/profile/img-profile-empty.png"><span
-													class="basis-review-item-author-name"></span>
+								<c:forEach items="${lists }" var="row">
+
+									<ul class="basis-review-section-list">
+										<div class="basis-review-section-list-item">
+											<div class="basis-review-item">
+												<p class="star-ratings">${row.summary }</p>
+												<div
+													style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 4;">
+													${row.review }</div>
+												<div class="basis-review-item-author">
+													<img class="basis-review-item-author-icon"
+														src="//img1a.coupangcdn.com/image/productreview/web/pdp/profile/img-profile-empty.png"><span
+														class="basis-review-item-author-name">${row.name }</span>
+												</div>
 											</div>
 										</div>
-									</div>
-								</ul>
+									</ul>
 								</c:forEach>
 								<div class="basis-review-section-all">
 									<a class="basis-review-section-all-link">전체 상품평 보기</a>

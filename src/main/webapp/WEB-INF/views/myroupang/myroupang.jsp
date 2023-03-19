@@ -280,7 +280,7 @@ hover:
         </div>
     </li>
     <li class="st">
-        <div class="cco">
+       <%--  <div class="cco">
             <span class="cou">
                 쿠페이 머니
             </span>
@@ -305,7 +305,7 @@ hover:
                     원
                 </span>
             </a>
-        </div>
+        </div> --%>
     </li>
 </ul>
  </s:authorize>

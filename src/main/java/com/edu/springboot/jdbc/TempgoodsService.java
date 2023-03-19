@@ -14,4 +14,7 @@ public interface TempgoodsService {
 	public ArrayList<TempgoodsOrderDTO> orderView(String order_item_idx);
 	public void orderRealease(List<String> val);
 	public void ordercompleted(List<String> val);
+	public ArrayList<TempgoodsOrderDTO> buyerInfo(int member_idx);
+	public void orderCancel(String value);
+	public void approveCancel(String value);
 }

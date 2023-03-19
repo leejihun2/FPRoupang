@@ -31,8 +31,11 @@ import com.edu.springboot.jdbc.IMainImageService;
 import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.ISupportsService;
 import com.edu.springboot.jdbc.MainImageDTO;
+import com.edu.springboot.jdbc.MemberDTO;
 import com.edu.springboot.jdbc.SellRightDTO;
 import com.edu.springboot.jdbc.SupportsDTO;
+import com.edu.springboot.jdbc.TempgoodsOrderDTO;
+import com.edu.springboot.jdbc.TempgoodsService;
 
 @Controller
 public class AdminController {
@@ -48,11 +51,33 @@ public class AdminController {
 
 	@Autowired
 	IMainImageService image_dao;
+	
+	@Autowired
+	TempgoodsService order_dao;
 
 	@RequestMapping("/admin/index.do")
-	public String admin(Principal principal, HttpSession session, Model model) {
+	public String admin(Principal principal, HttpSession session, Model model, MemberDTO memberDTO) {
 
-		
+		String query = "SELECT SEARCH_WORD, to_char(SEARCH_REGIDATE,'HH24') AS SearchRegidate FROM search_log";
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(query);
+        // 나이승 나이승 나이승
+        try (PrintWriter writer = new PrintWriter(new FileWriter("C:\\Users\\82104\\search_log11.txt"))) {
+            rows.stream().map(row -> {
+                // 컬럼 이름을 바꿔줍니다.
+                Map<String, Object> newRow = new HashMap<>();
+                newRow.put("SearchWord", row.get("SEARCH_WORD"));
+				newRow.put("SearchRegidate", row.get("SearchRegidate")+"시");
+                
+                return newRow;
+            }).forEach(row -> {
+                for (Map.Entry<String, Object> entry : row.entrySet()) {
+                    writer.println((entry.getValue() != null ? entry.getValue().toString() : "null"));
+                }
+                writer.println();
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 		String loginId = principal.getName();
 
@@ -60,10 +85,21 @@ public class AdminController {
 
 		String Authority = dto.getAuthority();
 
+		
+		
 		if (Authority.equals("ROLE_seller")) {
 			return "redirect:/productInsert";
 		} else {
 			model.addAttribute("member_idx", dto.getMember_idx());
+			List<String>orderAdminView = new ArrayList<String>();
+			
+			
+			SellRightDTO srdto  = member_dao.LoginUser(loginId);
+			
+			int member_idx = srdto.getMember_idx();
+			
+			ArrayList<TempgoodsOrderDTO>adminViewlists= order_dao.AdminSelectGoodsOrder(member_idx);
+			model.addAttribute("lists",adminViewlists);
 			return "/admin/index";
 		}
 	}
