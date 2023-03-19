@@ -91,7 +91,7 @@
 								<!-- Card Body -->
 								<div class="card-body" style="height:300px;">
 									<div id="carouselExampleControls" class="carousel slide"
-										data-bs-ride="">
+										data-bs-ride="carousel">
 										<div class="carousel-inner">
 											<div class="carousel-item active" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 가평.png"
@@ -99,35 +99,35 @@
 											</div>
 											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 강릉.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
 											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 강원.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
 											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 경기.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
 											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 부산.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
 											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 서울.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
 											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 속초.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
 											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 전주.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
 											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 제주.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
 										</div>
 										<button class="carousel-control-prev" type="button"
