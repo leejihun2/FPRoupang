@@ -67,7 +67,6 @@ public class AdminController {
 			model.addAttribute("member_idx", dto.getMember_idx());
 			List<String>orderAdminView = new ArrayList<String>();
 			
-			
 			SellRightDTO srdto  = member_dao.LoginUser(loginId);
 			
 			int member_idx = srdto.getMember_idx();
