@@ -611,7 +611,7 @@ function errCallBack(errData) {
           <div class="payment-reward-cash-area">
              <img class="payment-reward-cash-area__icon" src="//img1a.coupangcdn.com/image/cart/generalCart/ico_cash_m_2x.png">
              <h3 class="payment-reward-cash-area__title">캐시적립 혜택</h3>
-             <span class="payment-reward-cash-area__desc">쿠페이 머니 결제 시 5% 적립</span>
+             <span class="payment-reward-cash-area__desc">쿠페이 머니 결제 시 3% 적립</span>
           </div>
        <div class="cart-total-price" data-total-price="0" data-discount-price="0">
             <div class="cart-total-price__inner">
