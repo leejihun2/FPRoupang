@@ -8,13 +8,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="InsertOrder" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
 		INSERT INTO goods_order
-		VALUES (order_seq.nextval, #{buyer_idx}, 111111, sysdate, sysdate, sysdate, 0, #{seller_idx})
+		VALUES (order_seq.nextval, 1, 111111, sysdate, sysdate, sysdate, 0, #{seller_idx})
 	</insert>
 	
 	<insert id="InsertOrderItem" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
       INSERT INTO goods_order_item
-      VALUES (order_item_seq.nextval, order_seq.currval, #{bot_idx},#{price}, #{amount},
-      #{discount}, #{goods_idx} ,#{goods_image}, #{top_title}, #{main_title}, #{sorting}
+      VALUES (order_item_seq.nextval, order_seq.currval, #{bot_idx},#{goods_idx}, #{goods_image},
+      #{top_title}, #{main_title} ,#{price}, #{amount}, #{discount}, #{sorting}
       )
    </insert>
 
@@ -22,7 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="SellerSelectGoodsOrder" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO" 
 	resultType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
 		select idx, buyer_idx, seller_idx, order_num, order_date, depart_date, arrive_date, order_status, 
-        (select title from bot_category where idx=goods_order.idx) as top_title,
+        (select title from bot_category where idx=
+        	(select bot_idx from goods_order_item where order_idx=goods_order.idx)) as top_title,
             (select goods_image from goods_order_item where order_idx = goods_order.idx) as goods_image,
             	(select idx from goods_order_item where order_idx = goods_order.idx) as order_item_idx
 			from goods_order
@@ -32,7 +33,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="AdminSelectGoodsOrder" parameterType="com.edu.springboot.jdbc.TempgoodsOrderDTO" 
 	resultType="com.edu.springboot.jdbc.TempgoodsOrderDTO">
 		select idx, buyer_idx, seller_idx, order_num, order_date, depart_date, arrive_date, order_status, 
-        (select title from bot_category where idx=goods_order.idx) as top_title,
+        (select title from bot_category where idx=
+        	(select bot_idx from goods_order_item where order_idx=goods_order.idx)) as top_title,
             (select goods_image from goods_order_item where order_idx = goods_order.idx) as goods_image,
             	(select idx from goods_order_item where order_idx = goods_order.idx) as order_item_idx,
             		(select company_name from sell_authorized where member_idx=seller_idx)as company_name,
@@ -78,7 +80,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     (select goods_image from goods_order_item where order_idx = goods_order.idx)as goods_image, 
         (select price from goods_order_item where order_idx = goods_order.idx)as price,
         (select amount from goods_order_item where order_idx = goods_order.idx)as amount,
-        (select title from bot_category where idx=goods_order.idx)as top_title
+        (select title from bot_category where idx=
+        	(select bot_idx from goods_order_item where order_idx=goods_order.idx)) as top_title
         	from goods_order 
         		where buyer_idx=#{member_idx}
 	</select>
