@@ -61,8 +61,6 @@ public class AdminController {
 
 		String Authority = dto.getAuthority();
 
-		
-		
 		if (Authority.equals("ROLE_seller")) {
 			return "redirect:/productInsert";
 		} else {
