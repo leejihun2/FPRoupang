@@ -363,8 +363,8 @@ function info_close(){
  </script>
 </head>
 <body style="background-color: white;">
-	<%@ include file="top.jsp" %>
-	<%@include file="./star.jsp"%>
+	<%@ include file="../top.jsp" %>
+	<%@include file="../star.jsp"%>
 	<section id="contents" class="contents product">
 		<div class="prod-atf">
 			<div class="prod-atf-main">

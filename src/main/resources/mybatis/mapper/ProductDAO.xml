@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.edu.springboot.jdbc.ProductService">
+	<!-- 소분류테이블에서 해당 분류에 맞는 상품 정보 가져오기 -->
+	<select id="product_list"
+	resultType="com.edu.springboot.jdbc.ProductDTO">
+		select * from product where bot_idx = #{param1} order by 1 asc
+	</select>
+	
+	<!-- 소분류테이블에서 해당 분류에 맞는 상품상세정보 가져오기 -->
+	<select id="product_info_list" 
+	resultType="com.edu.springboot.jdbc.ProductInfoDTO">
+		select * from product_info where bot_idx = #{param1} order by 1 asc
+	</select>
+	
+	<!-- 상품의 정보 가져오기 -->
+	<select id="select_product"
+	resultType="com.edu.springboot.jdbc.ProductDTO">
+		select * from product where idx = #{param1}
+	</select>
+	
+	<!-- 상품에 따른 상세정보 가져오기 -->
+	<select id="select_product_info" 
+	resultType="com.edu.springboot.jdbc.ProductInfoDTO">
+		select * from product_info where pi_idx = #{param1}
+	</select>
+	
+	<!-- 소분류 테이블 입력 -->
+	<insert id="insert_bot_category">
+		insert into bot_category
+		values(bot_category_seq.nextval, #{param1}, #{param2}, #{param3})
+	</insert>
+	
+	<select id="select_new_idx" resultType="int">
+		SELECT bot_category_seq.CURRVAL FROM DUAL
+ 	</select>
+	
+	<!-- 상품 입력 -->
+	<insert id="insert_product"
+	parameterType="com.edu.springboot.jdbc.ProductDTO">
+		INSERT INTO PRODUCT VALUES (
+		product_seq.nextval, #{bot_idx}, #{p_title}, #{p_cup_num}, #{p_production}, 
+		<choose>
+			<when test="p_pro_date != null">
+				#{p_pro_date}
+			</when>
+			<otherwise>sysdate - 30</otherwise>
+		</choose>
+		, #{p_pro_country}, 
+		<choose>
+			<when test="p_duetime != ''">
+				#{p_duetime}
+			</when>
+			<otherwise>
+				DEFAULT
+			</otherwise>
+		</choose>
+		, 
+		<choose>
+			<when test="p_callnum != ''">
+				#{p_callnum}
+			</when>
+			<otherwise>
+				DEFAULT
+			</otherwise>
+		</choose>
+		, 
+		<choose>
+			<when test="p_useway != ''">
+				#{p_useway}
+			</when>
+			<otherwise>
+				DEFAULT
+			</otherwise>
+		</choose>
+		,
+		<choose>
+			<when test="p_size != ''">
+				#{p_size}
+			</when>
+			<otherwise>
+				DEFAULT
+			</otherwise>
+		</choose>
+		,
+		<choose>
+			<when test="p_as_info != ''">
+				#{p_as_info}
+			</when>
+			<otherwise>
+				DEFAULT
+			</otherwise>
+		</choose>
+		,
+		<choose>
+			<when test="p_composition != ''">
+				#{p_composition}
+			</when>
+			<otherwise>
+				DEFAULT
+			</otherwise>
+		</choose>
+		,
+		<choose>
+			<when test="p_caution != ''">
+				#{p_caution}
+			</when>
+			<otherwise>
+				DEFAULT
+			</otherwise>
+		</choose>
+		,
+		<choose>
+			<when test="p_assurance != ''">
+				#{p_assurance}
+			</when>
+			<otherwise>
+				DEFAULT
+			</otherwise>
+		</choose>
+		,
+		#{p_title_image}
+		,
+		<choose>
+			<when test="p_image1 != null">
+				#{p_image1}
+			</when>
+			<otherwise>null</otherwise>
+		</choose>
+		,
+		<choose>
+			<when test="p_image2 != null">
+				#{p_image2}
+			</when>
+			<otherwise>null</otherwise>
+		</choose>
+		,
+		<choose>
+			<when test="p_image3 != null">
+				#{p_image3}
+			</when>
+			<otherwise>null</otherwise>
+		</choose>
+		,
+		<choose>
+			<when test="p_image4 != null">
+				#{p_image4}
+			</when>
+			<otherwise>null</otherwise>
+		</choose>
+	    )
+	</insert>
+	
+	<!-- 상품 상세 정보 입력 -->
+	<insert id="insert_product_info"
+	parameterType="com.edu.springboot.jdbc.ProductInfoDTO">
+		INSERT INTO product_info VALUES (
+   		product_info_seq.nextval, #{bot_idx}, #{pi_title}, #{pi_amount}, 
+   		#{pi_price}, 
+   		<choose>
+			<when test="pi_discount != null">
+				#{pi_discount}
+			</when>
+			<otherwise>0</otherwise>
+		</choose>
+		, 1, default, default, default, '0', default
+		)
+	</insert>
+	
+ 	
+ 	<update id="update_product"
+ 	parameterType="com.edu.springboot.jdbc.ProductDTO">
+ 	UPDATE PRODUCT
+ 	SET p_title = #{p_title}, p_cup_num = #{p_cup_num},
+ 		p_production = #{p_production}, p_pro_date = #{p_pro_date}
+		, p_pro_country = #{p_pro_country}, p_duetime = #{p_duetime}
+		
+		<choose>
+			<when test="p_callnum != ''">
+				, p_callnum = #{p_callnum}
+			</when>
+			<otherwise>,p_callnum = default</otherwise>
+		</choose>
+		<choose>
+			<when test="p_useway != ''">
+				,p_useway = #{p_useway}
+			</when>
+			<otherwise>,p_useway = default</otherwise>
+		</choose>
+		<choose>
+			<when test="p_size != ''">
+				,p_size = #{p_size}
+			</when>
+			<otherwise>,p_size = default</otherwise>
+		</choose>
+		<choose>
+			<when test="p_as_info != ''">
+				,p_as_info = #{p_as_info}
+			</when>
+			<otherwise>,p_as_info = default</otherwise>
+		</choose>
+		<choose>
+			<when test="p_composition != ''">
+				,p_composition = #{p_composition}
+			</when>
+			<otherwise>,p_composition = default</otherwise>
+		</choose>
+		<choose>
+			<when test="p_caution != ''">
+				,p_caution = #{p_caution}
+			</when>
+			<otherwise>,p_caution = default</otherwise>
+		</choose>
+		<choose>
+			<when test="p_assurance != ''">
+				,p_assurance = #{p_assurance}
+			</when>
+			<otherwise>,p_assurance = default</otherwise>
+		</choose>
+		<if test="p_title_image != null">
+			, p_title_image = #{p_title_image}
+		</if>
+		<choose>
+			<when test="p_image1 != null">
+				,p_image1 = #{p_image1}
+			</when>
+			<otherwise>,p_image1 = null</otherwise>
+		</choose>
+		<choose>
+			<when test="p_image2 != null">
+				,p_image2 = #{p_image2}
+			</when>
+			<otherwise>,p_image2 = null</otherwise>
+		</choose>
+		<choose>
+			<when test="p_image3 != null">
+				,p_image3 = #{p_image3}
+			</when>
+			<otherwise>,p_image3 = null</otherwise>
+		</choose>
+		<choose>
+			<when test="p_image4 != null">
+				,p_image4 = #{p_image4}
+			</when>
+			<otherwise>,p_image4 = null</otherwise>
+		</choose>
+		WHERE idx = #{idx}
+ 	</update>
+ 	
+ 	<update id="update_product_info"
+ 	parameterType="com.edu.springboot.jdbc.ProductInfoDTO">
+ 		UPDATE PRODUCT INFO
+ 		SET pi_title = #{pi_title}, pi_amount = #{pi_amount}, pi_price = #{pi_price}
+ 		<choose>
+			<when test="pi_discount != null">
+				, pi_discount = #{pi_discount}
+			</when>
+			<otherwise>, pi_discount = 0</otherwise>
+		</choose> 
+		<choose>
+			<when test="pi_isrocket == 1">
+				,pi_isrocket = 1, 0, 0, 0
+			</when>
+			<otherwise>
+				,pi_isrocket = 0, 0, 0, 0
+				<choose>
+					<when test="pi_delicom == 1">
+						, pi_delicom = '1', pi_delifee = 3000
+					</when>
+					<when test="pi_delicom == 2">
+						, pi_delicom = '1', pi_delifee = 3000
+					</when>
+					<when test="pi_delicom == 3">
+						, pi_delicom = '2', pi_delifee = 3500
+					</when>
+					<otherwise>
+						, pi_delicom = '3', pi_delifee = 4000
+					</otherwise>
+				</choose>
+			</otherwise>
+		</choose>
+ 	</update>
+ 	
+ 	<delete id="delete_product">
+ 		delete from product where idx in
+		<foreach collection="list" open="(" close=")" item="idx" separator=",">
+			#{idx}
+		</foreach> 			
+ 	</delete>
+ 	
+ 	<delete id="delete_product_info">
+ 		DELETE FROM product_info
+ 			WHERE bot_idx IN (SELECT idx FROM bot_category WHERE company_name = #{param2})
+	 			AND pi_idx IN
+	 			<foreach collection="param1" open="(" close=")" item="pi_idx" separator=",">
+	 				#{pi_idx}
+	 			</foreach>
+ 	</delete>
+ 	
+ 	<delete id="delete_product_all_info">
+ 		delete from product_info where idx in
+		<foreach collection="list" open="(" close=")" item="idx" separator=",">
+			#{idx}
+		</foreach> 	
+ 	</delete>
+ 	
+ 	<select id="product_total_image" resultType="com.edu.springboot.jdbc.ProductDTO">
+ 		SELECT * FROM product
+ 		WHERE idx IN
+ 		<foreach collection="list" open="(" close=")" item="idx" separator=",">
+ 			#{idx}
+ 		</foreach>
+ 	</select>
+ 	
+ 	<select id="product_image" resultType="com.edu.springboot.jdbc.ProductDTO">
+ 		SELECT p_title_image, p_image1, p_image2, p_image3, p_image4 FROM product
+ 		WHERE idx = #{idx}
+ 	</select>
+ 	
+ 	<select id="show_product_list" resultType="com.edu.springboot.jdbc.TotalProductDTO">
+ 		SELECT idx, pi_price, p_title_image, pi_image, pi_discount, title
+ 		FROM (select bot_idx, pi_title, pi_title, pi_discount,
+	 				RANK() OVER (PARTITION BY bot_idx ORDER BY pi_price ASC) rk
+	 			FROM product_info) pi JOIN product p on pi.bot_idx = p.bot_idx
+ 			JOIN (SELECT * FROM bot_category WHERE sub_idx = #{param1}) bc
+ 			ON bc.idx = pi.bot_idx
+ 		WHERE rk=1 ORDER BY idx
+ 	</select>
+ 	
+ 	<select id="like_product_list" parameterType="com.edu.springboot.jdbc.ProductDTO" resultType="String">
+ 		select p_title from product where p_title like '%'||${param1}||'%'
+ 	</select>
+</mapper>
