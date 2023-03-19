@@ -125,4 +125,15 @@ public class MainContoller {
 		
 		return "/admin/productInsert";
 	}
+	
+	@RequestMapping("/cart.do")
+	public String cart() {
+		
+		return "cart";
+	}
+	@RequestMapping("/pd.do")
+	public String pd_view() {
+		
+		return "pd_detail_view";
+	}
 }

@@ -190,7 +190,7 @@ onload = function(){
 											class="subscription-menu-warning-icon"></span></a> </span>
 								</p></li>
 							<li class="cart more"><a
-								href="//cart.coupang.com/cartView.pang"
+								href="/cart.do"
 								class="clearFix mycart-preview-module"
 								data-log-props='{ "id": "cart" }'><span class="cart-icon">&nbsp;</span>
 									<span class="cart-title">장바구니</span> <em id="headerCartCount"></em></a>
