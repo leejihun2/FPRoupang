@@ -164,13 +164,13 @@ $(function(){
 		
 	   if(username.value==""){
 	      alert("이름을 입력하세요.");
-	      console.log("이름 미입력");
+
 	      username.focus();
 	      return false;
 	   }
 	   if(phone_number.value==""){
 	      alert("휴대번호를 입력하세요.");
-	      console.log("휴대폰번호 미입력");
+
 	      phone_number.focus(); 
 	      return false;
 	   } 
@@ -232,39 +232,7 @@ $(function(){
 	    		</section>
 	   		</section>
 		</div>	 
-            
-                
-
-
-
-            
-       
-	<!-- <div class="w3-content w3-container w3-margin-top" style="height: 900px;">
-		<form action="search_id.do" method="post" onsubmit="return check(this);">
-			<div class="w3-center w3-large w3-margin-top">
-				<h3 style="float:left">계정정보 찾기</h3>
-			</div>
-			<div>
-				<table class="table table-bordered" style="width: 90%;">
-				<tr>
-					<th width="25%" style="background-color:#eef1f8">이름</th>
-					<td width="25%"><input class="w3-input" style="width:220px;" type="text" id="name" name="name" required maxLength=20></td>
-					
-					<td style="border-left: hidden;" width="20%"></td>
-					<td style="border-left: hidden;" width="30%"></td>
-				</tr>
-				<tr>
-					<th width="12%" style="background-color:#eef1f8">휴대폰번호</th>
-					<td width="14%"><input class="w3-input" style="width:220px;" type="text" id="phone_number" name="phone_number" required maxLength=50>
-					</td><td style="border-left: hidden;" width="20%">
-					<button type="submit" id=findBtn class="btn btn-primary me-md-2" >아이디(이메일)찾기</button>
-					</td>
-					<td style="border-left: hidden;" width="30%"></td>
-				</tr>
-				</table>
-			</div>
-		</form>
-	</div> -->
+ 
 	<div id="cartnav">
          <%@include file="../cartnav.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
         </div>

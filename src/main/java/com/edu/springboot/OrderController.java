@@ -81,6 +81,8 @@ public class OrderController {
         return "redirect:orderlist.do";
 	}
 	
+	
+	
 	@RequestMapping("/ordercompleted.do")
 	public String ordercompleted(HttpServletRequest req, TempgoodsOrderDTO todto) {
 		
@@ -101,7 +103,31 @@ public class OrderController {
         return "redirect:orderlist.do";
 	}
 	
+	@RequestMapping("/orderCancel.do")
+	public String ordercancel(HttpServletRequest req, TempgoodsOrderDTO todto) {
+		
+		System.out.println(req.getParameter("value"));
+		String value= req.getParameter("value");
+		
+		
+		order_dao.orderCancel(value);
+
+		
+        return "redirect:/myroupang/orderlist.do";
+	}
 	
+	@RequestMapping("/approveCancel.do")
+	public String approveCancel(HttpServletRequest req, TempgoodsOrderDTO todto) {
+		
+		System.out.println(req.getParameter("value"));
+		String value= req.getParameter("value");
+		
+		
+		order_dao.approveCancel(value);
+
+		
+        return "redirect:/orderlist.do";
+	}
 	
 	@RequestMapping("/orderView.do")
 	public String orderView(TempgoodsOrderDTO todto, HttpServletRequest req, Model model) {
@@ -114,4 +140,6 @@ public class OrderController {
 		return "/admin/orderView";
 
 	}
+	
+
 }
