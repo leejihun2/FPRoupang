@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>      
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>    
+  
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -49,8 +50,8 @@ button{
 </style>
 <script>
 $(function(){
-	$("#release").click(function(){
-		console.log(this.value);
+	$(".release").click(function(){
+		
 		var release_val=this.value;
 	
 		if(confirm("해당 주문을 출고하시겠습니까?")){
@@ -60,12 +61,22 @@ $(function(){
      
 
 	});
-	$("#completed").click(function(){
-		console.log(this.value);
+	$(".completed").click(function(){
+		
 		var completed_val=this.value;
 		
 		if(confirm("해당 주문을 배송완료 처리하시겠습니까?")){
 				location.href="/ordercompleted.do?value="+completed_val;	
+		}
+     
+
+	});
+	$(".approveCancel").click(function(){
+		
+		var approveCancel_val=this.value;
+		
+		if(confirm("해당 주문을 취소완료 처리하시겠습니까?")){
+				location.href="/approveCancel.do?value="+approveCancel_val;	
 		}
      
 
@@ -127,7 +138,7 @@ $(function(){
 	                                            <th>배송여부</th>
 	                                            <s:authorize access="hasRole('seller')">
 	                                            <th>상세보기</th>
-	                                            <th>전체선택</th>
+	                                            <th>취소여부</th>
 	                                            </s:authorize>
 	                                        </tr>
 	                                    </thead>
@@ -156,6 +167,12 @@ $(function(){
 													<c:if test="${row.order_status eq '2'}">
 													배송완료
 													</c:if>
+													<c:if test="${row.order_status eq '3'}">
+													취소요청중
+													</c:if>
+													<c:if test="${row.order_status eq '4'}">
+													취소완료
+													</c:if>
 													</td>
 													<s:authorize access="hasRole('seller')">
 													<td><a href="orderView.do?order_item_idx=${row.order_item_idx }">상세보기</a>
@@ -163,13 +180,19 @@ $(function(){
 													<td>
 													<div class="button">	
 					                                	<c:if test="${row.order_status eq '0'}">
-															<button class="btn btn-outline-secondary" id="release" name="public1" value="${row.idx }" type="button">출고</button>
+															<button class="btn btn-outline-secondary release" id="release" name="public1" value="${row.idx }" type="button">출고</button>
 														</c:if>                  		
-															<c:if test="${row.order_status eq '1'}">
-														<button class="btn btn-outline-secondary" id="completed" name="public1" value="${row.idx }" type="button">배송완료</button>
+														<c:if test="${row.order_status eq '1'}">
+														<button class="btn btn-outline-secondary completed" id="completed" name="public1" value="${row.idx }" type="button">배송완료</button>
 														</c:if>
 														<c:if test="${row.order_status eq '2'}">
-																	완료
+																	배송완료
+														</c:if>
+														<c:if test="${row.order_status eq '3'}">
+														<button class="btn btn-outline-secondary approveCancel" id="approveCancel" name="public1" value="${row.idx }" type="button">취소승인</button>
+														</c:if>
+														<c:if test="${row.order_status eq '4'}">
+														취소완료
 														</c:if>
 													</div> 
 													</td>

@@ -66,16 +66,9 @@ font-size: 12px;
 
 <body>
 	<script>
-		/**
-		 * 사용자가 입력한 이메일 주소가 이미 존재하는지 여부
-		 */
-		
-		
+
 		var isEmailDuplicated = null;
-		
-		/**
-		 * 모든 필드의 입력값이 유효한지 여부
-		 */
+
 		function validateAllFields() {
 			if (isEmailDuplicated != false) {
 				alert("이메일 입력이 잘못되었습니다.");
@@ -97,12 +90,9 @@ font-size: 12px;
 				return false;
 			}
 			alert("회원가입이 완료되었습니다.");
-			//return false;
+	
 		} 
-		
-		/**
-		 * 초기에 호출되어야하는 함수입니다.
-		 */
+	
 		$(function initialize() {
 			$('#email').focusout(function() {
 				checkEmailDuplication();
@@ -141,27 +131,22 @@ font-size: 12px;
 				$("emailgo").show();
 				$('#emailgo').text('이메일을 입력하세요.').css('color', 'red');
 				emailCheck = false;
-				console.log("이메일 미입력");
+				
 				return false;
 			}
-
-			// TODO: 다른 이메일 형식 검증에 대한 처리가 추가로 필요합니다.
 
 			return true;
 		}
 
-		/**
-		 * 이메일의 중복 여부를 검사한 후, isEmailDuplicated 변수에 저장합니다.
-		 */
 		function checkEmailDuplication() {
 			var email = $("#email").val();
 
 			if(email == "") { 
 				return false; 
-				// 이메일이 입력되어있지 않다면 검사하지 않습니다.
+		
 			}
 			
-			console.log("이메일입력됨");
+
 			$("#emailgo").hide(); 
 
 			
@@ -176,7 +161,7 @@ font-size: 12px;
 					if (result == 0) {
 						$("#search").hide();
 						$('#emailgo1').hide();
-						console.log("이메일사용가능");
+					
 						isEmailDuplicated = false;
 					} else {
 						$("#search").show();
@@ -184,43 +169,38 @@ font-size: 12px;
 						$('#emailgo1').text('이미 가입된 이메일 주소입니다. 다른 이메일을 입력하여 주세요.')
 						.css('color', 'red');
 						$('#input-id').css("margin-bottom","5px");
-						console.log("이메일 중복에러");
+					
 						isEmailDuplicated = true;
 					}	
 				}
 			});
 			
 		}
-		/**
-		 * 입력된 패스워드를 검증합니다.
-		 */
+
 		function validatePassword() {
 			var pw = $("#password").val();
 
-			var SamePass_0 = 0; //동일문자 카운트
-			var SamePass_1 = 0; //연속성(+) 카운드
-			var SamePass_2 = 0; //연속성(-) 카운드
+			var SamePass_0 = 0; 
+			var SamePass_1 = 0; 
+			var SamePass_2 = 0; 
 
 			for (var i = 0; i < pw.length; i++) {
 				var chr_pass_0 = pw.charAt(i);
 				var chr_pass_1 = pw.charAt(i + 1);
 
-				//동일문자 카운트
 				if (chr_pass_0 == chr_pass_1) {
 					SamePass_0 = SamePass_0 + 1
 				}
 
 				var chr_pass_2 = pw.charAt(i + 2);
 
-				//연속성(+) 카운드
 				if (chr_pass_0.charCodeAt(0)
 					- chr_pass_1.charCodeAt(0) == 1
 					&& chr_pass_1.charCodeAt(0)
 					- chr_pass_2.charCodeAt(0) == 1) {
 					SamePass_1 = SamePass_1 + 1
 				}
-				
-				//연속성(-) 카운드
+
 				if (chr_pass_0.charCodeAt(0)
 					- chr_pass_1.charCodeAt(0) == -1
 					&& chr_pass_1.charCodeAt(0)
@@ -232,38 +212,29 @@ font-size: 12px;
 			if ((SamePass_0 < 1)
 				&& (SamePass_1 < 1 && SamePass_2 < 1)) {
 				$('#passwordgo3').hide();
-				console.log("동일한 문자 3개이하");
+			
 			} else {
 				$('#passwordgo3').show();
 				$('#passwordgo3').text('X 3개 이상 연속되거나 동일한 문자/숫자 제외').css('color', 'red');
-				console.log("3개 이상 연속되거나 동일한 문자/숫자 ");
+				
 				return false;
 			}
 
-			
-
-			//var inputVal = $("#password").val();
 			var strUpper = false, strLower = false, strNumber = false;
 
-			//입력한 패스워드의 길이만큼 반복하여 모든 문자를 검사한다. 
+		
 			
 			for (var i = 0; i < pw.length; i++) {
-				//입력값의 아스키코드를 확인해본다.
-				console.log("아스키코드값", pw[i].charCodeAt(0));
-						
-				//입력한 문자열 중에 아래조건에 맞는 문자가 하나라도 존재하면 true로 
-				//변경해준다.
-				//대문자인지 확인
+				
 				if (pw[i].charCodeAt(0) >= 65 && pw[i].charCodeAt(0) <= 90) {
 					strUpper = true;
 				}
 				
-				//소문자인지 확인
+			
 				if (pw[i].charCodeAt(0) >= 97 && pw[i].charCodeAt(0) <= 122) {
 					strLower = true;
 				}
 
-				//숫자인지 확인	
 				if (pw[i].charCodeAt(0) >= 48 && pw[i].charCodeAt(0) <= 57) {
 					strNumber = true;
 				}
@@ -284,7 +255,7 @@ font-size: 12px;
 			
 				if (pw == $("#email").val()) {
 					$('#passwordgo1').html('X 아이디(이메일) 제외').css('color', 'red');
-					console.log("아이디패스워드 동일");
+				
 					return false;
 				}
 				else{
@@ -301,16 +272,13 @@ font-size: 12px;
 			
 		}
 
-		/**
-		 * 입력된 패스워드 확인값을 검증합니다.
-		 */
 		function validatePasswordCheck() {
 			var p1 = $('#password').val();
 			var p2 = $('#password_check').val();
 
 			if (p2 != "") {
 				$("#password_checkgo").hide();
-				console.log("비밀번호확인 입력완료");
+			
 				if (p1 == p2) {
 					$('#passConfirm').html('패스워드가 일치합니다.').css('color',
 						'red');
@@ -324,8 +292,7 @@ font-size: 12px;
 				$("#password_checkgo").show();
 				$("#password_checkgo").text('비밀번호를 확인하세요.').css(
 					'color', 'red');
-
-				console.log("비밀번호확인 미입력");			
+		
 				return false;
 			}
 			
@@ -333,21 +300,13 @@ font-size: 12px;
 			return true;
 		}
 
-		/**
-		 * 입력된 이름 값을 검증합니다.
-		 */ 
+		
 		function validateName() {
 			var name = $('#name').val();
 			strNumber = false;
 
-			//입력한 패스워드의 길이만큼 반복하여 모든 문자를 검사한다. 
 			for (var i = 0; i < name.length; i++) {
-				//입력값의 아스키코드를 확인해본다.
-				console.log("아스키코드값", name[i].charCodeAt(0));
 
-				//입력한 문자열 중에 아래조건에 맞는 문자가 하나라도 존재하면 true로 
-				//변경해준다.
-				//숫자인지 확인
 				if (name[i].charCodeAt(0) >= 48
 					&& name[i].charCodeAt(0) <= 57) {
 					strNumber = true;
@@ -356,7 +315,6 @@ font-size: 12px;
 
 			if(name != ""){
 				$("#namego").hide();
-				console.log("이름입력완료");
 
 				if(strNumber == true){
 					$("#namego1").show();
@@ -370,30 +328,21 @@ font-size: 12px;
 				$("#namego").show();
 				$('#namego').text('이름을 입력하세요.').css('color', 'red');
 
-				console.log("이름미입력");
-				
 				return false;	
 			}
 			return true;
 			
 		}
 
-		/**
-		 * 입력된 전화번호 값을 검증합니다.
-		 */
+		
 		function validatePhoneNumber() {
 			var phone_number = $('#phone_number').val();
-			console.log("입력", phone_number);
+		
 			strNumber = false;
 
-			//입력한 패스워드의 길이만큼 반복하여 모든 문자를 검사한다. 
+		
 			for (var i = 0; i < phone_number.length; i++) {
-				//입력값의 아스키코드를 확인해본다.
-				console.log("아스키코드값", phone_number[i].charCodeAt(0));
-
-				//입력한 문자열 중에 아래조건에 맞는 문자가 하나라도 존재하면 true로 
-				//변경해준다.
-				//숫자인지 확인
+	
 				if (phone_number[i].charCodeAt(0) < 48
 					|| phone_number[i].charCodeAt(0) > 57) {
 					strNumber = true;
@@ -402,8 +351,7 @@ font-size: 12px;
 
 			if (phone_number != "") {
 				$("#phone_numbergo").hide();
-				console.log("휴대폰번호 입력완료");
-				/////////////////////////////////////////
+		
 				if(strNumber == true) {
 					$("#phone_numbergo1").show();
 					$('#phone_numbergo1').text('휴대폰번호를 숫자로만 입력하세요.').css('color', 'red');
@@ -418,7 +366,6 @@ font-size: 12px;
 				$('#phone_numbergo').text('정확한 휴대폰번호를 입력하세요.').css(
 					'color', 'red');
 
-				console.log("휴대폰번호 미입력");
 				
 				return false;
 			}
@@ -427,20 +374,13 @@ font-size: 12px;
 			return true;
 		}
 
-		/**
-		 * 입력된 주민번호를 검증합니다.
-		 */
+	
 		function validateJuminNum() {
 			var jumin_num = $('#jumin_num').val();
-			console.log("입력", jumin_num);
+	
 			strNumber = false;
 			for (var i = 0; i < jumin_num.length; i++) {
-				//입력값의 아스키코드를 확인해본다.
-				console.log("아스키코드값", jumin_num[i].charCodeAt(0));
-
-				//입력한 문자열 중에 아래조건에 맞는 문자가 하나라도 존재하면 true로 
-				//변경해준다.
-				//숫자인지 확인
+		
 				if (jumin_num[i].charCodeAt(0) < 48
 					|| jumin_num[i].charCodeAt(0) > 57) {
 					strNumber = true;
@@ -449,7 +389,7 @@ font-size: 12px;
 
 			if (jumin_num != "") {
 				$("#jumin_numgo").hide();
-				console.log("주민번호 입력완료");
+		
 				if(strNumber == true){
 					$("#jumin_numgo1").show();
 					$('#jumin_numgo1').text('생년월일을 숫자로만 입력하세요.').css('color', 'red');
@@ -462,7 +402,6 @@ font-size: 12px;
 			} else {
 				$("#jumin_numgo").show();
 				$('#jumin_numgo').text('생년월일을 입력하세요.').css('color', 'red');
-				console.log("생년월일 미입력");
 				
 				return false;
 			}
@@ -472,7 +411,7 @@ font-size: 12px;
 		}
 	
 		$(document).on('click', '#checkAll', function() {
-			//$(".checkbox_group").on("click","#checkAll",function(){
+		
 				var checked = $(this).is(":checked");
 
 			
@@ -497,32 +436,26 @@ font-size: 12px;
 			
 		function checkYn(obj) {
 			
-			console.log(obj);
 			var checked = obj.checked;
 			if (checked) {
 				marketing_agreement.value = 1;
 			} else {
 				marketing_agreement.value = 0;
 			}
-			console.log(marketing_agreement.value);
+
 		}
 		
 		function validateCheckbox(){
 			var checkbox = $('input:checkbox[name="must"]:checked').length;
-			
-			console.log(checkbox);
-			
+
 		   	if(checkbox==5){
-				
-		   		console.log('gd')
+
 		   	}
 		   	else{
-		 		
-		 		console.log("체크박스 입력부족");
+	
 		 		return false;
 		   	}
 
-		   	console.log("checkboxFinalCheck:"+checkbox);
 			return true;
 			
 		} 

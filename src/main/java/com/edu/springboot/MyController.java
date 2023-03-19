@@ -1,5 +1,6 @@
 package com.edu.springboot;
 
+import java.awt.print.Pageable;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +24,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.edu.springboot.jdbc.IMemberService;
 import com.edu.springboot.jdbc.MyDTO;
 import com.edu.springboot.jdbc.MyService;
+import com.edu.springboot.jdbc.SellRightDTO;
+import com.edu.springboot.jdbc.TempgoodsOrderDTO;
+import com.edu.springboot.jdbc.TempgoodsService;
 import com.edu.springboot.jdbc.TicketInfoDTO;
 import com.edu.springboot.jdbc.TotalJourneyDTO;
 import com.edu.springboot.jdbc.WishDTO;
@@ -37,9 +42,25 @@ public class MyController {
 	@Autowired
 	MyService msv;
 	
+	@Autowired
+	IMemberService member_dao;
+	
+	@Autowired
+	TempgoodsService order_dao;
+	
 	//마이쿠팡
 	@RequestMapping("/myroupang/orderlist.do")
-	public String myrou() {
+	public String myrou(Principal principal, Model model) {
+//		List<String>orderList = new ArrayList<String>();
+		
+		String loginId = principal.getName();
+		SellRightDTO srdto  = member_dao.LoginUser(loginId);
+		int member_idx = srdto.getMember_idx();
+		ArrayList<TempgoodsOrderDTO>buyerOrderlists = order_dao.buyerInfo(member_idx);
+	
+		model.addAttribute("lists",buyerOrderlists);
+		System.out.println(buyerOrderlists);
+		
 		
 		return "myroupang/orderlist";
 	}

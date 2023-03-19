@@ -36,7 +36,7 @@
 <script>
 $(function(){
 	$("#blockSell").click(function(){
-		console.log(this.value);
+		
 		var block_val=this.value;
 		
 		

@@ -59,6 +59,16 @@ $(function(){
      
 
 	});
+	$("#approveCancel").click(function(){
+		console.log(this.value);
+		var approveCancel_val=this.value;
+		
+		if(confirm("해당 주문을 취소완료 처리하시겠습니까?")){
+				location.href="/approveCancel.do?value="+approveCancel_val;	
+		}
+     
+
+	});
 });  
 
 </script>
@@ -130,6 +140,12 @@ $(function(){
 				<c:if test="${row.order_status eq '2'}">
 				배송완료
 				</c:if>
+				<c:if test="${row.order_status eq '3'}">
+				취소요청중
+				</c:if>
+				<c:if test="${row.order_status eq '4'}">
+				취소완료 
+				</c:if>
 			</td>
 		</tr>
 			
@@ -143,7 +159,9 @@ $(function(){
 			<c:if test="${row.order_status eq '1'}">
 				<button class="btn btn-outline-secondary" id="completed" type="button" value="${row.order_idx }">배송완료</button>
 			</c:if>   	                                		
-			
+			<c:if test="${row.order_status eq '3'}">
+				<button class="btn btn-outline-secondary" id="approveCancel" type="button" value="${row.order_idx }">취소승인</button>
+			</c:if> 
 			
 			<button class="btn btn-outline-secondary" id="orderList" type="button"  onclick="location.href='orderlist.do' ">목록으로 돌아가기</button>
 		</div> 
