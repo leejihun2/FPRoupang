@@ -418,7 +418,7 @@ public class TicketController {
 	public String movepage(HttpServletRequest req, Model model) {
 		int value = Integer.parseInt(req.getParameter("value"));
 		
-		ReviewDTO totalstar = dao.starcount();
+		ReviewDTO totalstar = dao.starcount(value);
 		model.addAttribute("totalstar", totalstar);
 		ArrayList<ReviewDTO> lists = 
 				dao.reviewList(value);
