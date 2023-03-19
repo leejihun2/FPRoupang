@@ -15,7 +15,10 @@
  <link rel="stylesheet" href="/css/productReview.css" type="text/css">
  <link rel="stylesheet" href="/css/side.css" type="text/css">
  <link rel="stylesheet" href="/css/main.css" type="text/css">
+ <link rel="stylesheet" href="../css/star_rating.css" type="text/css">
+<link rel="stylesheet" href="../css/star_total.css" type="text/css">
  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+ <script src="../js/star.js"></script>
  <style type="text/css">
  .prod-atf {
     display: inline-block;
@@ -249,7 +252,7 @@ img {
 }
 .product-detail .product-essential-info .table-title {
     padding-bottom: 10px;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 700;
 }
 .prod-delivery-return-policy-table th {
@@ -306,8 +309,10 @@ img {
 }
 .prod-delivery-return-policy-title {
     padding-bottom: 10px;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 700;
+    border-top: 1px solid #eee;
+    
 }
 .prod-delivery-return-policy-table {
     width: 100%;
@@ -359,6 +364,7 @@ function info_close(){
 </head>
 <body style="background-color: white;">
 	<%@ include file="top.jsp" %>
+	<%@include file="./star.jsp"%>
 	<section id="contents" class="contents product">
 		<div class="prod-atf">
 			<div class="prod-atf-main">
@@ -604,8 +610,8 @@ function info_close(){
 			<div id="btfTab" class="tab" data-reordering-sdp-widgets="true">
 				<ul class="tab-titles">
 					<li name="detail" class="active"><a href="#pd_detail">상품상세</a></li>
-					<li name="review"><a href="#pd_eval">상품평</a><span class="product-tab-review-count"></span></li>
-					<li name="qna"><a href="#pd_inquiry">상품문의</a></li>
+					<li name="review"><a href="#reviewProduct">상품평</a><span class="product-tab-review-count"></span></li>
+					<li name="qna"><a href="#inquiryProduct">상품문의</a></li>
 					<li name="etc"><a href="#pd_deli">배송/교환/반품 안내</a></li>
 				</ul>
 				<ul class="tab-contents" >
@@ -686,95 +692,129 @@ function info_close(){
 							        </div>
 								   <br />
 									<p class="prod-delivery-return-policy-title">상품평</p>
-									<table class="prod-delivery-return-policy-table essential-info-table" id="pd_eval">
+								<div class="reviewProduct" style="margin-bottom: 10px;"
+									id="reviewProduct">
+									<table class="ticket-cancellation-refund-policy"
+										style="width: 100%;">
 										<colgroup>
-											<col width="150px">
-											<col width="340px">
-											<col width="150px">
-											<col width="*">
+											<col width="30%" />
+											<col width="*" />
 										</colgroup>
-										<tbody>
-											<tr>
-												<th>제품명</th>
-												<td>유기농 우유</td>
-												<th>식품의 유형</th>
-												<td>컨텐츠참조</td>
-											</tr>
-											<tr>
-												<th>생산자 및 소재지</th>
-												<td>컨텐츠참조</td>
-												<th>제조연월일, 소비기한 또는 품질유지기한</th>
-												<td>소비기한(또는 유통기한) : 2023년 04월 18일 이거나 그 이후인 상품</td>
-											</tr>
-											<tr>
-												<th>포장단위별 내용물의 용량(중량), 수량</th>
-												<td>200ml*24개입, 1개</td>
-												<th>원재료명 및 함량</th>
-												<td>컨텐츠참조</td>
-											</tr>
-											<tr>
-												<th>영양성분</th>
-												<td>컨텐츠참조</td>
-												<th>유전자변형식품에 해당하는 경우의 표시</th>
-												<td>해당없음</td>
-											</tr>
-											<tr>
-												<th>소비자안전을 위한 주의사항</th>
-												<td>컨텐츠참조</td>
-												<th>수입식품 문구</th>
-												<td>해당없음</td>
-											</tr>
-											<tr>
-												<th>소비자상담관련 전화번호</th>
-												<td colspan="3">쿠팡고객센터 1577-7011</td>
-											</tr>
-										</tbody>
+										<tr>
+											<th colspan="2">리뷰</th>
+										</tr>
+										<tr>
+											<td>
+												<div class="product-review">
+													<div class="product-review__title-wrap"></div>
+													<div>
+														<h4 class="travel-title travel-title-sm"
+															style="margin-top: 0px; margin-bottom: 0px;">가격</h4>
+														<input type="hidden" name="ratevalue2"
+															value="${totalstar.star_servey1}" step="0.1" min="0"
+															max="5" />
+														<div class="rating-wrap2">
+															<div class="rating2">
+																<div class="overlay2"></div>
+															</div>${totalstar.servey1_0}
+														</div>
+														<h4 class="travel-title travel-title-sm"
+															style="margin-top: 0px; margin-bottom: 0px;">서비스</h4>
+														<input type="hidden" name="ratevalue3"
+															value="${totalstar.star_servey2}" step="0.1" min="0"
+															max="5" />
+														<div class="rating-wrap3">
+															<div class="rating3">
+																<div class="overlay3"></div>
+															</div>${totalstar.servey2_0}
+														</div>
+														<h4 class="travel-title travel-title-sm"
+															style="margin-top: 0px; margin-bottom: 0px;">시설</h4>
+														<input type="hidden" name="ratevalue4"
+															value="${totalstar.star_servey3}" step="0.1" min="0"
+															max="5" />
+														<div class="rating-wrap4">
+															<div class="rating4">
+																<div class="overlay4"></div>
+															</div>${totalstar.servey3_0}
+														</div>
+													</div>
+													<c:forEach items="${lists }" var="row">
+														<div class="product-review-list" id="product-reviews">
+															<div class="product-review-item">
+																<div class="element-profile">
+																	<div class="element-profile-image"
+																		style="background-image: url(&quot;//img1a.coupangcdn.com/image/productreview/web/pdp/profile/img-profile-empty.png&quot;);">
+																	</div>
+																	<div class="element-profile-content">
+																		<div class="element-names">
+																			<span class="element-display-name">${row.name }</span>
+																		</div>
+																		<div class="element-rating">
+																			<div class="rating-wrap">
+																				<input type="hidden" name="ratevalue"
+																					value="${row.star_rate}" step="0.1" min="0" max="5" />
+																				<div class="rating">
+																					<div class="overlay"></div>
+																				</div>${row.star_rate}
+																			</div>
+																			<span class="element-review-date">${row.regiDate }</span>
+																		</div>
+																	</div>
+																</div>
+																<div class="element-item-name"></div>
+																<ul class="element-attachments"></ul>
+																<div class="element-contents">
+																	<p class="title">${row.summary }</p>
+																	<p class="content">${row.review }</p>
+																</div>
+															</div>
+														</div>
+													</c:forEach>
+												</div>
+												</div>
+											</td>
+										</tr>
 									</table>
+								</div>
+
+								
 									<p class="prod-delivery-return-policy-title">상품문의</p>
-									<table class="prod-delivery-return-policy-table essential-info-table" id="pd_inquiry">
-										<colgroup>
-											<col width="150px">
-											<col width="340px">
-											<col width="150px">
-											<col width="*">
-										</colgroup>
-										<tbody>
-											<tr>
-												<th>제품명</th>
-												<td>유기농 우유</td>
-												<th>식품의 유형</th>
-												<td>컨텐츠참조</td>
-											</tr>
-											<tr>
-												<th>생산자 및 소재지</th>
-												<td>컨텐츠참조</td>
-												<th>제조연월일, 소비기한 또는 품질유지기한</th>
-												<td>소비기한(또는 유통기한) : 2023년 04월 18일 이거나 그 이후인 상품</td>
-											</tr>
-											<tr>
-												<th>포장단위별 내용물의 용량(중량), 수량</th>
-												<td>200ml*24개입, 1개</td>
-												<th>원재료명 및 함량</th>
-												<td>컨텐츠참조</td>
-											</tr>
-											<tr>
-												<th>영양성분</th>
-												<td>컨텐츠참조</td>
-												<th>유전자변형식품에 해당하는 경우의 표시</th>
-												<td>해당없음</td>
-											</tr>
-											<tr>
-												<th>소비자안전을 위한 주의사항</th>
-												<td>컨텐츠참조</td>
-												<th>수입식품 문구</th>
-												<td>해당없음</td>
-											</tr>
-											<tr>
-												<th>소비자상담관련 전화번호</th>
-												<td colspan="3">쿠팡고객센터 1577-7011</td>
-											</tr>
-										</tbody>
-									</table>
+										<div id="inquiryProduct">
+									<section class="inquiryContents">
+										<div class="inquiry-header">
+											<button type="button"
+												onclick="location.href='/supports/voc.do'">문의하기</button>
+										</div>
+										<ul class="inquiry-notice">
+											<li>구매한 상품의 <strong>취소/환불은 마이루팡 구매내역에서 신청</strong>
+												가능합니다.
+											</li>
+											<li>상품문의 및 후기게시판을 통해 취소나 환불, 반품 등은 처리되지 않습니다.</li>
+											<li><strong>가격, 판매자, 취소/환불 및 배송 등 해당 상품 자체와 관련
+													없는 문의는 고객센터 내 1:1 문의하기</strong>를 이용해주세요.</li>
+											<li><strong>"해당 상품 자체"와 관계없는 글, 양도, 광고성, 욕설,
+													비방, 도배 등의 글은 예고 없이 이동, 노출제한, 삭제 등의 조치가 취해질 수 있습니다.</strong></li>
+											<li>공개 게시판이므로 전화번호, 메일 주소 등 고객님의 소중한 개인정보는 절대 남기지 말아주세요.
+											</li>
+										</ul>
+										<div class="inquiry-content">
+											<table style="border-top: solid 3px; width: 100%;">
+												<c:choose>
+													<c:when test="${not empty inquryList }">
+
+													</c:when>
+													<c:otherwise>
+														<tr>
+															<td style="text-align: center; height: 250px;"><strong>문의사항이
+																	없습니다.</strong></td>
+														</tr>
+													</c:otherwise>
+												</c:choose>
+											</table>
+										</div>
+									</section>
+								</div>
 								<div class="product-item__table product-seller">
 									<br />
             						<p class="prod-delivery-return-policy-title">배송정보</p>
