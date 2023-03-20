@@ -14,9 +14,10 @@
 	</select>
 	<select id="todayShop" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
 		select * from (
-			select j_title_image, title, idx
-			from journey j 
-			join bot_category bc on j.bot_idx = bc.idx 
+			select p_title_image, p_title, p.idx
+			from product p 
+			join bot_category bc on p.bot_idx = bc.idx
+			order by DBMS_RANDOM.RANDOM
 		)
 		where rownum <![CDATA[ <= ]]> 5
 	</select>
@@ -62,5 +63,15 @@
 		        order by DBMS_RANDOM.RANDOM
 	    )
 	    where rownum <![CDATA[ <= ]]> 6
+	</select>
+	
+	<select id="pd_list" resultType="com.edu.springboot.jdbc.TotalJourneyDTO">
+		select pi_title, p_title_image, pi_price, pi_discount
+        from mid_category mc
+	        join bot_category bc on bc.sub_idx = mc.idx
+	        join top_category tc on tc.idx = mc.sub_idx
+	        join product p on bc.idx = p.bot_idx
+	        join product_info pi on bc.idx = pi.bot_idx
+        where tc.idx = #{idx}       
 	</select>
 </mapper>

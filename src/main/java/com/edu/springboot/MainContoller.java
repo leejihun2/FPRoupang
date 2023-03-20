@@ -145,4 +145,15 @@ public class MainContoller {
 		
 		return "pd_detail_view";
 	}
+	@RequestMapping("/pd_list.do")
+	public String pb_list(HttpServletRequest req, Model model) {
+		
+		int idx = Integer.parseInt(req.getParameter("idx")); 
+		System.out.println(idx);
+		ArrayList<TotalJourneyDTO> pd_list = main_dao.pd_list(idx);
+		
+		model.addAttribute("pd_list",pd_list);
+		
+		return "pd_list";
+	}
 }
