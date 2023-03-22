@@ -51,7 +51,7 @@
 	      
 	      var categoryOptions = [];
 	      
-	      if (contact === 'faq') {
+	      if (contact == 'faq') {
 	        categoryOptions = [
 	          {"value": "DELIVERY", "text": "배송문의"},
 	          {"value": "CANCEL", "text": "취소"},
@@ -60,7 +60,7 @@
 	          {"value": "CASH", "text": "쿠팡캐시"},
 	          {"value": "MOBILE", "text": "로켓모바일"}
 	        ];
-	      } else if (contact === 'notice') {
+	      } else if (contact == 'notice') {
 	        categoryOptions = [
 	          {"value": "NOTICE", "text": "공지"},
 	          {"value": "EVENT", "text": "이벤트"},
