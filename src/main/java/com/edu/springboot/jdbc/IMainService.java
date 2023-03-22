@@ -13,5 +13,8 @@ public interface IMainService {
 	ArrayList<TotalJourneyDTO> adJourney_list();
 	ArrayList<TotalJourneyDTO> todayShop();
 	ArrayList<TotalJourneyDTO> likeCate();
+	
 	ArrayList<TotalJourneyDTO> todayDiscovery();
+	
+	ArrayList<TotalJourneyDTO> pd_list(int idx);
 }

@@ -77,21 +77,21 @@
                   <div class="carousel-item active">
                    <c:forEach items="${todayShop}" var="row" varStatus="loop">
                     <ul>
-                        <li><a href="journeyDetail?value=${row.idx }"><img class="today-pd" src="/uploads/${row.j_title_image}"><p class="today-p">${row.title}</p></a></li>
+                        <li><a href="journeyDetail?value=${row.idx }"><img class="today-pd" src="/uploads/${row.p_title_image}"><p class="today-p">${row.p_title}</p></a></li>
                     </ul>
                    </c:forEach> 
                   </div>
                   <div class="carousel-item">
                     <c:forEach items="${todayShop}" var="row" varStatus="loop">
                     <ul>
-                        <li><a href=""><img class="today-pd" src="/uploads/${row.j_title_image}"><p class="today-p">${row.title}</p></a></li>
+                        <li><a href=""><img class="today-pd" src="/uploads/${row.p_title_image}"><p class="today-p">${row.p_title}</p></a></li>
                     </ul>
                    </c:forEach> 
                   </div>
                   <div class="carousel-item">
                     <c:forEach items="${todayShop}" var="row" varStatus="loop">
                     <ul>
-                        <li><a href=""><img class="today-pd" src="/uploads/${row.j_title_image}"><p class="today-p">${row.title}</p></a></li>
+                        <li><a href=""><img class="today-pd" src="/uploads/${row.p_title_image}"><p class="today-p">${row.p_title}</p></a></li>
                     </ul>
                    </c:forEach> 
                   </div>
