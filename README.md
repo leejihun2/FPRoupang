@@ -8,4 +8,37 @@
 # FPRoupang
 파이널
 
+# :shopping_cart: 스프링 부트로 만드는 쇼핑몰 프로젝트
 
+## :clipboard: 개발환경
+* GitHub
+
+## :clipboard: 사용 기술
+### 백엔드
+#### Spring boot
+* Spring MVC
+* Spring Boot Security
+* Spring Boot Actuator
+* Spring Data JPA
+* Spring Boot Batch
+* Spring AOP
+
+#### Build tool
+* Gradle
+
+#### Database
+* Oracle
+
+### 프론트엔드
+* Javascript
+* Thymeleaf
+* jQuery
+* Ajax
+
+## :clipboard: 주요 키워드
+* REST API
+* 시큐리티
+* JPA
+* 페이징
+* 트랜잭션
+* 예외처리
