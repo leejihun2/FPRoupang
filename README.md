@@ -18,11 +18,7 @@
 ### 백엔드
 #### Spring boot
 * Spring MVC
-* Spring Boot Security
-* Spring Boot Actuator
-* Spring Data JPA
-* Spring Boot Batch
-* Spring AOP
+* Spring Boot Securit
 
 #### Build tool
 * Gradle
@@ -32,7 +28,6 @@
 
 ### 프론트엔드
 * Javascript
-* Thymeleaf
 * jQuery
 * Ajax
 
