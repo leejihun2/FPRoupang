@@ -9,7 +9,7 @@
 # FPRoupang
 파이널
 
-# :shopping_cart: 스프링 부트로 만드는 이커머스 플렛폼 프로젝트
+# :shopping_cart: 이커머스 플랫폼 프로젝트
 
 ## :clipboard: 개발환경
 * GitHub
