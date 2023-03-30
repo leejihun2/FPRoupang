@@ -270,17 +270,10 @@ public class MemberController {
 			val.add(list[i]);
 			System.out.println(val);
 		}
-//		sellRightDTO.setMember_idx(val);
+
 		dao.situation_block(val);
 		dao.member(val);
-//		req.setAttribute("appRegect", situation_two);
-//		if(situation_two==1) System.out.println("상태2.");
-        
-//		int member = dao.member(sellRightDTO);
-//		req.setAttribute("member", member);
-//		if(member==1) System.out.println("멤버.");
-//		
-//		System.out.println("hello");
+
 		
         return "redirect:/blockList.do";
 	}
