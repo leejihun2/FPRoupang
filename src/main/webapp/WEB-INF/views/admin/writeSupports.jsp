@@ -44,6 +44,11 @@
 			f.contents.focus();
 			return false;
 		}
+		if (f.title.value == "") {
+			alert("제목을 입력하세요");
+			f.title.focus();
+			return false;
+		}
 	}
 	  $(document).ready(function() {
 	    $('#contact').change(function() {
@@ -100,7 +105,7 @@
 						<tbody>
 							<tr>
 								<select name="contact" id="contact">
-									<option value="">선택하제욤</option>
+									<option value="">카테고리</option>
 									<option value="faq">자주묻는 질문</option>
 									<option value="notice">쿠팡 소식</option>
 								</select>
