@@ -66,7 +66,7 @@
 					<!-- Content Row -->
 					<div class="row" style="width: 1766px;">
 						<!-- Area Chart -->
-						<div style="width: 873px;">
+						<div style="width: 533px;">
 							<div class="card shadow mb-4">
 								<!-- Card Header - Dropdown -->
 								<div
@@ -74,14 +74,14 @@
 									<h6 class="m-0 font-weight-bold text-primary">상품 갬색 많이 된 순</h6>
 								</div>
 								<div class="card-body"
-									style="height: 448px; text-align: center;">
-									<img style="width: 600px;" class="li-img-min"
+									style="height: 300px; text-align: center;">
+									<img style="width: 390px;" class="li-img-min"
 										src="../images/Search Count.png" alt="">
 								</div>
 							</div>
 						</div>
 						<!-- Pie Chart -->
-						<div style="width: 873px;">
+						<div style="width: 433px;">
 							<div class="card shadow mb-4">
 								<!-- Card Header - Dropdown -->
 								<div
@@ -89,45 +89,45 @@
 									<h6 class="m-0 font-weight-bold text-primary">여행지역 시간대별 검색</h6>
 								</div>
 								<!-- Card Body -->
-								<div class="card-body">
+								<div class="card-body" style="height:300px;">
 									<div id="carouselExampleControls" class="carousel slide"
 										data-bs-ride="carousel">
 										<div class="carousel-inner">
-											<div class="carousel-item active">
+											<div class="carousel-item active" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 가평.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
-											<div class="carousel-item">
+											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 강릉.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
-											<div class="carousel-item">
+											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 강원.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
-											<div class="carousel-item">
+											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 경기.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
-											<div class="carousel-item">
+											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 부산.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
-											<div class="carousel-item">
+											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 서울.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
-											<div class="carousel-item">
+											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 속초.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
-											<div class="carousel-item">
+											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 전주.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
-											<div class="carousel-item">
+											<div class="carousel-item" style="height: 280px;">
 												<img src="../images/Search Count by Hour for 제주.png"
-													class="d-block w-100" alt="Search Count">
+													class="d-block w-100 h-100" alt="Search Count">
 											</div>
 										</div>
 										<button class="carousel-control-prev" type="button"
@@ -143,20 +143,15 @@
 											<span class="visually-hidden">Next</span>
 										</button>
 									</div>
-
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- Content Row -->
 					<div class="row" style="width: 1766px;">
 						<%@include file="orderListIclued.jsp"%>
 					</div>
 				</div>
-				<!-- /.container-fluid -->
 			</div>
-			<!-- End of Main Content -->
-			<!-- Footer -->
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
@@ -164,19 +159,11 @@
 					</div>
 				</div>
 			</footer>
-			<!-- End of Footer -->
-
 		</div>
-		<!-- End of Content Wrapper -->
-
 	</div>
-	<!-- End of Page Wrapper -->
-
-	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
 	</a>
-	<!-- Logout Modal-->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">

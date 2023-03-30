@@ -833,7 +833,7 @@ p {
 							<div class="basis-product">
 								<h2 style="margin-top: 0px; margin-bottom: 5px;">${t_title }</h2>
 								<div class="basis-product-address"></div>
-								<input type="hidden" name="ratevalue5" value="5" step="0.1"
+								<input type="hidden" name="ratevalue5" value="${totalstar.star_rate}" step="0.1"
 									min="0" max="5" />
 								<div class="rating-wrap5">
 									<div class="rating5">

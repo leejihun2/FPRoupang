@@ -52,7 +52,9 @@
         ,COUNT(CASE WHEN star_servey3=3 THEN 1 END) servey3_3
         ,COUNT(CASE WHEN star_servey2=3 THEN 1 END) servey3_4
         ,COUNT(CASE WHEN star_servey2=3 THEN 1 END) servey3_5
-		FROM REVIEW ORDER BY idx
+		FROM REVIEW rv 
+	  	join (select email, name, member_idx from member) mv 
+	    on mv.MEMBER_IDX=rv.MEMBER_IDX where bot_cate_idx = #{param1}
  	</select>
  	
  	<select id="starDTO" resultType="com.edu.springboot.jdbc.ReviewDTO">
@@ -90,8 +92,8 @@
 
 	<select id="reviewList" resultType="com.edu.springboot.jdbc.ReviewDTO">
 		select * from review rv 
-		  join (select email, name, member_idx from member) mv 
-		    on mv.MEMBER_IDX=rv.MEMBER_IDX where bot_cate_idx = #{param1}
+	  join (select email, name, member_idx from member) mv 
+	    on mv.MEMBER_IDX=rv.MEMBER_IDX where bot_cate_idx = #{param1}
 	</select>
 	
 	<update id="modifyReview" parameterType="com.edu.springboot.jdbc.ReviewDTO">

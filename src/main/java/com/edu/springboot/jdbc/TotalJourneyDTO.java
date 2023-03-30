@@ -17,4 +17,13 @@ public class TotalJourneyDTO {
 	private int ji_kid;
 	private String ji_duetime1;
 	private String ji_duetime2;
+	
+	
+	
+	private int pi_price;
+	private String pi_title;
+	private String p_title;
+	private String pi_discount;
+	private String p_title_image;
+	
 }

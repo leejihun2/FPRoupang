@@ -53,12 +53,21 @@ public class MainContoller {
 		
 		model.addAttribute("likeCate",likeCate);
 		
-		//카테고리별 아직은 여행만
+		
+		//가전디지털 
+		ArrayList<TotalJourneyDTO> digitalList = main_dao.adDigital_list();
+		
+		model.addAttribute("digitalList",digitalList);
+		
+		//뷰티
+		ArrayList<TotalJourneyDTO> beautyList = main_dao.adBeauty_list();
+		
+		model.addAttribute("beautyList",beautyList);
+		 
+		//여행
 		ArrayList<TotalJourneyDTO> journeyList = main_dao.adJourney_list();
 		
 		model.addAttribute("journeyList",journeyList);
-		
-		
 		
 		return "home";
 	}
@@ -124,5 +133,27 @@ public class MainContoller {
 		model.addAttribute("cate",cate_dao.select_cate(sub_idx));
 		
 		return "/admin/productInsert";
+	}
+	
+	@RequestMapping("/cart.do")
+	public String cart() {
+		
+		return "cart";
+	}
+	@RequestMapping("/pd.do")
+	public String pd_view() {
+		
+		return "pd_detail_view";
+	}
+	@RequestMapping("/pd_list.do")
+	public String pb_list(HttpServletRequest req, Model model) {
+		
+		int idx = Integer.parseInt(req.getParameter("idx")); 
+		System.out.println(idx);
+		ArrayList<TotalJourneyDTO> pd_list = main_dao.pd_list(idx);
+		
+		model.addAttribute("pd_list",pd_list);
+		
+		return "pd_list";
 	}
 }

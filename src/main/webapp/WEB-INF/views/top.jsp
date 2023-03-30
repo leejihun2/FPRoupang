@@ -190,7 +190,7 @@ onload = function(){
 											class="subscription-menu-warning-icon"></span></a> </span>
 								</p></li>
 							<li class="cart more"><a
-								href="//cart.coupang.com/cartView.pang"
+								href="/cart.do"
 								class="clearFix mycart-preview-module"
 								data-log-props='{ "id": "cart" }'><span class="cart-icon">&nbsp;</span>
 									<span class="cart-title">장바구니</span> <em id="headerCartCount"></em></a>
@@ -248,7 +248,7 @@ onload = function(){
 							<li class="fashion-sundries" value="1"><a href="#" class="first-depth">패션의류/잡화<i class="select-icon"></i></a>
 								<div class="depth" id="1"></div>
 							</li>
-							<li class="beauty" value="2"><a href="#" class="first-depth">뷰티<i class="select-icon"></i></a>
+							<li class="beauty" value="2"><a href="/pd_list.do?idx=2" class="first-depth">뷰티<i class="select-icon"></i></a>
 								<div class="depth" id="2"></div>
 							</li>
 							<li class="child-birth" value="3"><a href="#" class="first-depth">출산/유아동<i class="select-icon"></i></a>

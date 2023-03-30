@@ -23,7 +23,7 @@
                                 <li><a href="javascript:void(0);onclick=ticketchange();" id="ticket">티켓</a></li>
                             </ul>
                           <div class="lodging-search-wizard" id="journeySearch" style="display: block;">
-                                <h4 class="wizard-logo"><img style="width: 130px; height: 25px" src="./images/roupang여행.png"></h4>
+                                <h4 class="wizard-logo"><img style="width: 130px; height: 37px" src="./images/roupang여행.png"></h4>
                                 <ul class="wizard-components">
                                     <li class="wizard-keyword">
                                         <div class="search-keyword-wrap">
