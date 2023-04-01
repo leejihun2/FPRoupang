@@ -77,7 +77,7 @@ public class AdminController {
 		}
 	}
 
-	@RequestMapping("/admin/adminfaq.do")
+	@RequestMapping("/admin/adminFaq.do")
 	public String adminFaq(Model model, HttpServletRequest req) {
 		String category = req.getParameter("categoryCode");
 		String contact = req.getParameter("contact");
@@ -95,7 +95,7 @@ public class AdminController {
 		return "admin/adminFaq";
 	}
 
-	@RequestMapping("/admin/adminnotice.do")
+	@RequestMapping("/admin/adminNotice.do")
 	public String blank1(Model model, HttpServletRequest req) {
 		String category = req.getParameter("categoryCode");
 

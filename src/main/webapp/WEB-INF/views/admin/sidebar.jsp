@@ -83,8 +83,6 @@
 				<div class="bg-white py-2 collapse-inner rounded">
 					<a class="collapse-item" href="/admin/adminFaq.do?categoryCode=ALL">검색 목록</a>
 					<a class="collapse-item" href="/orderAdminView.do">판매 목록</a>
-					<a class="collapse-item" href="/admin/adminNotice.do?categoryCode=ALL"></a>
-	
 				</div>
 		</div></li>
 	
