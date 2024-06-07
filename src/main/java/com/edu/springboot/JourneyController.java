@@ -324,7 +324,6 @@ public class JourneyController {
 			MultipartFile[] sub_ji_image, Model model, MultipartHttpServletRequest req) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int value = Integer.parseInt(req.getParameter("value"));
-		System.out.println("됩니까");
 		JourneyDTO j_dto = new JourneyDTO();
 		if (value == 0) {
 			journey_dao.insert_bot_title(req.getParameter("bot_title"),
@@ -529,7 +528,6 @@ public class JourneyController {
 		ModelAndView mv = new ModelAndView();
 		int sub_idx = Integer.parseInt(req.getParameter("category"));
 		String location = req.getParameter("location");
-		String title = req.getParameter("title");
 		String ji_duetime1 = "";
 		String ji_duetime2 = "";
 		int ji_adult = 2;
@@ -538,59 +536,36 @@ public class JourneyController {
 		if(location!=null) {
 			journey_dao.log(location);
 		}
-		
-		System.out.println(sub_idx);
 		if (location != null) {
 
 			ArrayList<String> like_loc = journey_dao.like_journey_List(location);
 
 			mv.addObject("like_loc", like_loc);
-		} else if (title != null) {
-
-			ArrayList<TotalJourneyDTO> search_list = cate_dao.search_journey_List(sub_idx, title);
-
-			mv.addObject("search_list", search_list);
-		}
-
+		} 
 		if (session.getAttribute("ji_duetime1") != null) {
 			totaljourneyDTO.setJi_duetime1((String) session.getAttribute("ji_duetime1"));
 			totaljourneyDTO.setJi_duetime2((String) session.getAttribute("ji_duetime2"));
-			System.out.println(session.getAttribute("ji_duetime1"));
-			System.out.println(session.getAttribute("ji_duetime2"));
 		} else {
 			totaljourneyDTO.setJi_duetime1(ji_duetime1);
 			totaljourneyDTO.setJi_duetime2(ji_duetime2);
-			System.out.println(ji_duetime1);
-			System.out.println(ji_duetime2);
 		}
 		if (session.getAttribute("ji_adult") != null) {
 			totaljourneyDTO.setJi_adult(Integer.parseInt((String) (session.getAttribute("ji_adult"))));
-			System.out.println(session.getAttribute("ji_adult"));
 
 		} else {
 			totaljourneyDTO.setJi_kid(ji_adult);
-			System.out.println(ji_adult);
 		}
 		if (session.getAttribute("ji_kid") != null) {
 			totaljourneyDTO.setJi_kid(Integer.parseInt((String) (session.getAttribute("ji_kid"))));
-			System.out.println(session.getAttribute("ji_kid"));
 		} else {
 			totaljourneyDTO.setJi_kid(ji_kid);
-			System.out.println(ji_kid);
 		}
 		
 		totaljourneyDTO.setSub_idx(sub_idx);
 
-		System.out.println("성인 :"+ totaljourneyDTO.getJi_adult());
-      System.out.println("어린이 :"+ totaljourneyDTO.getJi_kid());
-      System.out.println("시작일 :"+ totaljourneyDTO.getJi_duetime1());
-      System.out.println("종료일 :"+ totaljourneyDTO.getJi_duetime2());
-
 		String category_title = cate_dao.select_one_cate(sub_idx);
 
 		ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list(totaljourneyDTO);
-
-		System.out.println(journey_list);
 
 		mv.addObject("sub_idx", sub_idx);
 
@@ -607,7 +582,68 @@ public class JourneyController {
 
 		return mv;
 	}
+	@RequestMapping("/journey_List_S")
+	public ModelAndView show_Journey_List_S(HttpServletRequest req, HttpSession session,
+			TotalJourneyDTO totaljourneyDTO, Principal principal) {
+		ModelAndView mv = new ModelAndView();
+		int sub_idx = Integer.parseInt(req.getParameter("category"));
+		String title = req.getParameter("title");
+		String ji_duetime1 = "";
+		String ji_duetime2 = "";
+		int ji_adult = 2;
+		int ji_kid = 0;
+		
+//		if(location!=null) {
+//			journey_dao.log(location);
+//		}
+		if (title != null) {
 
+			ArrayList<String> like_title = journey_dao.like_journey_List_S(title);
+
+			mv.addObject("like_title", like_title);
+		} 
+		if (session.getAttribute("ji_duetime1") != null) {
+			totaljourneyDTO.setJi_duetime1((String) session.getAttribute("ji_duetime1"));
+			totaljourneyDTO.setJi_duetime2((String) session.getAttribute("ji_duetime2"));
+		} else {
+			totaljourneyDTO.setJi_duetime1(ji_duetime1);
+			totaljourneyDTO.setJi_duetime2(ji_duetime2);
+		}
+		if (session.getAttribute("ji_adult") != null) {
+			totaljourneyDTO.setJi_adult(Integer.parseInt((String) (session.getAttribute("ji_adult"))));
+			System.out.println(session.getAttribute("ji_adult"));
+
+		} else {
+			totaljourneyDTO.setJi_kid(ji_adult);
+		}
+		if (session.getAttribute("ji_kid") != null) {
+			totaljourneyDTO.setJi_kid(Integer.parseInt((String) (session.getAttribute("ji_kid"))));
+		} else {
+			totaljourneyDTO.setJi_kid(ji_kid);
+		}
+		
+		totaljourneyDTO.setSub_idx(sub_idx);
+		totaljourneyDTO.setTitle(title);
+		
+		String category_title = cate_dao.select_one_cate(sub_idx);
+
+		ArrayList<TotalJourneyDTO> journey_list = journey_dao.show_journey_list_s(totaljourneyDTO);
+
+		mv.addObject("sub_idx", sub_idx);
+
+		mv.addObject("category_title", category_title);
+
+		mv.addObject("journey_list", journey_list);
+
+		mv.setViewName("/journey/journeyList");
+
+		session.removeAttribute("ji_adult");
+		session.removeAttribute("ji_kid");
+		session.removeAttribute("ji_duetime1");
+		session.removeAttribute("ji_duetime2");
+
+		return mv;
+	}
 	// 인원 설정
 	@RequestMapping("/personnel")
 	@ResponseBody

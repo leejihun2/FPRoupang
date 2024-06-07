@@ -71,10 +71,10 @@ $(function() {
 	 });
   });
   $(".wizard-search-btn").click(function(){
-		  if($("#sub_idx").val()==1){
+		  if($("#sub_idx").val()==101){
 		     if(jSearchBox.value==""){
-			  
-			  alert("안돼 돌아가");
+			  console.log("왜 2번");
+			  alert("내용을 입력해주세요.");
 			  return false
 			  }
 		  }

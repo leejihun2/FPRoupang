@@ -158,18 +158,18 @@
    			</div>
    		</section>
    		<input type="hidden" id="location" name="location" value="${like_loc }">
+   		<input type="hidden" id="title" name="title" value="${like_title }">
    		<section class="search-result">
    			<div class="row">
 	   			<div class="col-9">
 					<ul class="search-items">
-				<%-- <c:if test="${not empty search_list or not empty like_loc}">--%>			
 						<c:forEach items="${journey_list }" var="journey" varStatus="loop">
 				  			<li class="search-item">
 				  				<a href="journeyDetail?value=${journey.idx }">
 			 					<div class="journey_img" style="background-image:url(/uploads/${journey.j_title_image })"></div>
 				 					<div class="journey_title">
 				 						${journey.title }
-				 					</div>
+				 					</div> 
 					  				<c:choose>
 					  					<c:when test="${journey.ji_discount ne 0 }">
 					  						<div class="journey_discount">
@@ -199,7 +199,6 @@
 				  				</a>
 			 				</li>
 						</c:forEach>
-		 			<%-- 	</c:if> --%>
 					</ul>
 				</div>
 				<div class="col-3 basis-location introduction-item">
@@ -208,38 +207,42 @@
 	        	<script type="text/javascript">
 				 kakao.maps.load(function() {
 					  sysdateLoad();
-				  var locationValues = document.getElementById("location").value.split(',');
-				  var mapContainer = document.getElementById('map');
-				  var mapOption = {
-				    center: new kakao.maps.LatLng(33.450701, 126.570667),
-				    level: 11
-				  };
-				  var map = new kakao.maps.Map(mapContainer, mapOption);
-				  var geocoder = new kakao.maps.services.Geocoder();
-				  var bounds = new kakao.maps.LatLngBounds();
-				
-				  for (var i = 0; i < locationValues.length; i++) {
-				    (function(i) {
-				      geocoder.addressSearch(locationValues[i], function(result, status) {
-				        if (status === kakao.maps.services.Status.OK) {
-				          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-				          var marker = new kakao.maps.Marker({
-				            map: map,
-				            position: coords
-				          });
-				          var infowindow = new kakao.maps.InfoWindow({
-				            content: '<div>' + locationValues[i]+ '</div>'
-				          });
-				          kakao.maps.event.addListener(marker, 'click', function() {
-				            infowindow.open(map, marker);
-				          });
-				          bounds.extend(coords);
-				          map.setBounds(bounds);
-				        }
-				      });
-				    })(i);
-				  }
-				});
+					  
+					  var locationValues = document.getElementById("location").value.split(',');
+					  var titleValues = document.getElementById("title").value.split(',');
+					  var mapContainer = document.getElementById('map');
+					  var mapOption = {
+					    center: new kakao.maps.LatLng(33.450701, 126.570667),
+					    level: 11
+					  };
+					  var map = new kakao.maps.Map(mapContainer, mapOption);
+					  var geocoder = new kakao.maps.services.Geocoder();
+					  var bounds = new kakao.maps.LatLngBounds();
+						if(locationValues != ""){
+						  for (var i = 0; i < locationValues.length; i++) {
+						    (function(i) {
+						      geocoder.addressSearch(locationValues[i], function(result, status) {
+						        if (status === kakao.maps.services.Status.OK) {
+						          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+						          var marker = new kakao.maps.Marker({
+						            map: map,
+						            position: coords
+						          });
+						          var infowindow = new kakao.maps.InfoWindow({
+						            content: '<div>' + locationValues[i]+ '</div>'
+						          });
+						          kakao.maps.event.addListener(marker, 'click', function() {
+						            infowindow.open(map, marker);
+						          });
+						          bounds.extend(coords);
+						          map.setBounds(bounds);
+						        }
+						      });
+						    })(i);
+						  }
+						}
+						
+				 });
 				</script>
 			</div>
 		</section>

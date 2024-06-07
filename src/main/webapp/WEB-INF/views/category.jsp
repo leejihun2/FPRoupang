@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<script type="text/javascript">
+function openDetail(url) {
+	var width = 768;
+	var height = 750;
+	var left = (window.screen.width - width) / 2;
+	var top = (window.screen.height - height) / 2;
+	window.open(url, 'detail', 'width=' + width +', height='+height +', left='+left +', top='+top +', location=no, status=no, scrollbar=no');
+}
+</script>
 <section id="contents" class="contents">
 <div class="__next-wrap">
 		<div id="__next" data-reactroot="">
@@ -16,7 +25,8 @@
 								<path fill="#7d9def" fill-rule="nonzero"d="M11 19.5c4.694 0 8.5-3.806 8.5-8.5S15.694 2.5 11 2.5 2.5 6.306 2.5 11s3.806 8.5 8.5 8.5zm0 1c-5.247 0-9.5-4.253-9.5-9.5S5.753 1.5 11 1.5s9.5 4.253 9.5 9.5-4.253 9.5-9.5 9.5zm6.854-3.354l4.5 4.5c.471.472-.236 1.179-.708.708l-4.5-4.5c-.471-.472.236-1.179.708-.708z"></path></g></svg>
 						</div> 
 					</div>
-					<a class="sc-j94o1z-5 bCXkxR" href="#" onclick="window.open('/supports/room.do',name,'resizable=no width=550 height=700');">
+					<!-- <a class="sc-j94o1z-5 bCXkxR" href="#" onclick="window.open('/supports/room.do',name,'resizable=no width=550 height=700');"> -->
+					<a class="sc-j94o1z-5 bCXkxR enter_chat" href="javascript:openDetail('/chat?id=guest')">
 					<svg width="24" height="24" focusable="false" viewBox="0 0 20 20" aria-hidden="true" role="presentation" style="fill: #ffffff">
 							<g fill="#ffffff" fill-rule="evenodd">
 							<path fill-rule="nonzero" d="M.42 9.17v8.81a.83.83 0 001.3.69l2.86-2h5.84c1.23 0 2.3-.67 2.88-1.67h-1.02a2.5 2.5 0 01-1.86.83h-6.1l-3.07 2.15V9.17c0-1.1.7-2.02 1.67-2.36v-.87a3.33 3.33 0 00-2.5 3.23z"></path>

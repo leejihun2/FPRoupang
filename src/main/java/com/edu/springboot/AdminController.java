@@ -232,7 +232,6 @@ public class AdminController {
 
 		return "redirect:/admin/index.do";
 	}
-
 	public String deleteFile(String FileName) {
 
 		try {

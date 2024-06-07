@@ -2,14 +2,25 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<link href="/chatcss/chatStyle.css" rel="stylesheet" />
+<link rel="stylesheet" href="../css/CustomerService.css" type="text/css">
+<script src="../js/CustomerService.js"></script>
+<!-- Custom fonts for this template-->
+<!-- Custom styles for this template-->
+<link rel="stylesheet" href="../css/sb-admin-2.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 <title>Chating</title>
-<link rel="stylesheet" href="../chatcss/chat.css" type="text/css" />
 </head>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	var ws;
     onload = function (){
 		$('#startBtn').trigger('click');
@@ -83,9 +94,9 @@
 		$('#chatting').val("");
 	}
 
-</script>
+</script> -->
 <body>
-	<div id="container" class="container">
+	<%-- <div id="container" class="container">
 		<div id="header">	
 			<h3><img src="https://cdn-icons-png.flaticon.com/512/6718/6718168.png
 			"style="width: 30px; border: 3px solid #2f7bed; border-radius: 30px; padding: 2px;" />
@@ -100,7 +111,7 @@
 			</div>
 		<c:forEach items="${selectchat}" var="row">
 				<!-- idx부분을 조인을 통해 이름값을 가져오게 수정 -->
-				<%-- <span style="color: white;">${row.member_idx}:</span> --%>
+				<span style="color: white;">${row.member_idx}:</span>
 				<c:if test="${row.member_idx ne 1 }">
 					<div class='me' style='margin-top:10px;'>
 					<div class='sender'>고객</div>
@@ -140,6 +151,6 @@
 				</tr>
 			</table>
 		</div>
-	</div>
+	</div> --%>
 </body>
 </html>

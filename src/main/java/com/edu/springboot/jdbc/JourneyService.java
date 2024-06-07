@@ -42,8 +42,11 @@ public interface JourneyService {
 	public ArrayList<JourneyInfoDTO> journeyinfo_Total_image(List<String> bot_idx);
 	
 	public ArrayList<String> like_journey_List(String location);
+
+	public ArrayList<String> like_journey_List_S(String title);
 	
 	public ArrayList<TotalJourneyDTO> show_journey_list(TotalJourneyDTO totaljourneyDTO);
+	public ArrayList<TotalJourneyDTO> show_journey_list_s(TotalJourneyDTO totaljourneyDTO);
 
 	public ArrayList<JourneyInfoDTO> journeyDetailSearch(JourneyInfoDTO journeyInfoDTO);
 	

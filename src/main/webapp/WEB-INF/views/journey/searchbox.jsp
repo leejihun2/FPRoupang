@@ -30,8 +30,8 @@
                                             <div class="search-keyword">
                                                 <div class="search-keyword-input">
                                                     <i class="travel-icon icon-search-sm-white search-keyword-icon">icon</i>
-													<form action="/journey_List">
-														<input type="hidden" id="sub_idx" name="category" value="1"/> 
+													<form action="/journey_List_S">
+														<input type="hidden" id="sub_idx" name="category" value="101"/> 
 														<input type="text" class="search-keyword-text" onclick="recommend_j()" id="jSearchBox" name="title"
 															placeholder="국내외 지역명, 숙소명으로 검색" value="">
 															<button class="wizard-search-btn" id="searchIcon" type="submit" style="border: none;">
@@ -145,7 +145,7 @@
                               
                             <!-- 티켓을 눌렀을대 나올 서치박스 -->
                             <div class="lodging-search-wizard" id="ticketSearch" style="display: none;">
-                                <h4 class="wizard-logo"><img style="width: 130px; height: 25px;" src="./images/roupang여행.png"></h4>
+                                <h4 class="wizard-logo"><img style="width: 130px; height: 37px" src="./images/roupang여행.png"></h4>
                                 <ul class="wizard-components">
                                     <li class="wizard-keyword">
                                         <div class="search-keyword-wrap">
@@ -153,7 +153,7 @@
                                                 <div class="search-keyword-input" >
                                                     <i class="travel-icon icon-search-sm-white search-keyword-icon">icon</i>
                                                  <form action="/ticket_List">
-                                                    <input type="hidden" id="sub_idx" name="category" value="1"/>
+                                                    <input type="hidden" id="sub_idx" name="category" value="101"/>
                                                     <input type="text" class="search-keyword-text" onclick="recommend_t()"  name="title" id="tSearchBox" placeholder="상품명으로 검색" value="">
                                                 	<button class="wizard-search-btn" id="searchIcon" type="submit" style="border: none;">
 														<i class="travel-icon icon-search-blue">icon</i></button>

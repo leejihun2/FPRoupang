@@ -2,14 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s"%>
 	<link href="../css/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-<ul
-	class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
-	id="accordionSidebar">
+<script type="text/javascript">
+function openDetail(url) {
+	var width = 768;
+	var height = 750;
+	var left = (window.screen.width - width) / 2;
+	var top = (window.screen.height - height) / 2;
+	window.open(url, 'detail', 'width=' + width +', height='+height +', left='+left +', top='+top +', location=no, status=no, scrollbar=no');
+}
+</script>
+<ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 	<!-- Sidebar - Brand -->
-	<a
-		class="sidebar-brand d-flex align-items-center justify-content-center"
-		href="/admin/index.do">
+	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/index.do">
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-laugh-wink"></i>
 		</div>
@@ -70,6 +75,7 @@
 					<a class="collapse-item" href="/admin/mainImageUpdate.do">메인이미지 수정</a>
 					<a class="collapse-item" href="/admin/adminFaq.do?categoryCode=ALL">자주 묻는 질문</a>
 					<a class="collapse-item" href="/admin/adminNotice.do?categoryCode=ALL">쿠팡소식</a>
+					<a class="collapse-item enter_chat1" href="javascript:openDetail('/chat?id=master')">채팅상담</a>
 				</div>
 			</div></li>
 		
