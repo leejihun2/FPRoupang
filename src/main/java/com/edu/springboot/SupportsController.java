@@ -48,8 +48,6 @@ public class SupportsController {
 	@RequestMapping("/supports/notice.do")
 	public String lists2(Model model, HttpServletRequest req) {
 		
-		
-		
 		String category = req.getParameter("categoryCode");
 		int totalRecordCount = 
 				daoo.getTotalCountSearch("notice",category);

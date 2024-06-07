@@ -1,23 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>     
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>       
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>목록</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="../css/category.css"> 
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="../css/category.css">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/common.css" type="text/css">
 <link rel="stylesheet" href="../css/list.css" type="text/css">
-  <!-- Latest compiled JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 function deleteRow(idx){
    if(confirm("정말로 삭제하시겠습니까?")){
@@ -28,123 +35,137 @@ function deleteRow(idx){
 </script>
 <style type="text/css">
 .__next-wrap * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
+
 .hJRjhk {
-    width: 100%;
-    height: 840px;
-    margin-top: 30px;
-    border: 1px solid rgb(230, 230, 230);
+	width: 100%;
+	height: 840px;
+	margin-top: 30px;
+	border: 1px solid rgb(230, 230, 230);
 }
+
 .jjNgdj {
-    float: left;
-    width: 340px;
-    height: 100%;
-    overflow-y: hidden;
-    border-right: 1px solid rgb(194, 194, 194);
+	float: left;
+	width: 340px;
+	height: 100%;
+	overflow-y: hidden;
+	border-right: 1px solid rgb(194, 194, 194);
 }
+
 .fDCDqR {
-    display: table;
-    width: 100%;
-    height: 90px;
-    border-bottom: 1px solid rgb(238, 238, 238);
+	display: table;
+	width: 100%;
+	height: 90px;
+	border-bottom: 1px solid rgb(238, 238, 238);
 }
+
 .cuahcY {
-    display: table-cell;
-    vertical-align: middle;
-    padding-left: 24px;
-    font-size: 13px;
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: 24px;
+	font-size: 13px;
 }
+
 .cuahcY button {
-    height: 40px;
-    float: left;
-    padding: 10px 14px;
+	height: 40px;
+	float: left;
+	padding: 10px 14px;
 }
+
 .bXaaqE {
-    position: relative;
-    width: 100%;
-    padding: 30px;
-    text-align: center;
+	position: relative;
+	width: 100%;
+	padding: 30px;
+	text-align: center;
 }
+
 .cvpLIN {
-    font-size: 0.9375rem;
-    font-weight: bold;
-    line-height: 1.13;
-    letter-spacing: normal;
-    color: rgb(17, 17, 17);
+	font-size: 0.9375rem;
+	font-weight: bold;
+	line-height: 1.13;
+	letter-spacing: normal;
+	color: rgb(17, 17, 17);
 }
+
 .lpuyPp {
-    margin-top: 8px;
-    font-size: 0.8125rem;
-    font-weight: 500;
-    line-height: 1.31;
-    letter-spacing: normal;
-    color: rgb(51, 51, 51);
+	margin-top: 8px;
+	font-size: 0.8125rem;
+	font-weight: 500;
+	line-height: 1.31;
+	letter-spacing: normal;
+	color: rgb(51, 51, 51);
 }
+
 .hwgKvp {
-    display: block;
-    height: 90px;
-    padding-left: 32px;
-    width: auto;
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgb(0 0 0 / 4%) 0px 1px 0px 0px;
-    overflow: hidden;
+	display: block;
+	height: 90px;
+	padding-left: 32px;
+	width: auto;
+	background-color: rgb(255, 255, 255);
+	box-shadow: rgb(0 0 0/ 4%) 0px 1px 0px 0px;
+	overflow: hidden;
 }
+
 .hTYEBQ {
-    float: right;
-    width: 638px;
-    height: 100%;
-    background-color: rgb(250, 250, 250);
+	float: right;
+	width: 638px;
+	height: 100%;
+	background-color: rgb(250, 250, 250);
 }
+
 .byqNSx {
-    display: block;
-    width: auto;
-    height: calc(100% - 90px);
-    overflow-y: scroll;
-    position: relative;
+	display: block;
+	width: auto;
+	height: calc(100% - 90px);
+	overflow-y: scroll;
+	position: relative;
 }
+
 .ldyR {
-    font-size: 18px;
-    letter-spacing: -0.5px;
-    text-align: left;
-    color: rgb(136, 136, 136);
-    margin-left: 12px;
-    line-height: 90px;
+	font-size: 18px;
+	letter-spacing: -0.5px;
+	text-align: left;
+	color: rgb(136, 136, 136);
+	margin-left: 12px;
+	line-height: 90px;
 }
+
 .dRiHfk {
-    text-align: center;
-    height: 100%;
-    border: none;
-    border-radius: 2px;
-    padding: 8px;
-    background-color: rgb(61, 130, 247);
-    cursor: pointer;
-    overflow: visible;
-    box-sizing: border-box;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    width: inherit;
+	text-align: center;
+	height: 100%;
+	border: none;
+	border-radius: 2px;
+	padding: 8px;
+	background-color: rgb(61, 130, 247);
+	cursor: pointer;
+	overflow: visible;
+	box-sizing: border-box;
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	width: inherit;
 }
+
 .dbIcid {
-    display: table-cell;
-    vertical-align: middle;
-    padding-right: 24px;
-    text-align: right;
+	display: table-cell;
+	vertical-align: middle;
+	padding-right: 24px;
+	text-align: right;
 }
+
 .eoBoAw {
-    line-height: 26px;
-    font-size: 13px;
-    color: rgb(0, 81, 245);
-    cursor: pointer;
+	line-height: 26px;
+	font-size: 13px;
+	color: rgb(0, 81, 245);
+	cursor: pointer;
 }
 </style>
 </head>
 <body style="background-color: #ffffff">
-    <%@include file="../top.jsp" %>
- <div id="top">
-    </div>
-<div class="container">
-	<%@include file="../category.jsp" %>
+	<%@include file="../top.jsp"%>
+	<div id="top"></div>
+	<div class="container">
+		<%@include file="../category.jsp"%>
 		<div class="sc-1pgb0b5-1 hJRjhk">
 			<div class="sc-r1vows-0 jjNgdj">
 				<div class="sc-1bmxn32-0 fDCDqR">
@@ -167,27 +188,38 @@ function deleteRow(idx){
 					</div>
 				</div>
 				<div class="sc-r1vows-1 hQgEoq">
-				
+
 					<div class="sc-1udhlwu-0 ufAFw">
-						<c:forEach items="${lists }" var="row">		
+						
 							<div class="media">
-									<div class="media-body">
-										<p>${row.title }</p>
-										<h4 class="media-heading">(${row.email })</h4>
-										<p>${row.contents }</p>
-									</div>	  
-								<!--  수정,삭제버튼 -->
+								<!--  -->
+								<c:forEach items="${lists }" var="row">
+								<div class="sc-1udhlwu-0 ufAFw">
+									<div class="sc-1udhlwu-1 gasOTV">
+										<div class="sc-1udhlwu-2 iPOkIs">
+											<img class="sc-f9ijag-0 cWLByC sc-1udhlwu-3 irygso"
+												src="https://thumbnail8.coupangcdn.com/thumbnails/remote/96x96ex/image/vendor_inventory/292b/10c648d3f2b3e93510b46db41754907898917ca37d88d5484c34740d1037.JPG"
+												alt="">
+										</div>
+										<div class="sc-1udhlwu-5 iwBqbe">
+											<div font-weight="bold" color="#111111"
+												class="sc-1udhlwu-6 gqtuaY">판매자 문의</div>
+											<span class="sc-1udhlwu-7 hwgoWd">${row.title }</span>
+											<div color="#AAAAAA" class="sc-1udhlwu-6 eSvIpy">2021.10.29</div>
+										</div>
+										<div class="sc-1udhlwu-8 cUcYMY">
+											<span class="sc-1udhlwu-9 dpsBQq">답변완료</span>
+										</div>
+									</div>
+								</div>
+								<!--  -->
 								<div class="media-right">
-									<!-- 수정/삭제 버튼은작성자 본인에게만 보여야 하므로 세션영역에 저장된
-									아이디와 게시물을 작성한 아이디가 같을때만 버튼을 출력한다. 
-									EL에서는 영역을 지정하는 내장객체를 생략할 수 있다. 따라서 sessionScope
-									는 삭제해도 무방하다.-->
+									<!--  수정,삭제버튼 -->
 								</div>
 							</div>
 						</c:forEach>
 					</div>
-					<div class="sc-1udhlwu-0 ufAFw">
-					</div>
+					<div class="sc-1udhlwu-0 ufAFw"></div>
 					<div class="sc-10d7xix-0 bXaaqE">
 						<p class="sc-10d7xix-1 cvpLIN">최근 문의내역을 모두 확인하셨습니다.</p>
 						<p class="sc-10d7xix-2 lpuyPp">이전 문의내역이 필요하시면 고객센터에 문의해주세요.</p>
@@ -202,9 +234,10 @@ function deleteRow(idx){
 			</div>
 		</div>
 		</section>
-</div>
-    <div id="copyright">
-         <%@include file="../copyright.jsp" %>  <!-- 원하는 파일 경로를 삽입하면 된다 -->
-    </div>
+	</div>
+	<div id="copyright">
+		<%@include file="../copyright.jsp"%>
+		<!-- 원하는 파일 경로를 삽입하면 된다 -->
+	</div>
 </body>
 </html>

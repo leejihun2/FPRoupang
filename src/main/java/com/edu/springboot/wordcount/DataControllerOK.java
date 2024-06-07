@@ -24,10 +24,8 @@ public class DataControllerOK {
     public void getSearchLog() {
         String query = "SELECT SEARCH_WORD, MEMBER_IDX, USER_BIRTH, to_char(SEARCH_REGIDATE,'HH24') AS SearchRegidate FROM search_log";
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(query);
-        // 나이승 나이승 나이승
         try (PrintWriter writer = new PrintWriter(new FileWriter("C:\\Users\\82104\\search_log11.txt"))) {
             rows.stream().map(row -> {
-                // 컬럼 이름을 바꿔줍니다.
                 Map<String, Object> newRow = new HashMap<>();
                 newRow.put("SearchWord", row.get("SEARCH_WORD"));
                 newRow.put("MemberIndex", row.get("MEMBER_IDX"));
