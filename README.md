@@ -7,7 +7,6 @@
 
 
 # FPRoupang
-파이널
 
 # :shopping_cart: 이커머스 플랫폼 프로젝트
 
